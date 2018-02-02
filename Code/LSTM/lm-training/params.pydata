@@ -1,0 +1,18 @@
+{
+    "experiment": "lm",
+    "name": "{model}-{data}-{nhid}-{nlayers}-{dropout}-{optim}-{lr}",
+    "parameters": {
+        "cuda": [True],
+        "epochs": [30],
+        "save": ["/checkpoint/germank/neurospin/experiments/lm/{name}/model.pt"],
+        "data": ["corpora/frwiki_100M_subset"],
+        "nlayers": [1],
+        "dropout": [0],
+        "nhid": [1000],
+        "emsize": [300],
+        "optim": ["Adam"],
+        "lr": [1e-3],
+        "model": ["LSTM"],
+        "vocab": ["corpora/frwiki_100M_subset/reduced-vocab.txt"]
+    }
+}
