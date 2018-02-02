@@ -3,10 +3,10 @@ import numpy as np
 
 class settings:
     def __init__(self):
-        self.path2MEGdata = op.join('..', 'Data', 'MEG', 'am150105', 'am150105')
-        self.path2LSTMdata = op.join('..', 'Data', 'LSTM')
-        self.path2figures = op.join('..', 'Figures')
-        self.path2output = op.join('..', 'Output')
+        self.path2MEGdata = op.join('..', '..', 'Data', 'MEG', 'am150105', 'am150105')
+        self.path2LSTMdata = op.join('..', '..', 'Data', 'LSTM')
+        self.path2figures = op.join('..', '..', 'Figures')
+        self.path2output = op.join('..', '..', 'Output')
         self.stimuli_file_name = 'patient_am150105_stimuli_anomaly_type_0'
         self.MEG_file_name = 'patient_am150105_epochs_lock_to_beginning_of_sentence_anomaly_type_0.npy'
         self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
