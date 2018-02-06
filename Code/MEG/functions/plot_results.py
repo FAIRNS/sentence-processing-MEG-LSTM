@@ -1,8 +1,8 @@
-from itertools import cycle
-import math
+import os.path as op
 import numpy as np
 import matplotlib.pyplot as plt
-
+import mne
+from functions import sentcomp_epoching
 
 def regularization_path(model, settings, params):
     fig, ax1 = plt.subplots()
@@ -36,23 +36,41 @@ def regularization_path(model, settings, params):
     return plt
 
 
-# plt.figure()
-#     # ymin, ymax = 2300, 3800
-#     plt.plot(m_log_alphas, model_lasso.mse_path_, ':')
-#     plt.plot(m_log_alphas, model_lasso.mse_path_.mean(axis=-1), 'k',
-#              label='Average across the folds', linewidth=2)
-#     plt.axvline(-np.log10(model_lasso.alpha_), linestyle='--', color='k',
-#                 label='alpha: CV estimate')
-#
-#     plt.legend()
-#
-#     plt.xlabel('-log(alpha)')
-#     plt.ylabel('Mean square error')
-#     plt.title('Mean square error on each fold: coordinate descent '
-#               '(train time: %.2fs)' % t_lasso_cv)
-#     plt.axis('tight')
-#
-#     file_name = 'Lasso_mean_square_error_vs_regularization_size_channel_' + \
-#                 str(channel) + '_word_' + str(word + 1) + '.png'
-#     plt.savefig(op.join(settings.path2figures, file_name))
-#     print('Plots saved for channel ' + str(channel) + ' word ' + str(word + 1))
+def plot_topomap_optimal_bin(settings, params):
+
+    # Load f-statistic results from Output folder
+    f_stats_all = []
+    for channel in range(settings.num_MEG_channels):
+        file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' + str(channel + 1) + '.npz'
+        npzfile = np.load(op.join(settings.path2output, file_name))
+        f_stats_all.append(npzfile['arr_1'])
+
+    num_bin_centers, num_bin_sizes = f_stats_all[0].shape
+
+    # Load epochs data from fif file, which includes channel loactions
+    epochs = mne.read_epochs(op.join(settings.path2MEGdata, settings.raw_file_name))
+
+    # Generate epochs locked to anomalous words
+    anomaly = 0  # 0: normal, 1: nonword (without vowels), 2: syntactic, 3: semantic
+    position = [4, 6, 8]  # 0,1,2..8
+    responses = [0, 1]  # Correct/wrong response of the subject
+    structures = [1, 2, 3]  # 1: 4-4, 2: 2-6, 3: 6-2
+
+    conditions = dict([
+        ('Anomalies', [anomaly]),
+        ('Positions', position),
+        ('Responses', responses),
+        ('Structure', structures)])
+
+    knames1, _ = sentcomp_epoching.get_condition(conditions=conditions, epochs=epochs, startTime=-.2,
+                                                   duration=1.5, real_speed=params.real_speed)
+
+    epochs_curr_condition = epochs[knames1].get_data()
+
+    # Generate fake power spectrum, to be replace with f-stat later
+    freqs = [1]; n_cycles = 1
+    power = mne.time_frequency.tfr_morlet(epochs_curr_condition, freqs=freqs, n_cycles=n_cycles, use_fft=True,
+                                          decim=3, n_jobs=10)
+    power._data = np.asarray(f_stats_all)
+
+    power.plot_topo()
