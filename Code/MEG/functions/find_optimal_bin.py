@@ -33,11 +33,15 @@ def bin_data(data, params):
     binned_data = []
     for trial in range(num_trials):
         curr_trial = data[trial, params.channel, :]
-        # Cut duration before first-word onset time
-        curr_trial = curr_trial[params.sfreq * params.startTime / 1e3:]
         # Generate bins according to SOA
-        num_samples = params.bin_size * 8  # 8 words in each trial
-        bins_start = range(0, num_samples, params.bin_size) # first sample of each bin
+        word_bin_size = int(params.sfreq * params.real_spead / 1e3)
+        num_samples = word_bin_size * 8  # 8 words in each trial
+        # Cut duration before first-word onset time and after last-word
+        st = int(params.sfreq * params.startTime / 1e3)
+        ed = st + num_samples
+        curr_trial = curr_trial[st:ed]
+
+        bins_start = range(0, num_samples, word_bin_size) # first sample of each bin
         digitized = np.digitize(range(num_samples), bins_start) # map each sample to its bin
         # Bin trial into 8 bins
         curr_trial_binned = [curr_trial[digitized == i] for i in range(1, np.max(digitized) + 1)]
@@ -116,10 +120,10 @@ def find_optimal_bin(data, settings, params, bin_size_min = 10, bin_size_max=200
     bin_size_opt = bin_sizes[IX1_opt] * 1e3/params.sfreq
     t_center_opt = t_centers[IX2_opt] * 1e3/params.sfreq
 
-    return f_stat_opt, p_value_opt, bin_size_opt, t_center_opt
+    return f_stats, f_stat_opt, p_value_opt, bin_size_opt, t_center_opt
 
 
-def average_over_optimal_bin_and_reconstruct_sentences(data_parsed_to_words, bin_size_opt, t_center_opt, settings, params):
+def average_over_optimal_bin_and_reconstruct_sentences(data_parsed_to_words, f_stats, bin_size_opt, t_center_opt, settings, params):
     # After finding the optimal bin size and center, average the MEG values over this bin, for each channel. Then reshape
     # the data back to (num_trials X 8)
     opt_bin = range(int(t_center_opt*params.sfreq/1e3)-int(bin_size_opt*params.sfreq/1e3/2), int(t_center_opt*params.sfreq/1e3)+int(bin_size_opt*params.sfreq/1e3/2)-1, 1)
@@ -136,5 +140,6 @@ def average_over_optimal_bin_and_reconstruct_sentences(data_parsed_to_words, bin
     data_sentences_ave_opt_bin.append(curr_sentence)
     data_sentences_ave_opt_bin = np.asarray(data_sentences_ave_opt_bin)
     file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' + str(params.channel+1)
-    np.save(op.join(settings.path2output, file_name), data_sentences_ave_opt_bin, t_center_opt, bin_size_opt)
+    np.savez(op.join(settings.path2output, file_name), data_sentences_ave_opt_bin, f_stats, t_center_opt, bin_size_opt)
+
     return data_sentences_ave_opt_bin
