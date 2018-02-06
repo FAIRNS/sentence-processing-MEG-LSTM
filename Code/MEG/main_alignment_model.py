@@ -10,9 +10,12 @@ print('Load settings and parameters')
 settings = lsp.settings()
 params = lsp.params()
 
+# Load LSTM data
 print('Loading pre-trained LSTM data...')
 LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
-for channel in range(params.num_channels):
+
+# Loop over channels and fit a regression model between LSTM units and MEG channel
+for channel in range (227,230,1): #range(params.num_channels):
     # Load Data
     print('Loading MEG data for channel ' + str(channel+1) + '...')
     MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' +str(channel+1) +'.npy'
