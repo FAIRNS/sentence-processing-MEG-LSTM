@@ -34,7 +34,7 @@ def bin_data(data, params):
     for trial in range(num_trials):
         curr_trial = data[trial, params.channel, :]
         # Generate bins according to SOA
-        word_bin_size = int(params.sfreq * params.real_spead / 1e3)
+        word_bin_size = int(params.sfreq * params.real_speed / 1e3)
         num_samples = word_bin_size * 8  # 8 words in each trial
         # Cut duration before first-word onset time and after last-word
         st = int(params.sfreq * params.startTime / 1e3)
