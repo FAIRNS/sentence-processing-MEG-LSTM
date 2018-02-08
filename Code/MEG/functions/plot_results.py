@@ -11,9 +11,8 @@ def regularization_path(model, settings, params):
     # Plot regression coef for each regularization size (alpha)
     ax1.plot(model.alphas, model.coefs)
     ax1.set_xscale('log')
-    # ax1.set_xlim(ax1.get_xlim()[::-1])  # reverse axis
-    ax1.set_xlabel('Regularization size')
-    ax1.set_ylabel('weights')
+    ax1.set_xlabel('Regularization size', size=18)
+    ax1.set_ylabel('weights', size=18)
     plt.title(settings.method + ' regression')
 
     # Plot error on the same figure
@@ -21,18 +20,19 @@ def regularization_path(model, settings, params):
     scores = model.cv_results_['mean_test_score']
     scores_std = model.cv_results_['std_test_score']
     std_error = scores_std / np.sqrt(params.CV_fold)
-    ax2.plot(model.alphas, scores, 'r.')
+    ax2.plot(model.alphas, scores, 'r.', label='R-squared training set')
     ax2.fill_between(model.alphas, scores + std_error, scores - std_error, alpha=0.2)
-    ax2.set_ylabel('R-square', color='r')
+    ax2.set_ylabel('R-squared', color='r', size=18)
     ax2.tick_params('y', colors='r')
 
     scores_train = model.cv_results_['mean_train_score']
     scores_train_std = model.cv_results_['std_train_score']
     std_train_error = scores_train_std / np.sqrt(params.CV_fold)
-    ax2.plot(model.alphas, scores_train, 'g.')
+    ax2.plot(model.alphas, scores_train, 'g.', label='R-squared test set')
     ax2.fill_between(model.alphas, scores_train + std_train_error, scores_train - std_train_error, alpha=0.2)
 
     plt.axis('tight')
+    plt.legend(loc=4)
 
     return plt
 
