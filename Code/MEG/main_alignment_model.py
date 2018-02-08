@@ -15,10 +15,10 @@ print('Loading pre-trained LSTM data...')
 LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
 
 # Loop over channels and fit a regression model between LSTM units and MEG channel
-for channel in range (227,230,1): #range(params.num_channels):
+for channel in range (188,230,1): #range(params.num_channels):
     # Load Data
     print('Loading MEG data for channel ' + str(channel+1) + '...')
-    MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' +str(channel+1) +'.npy'
+    MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' +str(channel+1) +'.npz'
     MEG_data = np.load(op.join(settings.path2output, MEG_file_name))
 
     # Reshape data to num_trials X num_features
@@ -28,7 +28,7 @@ for channel in range (227,230,1): #range(params.num_channels):
     y = np.empty([0]) # MEG data
     for word in range(8):
         X = np.vstack((X, LSTM_data[:,:, word]))
-        y = np.hstack((y, MEG_data[:, word]))
+        y = np.hstack((y, MEG_data['arr_0'][:, word]))
 
     # ## Split data to train/test sets
     print('Splitting data to train/test sets')
