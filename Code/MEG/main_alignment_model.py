@@ -16,6 +16,7 @@ print('Loading pre-trained LSTM data...')
 LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
 
 # Loop over channels and fit a regression model between LSTM units and MEG channel
+<<<<<<< HEAD
 # IF RUNNING FROM A BASH SCRIPT !!!!!
 print sys.argv[1]
 channel = int(sys.argv[1])
@@ -25,6 +26,12 @@ for channel in range(channel, channel+10, 1):
     # Load Data
     print('Loading MEG data for channel ' + str(channel+1) + '...')
     MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' +str(channel) +'.npz'
+=======
+for channel in range (188,230,1): #range(params.num_channels):
+    # Load Data
+    print('Loading MEG data for channel ' + str(channel+1) + '...')
+    MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' +str(channel+1) +'.npz'
+>>>>>>> b54807110c24108887aad25df6dd141d8a67fd94
     MEG_data = np.load(op.join(settings.path2output, MEG_file_name))
 
     # Reshape data to num_trials X num_features
