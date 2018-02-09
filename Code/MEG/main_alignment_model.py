@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from functions import load_settings_params as lsp
 from functions import model_fitting_and_evaluation as mfe
 from functions import plot_results as pr
+import sys
 
 # --------- Main script -----------
 print('Load settings and parameters')
@@ -15,10 +16,15 @@ print('Loading pre-trained LSTM data...')
 LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
 
 # Loop over channels and fit a regression model between LSTM units and MEG channel
-for channel in range (227,230,1): #range(params.num_channels):
+# IF RUNNING FROM A BASH SCRIPT !!!!!
+print sys.argv[1]
+channel = int(sys.argv[1])
+# -------------------------
+# channel = 21
+for channel in range(channel, channel+10, 1):
     # Load Data
     print('Loading MEG data for channel ' + str(channel+1) + '...')
-    MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' +str(channel+1) +'.npy'
+    MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' +str(channel) +'.npz'
     MEG_data = np.load(op.join(settings.path2output, MEG_file_name))
 
     # Reshape data to num_trials X num_features
@@ -28,14 +34,14 @@ for channel in range (227,230,1): #range(params.num_channels):
     y = np.empty([0]) # MEG data
     for word in range(8):
         X = np.vstack((X, LSTM_data[:,:, word]))
-        y = np.hstack((y, MEG_data[:, word]))
+        y = np.hstack((y, MEG_data['arr_0'][:, word]))
 
     # ## Split data to train/test sets
     print('Splitting data to train/test sets')
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1./params.CV_fold,
                                                         random_state=params.seed_split)
     # ############ Ridge Regression ############
-    print('Fitting a ridge model for channel ' + str(channel+1))
+    print('Fitting a ridge model for channel ' + str(channel))
     settings.method = 'Ridge'
     # Train model
     model_ridge = mfe.train_model(X_train, y_train, settings, params)
@@ -50,7 +56,7 @@ for channel in range (227,230,1): #range(params.num_channels):
     # ##########################################
 
     # ############ Lasso Regression ############
-    print('Fitting a lasso model for channel ' + str(channel+1))
+    print('Fitting a lasso model for channel ' + str(channel))
     settings.method = 'Lasso'
     # Train model
     model_lasso = mfe.train_model(X_train, y_train, settings, params)
