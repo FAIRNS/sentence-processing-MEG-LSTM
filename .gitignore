@@ -1,5 +1,6 @@
 Code/LSTM/lm-training/corpora/frwac_100M_subset
 Code/LSTM/lm-training/corpora/frwiki_100M_subset
 Code/LSTM/lm-training/checkpoint-data
+Code/LSTM/lm-training/corpora
 
 *.pyc
