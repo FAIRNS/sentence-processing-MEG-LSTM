@@ -30,9 +30,15 @@ class Dictionary(object):
 class Corpus(object):
     def __init__(self, path, vocab):
         self.dictionary = Dictionary(vocab)
-        self.train = self.tokenize(os.path.join(path, 'train.txt'))
-        self.valid = self.tokenize(os.path.join(path, 'valid.txt'))
-        self.test = self.tokenize(os.path.join(path, 'test.txt'))
+        try:
+            self.train, self.valid, self.test = torch.load(
+                    open(os.path.join(path, 'corpus.pth'), 'rb'))
+        except:
+            self.train = self.tokenize(os.path.join(path, 'train.txt'))
+            self.valid = self.tokenize(os.path.join(path, 'valid.txt'))
+            self.test = self.tokenize(os.path.join(path, 'test.txt'))
+            with open(os.path.join(path, 'corpus.pth'), 'wb') as f:
+                torch.save((self.train, self.valid, self.test), f)
 
     def tokenize(self, path):
         """Tokenizes a text file."""
