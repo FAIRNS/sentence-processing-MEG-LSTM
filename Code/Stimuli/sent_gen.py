@@ -7,14 +7,14 @@ import os
 import shutil
 import pickle
 
-path = 'C:\\Users\\user\\Documents\\Cours\\FAIR_internship\\sent_gen\\'
+path = os.path.abspath(os.path.dirname(__file__))
 os.chdir(path)
 session_name = 'example_sentences'
 if os.path.isdir(session_name):
     shutil.rmtree(session_name)
 os.mkdir(session_name)
 
-nb_sent = 640#1920#480#192
+nb_sent = 100000#1920#480#192
 len_block = 80#240#60#24
 speeds = [300, 160, 120, 80, 300, 160, 120, 80] ## Should be the same length as nb_block
 nb_block = 8
@@ -38,23 +38,25 @@ def check_speeds(speeds):
     
 check_speeds(speeds)
 
-pickle.dump(speeds, open(path + '\\' + session_name + '\\speeds.p', "wb" ), 2)
+pickle.dump(speeds, open(os.path.join(path, session_name, 'speeds.p'), "wb" ), 2)
         
 # 4 speeds, 2 blocks of 240 sentences 
 
 exec(open("./main.py").read())
+import pickle
+pickle.dump(info, open(os.path.join(path, session_name, 'info.pkl'),'wb'))
 
 #Shuffle sentences
 indices = list(range(len(sentences)))
 shuffle(indices) # Contains shuffled indices for the stimuli. We will remove used indices in real time
 
-os.chdir(path + '\\' + session_name)
+os.chdir(os.path.join(path, session_name))
 
 for i_block in range(nb_block):
         speed = speeds[i_block]
-        os.chdir(path + '\\' + session_name)
+        os.chdir(os.path.join(path, session_name))
         os.mkdir('block' + str(i_block) + '_' + str(speed) + 'ms')
-        os.chdir(path + '\\' + session_name + '\\block' + str(i_block) + '_' + str(speed) + 'ms')
+        os.chdir(os.path.join(path, session_name, 'block' + str(i_block) + '_' + str(speed) + 'ms'))
         stimuli = []
         info_stim = []
         for dummy in range(len_block//2): #correct sentences
@@ -84,8 +86,8 @@ for i_block in range(nb_block):
         final_stimuli = [stimuli[block_indices[i]] for i in range(len(stimuli))]
         final_info_stim = [info_stim[block_indices[i]] for i in range(len(stimuli))]
         
-        pickle.dump(final_stimuli, open(path + '\\' + session_name + '\\block' + str(i_block) + '_' + str(speed) + 'ms\\stimuli.p', "wb" ), 2)
-        pickle.dump(final_info_stim, open(path + '\\' + session_name + '\\block' + str(i_block) + '_' + str(speed) + 'ms\\info_stim.p', "wb" ), 2)
+        pickle.dump(final_stimuli, open(os.path.join(path ,session_name,  'block' + str(i_block) + '_' + str(speed) + 'ms', 'stimuli.p'), "wb" ), 2)
+        pickle.dump(final_info_stim, open(os.path.join(path, session_name, 'block' + str(i_block) + '_' + str(speed) + 'ms', 'info_stim.p'), "wb" ), 2)
         
         #save anomalies
         for i_sent in range(len(final_info_stim)):
@@ -94,4 +96,4 @@ for i_block in range(nb_block):
             else:
                 anomalies.append(1)
 
-pickle.dump(anomalies, open(path + '\\' + session_name + '\\anomalies.p', "wb" ), 2)
+pickle.dump(anomalies, open(os.path.join(path, session_name, 'anomalies.p'), "wb" ), 2)
