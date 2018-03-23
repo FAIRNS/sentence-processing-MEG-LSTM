@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 import sys
-import math
 import os
 import torch
 import argparse
-import json
 sys.path.append(os.path.abspath('../src/word_language_model'))
 import data
 import numpy as np
@@ -12,42 +10,46 @@ import h5py
 import pickle
 import pandas
 
-# Paths
-script = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/extract-activations.py'
-model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
-agreement_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/agreement-data/best_model.tab'
-agreement_sentences = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/agreement-data/best_model_sentences.txt'
-vocab = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
-output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_results_killing_unit_'
-eos = '"<eos>"'
-format = 'pkl'
+parser = argparse.ArgumentParser(
+    description='PyTorch PennTreeBank RNN/LSTM Language Model')
+parser.add_argument('model', type=str, default='model.pt',
+                    help='Meta file stored once finished training the corpus')
+parser.add_argument('-i', '--input', required=True,
+                    help='Input sentences')
+parser.add_argument('-v', '--vocabulary', default='reduced_vocab.txt')
+parser.add_argument('-o', '--output', help='Destination for the output vectors')
+parser.add_argument('--perplexity', action='store_true', default=False)
+parser.add_argument('--eos-separator', default='</s>')
+parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
+        help='Save the result to a single fixed-length array')
+parser.add_argument('--format', default='npz', choices=['npz', 'hdf5', 'pkl'])
+parser.add_argument('-u', '--unit', default=False, help='Which test unit to ablate')
+parser.add_argument('-s', '--seed', default=1, help='Random seed when adding random units')
+parser.add_argument('-g', '--groupsize', default=1, help='Group size of units to ablate, including test unit and random ones')
+args = parser.parse_args()
+
 
 # Which unit to kill + a random subset of g-1 more units
-units_to_kill = [1]
-g = 10
-add_random_subset = np.random.permutation(651)
-add_random_subset = [i for i in add_random_subset if i not in units_to_kill]
-units_to_kill = units_to_kill + add_random_subset[0:(g-1)]
-
-# Update output file name
-output = output + str(units_to_kill)
+np.random.seed(int(args.seed))
+add_random_subset = np.random.permutation(1301)
+add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]] # omit current test unit from random set
+units_to_kill = [int(args.unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
+units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
+units_to_kill_l0 = [u for u in units_to_kill if u <650] # units 1-650 (0-649) in layer 0 (l0)
+units_to_kill_l1 = [u-650 for u in units_to_kill if u >649] # units 651-1300 (650-1299) in layer 1 (l1)
+output = args.output + args.unit + '_groupsize_' + args.groupsize + '_seed_' + args.seed # Update output file name
 
 # Vocabulary
-vocab = data.Dictionary(vocab)
+vocab = data.Dictionary(args.vocabulary)
 
 # Sentences
-agreement_test_data = pandas.read_csv(agreement_data, sep='\t')
+agreement_test_data = pandas.read_csv(args.input, sep='\t')
 sentences_prefix = [s[7] for s in agreement_test_data._values]
 correct_wrong = [s[5] for s in agreement_test_data._values]
 verbs = [s[4] for s in agreement_test_data._values]
 len_context = [s[11] for s in agreement_test_data._values]
 len_prefix = [s[12] for s in agreement_test_data._values]
 log_p = [s[14] for s in agreement_test_data._values]
-
-# Save to file
-with open(agreement_sentences, 'wb') as f:
-    for s in sentences_prefix:
-        f.write("%s\n" % s)
 
 sentences_prefix = [s.split() for s in sentences_prefix]
 sentence_length = [len(s) for s in sentences_prefix]
@@ -56,7 +58,7 @@ max_length = max(*sentence_length)
 # Load model
 print('Loading models...')
 import lstm
-model = torch.load(model)
+model = torch.load(args.model)
 model.rnn.flatten_parameters()
 # hack the forward function to send an extra argument containing the model parameters
 model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
@@ -75,21 +77,22 @@ else:
 
 # Compare performamce w/o killing units (set to zero the corresponding weights in model):
 
-units_to_kill = [u-1 for u in units_to_kill] # Change counting to from-zero
 for ablation in [False, True]:
-    output_fn = output + '_' + str(ablation) + '.pkl' # output file name
+    output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
     if ablation:
-        model.rnn.weight_hh_l0.data[:, units_to_kill] = 0
-        model.rnn.weight_hh_l1.data[:, units_to_kill] = 0
-        model.rnn.weight_ih_l0.data[:, units_to_kill] = 0
-        model.rnn.weight_ih_l1.data[:, units_to_kill] = 0
-        model.rnn.bias_hh_l0.data[units_to_kill] = 0
-        model.rnn.bias_hh_l1.data[units_to_kill] = 0
-        model.rnn.bias_ih_l0.data[units_to_kill] = 0
-        model.rnn.bias_ih_l1.data[units_to_kill] = 0
+        # Kill corresponding weights if list is not empty
+        if units_to_kill_l0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+        if units_to_kill_l1: model.rnn.weight_hh_l1.data[:, units_to_kill_l1] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+        if units_to_kill_l0: model.rnn.weight_ih_l0.data[:, units_to_kill_l0] = 0 # l1: w_ii, w_if, w_ic, w_io
+        if units_to_kill_l1: model.rnn.weight_ih_l1.data[:, units_to_kill_l1] = 0 # l1: w_ii, w_if, w_ic, w_io
+        if units_to_kill_l0: model.rnn.bias_hh_l0.data[units_to_kill_l0] = 0
+        if units_to_kill_l1: model.rnn.bias_hh_l1.data[units_to_kill_l1] = 0
+        if units_to_kill_l0: model.rnn.bias_ih_l0.data[units_to_kill_l0] = 0
+        if units_to_kill_l1: model.rnn.bias_ih_l1.data[units_to_kill_l1] = 0
 
     # Test: present prefix sentences and calculate probability of target verb.
     for i, s in enumerate(sentences_prefix):
+        print
         sys.stdout.write("{}% complete ({} / {})\r".format(int(i / len(sentences_prefix) * 100), i, len(sentences_prefix)))
         out = None
         # reinit hidden
@@ -119,12 +122,12 @@ for ablation in [False, True]:
     }
 
     # Save to file
-    if format == 'npz':
+    if args.format == 'npz':
         np.savez(output, **out)
-    elif format == 'hdf5':
+    elif args.format == 'hdf5':
         with h5py.File("{}.h5".format(output), "w") as hf:
             for k,v in out.items():
                 dset = hf.create_dataset(k, data=v)
-    elif format == 'pkl':
+    elif args.format == 'pkl':
         with open(output_fn, 'wb') as fout:
             pickle.dump(out, fout, -1)
