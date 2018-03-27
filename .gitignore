@@ -5,6 +5,7 @@ Code/LSTM/lm-training/corpora
 
 Data/
 Figure/
-Output
+Output/
+.idea/
 
 *.pyc
