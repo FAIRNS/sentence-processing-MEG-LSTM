@@ -32,7 +32,11 @@ args = parser.parse_args()
 # Which unit to kill + a random subset of g-1 more units
 np.random.seed(int(args.seed))
 add_random_subset = np.random.permutation(1301)
+<<<<<<< HEAD
+add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]]
+=======
 add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]] # omit current test unit from random set
+>>>>>>> fc007041e91b0f965df621b492ddb5f55d46322b
 units_to_kill = [int(args.unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
 units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
 units_to_kill_l0 = [u for u in units_to_kill if u <650] # units 1-650 (0-649) in layer 0 (l0)
@@ -78,7 +82,11 @@ else:
 # Compare performamce w/o killing units (set to zero the corresponding weights in model):
 
 for ablation in [False, True]:
+<<<<<<< HEAD
+    output_fn = output + '_' + str(ablation) + '.pkl' # output file name
+=======
     output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
+>>>>>>> fc007041e91b0f965df621b492ddb5f55d46322b
     if ablation:
         # Kill corresponding weights if list is not empty
         if units_to_kill_l0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
