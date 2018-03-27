@@ -71,14 +71,22 @@ for i, s in enumerate(sentences):
     # reinit hidden
     hidden = model.init_hidden(1) 
     # intitialize with end of sentence
+<<<<<<< HEAD
+    inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]).cuda())
+=======
     inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]))
+>>>>>>> fc007041e91b0f965df621b492ddb5f55d46322b
     out, hidden = model(inp, hidden)
     out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
     for j, w in enumerate(s):
         # store the surprisal for the current word
         log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
 
+<<<<<<< HEAD
+        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]).cuda())
+=======
         inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
+>>>>>>> fc007041e91b0f965df621b492ddb5f55d46322b
         out, hidden = model(inp, hidden)
         out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
 
