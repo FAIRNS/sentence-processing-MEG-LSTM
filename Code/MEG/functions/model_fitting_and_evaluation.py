@@ -21,14 +21,15 @@ def train_model_ridge(X_train, y_train, settings, params):
     # Compute path: collect weight coefficient for all regularization sizes
     coefs = [] # Collect coefs for each regularization size (alpha)
     for a in params.alphas:
-        model = linear_model.Ridge(alpha=a, fit_intercept=False)
+        model = linear_model.Ridge(alpha=a, fit_intercept=True)
         model.fit(X_train, y_train)
         coefs.append(model.coef_)
 
     # Grid search - calculate train/validation error for all regularization sizes
     ridge = linear_model.Ridge()
     tuned_parameters = [{'alpha': params.alphas}]
-    model_ridge = model_selection.GridSearchCV(ridge, tuned_parameters, cv=params.CV_fold, refit=True)
+    model_ridge = model_selection.GridSearchCV(ridge, tuned_parameters, cv=params.CV_fold,
+                                               refit=True, return_train_score=True)
     model_ridge.fit(X_train, y_train)
 
     # Add to struct
@@ -41,12 +42,13 @@ def train_model_ridge(X_train, y_train, settings, params):
 def train_model_lasso(X_train, y_train, settings, params):
     # Compute path
     print("Computing regularization path using the lasso...")
-    alphas, coefs_lasso, _ = linear_model.lasso_path(X_train, y_train, eps=params.eps, fit_intercept=False)
+    alphas, coefs_lasso, _ = linear_model.lasso_path(X_train, y_train, eps=params.eps, fit_intercept=True)
 
     # Grid search - calculate train/validation error for all regularization sizes
     lasso = linear_model.Lasso()
     tuned_parameters = [{'alpha': alphas}]
-    model_lasso = model_selection.GridSearchCV(lasso, tuned_parameters, cv=params.CV_fold, refit=True)
+    model_lasso = model_selection.GridSearchCV(lasso, tuned_parameters, cv=params.CV_fold,
+                                               return_train_score=True, refit=True)
     model_lasso.fit(X_train, y_train)
 
     model_lasso.alphas = alphas
@@ -58,12 +60,13 @@ def train_model_elastic_net(X_train, y_train, settings, params):
     # Compute path
     print("Computing regularization path using the elastic net...")
     alphas, coefs_enet, _ = linear_model.enet_path(X_train, y_train,
-                                                   eps=params.eps, l1_ratio=params.l1_ratio, fit_intercept=False)
+                                                   eps=params.eps, l1_ratio=params.l1_ratio, fit_intercept=True)
 
     # Grid search - calculate train/validation error for all regularization sizes
     enet = linear_model.ElasticNet()
     tuned_parameters = [{'alpha': alphas}]
-    model_enet = model_selection.GridSearchCV(enet, tuned_parameters, cv=params.CV_fold, refit=True)
+    model_enet = model_selection.GridSearchCV(enet, tuned_parameters, cv=params.CV_fold,
+                                              return_train_score=True, refit=True)
     model_enet.fit(X_train, y_train)
 
     model_enet.alphas = alphas

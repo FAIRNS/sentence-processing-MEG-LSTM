@@ -16,10 +16,6 @@ os.chdir(settings.path2code)
 # Load LSTM data
 print('Loading pre-trained LSTM data...')
 LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
-print LSTM_data.files
-LSTM_data = LSTM_data['vectors']
-print LSTM_data.shape
-#sys.exit('breaked by user in code')
 
 # Loop over channels and fit a regression model between LSTM units and MEG channel
 # IF RUNNING FROM A BASH SCRIPT !!!!!
@@ -35,14 +31,13 @@ else:
 
 # for channel in range(channel, channel+10, 1):
     # If using optimal bin so don't loop over each time point within SOA
-step = 10
 if settings.use_optimal_bin:
     time_points = [-1]
 else:
-    time_points = range(0, params.SOA+1, step)
+    time_points = range(10, params.SOA+1, 10)
 
 for time_point in time_points:
-	pkl_filename = 'Regression_models_' + settings.patient + '_channel_' + str(channel) + '_timepoint_' + str(time_point) + '_averaged_over_' + str(step) + '_' + settings.LSTM_file_name + '.pckl'
+	pkl_filename = 'Regression_models_channel_' + str(channel) + '_timepoint_'+str(time_point)+'.pckl'
 	if not op.exists(op.join(settings.path2output, pkl_filename)):
 	    # Load Data
 	    print('Loading MEG data for channel ' + str(channel) + ' time point ' + str(time_point) + '...')
@@ -54,10 +49,9 @@ for time_point in time_points:
 		MEG_data = np.load(op.join(settings.path2MEGdata, MEG_file_name))
 		real_speed_sec = int(params.sfreq * params.real_speed / 1e3)
 		st = int(params.sfreq * params.startTime / 1e3) + time_point
-		ed = st + real_speed_sec*8 # the same time point at the 8^th words
-		IX_timepoints = np.arange(st, ed, real_speed_sec)
-		print('timepoints ' + str(IX_timepoints))
-		MEG_data = MEG_data[:,channel-1, :]
+		ed = st + time_point+real_speed_sec*8 # jump to the 8^th words
+		IX_timepoints = np.arange(st, ed,real_speed_sec)
+		MEG_data = MEG_data[:,channel-1, IX_timepoints]
 
 
 	    # Reshape data to num_trials X num_features
@@ -70,10 +64,7 @@ for time_point in time_points:
 		if settings.use_optimal_bin:
 		    y = np.hstack((y, MEG_data['arr_0'][:, word]))
 		else:
-		    st = IX_timepoints[word]
-		    ed = st + step - 1
-		    MEG_data_mean = np.mean(MEG_data[:, st:ed], axis=1)
-		    y = np.hstack((y, MEG_data_mean))
+		    y = np.hstack((y, MEG_data[:, word]))
 
 	    # ## Split data to train/test sets
 	    print('Splitting data to train/test sets')
@@ -108,11 +99,11 @@ for time_point in time_points:
 		# Evaluate model on test set
 		lasso_scores_test = mfe.evaluate_model(model_lasso, X_test, y_test, settings, params)
 		# Generate and save figures
-		plt = pr.regularization_path(model_lasso, settings, params)
-		file_name = 'Lasso_coef_and_R_squared_vs_regularization_size_channel_' + \
-		            str(channel) + '_timepoint_' + str(time_point) + '.png'
-		plt.savefig(op.join(settings.path2figures, file_name))
-		plt.close()
+		# plt = pr.regularization_path(model_lasso, settings, params)
+		# file_name = 'Lasso_coef_and_R_squared_vs_regularization_size_channel_' + \
+		#             str(channel) + '.png'
+		# plt.savefig(op.join(settings.path2figures, file_name))
+		# plt.close()
 		models['model_lasso'] = model_lasso
 		models['lasso_scores_test'] = lasso_scores_test
 		print('Done fitting')
