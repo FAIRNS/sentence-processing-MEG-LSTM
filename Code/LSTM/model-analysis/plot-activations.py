@@ -93,9 +93,14 @@ def main():
             assert len(data_vectors['sentences'][i]) == len(next(iter(data.values())))
             # we only use sentences of a given max length and having
             # a series with a minimum length, and there must be SOME variability
+            # max length 60
+            # min length 10
+            # more than 6 non-null
+            # S -> NP VP heads
+            # has variance
             if len(data[args.group]) < 60 and \
                     len(data[args.group]) > 10 and \
-                    content.shape[0] > 1 and \
+                    content.shape[0] > 6 and \
                     meta['head-type'] =='S_NP_VP' and \
                     not (content[:,1] == content[0,1]).all():
                 start = 5
@@ -108,7 +113,6 @@ def main():
         # keep track of the length-depth pairs that we keep in the dataset
         decorr_idxs = []
         if args.decorrelate:
-            import pudb; pudb.set_trace()
             print("Pre-procedure correlation R={:.2f} p={:.2e}".format(
                     *scipy.stats.spearmanr(
                         np.concatenate(series), 
