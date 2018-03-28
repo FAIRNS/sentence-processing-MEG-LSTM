@@ -37,6 +37,16 @@ args = parser.parse_args()
 
 stime = time.time()
 
+# Which unit to kill + a random subset of g-1 more units
+np.random.seed(int(args.seed))
+add_random_subset = np.random.permutation(1301)
+add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]] # omit current test unit from random set
+units_to_kill = [int(args.unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
+units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
+units_to_kill_l0 = [u for u in units_to_kill if u <650] # units 1-650 (0-649) in layer 0 (l0)
+units_to_kill_l1 = [u-650 for u in units_to_kill if u >649] # units 651-1300 (650-1299) in layer 1 (l1)
+output = args.output + args.unit + '_groupsize_' + args.groupsize + '_seed_' + args.seed # Update output file name
+
 # Vocabulary
 vocab = data.Dictionary(args.vocabulary)
 
