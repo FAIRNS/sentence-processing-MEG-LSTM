@@ -24,6 +24,7 @@ parser.add_argument('--perplexity', action='store_true', default=False)
 parser.add_argument('--eos-separator', default='</s>')
 parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
         help='Save the result to a single fixed-length array')
+parser.add_argument('--cuda', action='store_true', default=False)
 parser.add_argument('--format', default='npz', choices=['npz', 'hdf5', 'pkl'])
 
 
@@ -72,22 +73,18 @@ for i, s in enumerate(tqdm(sentences)):
     # reinit hidden
     hidden = model.init_hidden(1) 
     # intitialize with end of sentence
-<<<<<<< HEAD
-    inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]).cuda())
-=======
     inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]))
->>>>>>> fc007041e91b0f965df621b492ddb5f55d46322b
+    if args.cuda:
+        inp = inp.cuda()
     out, hidden = model(inp, hidden)
     out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
     for j, w in enumerate(s):
         # store the surprisal for the current word
         log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
 
-<<<<<<< HEAD
-        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]).cuda())
-=======
         inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
->>>>>>> fc007041e91b0f965df621b492ddb5f55d46322b
+        if args.cuda:
+            inp = inp.cuda()
         out, hidden = model(inp, hidden)
         out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
 
