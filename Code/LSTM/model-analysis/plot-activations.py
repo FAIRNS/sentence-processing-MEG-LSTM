@@ -12,8 +12,10 @@ import scipy.stats
 import random
 import operator 
 import pickle
+from tqdm import tqdm
 
 from collections import defaultdict
+np.seterr(all='raise')
 
 
 def main():
@@ -24,32 +26,45 @@ def main():
     """)
     ap.add_argument('vectors')
     ap.add_argument('reference')
+    ap.add_argument('--lock-vectors', help='Field of the reference file to '
+            'align the activity vectors')
     ap.add_argument('-t', '--analysis-type', required=True, choices=[
         'categories', 'correlation'])
     ap.add_argument('-g', '--group', default='structure', help=
             'Field of the gold-standard reference file to be used in plots')
     ap.add_argument('-o', '--output', required=True, help='Directory where to '
             'output the figures')
+    ap.add_argument('--sample-size', type=int, default=1000,
+            help='Size of the sample for the correlation')
+    ap.add_argument('-u', '--units', action='append', type=int,
+            help='Just plot the selected units')
+    ap.add_argument('--decorrelate', 
+            help='Field to decorrelate the target group from')
 
     args = ap.parse_args()
 
     print('Loading data...')
     if args.vectors.endswith('npz'):
-        vectors = np.load(args.vectors, 'r')
+        data_vectors = np.load(args.vectors, 'r')
     elif args.vectors.endswith('pkl'):
-        vectors = pickle.load(open(args.vectors, 'rb'))
-    nhid = int(vectors['vectors'][0].shape[0] / 2)
-    plot_vectors = {}
+        data_vectors = pickle.load(open(args.vectors, 'rb'))
+    nhid = int(data_vectors['vectors'][0].shape[0] / 2)
+    vectors = {}
     for name in ['gates.in', 'gates.out', 'gates.forget', 'gates.c_tilde']:
-        plot_vectors[name] = vectors[name]
-    if isinstance(vectors['vectors'], list):
-        plot_vectors['hidden'] = [v[:nhid, :] for v in vectors['vectors']]
-        plot_vectors['cell'] = [v[nhid:, :] for v in vectors['vectors']]
+        vectors[name] = data_vectors[name]
+    if isinstance(data_vectors['vectors'], list):
+        vectors['hidden'] = [v[:nhid, :] for v in data_vectors['vectors']]
+        vectors['cell'] = [v[nhid:, :] for v in data_vectors['vectors']]
     else:
-        plot_vectors['hidden'] = vectors['vectors'][:,:nhid,:]
-        plot_vectors['cell'] = vectors['vectors'][:,nhid:,:]
+        vectors['hidden'] = data_vectors['vectors'][:,:nhid,:]
+        vectors['cell'] = data_vectors['vectors'][:,nhid:,:]
+
 
     reference = pickle.load(open(args.reference, 'rb'))
+
+    if args.lock_vectors:
+        vectors = lock_vectors(vectors, 
+                [x[args.lock_vectors] for x in reference])
 
     if args.analysis_type ==  'categories':
         class_indexes = defaultdict(list)
@@ -60,75 +75,232 @@ def main():
         group_labels = {'structure':  {2: "2-6", 1: "4-4", 3: "6-2"}}
     elif args.analysis_type == 'correlation':
         series = []
-        plot_vectors_series = defaultdict(list)
-        for i,t in enumerate(reference):
+        decorr_series = []
+        vectors_series = defaultdict(list)
+        # iterate over the data senteneces, up to the point for which we have
+        # vectors
+        for i,t in enumerate(tqdm(reference[:len(data_vectors['sentences'])])):
+            sentence, meta, data = t
+            data['sentence-length'] = list(range(len(sentence)))
             # remove void entries, the first one (always the same) and the last one (change of sentence confound)
-            content = np.array([[j,x] for j,x in enumerate(t[args.group][1:-1]) if x != "-"])
-            assert len(vectors['sentences'][i]) == len(next(iter(t.values())))
+            content = np.array([[j,x] 
+                for j,x in enumerate(data[args.group][1:-1]) 
+                if x != "-"])
+            if args.decorrelate:
+                decorr_content = np.array([[j,x] 
+                    for j,x in enumerate(data[args.decorrelate][1:-1]) 
+                    if x != "-"])
+            assert len(data_vectors['sentences'][i]) == len(next(iter(data.values())))
             # we only use sentences of a given max length and having
             # a series with a minimum length, and there must be SOME variability
-            if len(t[args.group]) < 60 and len(t[args.group]) > 10 and content.shape[0] > 1 and not (content[:,1] == content[0,1]).all():
-                valid_idxs = content[:,0].astype(np.int)
-                series.append(content[:,1])
-                for k, v in plot_vectors.items():
-                    plot_vectors_series[k].append(v[i][:,valid_idxs])
+            # max length 60
+            # min length 10
+            # more than 6 non-null
+            # S -> NP VP heads
+            # has variance
+            if len(data[args.group]) < 60 and \
+                    len(data[args.group]) > 10 and \
+                    content.shape[0] > 6 and \
+                    meta['head-type'] =='S_NP_VP' and \
+                    not (content[:,1] == content[0,1]).all():
+                start = 5
+                valid_idxs = content[start:,0].astype(np.int)
+                series.append(content[start:,1])
+                for k, v in vectors.items():
+                    vectors_series[k].append(v[i][start:,valid_idxs])
+                if args.decorrelate:
+                    decorr_series.append(decorr_content[start:,1])
+        # keep track of the length-depth pairs that we keep in the dataset
+        decorr_idxs = []
+        if args.decorrelate:
+            print("Pre-procedure correlation R={:.2f} p={:.2e}".format(
+                    *scipy.stats.spearmanr(
+                        np.concatenate(series), 
+                        np.concatenate(decorr_series))))
+            x1 = [np.max(vals) for vals in series]
+            x2 = [np.max(vals) for vals in decorr_series]
+            m_1, s_1, q10_1, q90_1 = np.mean(x1), 3*np.std(x1), \
+                    np.percentile(x1, 10), np.percentile(x1, 90)
+            m_2, s_2, q10_2, q90_2 = np.mean(x2), 3*np.std(x2), \
+                    np.percentile(x2, 10), np.percentile(x2, 90)
+            decorr = BivariateDecorrelationFilter(
+                    m_1, s_1, (q10_1, q90_1),
+                    m_2, s_2, (q10_2, q90_2),
+                    int(0.1 * len(series)))
+            for i in tqdm(range(len(x1))):
+                if decorr.filter((x1[i],x2[i])):
+                    decorr_idxs.append(i)
+            series = [series[i] for i in decorr_idxs]
+            decorr_series = [decorr_series[i] for i in decorr_idxs]
+            for k in vectors_series:
+                vectors_series[k] = [vectors_series[k][i] for i in decorr_idxs]
+            print("Post-procedure correlation R={:.2f} p={:.2e}".format(
+                    *scipy.stats.spearmanr(
+                        np.concatenate(series), 
+                        np.concatenate(decorr_series))))
+
+        vectors = vectors_series
+        # randomply sample sample_size sentences
+        indexes = list(range(len(next(iter(vectors.values())))))
+        random.shuffle(indexes)
+        indexes = indexes[:args.sample_size]
+        for k in vectors:
+            vectors[k] = [vectors[k][i] for i in indexes]
+        series = [series[i] for i in indexes]
         #series = np.concatenate(series)
-        # for k,v in plot_vectors_series.items():
-        #     plot_vectors_series[k] = np.concatenate(v, 1)
+        # for k,v in vectors_series.items():
+        #     vectors_series[k] = np.concatenate(v, 1)
 
     os.makedirs(args.output, exist_ok=True)
-    print('Computting statistics...')
-    mean_correlations = {}
-    for i,(name, activations) in enumerate(plot_vectors_series.items()):
-        print(name, len(activations), activations[0].shape)
-        mean_correlations[name] = get_mean_correlation(activations, series)
-    statistic = get_max_correlation(mean_correlations)
-    sorted_statistics = (-np.abs(statistic[0])).argsort()
-    with open('{}/statistic.txt'.format(args.output), 'w') as f:
-        for i in sorted_statistics:
-            f.write("{}\t{:.2f} +- {:.2f}\t{:.2f}\n".format(i,statistic[0][i], statistic[1][i], statistic[-1][i]))
+
     # get the units with the largest r^2
-    units = sorted_statistics[:25]
-    print('Plotting...')
+    if args.units:
+        units = args.units
+    else:
+        print('Computing statistics...')
+        if args.analysis_type == 'correlation':
+            mean_correlations, statistic = get_correlations(vectors, series)
+            sorted_statistics = (-np.abs(statistic[0])).argsort()
+        elif args.analysis_type == 'categories':
+            statistic = get_f_statistics(vectors, class_indexes)
+            sorted_statistics = (-np.abs(statistic)).argsort()
+        with open('{}/statistic.txt'.format(args.output), 'w') as f:
+            for i in sorted_statistics:
+                if args.analysis_type == 'correlation':
+                    f.write("{}\t{:.2f} +- {:.2f}\t{:.2f}\n".format(i,statistic[0][i], statistic[1][i], statistic[-1][i]))
+                elif args.analysis_type == 'categories':
+                    f.write("{}\n".format(i,statistic[i]))
+        # pickl the top N statistically relevant units to plot
+        units = sorted_statistics[:200]
     for u in units:
         sys.stdout.write('{:d}\n'.format(u))
         if args.analysis_type == 'categories':
-            statistic[u] = plot_categorical({k: v[:,u,:] for k,v in plot_vectors.items()}, class_indexes, 
-                    group_labels[args.group], os.path.join(args.output, '{}.svg'.format(u)))
+            plot_categorical(
+                    {k: v[:,u,:] for k,v in vectors.items()}, 
+                    class_indexes, 
+                    group_labels.get(args.group, None), 
+                    os.path.join(args.output, '{}.svg'.format(u)))
         elif args.analysis_type == 'correlation':
-            plot_correlation({k: [v2[u, :] for v2 in v] for k,v in plot_vectors_series.items()}, series, 
-                    {k: (v[0][u],v[1][u],v[2][u]) for k, v in mean_correlations.items()},
+            plot_correlation(
+                    {k: [v2[u, :] for v2 in v] for k,v 
+                        in vectors.items()}, 
+                    series, 
+                    {k: (v[0][u],v[1][u],v[2][u]) for k, v 
+                        in mean_correlations.items()},
                     os.path.join(args.output, '{}.png'.format(u)))
 
     print()
+
+class BivariateDecorrelationFilter():
+    def __init__(self, m1, s1, lim1, m2, s2, lim2, TARGET=150000):
+        cv = np.array([[s1, 0], [0, s2]])
+        mean = np.array([m1, m2])
+
+        Z = 0
+        bin_targets = {}
+        for i in range(int(lim1[0]), int(lim1[1])):
+            for j in range(int(lim2[0]), int(lim2[1])):
+                bin_targets[(i,j)] = \
+                        scipy.stats.multivariate_normal.pdf(
+                                [i,j], mean=mean, cov=cv)
+
+        Z = sum(bin_targets.values())
+
+        for k,v in bin_targets.items():
+            bin_targets[k] = v/Z * TARGET
+
+        self.bin_targets = bin_targets
+
+    def filter(self, vals):
+        if vals in self.bin_targets and self.bin_targets[vals] > 0:
+            self.bin_targets[vals] -= 1
+            return True
+        return False
+
+
+
+def lock_vectors(vectors, positions, width=12):
+    DUMMY = 0xbaadf00d
+    locked_vectors = {}
+    for name, activations in vectors.items():
+        locked_vectors[name]  = np.full((len(activations), activations[0].shape[0],
+            width), DUMMY, dtype=np.float32)
+        for i, (sent_activations, pos) in enumerate(zip(activations, positions)):
+            shift_begin = width // 2 - 2 - pos
+            for j in range(sent_activations.shape[1]):
+                if j+shift_begin < 0 or j+shift_begin >= width:
+                    # remove parts of the sentence that don't fit in the array
+                    continue
+                locked_vectors[name][i,:,j+shift_begin] = sent_activations[:,j]
+            # this position receives a constant value of 0 and all the rest
+            # add or subtract to it
+            align_pos = width // 2 - 2
+            for j in range(width):
+                locked_vectors[name][i,:,j] = locked_vectors[name][i,:,j] - \
+                        locked_vectors[name][i,:,align_pos]
+        locked_vectors[name] = np.ma.masked_values(locked_vectors[name], DUMMY)
+    return locked_vectors
+
+
+def get_correlations(vectors, series):
+    mean_correlations = {}
+    for i,(name, activations) in enumerate(vectors.items()):
+        mean_correlations[name] = get_mean_correlation(activations, series)
+    statistic = get_max_correlation(mean_correlations)
+    return mean_correlations, statistic
 
 
 def is_series_acceptable(xs):
     return len([x for x in xs if x!="-"]) > 1
 
 
+def get_f_statistics(vectors, class_indexes):
+    stats = np.zeros(vectors['hidden'].shape[1])
+    # repeat for every unit
+    for u in tqdm(range(len(stats))):
+        max_stat = None
+        # iterate over all types of activations
+        for name, activations in vectors.items():
+            # iterate over the length of the sentence
+            for x in range(activations.shape[2]):
+                # compute the ratio of within and between variance for 
+                # the different groups at time point x
+                if (activations[:,u,x]== 0).all():
+                    # skip the alignment position
+                    continue
+                stat = scipy.stats.f_oneway(
+                        *[activations[cidx][:,u,x]
+                            for c,cidx in class_indexes.items()]).statistic  
+                stat = abs(math.log(stat))
+                # remember the largest difference
+                if not max_stat or stat > max_stat:
+                    max_stat = stat
+        stats[u] = max_stat
+    return stats
+
 def plot_categorical(unit_activations, class_indexes, class_labels, output):
     plt.figure(figsize=(12,8))
-    min_pvalue = 1
     for i,(name, activations) in enumerate(unit_activations.items()):
         plt.subplot(231+i)
         plt.title(name)
-        for c, cidx in sorted(class_indexes.items(), key=lambda t: class_labels[t[0]]):
-            _,caps,_ = plt.errorbar(np.arange(8), activations[cidx].mean(0), yerr=activations[cidx].std(0), label='{}'.format(class_labels[c]), capsize=10, elinewidth=1)
+        if class_labels is not None:
+            sort_key = lambda t: class_labels[t[0]]
+        else:
+            sort_key = None
+        for c, cidx in sorted(class_indexes.items(), key=None):
+            _,caps,_ = plt.errorbar(
+                    np.arange(activations.shape[1]), 
+                    activations[cidx].mean(0), 
+                    yerr=activations[cidx].std(0), 
+                    label='{}'.format(class_labels[c] if class_labels else c), 
+                    capsize=10, elinewidth=1)
             for cap in caps:
                 cap.set_markeredgewidth(2)
-        for x in range(8):
-            stat = scipy.stats.f_oneway(*[activations[cidx][:,x] for c,cidx in class_indexes.items()]).statistic  
-            stat = abs(math.log(stat))
-            if stat > min_pvalue:
-                min_pvalue = stat
         plt.legend()
         plt.tight_layout()
-    print(min_pvalue)
     plt.savefig(output)
     plt.clf()
     plt.close()
-    return min_pvalue
 
 def get_max_correlation(mean_correlations):
     '''
@@ -136,7 +308,7 @@ def get_max_correlation(mean_correlations):
     the statistics with the maximum value across names
     '''
     name_max = []
-    for j in range(next(iter(mean_correlations.values()))[0].shape[0]):
+    for j in tqdm(range(next(iter(mean_correlations.values()))[0].shape[0])):
         max_rho = None
         max_name = None
         for i,(name, correlations) in enumerate(mean_correlations.items()):
@@ -162,19 +334,19 @@ def vcorrcoef(X,y):
 def get_mean_correlation(activations, target_series):
     rs = []
     print("Computing mean correlation..")
-    idxs = list(range(len(activations)))
-    random.shuffle(idxs)
-    idxs = idxs[:1000]
-    approach = 1
+    #idxs = list(range(len(activations)))
+    #random.shuffle(idxs)
+    #idxs = idxs[:1000]
+    approach = 2
 
     # just concatenating pearson approach
     pearsonr = vcorrcoef(np.concatenate(activations, axis=1), np.concatenate(target_series, axis=0))
     if approach == 1:
         stat = pearsonr
+        rs = [stat]
     # mean of spearmanr correlations
     elif approach == 2:
-        for k,i in enumerate(idxs):
-            sys.stdout.write("Sentence {} / {} ({:.0f}% complete)\r".format(k, len(idxs), k/len(idxs)*100))
+        for k,i in enumerate(tqdm(range(len(activations)))):
             r = np.zeros(activations[i].shape[0]) 
             for j in range(r.shape[0]):
                 r[j], p = scipy.stats.spearmanr(activations[i][j], target_series[i])
@@ -182,8 +354,7 @@ def get_mean_correlation(activations, target_series):
         stat = np.mean(rs, axis=0)
     # mean of pearson correlations
     elif approach ==3:
-        for k,i in enumerate(idxs):
-            sys.stdout.write("Sentence {} / {} ({:.0f}% complete)\r".format(k, len(idxs), k/len(idxs)*100))
+        for k,i in enumerate(tqdm(range(len(activations)))):
             r = vcorrcoef(activations[i], np.array([target_series[i]]))
             rs.append(r)
         stat = np.mean(rs, axis=0)

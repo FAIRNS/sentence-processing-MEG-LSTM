@@ -51,31 +51,43 @@ def main():
                 meta = {}
                 meta["head-type"]  = get_head_type(sentence['phrase-parse'])
                 meta["tree"] = str(sentence['phrase-parse'])
-                meta["subtree_1"] = " ".join(map(str, tree_find(sentence['phrase-parse'], 
-                        "[ X [ X [ X X ] ] ]")))
+                if args.mode == 'subtrees': 
+                    for pat_name, pattern in patterns.items():
+                        meta["subtree_{}".format(pat_name)] = " ".join(
+                                map(lambda t: "{}:{}:{}".format(*t), 
+                                    tree_find(sentence['phrase-parse'], pattern)))
                 features = {}
-                for k,feature_extractor in {"first_NP": first_NP_depth, 
-                        "first_VP": first_VP_depth, 
-                        "top_NP": top_NP_depth,
-                        "top_VP": top_VP_depth, 
-                        "all": open_constituents}.items():
-                        #closed_constituents]:
-                    features[k] = feature_extractor(sentence['phrase-parse'])
-                    diff_k = 'diff_' + k
-                    features[diff_k] = differences(features[k])
-                    features['pos_' + diff_k] = filter_features(
-                            features[diff_k], lambda f: f >= 0)
-                    features['neg_' + diff_k] = filter_features(
-                            features[diff_k], lambda f: f <= 0)
+                if args.mode == 'depth':
+                    for k,feature_extractor in {"first_NP": first_NP_depth, 
+                            "first_VP": first_VP_depth, 
+                            "top_NP": top_NP_depth,
+                            "top_VP": top_VP_depth, 
+                            "all": open_constituents}.items():
+                            #closed_constituents]:
+                        features[k] = feature_extractor(sentence['phrase-parse'])
+                        diff_k = 'diff_' + k
+                        features[diff_k] = differences(features[k])
+                        features['pos_' + diff_k] = filter_features(
+                                features[diff_k], lambda f: f >= 0)
+                        features['neg_' + diff_k] = filter_features(
+                                features[diff_k], lambda f: f <= 0)
                 if not args.silent:
                     for k in meta:
-                        print('### '+ k +  "  " + meta[k])
+                        print('### '+ k +  " " + meta[k])
                     for k in features:
-                        print('*** '+ k +  "  " + " ".join(map(str, features[k])))
+                        print('*** '+ k +  " " + " ".join(map(str, features[k])))
                 all_features.append((tokenized_sentence, meta, features))
     sys.stderr.write("Skipped sentences: {} / {}".format(skipped, total))
     if args.output:
         pickle.dump(all_features, open(args.output, 'wb'))
+
+patterns = {
+        "RRB": "[ X [ X [ X X ] ] ]",
+        "LLB": "[ [ [ X X ] X ] X ]",
+        "LRB": "[ [ X [ X X ] ] X ]",
+        "RLB": "[ X [ [ X X ] X ] ]",
+        "BB": "[ [ X X ] [ X X ] ]"
+    }
 
 def differences(features):
     d = []
@@ -102,6 +114,7 @@ def tree_find(tree, pattern):
     pattern = pattern.strip().split(" ")
     positions = []
     word_pos = 0
+    pat_length = sum([1 for x in pattern if x=="X"])
     for i in range(len(flat_tree)):
         tok = flat_tree[i]
         if not tok.startswith('[') and not tok.startswith(']'):
@@ -112,7 +125,8 @@ def tree_find(tree, pattern):
                 matches = False
                 break
         if matches:
-            positions.append((word_pos, tok[1:])
+            pos_tags = [tag for tag in flat_tree[i:] if tag[0] not in '[]'][:pat_length]
+            positions.append((word_pos, tok[1:], "_".join(pos_tags)))
     return positions
 
 def pattern_match(chunk, pattern):
@@ -205,12 +219,13 @@ def first_NT_depth(tree, target, distance_to_NT=None, found=False):
         return ret, found
 
 def get_head_type(tree):
-    return "_".join(flat_tags(tree, 2))
-
+    return "_".join(flat_tags(tree, 1))
 
 def flat_tags(tree, level=None):
     is_leaf, tag, subtrees = tree
-    if is_leaf or level == 0:
+    if is_leaf:
+        return[]
+    if level == 0:
         return [tag]
     else:
         disc_level = level-1 if level is not None else None
@@ -218,6 +233,9 @@ def flat_tags(tree, level=None):
     
 
 def sentences(fin, remove_unary=False):
+    fin.seek(0, os.SEEK_END)
+    fsize = fin.tell()
+    fin.seek(0, os.SEEK_SET)
     it = fin
     line = chomp(it)
     n = 1
@@ -226,6 +244,8 @@ def sentences(fin, remove_unary=False):
             if line.startswith("Document: ID="):
                 line = chomp(it)
                 n += 1
+            if it.tell() == fsize:
+                return
             assert line.startswith("Sentence"), "Sentence at line {} unexpected: {}".format(n, line)
             line = chomp(it)
             n += 1
@@ -247,6 +267,8 @@ def sentences(fin, remove_unary=False):
             traceback.print_exc()
             # recovering routine
             while not line.startswith("Sentence"):
+                if it.tell() == fsize:
+                    return
                 line = chomp(it)
 
 def get_original(it, line):
