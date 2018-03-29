@@ -9,6 +9,10 @@ import numpy as np
 import h5py
 import pickle
 import pandas
+import time
+import copy
+from tqdm import tqdm
+from torch.autograd import Variable
 
 parser = argparse.ArgumentParser(
     description='PyTorch PennTreeBank RNN/LSTM Language Model')
@@ -23,15 +27,23 @@ parser.add_argument('--eos-separator', default='</s>')
 parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
         help='Save the result to a single fixed-length array')
 parser.add_argument('--format', default='npz', choices=['npz', 'hdf5', 'pkl'])
-parser.add_argument('-u', '--unit', default=False, help='Which test unit to ablate')
+parser.add_argument('-u', '--unit', type=int, default=False, help='Which test unit to ablate')
+parser.add_argument('-uf', '--unit-from', type=int, default=False, help='Starting range for test unit to ablate')
+parser.add_argument('-ut', '--unit-to', type=int, default=False, help='Ending range for test unit to ablate')
 parser.add_argument('-s', '--seed', default=1, help='Random seed when adding random units')
 parser.add_argument('-g', '--groupsize', default=1, help='Group size of units to ablate, including test unit and random ones')
+parser.add_argument('--cuda', action='store_true', default=False)
 args = parser.parse_args()
 
+stime = time.time()
 
 # Which unit to kill + a random subset of g-1 more units
 np.random.seed(int(args.seed))
 add_random_subset = np.random.permutation(1301)
+<<<<<<< HEAD
+add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]]
+=======
+>>>>>>> ba72602a131588fcd645a825a04306adebc3438e
 add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]] # omit current test unit from random set
 units_to_kill = [int(args.unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
 units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
@@ -62,6 +74,7 @@ model = torch.load(args.model)
 model.rnn.flatten_parameters()
 # hack the forward function to send an extra argument containing the model parameters
 model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
+model_orig_state = copy.deepcopy(model.state_dict())
 
 # output buffers
 fixed_length_arrays = False
@@ -76,8 +89,34 @@ else:
     log_p_targets = np.zeros((len(sentences_prefix), 1))
 
 # Compare performamce w/o killing units (set to zero the corresponding weights in model):
+if args.unit_from and args.unit_to:
+    if args.unit_to > args.unit_from:
+        target_units = range(args.unit_from, args.unit_to+1)
+    else:
+        target_units = range(args.unit_from-1, args.unit_to-1, -1)
+else:
+    target_units = [args.unit]
+
+target_units = [1]
+
+for unit in tqdm(target_units):
+    stime = time.time()
+    # Which unit to kill + a random subset of g-1 more units
+    np.random.seed(int(args.seed))
+    add_random_subset = np.random.permutation(1301).astype(int)
+    add_random_subset = [i for i in add_random_subset if i not in [int(unit)]] # omit current test unit from random set
+    units_to_kill = [int(unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
+    units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
+    units_to_kill_l0 = torch.LongTensor(np.array([u for u in units_to_kill if u <650])) # units 1-650 (0-649) in layer 0 (l0)
+    units_to_kill_l1 = torch.LongTensor(np.array([u-650 for u in units_to_kill if u >649])) # units 651-1300 (650-1299) in layer 1 (l1)
+    if args.cuda:
+        units_to_kill_l0 = units_to_kill_l0.cuda()
+        units_to_kill_l1 = units_to_kill_l1.cuda()
+    output = args.output + str(unit) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
+
 
 for ablation in [False, True]:
+    output_fn = output + '_' + str(ablation) + '.pkl' # output file name
     output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
     if ablation:
         # Kill corresponding weights if list is not empty
@@ -90,44 +129,46 @@ for ablation in [False, True]:
         if units_to_kill_l0: model.rnn.bias_ih_l0.data[units_to_kill_l0] = 0
         if units_to_kill_l1: model.rnn.bias_ih_l1.data[units_to_kill_l1] = 0
 
-    # Test: present prefix sentences and calculate probability of target verb.
-    for i, s in enumerate(sentences_prefix):
-        print
-        sys.stdout.write("{}% complete ({} / {})\r".format(int(i / len(sentences_prefix) * 100), i, len(sentences_prefix)))
-        out = None
-        # reinit hidden
-        hidden = model.init_hidden(1)
-        # intitialize with end of sentence
-        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx['<eos>']]]))
-        out, hidden = model(inp, hidden)
-        out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
-        for j, w in enumerate(s):
-            inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
+        # Test: present prefix sentences and calculate probability of target verb.
+        for i, s in enumerate(sentences_prefix):
+            out = None
+            # reinit hidden
+            hidden = model.init_hidden(1)
+            # intitialize with end of sentence
+            inp = Variable(torch.LongTensor([[vocab.word2idx['<eos>']]]))
+            if args.cuda:
+                inp = inp.cuda()
             out, hidden = model(inp, hidden)
             out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
-        # Store surprisal of target word
-        log_p_targets[i] = out[0, 0, vocab.word2idx[verbs[i]]].data[0]
-    # Split to correct (odd) and wrong (even) sentences
-    log_p_targets_correct = log_p_targets[::2]
-    log_p_targets_wrong = log_p_targets[1::2]
-    # Score the performance of the model w/o ablation
-    score_on_task = np.sum(log_p_targets_correct > log_p_targets_wrong)
+            for j, w in enumerate(s):
+                inp = Variable(torch.LongTensor([[vocab.word2idx[w]]]))
+                if args.cuda:
+                    inp = inp.cuda()
+                out, hidden = model(inp, hidden)
+                out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
+            # Store surprisal of target word
+            log_p_targets[i] = out[0, 0, vocab.word2idx[verbs[i]]].data[0]
+        # Split to correct (odd) and wrong (even) sentences
+        log_p_targets_correct = log_p_targets[::2]
+        log_p_targets_wrong = log_p_targets[1::2]
+        # Score the performance of the model w/o ablation
+        score_on_task = np.sum(log_p_targets_correct > log_p_targets_wrong)
 
-    out = {
-        'log_p_targets_correct': log_p_targets_correct,
-        'log_p_targets_wrong': log_p_targets_wrong,
-        'score_on_task': score_on_task,
-        'sentences_prefix': sentences_prefix,
-        'sentence_length': np.array(sentence_length)
-    }
+        out = {
+            'log_p_targets_correct': log_p_targets_correct,
+            'log_p_targets_wrong': log_p_targets_wrong,
+            'score_on_task': score_on_task,
+            'sentences_prefix': sentences_prefix,
+            'sentence_length': np.array(sentence_length)
+        }
 
-    # Save to file
-    if args.format == 'npz':
-        np.savez(output, **out)
-    elif args.format == 'hdf5':
-        with h5py.File("{}.h5".format(output), "w") as hf:
-            for k,v in out.items():
-                dset = hf.create_dataset(k, data=v)
-    elif args.format == 'pkl':
-        with open(output_fn, 'wb') as fout:
-            pickle.dump(out, fout, -1)
+        # Save to file
+        if args.format == 'npz':
+            np.savez(output, **out)
+        elif args.format == 'hdf5':
+            with h5py.File("{}.h5".format(output), "w") as hf:
+                for k,v in out.items():
+                    dset = hf.create_dataset(k, data=v)
+        elif args.format == 'pkl':
+            with open(output_fn, 'wb') as fout:
+                pickle.dump(out, fout, -1)
