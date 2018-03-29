@@ -10,6 +10,7 @@ import data
 import numpy as np
 import h5py
 import pickle
+from tqdm import tqdm
 
 parser = argparse.ArgumentParser(
     description='PyTorch PennTreeBank RNN/LSTM Language Model')
@@ -23,6 +24,7 @@ parser.add_argument('--perplexity', action='store_true', default=False)
 parser.add_argument('--eos-separator', default='</s>')
 parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
         help='Save the result to a single fixed-length array')
+parser.add_argument('--cuda', action='store_true', default=False)
 parser.add_argument('--format', default='npz', choices=['npz', 'hdf5', 'pkl'])
 
 
@@ -61,17 +63,19 @@ if args.fixed_length_arrays:
     log_probabilities =  np.zeros((len(sentences), max_length))
     gates = {k: np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
 else:
-    vectors = [np.zeros((2*model.nhid*model.nlayers, len(s))) for s in sentences] #np.zeros((len(sentences), 2 *model.nhid*model.nlayers, max_length))
-    log_probabilities = [np.zeros(len(s)) for s in sentences] # np.zeros((len(sentences), max_length))
-    gates = {k: [np.zeros((model.nhid*model.nlayers, len(s))) for s in sentences] for k in ['in', 'forget', 'out', 'c_tilde']} #np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
+    vectors = [np.zeros((2*model.nhid*model.nlayers, len(s))) for s in tqdm(sentences)] #np.zeros((len(sentences), 2 *model.nhid*model.nlayers, max_length))
+    log_probabilities = [np.zeros(len(s)) for s in tqdm(sentences)] # np.zeros((len(sentences), max_length))
+    gates = {k: [np.zeros((model.nhid*model.nlayers, len(s))) for s in tqdm(sentences)] for k in ['in', 'forget', 'out', 'c_tilde']} #np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
 
-for i, s in enumerate(sentences):
-    sys.stdout.write("{}% complete ({} / {})\r".format(int(i/len(sentences) * 100), i, len(sentences)))
+for i, s in enumerate(tqdm(sentences)):
+    #sys.stdout.write("{}% complete ({} / {})\r".format(int(i/len(sentences) * 100), i, len(sentences)))
     out = None
     # reinit hidden
     hidden = model.init_hidden(1) 
     # intitialize with end of sentence
     inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]))
+    if args.cuda:
+        inp = inp.cuda()
     out, hidden = model(inp, hidden)
     out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
     for j, w in enumerate(s):
@@ -79,6 +83,8 @@ for i, s in enumerate(sentences):
         log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
 
         inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
+        if args.cuda:
+            inp = inp.cuda()
         out, hidden = model(inp, hidden)
         out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
 

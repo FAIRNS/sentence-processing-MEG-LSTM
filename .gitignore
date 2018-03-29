@@ -2,7 +2,14 @@ Code/LSTM/lm-training/corpora/frwac_100M_subset
 Code/LSTM/lm-training/corpora/frwiki_100M_subset
 Code/LSTM/lm-training/checkpoint-data
 Code/LSTM/lm-training/corpora
+
+Code/MEG/RunScripts/
+Code/MEG/Logs/
+Code/LSTM/model-analysis/main_ablation_experiment.py
+
+Data/
 Figures/
 Output/
-Data/
+.idea/
+
 *.pyc
