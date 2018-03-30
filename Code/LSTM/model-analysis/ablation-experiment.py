@@ -40,6 +40,10 @@ stime = time.time()
 # Which unit to kill + a random subset of g-1 more units
 np.random.seed(int(args.seed))
 add_random_subset = np.random.permutation(1301)
+<<<<<<< HEAD
+add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]]
+=======
+>>>>>>> ba72602a131588fcd645a825a04306adebc3438e
 add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]] # omit current test unit from random set
 units_to_kill = [int(args.unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
 units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
@@ -110,19 +114,20 @@ for unit in tqdm(target_units):
         units_to_kill_l1 = units_to_kill_l1.cuda()
     output = args.output + str(unit) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
 
-    for ablation in [True]:
-        model.load_state_dict(model_orig_state)
-        output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
-        if ablation:
-            # Kill corresponding weights if list is not empty
-            if units_to_kill_l0.ndimension() > 0: model.rnn.weight_hh_l0.data[:, :] = 0 # l0: w_hi, w_hf, w_hc, w_ho
-            if units_to_kill_l1.ndimension() > 0: model.rnn.weight_hh_l1.data[:, :] = 0 # l0: w_hi, w_hf, w_hc, w_ho
-            if units_to_kill_l0.ndimension() > 0: model.rnn.weight_ih_l0.data[:, :] = 0 # l1: w_ii, w_if, w_ic, w_io
-            if units_to_kill_l1.ndimension() > 0: model.rnn.weight_ih_l1.data[:, :] = 0 # l1: w_ii, w_if, w_ic, w_io
-            if units_to_kill_l0.ndimension() > 0: model.rnn.bias_hh_l0.data[:] = 0
-            if units_to_kill_l1.ndimension() > 0: model.rnn.bias_hh_l1.data[:] = 0
-            if units_to_kill_l0.ndimension() > 0: model.rnn.bias_ih_l0.data[:] = 0
-            if units_to_kill_l1.ndimension() > 0: model.rnn.bias_ih_l1.data[:] = 0
+
+for ablation in [False, True]:
+    output_fn = output + '_' + str(ablation) + '.pkl' # output file name
+    output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
+    if ablation:
+        # Kill corresponding weights if list is not empty
+        if units_to_kill_l0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+        if units_to_kill_l1: model.rnn.weight_hh_l1.data[:, units_to_kill_l1] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+        if units_to_kill_l0: model.rnn.weight_ih_l0.data[:, units_to_kill_l0] = 0 # l1: w_ii, w_if, w_ic, w_io
+        if units_to_kill_l1: model.rnn.weight_ih_l1.data[:, units_to_kill_l1] = 0 # l1: w_ii, w_if, w_ic, w_io
+        if units_to_kill_l0: model.rnn.bias_hh_l0.data[units_to_kill_l0] = 0
+        if units_to_kill_l1: model.rnn.bias_hh_l1.data[units_to_kill_l1] = 0
+        if units_to_kill_l0: model.rnn.bias_ih_l0.data[units_to_kill_l0] = 0
+        if units_to_kill_l1: model.rnn.bias_ih_l1.data[units_to_kill_l1] = 0
 
         # Test: present prefix sentences and calculate probability of target verb.
         for i, s in enumerate(sentences_prefix):
