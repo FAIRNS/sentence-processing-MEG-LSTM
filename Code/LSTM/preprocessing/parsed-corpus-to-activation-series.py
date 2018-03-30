@@ -10,6 +10,7 @@ import pickle
 import sys
 import os
 import traceback
+from tqdm import tqdm
 
 def main():
     ap = argparse.ArgumentParser()
@@ -31,8 +32,12 @@ def main():
     f.seek(0, os.SEEK_END)
     fsize = f.tell()
     f.seek(0, os.SEEK_SET)
+    pbar = tqdm(total=fsize)
+    before = f.tell()
     for sentence in sentences(f, remove_unary=True):
-        sys.stderr.write("Complete: {:.2f}%\r".format(f.tell()/fsize*100))
+        pbar.update(f.tell()-before)
+        before = f.tell()
+        #sys.stderr.write("Complete: {:.2f}%\r".format(f.tell()/fsize*100))
         tokenized_sentence = tokens(sentence)
         total += 1
         skip = False
@@ -50,7 +55,7 @@ def main():
             if not args.mode == 'tokenize':
                 meta = {}
                 meta["head-type"]  = get_head_type(sentence['phrase-parse'])
-                meta["tree"] = str(sentence['phrase-parse'])
+                meta["tree"] = sentence['phrase-parse']
                 if args.mode == 'subtrees': 
                     for pat_name, pattern in patterns.items():
                         meta["subtree_{}".format(pat_name)] = " ".join(
@@ -73,10 +78,12 @@ def main():
                                 features[diff_k], lambda f: f <= 0)
                 if not args.silent:
                     for k in meta:
-                        print('### '+ k +  " " + meta[k])
+                        print('### '+ k +  " " + str(meta[k]))
+                    print(format_constituent(meta['tree']))
                     for k in features:
                         print('*** '+ k +  " " + " ".join(map(str, features[k])))
                 all_features.append((tokenized_sentence, meta, features))
+    pbar.close()
     sys.stderr.write("Skipped sentences: {} / {}".format(skipped, total))
     if args.output:
         pickle.dump(all_features, open(args.output, 'wb'))
@@ -261,6 +268,8 @@ def sentences(fin, remove_unary=False):
                 # we filter out multi-line sentences as they are most likely wrong
                 yield sent
             line = chomp(it)
+        except KeyboardInterrupt:
+            raise
         except BaseException as ex:
             print("Error at position {} just before line: \n{}"\
                     .format(it.tell(), chomp(it)), file=sys.stderr)
