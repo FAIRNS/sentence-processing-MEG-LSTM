@@ -7,14 +7,18 @@ class settings:
 
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
-        self.path2LSTMdata = op.join('..', '..', 'Data', 'LSTM')
-        self.path2figures = op.join('..', '..', 'Figures')
-        self.path2output = op.join('..', '..', 'Output')
+        self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
+        self.path2LSTMdata = op.join('..', '..', '..', 'Data', 'LSTM')
+        self.path2figures = op.join('..', '..', '..', 'Figures')
+        self.path2output = op.join('..', '..', '..', 'Output')
 
         # Files
        #self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
-
+        self.bnc_data = 'bnc_0313_filtered.pkl'
+        self.LSTM_pretrained_model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
+        self.LSTM_pretested_file_name = ''
+        self.vocabulary_file = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
         # Flags
 
 class params:
@@ -36,3 +40,4 @@ class preferences:
         self.run_Ridge = False
         self.run_LASSO = True
         self.run_ElasticNet = False
+        self.load_pretested_LSTM = False

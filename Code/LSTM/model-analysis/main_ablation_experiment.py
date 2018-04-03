@@ -9,7 +9,7 @@ script = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/
 model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
 agreement_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/agreement-data/best_model.tab'
 agreement_sentences = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/agreement-data/best_model_sentences.txt'
-vocab = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
+vocab_str = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
 output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/test_output'
 eos = '"<eos>"'
 format = 'pkl'
@@ -18,7 +18,7 @@ format = 'pkl'
 agreement_test_data = pd.read_csv(agreement_data, sep='\t')
 test_sentences = [s[13] for s in agreement_test_data._values]
 test_sentences = [s for i,s in enumerate(test_sentences) if i%2==1]
-vocab = data.Dictionary(vocab)
+vocab = data.Dictionary(vocab_str)
 IX_bad_sentences = []
 for i, s in enumerate(test_sentences):
     for w in s.split():
@@ -36,7 +36,7 @@ with open(agreement_sentences, 'wb') as f:
 
 
 
-cmd = script + ' ' + model + ' --input ' + agreement_sentences + ' --vocabulary ' + vocab + ' --output ' + output + ' --eos-separator ' + eos + ' --format ' + format
+cmd = script + ' ' + model + ' --input ' + agreement_sentences + ' --vocabulary ' + vocab_str + ' --output ' + output + ' --eos-separator ' + eos + ' --format ' + format
 print cmd
 os.system(cmd)
 
