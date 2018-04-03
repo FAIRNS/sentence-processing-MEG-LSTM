@@ -19,6 +19,7 @@ class settings:
         self.LSTM_pretrained_model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
         self.LSTM_pretested_file_name = ''
         self.vocabulary_file = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
+        self.eos_separator = "<eos>"
         # Flags
 
 class params:
