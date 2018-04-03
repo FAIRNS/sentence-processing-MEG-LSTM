@@ -1,4 +1,4 @@
-def test_LSTM(sentences, vocab, settings):
+def test_LSTM(sentences, vocab, eos_separator, settings):
     import torch
     import lstm
     from tqdm import tqdm
@@ -16,17 +16,23 @@ def test_LSTM(sentences, vocab, settings):
         log_probabilities =  np.zeros((len(sentences), max_length))
         gates = {k: np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
     else:
-        vectors = [np.zeros((2*model.nhid*model.nlayers, len(s))) for s in tqdm(sentences)] #np.zeros((len(sentences), 2 *model.nhid*model.nlayers, max_length))
-        log_probabilities = [np.zeros(len(s)) for s in tqdm(sentences)] # np.zeros((len(sentences), max_length))
-        gates = {k: [np.zeros((model.nhid*model.nlayers, len(s))) for s in tqdm(sentences)] for k in ['in', 'forget', 'out', 'c_tilde']} #np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
+        # vectors = [np.zeros((2*model.nhid*model.nlayers, len(s))) for s in tqdm(sentences)] #np.zeros((len(sentences), 2 *model.nhid*model.nlayers, max_length))
+        # log_probabilities = [np.zeros(len(s)) for s in tqdm(sentences)] # np.zeros((len(sentences), max_length))
+        # gates = {k: [np.zeros((model.nhid*model.nlayers, len(s))) for s in tqdm(sentences)] for k in ['in', 'forget', 'out', 'c_tilde']} #np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
+        vectors = [np.zeros((2 * model.nhid * model.nlayers, len(s))) for s in sentences]  # np.zeros((len(sentences), 2 *model.nhid*model.nlayers, max_length))
+        log_probabilities = [np.zeros(len(s)) for s in sentences]  # np.zeros((len(sentences), max_length))
+        gates = {k: [np.zeros((model.nhid * model.nlayers, len(s))) for s in sentences] for k in
+                 ['in', 'forget', 'out',
+                  'c_tilde']}  # np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
 
-    for i, s in enumerate(tqdm(sentences)):
+    # for i, s in enumerate(tqdm(sentences)):
+    for i, s in enumerate(sentences):
         #sys.stdout.write("{}% complete ({} / {})\r".format(int(i/len(sentences) * 100), i, len(sentences)))
         out = None
         # reinit hidden
         hidden = model.init_hidden(1)
         # intitialize with end of sentence
-        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]))
+        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[eos_separator]]]))
         # if args.cuda:
         #     inp = inp.cuda()
         out, hidden = model(inp, hidden)
@@ -45,5 +51,13 @@ def test_LSTM(sentences, vocab, settings):
             # we can retrieve the gates thanks to the hacked function
             for k, gates_k in gates.items():
                 gates_k[i][:,j] = torch.cat([g[k].data for g in model.rnn.last_gates],1).cpu().numpy()
+
+        out = {
+            'vectors': vectors,
+            'log_probabilities': log_probabilities
+        }
+
+        for k, g in gates.items():
+            out['gates.{}'.format(k)] = g
 
     return out
