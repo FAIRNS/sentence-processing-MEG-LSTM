@@ -40,6 +40,8 @@ def main():
             help='Just plot the selected units')
     ap.add_argument('--decorrelate', 
             help='Field to decorrelate the target group from')
+    ap.add_argument('--differentiate', action='store_true', default=False,
+            help='Compute finite differences of neural activity')
 
     args = ap.parse_args()
 
@@ -59,6 +61,14 @@ def main():
         vectors['hidden'] = data_vectors['vectors'][:,:nhid,:]
         vectors['cell'] = data_vectors['vectors'][:,nhid:,:]
 
+    if args.differentiate:
+        for k,v in tqdm(vectors.items(), desc="Differentiating activations"):
+            for i in tqdm(range(len(v)), desc='Units in {}'.format(k)):
+                for j in reversed(range(v[i].shape[1])):
+                    if j > 0:
+                        v[i][:,j] = v[i][:,j] - v[i][:,j-1] 
+                    else:
+                        v[i][:,0] = 0
 
     reference = pickle.load(open(args.reference, 'rb'))
 
@@ -98,12 +108,12 @@ def main():
             # more than 6 non-null
             # S -> NP VP heads
             # has variance
+            start = 5
             if len(data[args.group]) < 60 and \
                     len(data[args.group]) > 10 and \
                     content.shape[0] > 6 and \
                     meta['head-type'] =='S_NP_VP' and \
-                    not (content[:,1] == content[0,1]).all():
-                start = 5
+                    not (content[start:,1] == content[start,1]).all():
                 valid_idxs = content[start:,0].astype(np.int)
                 series.append(content[start:,1])
                 for k, v in vectors.items():
