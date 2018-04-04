@@ -22,6 +22,9 @@ class settings:
         self.eos_separator = "<eos>"
         # Flags
 
+        # Regression
+        self.h_or_c = 1 # zero or one - 0: hidden 1: cell
+
 class params:
     def __init__(self):
         #
