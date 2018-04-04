@@ -52,7 +52,7 @@ X = LSTM_activations['vectors']
 X = [x.transpose() for x in X] # Transpose elements
 X = np.vstack(X) # Stack into a matrix (num-words X num-units)
 
-pkl_filename = 'Regression_number_of_open_nodes_MODEL_' + settings.LSTM_pretrained_model + '.pckl'
+pkl_filename = 'Regression_number_of_open_nodes_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.pckl'
 if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ## Split data to train/test sets
