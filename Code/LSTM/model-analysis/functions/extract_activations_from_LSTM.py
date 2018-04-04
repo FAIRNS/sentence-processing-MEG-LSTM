@@ -3,8 +3,9 @@ def test_LSTM(sentences, vocab, eos_separator, settings):
     import lstm
     from tqdm import tqdm
     import numpy as np
+    import os.path as op
 
-    model = torch.load(settings.LSTM_pretrained_model)
+    model = torch.load(op.join(settings.path2LSTMdata, settings.LSTM_pretrained_model))
     model.rnn.flatten_parameters()
     # hack the forward function to send an extra argument containing the model parameters
     model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
@@ -27,6 +28,7 @@ def test_LSTM(sentences, vocab, eos_separator, settings):
 
     # for i, s in enumerate(tqdm(sentences)):
     for i, s in enumerate(sentences):
+        if i%100==1: print(str(i) +' out of ' + str(len(sentences)))
         #sys.stdout.write("{}% complete ({} / {})\r".format(int(i/len(sentences) * 100), i, len(sentences)))
         out = None
         # reinit hidden
@@ -35,29 +37,30 @@ def test_LSTM(sentences, vocab, eos_separator, settings):
         inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[eos_separator]]]))
         # if args.cuda:
         #     inp = inp.cuda()
-        out, hidden = model(inp, hidden)
-        out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
+        _, hidden = model(inp, hidden)
+        # out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
         for j, w in enumerate(s):
             # store the surprisal for the current word
-            log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
+            # log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
 
             inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
             # if args.cuda:
             #     inp = inp.cuda()
-            out, hidden = model(inp, hidden)
-            out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
+            _, hidden = model(inp, hidden)
+            # out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
 
             vectors[i][:,j] = torch.cat([h.data.view(1,1,-1) for h in hidden],2).cpu().numpy()
             # we can retrieve the gates thanks to the hacked function
-            for k, gates_k in gates.items():
-                gates_k[i][:,j] = torch.cat([g[k].data for g in model.rnn.last_gates],1).cpu().numpy()
+            # for k, gates_k in gates.items():
+            #     gates_k[i][:,j] = torch.cat([g[k].data for g in model.rnn.last_gates],1).cpu().numpy()
 
-        out = {
-            'vectors': vectors,
-            'log_probabilities': log_probabilities
-        }
 
-        for k, g in gates.items():
-            out['gates.{}'.format(k)] = g
+        # out = {
+        #     'vectors': vectors,
+        #     'log_probabilities': log_probabilities
+        # }
 
-    return out
+        # for k, g in gates.items():
+        #     out['gates.{}'.format(k)] = g
+
+    return vectors
