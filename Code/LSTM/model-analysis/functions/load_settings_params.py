@@ -16,8 +16,8 @@ class settings:
        #self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
         self.bnc_data = 'bnc_0313_filtered.pkl'
-        self.LSTM_pretrained_model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
-        self.LSTM_pretested_file_name = ''
+        self.LSTM_pretrained_model = 'hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
+        self.LSTM_pretested_file_name = 'LSTM_activations_pretested_on_sentences_' + self.LSTM_pretrained_model + '.pkl'
         self.vocabulary_file = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
         self.eos_separator = "<eos>"
         # Flags
@@ -33,7 +33,7 @@ class params:
         self.alpha_order_min = -6 # 10^(order) range for regularization size search
         self.alpha_order_max = 3 # same
         self.alphas = np.logspace(self.alpha_order_min, self.alpha_order_max, self.n_alphas)
-        self.eps = 1e-3 # see Scikit-learn
+        self.eps = 1e-2 # see Scikit-learn
         self.l1_ratio = 0.8 # For Elastic-Net
 
 class preferences:

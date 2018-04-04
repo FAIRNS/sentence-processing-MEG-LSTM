@@ -25,8 +25,8 @@ with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
     sentences = [i[0] for i in stimuli]
     meta = [i[2] for i in stimuli]
     # For debug
-    sentences = [s for i, s in enumerate(sentences) if i in range(100)]
-    meta = [s for i, s in enumerate(meta) if i in range(100)]
+    # sentences = [s for i, s in enumerate(sentences) if i in range(10)]
+    # meta = [s for i, s in enumerate(meta) if i in range(10)]
     # ------
     num_open_nodes = [i['all'] for i in meta]
     y = np.asarray([item for sublist in num_open_nodes for item in sublist])
@@ -39,16 +39,18 @@ print('Loading models...')
 if preferences.load_pretested_LSTM:
     #Load LSTM data
     print('Loading pre-tested LSTM model on test sentences...')
-    LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_pretested_file_name))
-    print(LSTM_data.files)
-    LSTM_data = LSTM_data['vectors']
-    print(LSTM_data.shape)
+    with open(op.join(settings.path2LSTMdata, settings.LSTM_pretested_file_name), "rb") as f:
+        LSTM_activations = pickle.load(f)
 else:
-    LSTM_data = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings)
-    X = LSTM_data['vectors']
-    X = [x.transpose() for x in X] # Transpose elements
-    X = np.vstack(X) # Stack into a matrix (num-words X num-units)
+    pkl_filename_LSTM_data = 'LSTM_data_pretested_' + settings.LSTM_pretested_file_name
+    LSTM_activations = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings)
+    print('Saving LSTM activations to Data folder...')
+    with open(op.join(settings.path2LSTMdata, settings.LSTM_pretested_file_name), "wb") as f:
+        pickle.dump(LSTM_activations, f)
 
+X = LSTM_activations['vectors']
+X = [x.transpose() for x in X] # Transpose elements
+X = np.vstack(X) # Stack into a matrix (num-words X num-units)
 
 pkl_filename = 'Regression_number_of_open_nodes_MODEL_' + settings.LSTM_pretrained_model + '.pckl'
 if not op.exists(op.join(settings.path2output, pkl_filename)):
@@ -79,7 +81,7 @@ if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ############ Lasso Regression ############
     if preferences.run_LASSO:
-        print('Fitting a lasso model for')
+        print('Fitting a lasso model')
         settings.method = 'Lasso'
         # Train model
         model_lasso = mfe.train_model(X_train, y_train, settings, params)
@@ -87,8 +89,7 @@ if not op.exists(op.join(settings.path2output, pkl_filename)):
         lasso_scores_test = mfe.evaluate_model(model_lasso, X_test, y_test, settings, params)
         # Generate and save figures
         # plt = pr.regularization_path(model_lasso, settings, params)
-        file_name = 'Lasso_coef_and_R_squared_vs_regularization_size_channel_' + \
-                    '_timepoint_' + str(time_point) + '.png'
+        file_name = 'Lasso_coef_and_R_squared_vs_regularization_size.png'
         # plt.savefig(op.join(settings.path2figures, file_name))
         # plt.close()
         models['model_lasso'] = model_lasso
@@ -117,4 +118,4 @@ if not op.exists(op.join(settings.path2output, pkl_filename)):
         pickle.dump(models, f)
         pickle.dump(settings, f)
         pickle.dump(params, f)
-    print('Models for channel ' + ' time point ' + str(time_point) + 'were saved to Output folder')
+    print('Models were saved to Output folder')
