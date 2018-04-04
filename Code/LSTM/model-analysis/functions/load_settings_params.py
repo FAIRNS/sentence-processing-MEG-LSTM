@@ -23,7 +23,8 @@ class settings:
         # Flags
 
         # Regression
-        self.h_or_c = 1 # zero or one - 0: hidden 1: cell
+        self.y_label = 'all' # Which label to regress from the meta text data
+        self.h_or_c = 1 # zero or one. 0: hidden 1: cell
 
 class params:
     def __init__(self):
@@ -44,4 +45,4 @@ class preferences:
         self.run_Ridge = False
         self.run_LASSO = True
         self.run_ElasticNet = False
-        self.load_pretested_LSTM = False
+        self.load_pretested_LSTM = True
