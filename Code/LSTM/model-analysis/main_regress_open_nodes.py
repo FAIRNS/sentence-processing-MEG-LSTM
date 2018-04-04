@@ -24,11 +24,12 @@ with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
     stimuli = pickle.load(f)
     sentences = [i[0] for i in stimuli]
     meta = [i[2] for i in stimuli]
+    stimuli = None # clear from memory
     # For debug
     # sentences = [s for i, s in enumerate(sentences) if i in range(10)]
     # meta = [s for i, s in enumerate(meta) if i in range(10)]
     # ------
-    num_open_nodes = [i['all'] for i in meta]
+    num_open_nodes = [i[settings.y_label] for i in meta]
     y = np.asarray([item for sublist in num_open_nodes for item in sublist])
 
 # Load vocabulary
@@ -40,25 +41,27 @@ if preferences.load_pretested_LSTM:
     #Load LSTM data
     print('Loading pre-tested LSTM model on test sentences...')
     with open(op.join(settings.path2LSTMdata, settings.LSTM_pretested_file_name), "rb") as f:
-        LSTM_activations = pickle.load(f)
+        X = pickle.load(f)
 else:
     pkl_filename_LSTM_data = 'LSTM_data_pretested_' + settings.LSTM_pretested_file_name
-    LSTM_activations = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings)
+    X = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings)
     print('Saving LSTM activations to Data folder...')
     with open(op.join(settings.path2LSTMdata, settings.LSTM_pretested_file_name), "wb") as f:
-        pickle.dump(LSTM_activations, f)
+        pickle.dump(X, f)
 
-X = LSTM_activations['vectors']
+sentences = None # clear from memory
+
 X = [x.transpose() for x in X] # Transpose elements
-X = np.vstack(X) # Stack into a matrix (num-words X num-units)
+X = np.vstack(X) # Reshape into a design matrix (num_words X num_units)
 
-pkl_filename = 'Regression_number_of_open_nodes_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.pckl'
+pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.pckl'
 if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ## Split data to train/test sets
     print('Splitting data to train/test sets')
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1./params.CV_fold,
                                                     random_state=params.seed_split)
+    X = None; y = None # Clear these from memory
 
     models = {}
     # ############ Ridge Regression ############
