@@ -23,13 +23,14 @@ class settings:
         # Flags
 
         # Regression
+        self.method = 'Lasso'
         self.y_label = 'all' # Which label to regress from the meta text data
         self.h_or_c = 1 # zero or one. 0: hidden 1: cell
 
 class params:
     def __init__(self):
         #
-        self.seed_split = 1 # random seed for split
+        # self.seed_split = 1 # random seed for split
         self.CV_fold = 5  # 5-fold
 
         # Hyper-parameters regression:
@@ -37,7 +38,7 @@ class params:
         self.alpha_order_min = -6 # 10^(order) range for regularization size search
         self.alpha_order_max = 3 # same
         self.alphas = np.logspace(self.alpha_order_min, self.alpha_order_max, self.n_alphas)
-        self.eps = 1e-2 # see Scikit-learn
+        self.eps = 1e-3 # see Scikit-learn
         self.l1_ratio = 0.8 # For Elastic-Net
 
 class preferences:

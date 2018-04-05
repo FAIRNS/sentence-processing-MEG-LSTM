@@ -1,6 +1,7 @@
 import os.path as op
 import os
 import numpy as np
+import argparse
 from sklearn.model_selection import train_test_split
 from functions import load_settings_params as lsp
 from functions import model_fitting_and_evaluation as mfe
@@ -12,11 +13,21 @@ import pickle
 sys.path.append(os.path.abspath('../src/word_language_model'))
 import data
 
+# Parse arguments from outside
+parser = argparse.ArgumentParser(
+    description='Lasso regression model')
+parser.add_argument('-s', '--seed', default=1, help='Random seed for train and test split')
+args = parser.parse_args()
+
 # --------- Main script -----------
 print('Load settings and parameters')
 settings = lsp.settings()
 params = lsp.params()
 preferences = lsp.preferences()
+
+# Set SEED for train/test split from outside
+settings.seed_split = args.seed
+print('SEED: ' + str(settings.seed_split))
 
 # Load Stimuli
 print('Loading number of open nodes data')
@@ -25,10 +36,12 @@ with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
     sentences = [i[0] for i in stimuli]
     meta = [i[2] for i in stimuli]
     stimuli = None # clear from memory
-    # For debug
+
+    # For DEBUG
     # sentences = [s for i, s in enumerate(sentences) if i in range(10)]
     # meta = [s for i, s in enumerate(meta) if i in range(10)]
-    # ------
+    # ----------
+
     num_open_nodes = [i[settings.y_label] for i in meta]
     y = np.asarray([item for sublist in num_open_nodes for item in sublist])
 
@@ -54,19 +67,21 @@ sentences = None # clear from memory
 X = [x.transpose() for x in X] # Transpose elements
 X = np.vstack(X) # Reshape into a design matrix (num_words X num_units)
 
+# For DEBUG
 X = X[0:500, :]
 y = y[0:500]
+# -----------
 
-pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.pckl'
+pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '_seed_' + str(settings.seed_split) + '.pckl'
 if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ## Split data to train/test sets
     print('Splitting data to train/test sets')
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1./params.CV_fold,
                                                     random_state=params.seed_split)
-    X = None; y = None # Clear these from memory
+    X = None; y = None # Clear unsplitted data from memory
 
-    models = {}
+    models = {} # Ridge/Lasso/Elastic-Net
     # ############ Ridge Regression ############
     if preferences.run_Ridge:
         print('Fitting a ridge model for  time point ')
