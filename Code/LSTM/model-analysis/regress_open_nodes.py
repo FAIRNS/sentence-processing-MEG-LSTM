@@ -46,7 +46,7 @@ with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
     y = np.asarray([item for sublist in num_open_nodes for item in sublist])
 
 # Load vocabulary
-vocab = data.Dictionary(settings.vocabulary_file)
+vocab = data.Dictionary(op.join(settings.path2LSTMdata, settings.vocabulary_file))
 
 # Load LSTM model
 print('Loading models...')
