@@ -26,8 +26,8 @@ params = lsp.params()
 preferences = lsp.preferences()
 
 # Set SEED for train/test split from outside
-settings.seed_split = args.seed
-print('SEED: ' + str(settings.seed_split))
+params.seed_split = int(args.seed)
+print('SEED: ' + str(params.seed_split))
 
 # Load Stimuli
 print('Loading number of open nodes data')
@@ -46,7 +46,7 @@ with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
     y = np.asarray([item for sublist in num_open_nodes for item in sublist])
 
 # Load vocabulary
-vocab = data.Dictionary(settings.vocabulary_file)
+vocab = data.Dictionary(op.join(settings.path2LSTMdata, settings.vocabulary_file))
 
 # Load LSTM model
 print('Loading models...')
@@ -72,7 +72,7 @@ X = X[0:500, :]
 y = y[0:500]
 # -----------
 
-pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '_seed_' + str(settings.seed_split) + '.pckl'
+pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '_seed_' + str(params.seed_split) + '.pckl'
 if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ## Split data to train/test sets

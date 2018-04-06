@@ -7,7 +7,7 @@ class settings:
 
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
-        self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
+        #self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
         self.path2LSTMdata = op.join('..', '..', '..', 'Data', 'LSTM')
         self.path2figures = op.join('..', '..', '..', 'Figures')
         self.path2output = op.join('..', '..', '..', 'Output')
@@ -18,7 +18,7 @@ class settings:
         self.bnc_data = 'bnc_0313_filtered.pkl'
         self.LSTM_pretrained_model = 'hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
         self.LSTM_pretested_file_name = 'LSTM_activations_pretested_on_sentences_' + self.LSTM_pretrained_model + '.pkl'
-        self.vocabulary_file = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
+        self.vocabulary_file = 'english_vocab.txt'
         self.eos_separator = "<eos>"
         # Flags
 
