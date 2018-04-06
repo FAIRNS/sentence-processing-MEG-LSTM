@@ -179,11 +179,11 @@ def plot_topomap_regression_results(settings, params):
 def plot_weights(weights, settings, params):
     fig, ax = plt.subplots()
 
-    ind = np.arange(weights.shape[0]) + 1  # the x locations for the groups
+    ind = np.arange(weights.shape[1]) + 1  # the x locations for the groups
     width = 0.35  # the width of the bars
 
     fig, ax = plt.subplots()
-    rects1 = ax.bar(ind, weights, width, color='b')
+    rects1 = ax.bar(ind, np.mean(weights, axis=0), width, color='b', yerr=np.std(weights, axis=0))
 
     ax.set_ylabel('Weight size')
     ax.set_title('Weight sizes from Lasso regression')

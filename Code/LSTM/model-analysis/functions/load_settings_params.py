@@ -43,7 +43,7 @@ class params:
 
 class preferences:
     def __init__(self):
-        self.run_Ridge = False
-        self.run_LASSO = True
+        self.run_Ridge = True
+        self.run_LASSO = False
         self.run_ElasticNet = False
         self.load_pretested_LSTM = True

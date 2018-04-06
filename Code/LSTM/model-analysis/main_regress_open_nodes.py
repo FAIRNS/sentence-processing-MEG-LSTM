@@ -58,6 +58,13 @@ X = X[0:500, :]
 y = y[0:500]
 
 pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.pckl'
+if preferences.run_Ridge:
+    pkl_filename = 'Ridge_' + pkl_filename
+if preferences.run_LASSO:
+    pkl_filename = 'LASSO_' + pkl_filename
+if preferences.run_ElasticNet:
+    pkl_filename = 'ElasticNet_' + pkl_filename
+
 if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ## Split data to train/test sets
