@@ -28,6 +28,10 @@ foreach SEED ( `seq ${st} ${ed}` )
 	 #python3 #path2code -s $SEED &!
 
 	 chmod u+x $filename_bash
+
+	 echo "python3 $path2code -s $SEED &" >> $filename_bash
+         
+
 	 ./$filename_bash
          
 end

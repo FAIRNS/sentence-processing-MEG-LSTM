@@ -22,7 +22,7 @@ foreach SEED ( `seq ${st} ${ed}` )
 	 rm -f $filename_bash
 	 touch $filename_bash
 
-	 echo "python $path2code -s $SEED" >> $filename_bash
+	 echo "python3 $path2code -s $SEED" >> $filename_bash
          
 	 qsub -q $queue -N $job_name -l walltime=$walltime -o $output_log -e $error_log $filename_bash
          
