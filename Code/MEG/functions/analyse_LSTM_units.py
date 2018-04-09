@@ -1,4 +1,5 @@
-import os, mne
+import os\
+    # , mne
 import numpy as np
 #from Scripts import sentcomp_epoching
 import pickle
@@ -47,7 +48,7 @@ def get_stimuli_and_info(settings, params):
 
 def plot_units_activation(LSTM_data, labels, IX_structure1, IX_structure2, IX_structure3, settings, params):
     for unit in range(LSTM_data['gates.in'].shape[1]):
-        print 'Unit ' + str(unit)
+        print('Unit ' + str(unit))
         fig, axarr = plt.subplots(2, 3)
         # Hidden units
         mean_h_activity_structure1 = np.mean(LSTM_data['vectors'][IX_structure1, unit, :], axis=0)

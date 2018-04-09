@@ -22,6 +22,8 @@ class settings:
         self.MEG_file_name = 'patient_' + self.patient + '_epochs_lock_to_beginning_of_sentence_anomaly_type_0.npy'
         #self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
+        self.word_vectors_file_name = 'word_vectors.npy'
+        self.word_vectors_BOW_file_name = 'bow_vectors.npy'
         self.bad_trials_file_name = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/Seb/data/epochs/bad_epochs_' + self.patient + '_speed4_V3-epo.npy'
 
         # MEG
