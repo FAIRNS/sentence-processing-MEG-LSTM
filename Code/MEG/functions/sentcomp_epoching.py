@@ -10,8 +10,8 @@ To do:
 '''
 
 from __future__ import division
-import mne
-from mne.preprocessing import read_ica
+# import mne
+# from mne.preprocessing import read_ica
 import pickle
 import numpy as np
 import os.path as op
