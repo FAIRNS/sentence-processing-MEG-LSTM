@@ -102,74 +102,104 @@ def plot_units_activation(LSTM_data, labels, IX_structure1, IX_structure2, IX_st
         plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
         plt.close(fig)
 
-def plot_PCA_trajectories(LSTM_data, IX_structure1, IX_structure2, IX_structure3, settings, params):
+def plot_PCA_trajectories(data, IX_structures, labels, colors, settings, params):
+    # input:
+    # data (ndarray): num_trails X num_features X num_timepoints
     from sklearn import decomposition
-    num_trials = LSTM_data['vectors'].shape[0]
+    from sklearn import preprocessing
+    import itertools
+
+    num_trials = data.shape[0]
+    num_dim = data.shape[1]
+    num_structures = len(IX_structures)
     # Concatenate all timepoints before PCAing
-    h = np.empty((0,1000))
+    vectors = np.empty((0, num_dim))
     for timepoint in range(8):
-        h = np.vstack((h, LSTM_data['vectors'][:,0:1000,timepoint]))
+        vectors = np.vstack((vectors, data[:, :, timepoint]))
+
+    # standardization of the data before PCA
+    standardized_scale = preprocessing.StandardScaler().fit(vectors)
+    vectors_standardized = standardized_scale.transform(vectors)
 
     # PCA
     pca = decomposition.PCA(n_components=2)
-    pca.fit(h)
-    h_pca = pca.transform(h)
-    h_pca_sequence = np.empty((num_trials, 2, 8))
+    pca.fit(vectors_standardized)
+    vectors_PCA_projected = pca.transform(vectors_standardized)
+    vector_PCA_trajectories = np.empty((num_trials, 2, 8))
     for timepoint in range(8):
         st = num_trials * timepoint
         ed = num_trials * (timepoint + 1)
-        h_pca_sequence[:,:,timepoint] = h_pca[st:ed, :]
+        vector_PCA_trajectories[:, :, timepoint] = vectors_PCA_projected[st:ed, :]
 
-    h_pca_sequence_mean_structure1 = np.mean(h_pca_sequence[IX_structure1, :, :], axis=0)
-    h_pca_sequence_mean_structure2 = np.mean(h_pca_sequence[IX_structure2, :, :], axis=0)
-    h_pca_sequence_mean_structure3 = np.mean(h_pca_sequence[IX_structure3, :, :], axis=0)
+    vectors_pca_trajectories_mean_over_structure = []; vectors_pca_trajectories_std_structure = []
+    for i, IX_structure in enumerate(IX_structures):
+        vectors_pca_trajectories_mean_over_structure.append(np.mean(vector_PCA_trajectories[IX_structure, :, :], axis=0))
+        vectors_pca_trajectories_std_structure.append(np.std(vector_PCA_trajectories[IX_structure, :, :], axis=0))
 
-    fig, axarr = plt.subplots(1, 3, figsize=(20, 10))
-    axarr[0].scatter(h_pca_sequence_mean_structure1[0, :], h_pca_sequence_mean_structure1[1, :], label='4-4', color='r')
-    h1 = axarr[0].plot(h_pca_sequence_mean_structure1[0, :], h_pca_sequence_mean_structure1[1, :], color='r')
-    axarr[0].scatter(h_pca_sequence_mean_structure2[0, :], h_pca_sequence_mean_structure2[1, :], color='g')
-    h2 = axarr[0].plot(h_pca_sequence_mean_structure2[0, :], h_pca_sequence_mean_structure2[1, :], label='2-6', color='g')
-    delta_x = 0.1*np.random.rand(1)
-    for timepoint in range(8):
-        axarr[0].annotate(str(timepoint + 1), xy=(
-        delta_x + h_pca_sequence_mean_structure1[0, timepoint], delta_x + h_pca_sequence_mean_structure1[1, timepoint]), color='r')
-    delta_x = 0.1 * np.random.rand(1)
-    for timepoint in range(8):
-        axarr[0].annotate(str(timepoint + 1), xy=(
-        delta_x + h_pca_sequence_mean_structure2[0, timepoint], delta_x + h_pca_sequence_mean_structure2[1, timepoint]), color='g')
-    axarr[0].legend()
-    axarr[0].set_xlabel('PC1', fontsize=16)
-    axarr[0].set_ylabel('PC2', fontsize=16)
+    fig, axarr = plt.subplots(1, num_structures, figsize=(20, 10))
+    for i in range(num_structures):
+        axarr[i].scatter(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :], label=labels[i], color=colors[i])
+        axarr[i].errorbar(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :],
+                          xerr=vectors_pca_trajectories_std_structure[i][0, :],
+                          yerr=vectors_pca_trajectories_std_structure[i][1, :],
+                          color=colors[i])
+        delta_x = 0.03#*np.random.rand(1)
+        for timepoint in range(8):
+            axarr[i].annotate(str(timepoint + 1), xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), color=colors[i])
+        # delta_x = 0.1 * np.random.rand(1)
+        # for timepoint in range(8):
+        #     axarr[0].annotate(str(timepoint + 1), xy=(
+        #     delta_x + h_pca_sequence_mean_structure2[0, timepoint], delta_x + h_pca_sequence_mean_structure2[1, timepoint]), color='g')
+        axarr[i].legend()
+        axarr[i].set_xlabel('PC1', fontsize=16)
+        axarr[i].set_ylabel('PC2', fontsize=16)
 
-    axarr[1].scatter(h_pca_sequence_mean_structure1[0, :], h_pca_sequence_mean_structure1[1, :], label='4-4', color='r')
-    h1 = axarr[1].plot(h_pca_sequence_mean_structure1[0, :], h_pca_sequence_mean_structure1[1, :], color='r')
-    axarr[1].scatter(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], color='b')
-    h3 = axarr[1].plot(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], label='6-2', color='b')
-    for timepoint in range(8):
-        axarr[1].annotate(str(timepoint + 1), xy=(
-        delta_x + h_pca_sequence_mean_structure1[0, timepoint], delta_x + h_pca_sequence_mean_structure1[1, timepoint]), color='r')
-    delta_x = 0.1 * np.random.rand(1)
-    for timepoint in range(8):
-        axarr[1].annotate(str(timepoint + 1), xy=(
-        delta_x + h_pca_sequence_mean_structure3[0, timepoint], delta_x + h_pca_sequence_mean_structure3[1, timepoint]), color='b')
-    axarr[1].legend()
-    axarr[1].set_xlabel('PC1', fontsize=16)
-    axarr[1].set_ylabel('PC2', fontsize=16)
+    structure_tuples = list(itertools.combinations(range(len(IX_structures)), 2))
+    fig_tuples, axarr = plt.subplots(1, len(structure_tuples), figsize=(20, 10))
+    for sub_plot, structure_tuple in enumerate(structure_tuples):
+        for i in structure_tuple: # Loop over all structures in tuple
+            axarr[sub_plot].scatter(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :], label=labels[i], color=colors[i])
+            axarr[sub_plot].errorbar(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :],
+                              xerr=vectors_pca_trajectories_std_structure[i][0, :],
+                              yerr=vectors_pca_trajectories_std_structure[i][1, :],
+                              color=colors[i])
+            delta_x = 0.03#*np.random.rand(1)
+            for timepoint in range(8):
+                axarr[sub_plot].annotate(str(timepoint + 1), xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), color=colors[i])
 
-    axarr[2].scatter(h_pca_sequence_mean_structure2[0, :], h_pca_sequence_mean_structure2[1, :], label='2-6', color='g')
-    h2 = axarr[2].plot(h_pca_sequence_mean_structure2[0, :], h_pca_sequence_mean_structure2[1, :], color='g')
-    axarr[2].scatter(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], label='6-2', color='b')
-    h3 = axarr[2].plot(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], color='b')
-    for timepoint in range(8):
-        axarr[2].annotate(str(timepoint + 1), xy=(
-        delta_x + h_pca_sequence_mean_structure2[0, timepoint], delta_x + h_pca_sequence_mean_structure2[1, timepoint]), color='g')
-    delta_x = 0.1 * np.random.rand(1)
-    for timepoint in range(8):
-        axarr[2].annotate(str(timepoint + 1), xy=(
-            delta_x + h_pca_sequence_mean_structure3[0, timepoint],
-            delta_x + h_pca_sequence_mean_structure3[1, timepoint]), color='b')
-    axarr[2].legend()
-    axarr[2].set_xlabel('PC1', fontsize=16)
-    axarr[2].set_ylabel('PC2', fontsize=16)
+        axarr[sub_plot].legend()
+        axarr[sub_plot].set_xlabel('PC1', fontsize=16)
+        axarr[sub_plot].set_ylabel('PC2', fontsize=16)
 
-    return fig
+    # axarr[1].scatter(vectors_pca_trajectories_mean_structure1[0, :], vectors_pca_trajectories_mean_structure1[1, :], label='4-4', color='r')
+    # h1 = axarr[1].plot(vectors_pca_trajectories_mean_structure1[0, :], vectors_pca_trajectories_mean_structure1[1, :], color='r')
+    # axarr[1].scatter(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], color='b')
+    # h3 = axarr[1].plot(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], label='6-2', color='b')
+    # for timepoint in range(8):
+    #     axarr[1].annotate(str(timepoint + 1), xy=(
+    #         delta_x + vectors_pca_trajectories_mean_structure1[0, timepoint], delta_x + vectors_pca_trajectories_mean_structure1[1, timepoint]), color='r')
+    # delta_x = 0.1 * np.random.rand(1)
+    # for timepoint in range(8):
+    #     axarr[1].annotate(str(timepoint + 1), xy=(
+    #     delta_x + h_pca_sequence_mean_structure3[0, timepoint], delta_x + h_pca_sequence_mean_structure3[1, timepoint]), color='b')
+    # axarr[1].legend()
+    # axarr[1].set_xlabel('PC1', fontsize=16)
+    # axarr[1].set_ylabel('PC2', fontsize=16)
+    #
+    # axarr[2].scatter(h_pca_sequence_mean_structure2[0, :], h_pca_sequence_mean_structure2[1, :], label='2-6', color='g')
+    # h2 = axarr[2].plot(h_pca_sequence_mean_structure2[0, :], h_pca_sequence_mean_structure2[1, :], color='g')
+    # axarr[2].scatter(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], label='6-2', color='b')
+    # h3 = axarr[2].plot(h_pca_sequence_mean_structure3[0, :], h_pca_sequence_mean_structure3[1, :], color='b')
+    # for timepoint in range(8):
+    #     axarr[2].annotate(str(timepoint + 1), xy=(
+    #     delta_x + h_pca_sequence_mean_structure2[0, timepoint], delta_x + h_pca_sequence_mean_structure2[1, timepoint]), color='g')
+    # delta_x = 0.1 * np.random.rand(1)
+    # for timepoint in range(8):
+    #     axarr[2].annotate(str(timepoint + 1), xy=(
+    #         delta_x + h_pca_sequence_mean_structure3[0, timepoint],
+    #         delta_x + h_pca_sequence_mean_structure3[1, timepoint]), color='b')
+    # axarr[2].legend()
+    # axarr[2].set_xlabel('PC1', fontsize=16)
+    # axarr[2].set_ylabel('PC2', fontsize=16)
+
+    return fig, fig_tuples
