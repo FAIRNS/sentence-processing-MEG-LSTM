@@ -75,8 +75,7 @@ if 'word' in args.get_representations:
         for j, w in enumerate(s):
             if w not in vocab.word2idx and args.use_unk:
                 w = '<unk>'
-                inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
-
+            inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
             if args.cuda:
                 inp = inp.cuda()
             w_vec = model.encoder.forward(inp).view(-1).data.cpu().numpy()
