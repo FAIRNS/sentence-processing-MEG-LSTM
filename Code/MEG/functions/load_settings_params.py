@@ -10,7 +10,7 @@ class settings:
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
         self.path2MEGdata = op.join('..', '..', 'Data', 'MEG', self.patient)
-        self.path2LSTMdata = op.join('..', '..', 'Data', 'LSTM')
+        self.path2LSTMdata = op.join('..', '..', 'Data', 'LSTM', 'activations', 'french', 'model2-500-2-0.5-SGD-10-tied.False-300')
         self.path2figures = op.join('..', '..', 'Figures')
         self.path2output = op.join('..', '..', 'Output')
         self.path2stimuli = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/1-' + self.patient + '/Stim/data'
@@ -24,6 +24,7 @@ class settings:
         self.MEG_file_name = 'patient_' + self.patient + '_epochs_lock_to_beginning_of_sentence_anomaly_type_0.npy'
         #self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
+        self.LSTM_file_name = 'vectors-LSTM-500-2-0.5-SGD-10-tied.False-300-0.pkl'
         self.word_vectors_file_name = 'word_vectors.npy'
         self.word_vectors_BOW_file_name = 'bow_vectors.npy'
         self.bad_trials_file_name = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/Seb/data/epochs/bad_epochs_' + self.patient + '_speed4_V3-epo.npy'
