@@ -22,7 +22,7 @@ def regularization_path(model, settings, params):
     scores = model.cv_results_['mean_test_score']
     scores_std = model.cv_results_['std_test_score']
     std_error = scores_std / np.sqrt(params.CV_fold)
-    ax2.plot(model.alphas, scores, 'r.', label='R-squared training set')
+    ax2.plot(model.alphas, scores, 'r.', label='R-squared test set')
     ax2.fill_between(model.alphas, scores + std_error, scores - std_error, alpha=0.2)
     ax2.set_ylabel('R-squared', color='r', size=18)
     ax2.tick_params('y', colors='r')
@@ -30,7 +30,7 @@ def regularization_path(model, settings, params):
     scores_train = model.cv_results_['mean_train_score']
     scores_train_std = model.cv_results_['std_train_score']
     std_train_error = scores_train_std / np.sqrt(params.CV_fold)
-    ax2.plot(model.alphas, scores_train, 'g.', label='R-squared test set')
+    ax2.plot(model.alphas, scores_train, 'g.', label='R-squared train set')
     ax2.fill_between(model.alphas, scores_train + std_train_error, scores_train - std_train_error, alpha=0.2)
 
     plt.axis('tight')
@@ -176,19 +176,15 @@ def plot_topomap_regression_results(settings, params):
     return fig_topo
 
 
-def plot_weights(weights, settings, params):
+def plot_weights(weights, model, axs, i, settings, params):
     fig, ax = plt.subplots()
 
-    ind = np.arange(weights.shape[0]) + 1  # the x locations for the groups
+    ind = np.arange(weights.shape[1]) + 1  # the x locations for the groups
     width = 0.35  # the width of the bars
 
-    fig, ax = plt.subplots()
-    rects1 = ax.bar(ind, weights, width, color='b')
+    axs[i].bar(ind, np.mean(weights, axis=0), width, color='b', yerr=np.std(weights, axis=0))
 
     ax.set_ylabel('Weight size')
-    ax.set_title('Weight sizes from Lasso regression')
+    ax.set_title(model)
 
-    # ax.set_xticks(ind + width / 2)
-    # ax.set_xticklabels(('G1', 'G2', 'G3', 'G4', 'G5'))
-
-    return plt
+    return plt, ax

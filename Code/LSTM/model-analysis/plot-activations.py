@@ -73,7 +73,7 @@ def main():
     reference = pickle.load(open(args.reference, 'rb'))
 
     if args.lock_vectors:
-        vectors = lock_vectors(vectors, 
+        vectors, shift_begin = lock_vectors(vectors, 
                 [x[args.lock_vectors] for x in reference])
 
     if args.analysis_type ==  'categories':
@@ -189,7 +189,8 @@ def main():
                     {k: v[:,u,:] for k,v in vectors.items()}, 
                     class_indexes, 
                     group_labels.get(args.group, None), 
-                    os.path.join(args.output, '{}.svg'.format(u)))
+                    os.path.join(args.output, '{}.svg'.format(u)), 
+                    shift_begin if args.lock_vectors else None)
         elif args.analysis_type == 'correlation':
             plot_correlation(
                     {k: [v2[u, :] for v2 in v] for k,v 
@@ -232,11 +233,12 @@ class BivariateDecorrelationFilter():
 def lock_vectors(vectors, positions, width=12):
     DUMMY = 0xbaadf00d
     locked_vectors = {}
+    block_start = width // 2 - 2
     for name, activations in vectors.items():
         locked_vectors[name]  = np.full((len(activations), activations[0].shape[0],
             width), DUMMY, dtype=np.float32)
         for i, (sent_activations, pos) in enumerate(zip(activations, positions)):
-            shift_begin = width // 2 - 2 - pos
+            shift_begin = block_start - pos
             for j in range(sent_activations.shape[1]):
                 if j+shift_begin < 0 or j+shift_begin >= width:
                     # remove parts of the sentence that don't fit in the array
@@ -249,7 +251,7 @@ def lock_vectors(vectors, positions, width=12):
                 locked_vectors[name][i,:,j] = locked_vectors[name][i,:,j] - \
                         locked_vectors[name][i,:,align_pos]
         locked_vectors[name] = np.ma.masked_values(locked_vectors[name], DUMMY)
-    return locked_vectors
+    return locked_vectors, block_start
 
 
 def get_correlations(vectors, series):
@@ -288,7 +290,8 @@ def get_f_statistics(vectors, class_indexes):
         stats[u] = max_stat
     return stats
 
-def plot_categorical(unit_activations, class_indexes, class_labels, output):
+def plot_categorical(unit_activations, class_indexes, class_labels, output, 
+        shift_begin):
     plt.figure(figsize=(12,8))
     for i,(name, activations) in enumerate(unit_activations.items()):
         plt.subplot(231+i)
@@ -298,10 +301,13 @@ def plot_categorical(unit_activations, class_indexes, class_labels, output):
         else:
             sort_key = None
         for c, cidx in sorted(class_indexes.items(), key=None):
+            np.seterr(all='warn')
+            yerr = activations[cidx].std(0)
+            np.seterr(all='raise')
             _,caps,_ = plt.errorbar(
                     np.arange(activations.shape[1]), 
                     activations[cidx].mean(0), 
-                    yerr=activations[cidx].std(0), 
+                    yerr=yerr, 
                     label='{}'.format(class_labels[c] if class_labels else c), 
                     capsize=10, elinewidth=1)
             for cap in caps:

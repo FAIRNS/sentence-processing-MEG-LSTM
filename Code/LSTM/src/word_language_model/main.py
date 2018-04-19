@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+import sys
 import argparse
 import time
 import math
@@ -52,6 +53,8 @@ parser.add_argument('--vocab', type=str, required=True,
                     'words present in the data.')
 parser.add_argument('--save', type=str,  default='model.pt',
                     help='path to save the final model')
+parser.add_argument('--resume', action='store_true', default=False,
+                    help='continue training from last checkpoint')
 args = parser.parse_args()
 
 # Set the random seed manually for reproducibility.
@@ -181,7 +184,7 @@ def train():
             #test_loss = evaluate(test_data)
             cur_loss = total_loss[0] / args.log_interval
             elapsed = time.time() - start_time
-            print('| epoch {:3d} | {:5d}/{:5d} batches | lr {:02.2f} | ms/batch {:5.2f} | '
+            print('| epoch {:3d} | {:5d}/{:5d} batches | lr {:02.2e} | ms/batch {:5.2f} | '
                #     'loss {:5.2f} | ppl {:8.2f} | test loss {:5.2f} | ppl {:8.2f}'.format(
                # epoch, batch, len(train_data) // args.bptt, optim.param_groups[0]['lr'],
                # elapsed * 1000 / args.log_interval, cur_loss, math.exp(cur_loss), test_loss, math.exp(test_loss)))
@@ -194,6 +197,15 @@ def train():
 # Loop over epochs.
 best_val_loss = None
 optim = getattr(torch.optim, args.optim)([p for p in model.parameters() if p.requires_grad], lr=args.lr)
+
+if args.resume:
+    # Load the best saved model.
+    with open(args.save, 'rb') as f:
+        try:
+            model = torch.load(f)
+        except:
+            print('Warning: no model found. Starting from scratch.', file=sys.stderr)
+    best_val_loss = evaluate(val_data)
 
 print ('Training...')
 # At any point you can hit Ctrl + C to break out of training early.
