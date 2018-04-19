@@ -5,6 +5,8 @@ Code/LSTM/lm-training/corpora
 
 Code/MEG/RunScripts/
 Code/MEG/Logs/
+Code/LSTM/model-analysis/RunScripts/
+Code/LSTM/model-analysis/Logs/
 Code/LSTM/model-analysis/main_ablation_experiment.py
 
 Data/

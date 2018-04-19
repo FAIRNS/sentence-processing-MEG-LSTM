@@ -14,7 +14,7 @@ foreach SEED ( `seq ${st} ${ed}` )
 	 set path2code='/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/regress_open_nodes.py'
 	 set path2code='~/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/regress_open_nodes.py'
 	 set filename_bash=RunScripts/run_$SEED.sh
-	 set output_log='Logs/log_o_channel_'$SEED
+	 set output_log='/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/Logs/log_o_channel_'$SEED
 	 set error_log='Logs/log_e_channel_'$SEED
 	 set queue='Unicog_long'
 	 set job_name='SEED_'$SEED
@@ -23,6 +23,7 @@ foreach SEED ( `seq ${st} ${ed}` )
 	 rm -f $filename_bash
 	 touch $filename_bash
 
+#	 echo "python3 $path2code -s $SEED >> $output_log &" >> $filename_bash
 	 echo "python3 $path2code -s $SEED" >> $filename_bash
          
 	 #python3 #path2code -s $SEED &!
@@ -30,7 +31,6 @@ foreach SEED ( `seq ${st} ${ed}` )
 	 chmod u+x $filename_bash
 
 	 echo "python3 $path2code -s $SEED &" >> $filename_bash
-         
 
 	 ./$filename_bash
          

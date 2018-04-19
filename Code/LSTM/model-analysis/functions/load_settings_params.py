@@ -23,7 +23,7 @@ class settings:
         # Flags
 
         # Regression
-        self.method = 'Lasso'
+        self.method = 'Ridge'
         self.y_label = 'all' # Which label to regress from the meta text data
         self.h_or_c = 1 # zero or one. 0: hidden 1: cell
 
