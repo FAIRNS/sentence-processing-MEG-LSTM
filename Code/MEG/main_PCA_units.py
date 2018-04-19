@@ -4,6 +4,7 @@ from functions import load_settings_params as lsp
 import numpy as np
 from functions import sentcomp_epoching
 import matplotlib.pyplot as plt
+import pickle
 
 # --------- Main script -----------
 print('Load settings and parameters')
@@ -12,8 +13,10 @@ params = lsp.params()
 
 # Load LSTM data
 print('Loading pre-trained LSTM data...')
-LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
-LSTM_data = LSTM_data['vectors']
+# LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
+# LSTM_data = LSTM_data['vectors']
+LSTM_data = pickle.load(open(op.join(settings.path2LSTMdata, settings.LSTM_file_name)))
+
 word_vectors_data = np.load(op.join(settings.path2LSTMdata, settings.word_vectors_file_name))
 word_vectors_BOW_data = np.load(op.join(settings.path2LSTMdata, settings.word_vectors_BOW_file_name))
 
