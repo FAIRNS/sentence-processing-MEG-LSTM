@@ -5,8 +5,6 @@ from sklearn.model_selection import train_test_split
 from functions import load_settings_params as lsp
 from functions import model_fitting_and_evaluation as mfe
 from functions import extract_activations_from_LSTM
-# from functions import plot_results as pr
-import torch
 import sys
 import pickle
 sys.path.append(os.path.abspath('../src/word_language_model'))
@@ -33,7 +31,7 @@ with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
     y = np.asarray([item for sublist in num_open_nodes for item in sublist])
 
 # Load vocabulary
-vocab = data.Dictionary(settings.vocabulary_file)
+vocab = data.Dictionary(op.join(settings.path2LSTMdata, settings.vocabulary_file))
 
 # Load LSTM model
 print('Loading models...')
@@ -54,10 +52,19 @@ sentences = None # clear from memory
 X = [x.transpose() for x in X] # Transpose elements
 X = np.vstack(X) # Reshape into a design matrix (num_words X num_units)
 
-X = X[0:500, :]
-y = y[0:500]
+# For DEBUG ------
+# X = X[0:500, :]
+# y = y[0:500]
+# -------------
 
-pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.pckl'
+pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c)  + '_seed_' + str(params.seed_split) + '.pckl'
+if preferences.run_Ridge:
+    pkl_filename = 'Ridge_' + pkl_filename
+if preferences.run_LASSO:
+    pkl_filename = 'LASSO_' + pkl_filename
+if preferences.run_ElasticNet:
+    pkl_filename = 'ElasticNet_' + pkl_filename
+
 if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ## Split data to train/test sets
@@ -69,7 +76,7 @@ if not op.exists(op.join(settings.path2output, pkl_filename)):
     models = {}
     # ############ Ridge Regression ############
     if preferences.run_Ridge:
-        print('Fitting a ridge model for  time point ')
+        print('Fitting a Ridge regression model')
         settings.method = 'Ridge'
         # Train model
         model_ridge = mfe.train_model(X_train, y_train, settings, params)

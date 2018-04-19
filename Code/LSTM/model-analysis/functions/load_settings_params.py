@@ -7,7 +7,7 @@ class settings:
 
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
-        #self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
+        self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
         self.path2LSTMdata = op.join('..', '..', '..', 'Data', 'LSTM')
         self.path2figures = op.join('..', '..', '..', 'Figures')
         self.path2output = op.join('..', '..', '..', 'Output')
@@ -30,7 +30,7 @@ class settings:
 class params:
     def __init__(self):
         #
-        # self.seed_split = 1 # random seed for split
+        self.seed_split = 3 # random seed for split
         self.CV_fold = 5  # 5-fold
 
         # Hyper-parameters regression:
@@ -43,7 +43,7 @@ class params:
 
 class preferences:
     def __init__(self):
-        self.run_Ridge = False
-        self.run_LASSO = True
+        self.run_Ridge = True
+        self.run_LASSO = False
         self.run_ElasticNet = False
         self.load_pretested_LSTM = True
