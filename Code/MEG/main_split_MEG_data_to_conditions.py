@@ -1,6 +1,6 @@
 import os, mne
 import numpy as np
-from Scripts import sentcomp_epoching
+from functions import sentcomp_epoching
 import pickle
 import codecs
 
@@ -10,6 +10,7 @@ path2data = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/FAIRNeSs/am150105'
 file_name = 'am150105_speed4_V2-epo.fif'
 path2stimuli = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/1-am150105/Stim/data'
 stimuli_file_name = 'data.p'
+path2output = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Data/MEG/am150105'
 
 # Load stimuli
 
@@ -67,4 +68,4 @@ np.save(os.path.join(path2data, file_name), epochs_sliced_entire_sentence)
 # Lock to anomalous word
 epochs_sliced_lock_to_anomalous_word = ep1[knames1].get_data()
 file_name = 'patient_' + patient + '_epochs_lock_to_anomalous_word' + '_anomaly_type_' + str(anomaly)
-np.save(os.path.join(path2data, file_name), epochs_sliced_lock_to_anomalous_word)
+np.save(os.path.join(path2output, file_name), epochs_sliced_lock_to_anomalous_word)

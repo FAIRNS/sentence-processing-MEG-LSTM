@@ -1,4 +1,4 @@
-def test_LSTM(sentences, vocab, eos_separator, settings):
+def test_LSTM(sentences, vocab, eos_separator, settings, cuda):
     import torch
     import lstm
     from tqdm import tqdm
@@ -37,8 +37,8 @@ def test_LSTM(sentences, vocab, eos_separator, settings):
         hidden = model.init_hidden(1)
         # intitialize with end of sentence
         inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[eos_separator]]]))
-        # if args.cuda:
-        #     inp = inp.cuda()
+        if cuda:
+            inp = inp.cuda()
         _, hidden = model(inp, hidden)
         # out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
         for j, w in enumerate(s):
@@ -46,8 +46,8 @@ def test_LSTM(sentences, vocab, eos_separator, settings):
             # log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
 
             inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
-            # if args.cuda:
-            #     inp = inp.cuda()
+            if cuda:
+                inp = inp.cuda()
             _, hidden = model(inp, hidden)
             # out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
 
