@@ -6,20 +6,28 @@ from functions import load_settings_params as lsp
 from functions import model_fitting_and_evaluation as mfe
 from functions import plot_results as pr
 import sys
+import pickle
 
 # --------- Main script -----------
+vector_type = 'hidden'
+print('Vector type: ' + vector_type)
 print('Load settings and parameters')
 settings = lsp.settings()
 params = lsp.params()
 os.chdir(settings.path2code)
+print(os.getcwd())
 
 # Load LSTM data
 print('Loading pre-trained LSTM data...')
-LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
-print(LSTM_data.files)
-LSTM_data = LSTM_data['vectors']
-print(LSTM_data.shape)
+# LSTM_data = np.load(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
+# print(LSTM_data.files)
+# LSTM_data = LSTM_data['vectors']
+# print(LSTM_data.shape)
 #sys.exit('breaked by user in code')
+with open(op.join(settings.path2LSTMdata, settings.LSTM_file_name), 'rb') as f:
+	LSTM_data = pickle.load(f)
+
+LSTM_data = np.asarray(LSTM_data[vector_type])
 
 # Loop over channels and fit a regression model between LSTM units and MEG channel
 # IF RUNNING FROM A BASH SCRIPT !!!!!

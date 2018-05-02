@@ -46,4 +46,4 @@ class preferences:
         self.run_Ridge = True
         self.run_LASSO = False
         self.run_ElasticNet = False
-        self.load_pretested_LSTM = True
+        self.load_pretested_LSTM = False

@@ -42,7 +42,7 @@ if preferences.load_pretested_LSTM:
         X = pickle.load(f)
 else:
     pkl_filename_LSTM_data = 'LSTM_data_pretested_' + settings.LSTM_pretested_file_name
-    X = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings)
+    X = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings, True)
     print('Saving LSTM activations to Data folder...')
     with open(op.join(settings.path2LSTMdata, settings.LSTM_pretested_file_name), "wb") as f:
         pickle.dump(X, f)

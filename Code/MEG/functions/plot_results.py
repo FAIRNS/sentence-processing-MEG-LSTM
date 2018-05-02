@@ -100,40 +100,40 @@ def plot_topomap_regression_results(settings, params):
     time_points = range(0, params.SOA + 1, 10)
     best_R_squared_LASSO = np.zeros([306, len(time_points)])
     if settings.collect_data:
-	    for t, time_point in enumerate(time_points):
-		for channel in range(306):#settings.num_MEG_channels):
-		    pkl_filename = 'Regression_models_' + settings.patient + '_channel_' + str(channel+1) + '_timepoint_' + str(time_point) + '_averaged_over_' + str(params.step) + '_' + settings.LSTM_file_name + '.pckl'
-			#'Regression_models_' + settings.patient + '_channel_' + str(channel+1) + '_timepoint_' + str(
-			#time_point) + '_' + settings.LSTM_file_name + '.pckl'
-		    models = []
-		    # with open(op.join(settings.path2output, pkl_filename), "rb") as f:
-		    #     while True:
-		    #         try:
-		    #             curr_results.append(pickle.load(f))
-		    #         except EOFError:
-		    #             break
-		    with open(op.join(settings.path2output, pkl_filename), "rb") as f:
-			try:
-			    curr_results = pickle.load(f)
-			    best_R_squared_LASSO[channel, t] = curr_results['lasso_scores_test']
-			except EOFError:
-			    break
-		    sys.stdout.write('Channel ' + str(channel) + ' time point ' + str(t) + ' ')
-		    print best_R_squared_LASSO[channel, t]
-		    # Extract best score on validation set
-		    #best_R_squared_LASSO[channel] = models[2].best_score_
-		    # best_R_squared_LASSO[channel] = models[channel]
+        for t, time_point in enumerate(time_points):
+            for channel in range(306):#settings.num_MEG_channels):
+                pkl_filename = 'Regression_models_' + settings.patient + '_channel_' + str(channel+1) + '_timepoint_' + str(time_point) + '_averaged_over_' + str(params.step) + '_' + settings.LSTM_file_name + '.pckl'
+                #'Regression_models_' + settings.patient + '_channel_' + str(channel+1) + '_timepoint_' + str(
+                #time_point) + '_' + settings.LSTM_file_name + '.pckl'
+                models = []
+                # with open(op.join(settings.path2output, pkl_filename), "rb") as f:
+                #     while True:
+                #         try:
+                #             curr_results.append(pickle.load(f))
+                #         except EOFError:
+                #             break
+                with open(op.join(settings.path2output, pkl_filename), "rb") as f:
+                    try:
+                        curr_results = pickle.load(f)
+                        best_R_squared_LASSO[channel, t] = curr_results['lasso_scores_test']
+                    except EOFError:
+                        break
+                    sys.stdout.write('Channel ' + str(channel) + ' time point ' + str(t) + ' ')
+                print(best_R_squared_LASSO[channel, t])
+                # Extract best score on validation set
+                #best_R_squared_LASSO[channel] = models[2].best_score_
+                # best_R_squared_LASSO[channel] = models[channel]
 
-		#best_R_squared_LASSO = best_R_squared_LASSO + [0] * 196
-		#best_R_squared_LASSO = [[x] for x in best_R_squared_LASSO]
+            #best_R_squared_LASSO = best_R_squared_LASSO + [0] * 196
+            #best_R_squared_LASSO = [[x] for x in best_R_squared_LASSO]
 
-	    pkl_filename = 'best_R_squared_Lasso' + settings.patient + '_' + settings.LSTM_file_name + '.pckl'
-	    with open(op.join(settings.path2output, pkl_filename), 'w') as f:  # Python 3: open(..., 'wb')
-		pickle.dump(best_R_squared_LASSO, f)
-    else:
-	    pkl_filename = 'best_R_squared_Lasso' + settings.patient + '_' + settings.LSTM_file_name + '.pckl'
-	    with open(op.join(settings.path2output, pkl_filename), 'r') as f:  # Python 3: open(..., 'wb')
-		best_R_squared_LASSO = pickle.load(f)
+            pkl_filename = 'best_R_squared_Lasso' + settings.patient + '_' + settings.LSTM_file_name + '.pckl'
+            with open(op.join(settings.path2output, pkl_filename), 'w') as f:  # Python 3: open(..., 'wb')
+                pickle.dump(best_R_squared_LASSO, f)
+        else:
+            pkl_filename = 'best_R_squared_Lasso' + settings.patient + '_' + settings.LSTM_file_name + '.pckl'
+            with open(op.join(settings.path2output, pkl_filename), 'r') as f:  # Python 3: open(..., 'wb')
+                best_R_squared_LASSO = pickle.load(f)
 
     # Load epochs data from fif file, which includes channel loactions
     epochs = mne.read_epochs(op.join(settings.path2MEGdata, settings.raw_file_name))
@@ -159,7 +159,7 @@ def plot_topomap_regression_results(settings, params):
     evoked.times = np.asarray(time_points)
     #evoked.times = [0]
     #fig_topo = evoked.plot_topomap(times=0, show=True)
-    print time_points
+    print(time_points)
     fig_topo = evoked.plot_topomap(times=time_points[params.i], show=False)
     fig_topo.axes[1].axes.title._text = 'R-squared'
     fig_topo.axes[0].axes.title._text = str(params.i * 10) + ' msec'
