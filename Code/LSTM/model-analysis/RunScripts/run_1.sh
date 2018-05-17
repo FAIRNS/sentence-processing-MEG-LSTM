@@ -1,1 +1,2 @@
-python3 /neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/regress_open_nodes.py -s 1 >> /neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/Logs/log_o_channel_1 &
+python3 /neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/regress_open_nodes.py -s 1
+python3 /neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/regress_open_nodes.py -s 1 &

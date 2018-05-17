@@ -4,6 +4,11 @@ import numpy as np
 class settings:
     def __init__(self):
 
+        # Regression
+        self.method = 'Ridge'
+        self.y_label = 'all'  # Which label to regress from the meta text data
+        self.h_or_c = 1  # zero or one. 0: hidden 1: cell
+        self.which_layer = 0  # 0: both, 1: first, 2: second
 
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
@@ -17,15 +22,12 @@ class settings:
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
         self.bnc_data = 'bnc_0313_filtered.pkl'
         self.LSTM_pretrained_model = 'hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
-        self.LSTM_pretested_file_name = 'LSTM_activations_pretested_on_sentences_' + self.LSTM_pretrained_model + '.pkl'
+        self.LSTM_pretested_file_name = 'LSTM_activations_pretested_on_sentences_' + self.LSTM_pretrained_model + '_h_or_c_' + str(self.h_or_c)  + '.pkl'
         self.vocabulary_file = 'english_vocab.txt'
         self.eos_separator = "<eos>"
         # Flags
 
-        # Regression
-        self.method = 'Ridge'
-        self.y_label = 'all' # Which label to regress from the meta text data
-        self.h_or_c = 1 # zero or one. 0: hidden 1: cell
+
 
 class params:
     def __init__(self):
