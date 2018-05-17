@@ -64,7 +64,8 @@ for i, model in enumerate(models_names):
     best_weights = np.vstack((np.mean(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
     IX = np.argsort(best_weights[0, :])[::-1]
     best_weights_sorted = np.transpose(best_weights)[IX]
-    best_weights_sorted.tofile(op.join(settings.path2output, file_name), sep="\t\n")
+    np.savetxt(op.join(settings.path2output, file_name), best_weights_sorted, fmt='%1.2f, %i')
+    print('Saved to: ' + op.join(settings.path2output, file_name))
 
 file_name = '_'.join(models_names) + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.png'
 plt.savefig(op.join(settings.path2figures, file_name))
