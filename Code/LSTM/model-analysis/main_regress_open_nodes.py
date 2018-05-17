@@ -42,7 +42,7 @@ if preferences.load_pretested_LSTM:
         X = pickle.load(f)
 else:
     pkl_filename_LSTM_data = 'LSTM_data_pretested_' + settings.LSTM_pretested_file_name
-    X = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings, True)
+    X = extract_activations_from_LSTM.test_LSTM(sentences, vocab, settings.eos_separator, settings, False)
     print('Saving LSTM activations to Data folder...')
     with open(op.join(settings.path2LSTMdata, settings.LSTM_pretested_file_name), "wb") as f:
         pickle.dump(X, f)
@@ -52,19 +52,32 @@ sentences = None # clear from memory
 X = [x.transpose() for x in X] # Transpose elements
 X = np.vstack(X) # Reshape into a design matrix (num_words X num_units)
 
+num_units = X.shape[1]
+if settings.which_layer == 0:
+    X = X
+elif settings.which_layer == 1:
+    X = X[:, 0:int(num_units/2)]
+elif settings.which_layer == 2:
+    X = X[:, int(num_units/2):]
+else:
+    sys.stderr('settings.which_layer has to be either 0, 1 or 2')
+
+
+
 # For DEBUG ------
 # X = X[0:500, :]
 # y = y[0:500]
 # -------------
 
-pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c)  + '_seed_' + str(params.seed_split) + '.pckl'
+pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c)  + '_seed_' + str(params.seed_split) + '.pckl'
+
 if preferences.run_Ridge:
     pkl_filename = 'Ridge_' + pkl_filename
 if preferences.run_LASSO:
     pkl_filename = 'LASSO_' + pkl_filename
 if preferences.run_ElasticNet:
     pkl_filename = 'ElasticNet_' + pkl_filename
-
+print(pkl_filename)
 if not op.exists(op.join(settings.path2output, pkl_filename)):
 
     # ## Split data to train/test sets
