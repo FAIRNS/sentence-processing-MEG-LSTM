@@ -35,7 +35,7 @@ for i, model in enumerate(models_names):
 
         # ---- Generate figures --------
         # Regularization path
-        file_name = model + '_coef_and_R_squared_vs_regularization_size.png'
+        file_name = model + '_regularization_path_seed_' + str(seed) + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + ' .png'
         fig_path = pr.regularization_path(models[model], settings, params)
 
         fig_path.savefig(op.join(settings.path2figures, file_name))
@@ -60,12 +60,12 @@ for i, model in enumerate(models_names):
     # pr.plot_weights(best_weights, model, axs, i, settings, params)
 
     # Sort and save to file
-    file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.txt'
+    file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '.txt'
     best_weights = np.vstack((np.mean(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
     IX = np.argsort(best_weights[0, :])[::-1]
     best_weights_sorted = np.transpose(best_weights)[IX]
     best_weights_sorted.tofile(op.join(settings.path2output, file_name), sep="\t\n")
 
-    file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(settings.h_or_c) + '.png'
+    file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) +  '_h_or_c_' + str(settings.h_or_c) + '.png'
     plt.savefig(op.join(settings.path2figures, file_name))
     plt.close(fig)
