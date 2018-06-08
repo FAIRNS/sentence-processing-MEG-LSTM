@@ -30,6 +30,8 @@ parser.add_argument('--format', default='pkl', choices=['npz', 'hdf5', 'pkl'])
 parser.add_argument('-g', '--get-representations', choices=['lstm', 'word'],
         action='append', default=[])
 parser.add_argument('--use-unk', action='store_true', default=False)
+parser.add_argument('--lang', default='')
+parser.add_argument('--unk-token', default='<unk>')
 
 
 args = parser.parse_args()
@@ -68,24 +70,44 @@ saved = {}
 
 if 'word' in args.get_representations:
     print('Extracting bow representations', file=sys.stderr)
-    bow_vectors = np.zeros((len(sentences), model.encoder.embedding_dim, max_length))
-    word_vectors = np.zeros((len(sentences), model.encoder.embedding_dim, max_length))
+    bow_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
+    word_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
+    bow_norm_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
+    word_norm_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
     for i, s in enumerate(tqdm(sentences)):
         bow_h = np.zeros(model.encoder.embedding_dim)
+        norm_bow_h = np.zeros(model.encoder.embedding_dim)
         for j, w in enumerate(s):
             if w not in vocab.word2idx and args.use_unk:
-                w = '<unk>'
+                w = args.unk_token
             inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
             if args.cuda:
                 inp = inp.cuda()
             w_vec = model.encoder.forward(inp).view(-1).data.cpu().numpy()
-            word_vectors[i,:,j] = w_vec
+            word_vectors[i][:,j] = w_vec
             bow_h += w_vec
-            bow_vectors[i,:,j] = bow_h / (j+1)
+            bow_vectors[i][:,j] = bow_h / (j+1)
+            word_norm_vectors[i][:,j] = w_vec /np.linalg.norm(w_vec)
+            norm_bow_h += w_vec / np.linalg.norm(w_vec)
+            bow_norm_vectors[i][:,j] = norm_bow_h / (j+1)
     saved['word_vectors'] = word_vectors
     saved['bow_vectors'] = bow_vectors
+    saved['norm_word_vectors'] = word_vectors
+    saved['norm_bow_vectors'] = bow_vectors
 
 if 'lstm' in args.get_representations:
+    def feed_sentence(model, h, sentence):
+        outs = []
+        for w in sentence:
+            out, h = feed_input(model, h, w)
+            outs.append(torch.nn.functional.log_softmax(out[0]).unsqueeze(0))
+        return outs, h
+
+    def feed_input(model, hidden, w):
+        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]])).cuda()
+        out, hidden = model(inp, hidden)
+        return out, hidden
+
     print('Extracting LSTM representations', file=sys.stderr)
     # output buffers
     if args.fixed_length_arrays:
@@ -95,22 +117,33 @@ if 'lstm' in args.get_representations:
     else:
         log_probabilities = [np.zeros(len(s)) for s in tqdm(sentences)] # np.zeros((len(sentences), max_length))
         if not args.perplexity:
-            vectors = {k: [np.zeros((model.nhid*model.nlayers, len(s))) for s in tqdm(sentences)] for k in ['gates.in', 'gates.forget', 'gates.out', 'gates.c_tilde', 'hidden', 'cell']} #np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
+            vectors = {k: [np.zeros((model.nhid*model.nlayers, len(s))) for s in sentences] for k in tqdm(['gates.in', 'gates.forget', 'gates.out', 'gates.c_tilde', 'hidden', 'cell'])} #np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
+    if args.lang == 'en':
+        init_sentence = " ".join(["In service , the aircraft was operated by a crew of five and could accommodate either 30 paratroopers , 32 <unk> and 28 sitting casualties , or 50 fully equipped troops . <eos>",
+                        "He even speculated that technical classes might some day be held \" for the better training of workmen in their several crafts and industries . <eos>",
+                        "After the War of the Holy League in 1537 against the Ottoman Empire , a truce between Venice and the Ottomans was created in 1539 . <eos>",
+                        "Moore says : \" Tony and I had a good <unk> and off-screen relationship , we are two very different people , but we did share a sense of humour \" . <eos>",
+                        "<unk> is also the basis for online games sold through licensed lotteries . <eos>"])
+    else:
+        init_sentence = "</s>"
+    hidden = model.init_hidden(1) 
+    init_out, init_h = feed_sentence(model, hidden, init_sentence.split(" "))
 
     for i, s in enumerate(tqdm(sentences)):
         #sys.stdout.write("{}% complete ({} / {})\r".format(int(i/len(sentences) * 100), i, len(sentences)))
-        out = None
+        out = init_out[-1]
+        hidden = init_h
         # reinit hidden
-        hidden = model.init_hidden(1) 
-        # intitialize with end of sentence
-        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]))
-        if args.cuda:
-            inp = inp.cuda()
-        out, hidden = model(inp, hidden)
-        out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
+        #hidden = model.init_hidden(1) 
+        ## intitialize with end of sentence
+        #inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[args.eos_separator]]]))
+        #if args.cuda:
+        #    inp = inp.cuda()
+        #out, hidden = model(inp, hidden)
+        #out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
         for j, w in enumerate(s):
             if w not in vocab.word2idx and args.use_unk:
-                w = '<unk>'
+                w = args.unk_token
             # store the surprisal for the current word
             log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
             inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
@@ -118,6 +151,7 @@ if 'lstm' in args.get_representations:
                 inp = inp.cuda()
             out, hidden = model(inp, hidden)
             out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
+
             if not args.perplexity:
                 vectors['hidden'][i][:,j] = hidden[0].data.view(1,1,-1).cpu().numpy()
                 vectors['cell'][i][:,j] = hidden[1].data.view(1,1,-1).cpu().numpy()

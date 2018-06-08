@@ -17,23 +17,36 @@ def LSTMCell(input, hidden, w_ih, w_hh, b_ih=None, b_hh=None):
 
     return (hy, cy), {'in': ingate, 'forget': forgetgate, 'out': outgate, 'c_tilde': cy_tilde}
 
-def forward(parent, input, hidden):
-    num_layers = parent.num_layers
-    weight = parent.all_weights
-    dropout = parent.dropout
+
+def apply_mask(hidden_l, mask):
+    if type(hidden_l) == torch.autograd.Variable:
+        return hidden_l * mask
+    else:
+        return tuple(h * mask for h in hidden_l)
+
+def forward(self, input, hidden, mask=None):
+    num_layers = self.num_layers
+    weight = self.all_weights
+    dropout = self.dropout
     # saves the gate values into the rnn object
-    parent.last_gates = []
-    parent.last_hidden =[]
+    self.last_gates = []
+    self.last_hidden =[]
 
     next_hidden = []
 
     hidden = list(zip(*hidden))
 
     for l in range(num_layers):
+        hidden_l = hidden[l]
+        if mask and l in mask:
+            hidden_l = apply_mask(hidden_l, mask[l])
         # we assume there is just one token in the input
-        hy, gates = LSTMCell(input[0], hidden[l], *weight[l])
-        parent.last_gates.append(gates)
-        parent.last_hidden.append(hy)
+        hy, gates = LSTMCell(input[0], hidden_l, *weight[l])
+        if mask and l in mask:
+            hy = apply_mask(hy, mask[l])
+
+        self.last_gates.append(gates)
+        self.last_hidden.append(hy)
         next_hidden.append(hy)
 
         input = hy[0]

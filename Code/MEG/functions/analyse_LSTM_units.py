@@ -4,6 +4,8 @@ import numpy as np
 #from Scripts import sentcomp_epoching
 import pickle
 import codecs
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from os import path as op
 
@@ -188,6 +190,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     vectors_pca_trajectories_mean_over_structure = []; vectors_pca_trajectories_std_structure = []
     for i, IX_structure in enumerate(IX_structures):
         vectors_of_curr_structure = [vec for ind, vec in enumerate(vector_PCA_trajectories) if ind in IX_structure]
+        print(i, len(vectors_of_curr_structure ))
         vectors_pca_trajectories_mean_over_structure.append(np.mean(np.asarray(vectors_of_curr_structure), axis=0))
         vectors_pca_trajectories_std_structure.append(np.std(np.asarray(vectors_of_curr_structure), axis=0))
 
@@ -205,6 +208,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
 
             # Annotate with number the subsequent time points on the trajectories
             delta_x = 0.03 # Shift the annotation of the time point by a small step
+            print(vectors_pca_trajectories_mean_over_structure[i].shape[1], str(curr_stimuli[0]).split(' '))
             for timepoint in range(vectors_pca_trajectories_mean_over_structure[i].shape[1]):
                 axarr.annotate(str(timepoint + 1) + ' ' + str(curr_stimuli[0]).split(' ')[timepoint], xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), color=colors[i], fontsize=16)
 
@@ -212,7 +216,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
             axarr.set_xlabel('PC1', fontsize=16)
             axarr.set_ylabel('PC2', fontsize=16)
 
-            file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.LSTM_file_name + '.png'
+            file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.LSTM_file_name + '.svg'
             plt.figure(fig.number)
             plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
 
