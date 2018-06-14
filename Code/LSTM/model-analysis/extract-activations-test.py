@@ -3,26 +3,40 @@ import sys
 import math
 import os
 import torch
-import argparse
-import json
 sys.path.append(os.path.abspath('../src/word_language_model'))
 import data
 import numpy as np
-import h5py
 import pickle
 from tqdm import tqdm
 
-model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/LSTM-corpora~frwac_random_100M_subset-500-2-0.5-SGD-10-tied.False-300/model.cpu.pt/model.cpu.pt'
+# French
+model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/LSTM-corpora~frwac_random_100M_subset-500-2-0.5-SGD-10-tied.False-300/model.cpu.pt/model.cpu.pt' # French
 input_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/NP_VP_transition.txt'
-vocabulary = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/reduced-vocab.txt'
-output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/NP_VP_transition.pkl'
+input_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clauses_pos_French.txt'
+vocabulary = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/reduced-vocab.txt' # French
+output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/relative_clauses_pos_French.pkl'
+
+# English
+# model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt' # English
+# input_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clause_English.txt'
+# vocabulary = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt' # English
+# output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/english/relative_clauses_English.pkl'
+
+# German's use for French
 eos_separator = '</s>'
+unk = '_UNK_'
+# -----------------------
+
+# # Kristina's for English
+# eos_separator = '<eos>'
+# unk = '<unk>'
+# # ------------------
+
 format = 'pkl'
 get_representations = ['word', 'lstm']
 cuda = False
 use_unk = True
 perplexity = False
-unk = '_UNK_'
 
 vocab = data.Dictionary(vocabulary)
 sentences = []
@@ -31,7 +45,7 @@ for l in open(input_data, 'r'):
     sentence = [s.lower() for s in sentence]
     sentences.append(sentence)
 sentences = np.array(sentences)
-# sentences = sentences[0:100]
+# sentences = sentences[0:1000]
 
 print('Loading models...')
 sentence_length = [len(s) for s in sentences]
@@ -50,8 +64,6 @@ if 'word' in get_representations:
     print('Extracting bow representations')#, file=sys.stderr)
     bow_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in tqdm(sentences)]
     word_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in tqdm(sentences)]
-    # bow_vectors = np.zeros((len(sentences), model.encoder.embedding_dim, max_length))
-    # word_vectors = np.zeros((len(sentences), model.encoder.embedding_dim, max_length))
     for i, s in enumerate(tqdm(sentences)):
         bow_h = np.zeros(model.encoder.embedding_dim)
         for j, w in enumerate(s):
@@ -128,18 +140,19 @@ if 'lstm' in get_representations:
             math.exp(
                     sum(-lp.sum() for lp in log_probabilities)/
                     sum((lp!=0).sum() for lp in log_probabilities))))
-if not perplexity:
-    #print ("DONE. Perplexity: {}".format(
-    #        math.exp(-log_probabilities.sum()/((log_probabilities!=0).sum()))))
+# if not perplexity:
+#     #print ("DONE. Perplexity: {}".format(
+#     #        math.exp(-log_probabilities.sum()/((log_probabilities!=0).sum()))))
+#
+#
+#     if format == 'npz':
+#         np.savez(output, **saved)
+#     elif format == 'hdf5':
+#         with h5py.File("{}.h5".format(output), "w") as hf:
+#             for k,v in saved.items():
+#                 dset = hf.create_dataset(k, data=v)
+#     elif format == 'pkl':
 
-
-    if format == 'npz':
-        np.savez(output, **saved)
-    elif format == 'hdf5':
-        with h5py.File("{}.h5".format(output), "w") as hf:
-            for k,v in saved.items():
-                dset = hf.create_dataset(k, data=v)
-    elif format == 'pkl':
-        with open(output, 'wb') as fout:
-            pickle.dump(saved, fout, -1)
+with open(output, 'wb') as fout:
+    pickle.dump(saved, fout, -1)
 
