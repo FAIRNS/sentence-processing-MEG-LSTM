@@ -16,16 +16,22 @@ all_stim_clean, all_info_clean, all_info_correct, IX_structures, labels, colors 
 # Load LSTM data
 print('Loading pre-trained LSTM data...')
 with open(op.join(settings.path2LSTMdata, settings.LSTM_file_name), 'rb') as f:
+    print(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
     LSTM_and_baselines_data = pickle.load(f)
 # LSTM_data = [item for i, item in enumerate(LSTM_data) if i in range(100)]
 
 ###### PCA ###########
 # PCA - LSTM hidden states (h)
-alu.plot_PCA_trajectories('hidden', LSTM_and_baselines_data['hidden'], all_stim_clean, IX_structures, labels, colors, settings, params)
+#alu.plot_PCA_trajectories('hidden', LSTM_and_baselines_data['hidden'], all_stim_clean, IX_structures, labels, colors, settings, params)
 #
 # # PCA - LSTM cell memory (c)
-alu.plot_PCA_trajectories('cell', LSTM_and_baselines_data['cell'], all_stim_clean, IX_structures, labels, colors, settings, params)
+#alu.plot_PCA_trajectories('cell', LSTM_and_baselines_data['cell'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
+# PCA - baseline3 (normalized word-embedding vectors)
+alu.plot_PCA_trajectories('norm_word_vectors', LSTM_and_baselines_data['norm_word_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)
+
+# PCA - baseline2 (bag-of-words of nomalized word embeddings)
+alu.plot_PCA_trajectories('norm_bow_vectors', LSTM_and_baselines_data['norm_bow_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)
 # PCA - baseline1 (word-embedding vectors)
 alu.plot_PCA_trajectories('word_vectors', LSTM_and_baselines_data['word_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
