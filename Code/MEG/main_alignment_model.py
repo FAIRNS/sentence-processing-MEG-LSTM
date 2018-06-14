@@ -30,7 +30,6 @@ with open(op.join(settings.path2LSTMdata, settings.LSTM_file_name), 'rb') as f:
 LSTM_data = np.asarray(LSTM_data[vector_type])
 
 # Loop over channels and fit a regression model between LSTM units and MEG channel
-# IF RUNNING FROM A BASH SCRIPT !!!!!
 if len(sys.argv) > 1:
     print('Channel ' + sys.argv[1])
     channel = int(sys.argv[1])
