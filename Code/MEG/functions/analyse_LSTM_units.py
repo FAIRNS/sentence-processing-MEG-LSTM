@@ -1,9 +1,12 @@
-import os\
-    # , mne
+import os
 import numpy as np
-#from Scripts import sentcomp_epoching
 import pickle
+<<<<<<< HEAD
+=======
 import codecs
+import matplotlib
+matplotlib.use('Agg')
+>>>>>>> 81a63805eeed7e7e05dd647ad116b27dd7661e11
 import matplotlib.pyplot as plt
 from os import path as op
 
@@ -47,7 +50,7 @@ def get_stimuli_and_info(settings, params):
         labels = ['2-6', '4-4', '6-2']
         colors = ['r', 'g', 'b']
 
-    if settings.stimuli_type == 'NP_VP_transition':
+    elif settings.stimuli_type == 'NP_VP_transition':
         with open(os.path.join(settings.path2stimuli, settings.stimuli_file_name), 'r') as f:
             stimuli = f.readlines()
         info =  pickle.load(open(os.path.join(settings.path2stimuli, settings.stimuli_meta_data), 'rb'))
@@ -67,6 +70,50 @@ def get_stimuli_and_info(settings, params):
                             curr_label = ending + '_' + beginning + '_NP_' + str(NP_length) + '_VP_' + str(VP_length)
                             labels.append(curr_label)
                             colors.append((e/len(NP_endings), b/len(VP_beginings) ,NP_length/13))
+
+        all_stim_clean = stimuli
+        all_info_clean = info
+        all_info_correct = info
+
+    elif settings.stimuli_type == 'Relative_clauses':
+        with open(os.path.join(settings.path2stimuli, settings.stimuli_file_name), 'r') as f:
+            stimuli = f.readlines()
+        info =  pickle.load(open(os.path.join(settings.path2stimuli, settings.stimuli_meta_data), 'rb'))
+
+
+        relevant_keys = ['NP_ends_with', 'relative_clause', 'NP_length', 'VP_length', 'relative_clause_length']
+
+        d = {}
+        for k in relevant_keys:
+            for s in range(len(info)):
+                if k not in d.keys():
+                    d[k] = []
+                d[k].append(info[s][k])
+            d[k] = set(d[k])
+
+        IX_structures = []
+        labels = []
+        colors = []
+
+        for ending in d['NP_ends_with']:
+            for rc in d['relative_clause']:
+                for NP_length in d['NP_length']:
+                    for VP_length in d['VP_length']:
+                        for RC_length in d['relative_clause_length']:
+                            curr_IX = [i for i, curr_info in enumerate(info)
+                                       if curr_info['NP_ends_with'] == ending
+                                       and curr_info['relative_clause'] == rc
+                                       and curr_info['NP_length'] == NP_length
+                                       and curr_info['VP_length'] == VP_length
+                                       and curr_info['relative_clause_length'] == RC_length]
+                            if curr_IX:
+                                IX_structures.append(curr_IX)
+                                if rc is None: rc = 'none'
+                                curr_label = ending + '_' + rc + '_NP_' + str(NP_length) + '_RC_' + str(RC_length) + '_VP_' + str(VP_length)
+                                labels.append(curr_label)
+
+                                # colors.append((e/len(NP_endings), b/len(VP_beginings) ,NP_length/13))
+                            curr_IX = []
 
         all_stim_clean = stimuli
         all_info_clean = info
@@ -141,6 +188,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     from sklearn import preprocessing
     import itertools
     import pickle
+    from tqdm import tqdm
 
     num_trials = len(data)
     num_dim = data[0].shape[0] # Extract dimension from first trial
@@ -150,24 +198,25 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     vectors = np.empty((0, num_dim))
     # for timepoint in range(8):
     #     vectors = np.vstack((vectors, data[:, :, timepoint]))
-    for trial_data in data:
+    print('Prepare data for PCA: breaking down sentences into words')
+    for trial_data in tqdm(data):
         for timepoint in range(trial_data.shape[1]):
             vectors = np.vstack((vectors, trial_data[:, timepoint]))
 
 
-    # standardization of the data before PCA
+    print('Prepare data for PCA: standardize data')
     standardized_scale = preprocessing.StandardScaler().fit(vectors)
     vectors_standardized = standardized_scale.transform(vectors)
 
-    # PCA
+    print('Run PCA')
     pca = decomposition.PCA(n_components=2)
     pca.fit(vectors_standardized)
     vectors_PCA_projected = pca.transform(vectors_standardized)
 
-    # Reshape back to num_trials X num_PCs X num_timepoints
+    print('After PCA: reshape back into num_trials X num_PCs X num_timepoints as vector_PCA_trajectories')
     vector_PCA_trajectories = []
     st = 0
-    for trial, trial_data in enumerate(data):
+    for trial, trial_data in enumerate(tqdm(data)):
         curr_sentence_data = []
         for timepoint in range(trial_data.shape[1]):
             curr_sentence_data.append(vectors_PCA_projected[st, :])
@@ -177,17 +226,15 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     file_name = 'PCA_LSTM_' + vector_type + settings.LSTM_file_name + '.pkl'
     with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
         pickle.dump([pca, vectors_PCA_projected], f)
+    # with open(op.join(settings.path2figures, 'units_activation', file_name), 'rb') as f:
+    #     data_saved = pickle.load(f)
+    #     pca, vectors_PCA_projected = data_saved[0], data_saved[1]
 
-    # vector_PCA_trajectories = np.empty((num_trials, 2, 8))
-    # for timepoint in range(8):
-    #     st = num_trials * timepoint
-    #     ed = num_trials * (timepoint + 1)
-    #     vector_PCA_trajectories[:, :, timepoint] = vectors_PCA_projected[st:ed, :]
-
-    # Average across each syntactic structure type
+    print('After PCA: average across each syntactic structure type')
     vectors_pca_trajectories_mean_over_structure = []; vectors_pca_trajectories_std_structure = []
     for i, IX_structure in enumerate(IX_structures):
         vectors_of_curr_structure = [vec for ind, vec in enumerate(vector_PCA_trajectories) if ind in IX_structure]
+        print(i, len(vectors_of_curr_structure ))
         vectors_pca_trajectories_mean_over_structure.append(np.mean(np.asarray(vectors_of_curr_structure), axis=0))
         vectors_pca_trajectories_std_structure.append(np.std(np.asarray(vectors_of_curr_structure), axis=0))
 
@@ -197,22 +244,24 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
             print(i, labels[i])
             curr_stimuli = [stim for ind, stim in enumerate(all_stim_clean) if ind in IX_structures[i]]
             fig, axarr = plt.subplots(figsize=(20, 10))
-            axarr.scatter(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :], label=labels[i], color=colors[i])
+            axarr.scatter(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :], label=labels[i])
             axarr.errorbar(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :],
                               xerr=vectors_pca_trajectories_std_structure[i][0, :],
-                              yerr=vectors_pca_trajectories_std_structure[i][1, :],
-                              color=colors[i])
+                              yerr=vectors_pca_trajectories_std_structure[i][1, :])
 
             # Annotate with number the subsequent time points on the trajectories
             delta_x = 0.03 # Shift the annotation of the time point by a small step
+            print(vectors_pca_trajectories_mean_over_structure[i].shape[1], str(curr_stimuli[0]).split(' '))
             for timepoint in range(vectors_pca_trajectories_mean_over_structure[i].shape[1]):
-                axarr.annotate(str(timepoint + 1) + ' ' + str(curr_stimuli[0]).split(' ')[timepoint], xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), color=colors[i], fontsize=16)
+                axarr.annotate(str(timepoint + 1) + ' ' + str(curr_stimuli[0]).split(' ')[timepoint], xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), fontsize=16)
 
             axarr.legend()
             axarr.set_xlabel('PC1', fontsize=16)
             axarr.set_ylabel('PC2', fontsize=16)
+            axarr.set_title('num of sentences = ' + str(len(curr_stimuli)), fontsize=16)
 
-            file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.LSTM_file_name + '.png'
+            file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.stimuli_file_name + '.png'
+            #file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.LSTM_file_name + '.svg'
             plt.figure(fig.number)
             plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
 

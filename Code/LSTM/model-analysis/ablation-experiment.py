@@ -40,16 +40,12 @@ stime = time.time()
 # Which unit to kill + a random subset of g-1 more units
 np.random.seed(int(args.seed))
 add_random_subset = np.random.permutation(1301)
-<<<<<<< HEAD
-add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]]
-=======
->>>>>>> ba72602a131588fcd645a825a04306adebc3438e
 add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]] # omit current test unit from random set
 units_to_kill = [int(args.unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
 units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
 units_to_kill_l0 = [u for u in units_to_kill if u <650] # units 1-650 (0-649) in layer 0 (l0)
 units_to_kill_l1 = [u-650 for u in units_to_kill if u >649] # units 651-1300 (650-1299) in layer 1 (l1)
-output = args.output + args.unit + '_groupsize_' + args.groupsize + '_seed_' + args.seed # Update output file name
+output = args.output + str(args.unit) + '_groupsize_' + args.groupsize + '_seed_' + args.seed # Update output file name
 
 # Vocabulary
 vocab = data.Dictionary(args.vocabulary)
@@ -91,13 +87,11 @@ else:
 # Compare performamce w/o killing units (set to zero the corresponding weights in model):
 if args.unit_from and args.unit_to:
     if args.unit_to > args.unit_from:
-        target_units = range(args.unit_from, args.unit_to+1)
+        target_units = list(range(args.unit_from, args.unit_to+1))
     else:
-        target_units = range(args.unit_from-1, args.unit_to-1, -1)
+        target_units = list(range(args.unit_from-1, args.unit_to-1, -1))
 else:
     target_units = [args.unit]
-
-target_units = [1]
 
 for unit in tqdm(target_units):
     stime = time.time()
@@ -116,18 +110,17 @@ for unit in tqdm(target_units):
 
 
 for ablation in [False, True]:
-    output_fn = output + '_' + str(ablation) + '.pkl' # output file name
     output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
     if ablation:
         # Kill corresponding weights if list is not empty
-        if units_to_kill_l0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
-        if units_to_kill_l1: model.rnn.weight_hh_l1.data[:, units_to_kill_l1] = 0 # l0: w_hi, w_hf, w_hc, w_ho
-        if units_to_kill_l0: model.rnn.weight_ih_l0.data[:, units_to_kill_l0] = 0 # l1: w_ii, w_if, w_ic, w_io
-        if units_to_kill_l1: model.rnn.weight_ih_l1.data[:, units_to_kill_l1] = 0 # l1: w_ii, w_if, w_ic, w_io
-        if units_to_kill_l0: model.rnn.bias_hh_l0.data[units_to_kill_l0] = 0
-        if units_to_kill_l1: model.rnn.bias_hh_l1.data[units_to_kill_l1] = 0
-        if units_to_kill_l0: model.rnn.bias_ih_l0.data[units_to_kill_l0] = 0
-        if units_to_kill_l1: model.rnn.bias_ih_l1.data[units_to_kill_l1] = 0
+        if len(units_to_kill_l0)>0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+        if len(units_to_kill_l1)>0: model.rnn.weight_hh_l1.data[:, units_to_kill_l1] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+        if len(units_to_kill_l0)>0: model.rnn.weight_ih_l0.data[:, units_to_kill_l0] = 0 # l1: w_ii, w_if, w_ic, w_io
+        if len(units_to_kill_l1)>0: model.rnn.weight_ih_l1.data[:, units_to_kill_l1] = 0 # l1: w_ii, w_if, w_ic, w_io
+        if len(units_to_kill_l0)>0: model.rnn.bias_hh_l0.data[units_to_kill_l0] = 0
+        if len(units_to_kill_l1)>0: model.rnn.bias_hh_l1.data[units_to_kill_l1] = 0
+        if len(units_to_kill_l0)>0: model.rnn.bias_ih_l0.data[units_to_kill_l0] = 0
+        if len(units_to_kill_l1)>0: model.rnn.bias_ih_l1.data[units_to_kill_l1] = 0
 
         # Test: present prefix sentences and calculate probability of target verb.
         for i, s in enumerate(sentences_prefix):
@@ -161,6 +154,7 @@ for ablation in [False, True]:
             'sentences_prefix': sentences_prefix,
             'sentence_length': np.array(sentence_length)
         }
+        print(output_fn)
 
         # Save to file
         if args.format == 'npz':
