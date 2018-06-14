@@ -18,11 +18,24 @@ settings = lsp.settings()
 params = lsp.params()
 preferences = lsp.preferences()
 
+if settings.h_or_c == 0:
+    h_c = 'hidden'
+elif settings.h_or_c == 1:
+    h_c = 'cell'
+
+if settings.which_layer == 0:
+    layer = 'both layers'
+elif settings.which_layer == 1:
+    layer = 'first layer'
+elif settings.which_layer == 2:
+    layer = 'second layer'
+
 bar_plot_width = 0.35  # the width of the bars
 models_names = ['model_ridge'] # 'model_lasso', 'model_ridge'
 # ----- Load LASSO model -----
 for i, model in enumerate(models_names):
-    fig, axs = plt.subplots(len(models_names), sharex=True, sharey=True)
+    file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(
+        settings.h_or_c) + '_layer_' + str(settings.which_layer)
     best_weights = []
     for seed in range(1,6,1):
         if model == 'model_ridge':
@@ -38,7 +51,7 @@ for i, model in enumerate(models_names):
         file_name = model + '_regularization_path_seed_' + str(seed) + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + ' .png'
         fig_path = pr.regularization_path(models[model], settings, params)
 
-        fig_path.savefig(op.join(settings.path2figures, file_name))
+        fig_path.savefig(op.join(settings.path2figures, 'Regularization_path_' + file_name + '.png'))
         fig_path.close()
 
         # Best weights (correspond to optimal regularization size)
@@ -48,24 +61,25 @@ for i, model in enumerate(models_names):
             best_index = models['model_lasso'].best_index_
 
         best_weights.append(models[model].coefs[best_index])
+        models = None
 
     best_weights = np.vstack(best_weights) # stack back to ndarray
     ind = np.arange(best_weights.shape[1]) + 1  # the x locations for the groups
-    axs.bar(ind, np.mean(best_weights, axis=0), bar_plot_width, color='g', yerr=np.std(best_weights, axis=0))
+
+    fig, axs = plt.subplots(len(models_names), sharex=True, sharey=True)
+    axs.bar(ind, np.mean(best_weights, axis=0), bar_plot_width, color='b', yerr=np.std(best_weights, axis=0))
     axs.set_ylabel('Weight size')
     axs.set_xlabel('Unit')
     axs.set_xlim([0, best_weights.shape[1]])
-    axs.set_title(model)
+    axs.set_title(model + ' ' + h_c + ' ' + layer)
+    plt.show()
 
-    # pr.plot_weights(best_weights, model, axs, i, settings, params)
+    plt.savefig(op.join(settings.path2figures, file_name + '.png'))
+    plt.close(fig)
 
     # Sort and save to file
-    file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '.txt'
-    best_weights = np.vstack((np.mean(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
+    best_weights = np.vstack((np.mean(best_weights, axis=0), np.std(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
     IX = np.argsort(best_weights[0, :])[::-1]
     best_weights_sorted = np.transpose(best_weights)[IX]
-    best_weights_sorted.tofile(op.join(settings.path2output, file_name), sep="\t\n")
-
-    file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) +  '_h_or_c_' + str(settings.h_or_c) + '.png'
-    plt.savefig(op.join(settings.path2figures, file_name))
-    plt.close(fig)
+    np.savetxt(op.join(settings.path2output, file_name + '.txt'), best_weights_sorted, fmt='%1.2f +- %1.2f, %i')
+    print('Saved to: ' + op.join(settings.path2output, file_name))
