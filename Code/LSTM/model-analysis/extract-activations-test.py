@@ -14,7 +14,7 @@ base_folder = '/neurospin/unicog/protocols/intracranial/'
 
 # French
 model = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/LSTM-corpora~frwac_random_100M_subset-500-2-0.5-SGD-10-tied.False-300/model.cpu.pt/model.cpu.pt' # French
-input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/NP_VP_transition.txt'
+#input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/NP_VP_transition.txt'
 input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clauses_pos_French.txt'
 vocabulary = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/reduced-vocab.txt' # French
 output = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/relative_clauses_pos_French.pkl'
@@ -37,7 +37,7 @@ unk = '_UNK_'
 
 format = 'pkl'
 get_representations = ['word', 'lstm']
-cuda = True
+cuda = False
 use_unk = True
 perplexity = False
 
