@@ -1,12 +1,9 @@
 import os
 import numpy as np
 import pickle
-<<<<<<< HEAD
-=======
 import codecs
 import matplotlib
 matplotlib.use('Agg')
->>>>>>> 81a63805eeed7e7e05dd647ad116b27dd7661e11
 import matplotlib.pyplot as plt
 from os import path as op
 
@@ -229,6 +226,11 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     # with open(op.join(settings.path2figures, 'units_activation', file_name), 'rb') as f:
     #     data_saved = pickle.load(f)
     #     pca, vectors_PCA_projected = data_saved[0], data_saved[1]
+
+    file_name = 'PCA_LSTM_traject' + vector_type + settings.LSTM_file_name + '.pkl'
+    with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
+        pickle.dump(vector_PCA_trajectories, f)
+
 
     print('After PCA: average across each syntactic structure type')
     vectors_pca_trajectories_mean_over_structure = []; vectors_pca_trajectories_std_structure = []

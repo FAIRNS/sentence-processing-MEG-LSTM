@@ -22,10 +22,10 @@ with open(op.join(settings.path2LSTMdata, settings.LSTM_file_name), 'rb') as f:
 
 ###### PCA ###########
 # PCA - LSTM hidden states (h)
-#alu.plot_PCA_trajectories('hidden', LSTM_and_baselines_data['hidden'], all_stim_clean, IX_structures, labels, colors, settings, params)
+alu.plot_PCA_trajectories('hidden', LSTM_and_baselines_data['hidden'], all_stim_clean, IX_structures, labels, colors, settings, params)
 #
 # # PCA - LSTM cell memory (c)
-#alu.plot_PCA_trajectories('cell', LSTM_and_baselines_data['cell'], all_stim_clean, IX_structures, labels, colors, settings, params)
+alu.plot_PCA_trajectories('cell', LSTM_and_baselines_data['cell'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
 # PCA - baseline3 (normalized word-embedding vectors)
 alu.plot_PCA_trajectories('norm_word_vectors', LSTM_and_baselines_data['norm_word_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)

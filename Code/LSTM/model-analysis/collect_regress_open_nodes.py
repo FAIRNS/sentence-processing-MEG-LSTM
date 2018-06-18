@@ -48,9 +48,10 @@ for i, model in enumerate(models_names):
 
         # ---- Generate figures --------
         # Regularization path
+        file_name_path = model + '_regularization_path_seed_' + str(seed) + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + ' .png'
         fig_path = pr.regularization_path(models[model], settings, params)
 
-        fig_path.savefig(op.join(settings.path2figures, 'Regularization_path_' + file_name + '.png'))
+        fig_path.savefig(op.join(settings.path2figures, 'Regularization_path_' + file_name_path + '.png'))
         fig_path.close()
 
         # Best weights (correspond to optimal regularization size)
