@@ -14,8 +14,8 @@ print('Vector type: ' + vector_type)
 print('Load settings and parameters')
 settings = lsp.settings()
 params = lsp.params()
-os.chdir(settings.path2code)
-print(os.getcwd())
+# os.chdir(settings.path2code)
+# print(os.getcwd())
 
 # Load LSTM data
 print('Loading pre-trained LSTM data...')
@@ -37,7 +37,7 @@ if len(sys.argv) > 1:
         print('Time point ' + sys.argv[2])
         time_point = int(sys.argv[2])
 else:
-    channel = 10
+    channel = 1
     time_point = 1
 
 # for channel in range(channel, channel+10, 1):
@@ -57,14 +57,20 @@ for time_point in time_points:
 			MEG_file_name = 'MEG_data_sentences_averaged_over_optimal_bin_channel_' + str(channel) + '.npz'
 			MEG_data = np.load(op.join(settings.path2output, MEG_file_name))
 		else:
-			MEG_file_name = 'patient_' + settings.patient +'_epochs_lock_to_beginning_of_sentence_anomaly_type_0.npy'
-			MEG_data = np.load(op.join(settings.path2MEGdata, MEG_file_name))
+			if settings.use_sources_data:
+				MEG_file_name = 'sources/sources_dat_' + settings.patient + '_vertex_' + str(channel) + '.pkl'
+				with open(op.join(settings.path2MEGdata, MEG_file_name), 'rb') as f:
+					MEG_data = pickle.load(f, encoding='latin1')
+			else:
+				MEG_file_name = 'patient_' + settings.patient +'_epochs_lock_to_beginning_of_sentence_anomaly_type_0.npy'
+				MEG_data = np.load(op.join(settings.path2MEGdata, MEG_file_name))
 			real_speed_sec = int(params.sfreq * params.real_speed / 1e3)
 			st = int(params.sfreq * params.startTime / 1e3) + time_point
 			ed = st + real_speed_sec*8 # the same time point at the 8^th words
 			IX_timepoints = np.arange(st, ed, real_speed_sec)
 			print('timepoints ' + str(IX_timepoints))
-			MEG_data = MEG_data[:,channel-1, :]
+			if not settings.use_sources_data:
+				MEG_data = MEG_data[:,channel-1, :]
 
 
 		# Reshape data to num_trials X num_features
