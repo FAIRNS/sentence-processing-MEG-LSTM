@@ -77,8 +77,10 @@ for i, model in enumerate(models_names):
     plt.close(fig)
 
     # Sort and save to file
-    best_weights = np.vstack((np.mean(best_weights, axis=0), np.std(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
-    IX = np.argsort(best_weights[0, :])[::-1]
-    best_weights_sorted = np.transpose(best_weights)[IX]
+    best_weights_array = np.vstack((np.mean(best_weights, axis=0), np.std(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
+    IX = np.argsort(best_weights_array[0, :])[::-1]
+    best_weights_sorted = np.transpose(best_weights_array)[IX]
     np.savetxt(op.join(settings.path2output, file_name + '.txt'), best_weights_sorted, fmt='%1.2f +- %1.2f, %i')
     print('Saved to: ' + op.join(settings.path2output, file_name))
+    with open(op.join(settings.path2output, file_name + '.pkl'), 'wb') as f:
+        pickle.dump(np.mean(best_weights, axis=0), f)
