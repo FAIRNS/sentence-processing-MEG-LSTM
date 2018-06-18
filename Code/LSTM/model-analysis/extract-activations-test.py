@@ -9,18 +9,21 @@ import numpy as np
 import pickle
 from tqdm import tqdm
 
+base_folder = '/home/yl254115/Projects/'
+# base_folder = '/neurospin/unicog/protocols/intracranial/'
+
 # French
-model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/LSTM-corpora~frwac_random_100M_subset-500-2-0.5-SGD-10-tied.False-300/model.cpu.pt/model.cpu.pt' # French
-input_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/NP_VP_transition.txt'
-input_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clauses_pos_French.txt'
-vocabulary = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/reduced-vocab.txt' # French
-output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/relative_clauses_pos_French.pkl'
+model = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/LSTM-corpora~frwac_random_100M_subset-500-2-0.5-SGD-10-tied.False-300/model.cpu.pt/model.cpu.pt' # French
+#input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/NP_VP_transition.txt'
+input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clauses_pos_French.txt'
+vocabulary = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/reduced-vocab.txt' # French
+output = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/relative_clauses_pos_French.pkl'
 
 # English
-# model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt' # English
-# input_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clause_English.txt'
-# vocabulary = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt' # English
-# output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/english/relative_clauses_English.pkl'
+# model = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt' # English
+# input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clause_English.txt'
+# vocabulary = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt' # English
+# output = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/english/relative_clauses_English.pkl'
 
 # German's use for French
 eos_separator = '</s>'
@@ -35,12 +38,14 @@ unk = '_UNK_'
 format = 'pkl'
 get_representations = ['word', 'lstm']
 cuda = False
-use_unk = True
+use_unk = False
 perplexity = False
 
 vocab = data.Dictionary(vocabulary)
 sentences = []
 for l in open(input_data, 'r'):
+    if not l.find("\'") == -1:
+        l = l.replace("\'", "\' ")
     sentence = l.rstrip().split(" ")
     sentence = [s.lower() for s in sentence]
     sentences.append(sentence)

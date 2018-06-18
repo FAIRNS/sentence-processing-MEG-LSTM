@@ -54,7 +54,7 @@ for i, model1 in enumerate(models_names):
             ax.set_xlabel(model1, fontsize = 16)
             ax.set_ylabel(model2, fontsize = 16)
             ax.set_title('h_or_c_' + str(settings.h_or_c) + '_layer_' + str(settings.which_layer), fontsize = 16)
-            plt.text(0, 3, 'r = %1.2f' % r[0, 1], fontsize = 14)
+            plt.text(-1, 0.5, 'r = %1.2f' % r[0, 1], fontsize = 14)
             # Add y = x line
             lims = [
                 np.min([ax.get_xlim(), ax.get_ylim()]),  # min of both axes
@@ -64,4 +64,5 @@ for i, model1 in enumerate(models_names):
             ax.set_aspect('equal')
             ax.set_xlim(lims)
             ax.set_ylim(lims)
-            plt.savefig(op.join(settings.path2figures, 'regression_weights_correlation.png'))
+            file_name = 'regression_weights_correlation' '_h_or_c_' + str(settings.h_or_c) + '_layer_' + str(settings.which_layer) + '.png'
+            plt.savefig(op.join(settings.path2figures, file_name))
