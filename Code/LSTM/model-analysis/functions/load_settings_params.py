@@ -7,8 +7,8 @@ class settings:
         # Regression
         self.method = 'Ridge'
         self.y_label = 'all'  # Which label to regress from the meta text data
-        self.h_or_c = 1  # zero or one. 0: hidden 1: cell
-        self.which_layer = 1  # 0: both, 1: first, 2: second
+        self.h_or_c = 0  # zero or one. 0: hidden 1: cell
+        self.which_layer = 2  # 0: both, 1: first, 2: second
 
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
@@ -45,7 +45,9 @@ class params:
 
 class preferences:
     def __init__(self):
+        self.override_previous_runs = True
+
         self.run_Ridge = True
         self.run_LASSO = False
         self.run_ElasticNet = False
-        self.load_pretested_LSTM = False
+        self.load_pretested_LSTM = True

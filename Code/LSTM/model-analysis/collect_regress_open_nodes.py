@@ -48,10 +48,10 @@ for i, model in enumerate(models_names):
 
         # ---- Generate figures --------
         # Regularization path
-        file_name = model + '_regularization_path_seed_' + str(seed) + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + ' .png'
+        file_name_path = model + '_regularization_path_seed_' + str(seed) + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + ' .png'
         fig_path = pr.regularization_path(models[model], settings, params)
 
-        fig_path.savefig(op.join(settings.path2figures, 'Regularization_path_' + file_name + '.png'))
+        fig_path.savefig(op.join(settings.path2figures, 'Regularization_path_' + file_name_path + '.png'))
         fig_path.close()
 
         # Best weights (correspond to optimal regularization size)
@@ -78,8 +78,10 @@ for i, model in enumerate(models_names):
     plt.close(fig)
 
     # Sort and save to file
-    best_weights = np.vstack((np.mean(best_weights, axis=0), np.std(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
-    IX = np.argsort(best_weights[0, :])[::-1]
-    best_weights_sorted = np.transpose(best_weights)[IX]
+    best_weights_array = np.vstack((np.mean(best_weights, axis=0), np.std(best_weights, axis=0), range(1,best_weights.shape[1]+1, 1)))
+    IX = np.argsort(best_weights_array[0, :])[::-1]
+    best_weights_sorted = np.transpose(best_weights_array)[IX]
     np.savetxt(op.join(settings.path2output, file_name + '.txt'), best_weights_sorted, fmt='%1.2f +- %1.2f, %i')
     print('Saved to: ' + op.join(settings.path2output, file_name))
+    with open(op.join(settings.path2output, file_name + '.pkl'), 'wb') as f:
+        pickle.dump(np.mean(best_weights, axis=0), f)
