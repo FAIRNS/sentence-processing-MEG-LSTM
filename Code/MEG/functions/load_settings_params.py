@@ -29,13 +29,15 @@ class settings:
 
         #self.stimuli_file_name = 'patient_' + self.patient + '_stimuli_anomaly_type_0'
         #self.stimuli_file_name = 'NP_VP_transition.txt'
-        self.stimuli_file_name = 'relative_clauses_pos_French.txt'
+        #self.stimuli_file_name = 'relative_clauses_pos_French.txt'
         # self.stimuli_file_name = 'relative_clause_English.txt'
+        self.stimuli_file_name = 'NP_VP_and_RC.txt'
 
         #self.stimuli_file_name = 'NP_VP_transition.utf-8.txt'
         #self.stimuli_meta_data = 'info.p'
-        self.stimuli_meta_data = 'info_RC_pos_French.p'
+        #self.stimuli_meta_data = 'info_RC_pos_French.p'
         # self.stimuli_meta_data = 'info_RC_English.p'
+        self.stimuli_meta_data = 'info_NP_VP_and_RC.p'
 
         self.MEG_file_name = 'patient_' + self.patient + '_epochs_lock_to_beginning_of_sentence_anomaly_type_0.npy'
         self.MEG_file_name = 'am150105_speed4_V2 - epo.fif'
