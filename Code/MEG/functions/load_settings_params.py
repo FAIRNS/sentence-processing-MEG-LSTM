@@ -45,6 +45,7 @@ class settings:
         #self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
         self.LSTM_file_name = 'vectors-LSTM-500-2-0.5-SGD-10-tied.False-300-0-new-2.pkl'
+        self.LSTM_file_name = 'vectors-LSTM-500-2-0.5-SGD-10-tied.False-300-0.pkl'
         # self.LSTM_file_name = 'NP_VP_transition.pkl'
         self.LSTM_file_name = 'relative_clauses.pkl'
         self.LSTM_file_name = 'relative_clauses_pos_French.pkl'
@@ -61,8 +62,9 @@ class settings:
 
         # Flags
         self.use_optimal_bin = False
-        self.run_Ridge = False
-        self.run_LASSO = True
+        self.use_sources_data = True
+        self.run_Ridge = True
+        self.run_LASSO = False
         self.run_ElasticNet = False
 
 class params:
