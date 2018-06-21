@@ -30,7 +30,7 @@ parser.add_argument('--format', default='pkl', choices=['npz', 'hdf5', 'pkl'])
 parser.add_argument('-g', '--get-representations', choices=['lstm', 'word'],
         action='append', default=[])
 parser.add_argument('--use-unk', action='store_true', default=False)
-parser.add_argument('--lang', default='')
+parser.add_argument('--lang', default='en')
 parser.add_argument('--unk-token', default='<unk>')
 
 
