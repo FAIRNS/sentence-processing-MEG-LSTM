@@ -22,7 +22,7 @@ with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
     stimuli = pickle.load(f)
     sentences = [i[0] for i in stimuli]
     meta = [i[2] for i in stimuli]
-    stimuli = None # clear from memory
+    stimuli = None  # clear from memory
     # For debug
     # sentences = [s for i, s in enumerate(sentences) if i in range(10)]
     # meta = [s for i, s in enumerate(meta) if i in range(10)]
@@ -62,14 +62,25 @@ elif settings.which_layer == 2:
 else:
     sys.stderr('settings.which_layer has to be either 0, 1 or 2')
 
+# If requested, omit zero depth, which mostly corresponds to full-stop, question marks, etc.
+if preferences.omit_zero_depth:
+    IX = (y != 0)
+    X = X[IX, :]
+
+if settings.residuals_after_partial_out_word_position:
+    with open(op.join(settings.path2output, settings.residuals_after_partial_out_word_position_file_name), 'rb') as f:
+        models = pickle.load(f)
+        y = models['residuals'] # Residuals are already with zero
+        if not preferences.omit_zero_depth:
+            sys.stderr('Residuals are without zero depth. Set preferences.omit_zero_depth = True')
 
 
 # For DEBUG ------
-# X = X[0:500, :]
-# y = y[0:500]
+# X = X[0:1000, :]
+# y = y[0:1000]
 # -------------
 
-pkl_filename = 'Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c)  + '_seed_' + str(params.seed_split) + '.pckl'
+pkl_filename = 'Regression_number_of_open_nodes_after_partial_out_word_position_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c)  + '_seed_' + str(params.seed_split) + '.pckl'
 
 if preferences.run_Ridge:
     pkl_filename = 'Ridge_' + pkl_filename
@@ -78,7 +89,7 @@ if preferences.run_LASSO:
 if preferences.run_ElasticNet:
     pkl_filename = 'ElasticNet_' + pkl_filename
 print(pkl_filename)
-if not op.exists(op.join(settings.path2output, pkl_filename)):
+if not op.exists(op.join(settings.path2output, pkl_filename)) or preferences.override_previous_runs:
 
     # ## Split data to train/test sets
     print('Splitting data to train/test sets')
@@ -94,7 +105,19 @@ if not op.exists(op.join(settings.path2output, pkl_filename)):
         # Train model
         model_ridge = mfe.train_model(X_train, y_train, settings, params)
         # Evaluate model on test set
-        ridge_scores_test = mfe.evaluate_model(model_ridge, X_test, y_test, settings, params)
+        ridge_scores_test, MSE_per_depth_test = mfe.evaluate_model(model_ridge, X_test, y_test, settings, params)
+        print(ridge_scores_test)
+        MSE_per_depth_train = []
+        if settings.calc_MSE_per_each_depth:
+            for depth in set(y_train):
+                X_train_curr_depth = X_train[y_train == depth, :]
+                y_train_curr_depth = y_train[y_train == depth]
+                y_predicted_curr_depth = model_ridge.predict(X_train_curr_depth)
+                scores_curr_depth = ((y_train_curr_depth - y_predicted_curr_depth) ** 2).sum() / y_train_curr_depth.shape[0]
+                MSE_per_depth_train.append([depth, scores_curr_depth])
+        print(MSE_per_depth_train)
+        print(MSE_per_depth_test)
+
         # Generate and save figures
         # plt = pr.regularization_path(model_ridge, settings, params)
         file_name = 'Ridge_coef_and_R_squared_vs_regularization_size_channel_' + \
@@ -103,6 +126,8 @@ if not op.exists(op.join(settings.path2output, pkl_filename)):
         # plt.close()
         models['model_ridge'] = model_ridge
         models['ridge_scores_test'] = ridge_scores_test
+        models['MSE_per_depth_train'] = MSE_per_depth_train
+        models['MSE_per_depth_test'] = MSE_per_depth_test
     # ##########################################
 
     # ############ Lasso Regression ############

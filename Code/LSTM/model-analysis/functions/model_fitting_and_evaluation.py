@@ -19,11 +19,12 @@ def train_model(X_train, y_train, settings, params):
 
 def train_model_ridge(X_train, y_train, settings, params):
     # Compute path: collect weight coefficient for all regularization sizes
-    coefs = [] # Collect coefs for each regularization size (alpha)
+    coefs = []; intercepts = [] # Collect coefs for each regularization size (alpha)
     for a in params.alphas:
         model = linear_model.Ridge(alpha=a, fit_intercept=True)
         model.fit(X_train, y_train)
         coefs.append(model.coef_)
+        intercepts.append(model.intercept_)
 
     # Grid search - calculate train/validation error for all regularization sizes
     ridge = linear_model.Ridge()
@@ -35,6 +36,7 @@ def train_model_ridge(X_train, y_train, settings, params):
     # Add to struct
     model_ridge.alphas = params.alphas
     model_ridge.coefs = coefs
+    model_ridge.intercepts = intercepts
 
     return model_ridge
 
@@ -79,19 +81,26 @@ def evaluate_model(model, X_test, y_test, settings, params):
     # ## Evaluate the regression models
 
     if settings.method == 'Ridge':
-        scores = eval_model_ridge(model, X_test, y_test, settings, params)
+        scores, MSE_per_depth = eval_model_ridge(model, X_test, y_test, settings, params)
     elif settings.method == 'Lasso':
         scores = eval_model_lasso(model, X_test, y_test, settings, params)
     elif settings.method == 'Elastic_net':
         scores = eval_model_elastic_net(model, X_test, y_test, settings, params)
 
-    return scores
+    return scores, MSE_per_depth
 
 
 def eval_model_ridge(model, X_test, y_test, settings, params):
     scores = model.score(X_test, y_test)
-
-    return scores
+    MSE_per_depth = []
+    if settings.calc_MSE_per_each_depth:
+        for depth in set(y_test):
+            X_test_curr_depth = X_test[y_test == depth, :]
+            y_test_curr_depth = y_test[y_test == depth]
+            y_predicted_curr_depth = model.predict(X_test_curr_depth)
+            scores_curr_depth = ((y_test_curr_depth - y_predicted_curr_depth)**2).sum()/y_test_curr_depth.shape[0]
+            MSE_per_depth.append([depth, scores_curr_depth])
+    return scores, MSE_per_depth
 
 
 def eval_model_lasso(model, X_test, y_test, settings, params):
