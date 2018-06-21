@@ -59,7 +59,7 @@ for i, model1 in enumerate(models_names):
             IX_regress = [n + 650 for n in IX_regress]
 
             print(IX_ablation[0:20])
-            print(IX_regress[0:20])
+
             fig, ax = plt.subplots(1, 1)
             ax.scatter(weights_model1, weights_model2, s = 1)
             r = np.corrcoef(weights_model1, weights_model2)

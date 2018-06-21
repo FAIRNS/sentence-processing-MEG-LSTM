@@ -16,6 +16,11 @@ settings = lsp.settings()
 params = lsp.params()
 preferences = lsp.preferences()
 
+if len(sys.argv) > 1:
+    print('Seed ' + sys.argv[1])
+    seed = int(sys.argv[1])
+    settings.seed = seed
+
 # Load Stimuli
 print('Loading number of open nodes data')
 with open(op.join(settings.path2LSTMdata, settings.bnc_data), 'rb') as f:
