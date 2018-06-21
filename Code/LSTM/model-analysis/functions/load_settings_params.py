@@ -14,6 +14,7 @@ class settings:
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
         #self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
         self.path2LSTMdata = op.join('..', '..', '..', 'Data', 'LSTM')
+        self.path2LSTMdata = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM'
         self.path2figures = op.join('..', '..', '..', 'Figures')
         self.path2output = op.join('..', '..', '..', 'Output')
 
@@ -21,12 +22,15 @@ class settings:
        #self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
         self.bnc_data = 'bnc_0313_filtered.pkl'
+        self.residuals_after_partial_out_word_position_file_name = 'Ridge_Regression_number_of_open_nodes_from_word_position_all.pckl'
         self.LSTM_pretrained_model = 'hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
         self.LSTM_pretested_file_name = 'LSTM_activations_pretested_on_sentences_' + self.LSTM_pretrained_model + '_h_or_c_' + str(self.h_or_c)  + '.pkl'
         self.vocabulary_file = 'english_vocab.txt'
         self.eos_separator = "<eos>"
-        # Flags
 
+        # Flags
+        self.residuals_after_partial_out_word_position = True
+        self.calc_MSE_per_each_depth = False
 
 
 class params:
@@ -51,3 +55,4 @@ class preferences:
         self.run_LASSO = False
         self.run_ElasticNet = False
         self.load_pretested_LSTM = True
+        self.omit_zero_depth = True
