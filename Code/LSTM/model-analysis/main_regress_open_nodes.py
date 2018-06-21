@@ -17,9 +17,9 @@ params = lsp.params()
 preferences = lsp.preferences()
 
 if len(sys.argv) > 1:
-    print('Seed ' + sys.argv[1])
-    seed = int(sys.argv[1])
-    settings.seed = seed
+    print('seed_split ' + sys.argv[1])
+    seed_split = int(sys.argv[1])
+    params.seed_split = seed_split
 
 # Load Stimuli
 print('Loading number of open nodes data')
