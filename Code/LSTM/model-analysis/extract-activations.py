@@ -125,6 +125,16 @@ if 'lstm' in args.get_representations:
                         "Moore says : \" Tony and I had a good <unk> and off-screen relationship , we are two very different people , but we did share a sense of humour \" . <eos>",
                         "<unk> is also the basis for online games sold through licensed lotteries . <eos>"])
     else:
+        # init_sentence = " ".join([
+        # "hier , considéré avec scepticisme du fait de la présence du minitel , le réseau connaît aujourd'hui un véritable engouement . </s>",
+        # "le débat est ouvert . </s>",
+        # "précise le guardian . </s>",
+        # "c' est plus ou moins ce que fait actuellement honda au japon avec leur série de robots humanoïdes . </s>",
+        # "| alstom mise sur l' automotrice à grande vitesse pour remplacer le tgv ! </s>",
+        # "je ne vois donc plus la vie de la même façon . </s>",
+        # "a vierzon , rendez -vous le 20 novembre à 10h30 , forum république appels à mobilisation pas de commentaire \" dimanche , 18 . </s>",
+        # "faut -il avoir la nationalité française pour adhérer ? </s>",
+        # "- sauf que là c' est pas en colombie , c' est en russie . </s>"])
         init_sentence = "</s>"
     hidden = model.init_hidden(1) 
     init_out, init_h = feed_sentence(model, hidden, init_sentence.split(" "))
