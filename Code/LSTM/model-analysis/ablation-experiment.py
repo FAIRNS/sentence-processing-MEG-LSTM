@@ -19,7 +19,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('model', type=str, default='model.pt',
                     help='Meta file stored once finished training the corpus')
 parser.add_argument('-i', '--input', required=True,
-                    help='Input sentences')
+                    help='Input sentences in Tal\'s format')
 parser.add_argument('-v', '--vocabulary', default='reduced_vocab.txt')
 parser.add_argument('-o', '--output', help='Destination for the output vectors')
 parser.add_argument('--perplexity', action='store_true', default=False)
@@ -32,6 +32,8 @@ parser.add_argument('-uf', '--unit-from', type=int, default=False, help='Startin
 parser.add_argument('-ut', '--unit-to', type=int, default=False, help='Ending range for test unit to ablate')
 parser.add_argument('-s', '--seed', default=1, help='Random seed when adding random units')
 parser.add_argument('-g', '--groupsize', default=1, help='Group size of units to ablate, including test unit and random ones')
+parser.add_argument('--unk-token', default='<unk>')
+parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--cuda', action='store_true', default=False)
 args = parser.parse_args()
 
@@ -47,21 +49,26 @@ units_to_kill_l0 = [u for u in units_to_kill if u <650] # units 1-650 (0-649) in
 units_to_kill_l1 = [u-650 for u in units_to_kill if u >649] # units 651-1300 (650-1299) in layer 1 (l1)
 output = args.output + str(args.unit) + '_groupsize_' + args.groupsize + '_seed_' + args.seed # Update output file name
 
+os.makedirs(os.path.dirname(output), exist_ok=True)
+
 # Vocabulary
 vocab = data.Dictionary(args.vocabulary)
 
 # Sentences
-agreement_test_data = pandas.read_csv(args.input, sep='\t')
-sentences_prefix = [s[7] for s in agreement_test_data._values]
-correct_wrong = [s[5] for s in agreement_test_data._values]
-verbs = [s[4] for s in agreement_test_data._values]
-len_context = [s[11] for s in agreement_test_data._values]
-len_prefix = [s[12] for s in agreement_test_data._values]
-log_p = [s[14] for s in agreement_test_data._values]
+sentences = [l.rstrip('\n').split(' ') for l in open(args.input + '.text')]
+gold = pandas.read_csv(args.input + '.gold', sep='\t', header=None, names=['verb_pos', 'correct', 'wrong', 'nattr'])
 
-sentences_prefix = [s.split() for s in sentences_prefix]
-sentence_length = [len(s) for s in sentences_prefix]
-max_length = max(*sentence_length)
+# agreement_test_data = pandas.read_csv(args.input, sep='\t')
+# sentences_prefix = [s[7] for s in agreement_test_data._values]
+# correct_wrong = [s[5] for s in agreement_test_data._values]
+# verbs = [s[4] for s in agreement_test_data._values]
+# len_context = [s[11] for s in agreement_test_data._values]
+# len_prefix = [s[12] for s in agreement_test_data._values]
+# log_p = [s[14] for s in agreement_test_data._values]
+
+# sentences_prefix = [s.split() for s in sentences_prefix]
+# sentence_length = [len(s) for s in sentences_prefix]
+# max_length = max(*sentence_length)
 
 # Load model
 print('Loading models...')
@@ -72,28 +79,32 @@ model.rnn.flatten_parameters()
 model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
 model_orig_state = copy.deepcopy(model.state_dict())
 
-# output buffers
-fixed_length_arrays = False
-if fixed_length_arrays:
-    vectors = np.zeros((len(sentences_prefix), 2 * model.nhid * model.nlayers, max_length))
-    log_probabilities =  np.zeros((len(sentences_prefix), max_length))
-    gates = {k: np.zeros((len(sentences_prefix), model.nhid * model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
-else:
-    vectors = [np.zeros((2*model.nhid*model.nlayers, len(s))) for s in sentences_prefix] #np.zeros((len(sentences), 2 *model.nhid*model.nlayers, max_length))
-    log_probabilities = [np.zeros(len(s)) for s in sentences_prefix] # np.zeros((len(sentences), max_length))
-    gates = {k: [np.zeros((model.nhid*model.nlayers, len(s))) for s in sentences_prefix] for k in ['in', 'forget', 'out', 'c_tilde']} #np.zeros((len(sentences), model.nhid*model.nlayers, max_length)) for k in ['in', 'forget', 'out', 'c_tilde']}
-    log_p_targets = np.zeros((len(sentences_prefix), 1))
+log_p_targets_correct = np.zeros((len(sentences), 1))
+log_p_targets_wrong = np.zeros((len(sentences), 1))
 
 # Compare performamce w/o killing units (set to zero the corresponding weights in model):
 if args.unit_from and args.unit_to:
-    if args.unit_to > args.unit_from:
+    if args.unit_to >= args.unit_from:
         target_units = list(range(args.unit_from, args.unit_to+1))
     else:
         target_units = list(range(args.unit_from-1, args.unit_to-1, -1))
 else:
     target_units = [args.unit]
 
+def feed_input(model, hidden, w):
+    inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]])).cuda()
+    out, hidden = model(inp, hidden)
+    return out, hidden
+def feed_sentence(model, h, sentence):
+    outs = []
+    for w in sentence:
+        out, h = feed_input(model, h, w)
+        outs.append(torch.nn.functional.log_softmax(out[0]).unsqueeze(0))
+    return outs, h
+
 for unit in tqdm(target_units):
+    # restore the model to its original state in case it was ablated
+    model.load_state_dict(model_orig_state)
     stime = time.time()
     # Which unit to kill + a random subset of g-1 more units
     np.random.seed(int(args.seed))
@@ -109,41 +120,53 @@ for unit in tqdm(target_units):
     output = args.output + str(unit) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
 
 
-for ablation in [False, True]:
-    output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
-    if ablation:
-        # Kill corresponding weights if list is not empty
-        if len(units_to_kill_l0)>0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
-        if len(units_to_kill_l1)>0: model.rnn.weight_hh_l1.data[:, units_to_kill_l1] = 0 # l0: w_hi, w_hf, w_hc, w_ho
-        if len(units_to_kill_l0)>0: model.rnn.weight_ih_l0.data[:, units_to_kill_l0] = 0 # l1: w_ii, w_if, w_ic, w_io
-        if len(units_to_kill_l1)>0: model.rnn.weight_ih_l1.data[:, units_to_kill_l1] = 0 # l1: w_ii, w_if, w_ic, w_io
-        if len(units_to_kill_l0)>0: model.rnn.bias_hh_l0.data[units_to_kill_l0] = 0
-        if len(units_to_kill_l1)>0: model.rnn.bias_hh_l1.data[units_to_kill_l1] = 0
-        if len(units_to_kill_l0)>0: model.rnn.bias_ih_l0.data[units_to_kill_l0] = 0
-        if len(units_to_kill_l1)>0: model.rnn.bias_ih_l1.data[units_to_kill_l1] = 0
+    for ablation in [True]: #[False, True]:
+        output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
+        if ablation:
+            # Kill corresponding weights if list is not empty
+            if len(units_to_kill_l0)>0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+            if len(units_to_kill_l1)>0: model.rnn.weight_hh_l1.data[:, units_to_kill_l1] = 0 # l0: w_hi, w_hf, w_hc, w_ho
+            # if len(units_to_kill_l0)>0: model.rnn.weight_ih_l0.data[:, units_to_kill_l0] = 0 # l1: w_ii, w_if, w_ic, w_io
+            # if len(units_to_kill_l1)>0: model.rnn.weight_ih_l1.data[:, units_to_kill_l1] = 0 # l1: w_ii, w_if, w_ic, w_io
+            # if len(units_to_kill_l0)>0: model.rnn.bias_hh_l0.data[units_to_kill_l0] = 0
+            # if len(units_to_kill_l1)>0: model.rnn.bias_hh_l1.data[units_to_kill_l1] = 0
+            # if len(units_to_kill_l0)>0: model.rnn.bias_ih_l0.data[units_to_kill_l0] = 0
+            # if len(units_to_kill_l1)>0: model.rnn.bias_ih_l1.data[units_to_kill_l1] = 0
+            if len(units_to_kill_l1)>0: model.decoder.weight.data[:, units_to_kill_l1] = 0
+
+        init_sentence = " ".join(["In service , the aircraft was operated by a crew of five and could accommodate either 30 paratroopers , 32 <unk> and 28 sitting casualties , or 50 fully equipped troops . <eos>",
+                        "He even speculated that technical classes might some day be held \" for the better training of workmen in their several crafts and industries . <eos>",
+                        "After the War of the Holy League in 1537 against the Ottoman Empire , a truce between Venice and the Ottomans was created in 1539 . <eos>",
+                        "Moore says : \" Tony and I had a good <unk> and off-screen relationship , we are two very different people , but we did share a sense of humour \" . <eos>",
+                        "<unk> is also the basis for online games sold through licensed lotteries . <eos>"])
+        hidden = model.init_hidden(1) 
+        init_out, init_h = feed_sentence(model, hidden, init_sentence.split(" "))
 
         # Test: present prefix sentences and calculate probability of target verb.
-        for i, s in enumerate(sentences_prefix):
+        for i, s in enumerate(tqdm(sentences)):
             out = None
             # reinit hidden
-            hidden = model.init_hidden(1)
+            #out = init_out[-1]
+            hidden = init_h #model.init_hidden(1)
             # intitialize with end of sentence
-            inp = Variable(torch.LongTensor([[vocab.word2idx['<eos>']]]))
-            if args.cuda:
-                inp = inp.cuda()
-            out, hidden = model(inp, hidden)
-            out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
+            # inp = Variable(torch.LongTensor([[vocab.word2idx['<eos>']]]))
+            # if args.cuda:
+            #     inp = inp.cuda()
+            # out, hidden = model(inp, hidden)
+            # out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
             for j, w in enumerate(s):
+                if w not in vocab.word2idx and args.use_unk:
+                    w = args.unk_token
                 inp = Variable(torch.LongTensor([[vocab.word2idx[w]]]))
                 if args.cuda:
                     inp = inp.cuda()
                 out, hidden = model(inp, hidden)
                 out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
-            # Store surprisal of target word
-            log_p_targets[i] = out[0, 0, vocab.word2idx[verbs[i]]].data[0]
-        # Split to correct (odd) and wrong (even) sentences
-        log_p_targets_correct = log_p_targets[::2]
-        log_p_targets_wrong = log_p_targets[1::2]
+                if j==gold.loc[i,'verb_pos']-1:
+                    assert s[j+1] == gold.loc[i, 'correct'].lower()
+                    # Store surprisal of target word
+                    log_p_targets_correct[i] = out[0, 0, vocab.word2idx[gold.loc[i,'correct']]].data[0]
+                    log_p_targets_wrong[i] = out[0, 0, vocab.word2idx[gold.loc[i, 'wrong']]].data[0]
         # Score the performance of the model w/o ablation
         score_on_task = np.sum(log_p_targets_correct > log_p_targets_wrong)
 
@@ -151,8 +174,10 @@ for ablation in [False, True]:
             'log_p_targets_correct': log_p_targets_correct,
             'log_p_targets_wrong': log_p_targets_wrong,
             'score_on_task': score_on_task,
-            'sentences_prefix': sentences_prefix,
-            'sentence_length': np.array(sentence_length)
+            'sentences': sentences,
+            'num_sentences': len(sentences),
+            'nattr': list(gold.loc[:,'nattr']),
+            'verb_pos': list(gold.loc[:, 'verb_pos'])
         }
         print(output_fn)
 
