@@ -28,10 +28,11 @@ parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
 parser.add_argument('--cuda', action='store_true', default=False)
 parser.add_argument('--format', default='pkl', choices=['npz', 'hdf5', 'pkl'])
 parser.add_argument('-g', '--get-representations', choices=['lstm', 'word'],
-        action='append', default=[])
+        action='append', default=['word', 'lstm'])
 parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--lang', default='en')
 parser.add_argument('--unk-token', default='<unk>')
+parser.add_argument('-k', '--kbow-value', default=2, type=int)
 
 
 args = parser.parse_args()
@@ -71,8 +72,10 @@ saved = {}
 if 'word' in args.get_representations:
     print('Extracting bow representations', file=sys.stderr)
     bow_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
+    kbow_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
     word_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
     bow_norm_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
+    kbow_norm_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
     word_norm_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
     for i, s in enumerate(tqdm(sentences)):
         bow_h = np.zeros(model.encoder.embedding_dim)
@@ -90,10 +93,17 @@ if 'word' in args.get_representations:
             word_norm_vectors[i][:,j] = w_vec /np.linalg.norm(w_vec)
             norm_bow_h += w_vec / np.linalg.norm(w_vec)
             bow_norm_vectors[i][:,j] = norm_bow_h / (j+1)
+
+            j_kbow = np.arange(np.max([j-args.kbow_value+1, 0]), j+1)
+            kbow_vectors[i][:,j] = np.mean(word_vectors[i][:, j_kbow], axis=1)
+            kbow_norm_vectors[i][:,j] = np.mean(word_norm_vectors[i][:, j_kbow], axis=1)
+
     saved['word_vectors'] = word_vectors
     saved['bow_vectors'] = bow_vectors
-    saved['norm_word_vectors'] = word_vectors
-    saved['norm_bow_vectors'] = bow_vectors
+    saved['kbow_vectors'] = kbow_vectors
+    saved['norm_word_vectors'] = word_norm_vectors
+    saved['norm_bow_vectors'] = bow_norm_vectors
+    saved['norm_kbow_vectors'] = kbow_norm_vectors
 
 if 'lstm' in args.get_representations:
     def feed_sentence(model, h, sentence):

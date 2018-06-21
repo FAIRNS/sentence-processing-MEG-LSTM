@@ -42,7 +42,7 @@ for i, model in enumerate(models_names):
             prefix_str = 'Ridge'
         elif model == 'model_lasso':
             prefix_str = 'LASSO'
-        pkl_filename = prefix_str + '_Regression_number_of_open_nodes_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '_seed_'+ str(seed) + '.pckl'
+        pkl_filename = prefix_str + '_Regression_number_of_open_nodes_after_partial_out_word_position_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '_seed_'+ str(seed) + '.pckl'
         with open(op.join(settings.path2output, pkl_filename), "rb") as f:
             models = pickle.load(f)
 
