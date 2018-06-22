@@ -50,6 +50,7 @@ class settings:
         self.LSTM_file_name = 'relative_clauses.pkl'
         self.LSTM_file_name = 'relative_clauses_pos_French.pkl'
         # self.LSTM_file_name = 'relative_clauses_English.pkl'
+        self.LSTM_file_name = 'NP_VP_and_RC.pkl'
 
         self.word_vectors_file_name = 'word_vectors.npy'
         self.word_vectors_BOW_file_name = 'bow_vectors.npy'
