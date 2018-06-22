@@ -11,6 +11,7 @@ params = lsp.params()
 
 ###### LOAD ############
 # Load stimuli in groups according to struct
+print('loading info file ' + settings.stimuli_meta_data)
 all_stim_clean, all_info_clean, all_info_correct, IX_structures, labels, colors = alu.get_stimuli_and_info(settings, params)
 
 # Load LSTM data
