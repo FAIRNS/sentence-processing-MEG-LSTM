@@ -71,6 +71,8 @@ if 'word' in get_representations:
     print('Extracting bow representations')#, file=sys.stderr)
     bow_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in tqdm(sentences)]
     word_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in tqdm(sentences)]
+    bow_norm_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
+    word_norm_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
     for i, s in enumerate(tqdm(sentences)):
         bow_h = np.zeros(model.encoder.embedding_dim)
         for j, w in enumerate(s):
@@ -84,8 +86,16 @@ if 'word' in get_representations:
             word_vectors[i][:,j] = w_vec
             bow_h += w_vec
             bow_vectors[i][:,j] = bow_h / (j+1)
+
+            bow_h += w_vec
+            bow_vectors[i][:, j] = bow_h / (j + 1)
+            word_norm_vectors[i][:, j] = w_vec / np.linalg.norm(w_vec)
+            norm_bow_h += w_vec / np.linalg.norm(w_vec)
+            bow_norm_vectors[i][:, j] = norm_bow_h / (j + 1)
     saved['word_vectors'] = word_vectors
     saved['bow_vectors'] = bow_vectors
+    saved['norm_word_vectors'] = word_norm_vectors
+    saved['norm_bow_vectors'] = bow_norm_vectors
 
 print(set(unk_words))
 
