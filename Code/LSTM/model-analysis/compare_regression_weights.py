@@ -30,6 +30,13 @@ elif settings.which_layer == 1:
 elif settings.which_layer == 2:
     layer = 'second layer'
 
+with open(op.join(settings.path2output, 'ablation_scores.txt'), 'r') as f:
+    ablation = f.readlines()
+    ablation = [s.rstrip().split(' ') for s in ablation]
+ablation = np.asarray(ablation).astype(int)
+IX_ablation = [l[1] for l in np.argsort(ablation, axis=0)]
+
+
 models_names = ['model_ridge', 'model_non_regularized'] # 'model_lasso', 'model_ridge'
 # ----- Load LASSO model -----
 for i, model1 in enumerate(models_names):
@@ -45,20 +52,15 @@ for i, model1 in enumerate(models_names):
             with open(op.join(settings.path2output, file_name1 + '.pkl'), 'rb') as f:
                 weights_model1 = pickle.load(f, encoding='latin1')
 
+            IX_regress = np.argsort(-np.abs(weights_model1), axis=0)
+            # IX_regress = [n + 650 for n in IX_regress]
+
+
             with open(op.join(settings.path2output, file_name2 + '.pkl'), 'rb') as f:
                 weights_model2 = pickle.load(f, encoding='latin1')
 
-            with open(op.join(settings.path2output, 'ablation_scores.txt'), 'r') as f:
-                ablation = f.readlines()
-                ablation = [s.rstrip().split(' ') for s in ablation]
-            ablation = np.asarray(ablation).astype(int)
-            IX_ablation = [l[1] for l in np.argsort(ablation, axis=0)]
 
 
-            IX_regress = np.argsort(-np.abs(weights_model1), axis=0)[:100]
-            IX_regress = [n + 650 for n in IX_regress]
-
-            print(IX_ablation[0:20])
 
             fig, ax = plt.subplots(1, 1)
             ax.scatter(weights_model1, weights_model2, s = 1)

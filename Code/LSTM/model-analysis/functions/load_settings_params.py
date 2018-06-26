@@ -12,9 +12,9 @@ class settings:
 
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
-        #self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
+        self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
         self.path2LSTMdata = op.join('..', '..', '..', 'Data', 'LSTM')
-        #self.path2LSTMdata = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM'
+        # self.path2LSTMdata = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM'
         self.path2figures = op.join('..', '..', '..', 'Figures')
         self.path2output = op.join('..', '..', '..', 'Output')
 

@@ -9,18 +9,31 @@ class settings:
         self.stimuli_type = 'Relative_clauses' # MEG_stimuli, NP_VP_transition, Relative_clauses
 
         # Paths
+        base_folder = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM'
+        base_folder = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM'
+
         self.path2code = '/private/home/germank/projects/neurospin/sentence-processing-MEG-LSTM/Code/MEG'
         self.path2code = op.join('..', '..', 'Code', 'MEG')
+
         self.path2MEGdata = op.join('..', '..', 'Data', 'MEG', self.patient)
+
         self.path2LSTMdata = op.join('..', '..', 'Data', 'LSTM', 'activations', 'french', 'model2-500-2-0.5-SGD-10-tied.False-300')
+        self.path2LSTMdata = op.join(base_folder, 'Data', 'LSTM', 'activations', 'french', 'model2-500-2-0.5-SGD-10-tied.False-300')
         # self.path2LSTMdata = op.join('..', '..', 'Data', 'LSTM', 'activations', 'english')
         #self.path2LSTMdata = '/private/home/germank/projects/neurospin/shared-data/lstm-activations/french/model2-500-2-0.5-SGD-10-tied.False-300' #op.join('..', '..', 'Data', 'LSTM', 'activations', 'french', 'model2-500-2-0.5-SGD-10-tied.False-300')
+
         self.path2figures = op.join('..', '..', 'Figures')
+        self.path2figures = op.join(base_folder, 'Figures')
+
         self.path2output = op.join('..', '..', 'Output')
-        self.path2stimuli = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/1-' + self.patient + '/Stim/data'
+        self.path2output = op.join(base_folder, 'Output')
+
+        # self.path2stimuli = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/1-' + self.patient + '/Stim/data'
         #self.path2stimuli = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/MEG/' + self.patient + '/Stim/data'
         #self.path2stimuli = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli' # New generated sentences
-        self.path2stimuli = op.join('..', '..', 'Data', 'Stimuli') 
+        # self.path2stimuli = op.join('..', '..', 'Data', 'Stimuli')
+        self.path2stimuli = op.join(base_folder, 'Data', 'Stimuli')
+
         self.path2stimuli_parent = '/neurospin/meg/meg_tmp/sentcomp_Marti_2016/1-' + self.patient
         #self.path2stimuli_parent = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/MEG/' + self.patient
 
@@ -47,8 +60,8 @@ class settings:
         self.LSTM_file_name = 'vectors-LSTM-500-2-0.5-SGD-10-tied.False-300-0-new-2.pkl'
         self.LSTM_file_name = 'vectors-LSTM-500-2-0.5-SGD-10-tied.False-300-0.pkl'
         # self.LSTM_file_name = 'NP_VP_transition.pkl'
-        self.LSTM_file_name = 'relative_clauses.pkl'
-        self.LSTM_file_name = 'relative_clauses_pos_French.pkl'
+        # self.LSTM_file_name = 'relative_clauses.pkl'
+        # self.LSTM_file_name = 'relative_clauses_pos_French.pkl'
         # self.LSTM_file_name = 'relative_clauses_English.pkl'
         self.LSTM_file_name = 'NP_VP_and_RC_filtered_perp.pkl'
 
