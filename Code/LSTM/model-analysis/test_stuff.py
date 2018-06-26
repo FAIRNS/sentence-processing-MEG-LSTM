@@ -44,14 +44,15 @@ file_name = 'LSTM_activations_pretested_on_sentences_hidden650_batch128_dropout0
 with open(op.join(settings.path2LSTMdata, file_name), "rb") as f:
     X = pickle.load(f)
 # For DEBUG:
-X = [x for i,x in enumerate(X) if i<1000]
+X = [x for i,x in enumerate(X) if i<100]
 # ---------
 X = [x.transpose() for x in X] # Transpose elements
 X = np.vstack(X) # Reshape into a design matrix (num_words X num_units)
-np.savetxt('design_matrix_LSTM.csv', X, delimiter=',')
+print(X.shape)
+
 
 VIF_values, IX_filter, ave_features, std_features = pfa.get_VIF_values(X)
-
+print(VIF_values)
 
 # fig, ax = plt.subplots(1, 1)
 # ax.scatter(weights_model1, weights_model2, s=1)

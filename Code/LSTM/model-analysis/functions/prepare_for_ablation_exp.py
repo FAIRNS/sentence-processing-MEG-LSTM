@@ -18,14 +18,14 @@ def get_VIF_values(design_matrix, thresh = 3):
 
     print('Variance inflation factors')
     VIF_values = [vif(design_matrix, i) for i in tqdm(range(design_matrix.shape[1]))]
-    IX_filter = VIF_values > thresh
+    IX_filter = np.asarray([i > thresh for i in VIF_values])
 
     return VIF_values, IX_filter, ave_features, std_features
 
 
 def get_weight_outliers(weights, thresh = 3):
     '''
-    
+
     :param weights: num_weights X 1 numpy array
     :param thresh: scalar indicating the number of standard deviations as a threshold for outlier detection
     :return:
@@ -55,5 +55,6 @@ def get_weight_outliers(weights, thresh = 3):
         previous_n_over_k = math.factorial(n-1)/(math.factorial(k)*math.factorial(n-k-1))
         if np.abs(previous_n_over_k-1000)<np.abs(n_over_k-1000):
             n = n-1
+
 
     return k, n, ave, std
