@@ -42,7 +42,7 @@ if preferences.omit_zero_depth:
     IX = (y != 0)
     X = X[IX, :]
     y = y[IX]
-
+print(X.shape[0], y.shape[0])
 
 # For DEBUG ------
 # X = X[0:500, :]
