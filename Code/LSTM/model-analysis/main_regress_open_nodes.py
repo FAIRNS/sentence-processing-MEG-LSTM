@@ -68,6 +68,7 @@ else:
     sys.stderr('settings.which_layer has to be either 0, 1 or 2')
 
 # If requested, omit zero depth, which mostly corresponds to full-stop, question marks, etc.
+print(X.shape[0], y.shape[0])
 if preferences.omit_zero_depth:
     IX = (y != 0)
     X = X[IX, :]
@@ -76,10 +77,11 @@ if settings.residuals_after_partial_out_word_position:
     with open(op.join(settings.path2output, settings.residuals_after_partial_out_word_position_file_name), 'rb') as f:
         models = pickle.load(f)
         y = models['residuals'] # Residuals are already with zero
+        print('Loading y labels as residuals, after partialling out word position')
         if not preferences.omit_zero_depth:
             sys.stderr('Residuals are without zero depth. Set preferences.omit_zero_depth = True')
 
-
+print(X.shape[0], y.shape[0])
 # For DEBUG ------
 # X = X[0:1000, :]
 # y = y[0:1000]

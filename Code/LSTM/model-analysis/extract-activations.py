@@ -28,7 +28,7 @@ parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
 parser.add_argument('--cuda', action='store_true', default=False)
 parser.add_argument('--format', default='pkl', choices=['npz', 'hdf5', 'pkl'])
 parser.add_argument('-g', '--get-representations', choices=['lstm', 'word'],
-        action='append', default=['word', 'lstm'])
+        default=['word', 'lstm'])
 parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--lang', default='en')
 parser.add_argument('--unk-token', default='<unk>')
@@ -36,7 +36,7 @@ parser.add_argument('-k', '--kbow-value', default=2, type=int)
 
 
 args = parser.parse_args()
-
+print(args.cuda)
 if args.perplexity and 'lstm' not in args.get_representations:
     args.get_representations.append('lstm')
 elif not args.perplexity and len(args.get_representations) == 0:
@@ -68,7 +68,7 @@ model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
 
 
 saved = {}
-
+print(args.get_representations)
 if 'word' in args.get_representations:
     print('Extracting bow representations', file=sys.stderr)
     bow_vectors = [np.zeros((model.encoder.embedding_dim, len(s))) for s in sentences]
@@ -82,6 +82,7 @@ if 'word' in args.get_representations:
         norm_bow_h = np.zeros(model.encoder.embedding_dim)
         for j, w in enumerate(s):
             if w not in vocab.word2idx and args.use_unk:
+                print('unk word: ' + w)
                 w = args.unk_token
             inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
             if args.cuda:
@@ -114,7 +115,12 @@ if 'lstm' in args.get_representations:
         return outs, h
 
     def feed_input(model, hidden, w):
-        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]])).cuda()
+        if w not in vocab.word2idx and args.use_unk:
+            print('unk word: ' + w)
+            w = args.unk_token
+        inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
+        if args.cuda:
+            inp = inp.cuda()
         out, hidden = model(inp, hidden)
         return out, hidden
 
@@ -146,8 +152,9 @@ if 'lstm' in args.get_representations:
         # "faut -il avoir la nationalité française pour adhérer ? </s>",
         # "- sauf que là c' est pas en colombie , c' est en russie . </s>"])
         init_sentence = "</s>"
-    hidden = model.init_hidden(1) 
-    init_out, init_h = feed_sentence(model, hidden, init_sentence.split(" "))
+    hidden = model.init_hidden(1)
+    init_sentence = [s.lower() for s in init_sentence.split(" ")] 
+    init_out, init_h = feed_sentence(model, hidden, init_sentence)
 
     for i, s in enumerate(tqdm(sentences)):
         #sys.stdout.write("{}% complete ({} / {})\r".format(int(i/len(sentences) * 100), i, len(sentences)))
@@ -163,6 +170,7 @@ if 'lstm' in args.get_representations:
         #out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
         for j, w in enumerate(s):
             if w not in vocab.word2idx and args.use_unk:
+                print('unk word: ' + w)
                 w = args.unk_token
             # store the surprisal for the current word
             log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
