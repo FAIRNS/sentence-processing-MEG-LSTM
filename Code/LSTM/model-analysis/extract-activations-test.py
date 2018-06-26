@@ -10,14 +10,16 @@ import pickle
 from tqdm import tqdm
 
 base_folder = '/home/yl254115/Projects/'
-# base_folder = '/neurospin/unicog/protocols/intracranial/'
+base_folder = '/neurospin/unicog/protocols/intracranial/'
 
 # French
 model = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/LSTM-corpora~frwac_random_100M_subset-500-2-0.5-SGD-10-tied.False-300/model.cpu.pt/model.cpu.pt' # French
 #input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/NP_VP_transition.txt'
-input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clauses_pos_French.txt'
+#input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/relative_clauses_pos_French.txt'
+input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/NP_VP_and_RC.txt'
 vocabulary = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/reduced-vocab.txt' # French
 output = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/relative_clauses_pos_French.pkl'
+output = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/NP_VP_and_RC.pkl'
 
 # English
 # model = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt' # English
@@ -38,7 +40,7 @@ unk = '_UNK_'
 format = 'pkl'
 get_representations = ['word', 'lstm']
 cuda = False
-use_unk = False
+use_unk = True
 perplexity = False
 
 vocab = data.Dictionary(vocabulary)

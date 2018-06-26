@@ -76,7 +76,7 @@ def get_stimuli_and_info(settings, params):
         with open(os.path.join(settings.path2stimuli, settings.stimuli_file_name), 'r') as f:
             stimuli = f.readlines()
         info =  pickle.load(open(os.path.join(settings.path2stimuli, settings.stimuli_meta_data), 'rb'))
-
+        #print([i for i, inf in enumerate(info) if 'relative_claue' not in inf.keys()])
 
         relevant_keys = ['NP_ends_with', 'relative_clause', 'NP_length', 'VP_length', 'relative_clause_length']
 
