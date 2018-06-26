@@ -17,7 +17,7 @@ class settings:
         # self.path2LSTMdata = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM'
         self.path2figures = op.join('..', '..', '..', 'Figures')
         self.path2output = op.join('..', '..', '..', 'Output')
-
+        self.path2data = op.join('..', '..', '..', 'Data')
         # Files
        #self.LSTM_file_name = 'vectors-LSTM1000-0.npy'
         self.LSTM_file_name = 'vectors-LSTM500_2-0.npz'
