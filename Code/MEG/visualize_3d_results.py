@@ -17,7 +17,7 @@ params = lsp.params()
 # os.chdir(settings.path2code)
 # print(os.getcwd())
 
-file_name = 'sources_evoked_am150105.pkl'
+file_name = 'sources_evoked_inverse_am150105.pkl'
 with open(op.join(settings.path2MEGdata, 'sources', file_name)) as f:
     av_stc_meg2 = pickle.load(f)
 

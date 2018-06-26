@@ -1,0 +1,28 @@
+ 6,36,quickly,toy,cart,very,cars,this
+ 1,36,cars
+1,'cars' was in the list of
+'quickly toy cart very cars this' 5,36,those,the,appears,small,quickly
+ 1,36,very
+0,'very' was not in the list of
+'those the appears small quickly' 6,36,these,cars,by,this,toy,exploded
+ 1,36,toy
+1,'toy' was in the list of
+'these cars by this toy exploded' 6,36,the,cars,push,some,huge,carts
+ 1,36,a
+0,'a' was not in the list of
+'the cars push some huge carts' 8,36,a,truck,will,bump,this,very,small,car
+ 1,36,appear
+0,'appear' was not in the list of
+'a truck will bump this very small car' 5,36,bump,has,small,the,appear
+ 1,36,small
+1,'small' was in the list of
+'bump has small the appear' 5,36,some,dolls,very,quickly,appear
+ 1,36,in
+0,'in' was not in the list of
+'some dolls very quickly appear' 8,36,this,have,trucks,a,will,cart,fifty,nudged
+ 1,36,doll
+0,'doll' was not in the list of
+'this have trucks a will cart fifty nudged' 4,36,a,truck,has,fallen
+ 1,36,sixty
+0,'sixty' was not in the list of
+'a truck has fallen'

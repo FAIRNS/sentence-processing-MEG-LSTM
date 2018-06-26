@@ -1,0 +1,90 @@
+function [d, ProbeFromToCounts]=FindAndSub(d,inode,ProbeInfo,ProbeFromToCounts)
+%%% search for a node matching the variable nodetype, and whose labels
+%%% match the variable nodelabels
+%%% substitute it, creating a new node on the fly
+%%% Return the new structure and the substituted node
+DefCaseList
+
+% check if current node matches a case label
+FoundCase=intersect(d.labels{inode},CaseList);
+if ~isempty(FoundCase)
+    % determine what to do    
+    curCase=find( strcmp(FoundCase,CaseList) );
+    
+    if ProbeInfo.NPToRep(curCase)
+        if ProbeInfo.NPToSwitch(curCase)
+            SwitchInfo.Switch=1;
+            SwitchInfo.GrammOrLex= ProbeInfo.Diff_GrammOrLexChange;
+            SwitchInfo.GrammSwitchType= ProbeInfo.GrammSwitchType;            
+        else
+            SwitchInfo.Switch=0;
+        end
+            
+        [d, ProbeFromToCounts]=SubsNode(d,inode,'_PRONOUN_SUB',curCase,SwitchInfo,ProbeFromToCounts);
+    else                               
+        if ProbeInfo.Diff_GrammOrLexChange==2 && ismember( Probe.LexChangeCat,([1 3]) )     % if we're searching to change a Noun or an Adj     
+            if we found what we want to swap out
+                swap it
+            else
+                ich=1;
+                while ich<=d.nchildren{inode}
+                    [d, ProbeFromToCounts]=FindAndSub(d,d.children{inode}(ich),ProbeInfo,ProbeFromToCounts);    % keep searching     
+                    ich=ich+1;
+                end
+            end
+        else
+            return  % keep this NP as it is... so do nothing and end this branch of searching           
+        end
+    end    
+elseif ProbeInfo.ElideAdv && strcmp( d.node{inode},'_ADV_P2' )  
+    d=SubsNode(d,inode,'_Elided');    
+elseif strcmp( d.node{inode},'_T_P0' ) && ProbeInfo.SameOrDiff ==2 && ProbeInfo.Diff_GrammOrLexChange==1 && ProbeInfo.GrammSwitchType==3
+    % change the verb conjugation        
+    [d, ProbeFromToCounts]=SubsNode(d,inode,'_T_P0',[],[],ProbeFromToCounts);
+    
+    % change the terminal word of the verb back to infinitive form
+    % find the verb
+    curParents=FindParents(d,inode);  % note we need to search in this node's immediate Parent
+    b=FindInChildren(d, curParents(1), [],'_V_P0');      
+    b=d.children{b(1)}(1); 
+    d.terminalword{ b }=d.node{ b }; % node stroes the infinitive, so we rewrite that to the terminalword   
+    
+    % ConjugateVerb.m for the new tense will be called inside Substitute.m   
+else
+    % launch a search through all children   
+    % we need a while loop not a for loop because the value of the numbers of children for each node can dynamically change when a substitution occurs   
+    
+    ich=1;
+    while ich<=d.nchildren{inode}
+        [d, ProbeFromToCounts]=FindAndSub(d,d.children{inode}(ich),ProbeInfo,ProbeFromToCounts);        % keep searching             
+        ich=ich+1;
+    end
+end
+    
+return   
+     
+
+for i = FindInChildren(d,istart,[],nodetype)
+    n1=length(intersect(nodelabels,d.labels{i}));
+    n2=length(nodelabels);
+    if n1==n2 %%% all required labels
+        %% do the substitution
+        d.node{i}=nodesub;
+        if ~strcmp(nodesub(1),'_')
+            d.terminalword{i} = nodesub;
+        end
+        d.nchildren{i}=length(node2sub);
+        d.children{i} = [];
+        for ii=1:d.nchildren{i}
+            totnode = totnode +1;
+            d.children{i}= [ d.children{i} totnode ];
+            d.node{totnode}=node2sub{ii};
+            d.terminalword{totnode}=node2sub{ii};
+            d.nchildren{totnode}=0;
+            d.labels{totnode}=d.labels{i};
+        end
+        break; %% do it only once
+    else
+        i = []; %%%% return i=empty to signal that no adequate node was found
+    end
+end
