@@ -8,13 +8,13 @@ class settings:
         self.method = 'Ridge'
         self.y_label = 'all'  # Which label to regress from the meta text data
         self.h_or_c = 0  # zero or one. 0: hidden 1: cell
-        self.which_layer = 2  # 0: both, 1: first, 2: second
+        self.which_layer = 0  # 0: both, 1: first, 2: second
 
         # Paths
         self.path2code = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Code/MEG'
-        #self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
+        self.path2code = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis'
         self.path2LSTMdata = op.join('..', '..', '..', 'Data', 'LSTM')
-        self.path2LSTMdata = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM'
+        # self.path2LSTMdata = '/neurospin/unicog/protocols/intracranial/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM'
         self.path2figures = op.join('..', '..', '..', 'Figures')
         self.path2output = op.join('..', '..', '..', 'Output')
 
@@ -36,7 +36,7 @@ class settings:
 class params:
     def __init__(self):
         #
-        self.seed_split = 2 # random seed for split
+        self.seed_split = 1 # random seed for split
         self.CV_fold = 5  # 5-fold
 
         # Hyper-parameters regression:

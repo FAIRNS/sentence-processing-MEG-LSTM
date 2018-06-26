@@ -36,8 +36,8 @@ models_names = ['model_ridge'] # 'model_lasso', 'model_ridge'
 for i, model in enumerate(models_names):
     file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(
         settings.h_or_c) + '_layer_' + str(settings.which_layer)
-    best_weights = []
-    for seed in range(1,6,1):
+    best_weights = []; best_intercepts = []
+    for seed in range(1,4,1):
         if model == 'model_ridge':
             prefix_str = 'Ridge'
         elif model == 'model_lasso':
@@ -61,6 +61,7 @@ for i, model in enumerate(models_names):
             best_index = models['model_lasso'].best_index_
 
         best_weights.append(models[model].coefs[best_index])
+        best_intercepts.append(models[model].intercepts[best_index])
         models = None
 
     best_weights = np.vstack(best_weights) # stack back to ndarray
@@ -84,4 +85,4 @@ for i, model in enumerate(models_names):
     np.savetxt(op.join(settings.path2output, file_name + '.txt'), best_weights_sorted, fmt='%1.2f +- %1.2f, %i')
     print('Saved to: ' + op.join(settings.path2output, file_name))
     with open(op.join(settings.path2output, file_name + '.pkl'), 'wb') as f:
-        pickle.dump(np.mean(best_weights, axis=0), f)
+        pickle.dump([np.mean(best_weights, axis=0), np.mean(best_intercepts)], f)
