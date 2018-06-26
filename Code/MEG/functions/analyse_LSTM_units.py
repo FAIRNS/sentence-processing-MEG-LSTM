@@ -192,14 +192,8 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     num_structures = len(IX_structures)
 
     # Reshape: concatenate all timepoints before PCAing (num_trials*num_timepoints X num_features)
-    vectors = np.empty((0, num_dim))
-    # for timepoint in range(8):
-    #     vectors = np.vstack((vectors, data[:, :, timepoint]))
     print('Prepare data for PCA: breaking down sentences into words')
-    for trial_data in tqdm(data):
-        for timepoint in range(trial_data.shape[1]):
-            vectors = np.vstack((vectors, trial_data[:, timepoint]))
-
+    vectors = np.vstack([trial_data.T for trial_data in tqdm(data)])
 
     print('Prepare data for PCA: standardize data')
     standardized_scale = preprocessing.StandardScaler().fit(vectors)
@@ -209,6 +203,14 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     pca = decomposition.PCA(n_components=2)
     pca.fit(vectors_standardized)
     vectors_PCA_projected = pca.transform(vectors_standardized)
+
+    file_name = 'PCA_LSTM_' + vector_type + settings.LSTM_file_name + '.pkl'
+    with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
+        pickle.dump(pca, f)
+
+    file_name = 'PCA_LSTM_projections_' + vector_type + settings.LSTM_file_name + '.pkl'
+    with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
+        pickle.dump(vectors_PCA_projected, f)
 
     print('After PCA: reshape back into num_trials X num_PCs X num_timepoints as vector_PCA_trajectories')
     vector_PCA_trajectories = []
@@ -220,14 +222,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
             st += 1
         vector_PCA_trajectories.append(np.asarray(curr_sentence_data).transpose())
 
-    file_name = 'PCA_LSTM_' + vector_type + settings.LSTM_file_name + '.pkl'
-    with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
-        pickle.dump([pca, vectors_PCA_projected], f)
-    # with open(op.join(settings.path2figures, 'units_activation', file_name), 'rb') as f:
-    #     data_saved = pickle.load(f)
-    #     pca, vectors_PCA_projected = data_saved[0], data_saved[1]
-
-    file_name = 'PCA_LSTM_traject' + vector_type + settings.LSTM_file_name + '.pkl'
+    file_name = 'PCA_LSTM_traject_' + vector_type + settings.LSTM_file_name + '.pkl'
     with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
         pickle.dump(vector_PCA_trajectories, f)
 
@@ -239,6 +234,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
         print(i, len(vectors_of_curr_structure ))
         vectors_pca_trajectories_mean_over_structure.append(np.mean(np.asarray(vectors_of_curr_structure), axis=0))
         vectors_pca_trajectories_std_structure.append(np.std(np.asarray(vectors_of_curr_structure), axis=0))
+
 
     # Plot averaged trajectories for all structures
     for i in range(num_structures):
