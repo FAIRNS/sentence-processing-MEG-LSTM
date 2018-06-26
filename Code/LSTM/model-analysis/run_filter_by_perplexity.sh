@@ -1,0 +1,2 @@
+python filter-by-perplexity.py -t 3112 -a ../../../Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/NP_VP_and_RC.pkl -i ../../../Data/Stimuli/info_NP_VP_and_RC.p -o ../../../Data/LSTM/activations/french/model2-500-2-0.5-SGD-10-tied.False-300/NP_VP_and_RC_filtered_perp.pkl -io ../../../Data/Stimuli/info_NP_VP_and_RC_filtered_perp.p > ../../../Data/Stimuli/NP_VP_and_RC_filtered_perp.txt 
+
