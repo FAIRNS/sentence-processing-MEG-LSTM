@@ -29,7 +29,7 @@ alu.plot_PCA_trajectories('hidden', LSTM_and_baselines_data['hidden'], all_stim_
 alu.plot_PCA_trajectories('norm_kbow_vectors', LSTM_and_baselines_data['norm_kbow_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
 # PCA - baseline (kbow: bag-of-(last k)-words of word embeddings)
-alu.plot_PCA_trajectories('kbow_vectors', LSTM_and_baselines_data['norm_kbow_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)
+alu.plot_PCA_trajectories('kbow_vectors', LSTM_and_baselines_data['kbow_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
 # # PCA - LSTM cell memory (c)
 alu.plot_PCA_trajectories('cell', LSTM_and_baselines_data['cell'], all_stim_clean, IX_structures, labels, colors, settings, params)
