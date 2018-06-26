@@ -6,6 +6,7 @@ from functions import load_settings_params as lsp
 from functions import plot_results as pr
 import matplotlib.pyplot as plt
 # from functions import plot_results as pr
+from tqdm import tqdm
 import torch
 import sys
 import pickle
@@ -36,7 +37,21 @@ with open(op.join(settings.path2output, file_name_best_weights_model_from_LSTM_t
 
 from functions import prepare_for_ablation_exp as pfa
 k, n, ave, std = pfa.get_weight_outliers(best_weights_model_from_LSTM_to_residuals[0])
-print('weights')
+print('k = %i, n = %i' % (k, n))
+
+print('Loading pre-tested LSTM model on test sentences...')
+file_name = 'LSTM_activations_pretested_on_sentences_hidden650_batch128_dropout0.2_lr20.0.cpu.pt.pkl'
+with open(op.join(settings.path2LSTMdata, file_name), "rb") as f:
+    X = pickle.load(f)
+# For DEBUG:
+X = [x for i,x in enumerate(X) if i<1000]
+# ---------
+X = [x.transpose() for x in X] # Transpose elements
+X = np.vstack(X) # Reshape into a design matrix (num_words X num_units)
+np.savetxt('design_matrix_LSTM.csv', X, delimiter=',')
+
+VIF_values, IX_filter, ave_features, std_features = pfa.get_VIF_values(X)
+
 
 # fig, ax = plt.subplots(1, 1)
 # ax.scatter(weights_model1, weights_model2, s=1)

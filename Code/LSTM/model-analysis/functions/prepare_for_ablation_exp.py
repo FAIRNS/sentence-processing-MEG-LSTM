@@ -1,22 +1,35 @@
 def get_VIF_values(design_matrix, thresh = 3):
+    '''
+
+    :param design_matrix: num_samples X num_features numpy array
+    :param thresh: scalar indicating the thresh for VIF
+    :return:
+    '''
     import numpy as np
     from statsmodels.stats.outliers_influence import variance_inflation_factor as vif
+    from tqdm import tqdm
 
     print('Means and SD')
     ave_features = np.mean(design_matrix, axis = 0) # Make sure the features are centralized
     std_features = np.std(design_matrix, axis = 0) # Make sure the features are standardized
 
-    print('Pairwise Correlations')
-    corr = np.corrcoef(design_matrix)
+    #print('Pairwise Correlations')
+    #corr = np.corrcoef(design_matrix.T)
 
     print('Variance inflation factors')
-    VIF_values = [vif(design_matrix, i) for i in range(design_matrix.shape[1])]
+    VIF_values = [vif(design_matrix, i) for i in tqdm(range(design_matrix.shape[1]))]
     IX_filter = VIF_values > thresh
 
     return VIF_values, IX_filter, ave_features, std_features
 
 
 def get_weight_outliers(weights, thresh = 3):
+    '''
+    
+    :param weights: num_weights X 1 numpy array
+    :param thresh: scalar indicating the number of standard deviations as a threshold for outlier detection
+    :return:
+    '''
     import math
     import numpy as np
     ave = np.mean(weights, axis=0)
