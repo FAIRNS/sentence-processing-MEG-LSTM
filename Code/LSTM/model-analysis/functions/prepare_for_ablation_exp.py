@@ -10,7 +10,7 @@ def get_VIF_values(design_matrix, thresh = 3):
     corr = np.corrcoef(design_matrix)
 
     print('Variance inflation factors')
-    VIF_values = [vif(design_matrix, i) for i in range(m.shape[1])]
+    VIF_values = [vif(design_matrix, i) for i in range(design_matrix.shape[1])]
     IX_filter = VIF_values > thresh
 
     return VIF_values, IX_filter, ave_features, std_features
@@ -26,6 +26,6 @@ def get_weight_outliers(weights):
     IX = IX_pos or IX_neg
 
     k = IX.sum()
-    
+
 
     return k, n, ave, std
