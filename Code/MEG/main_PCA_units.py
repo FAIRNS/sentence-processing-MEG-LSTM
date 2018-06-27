@@ -20,11 +20,15 @@ with open(op.join(settings.path2LSTMdata, settings.LSTM_file_name), 'rb') as f:
     print(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
     LSTM_and_baselines_data = pickle.load(f)
 # LSTM_data = [item for i, item in enumerate(LSTM_data) if i in range(100)]
-
-
+units = [950, 373, 984, 932, 179, 697, 924, 396, 554, 94,
+                 552, 726, 612, 969, 731, 478, 733, 178, 604, 588]
 for IX_structure, label in zip(IX_structures, labels):
-    LSTM_and_baselines_data_curr_structure = [[sentence_matrix for ind, sentence_matrix in enumerate(LSTM_and_baselines_data[key]) if ind in IX_structure] for key in LSTM_and_baselines_data.keys()]
-    alu.plot_units_activation(LSTM_and_baselines_data_curr_structure, labels, IX_structures, settings, params)
+    print(label)
+    LSTM_and_baselines_data_curr_structure = {}
+    for key in ['gates.in', 'gates.forget', 'gates.out', 'gates.c_tilde', 'hidden', 'cell']:
+       LSTM_and_baselines_data_curr_structure[key] = [sentence_matrix for ind, sentence_matrix in enumerate(LSTM_and_baselines_data[key]) if ind in IX_structure]
+    curr_stimuli = [sentence for ind, sentence in enumerate(all_stim_clean) if ind in IX_structure]
+    alu.plot_units_activation(LSTM_and_baselines_data_curr_structure, label, curr_stimuli, units, settings, params)
 
 ###### PCA ###########
 print('PCA - LSTM hidden states (h)')
