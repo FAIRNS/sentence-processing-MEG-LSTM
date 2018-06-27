@@ -54,12 +54,29 @@ for seed in range(1,6,1):
 print(np.mean(R_squared), np.std(R_squared))
 
 
-file_name_best_weights_model_from_LSTM_to_residuals = 'model_ridge_best_coef_all_MODEL_hidden650_batch128_dropout0.2_lr20.0.cpu.pt_h_or_c_0_layer_0.pkl'
-with open(op.join(settings.path2output, file_name_best_weights_model_from_LSTM_to_residuals), 'rb') as f:
-    best_weights_model_from_LSTM_to_residuals = pickle.load(f, encoding='latin1')
+# file_name_best_weights_model_from_LSTM_to_residuals = 'model_ridge_best_coef_all_MODEL_hidden650_batch128_dropout0.2_lr20.0.cpu.pt_h_or_c_0_layer_0.pkl'
+# with open(op.join(settings.path2output, file_name_best_weights_model_from_LSTM_to_residuals), 'rb') as f:
+#     best_weights_model_from_LSTM_to_residuals = pickle.load(f, encoding='latin1')
+
+# Load model from a SINGLE split
+pkl_filename = 'Ridge_Regression_number_of_open_nodes_after_partial_out_word_position_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c)  + '_seed_' + str(params.seed_split) + '.pckl'
+with open(op.join(settings.path2output, pkl_filename), 'rb') as f:
+    model_from_LSTM_to_residuals = pickle.load(f, encoding='latin1')
+
+betas = model_from_LSTM_to_residuals['model_ridge'].coefs[model_from_LSTM_to_residuals['model_ridge'].best_index_]
+intercept = model_from_LSTM_to_residuals['model_ridge'].intercepts[model_from_LSTM_to_residuals['model_ridge'].best_index_]
+y_pred = np.dot(betas, X_)
+# Load test data
+split_filename = 'train_test_data_number_of_open_nodes_after_partial_out_word_position_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '_seed_' + str(params.seed_split) + '.pkl'
+
+# ## Split data to train/test sets
+with open(op.join(settings.path2data, split_filename), 'rb') as f:
+    test_data = pickle.load(f)
+
+X_train, X_test, y_train, y_test = test_data
+del test_data
 
 
-print('weights')
 
 # fig, ax = plt.subplots(1, 1)
 # ax.scatter(weights_model1, weights_model2, s=1)
