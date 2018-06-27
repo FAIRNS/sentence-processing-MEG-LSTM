@@ -98,11 +98,13 @@ if preferences.run_ElasticNet:
 print(pkl_filename)
 if not op.exists(op.join(settings.path2output, pkl_filename)) or preferences.override_previous_runs:
     split_filename = 'train_test_data_number_of_open_nodes_after_partial_out_word_position_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_layer_' + str(
-        settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '_seed_' + str(params.seed_split) + '.pckl'
+        settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '_seed_' + str(params.seed_split) + '.pkl'
 
     # ## Split data to train/test sets
-    with open(op.join(settings.path2data, split_filename), 'rb') as f:
+    with open(op.join(settings.path2data, 'Regression_open_nodes', split_filename), 'rb') as f:
         data = pickle.load(f)
+    X_train, X_test, y_train, y_test = data
+    del data
     # print('Splitting data to train/test sets')
     # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1./params.CV_fold,
     #                                                 random_state=params.seed_split)
@@ -114,15 +116,15 @@ if not op.exists(op.join(settings.path2output, pkl_filename)) or preferences.ove
         print('Fitting a Ridge regression model')
         settings.method = 'Ridge'
         # Train model
-        model_ridge = mfe.train_model(data['X_train'], data['y_train'], settings, params)
+        model_ridge = mfe.train_model(X_train, y_train, settings, params)
         # Evaluate model on test set
-        ridge_scores_test, MSE_per_depth_test = mfe.evaluate_model(model_ridge, data['X_test'], data['y_test'], settings, params)
+        ridge_scores_test, MSE_per_depth_test = mfe.evaluate_model(model_ridge, X_test, y_test, settings, params)
         print(ridge_scores_test)
         MSE_per_depth_train = []
         if settings.calc_MSE_per_each_depth:
-            for depth in set(data['y_train']):
-                X_train_curr_depth = data['X_train'][data['y_train'] == depth, :]
-                y_train_curr_depth = data['y_train'][data['y_train'] == depth]
+            for depth in set(y_train):
+                X_train_curr_depth = X_train[y_train == depth, :]
+                y_train_curr_depth = y_train[y_train == depth]
                 y_predicted_curr_depth = model_ridge.predict(X_train_curr_depth)
                 scores_curr_depth = ((y_train_curr_depth - y_predicted_curr_depth) ** 2).sum() / y_train_curr_depth.shape[0]
                 MSE_per_depth_train.append([depth, scores_curr_depth])

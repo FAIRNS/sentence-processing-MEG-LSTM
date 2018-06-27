@@ -211,8 +211,6 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     file_name = 'PCA_LSTM_projections_' + vector_type + settings.LSTM_file_name + '.pkl'
     with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
         pickle.dump(vectors_PCA_projected, f)
-
-    print('After PCA: reshape back into num_trials X num_PCs X num_timepoints as vector_PCA_trajectories')
     vector_PCA_trajectories = []
     st = 0
     for trial, trial_data in enumerate(tqdm(data)):
@@ -222,7 +220,17 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
             st += 1
         vector_PCA_trajectories.append(np.asarray(curr_sentence_data).transpose())
 
-    file_name = 'PCA_LSTM_traject_' + vector_type + settings.LSTM_file_name + '.pkl'
+    file_name = 'PCA_LSTM_' + vector_type + settings.LSTM_file_name + '.pkl'
+    with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
+        pickle.dump(pca, f)
+    
+    file_name = 'PCA_vectors_LSTM_' + vector_type + settings.LSTM_file_name + '.pkl'
+    with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
+        pickle.dump(vector_PCA_trajectories, f)
+    #     data_saved = pickle.load(f)
+    #     pca, vectors_PCA_projected = data_saved[0], data_saved[1]
+
+    file_name = 'PCA_LSTM_traject' + vector_type + settings.LSTM_file_name + '.pkl'
     with open(op.join(settings.path2figures, 'units_activation', file_name), 'wb') as f:
         pickle.dump(vector_PCA_trajectories, f)
 
@@ -235,11 +243,10 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
         vectors_pca_trajectories_mean_over_structure.append(np.mean(np.asarray(vectors_of_curr_structure), axis=0))
         vectors_pca_trajectories_std_structure.append(np.std(np.asarray(vectors_of_curr_structure), axis=0))
 
-
     # Plot averaged trajectories for all structures
     for i in range(num_structures):
         if IX_structures[i]:
-            print(i, labels[i])
+            #print(i, labels[i])
             curr_stimuli = [stim for ind, stim in enumerate(all_stim_clean) if ind in IX_structures[i]]
             fig, axarr = plt.subplots(figsize=(20, 10))
             axarr.scatter(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :], label=labels[i])
@@ -249,7 +256,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
 
             # Annotate with number the subsequent time points on the trajectories
             delta_x = 0.03 # Shift the annotation of the time point by a small step
-            print(vectors_pca_trajectories_mean_over_structure[i].shape[1], str(curr_stimuli[0]).split(' '))
+            #print(vectors_pca_trajectories_mean_over_structure[i].shape[1], str(curr_stimuli[0]).split(' '))
             for timepoint in range(vectors_pca_trajectories_mean_over_structure[i].shape[1]):
                 axarr.annotate(str(timepoint + 1) + ' ' + str(curr_stimuli[0]).split(' ')[timepoint], xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), fontsize=16)
 
@@ -258,8 +265,8 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
             axarr.set_ylabel('PC2', fontsize=16)
             axarr.set_title('num of sentences = ' + str(len(curr_stimuli)), fontsize=16)
 
-            file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.stimuli_file_name + '.png'
-            #file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.LSTM_file_name + '.svg'
+            #file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.stimuli_file_name + '.png'
+            file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.LSTM_file_name + '.svg'
             plt.figure(fig.number)
             plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
 
