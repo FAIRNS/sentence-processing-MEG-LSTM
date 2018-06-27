@@ -87,19 +87,12 @@ print(X.shape[0], y.shape[0])
 # y = y[0:1000]
 # -------------
 
-if preferences.run_Ridge:
-    pkl_filename = 'Ridge_' + pkl_filename
-if preferences.run_LASSO:
-    pkl_filename = 'LASSO_' + pkl_filename
-if preferences.run_ElasticNet:
-    pkl_filename = 'ElasticNet_' + pkl_filename
-print(pkl_filename)
 for seed_split in range(1, 6, 1):
     # ## Split data to train/test sets
-    print('Splitting data to train/test sets')
+    print('Splitting data to train/test sets; seed = ' + str(seed_split))
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1./params.CV_fold, random_state=seed_split)
     pkl_filename = 'train_test_data_number_of_open_nodes_after_partial_out_word_position_' + settings.y_label + '_MODEL_' + \
                    settings.LSTM_pretrained_model + '_layer_' + str(
         settings.which_layer) + '_h_or_c_' + str(settings.h_or_c) + '_seed_' + str(seed_split) + '.pkl'
-    with open(op.join(settings.path2data, 'Regression_open_nodes', pkl_filename)) as f:
+    with open(op.join(settings.path2data, 'Regression_open_nodes', pkl_filename), 'wb') as f:
         pickle.dump([X_train, X_test, y_train, y_test], f)
