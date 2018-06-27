@@ -119,52 +119,51 @@ def get_stimuli_and_info(settings, params):
     return all_stim_clean, all_info_clean, all_info_correct, IX_structures, labels, colors
 
 
-def plot_units_activation(LSTM_data, label, IX_structure, settings, params):
-    for unit in range(LSTM_data['gates.in'].shape[1]):
-        print('Unit ' + str(unit))
+def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, params):
+    from tqdm import tqdm
+    if not units:
+        units = range(LSTM_data['gates.in'][0].shape[0])
+    for unit in tqdm(units):
+        #print('Unit ' + str(unit))
         # Hidden units
-        mean_h_activity_structure = np.mean(LSTM_data['hidden'][IX_structure, unit, :], axis=0)
-        mean_c_activity_structure = np.mean(LSTM_data['cell'][IX_structure, unit, :], axis=0)
+        mean_h_activity_structure = np.mean(np.vstack([LSTM_data['hidden'][i][unit, :] for i in range(len(LSTM_data['hidden']))]), axis=0)
+        mean_c_activity_structure = np.mean(np.vstack([LSTM_data['cell'][i][unit, :] for i in range(len(LSTM_data['cell']))]), axis=0)
 
-        std_h_activity_structure = np.std(LSTM_data['hidden'][IX_structure, unit, :], axis=0)
-        std_c_activity_structure = np.std(LSTM_data['cell'][IX_structure, unit, :], axis=0)
+        std_h_activity_structure = np.std(np.vstack([LSTM_data['hidden'][i][unit, :] for i in range(len(LSTM_data['hidden']))]), axis=0)
+        std_c_activity_structure = np.std(np.vstack([LSTM_data['cell'][i][unit, :] for i in range(len(LSTM_data['cell']))]), axis=0)
 
-        for i, gate in enumerate(LSTM_data['gates']):  # Loop over gates and c_tilda:
-            # Gates/c_tilda
-            mean_gates_structure = np.mean(LSTM_data[gate][IX_structure, unit, :], axis=0)
-            std_gates_structure = np.std(LSTM_data[gate][IX_structure, unit, :], axis=0)
+        mean_gates_structure = {}
+        std_gates_structure = {}
+        for gate in ['gates.in', 'gates.forget', 'gates.out', 'gates.c_tilde', 'hidden', 'cell']:  # Loop over gates and c_tilda:
+            mean_gates_structure[gate] = np.mean(np.vstack([LSTM_data[gate][i][unit, :] for i in range(len(LSTM_data[gate]))]), axis=0)
+            std_gates_structure[gate] = np.std(np.vstack([LSTM_data[gate][i][unit, :] for i in range(len(LSTM_data[gate]))]), axis=0)
 
         # Plot
-        fig, ax = plt.subplots(figsize[30, 20])
-        num_words_in_curr_structure = mean_h_activity_structure.shape[2]
-        h1 = ax[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure, yerr=std_h_activity_structure)
-        ax[1, 2].set_title('Hidden unit')
-        ax[1, 2].set_xlim(0, 9)
-        ax[1, 2].set_ylim(-1.1, 1.1)
-        fig.legend(h1, 'upper right')
-        # Cells
-        std_c_activity_structure = np.std(LSTM_data['cell'][IX_structure, unit, :], axis=0)
-        # Plot
-        # axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure1, yerr=std_c_activity_structure1)
-        # axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure2, yerr=std_c_activity_structure2)
-        # axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure3, yerr=std_c_activity_structure3)
-        # axarr[1, 1].set_title('Cell')
-        # axarr[1, 1].set_xlim(0, 9)
-        # axarr[1, 1].set_ylim(-1.1, 1.1)
-        #
-        #     # Plot
-        #     axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct1, yerr=std_struct1)
-        #     axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct2, yerr=std_struct2)
-        #     axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct3, yerr=std_struct3)
-        #     axarr[i / 3, i % 3].set_title(gate)
-        #     axarr[i / 3, i % 3].set_xlim(0, 9)
-        #     axarr[i / 3, i % 3].set_ylim(-0.1, 1.1)
-        #     if i == 3:
-        #         axarr[i / 3, i % 3].set_ylim(-1.1, 1.1)
+        fig, ax = plt.subplots(1, 2, figsize=(30,20))
+        ###num_words_in_curr_structure = mean_h_activity_structure.shape[2]
+        ax[0].errorbar(range(1, mean_h_activity_structure.shape[0]+1), mean_h_activity_structure, yerr=std_h_activity_structure, label = 'hidden', linewidth=3)
+        ax[0].errorbar(range(1, mean_c_activity_structure.shape[0]+1), mean_c_activity_structure, yerr=std_c_activity_structure, label = 'cell', linewidth=3)
+        ax[0].errorbar(range(1, mean_gates_structure['gates.c_tilde'].shape[0]+1), mean_gates_structure['gates.c_tilde'], yerr=std_gates_structure['gates.c_tilde'], label = 'gates.c_tilde', linewidth=3)
+        ax[0].set_ylabel('Activation', fontsize =26)
+        ax[0].set_xticks(range(1, mean_gates_structure['gates.c_tilde'].shape[0]+1))
+        ax[0].set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical', fontsize=22)
+        #ax.set_xlim(0, 9)
+        ax[0].set_ylim(-1.1, 1.1)
+        ax[0].legend(loc=(1.04,1), fontsize=20)
+
+        for gate in ['gates.in', 'gates.forget', 'gates.out']:
+            ax[1].errorbar(range(1, mean_gates_structure[gate].shape[0]+1), mean_gates_structure[gate], yerr=std_gates_structure[gate], label = gate, linewidth=3)
+        ax[1].set_ylabel('Activation', fontsize =26)
+        #ax.set_xlim(0, mean_h_activity_structure.shape[0])
+        ax[1].set_ylim(-0.1, 1.1)
+        ax[1].legend(loc=(1.04,1), fontsize=20)
+        ax[1].set_xticks(range(1, mean_gates_structure['gates.c_tilde'].shape[0]+1))
+        ax[1].set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical', fontsize=22)
 
         file_name = 'units_activation_unit_' + str(unit) + label + '.svg'
         plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
         plt.close(fig)
+
 
 def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labels, colors, settings, params):
     # input:
