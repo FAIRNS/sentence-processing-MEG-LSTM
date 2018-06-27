@@ -119,59 +119,50 @@ def get_stimuli_and_info(settings, params):
     return all_stim_clean, all_info_clean, all_info_correct, IX_structures, labels, colors
 
 
-def plot_units_activation(LSTM_data, labels, IX_structure1, IX_structure2, IX_structure3, settings, params):
+def plot_units_activation(LSTM_data, label, IX_structure, settings, params):
     for unit in range(LSTM_data['gates.in'].shape[1]):
         print('Unit ' + str(unit))
-        fig, axarr = plt.subplots(2, 3)
         # Hidden units
-        mean_h_activity_structure1 = np.mean(LSTM_data['vectors'][IX_structure1, unit, :], axis=0)
-        std_h_activity_structure1 = np.std(LSTM_data['vectors'][IX_structure1, unit, :], axis=0)
-        mean_h_activity_structure2 = np.mean(LSTM_data['vectors'][IX_structure2, unit, :], axis=0)
-        std_h_activity_structure2 = np.std(LSTM_data['vectors'][IX_structure2, unit, :], axis=0)
-        mean_h_activity_structure3 = np.mean(LSTM_data['vectors'][IX_structure3, unit, :], axis=0)
-        std_h_activity_structure3 = np.std(LSTM_data['vectors'][IX_structure3, unit, :], axis=0)
-        # Plot
-        h1 = axarr[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure1, yerr=std_h_activity_structure1)
-        h2 = axarr[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure2, yerr=std_h_activity_structure2)
-        h3 = axarr[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure3, yerr=std_h_activity_structure3)
-        axarr[1, 2].set_title('Hidden unit')
-        axarr[1, 2].set_xlim(0, 9)
-        axarr[1, 2].set_ylim(-1.1, 1.1)
-        fig.legend((h1, h2, h3), labels, 'upper right')
-        # Cells
-        mean_c_activity_structure1 = np.mean(LSTM_data['vectors'][IX_structure1, 1000 + unit, :], axis=0)
-        std_c_activity_structure1 = np.std(LSTM_data['vectors'][IX_structure1, 1000 + unit, :], axis=0)
-        mean_c_activity_structure2 = np.mean(LSTM_data['vectors'][IX_structure2, 1000 + unit, :], axis=0)
-        std_c_activity_structure2 = np.std(LSTM_data['vectors'][IX_structure2, 1000 + unit, :], axis=0)
-        mean_c_activity_structure3 = np.mean(LSTM_data['vectors'][IX_structure3, 1000 + unit, :], axis=0)
-        std_c_activity_structure3 = np.std(LSTM_data['vectors'][IX_structure3, 1000 + unit, :], axis=0)
-        # Plot
-        axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure1, yerr=std_c_activity_structure1)
-        axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure2, yerr=std_c_activity_structure2)
-        axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure3, yerr=std_c_activity_structure3)
-        axarr[1, 1].set_title('Cell')
-        axarr[1, 1].set_xlim(0, 9)
-        axarr[1, 1].set_ylim(-1.1, 1.1)
+        mean_h_activity_structure = np.mean(LSTM_data['hidden'][IX_structure, unit, :], axis=0)
+        mean_c_activity_structure = np.mean(LSTM_data['cell'][IX_structure, unit, :], axis=0)
 
-        for i, gate in enumerate([LSTM_data.files[i] for i in [3, 4, 5, 6]]):  # Loop over gates and c_tilda:
+        std_h_activity_structure = np.std(LSTM_data['hidden'][IX_structure, unit, :], axis=0)
+        std_c_activity_structure = np.std(LSTM_data['cell'][IX_structure, unit, :], axis=0)
+
+        for i, gate in enumerate(LSTM_data['gates']):  # Loop over gates and c_tilda:
             # Gates/c_tilda
-            mean_struct1 = np.mean(LSTM_data[gate][IX_structure1, unit, :], axis=0)
-            std_struct1 = np.std(LSTM_data[gate][IX_structure1, unit, :], axis=0)
-            mean_struct2 = np.mean(LSTM_data[gate][IX_structure2, unit, :], axis=0)
-            std_struct2 = np.std(LSTM_data[gate][IX_structure2, unit, :], axis=0)
-            mean_struct3 = np.mean(LSTM_data[gate][IX_structure3, unit, :], axis=0)
-            std_struct3 = np.std(LSTM_data[gate][IX_structure3, unit, :], axis=0)
-            # Plot
-            axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct1, yerr=std_struct1)
-            axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct2, yerr=std_struct2)
-            axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct3, yerr=std_struct3)
-            axarr[i / 3, i % 3].set_title(gate)
-            axarr[i / 3, i % 3].set_xlim(0, 9)
-            axarr[i / 3, i % 3].set_ylim(-0.1, 1.1)
-            if i == 3:
-                axarr[i / 3, i % 3].set_ylim(-1.1, 1.1)
+            mean_gates_structure = np.mean(LSTM_data[gate][IX_structure, unit, :], axis=0)
+            std_gates_structure = np.std(LSTM_data[gate][IX_structure, unit, :], axis=0)
 
-        file_name = 'units_activation_unit_' + str(unit)
+        # Plot
+        fig, ax = plt.subplots(figsize[30, 20])
+        num_words_in_curr_structure = mean_h_activity_structure.shape[2]
+        h1 = ax[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure, yerr=std_h_activity_structure)
+        ax[1, 2].set_title('Hidden unit')
+        ax[1, 2].set_xlim(0, 9)
+        ax[1, 2].set_ylim(-1.1, 1.1)
+        fig.legend(h1, 'upper right')
+        # Cells
+        std_c_activity_structure = np.std(LSTM_data['cell'][IX_structure, unit, :], axis=0)
+        # Plot
+        # axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure1, yerr=std_c_activity_structure1)
+        # axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure2, yerr=std_c_activity_structure2)
+        # axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure3, yerr=std_c_activity_structure3)
+        # axarr[1, 1].set_title('Cell')
+        # axarr[1, 1].set_xlim(0, 9)
+        # axarr[1, 1].set_ylim(-1.1, 1.1)
+        #
+        #     # Plot
+        #     axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct1, yerr=std_struct1)
+        #     axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct2, yerr=std_struct2)
+        #     axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct3, yerr=std_struct3)
+        #     axarr[i / 3, i % 3].set_title(gate)
+        #     axarr[i / 3, i % 3].set_xlim(0, 9)
+        #     axarr[i / 3, i % 3].set_ylim(-0.1, 1.1)
+        #     if i == 3:
+        #         axarr[i / 3, i % 3].set_ylim(-1.1, 1.1)
+
+        file_name = 'units_activation_unit_' + str(unit) + label + '.svg'
         plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
         plt.close(fig)
 
@@ -307,3 +298,60 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     #
     # return fig, fig_tuples
     pass
+
+
+# def plot_units_activation(LSTM_data, labels, IX_structure1, IX_structure2, IX_structure3, settings, params):
+#     for unit in range(LSTM_data['gates.in'].shape[1]):
+#         print('Unit ' + str(unit))
+#         fig, axarr = plt.subplots(2, 3)
+#         # Hidden units
+#         mean_h_activity_structure1 = np.mean(LSTM_data['vectors'][IX_structure1, unit, :], axis=0)
+#         std_h_activity_structure1 = np.std(LSTM_data['vectors'][IX_structure1, unit, :], axis=0)
+#         mean_h_activity_structure2 = np.mean(LSTM_data['vectors'][IX_structure2, unit, :], axis=0)
+#         std_h_activity_structure2 = np.std(LSTM_data['vectors'][IX_structure2, unit, :], axis=0)
+#         mean_h_activity_structure3 = np.mean(LSTM_data['vectors'][IX_structure3, unit, :], axis=0)
+#         std_h_activity_structure3 = np.std(LSTM_data['vectors'][IX_structure3, unit, :], axis=0)
+#         # Plot
+#         h1 = axarr[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure1, yerr=std_h_activity_structure1)
+#         h2 = axarr[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure2, yerr=std_h_activity_structure2)
+#         h3 = axarr[1, 2].errorbar(range(1, 9, 1), mean_h_activity_structure3, yerr=std_h_activity_structure3)
+#         axarr[1, 2].set_title('Hidden unit')
+#         axarr[1, 2].set_xlim(0, 9)
+#         axarr[1, 2].set_ylim(-1.1, 1.1)
+#         fig.legend((h1, h2, h3), labels, 'upper right')
+#         # Cells
+#         mean_c_activity_structure1 = np.mean(LSTM_data['vectors'][IX_structure1, 1000 + unit, :], axis=0)
+#         std_c_activity_structure1 = np.std(LSTM_data['vectors'][IX_structure1, 1000 + unit, :], axis=0)
+#         mean_c_activity_structure2 = np.mean(LSTM_data['vectors'][IX_structure2, 1000 + unit, :], axis=0)
+#         std_c_activity_structure2 = np.std(LSTM_data['vectors'][IX_structure2, 1000 + unit, :], axis=0)
+#         mean_c_activity_structure3 = np.mean(LSTM_data['vectors'][IX_structure3, 1000 + unit, :], axis=0)
+#         std_c_activity_structure3 = np.std(LSTM_data['vectors'][IX_structure3, 1000 + unit, :], axis=0)
+#         # Plot
+#         axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure1, yerr=std_c_activity_structure1)
+#         axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure2, yerr=std_c_activity_structure2)
+#         axarr[1, 1].errorbar(range(1, 9, 1), mean_c_activity_structure3, yerr=std_c_activity_structure3)
+#         axarr[1, 1].set_title('Cell')
+#         axarr[1, 1].set_xlim(0, 9)
+#         axarr[1, 1].set_ylim(-1.1, 1.1)
+#
+#         for i, gate in enumerate([LSTM_data.files[i] for i in [3, 4, 5, 6]]):  # Loop over gates and c_tilda:
+#             # Gates/c_tilda
+#             mean_struct1 = np.mean(LSTM_data[gate][IX_structure1, unit, :], axis=0)
+#             std_struct1 = np.std(LSTM_data[gate][IX_structure1, unit, :], axis=0)
+#             mean_struct2 = np.mean(LSTM_data[gate][IX_structure2, unit, :], axis=0)
+#             std_struct2 = np.std(LSTM_data[gate][IX_structure2, unit, :], axis=0)
+#             mean_struct3 = np.mean(LSTM_data[gate][IX_structure3, unit, :], axis=0)
+#             std_struct3 = np.std(LSTM_data[gate][IX_structure3, unit, :], axis=0)
+#             # Plot
+#             axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct1, yerr=std_struct1)
+#             axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct2, yerr=std_struct2)
+#             axarr[i / 3, i % 3].errorbar(range(1, 9, 1), mean_struct3, yerr=std_struct3)
+#             axarr[i / 3, i % 3].set_title(gate)
+#             axarr[i / 3, i % 3].set_xlim(0, 9)
+#             axarr[i / 3, i % 3].set_ylim(-0.1, 1.1)
+#             if i == 3:
+#                 axarr[i / 3, i % 3].set_ylim(-1.1, 1.1)
+#
+#         file_name = 'units_activation_unit_' + str(unit)
+#         plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
+#         plt.close(fig)
