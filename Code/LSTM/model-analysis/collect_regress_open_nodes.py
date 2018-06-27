@@ -32,12 +32,12 @@ elif settings.which_layer == 2:
 
 bar_plot_width = 0.35  # the width of the bars
 models_names = ['model_ridge'] # 'model_lasso', 'model_ridge'
-# ----- Load LASSO model -----
+# ----- Load regression model -----
 for i, model in enumerate(models_names):
     file_name = model + '_best_coef_' + settings.y_label + '_MODEL_' + settings.LSTM_pretrained_model + '_h_or_c_' + str(
         settings.h_or_c) + '_layer_' + str(settings.which_layer)
     best_weights = []; best_intercepts = []
-    for seed in range(1,4,1):
+    for seed in range(1,6,1):
         if model == 'model_ridge':
             prefix_str = 'Ridge'
         elif model == 'model_lasso':
