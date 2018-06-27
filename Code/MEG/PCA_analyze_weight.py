@@ -13,6 +13,7 @@ for vector_type in vector_types:
     file_name = 'PCA_LSTM_' + vector_type + settings.LSTM_file_name + '.pkl'
     with open(op.join(settings.path2figures, 'units_activation', file_name), 'rb') as f:
         PCA_results = pickle.load(f)
+    print(PCA_results.__dir__)
     PCs = PCA_results[0].components_
 
     fig, axs = plt.subplots(2, 1)
