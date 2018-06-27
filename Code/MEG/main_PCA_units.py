@@ -21,8 +21,14 @@ with open(op.join(settings.path2LSTMdata, settings.LSTM_file_name), 'rb') as f:
     LSTM_and_baselines_data = pickle.load(f)
 # LSTM_data = [item for i, item in enumerate(LSTM_data) if i in range(100)]
 
+
+for IX_structure, label in zip(IX_structures, labels):
+    LSTM_and_baselines_data_curr_structure = [[sentence_matrix for ind, sentence_matrix in enumerate(LSTM_and_baselines_data[key]) if ind in IX_structure] for key in LSTM_and_baselines_data.keys()]
+    alu.plot_units_activation(LSTM_and_baselines_data_curr_structure, labels, IX_structures, settings, params)
+
 ###### PCA ###########
 print('PCA - LSTM hidden states (h)')
+
 alu.plot_PCA_trajectories('hidden', LSTM_and_baselines_data['hidden'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
 print('PCA - baseline (kbow: bag-of-(last k)-words of nomalized word embeddings)')
