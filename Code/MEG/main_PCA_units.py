@@ -20,19 +20,9 @@ with open(op.join(settings.path2LSTMdata, settings.LSTM_file_name), 'rb') as f:
     print(op.join(settings.path2LSTMdata, settings.LSTM_file_name))
     LSTM_and_baselines_data = pickle.load(f)
 # LSTM_data = [item for i, item in enumerate(LSTM_data) if i in range(100)]
-units = [950, 373, 984, 932, 179, 697, 924, 396, 554, 94,
-                 552, 726, 612, 969, 731, 478, 733, 178, 604, 588]
-for IX_structure, label in zip(IX_structures, labels):
-    print(label)
-    LSTM_and_baselines_data_curr_structure = {}
-    for key in ['gates.in', 'gates.forget', 'gates.out', 'gates.c_tilde', 'hidden', 'cell']:
-       LSTM_and_baselines_data_curr_structure[key] = [sentence_matrix for ind, sentence_matrix in enumerate(LSTM_and_baselines_data[key]) if ind in IX_structure]
-    curr_stimuli = [sentence for ind, sentence in enumerate(all_stim_clean) if ind in IX_structure]
-    alu.plot_units_activation(LSTM_and_baselines_data_curr_structure, label, curr_stimuli, units, settings, params)
 
 ###### PCA ###########
 print('PCA - LSTM hidden states (h)')
-
 alu.plot_PCA_trajectories('hidden', LSTM_and_baselines_data['hidden'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
 print('PCA - baseline (kbow: bag-of-(last k)-words of nomalized word embeddings)')
@@ -56,34 +46,3 @@ alu.plot_PCA_trajectories('word_vectors', LSTM_and_baselines_data['word_vectors'
 print('PCA - baseline2 (bag-of-words of word embeddings)')
 alu.plot_PCA_trajectories('bow_vectors', LSTM_and_baselines_data['bow_vectors'], all_stim_clean, IX_structures, labels, colors, settings, params)
 
-# PCA - LSTM hidden + memory ([h, c])
-# alu.plot_PCA_trajectories(LSTM_and_baselines_data, all_stim_clean, IX_structures, labels, colors, settings, params)
-
-# fig, fig_tuples = alu.plot_PCA_trajectories(LSTM_data[:,0:1000,:], IX_structures, labels, colors, settings, params)
-# file_name = 'PCA_LSTM_h_' + settings.patient + settings.LSTM_file_name + '.png'
-# plt.figure(fig.number); plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
-# plt.figure(fig_tuples.number); plt.savefig(op.join(settings.path2figures, 'units_activation', 'tuples_' + file_name))
-
-# fig, fig_tuples =  alu.plot_PCA_trajectories(LSTM_data[:, 1000:2001,:], IX_structures, labels, colors, settings, params)
-# file_name = 'PCA_LSTM_c_' + settings.patient + settings.LSTM_file_name + '.png'
-# plt.figure(fig.number); plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
-# plt.figure(fig_tuples.number); plt.savefig(op.join(settings.path2figures, 'units_activation', 'tuples_' + file_name))
-
-# file_name = 'PCA_LSTM_h_c_' + settings.patient + settings.LSTM_file_name + '.png'
-# plt.figure(fig.number); plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
-# plt.figure(fig_tuples.number); plt.savefig(op.join(settings.path2figures, 'units_activation', 'tuples_' + file_name))
-
-# file_name = 'PCA_word_vectors_' + settings.patient + settings.LSTM_file_name + '.png'
-# plt.figure(fig.number); plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
-# plt.figure(fig_tuples.number); plt.savefig(op.join(settings.path2figures, 'units_activation', 'tuples_' + file_name))
-
-# file_name = 'PCA_word_vectors_BOW_' + settings.patient + settings.LSTM_file_name + '.png'
-# plt.figure(fig.number); plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
-# plt.figure(fig_tuples.number); plt.savefig(op.join(settings.path2figures, 'units_activation', 'tuples_' + file_name))
-
-# Split according to structures (structure = 1 is 4x4; 2 is 2x6; 3 is 6x2)
-# alu.plot_units_activation(LSTM_data, labels, IX_structures, settings, params)
-
-#
-# word_vectors_data = np.load(op.join(settings.path2LSTMdata, settings.word_vectors_file_name))
-# word_vectors_BOW_data = np.load(op.join(settings.path2LSTMdata, settings.word_vectors_BOW_file_name))

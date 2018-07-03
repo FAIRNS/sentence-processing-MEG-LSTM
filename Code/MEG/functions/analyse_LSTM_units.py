@@ -148,14 +148,14 @@ def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, param
         ax[0].set_xticks(range(1, mean_gates_structure['gates.c_tilde'].shape[0]+1))
         ax[0].set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical', fontsize=22)
         #ax.set_xlim(0, 9)
-        ax[0].set_ylim(-1.1, 1.1)
+        #ax[0].set_ylim(-1.1, 1.1)
         ax[0].legend(loc=(1.04,1), fontsize=20)
 
         for gate in ['gates.in', 'gates.forget', 'gates.out']:
             ax[1].errorbar(range(1, mean_gates_structure[gate].shape[0]+1), mean_gates_structure[gate], yerr=std_gates_structure[gate], label = gate, linewidth=3)
         ax[1].set_ylabel('Activation', fontsize =26)
         #ax.set_xlim(0, mean_h_activity_structure.shape[0])
-        ax[1].set_ylim(-0.1, 1.1)
+        #ax[1].set_ylim(-0.1, 1.1)
         ax[1].legend(loc=(1.04,1), fontsize=20)
         ax[1].set_xticks(range(1, mean_gates_structure['gates.c_tilde'].shape[0]+1))
         ax[1].set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical', fontsize=22)
@@ -164,6 +164,57 @@ def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, param
         plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
         plt.close(fig)
 
+
+        fig, ax = plt.subplots(figsize=(24, 16))
+        mean_i_c_tilde_activity_structure = np.mean(np.multiply(np.vstack([LSTM_data['gates.in'][i][unit, :] for i in range(len(LSTM_data['gates.in']))]),np.vstack([LSTM_data['gates.c_tilde'][i][unit, :] for i in range(len(LSTM_data['gates.c_tilde']))])), axis=0)
+        std_i_c_tilde_activity_structure = np.mean(np.multiply(np.vstack([LSTM_data['gates.in'][i][unit, :] for i in range(len(LSTM_data['gates.in']))]),np.vstack([LSTM_data['gates.c_tilde'][i][unit, :] for i in range(len(LSTM_data['gates.c_tilde']))])), axis=0)
+        fig.subplots_adjust(bottom=0.25)
+        
+        ax.errorbar(range(1, mean_i_c_tilde_activity_structure.shape[0]+1), mean_i_c_tilde_activity_structure, yerr=std_i_c_tilde_activity_structure, label = '$i_t \\tilde{C}_t$', linewidth=5, ls='--')
+        ax.errorbar(range(1, mean_gates_structure['gates.forget'].shape[0]+1), mean_gates_structure['gates.forget'], yerr=std_gates_structure['gates.forget'], label = '$f_t$', linewidth=5, ls='--')
+        ax.set_ylabel('Activation', fontsize =26)
+        ax.set_xticks(range(1, mean_gates_structure['gates.forget'].shape[0]+1))
+        ax.set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical')
+        #ax.set_xlim(0, 9)
+        #ax.set_ylim(-1.1, 1.1)
+        ax.tick_params(labelsize=30)
+        ax.legend(fontsize=24, numpoints=1, loc=(1, 0.5), framealpha=0)
+        file_name = 'units_forget_activation_unit_' + str(unit) + label + '.svg'
+        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
+        plt.close(fig)
+
+        fig, ax = plt.subplots(figsize=(24, 16))
+        ax.errorbar(range(1, mean_h_activity_structure.shape[0]+1), mean_h_activity_structure, yerr=std_h_activity_structure, label = '$h_t$', linewidth=5, ls='--')
+        ax.errorbar(range(1, mean_c_activity_structure.shape[0]+1), mean_c_activity_structure, yerr=std_c_activity_structure, label = '$C_t$', linewidth=5, ls='--')
+        ax.set_ylabel('Activation', fontsize =26)
+        #ax.set_xlim(0, mean_h_activity_structure.shape[0])
+        #ax.set_ylim(-1.1, 1.1)
+        ax.set_xticks(range(1, mean_h_activity_structure.shape[0]+1))
+        ax.set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical')
+        ax.legend(fontsize=24, numpoints=1, loc=(1, 0.5), framealpha=0)
+        ax.tick_params(labelsize=30)
+        fig.subplots_adjust(bottom=0.25)
+
+        file_name = 'units_h_c_activation_unit_' + str(unit) + label + '.svg'
+        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
+        plt.close(fig)
+
+        
+        fig, ax = plt.subplots(figsize=(24, 16))
+        ax.errorbar(range(1, mean_i_c_tilde_activity_structure.shape[0]+1), mean_i_c_tilde_activity_structure, yerr=std_i_c_tilde_activity_structure, label = '$i_t \\tilde{C}_t$', linewidth=5, ls='--')
+        ax.errorbar(range(1, mean_gates_structure['gates.forget'].shape[0]+1), mean_gates_structure['gates.forget'], yerr=std_gates_structure['gates.forget'], label = '$f_t$', linewidth=5, ls='--')
+        ax.errorbar(range(1, mean_h_activity_structure.shape[0]+1), mean_h_activity_structure, yerr=std_h_activity_structure, label = '$h_t$', linewidth=5)
+        ax.errorbar(range(1, mean_c_activity_structure.shape[0]+1), mean_c_activity_structure, yerr=std_c_activity_structure, label = '$C_t$', linewidth=5)
+        ax.set_ylabel('Activation', fontsize =26)
+        ax.set_xticks(range(1, mean_h_activity_structure.shape[0]+1))
+        ax.set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical')
+        ax.legend(fontsize=24, numpoints=1, loc=(1, 0.5), framealpha=0)
+        ax.tick_params(labelsize=30)
+        fig.subplots_adjust(bottom=0.25)
+
+        file_name = 'units_h_c_forget_activation_unit_' + str(unit) + label + '.svg'
+        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
+        plt.close(fig)
 
 def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labels, colors, settings, params):
     # input:
@@ -229,7 +280,7 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
     vectors_pca_trajectories_mean_over_structure = []; vectors_pca_trajectories_std_structure = []
     for i, IX_structure in enumerate(IX_structures):
         vectors_of_curr_structure = [vec for ind, vec in enumerate(vector_PCA_trajectories) if ind in IX_structure]
-        print(i, len(vectors_of_curr_structure ))
+        #print(i, len(vectors_of_curr_structure ))
         vectors_pca_trajectories_mean_over_structure.append(np.mean(np.asarray(vectors_of_curr_structure), axis=0))
         vectors_pca_trajectories_std_structure.append(np.std(np.asarray(vectors_of_curr_structure), axis=0))
 
@@ -242,23 +293,49 @@ def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labe
             axarr.scatter(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :], label=labels[i])
             axarr.errorbar(vectors_pca_trajectories_mean_over_structure[i][0, :], vectors_pca_trajectories_mean_over_structure[i][1, :],
                               xerr=vectors_pca_trajectories_std_structure[i][0, :],
-                              yerr=vectors_pca_trajectories_std_structure[i][1, :])
+                              yerr=vectors_pca_trajectories_std_structure[i][1, :], linewidth=5)
 
             # Annotate with number the subsequent time points on the trajectories
             delta_x = 0.03 # Shift the annotation of the time point by a small step
             #print(vectors_pca_trajectories_mean_over_structure[i].shape[1], str(curr_stimuli[0]).split(' '))
             for timepoint in range(vectors_pca_trajectories_mean_over_structure[i].shape[1]):
-                axarr.annotate(str(timepoint + 1) + ' ' + str(curr_stimuli[0]).split(' ')[timepoint], xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), fontsize=16)
+                axarr.annotate(str(timepoint + 1) + ' ' + str(curr_stimuli[0]).split(' ')[timepoint], xy=(delta_x + vectors_pca_trajectories_mean_over_structure[i][0, timepoint], delta_x + vectors_pca_trajectories_mean_over_structure[i][1, timepoint]), fontsize=30)
 
             axarr.legend()
-            axarr.set_xlabel('PC1', fontsize=16)
-            axarr.set_ylabel('PC2', fontsize=16)
-            axarr.set_title('num of sentences = ' + str(len(curr_stimuli)), fontsize=16)
+            axarr.set_xlabel('PC1', fontsize=26)
+            axarr.set_ylabel('PC2', fontsize=26)
+            axarr.tick_params(labelsize=30)
+            #ax.legend(framealpha=1)
+            #axarr.set_title('num of sentences = ' + str(len(curr_stimuli)), fontsize=16)
 
             #file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.stimuli_file_name + '.png'
             file_name = 'PCA_LSTM_' + vector_type + '_' + labels[i] + '_' + settings.LSTM_file_name + '.svg'
             plt.figure(fig.number)
             plt.savefig(op.join(settings.path2figures, 'units_activation', file_name))
+
+
+def draw_activations(gates, unit, unit_type, prefix='', ls='-', color=None, marker=None):
+    if unit_type == 'gates.in*c_tilde':
+        unit_activations=gates['gates.in']['plot'][:,unit,:] * gates['gates.c_tilde']['plot'][:,unit,:]
+    else:
+        unit_activations=gates[unit_type]['plot'][:,unit,:]
+    plt.title(unit)
+    draw_activation_series(unit_activations, unit_type, prefix, ls, color, marker)
+
+def draw_activation_series(unit_activations, unit_type, prefix='', ls='-', color=None, marker=None):
+    labels = [''] * plot_padding + ['head'] + ['+{}'.format(i) for i in range(1, plot_span//2+1)] + ['{}'.format(i) for i in range(-plot_span//2,0)] + ['target']
+    x = np.arange(unit_activations.shape[1])
+    plt.xticks(x, labels, rotation='vertical', fontsize=30)
+    labels={'gates.in*c_tilde': "$i_t \\tilde{C}_t$",
+           'cell': '$C$',
+           'gates.forget': '$f_t$',
+           'hidden': '$h_t$'}
+    plt.errorbar(x=x, y=unit_activations.mean(0), yerr=unit_activations.std(0), lw=5,capsize=6, capthick=2, label=prefix+labels[unit_type], ls=ls, color=color, marker=marker)
+    handles, labels = plt.gca().get_legend_handles_labels()
+    # remove error bars from legend
+    handles = [h[0] for h in handles]
+    plt.legend(handles, labels, fontsize=24, loc='upper right', numpoints=1, bbox_to_anchor=(1.1, 1.1), fancybox=True, framealpha=1)
+    plt.yticks(fontsize=22)
 
     # fig, axarr = plt.subplots(1, num_structures, figsize=(20, 10))
     # for i in range(num_structures):
