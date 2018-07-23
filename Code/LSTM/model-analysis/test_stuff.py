@@ -1,3 +1,12 @@
+import pickle
+path2output_info = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/info_RC_english_marco.p'
+
+with open(path2output_info, 'rb') as f:
+    data = pickle.load(f)
+print(data)
+
+
+####
 import os.path as op
 import os
 import numpy as np
