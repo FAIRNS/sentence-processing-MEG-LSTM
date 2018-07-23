@@ -1,3 +1,19 @@
+import itertools
+n_components = 5
+PCs = itertools.permutations(range(n_components), 2)
+for PC in PCs:
+	print(PC[0], PC[1])
+
+
+
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(1, 2)
+ax[0].plot([1, 2, 3], [2, 55, 6])
+ax[0].set_xticks([1, 2, 3])
+ax[0].set_xticklabels(['a', 'b', 'x'], rotation='vertical')
+plt.show()
 #######################
 # from os import path as op
 # import pickle
