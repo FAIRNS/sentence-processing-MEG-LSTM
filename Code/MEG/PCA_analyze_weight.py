@@ -9,7 +9,7 @@ settings = lsp.settings()
 params = lsp.params()
 
 vector_types = ['hidden', 'cell', 'word_vectors', 'bow_vectors']
-vector_types = ['hidden']
+vector_types = ['hidden', 'cell']
 for vector_type in vector_types:
     file_name = 'PCA_LSTM_' + vector_type + settings.LSTM_file_name + '.pkl'
     with open(op.join(settings.path2figures, 'units_activation', file_name), 'rb') as f:
