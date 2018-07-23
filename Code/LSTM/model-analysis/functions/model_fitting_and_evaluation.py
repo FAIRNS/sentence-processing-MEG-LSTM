@@ -18,13 +18,6 @@ def train_model(X_train, y_train, settings, params):
 
 
 def train_model_ridge(X_train, y_train, settings, params):
-    # Compute path: collect weight coefficient for all regularization sizes
-    coefs = []; intercepts = [] # Collect coefs for each regularization size (alpha)
-    for a in params.alphas:
-        model = linear_model.Ridge(alpha=a, fit_intercept=True)
-        model.fit(X_train, y_train)
-        coefs.append(model.coef_)
-        intercepts.append(model.intercept_)
 
     # Grid search - calculate train/validation error for all regularization sizes
     ridge = linear_model.Ridge()
@@ -32,11 +25,6 @@ def train_model_ridge(X_train, y_train, settings, params):
     model_ridge = model_selection.GridSearchCV(ridge, tuned_parameters, cv=params.CV_fold,
                                                refit=True, return_train_score=True)
     model_ridge.fit(X_train, y_train)
-
-    # Add to struct
-    model_ridge.alphas = params.alphas
-    model_ridge.coefs = coefs
-    model_ridge.intercepts = intercepts
 
     return model_ridge
 
