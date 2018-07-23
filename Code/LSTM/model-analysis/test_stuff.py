@@ -21,6 +21,7 @@ import sys
 import pickle
 sys.path.append(os.path.abspath('../src/word_language_model'))
 import data
+import time
 
 # --------- Main script -----------
 print('Load settings and parameters')
@@ -59,9 +60,17 @@ X = [x.transpose() for x in X] # Transpose elements
 X = np.vstack(X) # Reshape into a design matrix (num_words X num_units)
 print(X.shape)
 
+X = X[0:1000, 0:5]
 
-VIF_values, IX_filter, ave_features, std_features = pfa.get_VIF_values(X)
-print(VIF_values)
+st_time = time.time()
+VIF_values1 = pfa.calc_VIF(X)
+print(time.time()-st_time)
+
+st_time = time.time()
+VIF_values2, IX_filter, ave_features, std_features = pfa.get_VIF_values(X)
+print(time.time()-st_time)
+
+print(VIF_values1, VIF_values2)
 
 # fig, ax = plt.subplots(1, 1)
 # ax.scatter(weights_model1, weights_model2, s=1)

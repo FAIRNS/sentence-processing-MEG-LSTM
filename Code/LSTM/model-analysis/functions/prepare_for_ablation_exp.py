@@ -1,4 +1,25 @@
-def calc_VIF(design_matrix):
+def calc_VIF(X):
+    '''
+    # This function calculates the Variance Inflation Factor (VIF) for a given design matrix
+    :param X: a design matrix (num_samples X num_features)
+    :return: VIF: a vector of size num_features
+    '''
+    import numpy as np
+    from sklearn import datasets, linear_model
+
+    num_samples, num_features = X.shape
+    VIF = np.empty(num_features)
+    for j in range(num_features):
+        IX = np.asarray(range(num_features)) != j
+        X_j = X[:, IX]
+        y_j = X[:, j]
+
+        regr = linear_model.LinearRegression(fit_intercept=True)
+        regr.fit(X_j, y_j)
+        R_2_j = regr.score(X_j, y_j)
+        VIF[j] = 1. / (1. - R_2_j)
+
+    return VIF
 
 
 def get_VIF_values(design_matrix, thresh = 3):
@@ -8,8 +29,10 @@ def get_VIF_values(design_matrix, thresh = 3):
     :param thresh: scalar indicating the thresh for VIF
     :return:
     '''
+    import time
     import numpy as np
     from statsmodels.stats.outliers_influence import variance_inflation_factor as vif
+    from statsmodels.tools.tools import add_constant
     from tqdm import tqdm
 
     print('Means and SD')
@@ -20,11 +43,11 @@ def get_VIF_values(design_matrix, thresh = 3):
     #corr = np.corrcoef(design_matrix.T)
 
     print('Variance inflation factors')
-    VIF_values1 = [calc_VIF(design_matrix, i) for i in tqdm(range(design_matrix.shape[1]))]
-    VIF_values2 = [vif(design_matrix, i) for i in tqdm(range(design_matrix.shape[1]))]
+    design_matrix = add_constant(design_matrix)
+    VIF_values = [vif(design_matrix, i) for i in range(design_matrix.shape[1])]
     IX_filter = np.asarray([i > thresh for i in VIF_values])
 
-    return VIF_values1, VIF_values2, IX_filter, ave_features, std_features
+    return VIF_values, IX_filter, ave_features, std_features
 
 
 def get_weight_outliers(weights, thresh = 3):
