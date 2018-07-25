@@ -38,16 +38,18 @@ def split_data(data_sentences, params):
 
 
 def prepare_data_for_regression(data_sentences_train, data_sentences_test):
+    #TODO: get a key (hidde/cell/both) for which activations to put in the regression
     X_train = []; y_train = []; X_test = []; y_test = []
+
     # len(activations_train)=num_sentences_train. Each element has num_words vectors of activation
-    activations_train = [np.vstack(ele['activations']) for ele in data_sentences_train]
-    activations_test = [np.vstack(ele['activations']) for ele in data_sentences_test]
-    open_nodes_train = [ele['open_nodes'] for ele in data_sentences_train]
-    open_nodes_test = [ele['open_nodes'] for ele in data_sentences_test]
+    activations_train = [np.vstack(ele['hidden']) for ele in data_sentences_train]
+    activations_test = [np.vstack(ele['hidden']) for ele in data_sentences_test]
+    open_nodes_train = [int(w) for ele in data_sentences_train for w in ele['open_nodes_count'].strip().split(' ')]
+    open_nodes_test = [int(w) for ele in data_sentences_test for w in ele['open_nodes_count'].strip().split(' ')]
 
     # Cat all sentences to generate matrices where each row is per word
-    X_train = np.vstack(activations_train)
-    X_test = np.vstack(activations_test)
+    X_train = np.hstack(activations_train).transpose()
+    X_test = np.hstack(activations_test).transpose()
     y_train = np.hstack(open_nodes_train)
     y_test = np.hstack(open_nodes_test)
 
