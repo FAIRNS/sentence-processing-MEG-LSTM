@@ -195,7 +195,7 @@ class Data(object):
         sentence_length = [len(s) for s in sentences]
         max_length = max(*sentence_length)
         import lstm
-        model = torch.load(model)
+        model = torch.load(model, map_location=lambda storage, loc: storage)
         # model.rnn.flatten_parameters()
         # hack the forward function to send an extra argument containing the model parameters
         model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
