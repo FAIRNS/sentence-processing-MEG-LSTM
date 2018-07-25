@@ -21,7 +21,7 @@ n = 1
 txt_file = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/20k_sentences.txt')
 model = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt')
 vocab = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt')
-data_file = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/activations_20k_sentences_n=%i.txt' %n)
+data_file = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/activations_20k_sentences_n=%i.pkl' %n)
 
 eos = '<eos>'
 use_unk = True
