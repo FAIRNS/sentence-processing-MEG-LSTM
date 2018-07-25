@@ -1,15 +1,26 @@
-import os.path as op
 import os
-import numpy as np
 from functions import load_settings_params as lsp
 from functions import model_fitting_and_evaluation as mfe
-from functions import extract_activations_from_LSTM
 from functions import data_manip
+from functions import annotated_data
+from functions import vif
 import sys
 import pickle
 sys.path.append(os.path.abspath('../src/word_language_model'))
 import matplotlib.pyplot as plt
 
+# inp
+base_folder = '/home/yl254115/Projects/'
+txt_file = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/20k_sentences.txt'
+model = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
+vocab = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
+eos = '<eos>'
+use_unk = True
+unk = '<unk>'
+lang = 'en'
+get_representations = ['word', 'lstm']
+# out
+pkl_filename = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Output/Ridge_regression_number_of_open_nodes.pkl'
 
 # --------- Main script -----------
 print('Load settings and parameters')
@@ -17,24 +28,20 @@ settings = lsp.settings()
 params = lsp.params()
 preferences = lsp.preferences()
 
-#
-pkl_filename = 'Ridge_regression_number_of_open_nodes.pkl'
+data_sentences = annotated_data.Data()
+data_sentences.add_corpus(txt_file, separator='|', column_names=['sentence', 'structure', 'open_nodes_count', 'adjacent_boundary_count'])
+data_sentences.data = data_sentences.filter(n=100) # Filter data to get a uniform distribution of sentence types
+data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
+#TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator
+#TODO: Add word position and frequency to design matrix.
 
-# Load Stimuli
-print('Loading number of open nodes data')
-# Load a list of dict, each dict element corresponds to a sentence ['sentence'], ['open_nodes'], ['activations']
-data_sentences = data_manip.load_data_from_sentence_generator(settings)
-# For DEBUG ------
-data_sentences = [data for i, data in enumerate(data_sentences) if i in range(100)]
-# -------------
-
-# Split data: each list (train/test) is of the size of the number of CV splits:
-data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences, params)
-data_sentences = None # Clear from memory
+data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences.data, params) # Train-test split
 scores_ridge = []
 for split in range(params.CV_fold):
     # Preparing the data for regression, by breaking down sentences into X, y matrices that are word-wise:
     X_train, y_train, X_test, y_test = data_manip.prepare_data_for_regression(data_sentences_train[split], data_sentences_test[split])
+    # TODO: data_sentences.decorrelate_position_depth()
+    if split == 0: VIF = vif.calc_VIF(X_train) # calc VIF for first split only
 
     # Train a Ridge regression model:
     model_ridge = mfe.train_model(X_train, y_train, settings, params)
@@ -46,3 +53,7 @@ for split in range(params.CV_fold):
     print('Split %i: Mean validation score %1.2f +- %1.2f, alpha = %1.2f; Test scores: %1.2f' % (
     split + 1, model_ridge.cv_results_['mean_test_score'][model_ridge.best_index_],
     model_ridge.cv_results_['std_test_score'][model_ridge.best_index_], model_ridge.best_params_['alpha'], scores_curr_split))
+
+# Save to drive:
+with open(pkl_filename, 'wb') as f:
+    pickle.dump((model_ridge, scores_ridge, VIF), f)
