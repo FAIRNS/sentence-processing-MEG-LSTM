@@ -35,6 +35,8 @@ class Data(object):
             self.data.append(dict(zip(column_names, vals)))
             length = len(vals[0].split())
             self.data[-1]['length'] = length
+            word_pos = [i for i in range(len(vals[0]))]
+            self.data[-1]['word_pos'] = word_pos
             for key, val in kwargs.items():
                 self.data[-1][key] = val(line)
 
@@ -53,10 +55,6 @@ class Data(object):
         for c, s_dict in enumerate(self.data):
             for key in activations.keys():
                 s_dict[key] = activations[key][c]
-
-    # def compute_activations(self):
-    #
-    #     raise NotImplementedError
 
     def split_data(self, fold=5, split=0.1):
         """
@@ -159,8 +157,6 @@ class Data(object):
         pickle.dump(data, f)
         f.close()
         return
-
-
 
     def compute_activations(self, input, model='model.pt', vocabulary='reduced_vocab.txt', perplexity=False,
                             eos_separator='</s>', fixed_length_arrays=False, cuda=False,
