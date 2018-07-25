@@ -10,17 +10,21 @@ sys.path.append(os.path.abspath('../src/word_language_model'))
 import matplotlib.pyplot as plt
 
 # inp
-base_folder = '/home/yl254115/Projects/'
-txt_file = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/20k_sentences.txt'
-model = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
-vocab = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
+path = sys.path[0].split('/')
+i = path.index('sentence-processing-MEG-LSTM')
+base_folder = os.sep + os.path.join(*path[:i])
+
+# base_folder = '/home/yl254115/Projects/FAIRNS'
+txt_file = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/20k_sentences.txt')
+model = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt')
+vocab = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt')
 eos = '<eos>'
 use_unk = True
 unk = '<unk>'
 lang = 'en'
 get_representations = ['word', 'lstm']
 # out
-pkl_filename = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Output/Ridge_regression_number_of_open_nodes.pkl'
+pkl_filename = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Output/Ridge_regression_number_of_open_nodes.pkl')
 
 # --------- Main script -----------
 print('Load settings and parameters')
