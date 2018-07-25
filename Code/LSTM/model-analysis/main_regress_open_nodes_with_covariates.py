@@ -14,10 +14,15 @@ path = sys.path[0].split('/')
 i = path.index('sentence-processing-MEG-LSTM')
 base_folder = os.sep + os.path.join(*path[:i])
 
+# number for filtering
+n = 1
+
 # base_folder = '/home/yl254115/Projects/FAIRNS'
 txt_file = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/20k_sentences.txt')
 model = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt')
 vocab = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt')
+data_file = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/activations_20k_sentences_n=%i.txt' %n)
+
 eos = '<eos>'
 use_unk = True
 unk = '<unk>'
@@ -32,12 +37,19 @@ settings = lsp.settings()
 params = lsp.params()
 preferences = lsp.preferences()
 
-data_sentences = annotated_data.Data()
-data_sentences.add_corpus(txt_file, separator='|', column_names=['sentence', 'structure', 'open_nodes_count', 'adjacent_boundary_count'])
-data_sentences.data = data_sentences.filter(n=100) # Filter data to get a uniform distribution of sentence types
-data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
+# check if datafile exists, if not, create it, otherwise load it
+if os.path.exists(data_file):
+    print("Activations for this setting already generated, loading data from %s\n" % data_file)
+    data_sentences = pickle.load(open(data_file, 'rb'))
+else:
+    data_sentences = annotated_data.Data()
+    data_sentences.add_corpus(txt_file, separator='|', column_names=['sentence', 'structure', 'open_nodes_count', 'adjacent_boundary_count'])
+    data_sentences.data = data_sentences.filter(n=n) # Filter data to get a uniform distribution of sentence types
+    data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
+    pickle.dump(data_sentences, open(data_file, 'wb'))
+
 #TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator
-#TODO: Add word position and frequency to design matrix.
+#TODO: Add frequency to design matrix.
 
 data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences.data, params) # Train-test split
 scores_ridge = []
