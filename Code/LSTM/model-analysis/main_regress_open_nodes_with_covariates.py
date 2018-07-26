@@ -23,6 +23,8 @@ model = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/hidden
 vocab = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt')
 data_file = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Code/Stimuli/sentence_generator_Marco/activations_20k_sentences_n=%i.pkl' %n)
 
+regenerate_data=True
+
 eos = '<eos>'
 use_unk = True
 unk = '<unk>'
@@ -38,7 +40,7 @@ params = lsp.params()
 preferences = lsp.preferences()
 
 # check if datafile exists, if not, create it, otherwise load it
-if os.path.exists(data_file):
+if os.path.exists(data_file) and not regenerate_data:
     print("Activations for this setting already generated, loading data from %s\n" % data_file)
     data_sentences = pickle.load(open(data_file, 'rb'))
 else:
