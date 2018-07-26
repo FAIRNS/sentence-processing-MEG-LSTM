@@ -46,6 +46,18 @@ class Data(object):
         """
         Add activation data to the sentences, based on
         a given model.
+
+        Args
+            model:      a pytorch language model
+            vocab:      a txt file with the vocabulary of the model
+                        (each line containing a word, order corresponding
+                        with the embedding matrix)
+            eos:        the eos token of the model
+            unk:        the unknown token of the model
+            use_unk:    whether the unknown token should be used
+            lang:       language of the model
+            get_representations:
+                        The type of representations to fetch for each word
         """
         sentences = [s_dict['sentence'] for s_dict in self.data]
         activations = self.compute_activations(input=sentences, model=model, vocabulary=vocab, perplexity=False,
@@ -55,6 +67,23 @@ class Data(object):
         for c, s_dict in enumerate(self.data):
             for key in activations.keys():
                 s_dict[key] = activations[key][c]
+
+    def add_word_frequency_counts(self, word_frequencies):
+        """
+        Add word frequencies for all words in the sentences,
+        read from an input file with word frequencies.
+
+        Args:
+            word_freqs:     a file with word frequences, tab separated
+        """
+        freq_dict = self.get_word_freqs(word_frequencies)
+
+        for sent_dict in self.data:
+            sentence = sent_dict['sentence']
+            freqs = ' '.join([freq_dict.get(w, '0') for w in sentence.split()])
+            sent_dict['word_frequencies'] = freqs
+
+        return
 
     def split_data(self, fold=5, split=0.1):
         """
@@ -346,3 +375,19 @@ class Data(object):
             #        math.exp(-log_probabilities.sum()/((log_probabilities!=0).sum()))))
 
             return saved
+
+    @staticmethod
+    def get_word_freqs(word_freq_file):
+        """
+        Create a dictionary mapping words to
+        frequencies
+        """
+        d = {}
+        f = open(word_freq_file, 'rb')
+        for line in f:
+            freq, word = line.decode().split('\t')
+            d[word.strip('\n')] = freq
+
+        return d
+
+
