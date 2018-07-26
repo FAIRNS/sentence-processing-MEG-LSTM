@@ -5,6 +5,7 @@ class Data(object):
 
     def __init__(self):
         self.data = []
+        self.activations = False
 
     def add_corpus(self, txt_file, separator='|', 
                    column_names=['sentence', 'structure', 
@@ -174,6 +175,27 @@ class Data(object):
 
         return filtered_data
 
+
+    def omit_words(self, key='depth', elements=[0],
+                         set_as_attr=True):
+        """
+        Omit words from the dataset that satisfy certain constraints.
+        This function can only be called *after* sentence activations
+        have already been computed.
+
+        Args:
+            key:            dictionary key to base filtering on
+            elements:       which elements should be filtered
+            set_as_attr:    set to False to keep the original self.data
+                            object
+
+        Return:
+            A list of dictionaries similar to self.data, but with 
+            the indicated words filtered out.
+        """
+        # initialise list for filtered data
+        raise NotImplementedError
+
     def write_data(self, filename, data=None):
         """
         Store list of dictionaries in a pickled file.
@@ -193,6 +215,8 @@ class Data(object):
                             eos_separator='</s>', fixed_length_arrays=False, cuda=False,
                             get_representations=['word', 'lstm'], use_unk=False, lang='en', unk_token='<unk>', kbow_value=2):
 
+        # indicate that activations have been computed
+        self.activations = True
         # !/usr/bin/env python
         import sys
         import math
