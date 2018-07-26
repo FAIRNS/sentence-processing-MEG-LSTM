@@ -47,7 +47,7 @@ if os.path.exists(data_file) and not regenerate_data:
 else:
     data_sentences = annotated_data.Data()
     data_sentences.add_corpus(txt_file, separator='|', column_names=['sentence', 'structure', 'open_nodes_count', 'adjacent_boundary_count'])
-    data_sentences.data = data_sentences.filter(n=n) # Filter data to get a uniform distribution of sentence types
+    data_sentences.data = data_sentences.filter_sentences(n=n) # Filter data to get a uniform distribution of sentence types
     data_sentences.add_word_frequency_counts(frequency_file)
     data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
     pickle.dump(data_sentences, open(data_file, 'wb'))
