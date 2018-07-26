@@ -115,7 +115,9 @@ class Data(object):
         raise NotImplementedError
 
 
-    def filter(self, key='length', elements=range(8), n=50, set_as_attr=True):
+    def filter_sentences(self, key='length', 
+                         elements=range(8), n=50, 
+                         set_as_attr=True):
         """
         Filter the data such that it contains 50 instances of each
         element in elements (or as many as present in the data), where
