@@ -40,8 +40,8 @@ class params:
         self.CV_fold = 5  # 5-fold
 
         # Hyper-parameters regression:
-        self.n_alphas = 50 # regularization size
-        self.alpha_order_min = -6 # 10^(order) range for regularization size search
+        self.n_alphas = 10 # regularization size
+        self.alpha_order_min = -3 # 10^(order) range for regularization size search
         self.alpha_order_max = 3 # same
         self.alphas = np.logspace(self.alpha_order_min, self.alpha_order_max, self.n_alphas)
         self.eps = 1e-3 # see Scikit-learn

@@ -36,12 +36,13 @@ data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_re
 #TODO: Add word position and frequency to design matrix.
 
 data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences.data, params) # Train-test split
-scores_ridge = []
+scores_ridge = []; VIF = []
 for split in range(params.CV_fold):
     # Preparing the data for regression, by breaking down sentences into X, y matrices that are word-wise:
     X_train, y_train, X_test, y_test = data_manip.prepare_data_for_regression(data_sentences_train[split], data_sentences_test[split])
+    print(X_train.shape)
     # TODO: data_sentences.decorrelate_position_depth()
-    if split == 0: VIF = vif.calc_VIF(X_train) # calc VIF for first split only
+    # if split == 0: VIF = vif.calc_VIF(X_train) # calc VIF for first split only
 
     # Train a Ridge regression model:
     model_ridge = mfe.train_model(X_train, y_train, settings, params)
