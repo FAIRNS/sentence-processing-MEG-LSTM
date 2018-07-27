@@ -52,11 +52,7 @@ else:
     data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
     pickle.dump(data_sentences, open(data_file, 'wb'))
 
-    print('\n'.join(['%s %s' % (d['sentence'], d['word_frequencies']) for d in data_sentences.data]))
-    exit()
-
 #TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator
-#TODO: Add frequency to design matrix.
 
 data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences.data, params) # Train-test split
 scores_ridge = []
