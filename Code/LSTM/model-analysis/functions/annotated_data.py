@@ -36,7 +36,7 @@ class Data(object):
             self.data.append(dict(zip(column_names, vals)))
             length = len(vals[0].split())
             self.data[-1]['length'] = length
-            word_pos = [i for i in range(len(vals[0]))]
+            word_pos = [i for i in range(len(vals[0].split()))]
             self.data[-1]['word_pos'] = word_pos
             for key, val in kwargs.items():
                 self.data[-1][key] = val(line)
@@ -174,7 +174,6 @@ class Data(object):
             self.data = filtered_data
 
         return filtered_data
-
 
     def omit_words(self, key='depth', elements=[0],
                          set_as_attr=True):
