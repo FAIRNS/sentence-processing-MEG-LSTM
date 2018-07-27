@@ -1,5 +1,6 @@
 import pickle
 import random
+from collections import defaultdict
 
 class Data(object):
 
@@ -36,7 +37,7 @@ class Data(object):
             self.data.append(dict(zip(column_names, vals)))
             length = len(vals[0].split())
             self.data[-1]['length'] = length
-            word_pos = [i for i in range(len(vals[0].split()))]
+            word_pos = [i for i in range(len(vals[0]))]
             self.data[-1]['word_pos'] = word_pos
             for key, val in kwargs.items():
                 self.data[-1][key] = val(line)
@@ -174,6 +175,20 @@ class Data(object):
             self.data = filtered_data
 
         return filtered_data
+
+    def decorrelation_matrix(self):
+        """
+        Create a dictionary mapping (pos, depth)
+        to count in corpus.
+        """
+        c_dict = defaultdict(int)
+        for s_dict in self.data:
+            for c, word in enumerate(s_dict['sentence'].split()):
+                pos = int(s_dict['word_pos'][c])
+                depth = int(s_dict['open_nodes_count'].split()[c])
+                c_dict[(pos, depth)] += 1
+
+        return c_dict
 
     def omit_words(self, key='depth', elements=[0],
                          set_as_attr=True):
