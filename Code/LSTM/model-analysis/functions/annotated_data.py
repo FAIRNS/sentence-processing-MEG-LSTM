@@ -35,6 +35,8 @@ class Data(object):
             self.data.append(dict(zip(column_names, vals)))
             length = len(vals[0].split())
             self.data[-1]['length'] = length
+            word_pos = [i for i in range(len(vals[0]))]
+            self.data[-1]['word_pos'] = word_pos
             for key, val in kwargs.items():
                 self.data[-1][key] = val(line)
 
@@ -44,6 +46,18 @@ class Data(object):
         """
         Add activation data to the sentences, based on
         a given model.
+
+        Args
+            model:      a pytorch language model
+            vocab:      a txt file with the vocabulary of the model
+                        (each line containing a word, order corresponding
+                        with the embedding matrix)
+            eos:        the eos token of the model
+            unk:        the unknown token of the model
+            use_unk:    whether the unknown token should be used
+            lang:       language of the model
+            get_representations:
+                        The type of representations to fetch for each word
         """
         sentences = [s_dict['sentence'] for s_dict in self.data]
         activations = self.compute_activations(input=sentences, model=model, vocabulary=vocab, perplexity=False,
@@ -54,9 +68,22 @@ class Data(object):
             for key in activations.keys():
                 s_dict[key] = activations[key][c]
 
-    # def compute_activations(self):
-    #
-    #     raise NotImplementedError
+    def add_word_frequency_counts(self, word_frequencies):
+        """
+        Add word frequencies for all words in the sentences,
+        read from an input file with word frequencies.
+
+        Args:
+            word_freqs:     a file with word frequences, tab separated
+        """
+        freq_dict = self.get_word_freqs(word_frequencies)
+
+        for sent_dict in self.data:
+            sentence = sent_dict['sentence']
+            freqs = ' '.join([freq_dict.get(w, '0') for w in sentence.split()])
+            sent_dict['word_frequencies'] = freqs
+
+        return
 
     def split_data(self, fold=5, split=0.1):
         """
@@ -88,7 +115,9 @@ class Data(object):
         raise NotImplementedError
 
 
-    def filter(self, key='length', elements=range(8), n=50, set_as_attr=False):
+    def filter_sentences(self, key='length', 
+                         elements=range(8), n=50, 
+                         set_as_attr=True):
         """
         Filter the data such that it contains 50 instances of each
         element in elements (or as many as present in the data), where
@@ -160,8 +189,6 @@ class Data(object):
         f.close()
         return
 
-
-
     def compute_activations(self, input, model='model.pt', vocabulary='reduced_vocab.txt', perplexity=False,
                             eos_separator='</s>', fixed_length_arrays=False, cuda=False,
                             get_representations=['word', 'lstm'], use_unk=False, lang='en', unk_token='<unk>', kbow_value=2):
@@ -199,7 +226,7 @@ class Data(object):
         sentence_length = [len(s) for s in sentences]
         max_length = max(*sentence_length)
         import lstm
-        model = torch.load(model)
+        model = torch.load(model, map_location=lambda storage, loc: storage)
         # model.rnn.flatten_parameters()
         # hack the forward function to send an extra argument containing the model parameters
         model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
@@ -350,3 +377,19 @@ class Data(object):
             #        math.exp(-log_probabilities.sum()/((log_probabilities!=0).sum()))))
 
             return saved
+
+    @staticmethod
+    def get_word_freqs(word_freq_file):
+        """
+        Create a dictionary mapping words to
+        frequencies
+        """
+        d = {}
+        f = open(word_freq_file, 'rb')
+        for line in f:
+            freq, word = line.decode().split('\t')
+            d[word.strip('\n')] = freq
+
+        return d
+
+
