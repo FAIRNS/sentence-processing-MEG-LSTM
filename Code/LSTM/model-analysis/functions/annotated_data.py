@@ -1,5 +1,7 @@
 import pickle
 import random
+import numpy as np
+import itertools
 from collections import defaultdict
 
 class Data(object):
@@ -69,6 +71,8 @@ class Data(object):
         for c, s_dict in enumerate(self.data):
             for key in activations.keys():
                 s_dict[key] = activations[key][c]
+
+        return
 
     def add_word_frequency_counts(self, word_frequencies):
         """
@@ -189,6 +193,89 @@ class Data(object):
                 c_dict[(pos, depth)] += 1
 
         return c_dict
+
+    def decorrelate(self, pos_min, pos_max, 
+                    depth_min, depth_max, n,
+                    set_as_attr=True):
+        """
+        Filter the data such that there is no correlation between
+        position and depth anymore.
+        To do so, a minimal and maximal position and depth,
+        respectively, need to be given. For any (pos, depth) tuple
+        in the rectangle described by thes coordinates n activations
+        will be selected. Raises an error if one of the tuples does
+        not have enough datapoints.
+
+        This function can only be ran after activations are computed
+        Args:
+            pos_min:    minimal position to consider
+            pos_max:    maximal position to consider
+            depth_min:  minimal depth to consider
+            depth_max:  maximal depth to consider
+            n:          How many elements of each should be in the
+                        filtered dataset. If one of the 
+            set_as_attr:    set to False to keep the original self.data
+                            object
+
+        Returns:
+            filtered_data:  A list containing dictionaries, as the self.data
+                            object, in which position and depth are decorrelated
+        """
+        # check if activations are computed
+        if not self.activations:
+            raise ValueError("Activations should be computed\
+            before this function can be ran"
+                 )
+
+        # initialise list for filtered data
+        filtered_data = []
+
+        pos_range = [i for i in range(pos_min, pos_max+1)]
+        depth_range = [i for i in range(depth_min, depth_max+1)]
+        all_tuples = [p for p in itertools.product(pos_range, depth_range)]
+
+        to_find = dict(zip(all_tuples, [n]*len(all_tuples)))
+        found = dict(zip(all_tuples, [n]*len(all_tuples)))
+
+        # create shuffled indices to loop through data
+        indices = [i for i in range(len(self.data))]
+        random.shuffle(indices)
+        for index in indices:
+            s_dict = self.data[index]
+            positions = []
+            for c, word in enumerate(s_dict['sentence'].split()):
+                pos = int(s_dict['word_pos'][c])
+                depth = int(s_dict['open_nodes_count'].split()[c])
+                if (pos, depth) not in to_find:
+                    continue
+                else:
+                    positions.append(c)
+                    to_find[(pos, depth)] -= 1
+                    if to_find[(pos, depth)] == 0:
+                        del to_find[(pos, depth)]
+
+                    if not to_find:
+                        if positions:
+                            filtered_dict = self.filter_dict(s_dict, positions)
+                            filtered_data.append(filtered_dict)
+                        break
+
+            if positions:
+                filtered_dict = self.filter_dict(s_dict, positions)
+                filtered_data.append(filtered_dict)
+
+        if to_find:
+            tups = to_find.keys()
+            tups.sort()
+            raise ValueError("Insufficient datapoints for:\n%s" %
+                    '\n'.join(['(%s, %s): %i datapoints' % 
+                        (t[0], t[1], n - to_find[t]) for t in tups])
+                    )
+
+        if set_as_attr:
+            self.data = filtered_data
+
+        return filtered_data
 
     def omit_words(self, key='depth', elements=[0],
                          set_as_attr=True):
@@ -417,6 +504,47 @@ class Data(object):
             return saved
 
     @staticmethod
+    def filter_dict(s_dict, word_positions):
+        """
+        Filter from a dictionary representing sentence data
+        the word positions given in the list
+
+        Args:
+            s_dict:         the dictionary to filter
+            word_positions: the word positions to filter
+
+        """
+        # create new dictionary
+        new_s_dict = {}
+
+        # fetch sentence and
+        s = s_dict['sentence']
+        l = len(s.split())
+
+        # loop over key, value pairs in s_dict, filter them
+        for key, val in s_dict.items():
+            if isinstance(val, list):
+                new_val = [val[i] for i in word_positions]
+            elif isinstance(val, str):
+                val_list = val.strip('\n').split()
+                if len(val_list) != l:
+                    continue
+                new_val = ' '.join([val_list[i] for i in word_positions])
+            elif isinstance(val, np.ndarray):
+                try:
+                    new_val = val[:, word_positions]
+                except IndexError:
+                    new_val = val[word_positions]
+            elif isinstance(val, int):
+                continue
+            else:
+                raise ValueError("Unknown attribute type %s" % type(val))
+
+            new_s_dict[key] = new_val
+
+        return new_s_dict
+
+    @staticmethod
     def get_word_freqs(word_freq_file):
         """
         Create a dictionary mapping words to
@@ -429,5 +557,4 @@ class Data(object):
             d[word.strip('\n')] = freq
 
         return d
-
 

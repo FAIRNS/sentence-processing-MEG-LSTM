@@ -15,7 +15,7 @@ i = path.index('sentence-processing-MEG-LSTM')
 base_folder = os.sep + os.path.join(*path[:i+1])
 
 # number for filtering
-n = 1
+n = 500
 
 # base_folder = '/home/yl254115/Projects/FAIRNS'
 txt_file = os.path.join(base_folder, 'Code/Stimuli/sentence_generator_Marco/20k_sentences.txt')
@@ -32,7 +32,7 @@ unk = '<unk>'
 lang = 'en'
 get_representations = ['word', 'lstm']
 # out
-pkl_filename = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Output/Ridge_regression_number_of_open_nodes.pkl')
+pkl_filename = os.path.join(base_folder, 'Output/Ridge_regression_number_of_open_nodes.pkl')
 
 # --------- Main script -----------
 print('Load settings and parameters')
@@ -51,6 +51,19 @@ else:
     data_sentences.add_word_frequency_counts(frequency_file)
     data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
     pickle.dump(data_sentences, open(data_file, 'wb'))
+
+# decorrelate data
+c_dict = data_sentences.decorrelation_matrix()
+# x1, x2, y1, y2, n = find_max_rectangle(c_dict)
+# TODO implement function to find max rectangle
+data_sentences.decorrelate(3, 5, 2, 4, 2)
+
+# all_tuples = list(c_dict.keys())
+# all_tuples.sort()
+# for tup in all_tuples:
+#     # if tup[0] >= 9 and tup[0] <= 15 and tup[1] >= 3 and tup[1] <= 10:
+#     print('(%i, %i): %i' % (tup[0], tup[1], c_dict[tup]))
+# exit()
 
 #TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator
 
