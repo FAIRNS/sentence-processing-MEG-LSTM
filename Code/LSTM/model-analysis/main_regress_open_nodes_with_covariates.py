@@ -15,7 +15,7 @@ i = path.index('sentence-processing-MEG-LSTM')
 base_folder = os.sep + os.path.join(*path[:i+1])
 
 # number for filtering
-n = 1
+n = 5
 
 # base_folder = '/home/yl254115/Projects/FAIRNS'
 txt_file = os.path.join(base_folder, 'Code/Stimuli/sentence_generator_Marco/20k_sentences.txt')
@@ -32,7 +32,7 @@ unk = '<unk>'
 lang = 'en'
 get_representations = ['word', 'lstm']
 # out
-pkl_filename = os.path.join(base_folder, 'sentence-processing-MEG-LSTM/Output/Ridge_regression_number_of_open_nodes.pkl')
+pkl_filename = os.path.join(base_folder, 'Output/Ridge_regression_number_of_open_nodes.pkl')
 
 # --------- Main script -----------
 print('Load settings and parameters')
@@ -68,7 +68,7 @@ for split in range(params.CV_fold):
     # if split == 0: VIF = vif.calc_VIF(X_train) # calc VIF for first split only
 
     # Train a Ridge regression model:
-    model_ridge = mfe.train_model(X_train, y_train, settings, params)
+    model_ridge = mfe.train_model_ridge(X_train, y_train, settings, params)
 
     # Evaluate model (using R-squared) on test set:
     scores_curr_split, MSE_per_depth = mfe.evaluate_model(model_ridge, X_test, y_test, settings, params)

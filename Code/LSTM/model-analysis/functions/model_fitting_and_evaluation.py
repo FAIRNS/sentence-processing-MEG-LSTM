@@ -2,7 +2,9 @@ import time
 import numpy as np
 import scipy.stats as stats
 from sklearn import linear_model
-from sklearn import model_selection
+from sklearn.model_selection import GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
 
 
 def train_model(X_train, y_train, settings, params):
@@ -20,10 +22,11 @@ def train_model(X_train, y_train, settings, params):
 def train_model_ridge(X_train, y_train, settings, params):
 
     # Grid search - calculate train/validation error for all regularization sizes
-    ridge = linear_model.Ridge()
+
     tuned_parameters = [{'alpha': params.alphas}]
-    model_ridge = model_selection.GridSearchCV(ridge, tuned_parameters, cv=params.CV_fold,
-                                               refit=True, return_train_score=True)
+    model_ridge = make_pipeline(StandardScaler(),
+                                GridSearchCV(linear_model.Ridge(), tuned_parameters, cv=params.CV_fold, refit=True, return_train_score=True))
+
     model_ridge.fit(X_train, y_train)
 
     return model_ridge
@@ -37,7 +40,7 @@ def train_model_lasso(X_train, y_train, settings, params):
     # Grid search - calculate train/validation error for all regularization sizes
     lasso = linear_model.Lasso()
     tuned_parameters = [{'alpha': alphas}]
-    model_lasso = model_selection.GridSearchCV(lasso, tuned_parameters, cv=params.CV_fold,
+    model_lasso = GridSearchCV(lasso, tuned_parameters, cv=params.CV_fold,
                                                return_train_score=True, refit=True)
     model_lasso.fit(X_train, y_train)
 
@@ -55,7 +58,7 @@ def train_model_elastic_net(X_train, y_train, settings, params):
     # Grid search - calculate train/validation error for all regularization sizes
     enet = linear_model.ElasticNet()
     tuned_parameters = [{'alpha': alphas}]
-    model_enet = model_selection.GridSearchCV(enet, tuned_parameters, cv=params.CV_fold,
+    model_enet = GridSearchCV(enet, tuned_parameters, cv=params.CV_fold,
                                               return_train_score=True, refit=True)
     model_enet.fit(X_train, y_train)
 
