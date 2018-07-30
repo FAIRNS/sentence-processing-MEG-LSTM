@@ -52,11 +52,20 @@ else:
     data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
     pickle.dump(data_sentences, open(data_file, 'wb'))
 
-    print('\n'.join(['%s %s' % (d['sentence'], d['word_frequencies']) for d in data_sentences.data]))
-    exit()
+# decorrelate data
+c_dict = data_sentences.decorrelation_matrix()
+# x1, x2, y1, y2, n = find_max_rectangle(c_dict)
+# TODO implement function to find max rectangle
+data_sentences.decorrelate(3, 5, 2, 4, 2)
+
+# all_tuples = list(c_dict.keys())
+# all_tuples.sort()
+# for tup in all_tuples:
+#     # if tup[0] >= 9 and tup[0] <= 15 and tup[1] >= 3 and tup[1] <= 10:
+#     print('(%i, %i): %i' % (tup[0], tup[1], c_dict[tup]))
+# exit()
 
 #TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator
-#TODO: Add frequency to design matrix.
 
 data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences.data, params) # Train-test split
 scores_ridge = []; VIF = []
