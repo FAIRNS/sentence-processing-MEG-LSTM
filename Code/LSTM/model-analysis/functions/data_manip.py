@@ -44,12 +44,18 @@ def prepare_data_for_regression(data_sentences_train, data_sentences_test):
     # len(activations_train)=num_sentences_train. Each element has num_words vectors of activation
     activations_train = [np.vstack(ele['hidden']) for ele in data_sentences_train]
     activations_test = [np.vstack(ele['hidden']) for ele in data_sentences_test]
+    word_freq_train = np.expand_dims(np.asarray([int(w) for ele in data_sentences_train for w in ele['word_frequencies'].strip().split(' ')]), 1)
+    word_freq_test = np.expand_dims(np.asarray([int(w) for ele in data_sentences_test for w in ele['word_frequencies'].strip().split(' ')]), 1)
     open_nodes_train = [int(w) for ele in data_sentences_train for w in ele['open_nodes_count'].strip().split(' ')]
     open_nodes_test = [int(w) for ele in data_sentences_test for w in ele['open_nodes_count'].strip().split(' ')]
 
     # Cat all sentences to generate matrices where each row is per word
     X_train = np.hstack(activations_train).transpose()
+    X_train = np.hstack((X_train, word_freq_train)) # Add word freqs as another feature
+
     X_test = np.hstack(activations_test).transpose()
+    X_test = np.hstack((X_test, word_freq_test))  # Add word freqs as another feature
+
     y_train = np.hstack(open_nodes_train)
     y_test = np.hstack(open_nodes_test)
 
