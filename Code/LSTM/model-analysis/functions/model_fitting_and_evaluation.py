@@ -24,10 +24,9 @@ def train_model_ridge(X_train, y_train, settings, params):
     # Grid search - calculate train/validation error for all regularization sizes
 
     tuned_parameters = [{'alpha': params.alphas}]
-    model_ridge = make_pipeline(StandardScaler(),
-                                GridSearchCV(linear_model.Ridge(), tuned_parameters, cv=params.CV_fold, refit=True, return_train_score=True))
-
+    model_ridge = GridSearchCV(linear_model.Ridge(), tuned_parameters, cv=params.CV_fold, refit=True, return_train_score=True)
     model_ridge.fit(X_train, y_train)
+    model_ridge.alphas = params.alphas
 
     return model_ridge
 
