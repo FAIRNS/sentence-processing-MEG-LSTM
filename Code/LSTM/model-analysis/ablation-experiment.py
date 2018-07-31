@@ -27,7 +27,7 @@ parser.add_argument('--eos-separator', default='</s>')
 parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
         help='Save the result to a single fixed-length array')
 parser.add_argument('--format', default='npz', choices=['npz', 'hdf5', 'pkl'])
-parser.add_argument('-u', '--unit', type=int, default=False, help='Which test unit to ablate')
+parser.add_argument('-u', '--unit', type=int, action='append', help='Which test unit to ablate')
 parser.add_argument('-uf', '--unit-from', type=int, default=False, help='Starting range for test unit to ablate')
 parser.add_argument('-ut', '--unit-to', type=int, default=False, help='Ending range for test unit to ablate')
 parser.add_argument('-s', '--seed', default=1, help='Random seed when adding random units')
@@ -39,17 +39,7 @@ args = parser.parse_args()
 
 stime = time.time()
 
-# Which unit to kill + a random subset of g-1 more units
-np.random.seed(int(args.seed))
-add_random_subset = np.random.permutation(1301)
-add_random_subset = [i for i in add_random_subset if i not in [int(args.unit)]] # omit current test unit from random set
-units_to_kill = [int(args.unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
-units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
-units_to_kill_l0 = [u for u in units_to_kill if u <650] # units 1-650 (0-649) in layer 0 (l0)
-units_to_kill_l1 = [u-650 for u in units_to_kill if u >649] # units 651-1300 (650-1299) in layer 1 (l1)
-output = args.output + str(args.unit) + '_groupsize_' + args.groupsize + '_seed_' + args.seed # Update output file name
-
-os.makedirs(os.path.dirname(output), exist_ok=True)
+os.makedirs(os.path.dirname(args.output), exist_ok=True)
 
 # Vocabulary
 vocab = data.Dictionary(args.vocabulary)
@@ -85,9 +75,9 @@ log_p_targets_wrong = np.zeros((len(sentences), 1))
 # Compare performamce w/o killing units (set to zero the corresponding weights in model):
 if args.unit_from and args.unit_to:
     if args.unit_to >= args.unit_from:
-        target_units = list(range(args.unit_from, args.unit_to+1))
+        target_units = [[x] for x in range(args.unit_from, args.unit_to+1)]
     else:
-        target_units = list(range(args.unit_from-1, args.unit_to-1, -1))
+        target_units = [[x] for x in range(args.unit_from-1, args.unit_to-1, -1)]
 else:
     target_units = [args.unit]
 
@@ -102,22 +92,22 @@ def feed_sentence(model, h, sentence):
         outs.append(torch.nn.functional.log_softmax(out[0]).unsqueeze(0))
     return outs, h
 
-for unit in tqdm(target_units):
+for unit_group in tqdm(target_units):
     # restore the model to its original state in case it was ablated
     model.load_state_dict(model_orig_state)
     stime = time.time()
     # Which unit to kill + a random subset of g-1 more units
     np.random.seed(int(args.seed))
     add_random_subset = np.random.permutation(1301).astype(int)
-    add_random_subset = [i for i in add_random_subset if i not in [int(unit)]] # omit current test unit from random set
-    units_to_kill = [int(unit)] + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
+    add_random_subset = [i for i in add_random_subset if i not in unit_group] # omit current test unit from random set
+    units_to_kill = unit_group + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
     units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
     units_to_kill_l0 = torch.LongTensor(np.array([u for u in units_to_kill if u <650])) # units 1-650 (0-649) in layer 0 (l0)
     units_to_kill_l1 = torch.LongTensor(np.array([u-650 for u in units_to_kill if u >649])) # units 651-1300 (650-1299) in layer 1 (l1)
     if args.cuda:
         units_to_kill_l0 = units_to_kill_l0.cuda()
         units_to_kill_l1 = units_to_kill_l1.cuda()
-    output = args.output + str(unit) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
+    output = args.output + "_".join(map(str, unit_group)) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
 
 
     for ablation in [True]: #[False, True]:
@@ -174,6 +164,7 @@ for unit in tqdm(target_units):
             'log_p_targets_correct': log_p_targets_correct,
             'log_p_targets_wrong': log_p_targets_wrong,
             'score_on_task': score_on_task,
+            'accuracy_score_on_task': score_on_task,
             'sentences': sentences,
             'num_sentences': len(sentences),
             'nattr': list(gold.loc[:,'nattr']),
