@@ -3,6 +3,8 @@ import random
 import numpy as np
 import itertools
 from collections import defaultdict
+import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 class Data(object):
 
@@ -33,16 +35,20 @@ class Data(object):
         """
         f = open(txt_file, 'rb')
 
-        for line in f:
+        lengths = []
+        for line in tqdm(f):
             vals = str(line).split(separator)
             vals[0]=vals[0][2::]
             self.data.append(dict(zip(column_names, vals)))
             length = len(vals[0].split())
+            lengths.append(length)
             self.data[-1]['length'] = length
             word_pos = [i for i in range(len(vals[0]))]
             self.data[-1]['word_pos'] = word_pos
             for key, val in kwargs.items():
                 self.data[-1][key] = val(line)
+
+        print('Sentence lengths: ' + ' '.join(['%i' % l for l in set(lengths)]))
 
         return
 
@@ -180,7 +186,7 @@ class Data(object):
 
         return filtered_data
 
-    def decorrelation_matrix(self):
+    def decorrelation_matrix(self, plot_pos_depth):
         """
         Create a dictionary mapping (pos, depth)
         to count in corpus.
@@ -192,9 +198,24 @@ class Data(object):
                 depth = int(s_dict['open_nodes_count'].split()[c])
                 c_dict[(pos, depth)] += 1
 
+        pos_depth_n = np.asarray([(ele[0], ele[1], val) for (ele, val) in zip(c_dict.keys(), c_dict.values())])
+        if plot_pos_depth:
+            plt.scatter(pos_depth_n[:, 0],pos_depth_n[:, 1])
+            plt.show()
+
         return c_dict
 
-    def decorrelate(self, pos_min, pos_max, 
+    def get_min_number_of_samples_in_rectangle(self, c_dict, pos_min, pos_max, depth_min, depth_max):
+        pos_depth_n = np.asarray([(ele[0], ele[1], val) for (ele, val) in zip(c_dict.keys(), c_dict.values())])
+        IX = (pos_depth_n[:, 0] >= pos_min) & (pos_depth_n[:, 0] <= pos_max) & (pos_depth_n[:, 1] <= depth_min) & (
+        pos_depth_n[:, 1] <= depth_max)
+        min_n = np.min(pos_depth_n[IX, 2])
+
+
+
+        return min_n
+
+    def decorrelate(self, pos_min, pos_max,
                     depth_min, depth_max, n,
                     set_as_attr=True):
         """

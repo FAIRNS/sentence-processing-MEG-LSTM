@@ -1,3 +1,37 @@
+##
+import pickle
+import numpy as np
+
+path2file = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/model_ridge_best_coef_all_MODEL_hidden650_batch128_dropout0.2_lr20.0.cpu.pt_h_or_c_0_layer_0.pkl'
+with open(path2file, 'rb') as f:
+    data = pickle.load(f)
+weights = data[0]
+IX = np.abs(weights).argsort()
+units_sorted = np.asarray(range(1300))[IX[::-1]]
+
+
+##
+path2file = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/info_RC_French.p'
+with open(path2file, 'rb') as f:
+    data = pickle.load(f)
+
+##
+import numpy as np
+import matplotlib.pyplot as plt
+
+#mat = np.empty((7, 3))
+lst = []
+for r in range(100):
+    for i, k in enumerate(range(3,10)):
+        for j, l in enumerate(range(5, 8)):
+            lst.append([k, l])
+lst = np.asarray(lst)
+print(np.corrcoef(lst[:, 0], lst[:, 1]))
+
+
+plt.scatter(lst[:, 0], lst[:, 1])
+plt.show()
+
 import pickle
 path2output_info = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/info_RC_english_marco.p'
 

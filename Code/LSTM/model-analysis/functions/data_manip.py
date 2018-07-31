@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.preprocessing import StandardScaler
 
 def load_data_from_sentence_generator(settings):
     data = []
@@ -10,6 +11,20 @@ def load_data_from_sentence_generator(settings):
         data.append(dict)
 
     return data
+
+
+def standardize_data(X_train, X_test):
+    # Concatenate train and test datasets
+    num_samples_train = X_train.shape[0]
+    data = np.vstack((X_train, X_test))
+    # Standardize data
+    scaler = StandardScaler()
+    scaler.fit(data)
+    data = scaler.transform(data)
+    # Split back into train and test datasets
+    X_train = data[0:num_samples_train, :]
+    X_test = data[num_samples_train::, :]
+    return X_train, X_test
 
 
 
