@@ -48,6 +48,7 @@
 # objrel: The carpenter the women admire encourages
 # objrel_that: The carpenter that the women admire encourages
 # subjrel_that: The carpenter that admires the women encourages
+# objdep_objrel_that: The carpenter admires the women that the girl encourages
 # double_subjrel_that: The carpenter that admires the women that greet the girl encourages
 # simple_adv: The carpenter definitely admires the women
 # objrel_adv: The carpenter the women admire definitely encourages
@@ -355,87 +356,6 @@ sub generate_matrix {
 	push @words,"that";
     }
 }
-
-# BACKUP, DELETE AFTER DEBUGGING
-# sub generate_subj_rel {
-#     my $complete_flag = shift;
-#     my $number_main_subj = shift;
-#     my $number_rel_obj = shift;
-#     my $number_main_obj = shift;
-#     my $adv = shift;
-#     my $embedded = shift;
-#     my $other_number_main_subj = other_number($number_main_obj);
-
-#     # pick random begin det
-#     if ($embedded) {
-# 	push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
-#     }
-#     else {
-# 	push @words,$determiners_begin[int(rand(scalar(@determiners_begin)))];
-#     }
-
-#     # pick random main subj noun with stem not in bucket, add stem to bucket
-#     while (1) {
-#     	my $noun = $nouns{$number_main_subj}[int(rand(scalar(@{$nouns{$number_main_subj}})))];
-#     	if (!defined($seen_bucket{$stem_of{$noun}})) {
-#     	    push @words,$noun;
-#     	    $seen_bucket{$stem_of{$noun}} = 1;
-#     	    last;
-#     	}
-#     }
-#     # that is mandatory in subject relatives
-#     push @words,"that";
-#     # pick random verb not in bucket, add to bucket
-#     while (1) {
-# 	my $random_index = int(rand(scalar(@{$verbs{$number_main_subj}})));
-#     	my $verb = $verbs{$number_main_subj}[$random_index];
-#     	if (!defined($seen_bucket{$stem_of{$verb}})) {
-#     	    push @words,$verb;
-# 	    push @alternates,$verbs{$other_number_main_subj}[$random_index];
-#     	    $seen_bucket{$stem_of{$verb}} = 1;
-#     	    last;
-#     	}
-#     }
-#     # determiner for object
-#     push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
-#     # pick random obj noun with stem not in bucket, add stem to bucket
-#     while (1) {
-#     	my $noun = $nouns{$number_rel_obj}[int(rand(scalar(@{$nouns{$number_rel_obj}})))];
-#     	if (!defined($seen_bucket{$stem_of{$noun}})) {
-#     	    push @words,$noun;
-#     	    $seen_bucket{$stem_of{$noun}} = 1;
-#     	    last;
-#     	}
-#     }
-#     # if requested, produce adverb
-#     if ($adv) {
-# 	push @words,$adverbs[int(rand(scalar(@adverbs)))];
-#     }
-#     # pick random main verb not in bucket, add to bucket
-#     while (1) {
-# 	my $random_index = int(rand(scalar(@{$verbs{$number_main_subj}})));
-#     	my $verb = $verbs{$number_main_subj}[$random_index];
-#     	if (!defined($seen_bucket{$stem_of{$verb}})) {
-#     	    push @words,$verb;
-# 	    push @alternates,$verbs{$other_number_main_subj}[$random_index];
-#     	    $seen_bucket{$stem_of{$verb}} = 1;
-#     	    last;
-#     	}
-#     }
-#     if ($complete_flag) {
-# 	# determiner for object
-# 	push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
-# 	# pick random obj noun with stem not in bucket, add stem to bucket
-# 	while (1) {
-# 	    my $noun = $nouns{$number_main_obj}[int(rand(scalar(@{$nouns{$number_main_obj}})))];
-# 	    if (!defined($seen_bucket{$stem_of{$noun}})) {
-# 		push @words,$noun;
-# 		$seen_bucket{$stem_of{$noun}} = 1;
-# 		last;
-# 	    }
-# 	}
-#     }
-# }
 
 sub generate_subj_rel {
     my $complete_flag = shift;
@@ -785,6 +705,33 @@ for $structure (sort (keys %requested_structures)) {
 			else{
 			    $sentences{join ("\t",($structure, join(" ",@words), $number_main_subj, $number_rel_obj, @alternates))} = 1;
 			}
+		    }
+		    foreach $sentence (sort (keys(%sentences))) {
+			print $sentence,"\n";
+		    }
+		}
+	    }
+	}
+    }
+    elsif ($structure eq "objdep_objrel_that") {
+	my $adv = 0;
+	foreach my $main_subj_number ("singular","plural") {
+	    foreach my $main_obj_number ("singular","plural") {
+		foreach my $rel_subj_number ("singular","plural") {
+		    %sentences = ();
+		    while (scalar(keys (%sentences)) < $sentence_count) {
+			@words = ();
+			@alternates = ();
+			%seen_bucket = ();
+			my $complete_flag = 1;
+			my $embedded = 0;
+			generate_simple($complete_flag,$main_subj_number,$main_obj_number,$adv,$embedded);
+			push @words,"that";
+			$complete_flag = 0;
+			$embedded = 1;
+			# NB: using relative subj number twice, second time as a dummy
+			generate_simple($complete_flag,$rel_subj_number,$rel_subj_number,,$adv,$embedded);
+			$sentences{join ("\t",($structure, join(" ",@words), $main_subj_number, $main_obj_number, $rel_subj_number, @alternates))} = 1;
 		    }
 		    foreach $sentence (sort (keys(%sentences))) {
 			print $sentence,"\n";
