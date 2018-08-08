@@ -74,8 +74,10 @@ def evaluate_model(model, X_test, y_test, settings, params):
         scores, MSE_per_depth = eval_model_ridge(model, X_test, y_test, settings, params)
     elif settings.method == 'Lasso':
         scores = eval_model_lasso(model, X_test, y_test, settings, params)
+        MSE_per_depth = []
     elif settings.method == 'Elastic_net':
         scores = eval_model_elastic_net(model, X_test, y_test, settings, params)
+        MSE_per_depth = []
 
     return scores, MSE_per_depth
 

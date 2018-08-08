@@ -17,7 +17,7 @@ def regularization_path(model, settings, params):
     ax1.set_xlabel('Regularization size', size=18)
     ax1.fill_between(model.alphas, scores_train + std_train_error, scores_train - std_train_error, alpha=0.2)
     ax1.set_ylabel('$R^2$' + ' Train set', color='g', size=18)
-    ax1.set_ylim(-0.1, 1)
+    ax1.set_ylim(-0.1, 1.1)
 
     # Plot error on the same figure
     ax2 = ax1.twinx()
@@ -25,7 +25,7 @@ def regularization_path(model, settings, params):
     scores_std = model.cv_results_['std_test_score']
     std_error = scores_std / np.sqrt(params.CV_fold)
     ax2.semilogx(model.alphas, scores, 'r.', label='Validation set')
-    ax2.set_ylim(-0.1, 1)
+    ax2.set_ylim(-0.1, 1.1)
     ax2.fill_between(model.alphas, scores + std_error, scores - std_error, alpha=0.2)
     ax2.set_ylabel('$R^2$' + ' Validation set', color='r', size=18)
     ax2.tick_params('y', colors='r')

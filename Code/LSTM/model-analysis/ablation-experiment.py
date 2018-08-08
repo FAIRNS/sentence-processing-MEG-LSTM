@@ -3,7 +3,9 @@ import sys
 import os
 import torch
 import argparse
-sys.path.append(os.path.abspath('../src/word_language_model'))
+# sys.path.append(os.path.abspath('../src/word_language_model'))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+    '../src/word_language_model')))
 import data
 import numpy as np
 import h5py
@@ -63,6 +65,7 @@ gold = pandas.read_csv(args.input + '.gold', sep='\t', header=None, names=['verb
 # Load model
 print('Loading models...')
 import lstm
+print('\nmodel: ' + args.model+'\n')
 model = torch.load(args.model)
 model.rnn.flatten_parameters()
 # hack the forward function to send an extra argument containing the model parameters
@@ -109,7 +112,7 @@ for unit_group in tqdm(target_units):
         units_to_kill_l1 = units_to_kill_l1.cuda()
     output = args.output + "_".join(map(str, unit_group)) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
 
-
+    print(units_to_kill_l0, units_to_kill_l1)
     for ablation in [True]: #[False, True]:
         output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
         if ablation:

@@ -1,7 +1,7 @@
 language = 'english' # english/french
 
 base_folder = '/home/yl254115/Projects/'
-base_folder = '/neurospin/unicog/protocols/intracranial/'
+# base_folder = '/neurospin/unicog/protocols/intracranial/'
 
 if language == 'english':
     script = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/extract-activations.py'

@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def calc_VIF(X):
     '''
     # This function calculates the Variance Inflation Factor (VIF) for a given design matrix
@@ -30,7 +33,6 @@ def get_VIF_values(design_matrix, thresh = 3):
     :return:
     '''
     import time
-    import numpy as np
     from statsmodels.stats.outliers_influence import variance_inflation_factor as vif
     from statsmodels.tools.tools import add_constant
     from tqdm import tqdm
@@ -55,7 +57,7 @@ def get_weight_outliers(weights, thresh = 3):
 
     :param weights: num_weights X 1 numpy array
     :param thresh: scalar indicating the number of standard deviations as a threshold for outlier detection
-    :return:
+    :return:IX - list of boolean values whether the unit is outlier or not (without sorting)
     '''
     import math
     import numpy as np
@@ -84,4 +86,19 @@ def get_weight_outliers(weights, thresh = 3):
             n = n-1
 
 
-    return k, n, ave, std
+    return k, n, ave, std, IX
+
+
+def generate_text_file_with_sorted_weights(weights, output_path):
+    '''
+
+    :param weights: num_splits X num_units ndarray - regression weights
+    :param output_path: folder+file_name string - where to save
+    :return: None
+    '''
+    import os
+    print('Writing sorted weights to file: %s'%output_path)
+    best_weights_array = np.vstack((np.mean(weights, axis=0), np.std(weights, axis=0), range(weights.shape[1])))
+    IX = np.argsort(best_weights_array[0, :])[::-1]
+    best_weights_sorted = np.transpose(best_weights_array)[IX]
+    np.savetxt(os.path.join(output_path), best_weights_sorted, fmt='%1.2f +- %1.2f, %i')
