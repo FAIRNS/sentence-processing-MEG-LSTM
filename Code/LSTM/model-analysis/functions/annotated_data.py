@@ -1,4 +1,4 @@
-import pickle
+import pickle, sys
 import random
 import numpy as np
 import itertools
@@ -186,7 +186,7 @@ class Data(object):
 
         return filtered_data
 
-    def decorrelation_matrix(self, plot_pos_depth):
+    def decorrelation_matrix(self, plot_pos_depth, **kwargs):
         """
         Create a dictionary mapping (pos, depth)
         to count in corpus.
@@ -199,11 +199,26 @@ class Data(object):
                 c_dict[(pos, depth)] += 1
 
         pos_depth_n = np.asarray([(ele[0], ele[1], val) for (ele, val) in zip(c_dict.keys(), c_dict.values())])
-        if plot_pos_depth:
-            plt.scatter(pos_depth_n[:, 0],pos_depth_n[:, 1])
-            plt.show()
 
-        return c_dict
+        # Plot position-depth plane with counts
+        if plot_pos_depth:
+            plt.subplots(figsize=(30, 20))
+            for i in range(pos_depth_n.shape[0]):
+                if pos_depth_n[i, 0] >= kwargs['pos_min'] and pos_depth_n[i, 0] <= kwargs['pos_max'] and pos_depth_n[i, 1] >= kwargs['depth_min'] and pos_depth_n[i, 1] <= kwargs['depth_max']:
+                    color = 'g'
+                else:
+                    color = 'r'
+                plt.text(pos_depth_n[i, 0],pos_depth_n[i, 1], str(pos_depth_n[i, 2]), fontsize=25, color=color)
+            plt.xlim(0,25)
+            plt.ylim(0, 25)
+            plt.xlabel('Word position', size=40)
+            plt.ylabel('Number of Open Nodes (numON)', size=40)
+            ax = plt.gca()
+            ax.tick_params(axis='both', labelsize = 26)
+            # for tick in ax.xaxis.get_major_ticks():
+            #     tick.label.set_fontsize(26)
+
+        return c_dict, plt
 
     def get_min_number_of_samples_in_rectangle(self, c_dict, pos_min, pos_max, depth_min, depth_max):
         pos_depth_n = np.asarray([(ele[0], ele[1], val) for (ele, val) in zip(c_dict.keys(), c_dict.values())])

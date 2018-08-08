@@ -39,7 +39,6 @@ def split_data(data_sentences, params):
     '''
     data_sentences_train = []; data_sentences_test = []
     import random
-    random.seed(params.seed_split)
     random.shuffle(data_sentences)
 
     num_sentences = len(data_sentences)
@@ -52,26 +51,32 @@ def split_data(data_sentences, params):
     return data_sentences_train, data_sentences_test
 
 
-def prepare_data_for_regression(data_sentences_train, data_sentences_test):
-    #TODO: get a key (hidde/cell/both) for which activations to put in the regression
-    X_train = []; y_train = []; X_test = []; y_test = []
-
-    # len(activations_train)=num_sentences_train. Each element has num_words vectors of activation
-    activations_train = [np.vstack(ele['hidden']) for ele in data_sentences_train]
-    activations_test = [np.vstack(ele['hidden']) for ele in data_sentences_test]
-    word_freq_train = np.expand_dims(np.asarray([int(w) for ele in data_sentences_train for w in ele['word_frequencies'].strip().split(' ')]), 1)
-    word_freq_test = np.expand_dims(np.asarray([int(w) for ele in data_sentences_test for w in ele['word_frequencies'].strip().split(' ')]), 1)
-    open_nodes_train = [int(w) for ele in data_sentences_train for w in ele['open_nodes_count'].strip().split(' ')]
-    open_nodes_test = [int(w) for ele in data_sentences_test for w in ele['open_nodes_count'].strip().split(' ')]
-
-    # Cat all sentences to generate matrices where each row is per word
-    X_train = np.hstack(activations_train).transpose()
-    X_train = np.hstack((X_train, word_freq_train)) # Add word freqs as another feature
-
-    X_test = np.hstack(activations_test).transpose()
-    X_test = np.hstack((X_test, word_freq_test))  # Add word freqs as another feature
-
-    y_train = np.hstack(open_nodes_train)
-    y_test = np.hstack(open_nodes_test)
+def prepare_data_for_regression(data_sentences_train, data_sentences_test, feature_type='hidden'):
+    X_train, y_train = get_design_matrix(data_sentences_train, feature_type='hidden')
+    X_test, y_test = get_design_matrix(data_sentences_test, feature_type='hidden')
 
     return X_train, y_train, X_test, y_test
+
+def get_design_matrix(data_sentences, feature_type='hidden'):
+    '''
+    A function to transform the data structure into a design matrix for a regression model X*w = y.
+
+    :param data_sentences: data object
+    :params feature_type: str which type of activations to extract (hidde/cell/both)
+    :return: X: design matrix (ndarray num_samples X num_features)
+            y: corresponding vector with dependent variable
+    '''
+    X = []; y = []
+
+    # len(activations_train)=num_sentences_train. Each element has num_words vectors of activation
+    activations = [np.vstack(ele[feature_type]) for ele in data_sentences]
+    word_freq = np.expand_dims(np.asarray([int(w) for ele in data_sentences for w in ele['word_frequencies'].strip().split(' ')]), 1)
+    open_nodes = [int(w) for ele in data_sentences for w in ele['open_nodes_count'].strip().split(' ')]
+
+    # Cat all sentences to generate matrices where each row is per word
+    X = np.hstack(activations).transpose()
+    X = np.hstack((X, word_freq)) # Add word freqs as another feature
+
+    y = np.hstack(open_nodes)
+
+    return X, y

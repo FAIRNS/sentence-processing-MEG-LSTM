@@ -1,6 +1,47 @@
 ##
-import pickle
+import pickle, os, sys
 import numpy as np
+import matplotlib.pyplot as plt
+
+from functions import load_settings_params as lsp
+from functions import prepare_for_ablation_exp as prep
+settings = lsp.settings()
+n = 300
+model1 = 'Ridge'
+file_name1 = '%s_regression_number_of_open_nodes_n=%i' % (model1, n)
+with open(os.path.join(settings.path2output, 'num_open_nodes', file_name1 + '.pkl'), 'rb') as f:
+    model_obj_1 = pickle.load(f, encoding='latin1')[0]
+weights_model1 = []
+for i in range(5):
+    weights_model1.append(model_obj_1[i].best_estimator_.coef_)
+weights_model1 = np.asarray(weights_model1)
+output_filename = os.path.join(settings.path2output, 'num_open_nodes', file_name1 + '.txt')
+prep.generate_text_file_with_sorted_weights(weights_model1, output_filename)
+
+
+##
+l = [1, 12, 2, 43 , 454]
+IX=np.asarray(l) <= 10
+
+A = np.arange(20).reshape([5, 4])
+A = A[:, IX]
+
+print('Rejected units: %s' % ' '.join([str(i) for i, v in enumerate(IX) if not v]))
+
+path2figures = os.path.join('..', '..', '..', 'Figures')
+path = sys.path[0].split('/')
+i = path.index('sentence-processing-MEG-LSTM')
+base_folder = os.sep + os.path.join(*path[:i+1])
+pkl_filename = os.path.join(base_folder, 'Output/Ridge_regression_number_of_open_nodes.pkl')
+
+with open(pkl_filename, 'rb') as f:
+    data = pickle.load(f)
+VIF = data[-1]
+plt.hist(VIF, 50)
+plt.xlabel('VIF', size=18)
+plt.ylabel('Number of featuress', size=18)
+plt.savefig(os.path.join(path2figures, 'num_open_nodes', 'VIF_dist.png'))
+plt.close()
 
 path2file = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/model_ridge_best_coef_all_MODEL_hidden650_batch128_dropout0.2_lr20.0.cpu.pt_h_or_c_0_layer_0.pkl'
 with open(path2file, 'rb') as f:
