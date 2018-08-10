@@ -85,7 +85,9 @@ else:
     target_units = [args.unit]
 
 def feed_input(model, hidden, w):
-    inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]])).cuda()
+    inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
+    if args.cuda:
+        inp = inp.cuda()
     out, hidden = model(inp, hidden)
     return out, hidden
 def feed_sentence(model, h, sentence):
