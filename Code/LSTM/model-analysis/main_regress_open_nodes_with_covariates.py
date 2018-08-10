@@ -143,7 +143,7 @@ for split in range(params.CV_fold):
     num_features = curr_weights.shape[0]
     IX = np.abs(curr_weights).argsort()
     units_sorted = np.asarray(range(num_features))[IX[::-1]] # Sort units in descending order wrt weight size
-    k, n, ave, std = prepare_for_ablation_exp.get_weight_outliers(curr_weights) # Find outlier weights (>3SD)
+    k, n, ave, std, IX_outliers = prepare_for_ablation_exp.get_weight_outliers(curr_weights) # Find outlier weights (>3SD)
     units_outliers.append(units_sorted[0:k]) # Append for each split
 
     # Print info to screen
@@ -168,7 +168,7 @@ weights_std = np.std(np.asarray(weights), axis=0)
 num_features = weights_mean.shape[0]
 IX = np.abs(weights_mean).argsort()
 units_sorted = np.asarray(range(num_features))[IX[::-1]]
-k, n, ave, std = prepare_for_ablation_exp.get_weight_outliers(weights_mean)
+k, n, ave, std, IX_outliers = prepare_for_ablation_exp.get_weight_outliers(weights_mean)
 
 print('After averaging across splits:')
 print('mean test score: %1.2f +- %1.2f' % (np.mean(scores), np.std(scores)))
@@ -184,7 +184,7 @@ plt.ylabel('Weight size', size=18)
 plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'weights_' + model_type + '_synthetic.png'))
 plt.close()
 
-plt.hist(np.abs(weights_mean), 50)
+plt.hist(weights_mean, 50)
 plt.xlabel('Weight size', size=18)
 plt.ylabel('Number of units', size=18)
 plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'weights_' + model_type + '_synthetic_dist.png'))
