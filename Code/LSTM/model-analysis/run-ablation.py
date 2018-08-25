@@ -35,19 +35,21 @@ unit_to_kill_to = 1300
 sample_size = 19
 total_samples = 1000
 
-regression_units = []
-with open(regression_units_fn, 'r') as f:
-    for l in f.readlines():
-        regression_units.append(int(l.rstrip().split(',')[1])+1) # !!!change from counting from 0 to counting from 1!!!
-    # units = [int(u) for ]
+sample_regression_units = False # get syntax units from regression analysis and sample from them for the ablation exp
+sample = True # sub-sample 'sample-size' (k) units from 'possible_killed_units' (either all-units/syntax-unit) for ablation exp
+
+if sample_regression_units:
+    regression_units = []
+    with open(regression_units_fn, 'r') as f:
+        for l in f.readlines():
+            regression_units.append(int(l.rstrip().split(',')[1])+1) # !!!change from counting from 0 to counting from 1!!!
+        # units = [int(u) for ]
 
 # regression_units = list(map(lambda x: x+1, map(int, list(l for l in open(regression_units_fn))[:])))
-sample = True
+
 if sample:
-    sample_regression_units = True
     if sample_regression_units:
         possible_killed_units = regression_units
-        # possible_killed_units = regression_units[0:sample_size]
     else:
         possible_killed_units = range(unit_to_kill_from, unit_to_kill_to+1)
 else:
