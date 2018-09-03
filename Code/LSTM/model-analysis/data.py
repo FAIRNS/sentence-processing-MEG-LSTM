@@ -18,7 +18,7 @@ class Dictionary(object):
         return len(self.idx2word)
 
     def load(self, path):
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding='utf-8') as f:
             for line in f:
                 self.add_word(line.rstrip('\n'))
 
