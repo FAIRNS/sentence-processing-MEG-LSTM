@@ -69,13 +69,10 @@ for seed in range(1):
 
     for sg, units in enumerate(unit_sets):
         units = map(str, units)
+        all_units = " -u ".join(units)
         output_fn = output + '%i_seed_%i_k_%i_units_%s' % (sg, seed, sample_size, '_'.join(units)) + '.pkl'
-        # cmd = "$HOME/.conda/envs/localconda/bin/python " + script + ' ' + model + ' --input ' + agreement_data + ' --vocabulary ' + vocab + ' --output ' + output +\
-        #                     ' --eos-separator ' + eos + ' --format ' + format +  ' -u ' + ' -u ' .join(units) + ' -g '\
-        #       + str(g) + ' -s ' + str(seed) + ' --cuda --use-unk'
-
-        cmd = 'python3 ' + script + ' ' + model + ' --input ' + agreement_data + ' --vocabulary ' + vocab + ' --output ' + output_fn + \
-              ' --eos-separator ' + eos + ' --format ' + format + ' -u ' + ' -u '.join(units) + ' -g ' \
-              + str(g) + ' -s ' + str(seed) + ' --cuda --use-unk'
+        cmd = 'python3 ' + script + " " + model + " --input " + agreement_data + " --vocabulary " + vocab + " --output " + output_fn + \
+              " --eos-separator " + eos + " --format " + format + " -u " + all_units + " -g " \
+              + str(g) + " -s " + str(seed) + " --cuda --use-unk"
 
         print(cmd)
