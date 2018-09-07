@@ -47,7 +47,7 @@ os.makedirs(os.path.dirname(args.output), exist_ok=True)
 vocab = data.Dictionary(args.vocabulary)
 
 # Sentences
-sentences = [l.rstrip('\n').split(' ') for l in open(args.input + '.text')]
+sentences = [l.rstrip('\n').split(' ') for l in open(args.input + '.text', encoding='utf-8')]
 gold = pandas.read_csv(args.input + '.gold', sep='\t', header=None, names=['verb_pos', 'correct', 'wrong', 'nattr'])
 
 # agreement_test_data = pandas.read_csv(args.input, sep='\t')
@@ -66,7 +66,7 @@ gold = pandas.read_csv(args.input + '.gold', sep='\t', header=None, names=['verb
 print('Loading models...')
 import lstm
 print('\nmodel: ' + args.model+'\n')
-model = torch.load(args.model)
+model = torch.load(args.model)  # requires GPU model
 model.rnn.flatten_parameters()
 # hack the forward function to send an extra argument containing the model parameters
 model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
