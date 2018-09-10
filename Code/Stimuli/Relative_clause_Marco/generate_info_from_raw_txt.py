@@ -47,34 +47,34 @@ with open(path2output_sentences, 'w') as f:
 with open(path2output_info, 'wb') as f:
     pickle.dump(info, f)
 
-path2input_text = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/RC_double_subjrel_that_english_marco.txt'
-path2output_sentences = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/RC_double_english_marco.txt'
-path2output_info = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/info_RC_double_english_marco.p'
-
-# Open raw text file from Marco's sentence generator
-with open(path2input_text, 'r') as f:
-    data = f.readlines()
-
-# Split each row to different fields and save separately the sentences and the info
-sentences = [line.split('\t')[1]+ '\n' for line in data]
-info = []
-for line in data:
-    curr_info = {}
-    curr_info['RC_type'] = line.split('\t')[0]
-    curr_info['sentence_length'] = len(line.split('\t'))
-    curr_info['number_1'] = line.split('\t')[2]
-    curr_info['number_2'] = line.split('\t')[3]
-    curr_info['number_3'] = line.split('\t')[4]
-    curr_info['number_4'] = line.split('\t')[5]
-    curr_info['verb_1'] = line.split('\t')[6]
-    curr_info['verb_2'] = line.split('\t')[7]
-    curr_info['verb_3'] = line.split('\t')[8]
-    info.append(curr_info)
-
-# Save info list to drive
-import pickle
-with open(path2output_sentences, 'w') as f:
-    f.writelines(sentences)
-
-with open(path2output_info, 'wb') as f:
-    pickle.dump(info, f)
+# path2input_text = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/RC_double_subjrel_that_english_marco.txt'
+# path2output_sentences = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/RC_double_english_marco.txt'
+# path2output_info = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/info_RC_double_english_marco.p'
+#
+# # Open raw text file from Marco's sentence generator
+# with open(path2input_text, 'r') as f:
+#     data = f.readlines()
+#
+# # Split each row to different fields and save separately the sentences and the info
+# sentences = [line.split('\t')[1]+ '\n' for line in data]
+# info = []
+# for line in data:
+#     curr_info = {}
+#     curr_info['RC_type'] = line.split('\t')[0]
+#     curr_info['sentence_length'] = len(line.split('\t'))
+#     curr_info['number_1'] = line.split('\t')[2]
+#     curr_info['number_2'] = line.split('\t')[3]
+#     curr_info['number_3'] = line.split('\t')[4]
+#     curr_info['number_4'] = line.split('\t')[5]
+#     curr_info['verb_1'] = line.split('\t')[6]
+#     curr_info['verb_2'] = line.split('\t')[7]
+#     curr_info['verb_3'] = line.split('\t')[8]
+#     info.append(curr_info)
+#
+# # Save info list to drive
+# import pickle
+# with open(path2output_sentences, 'w') as f:
+#     f.writelines(sentences)
+#
+# with open(path2output_info, 'wb') as f:
+#     pickle.dump(info, f)
