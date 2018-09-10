@@ -48,6 +48,7 @@ class settings:
         # self.stimuli_file_name = 'relative_clause_English.txt'
         # self.stimuli_file_name = 'NP_VP_and_RC_filtered_perp.txt'
         self.stimuli_file_name = 'objrel_subjrel_that.txt'
+        self.stimuli_file_name = 'RC_english_synthetic_with_objdep_adj.txt'
 
         #self.stimuli_file_name = 'NP_VP_transition.utf-8.txt'
         #self.stimuli_meta_data = 'info.p'
@@ -55,6 +56,7 @@ class settings:
         # self.stimuli_meta_data = 'info_RC_English.p'
         self.stimuli_meta_data = 'info_NP_VP_and_RC_filtered_perp.p'
         self.stimuli_meta_data = 'info_objrel_subjrel_that.p'
+        self.stimuli_meta_data = 'info_RC_english_synthetic_with_objdep_adj.p'
 
 
         self.MEG_file_name = 'patient_' + self.patient + '_epochs_lock_to_beginning_of_sentence_anomaly_type_0.npy'
@@ -70,6 +72,7 @@ class settings:
         # self.LSTM_file_name = 'relative_clauses_English.pkl'
         self.LSTM_file_name = 'NP_VP_and_RC_filtered_perp.pkl'
         self.LSTM_file_name = 'objrel_subjrel_that.pkl'
+        self.LSTM_file_name = 'RC_english_synthetic_with_objdep_adj.pkl'
 
         self.word_vectors_file_name = 'word_vectors.npy'
         self.word_vectors_BOW_file_name = 'bow_vectors.npy'
