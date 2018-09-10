@@ -36,7 +36,7 @@ class settings:
 class params:
     def __init__(self):
         #
-        self.seed_split = 1 # random seed for split
+        self.seed_split = 2 # random seed for split
         self.CV_fold = 5  # 5-fold
 
         # Hyper-parameters regression:
