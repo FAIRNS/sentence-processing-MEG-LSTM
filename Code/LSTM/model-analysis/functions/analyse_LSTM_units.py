@@ -8,12 +8,6 @@ import matplotlib.pyplot as plt
 from os import path as op
 
 def get_stimuli_and_info(settings, params):
-    '''
-
-    :param settings.stimuli_type ('MEG_stimuli'/'NP_VP_transition'/'Relative_clauses'): which stimuli to load
-    :param params:
-    :return:
-    '''
     if settings.stimuli_type == 'MEG_stimuli':
         # load rejected trials
         bad_trials = np.load(settings.bad_trials_file_name)
@@ -126,6 +120,16 @@ def get_stimuli_and_info(settings, params):
 
 
 def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, params):
+    '''
+
+    :param LSTM_data: list of numpy array for all gates
+    :param label:
+    :param curr_stimuli:
+    :param units: units for which to plot the activations
+    :param settings:
+    :param params:
+    :return:
+    '''
     from tqdm import tqdm
     if not units:
         units = range(LSTM_data['gates.in'][0].shape[0])

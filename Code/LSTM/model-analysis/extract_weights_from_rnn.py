@@ -134,6 +134,13 @@ def plot_graph_for_connectivity(weights, layer, gate, from_units, to_units):
     plt.savefig(args.output + '_gate_' + str(gate) + '_layers_' + str(layer) + '.graph.png')
     plt.close()
 
+
+def sort_units_according_to_weights_with_number_units():
+    number_units = [769, 775]
+
+
+
+
 # Load model
 print('Loading models...')
 print('\nmodel: ' + args.model+'\n')
