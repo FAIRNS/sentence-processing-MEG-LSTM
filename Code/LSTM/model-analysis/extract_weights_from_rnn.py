@@ -22,6 +22,15 @@ os.makedirs(os.path.dirname(args.output), exist_ok=True)
 
 
 def extract_weights_from_nn(weight_type, from_units, to_units):
+    '''
+
+    :param weight_type: (str) 'weight_ih_l1' or 'weight_hh_l0' or 'weight_hh_l1'
+    :param from_units: (list of int) weights FROM which units to extract
+    :param to_units: (list of int) weights TO which units to extract
+    :return:
+    weights: (list of ndarrays) containing the extracted weights
+    weights_names (list of str) containing the corresponding names (e.g., '1049_775').
+    '''
     weights = []
     weights_names = []
     if len(to_units) > 0 and len(from_units) > 0:
@@ -42,6 +51,16 @@ def extract_weights_from_nn(weight_type, from_units, to_units):
 
 
 def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, weight_of_interest, weight_names, layer, gate):
+    '''
+
+    :param axes: axes of the plt on which hists will be presented
+    :param weights_all: (list of ndarrays) len(list) = 4 (#gates).
+    :param weight_of_interest: (list of sublists of floats) each sublist contains 4 floats for the weights between units of interest
+    :param weight_names: (list of str) with the corresponding names for the weights of interest
+    :param layer: (int) 0 or 1. 0=first layer; 1=second layer
+    :param gate: (int) 0,1,2, or 3. 0=input, 1=forget, 2=cell or 3=output gate.
+    :return:
+    '''
     arrow_dy = 10000  # arrow length
     gate_names = ['Input', 'Forget', 'Cell', 'Output']
     colors = ['r', 'g', 'b', 'y']
@@ -72,8 +91,8 @@ def generate_mds_for_connectivity(weights, layer, gate, from_units, to_units):
     :param weights:
     :param layer: 0, 1, or 2 = l0-l0, l1-l1 or l0-l2 connections
     :param gate: 0, 1, 2, or 3 = input, forget, cell or output.
-    :param from_units:
-    :param to_units:
+    :param from_units: (list of int) weights FROM which units to extract
+    :param to_units: (list of int) weights TO which units to extract
     :return:
     '''
     from sklearn import manifold
