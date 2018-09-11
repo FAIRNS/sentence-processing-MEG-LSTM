@@ -34,8 +34,8 @@ def split_data(data_sentences, params):
     :param data_sentences: list of dictionaries. len(list) = num_sentences.
     :param params: object that includes info about CV settings
     :return:
-    data_sentences_train: list len as params.CV_fold. Containts all train splits.
-    data_sentences_test: list len as params.CV_fold. Contatins all test splits.
+    data_sentences_train: list len as params.CV_fold. Contains all train splits.
+    data_sentences_test: list len as params.CV_fold. Contains all test splits.
     '''
     data_sentences_train = []; data_sentences_test = []
     import random
@@ -51,13 +51,13 @@ def split_data(data_sentences, params):
     return data_sentences_train, data_sentences_test
 
 
-def prepare_data_for_regression(data_sentences_train, data_sentences_test, feature_type='hidden'):
-    X_train, y_train = get_design_matrix(data_sentences_train, feature_type='hidden')
-    X_test, y_test = get_design_matrix(data_sentences_test, feature_type='hidden')
+def prepare_data_for_regression(data_sentences_train, data_sentences_test, feature_type='hidden', dependent_var_name='open_nodes'):
+    X_train, y_train = get_design_matrix(data_sentences_train, dependent_var_name)
+    X_test, y_test = get_design_matrix(data_sentences_test, dependent_var_name)
 
     return X_train, y_train, X_test, y_test
 
-def get_design_matrix(data_sentences, feature_type='hidden'):
+def get_design_matrix(data_sentences, dependent_var_name, feature_type='hidden'):
     '''
     A function to transform the data structure into a design matrix for a regression model X*w = y.
 
@@ -72,11 +72,15 @@ def get_design_matrix(data_sentences, feature_type='hidden'):
     activations = [np.vstack(ele[feature_type]) for ele in data_sentences]
     word_freq = np.expand_dims(np.asarray([int(w) for ele in data_sentences for w in ele['word_frequencies'].strip().split(' ')]), 1)
     open_nodes = [int(w) for ele in data_sentences for w in ele['open_nodes_count'].strip().split(' ')]
+    constituent_boundary = [int(w) for ele in data_sentences for w in ele['constituent_boundary'].strip().split(' ')]
 
     # Cat all sentences to generate matrices where each row is per word
     X = np.hstack(activations).transpose()
     X = np.hstack((X, word_freq)) # Add word freqs as another feature
 
-    y = np.hstack(open_nodes)
+    if dependent_var_name == 'open_nodes':
+        y = np.hstack(open_nodes)
+    elif dependent_var_name == 'constituent_boundary':
+        y = np.hstack(constituent_boundary)
 
     return X, y

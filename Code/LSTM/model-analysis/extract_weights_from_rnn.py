@@ -50,7 +50,7 @@ def extract_weights_from_nn(weight_type, from_units, to_units):
     return weights, weights_names
 
 
-def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, weight_of_interest, weight_names, layer, gate):
+def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, weight_of_interest, weight_names, layer, gate, arrow_dy=100):
     '''
 
     :param axes: axes of the plt on which hists will be presented
@@ -59,16 +59,17 @@ def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, w
     :param weight_names: (list of str) with the corresponding names for the weights of interest
     :param layer: (int) 0 or 1. 0=first layer; 1=second layer
     :param gate: (int) 0,1,2, or 3. 0=input, 1=forget, 2=cell or 3=output gate.
+    :param arrow_dy  # arrow length
     :return:
     '''
-    arrow_dy = 10000  # arrow length
+
     gate_names = ['Input', 'Forget', 'Cell', 'Output']
     colors = ['r', 'g', 'b', 'y']
     print('Weight histogram for: ' + 'layer ' + str(layer) + ' gate ' + gate_names[gate] )
     axes[layer, gate].hist(weights_all[gate].flatten(), bins=100, facecolor=colors[gate], lw=0, alpha=0.5)
     for c, weights in enumerate(weight_of_interest):
-        axes[layer, gate].arrow(weights[gate], arrow_dy, 0, 1000 - arrow_dy, color='k', width=0.1,
-                                      head_length=1000, head_width=0.5)
+        axes[layer, gate].arrow(weights[gate], arrow_dy, 0, arrow_dy/10 - arrow_dy, color='k', width=0.01,
+                                      head_length=arrow_dy/10, head_width=0.05)
         axes[layer, gate].text(weights[gate], 10+arrow_dy, str(weight_names[c]),
                                      {'ha': 'center', 'va': 'bottom'},
                                      rotation=90)
@@ -187,16 +188,29 @@ fig, axes = plt.subplots(3, 4, figsize=[30, 20])
 arrow_dy = 10000 # arrow length
 gate_names = ['Input', 'Forget', 'Cell', 'Output']
 recurrent_weights_l0_all = []; recurrent_weights_l1_all = []; weights_l0_l1_all = []
+recurrent_weights_l1_769 = []; weights_l0_l1_769 = []
+[]; recurrent_weights_l1_775 = []; weights_l0_l1_775 = []
 for gate in range(4): # loop over the four gates (columns in the final figure)
     # Extract weights among ALL units:
     recurrent_weights_l0_all.append(model.rnn.weight_hh_l0.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     recurrent_weights_l1_all.append(model.rnn.weight_hh_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     weights_l0_l1_all.append(model.rnn.weight_ih_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
+    # all weights to 769:
+    recurrent_weights_l1_769.append(model.rnn.weight_hh_l1.data[(769-650)+gate * 650, :].numpy())
+    weights_l0_l1_769.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 769 - 650].numpy())
+    # all weights to 775:
+    recurrent_weights_l1_775.append(model.rnn.weight_hh_l1.data[(775-650)+gate * 650, :].numpy())
+    weights_l0_l1_775.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 775-650].numpy())
+
+    units_with_highest_neg_proj_to_775 = 650 + np.argsort(recurrent_weights_l1_775[gate])
+    units_with_highest_pos_proj_to_775 = 650 + np.argsort(np.negative(recurrent_weights_l1_775[gate]))
+    print(units_with_highest_neg_proj_to_775[0:15])
+    print(units_with_highest_pos_proj_to_775[0:15])
 
     # Plot the hist of all weights and add arrows for the weight values of specific units (e.g., number or syntax units)
-    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l0_all, recurrent_weights_l0, recurrent_weights_l0_names, 0, gate)
-    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l1_all, recurrent_weights_l1, recurrent_weights_l1_names, 1, gate)
-    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_l0_l1_all, weights_l0_l1, weights_l0_l1_names, 2, gate)
+    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l0_all, recurrent_weights_l0, recurrent_weights_l0_names, 0, gate, arrow_dy=10000)
+    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l1_775, recurrent_weights_l1, recurrent_weights_l1_names, 1, gate, arrow_dy=10)
+    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_l0_l1_all, weights_l0_l1, weights_l0_l1_names, 2, gate, arrow_dy=10000)
 
 plt.savefig(args.output + '.png')
 plt.close(fig)

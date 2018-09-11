@@ -39,6 +39,11 @@ class Data(object):
         for line in tqdm(f):
             vals = str(line).split(separator)
             vals[0]=vals[0][2::]
+            column_names.append('constituent_boundary')
+            num_oNodes = [int(i) for i in vals[2].strip(' ').split(' ')]
+            constituent_boundary = [0] + [1 if num_oNodes[i]<=num_oNodes[i-1] else 0 for i in range(1, len(num_oNodes))]
+            constituent_boundary = ' '.join(map(str, constituent_boundary))
+            vals.append(constituent_boundary)
             self.data.append(dict(zip(column_names, vals)))
             length = len(vals[0].split())
             lengths.append(length)
