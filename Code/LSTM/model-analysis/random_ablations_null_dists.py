@@ -28,18 +28,6 @@ def generate_and_plot_null_dists(path2ablation_results):
         sys.stdout.flush()
         curr_performance = [p for (k, p) in zip(k_s, task_performance) if k == k_loop]
         performance_per_k[k_loop] = curr_performance
-        fig, ax = plt.subplots(figsize=(40, 30))
-        plt.hist(curr_performance, bins=100)
-        ax.set_xlabel('Task performance (fraction of correct trials)', fontsize=40)
-        ax.set_ylabel('Number of random ablation experiments', fontsize=40)
-        ax.set_title('k = ' + str(k_loop), fontsize=40)
-        ax.tick_params(axis='both', labelsize=35)
-        plt.xlim(0.5, 1)
-        plt.ylim(0, 800)
-        # Save figure per k
-        file_name = 'null_distribution_ablation_experiment_k_' + str(k_loop) + '.png'
-        plt.savefig(os.path.join('..', '..', '..', 'Figures', file_name))
-        plt.close(fig)
 
     with open(path2ablation_results + '.pkl', 'wb') as f:
         pickle.dump(performance_per_k, f)
@@ -60,43 +48,87 @@ def get_p_value_from_null_dist(null_distribution, performance):
 
     return p_value
 
+def plot_null_dist(performances_null, k, performance_test, p_value, fontsize=40):
+    '''
+    Generate png file of the null disttribution together with a labeled arrow indicating the test performance and its p-value
+    :param performances_null: (list) of task-performance values from random ablation experiments
+    :param k: (int) number of units ablated together in each of the experiments
+    :param performance_test: (float) the value of a single test ablation experiment that will be compared to the null
+    :param p_value: (float) its corresponding p-value based on the null-distribution
+    :param fontsize: (float, optional) fontsize for the labels and title in the plot
+    :return:
+    '''
+    fig, ax = plt.subplots(figsize=(40, 30))
+    ax.hist(performances_null, bins=100)
+    ax.set_xlabel('Task performance (fraction of correct trials)', fontsize=fontsize)
+    ax.set_ylabel('Number of random ablation experiments', fontsize=fontsize)
+    ax.set_title('Number of ablated units: k = ' + str(k), fontsize=fontsize)
+    ax.tick_params(axis='both', labelsize=fontsize*0.8)
+    ax.set_xlim(0.6, 1)
+    ax.set_ylim(0, 600)
+
+    # add arrow for p-value:
+    if p_value:
+        arrow_dy = 50  # arrow length
+        ax.arrow(performance_test, arrow_dy, 0, -40, color='k', width=0.001,
+                                head_length=10, head_width=0.01)
+        ax.text(performance_test, 10 + arrow_dy, 'task-performance = ' + str("{:.3f}".format(performance_test)) + '\np-value = '+str("{:.3f}".format(p_value)),
+                               {'ha': 'center', 'va': 'bottom', 'fontsize':fontsize},
+                               rotation=90)
+
+    # Save figure per k
+    file_name = 'null_distribution_ablation_experiment_k_' + str(k) + '.png'
+    plt.savefig(os.path.join('..', '..', '..', 'Figures', file_name))
+    plt.close(fig)
+
+
+def plot_all_null_dists(performance_per_k, fontsize=25):
+    '''
+    generate a single figure with all null distributions, each in a subplot.
+    :param performance_per_k: (dict) keys-k-values, values: lists of task performance.
+    :param fontsize:
+    :return:
+    '''
+    fig, axs = plt.subplots(3, 4, figsize=(40, 30))
+    axs = axs.flatten()
+    for i, k_loop in enumerate(set(performance_per_k.keys())):
+        sys.stdout.write(str(k_loop) + ', ')
+        sys.stdout.flush()
+        axs[i].hist(performance_per_k[k_loop], bins=100)
+        if i > 7:
+            axs[i].set_xlabel('Task performance (fraction of correct trials)', fontsize=fontsize)
+        if i%4==0:
+            axs[i].set_ylabel('Number of random ablation experiments', fontsize=fontsize)
+        axs[i].set_title('Number of ablated units: k = ' + str(k_loop), fontsize=fontsize)
+        axs[i].tick_params(axis='both', labelsize=fontsize*0.8)
+        axs[i].set_xlim(0.6, 1)
+        axs[i].set_ylim(0, 600)
+
+    # Save figure per k
+    file_name = 'null_distribution_ablation_experiment.png'
+    plt.savefig(os.path.join('..', '..', '..', 'Figures', file_name))
+    plt.close(fig)
 
 
 # MAIN
 path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/regression_unit_ablation_results.txt'
-# _ = generate_and_plot_null_dists(path2ablation_results)
+performance_per_k = generate_and_plot_null_dists(path2ablation_results)
 
 # Example
 with open(path2ablation_results + '.pkl', 'rb') as f:
     performance_per_k = pickle.load(f)
 
-script = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/ablation-experiment.py'
-model = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
-agreement_data = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/agreement-data/best_model.tab'
-vocab = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
-output = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_results_killing_unit_'
-eos = '"<eos>"'
-format = 'pkl'
-seed = 1 # random seed for numpy
-unit_to_kill = [578, 988, 1041, 1149, 1229, 758, 1101, 916, 1005, 29, 186, 1061, 759, 31, 1198, 930, 488] # unit number (counting from one!)
-unit_to_kill = [u+1 for u in unit_to_kill] # change counting from 1.
-g = 1 # group size of units to kill in including random ones
 
-command = script + ' ' + model + ' --input ' + agreement_data + ' --vocabulary ' + vocab + ' --output ' + output +\
-                    ' --eos-separator ' + eos + ' --format ' + format + ' -u ' + ' '.join(map(str, unit_to_kill)) + ' -g '\
-      + str(g) + ' -s ' + str(seed)
-
-print(command)
-import subprocess
-cmd = subprocess.Popen(command)
-cmd.communicate()
-
-output = output + "_".join(map(str, unit_to_kill)) + '_groupsize_' + str(g) + '_seed_' + str(seed)  # Update output file name
-output_fn = output + '_' + str(True) + '.pkl'  # update output file name
+output_fn = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/ablation_results_killing_regression_unit_579_989_1042_1150_1230_759_1102_917_1006_30_187_1062_760_32_1199_931_489_groupsize_1_seed_1_True.pkl'
 
 with open(output_fn, 'rb') as f:
-    results = pickle.load(output_fn)
+    results = pickle.load(f)
 
-performance = results['score_on_task']/results['sentences']
-p_value = get_p_value_from_null_dist(performance_per_k[10], performance)
-print(p_value)
+performance_test = results['score_on_task']/results['num_sentences']
+p_value = get_p_value_from_null_dist(performance_per_k[17], performance_test)
+print(performance_test, p_value)
+
+plot_null_dist(performance_per_k[17], 17, performance_test, p_value)
+plot_all_null_dists(performance_per_k)
+
+# 0.023976023976023976

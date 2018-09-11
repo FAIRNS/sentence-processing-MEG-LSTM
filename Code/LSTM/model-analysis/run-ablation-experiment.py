@@ -15,6 +15,6 @@ g = 1 # group size of units to kill in including random ones
 cmd = script + ' ' + model + ' --input ' + agreement_data + ' --vocabulary ' + vocab + ' --output ' + output +\
                     ' --eos-separator ' + eos + ' --format ' + format + ' -u ' + str(unit_to_kill) + ' -g '\
       + str(g) + ' -s ' + str(seed)
-print cmd
+print(cmd)
 # os.system(cmd)
 
