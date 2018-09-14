@@ -7,8 +7,7 @@ parser = argparse.ArgumentParser(description='Switching from Marco files to Tal 
 parser.add_argument('-i', '--input', required=True, help='Input sentences in Marco\'s format')
 parser.add_argument('-s', '--sentences', required=True, help='Output sentences in Tal\'s format')
 parser.add_argument('-o', '--info', required=True, help='Output info pickle file in Theo\'s format')
-parser.add_argument('-ts', '--tal_sentences', required=True, help='Output meta file for agreement task in Tal\'s format')
-parser.add_argument('-tm', '--tal_meta', required=True, help='Output meta file for agreement task in Tal\'s format')
+parser.add_argument('-t', '--tal_fn', required=True, help='Output meta file for agreement task in Tal\'s format')
 args = parser.parse_args()
 
 keep_sentences = [['subjrel_that', 'singular', 'singular'], ['subjrel_that', 'plural', 'singular'], ['subjrel_that', 'plural', 'plural'], ['objrel', 'plural', 'plural'], ['objrel_that', 'plural', 'plural']]
@@ -36,8 +35,8 @@ for line in raw_sentences:
     info.append(curr_info)
 
 # Prepare in Tal's format:
-sentences_Tal = []; gold_Tal = []
-for line in raw_sentences:
+sentences_Tal = []; gold_Tal = []; info_Tal = []
+for s, line in enumerate(raw_sentences):
     curr_line = line.split('\t')
     if curr_line[0] == 'objrel': # analyzing only objrel for 1149
         verb1_position = '4'
@@ -49,6 +48,7 @@ for line in raw_sentences:
 
         sentences_Tal.append(curr_line[1] + '\n')
         gold_Tal.append(line_Tal)
+        info_Tal.append(info[s])
 
 # Filter certain sentence types if desired.
 if keep_sentences:
@@ -73,12 +73,16 @@ with open(args.info, 'wb') as f:
     pickle.dump(info, f)
 
 # Save sentences for Tal's agreement task
-with open(args.tal_sentences, 'w') as f:
+with open(args.tal_fn + '.text', 'w') as f:
     f.writelines(sentences_Tal)
 
 # Save meta for Tal's agreement task
-with open(args.tal_meta, 'w') as f:
+with open(args.tal_fn + '.gold', 'w') as f:
     f.writelines(gold_Tal)
+
+# Save info for Tal's agreement task
+with open(args.tal_fn + '.info', 'wb') as f:
+    pickle.dump(info_Tal, f)
 
 # ------------------------------------------------------------
 # path2input_text = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/objrel_objrel_that_subjrel_that.txt'
