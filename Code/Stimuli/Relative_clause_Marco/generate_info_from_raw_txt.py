@@ -34,22 +34,6 @@ for line in raw_sentences:
         curr_info['verb_2_wrong'] = curr_line[6]
     info.append(curr_info)
 
-# Prepare in Tal's format:
-sentences_Tal = []; gold_Tal = []; info_Tal = []
-for s, line in enumerate(raw_sentences):
-    curr_line = line.split('\t')
-    if curr_line[0] == 'objrel': # analyzing only objrel for 1149
-        verb1_position = '4'
-        verb2_position = 5
-        verb2_correct = curr_line[1].split(' ')[verb2_position].strip()
-        verb2_wrong = curr_line[6].strip()
-        num_attributes = '-999'
-        line_Tal = str(verb2_position) + '\t' + verb2_correct + '\t' + verb2_wrong + '\t' + num_attributes + '\n'
-
-        sentences_Tal.append(curr_line[1] + '\n')
-        gold_Tal.append(line_Tal)
-        info_Tal.append(info[s])
-
 # Filter certain sentence types if desired.
 if keep_sentences:
     IX_to_keep = []
@@ -62,6 +46,25 @@ if keep_sentences:
     # Filter sentence and info
     sentences = [curr_sentence for IX, curr_sentence in enumerate(sentences) if IX in IX_to_keep]
     info = [curr_info for IX, curr_info in enumerate(info) if IX in IX_to_keep]
+
+
+# Prepare in Tal's format:
+sentences_Tal = []; gold_Tal = []; info_Tal = []
+for sentence, curr_info in zip(sentences, info):
+    # curr_line = line.split('\t')
+    if curr_info['RC_type'] == 'objrel': # analyzing ONLY OBJREL for 1149
+        verb1_position = '4'
+        verb2_position = 5
+        verb2_correct = sentence.split(' ')[verb2_position].strip()
+        verb2_wrong = curr_info['verb_2_wrong'].strip()
+        num_attributes = '-999'
+        line_Tal = str(verb2_position) + '\t' + verb2_correct + '\t' + verb2_wrong + '\t' + num_attributes + '\n'
+
+        sentences_Tal.append(sentence)
+        gold_Tal.append(line_Tal)
+        info_Tal.append(curr_info)
+
+
 
 import pickle
 # Save sentences
