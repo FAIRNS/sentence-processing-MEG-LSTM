@@ -1,14 +1,14 @@
 language = 'english' # english/french
 
 base_folder = '/home/yl254115/Projects/'
-# base_folder = '/neurospin/unicog/protocols/intracranial/'
+base_folder = '/neurospin/unicog/protocols/intracranial/'
 
 if language == 'english':
     script = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/extract-activations.py'
-    model = base_folder + '/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
-    input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/RC_english_marco.txt'
+    model = base_folder + '/FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.pt'
+    input_data = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/agreement-data/RC_english_marco_objrel_wrong.txt'
     vocab = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/english_vocab.txt'
-    output = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/RC_english_marco.pkl'
+    output = base_folder + 'FAIRNS/sentence-processing-MEG-LSTM/Data/LSTM/RC_english_marco_objrel_wrong.pkl'
     eos = '"<eos>"'
     format = 'pkl'
     unk = '"<unk>"'
