@@ -54,6 +54,8 @@
 # objrel_adv: The carpenter the women admire definitely encourages
 # objrel_that_adv: The carpenter that the women admire definitely encourages
 # subjrel_that_adv: the carpenter that admires the women definitely encourages
+# simple_namepp: The carpenter near John admires
+# simple_namepp_adv: The caprenter near John definitely admires
 # frame_simple: The girl believes the carpenter admires the women
 # frame_objrel: The girl believes the carpenter the women admire encourages
 # frame_objrel_that: The girl believes the carpenter that the women admire encourages
@@ -71,8 +73,8 @@
 # frame_that_objrel_that_adv: The girl believes that the carpenter that the women admire definitely encourages
 # frame_that_subjrel_that_adv: The girl believes that the carpenter that admires the women definitely encourages
 
-# NB: for the time being, conjunction and double_subjrel_that do not
-# support the frame_* and *_adv contexts!
+# NB: as this is ongoing work, some patterns are actually not
+# supported!
 
 # Note that the printed sentences are made of randomly picked
 # elements, and that they are unique.  Moreover, no noun or verb lemma
@@ -194,7 +196,24 @@
 @adverbs=("probably",
 	  "definitely",
           "certainly");
+@names=("Mary",
+	"Pat",
+	"Linda",
+	"Barbara",
+	"Sue",
+	"Jim",
+	"John",
+	"Bob",
+	"Mike",
+	"Bill");
 
+@loc_preps =("near",
+	     "behind",
+	     "beside",
+	     "above",
+	     "under");
+
+    
 $i=0;
 while ($i<=$#{$nouns{"singular"}}) {
     $stem = $nouns{"singular"}[$i];
@@ -226,6 +245,7 @@ sub generate_simple {
     my $number_subj = shift;
     my $number_obj = shift;
     my $adv = shift;
+    my $namepp = shift;
     my $embedded = shift;
     my $other_number_subj = other_number($number_subj);
     
@@ -244,6 +264,11 @@ sub generate_simple {
     	    $seen_bucket{$stem_of{$noun}} = 1;
     	    last;
     	}
+    }
+    # if requested, produce name pp
+    if ($namepp) {
+	push @words,$loc_preps[int(rand(scalar(@loc_preps)))];
+	push @words,$names[int(rand(scalar(@names)))];
     }
     # if requested, produce adverb
     if ($adv) {
@@ -569,6 +594,7 @@ while ($structure = shift) {
 for $structure (sort (keys %requested_structures)) {
     if ($structure eq "simple") {
 	my $adv = 0;
+	my $namepp = 0;
 	my $embedded = 0;
 	foreach my $number_subj ("singular","plural") {
 	    if ($complete_flag) {
@@ -583,7 +609,7 @@ for $structure (sort (keys %requested_structures)) {
 		    @words = ();
 		    @alternates = ();
 		    %seen_bucket = ();
-		    generate_simple($complete_flag,$number_subj,$number_obj,$adv,$embedded);
+		    generate_simple($complete_flag,$number_subj,$number_obj,$adv,$namepp,$embedded);
 		    if ($complete_flag) {
 			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, $number_obj, @alternates))} = 1;
 		    }
@@ -715,6 +741,7 @@ for $structure (sort (keys %requested_structures)) {
     }
     elsif ($structure eq "objdep_objrel_that") {
 	my $adv = 0;
+	my $namepp = 0;
 	foreach my $main_subj_number ("singular","plural") {
 	    foreach my $main_obj_number ("singular","plural") {
 		foreach my $rel_subj_number ("singular","plural") {
@@ -725,12 +752,12 @@ for $structure (sort (keys %requested_structures)) {
 			%seen_bucket = ();
 			my $complete_flag = 1;
 			my $embedded = 0;
-			generate_simple($complete_flag,$main_subj_number,$main_obj_number,$adv,$embedded);
+			generate_simple($complete_flag,$main_subj_number,$main_obj_number,$adv,$namepp,$embedded);
 			push @words,"that";
 			$complete_flag = 0;
 			$embedded = 1;
 			# NB: using relative subj number twice, second time as a dummy
-			generate_simple($complete_flag,$rel_subj_number,$rel_subj_number,,$adv,$embedded);
+			generate_simple($complete_flag,$rel_subj_number,$rel_subj_number,,$adv,$namepp,$embedded);
 			$sentences{join ("\t",($structure, join(" ",@words), $main_subj_number, $main_obj_number, $rel_subj_number, @alternates))} = 1;
 		    }
 		    foreach $sentence (sort (keys(%sentences))) {
@@ -776,16 +803,28 @@ for $structure (sort (keys %requested_structures)) {
     }
     elsif ($structure eq "simple_adv") {
 	my $adv = 1;
+	my $namepp = 0;
 	my $embedded = 0;
 	foreach my $number_subj ("singular","plural") {
-	    foreach my $number_obj ("singular","plural") {
+	    if ($complete_flag) {
+		@numbers_obj = ("singular","plural");
+	    }
+	    else {
+		@numbers_obj = ("singular"); # dummy!
+	    }
+	    foreach my $number_obj (@numbers_obj) {
 		%sentences = ();
 		while (scalar(keys (%sentences)) < $sentence_count) {
 		    @words = ();
 		    @alternates = ();
 		    %seen_bucket = ();
-		    generate_simple($number_subj,$number_obj,$adv,$embedded);
-		    $sentences{join ("\t",($structure, join(" ",@words), $number_subj, $number_obj, @alternates))} = 1;
+		    generate_simple($complete_flag,$number_subj,$number_obj,$adv,$namepp,$embedded);
+		    if ($complete_flag) {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, $number_obj, @alternates))} = 1;
+		    }
+		    else {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, @alternates))} = 1;
+		    }
 		}
 		foreach $sentence (sort (keys(%sentences))) {
 		    print $sentence,"\n";
@@ -852,9 +891,72 @@ for $structure (sort (keys %requested_structures)) {
 	    }
 	}
     }
+    elsif ($structure eq "simple_namepp") {
+	my $adv = 0;
+	my $namepp = 1;
+	my $embedded = 0;
+	foreach my $number_subj ("singular","plural") {
+	    if ($complete_flag) {
+		@numbers_obj = ("singular","plural");
+	    }
+	    else {
+		@numbers_obj = ("singular"); # dummy!
+	    }
+	    foreach my $number_obj (@numbers_obj) {
+		%sentences = ();
+		while (scalar(keys (%sentences)) < $sentence_count) {
+		    @words = ();
+		    @alternates = ();
+		    %seen_bucket = ();
+		    generate_simple($complete_flag,$number_subj,$number_obj,$adv,$namepp,$embedded);
+		    if ($complete_flag) {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, $number_obj, @alternates))} = 1;
+		    }
+		    else {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, @alternates))} = 1;
+		    }
+		}
+		foreach $sentence (sort (keys(%sentences))) {
+		    print $sentence,"\n";
+		}
+	    }
+	}
+    }
+    elsif ($structure eq "simple_namepp_adv") {
+	my $adv = 1;
+	my $namepp = 1;
+	my $embedded = 0;
+	foreach my $number_subj ("singular","plural") {
+	    if ($complete_flag) {
+		@numbers_obj = ("singular","plural");
+	    }
+	    else {
+		@numbers_obj = ("singular"); # dummy!
+	    }
+	    foreach my $number_obj (@numbers_obj) {
+		%sentences = ();
+		while (scalar(keys (%sentences)) < $sentence_count) {
+		    @words = ();
+		    @alternates = ();
+		    %seen_bucket = ();
+		    generate_simple($complete_flag,$number_subj,$number_obj,$adv,$namepp,$embedded);
+		    if ($complete_flag) {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, $number_obj, @alternates))} = 1;
+		    }
+		    else {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, @alternates))} = 1;
+		    }
+		}
+		foreach $sentence (sort (keys(%sentences))) {
+		    print $sentence,"\n";
+		}
+	    }
+	}
+    }
     elsif ($structure eq "frame_simple") {
 	my $that_frame = 0;
 	my $adv = 0;
+	my $namepp = 0;
 	my $embedded = 1;
 	foreach my $matrix_number ("singular","plural") {
 	    foreach my $number_subj ("singular","plural") {
@@ -865,7 +967,7 @@ for $structure (sort (keys %requested_structures)) {
 			@alternates = ();
 			%seen_bucket = ();
 			generate_matrix($matrix_number,$that_frame);
-			generate_simple($number_subj,$number_obj,$adv,$embedded);
+			generate_simple($number_subj,$number_obj,$adv,$namepp,$embedded);
 			$sentences{join ("\t",($structure, join(" ",@words), $matrix_number, $number_subj, $number_obj, @alternates))} = 1;
 		    }
 		    foreach $sentence (sort (keys(%sentences))) {
@@ -949,6 +1051,7 @@ for $structure (sort (keys %requested_structures)) {
     elsif ($structure eq "frame_simple_adv") {
 	my $that_frame = 0;
 	my $adv = 1;
+	my $namepp = 0;
 	my $embedded = 1;
 	foreach my $matrix_number ("singular","plural") {
 	    foreach my $number_subj ("singular","plural") {
@@ -959,7 +1062,7 @@ for $structure (sort (keys %requested_structures)) {
 			@alternates = ();
 			%seen_bucket = ();
 			generate_matrix($matrix_number,$that_frame);
-			generate_simple($number_subj,$number_obj,$adv,$embedded);
+			generate_simple($number_subj,$number_obj,$adv,$namepp,$embedded);
 			$sentences{join ("\t",($structure, join(" ",@words), $matrix_number, $number_subj, $number_obj, @alternates))} = 1;
 		    }
 		    foreach $sentence (sort (keys(%sentences))) {
@@ -1043,6 +1146,7 @@ for $structure (sort (keys %requested_structures)) {
     elsif ($structure eq "frame_that_simple") {
 	my $that_frame = 1;
 	my $adv = 0;
+	my $namepp = 0;
 	my $embedded = 1;
 	foreach my $matrix_number ("singular","plural") {
 	    foreach my $number_subj ("singular","plural") {
@@ -1053,7 +1157,7 @@ for $structure (sort (keys %requested_structures)) {
 			@alternates = ();
 			%seen_bucket = ();
 			generate_matrix($matrix_number,$that_frame);
-			generate_simple($number_subj,$number_obj,$adv,$embedded);
+			generate_simple($number_subj,$number_obj,$adv,$namepp,$embedded);
 			$sentences{join ("\t",($structure, join(" ",@words), $matrix_number, $number_subj, $number_obj, @alternates))} = 1;
 		    }
 		    foreach $sentence (sort (keys(%sentences))) {
@@ -1137,6 +1241,7 @@ for $structure (sort (keys %requested_structures)) {
     elsif ($structure eq "frame_that_simple_adv") {
 	my $that_frame = 1;
 	my $adv = 1;
+	my $namepp = 0;
 	my $embedded = 1;
 	foreach my $matrix_number ("singular","plural") {
 	    foreach my $number_subj ("singular","plural") {
@@ -1147,7 +1252,7 @@ for $structure (sort (keys %requested_structures)) {
 			@alternates = ();
 			%seen_bucket = ();
 			generate_matrix($matrix_number,$that_frame);
-			generate_simple($number_subj,$number_obj,$adv,$embedded);
+			generate_simple($number_subj,$number_obj,$adv,$namepp,$embedded);
 			$sentences{join ("\t",($structure, join(" ",@words), $matrix_number, $number_subj, $number_obj, @alternates))} = 1;
 		    }
 		    foreach $sentence (sort (keys(%sentences))) {
