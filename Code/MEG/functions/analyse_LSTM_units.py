@@ -211,9 +211,9 @@ def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, param
         ax[1].set_xticks(range(1, mean_gates_structure['gates.c_tilde'].shape[0]+1))
         ax[1].set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical', fontsize=22)
 
-        file_name = 'units_activation_unit_' + str(unit) + label
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name + '.svg'))
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name + '.png'))
+        file_name = 'units_activation_unit_' + str(unit) + '_' + label
+        plt.savefig(op.join(settings.path2figures, file_name + '.svg'))
+        plt.savefig(op.join(settings.path2figures, file_name + '.png'))
         plt.close(fig)
 
 
@@ -231,9 +231,9 @@ def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, param
         #ax.set_ylim(-1.1, 1.1)
         ax.tick_params(labelsize=30)
         ax.legend(fontsize=24, numpoints=1, loc=(1, 0.5), framealpha=0)
-        file_name = 'units_forget_activation_unit_' + str(unit) + label
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name + '.svg'))
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name + '.png'))
+        file_name = 'units_forget_activation_unit_' + str(unit) + '_' + label
+        plt.savefig(op.join(settings.path2figures, file_name + '.svg'))
+        plt.savefig(op.join(settings.path2figures, file_name + '.png'))
         plt.close(fig)
 
         fig, ax = plt.subplots(figsize=(24, 16))
@@ -248,9 +248,9 @@ def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, param
         ax.tick_params(labelsize=30)
         fig.subplots_adjust(bottom=0.25)
 
-        file_name = 'units_h_c_activation_unit_' + str(unit) + label
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name +'.svg'))
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name +'.png'))
+        file_name = 'units_h_c_activation_unit_' + str(unit) + '_' + label
+        plt.savefig(op.join(settings.path2figures, file_name +'.svg'))
+        plt.savefig(op.join(settings.path2figures, file_name +'.png'))
         plt.close(fig)
 
         
@@ -267,9 +267,9 @@ def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, param
         ax.tick_params(labelsize=30)
         fig.subplots_adjust(bottom=0.25)
 
-        file_name = 'units_h_c_forget_activation_unit_' + str(unit) + label
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name + '.svg'))
-        plt.savefig(op.join(settings.path2figures, 'units_activation', file_name + '.png'))
+        file_name = 'units_h_c_forget_activation_unit_' + str(unit) + '_' + label
+        plt.savefig(op.join(settings.path2figures, file_name + '.svg'))
+        plt.savefig(op.join(settings.path2figures, file_name + '.png'))
         plt.close(fig)
 
 def plot_PCA_trajectories(vector_type, data, all_stim_clean, IX_structures, labels, colors, settings, params):
