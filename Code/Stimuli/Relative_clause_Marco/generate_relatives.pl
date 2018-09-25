@@ -45,12 +45,14 @@
 
 # simple: The carpenter admires
 # conjunction: The carpenter admires and encourages 
+# nounpp: The carpeneter near the car admires
 # objrel: The carpenter the women admire encourages
 # objrel_that: The carpenter that the women admire encourages
 # subjrel_that: The carpenter that admires the women encourages
 # objdep_objrel_that: The carpenter admires the women that the girl encourages
 # double_subjrel_that: The carpenter that admires the women that greet the girl encourages
 # simple_adv: The carpenter definitely admires the women
+# nounpp_adv: The carpeneter near the car definitely admires
 # objrel_adv: The carpenter the women admire definitely encourages
 # objrel_that_adv: The carpenter that the women admire definitely encourages
 # subjrel_that_adv: the carpenter that admires the women definitely encourages
@@ -206,13 +208,34 @@
 	"Bob",
 	"Mike",
 	"Bill");
-
+@{$location_nouns{"singular"}}=("bike",
+				"car",
+				"cat",
+				"chair",
+				"desk",
+				"dog",
+				"table",
+				"tree",
+				"truck",
+				"window");
+@{$location_nouns{"plural"}}=("bikes",
+			     "cars",
+			     "cats",
+			     "chairs",
+			     "desks",
+			     "dogs",
+			     "tables",
+			     "trees",
+			     "trucks",
+			     "windows");
 @loc_preps =("near",
 	     "behind",
 	     "beside",
 	     "above",
 	     "under");
-
+@noun_loc_preps =("near",
+		  "behind",
+		  "beside");
     
 $i=0;
 while ($i<=$#{$nouns{"singular"}}) {
@@ -379,6 +402,62 @@ sub generate_matrix {
     # if that, add that
     if ($that) {
 	push @words,"that";
+    }
+}
+
+sub generate_nounpp {
+    my $complete_flag = shift;
+    my $number_main = shift;
+    my $number_pp = shift;
+    my $number_obj = shift;
+    my $adv = shift;
+    my $embedded = shift;
+    my $other_number_main = other_number($number_main);
+    
+    # pick random begin det
+    if ($embedded) {
+	push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
+    }
+    else {
+	push @words,$determiners_begin[int(rand(scalar(@determiners_begin)))];
+    }
+
+    # pick random main noun with stem not in bucket, add stem to bucket
+    while (1) {
+    	my $noun = $nouns{$number_main}[int(rand(scalar(@{$nouns{$number_main}})))];
+    	if (!defined($seen_bucket{$stem_of{$noun}})) {
+    	    push @words,$noun;
+    	    $seen_bucket{$stem_of{$noun}} = 1;
+    	    last;
+    	}
+    }
+
+    # create PP
+    push @words,$noun_loc_preps[int(rand(scalar(@noun_loc_preps)))];
+    push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
+    push @words,$location_nouns{$number_pp}[int(rand(scalar(@{$location_nouns{$number_pp}})))];
+    
+    # if requested, produce adverb
+    if ($adv) {
+	push @words,$adverbs[int(rand(scalar(@adverbs)))];
+    }
+    # pick random main verb
+    my $random_index = int(rand(scalar(@{$verbs{$number_main}})));
+    push @words, $verbs{$number_main}[$random_index];
+    push @alternates,$verbs{$other_number_main}[$random_index];
+
+    if ($complete_flag) {
+	# determiner for object
+	push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
+	# pick random obj noun with stem not in bucket, add stem to bucket
+	while (1) {
+	    my $noun = $nouns{$number_obj}[int(rand(scalar(@{$nouns{$number_obj}})))];
+	    if (!defined($seen_bucket{$stem_of{$noun}})) {
+		push @words,$noun;
+		$seen_bucket{$stem_of{$noun}} = 1;
+		last;
+	    }
+	}
     }
 }
 
@@ -640,6 +719,38 @@ for $structure (sort (keys %requested_structures)) {
 	    }
 	}
     }
+    elsif ($structure eq "nounpp") {
+	my $adv = 0;
+	my $embedded = 0;
+	foreach my $number_main ("singular","plural") {
+	    foreach my $number_pp ("singular","plural") {
+		if ($complete_flag) {
+		    @numbers_obj = ("singular","plural");
+		}
+		else {
+		    @numbers_obj = ("singular"); # dummy!
+		}
+		foreach my $number_obj (@numbers_obj) {
+		    %sentences = ();
+		    while (scalar(keys (%sentences)) < $sentence_count) {
+			@words = ();
+			@alternates = ();
+			%seen_bucket = ();
+			generate_nounpp($complete_flag,$number_main,$number_pp, $number_obj,$adv,$embedded);
+			if ($complete_flag) {
+			    $sentences{join ("\t",($structure, join(" ",@words), $number_main, $number_pp, $number_obj,@alternates))} = 1;
+			}
+			else{
+			    $sentences{join ("\t",($structure, join(" ",@words), $number_main, $number_pp, @alternates))} = 1;
+			}
+		    }
+		    foreach $sentence (sort (keys(%sentences))) {
+			print $sentence,"\n";
+		    }
+		}
+	    }
+	}
+    }
     elsif ($structure eq "objrel") {
 	my $that = 0;
 	my $adv = 0;
@@ -828,6 +939,38 @@ for $structure (sort (keys %requested_structures)) {
 		}
 		foreach $sentence (sort (keys(%sentences))) {
 		    print $sentence,"\n";
+		}
+	    }
+	}
+    }
+    elsif ($structure eq "nounpp_adv") {
+	my $adv = 1;
+	my $embedded = 0;
+	foreach my $number_main ("singular","plural") {
+	    foreach my $number_pp ("singular","plural") {
+		if ($complete_flag) {
+		    @numbers_obj = ("singular","plural");
+		}
+		else {
+		    @numbers_obj = ("singular"); # dummy!
+		}
+		foreach my $number_obj (@numbers_obj) {
+		    %sentences = ();
+		    while (scalar(keys (%sentences)) < $sentence_count) {
+			@words = ();
+			@alternates = ();
+			%seen_bucket = ();
+			generate_nounpp($complete_flag,$number_main,$number_pp, $number_obj,$adv,$embedded);
+			if ($complete_flag) {
+			    $sentences{join ("\t",($structure, join(" ",@words), $number_main, $number_pp, $number_obj,@alternates))} = 1;
+			}
+			else{
+			    $sentences{join ("\t",($structure, join(" ",@words), $number_main, $number_pp, @alternates))} = 1;
+			}
+		    }
+		    foreach $sentence (sort (keys(%sentences))) {
+			print $sentence,"\n";
+		    }
 		}
 	    }
 	}
