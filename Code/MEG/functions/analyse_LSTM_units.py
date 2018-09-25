@@ -8,11 +8,12 @@ import matplotlib.pyplot as plt
 from os import path as op
 import itertools
 
-def get_stimuli_and_info(settings, params):
+def get_stimuli_and_info(settings, params, relevant_keys):
     '''
 
     :param settings.stimuli_type ('MEG_stimuli'/'NP_VP_transition'/'Relative_clauses'): which stimuli to load
     :param params:
+    relevant_keys: (list of string) Split analyses according to which keys (e.g., 'RC_type', 'sentence_length', 'number_1', 'number_2', 'success')
     :return:
     '''
     if settings.stimuli_type == 'MEG_stimuli':
@@ -131,7 +132,7 @@ def get_stimuli_and_info(settings, params):
             stimuli = f.readlines()
         info =  pickle.load(open(os.path.join(settings.path2stimuli, settings.stimuli_meta_data), 'rb'))
 
-        relevant_keys = ['RC_type', 'sentence_length', 'number_1', 'number_2', 'success']
+        #relevant_keys = ['RC_type', 'sentence_length', 'number_1', 'number_2', 'success']
         list_values = []
         d = {} # dict containing all possible values of each relevant key
         for k in relevant_keys:
