@@ -10,6 +10,7 @@ parser.add_argument('-meta', '--stimuli-meta-data', type=str, help='The correspo
 parser.add_argument('-activations', '--LSTM-file-name', type=str, help='The corresponding sentence (LSTM) activations')
 parser.add_argument('-u', '--units', nargs='+', type=int, help='List of units for which to plot activations')
 parser.add_argument('-o', '--output-file-name', type=str, help='Path to output folder for figures')
+parser.add_argument('k', '--split-by-keys', nargs='+' type=int, default='RC_type', help='Split analyses according to keys in Theo\'s meta info (e.g., RC_type, sentence_length, number_1, number_2, success)'
 args = parser.parse_args()
 
 
@@ -34,7 +35,7 @@ os.makedirs(os.path.join(args.output_file_name, 'units_activation'), exist_ok=Tr
 ###### LOAD ############
 # Load stimuli in groups according to struct
 print('loading info file ' + settings.stimuli_meta_data)
-all_stim_clean, all_info_clean, all_info_correct, IX_structures, labels, colors = alu.get_stimuli_and_info(settings, params)
+all_stim_clean, all_info_clean, all_info_correct, IX_structures, labels, colors = alu.get_stimuli_and_info(settings, params, args.split_by_keys)
 
 # Load LSTM data
 print('Loading pre-trained LSTM data...')
