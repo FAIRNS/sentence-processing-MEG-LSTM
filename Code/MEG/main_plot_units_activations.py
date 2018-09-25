@@ -18,12 +18,12 @@ args = parser.parse_args()
 settings = lsp.settings()
 params = lsp.params()
 if len(sys.argv) > 1:
-    settings.stimuli_file_name = args.stimuli_file_name              # list of sentences (txt file)
-    settings.stimuli_meta_data = args.stimuli_meta_data              # corresponding meta info (pickle file)
-    settings.LSTM_file_name = args.LSTM_file_name                    # corresponding LSTM activations  (pickle file)
-    settings.path2stimuli = os.path.dirname(args.stimuli_file_name)  # input folder: sentences+metadata
-    settings.path2LSTMdata = os.path.dirname(args.LSTM_file_name)    # input folder: LSTM activations
-    settings.path2figures = args.output_file_name                    # output folder: figures
+    settings.stimuli_file_name = os.path.basename(args.stimuli_file_name) # list of sentences (txt file)
+    settings.stimuli_meta_data = os.path.basename(args.stimuli_meta_data) # corresponding meta info (pickle file)
+    settings.LSTM_file_name = os.path.basename(args.LSTM_file_name)       # corresponding LSTM activations  (pickle file)
+    settings.path2stimuli = os.path.dirname(args.stimuli_file_name)       # input folder: sentences+metadata
+    settings.path2LSTMdata = os.path.dirname(args.LSTM_file_name)         # input folder: LSTM activations
+    settings.path2figures = args.output_file_name                         # output folder: figures
     units = args.units
 else:
     print('Loading settings and parameters from function/load_settings_params')
