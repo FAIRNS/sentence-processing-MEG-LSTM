@@ -26,12 +26,14 @@ for line in raw_sentences:
     curr_line = line.split('\t')
     curr_info['RC_type'] = curr_line[0]
     double_subjrel = True if curr_info['RC_type'] == 'double_subjrel_that' else False # double_subjrel has a different number of elements in each row of Marco generator output.
+    nounpp = True if curr_info['RC_type'] == 'nounpp' or curr_info['RC_type'] == 'nounpp_adv' else False # nounpp has only a single verb
+
     curr_info['sentence_length'] = len(curr_line)
     curr_info['number_1'] = curr_line[2]
     curr_info['number_2'] = curr_line[3]
     curr_info['number_3'] = curr_line[4+double_subjrel]
     curr_info['verb_1_wrong'] = curr_line[5+double_subjrel]
-    curr_info['verb_2_wrong'] = curr_line[6+double_subjrel]
+    if not nounpp: curr_info['verb_2_wrong'] = curr_line[6+double_subjrel]
     if double_subjrel:
         curr_info['number_4'] = curr_line[4]
         curr_info['verb_3_wrong'] = curr_line[8]
@@ -68,11 +70,19 @@ for sentence, curr_info in zip(sentences, info):
        verb2_correct = sentence.split(' ')[verb2_position].strip()
        verb2_wrong = curr_info['verb_2_wrong'].strip()
    elif curr_info['RC_type'] == 'double_subjrel_that':
-       verb2_position = 10 # Note that in this case of double subjrel we typically test the network on the *third* and not second verb in the sentence.
+       verb2_position = 10 # Note that in this case of double subjrel we typically test the network on the *third* (verb_3) and not second verb in the sentence (see two lines below).
        verb2_correct = sentence.split(' ')[verb2_position].strip()
        verb2_wrong = curr_info['verb_3_wrong'].strip()
+   elif curr_info['RC_type'] == 'nounpp':
+       verb2_position = 5 # We test on verb_1 (see two lines below)
+       verb2_correct = sentence.split(' ')[verb2_position].strip()
+       verb2_wrong = curr_info['verb_1_wrong'].strip()
+   elif curr_info['RC_type'] == 'nounpp_adv':
+       verb2_position = 6 # We test on verb_1 (see two lines below)
+       verb2_correct = sentence.split(' ')[verb2_position].strip()
+       verb2_wrong = curr_info['verb_1_wrong'].strip()
    else:
-       print(curr_info['RC_type'])
+       print('Empty labels: ' + curr_info['RC_type'])
        verb2_position = '0'
        verb2_correct = ''
        verb2_wrong = ''
