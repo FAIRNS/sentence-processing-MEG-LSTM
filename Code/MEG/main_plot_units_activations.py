@@ -10,7 +10,7 @@ parser.add_argument('-meta', '--stimuli-meta-data', type=str, help='The correspo
 parser.add_argument('-activations', '--LSTM-file-name', type=str, help='The corresponding sentence (LSTM) activations')
 parser.add_argument('-u', '--units', nargs='+', type=int, help='List of units for which to plot activations')
 parser.add_argument('-o', '--output-file-name', type=str, help='Path to output folder for figures')
-parser.add_argument('k', '--split-by-keys', nargs='+' type=int, default='RC_type', help='Split analyses according to keys in Theo\'s meta info (e.g., RC_type, sentence_length, number_1, number_2, success)'
+parser.add_argument('-k', '--split-by-keys', nargs='+', type=str, default='RC_type', help='Split analyses according to keys in Theo\'s meta info (e.g., RC_type, sentence_length, number_1, number_2, success)')
 args = parser.parse_args()
 
 
