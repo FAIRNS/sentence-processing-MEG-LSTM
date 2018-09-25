@@ -37,6 +37,7 @@ parser.add_argument('-g', '--groupsize', default=1, help='Group size of units to
 parser.add_argument('--unk-token', default='<unk>')
 parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--cuda', action='store_true', default=False)
+parser.add_argument('--do-ablation', action='store_true', default=False)
 args = parser.parse_args()
 
 stime = time.time()
@@ -115,8 +116,8 @@ for unit_group in tqdm(target_units):
     output = args.output + "_".join(map(str, unit_group)) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
 
     print(units_to_kill_l0, units_to_kill_l1)
-    for ablation in [True]: #[False, True]:
-        output_fn = output + '_' + str(ablation) + '.pkl' # update output file name
+    for ablation in [args.do_ablation]: #[False, True]:
+        output_fn = output + '_with_ablation_' + str(ablation) + '.pkl' # update output file name
         if ablation:
             # Kill corresponding weights if list is not empty
             if len(units_to_kill_l0)>0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
