@@ -1,4 +1,5 @@
 import pickle, argparse
+import numpy as np
 
 parser = argparse.ArgumentParser(description='Add additional keys (success and perplexity) to meta info')
 parser.add_argument('-i', '--info', required=True, help='Input meta info pkl file')
@@ -35,4 +36,4 @@ for curr_info, success, perp in zip(info, correct_wrong, perplexities):
 # Save new info
 with open(args.info, 'wb') as f:
     pickle.dump(info_with_success, f)
-
+print('The info file was OVERWRITTEN by the new one that contains success and perplexity: ' + args.info)
