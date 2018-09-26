@@ -113,11 +113,14 @@ for unit_group in tqdm(target_units):
     if args.cuda:
         units_to_kill_l0 = units_to_kill_l0.cuda()
         units_to_kill_l1 = units_to_kill_l1.cuda()
-    output = args.output + "_".join(map(str, unit_group)) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
+
+    output_fn = args.output
+    if args.do_ablation: # if ablation then add unit number etc to filename
+        output_fn = output_fn + "_".join(map(str, unit_group)) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
+    output_fn = output_fn + '.abl'
 
     print(units_to_kill_l0, units_to_kill_l1)
     for ablation in [args.do_ablation]: #[False, True]:
-        output_fn = output + '_with_ablation_' + str(ablation) + '.pkl' # update output file name
         if ablation:
             # Kill corresponding weights if list is not empty
             if len(units_to_kill_l0)>0: model.rnn.weight_hh_l0.data[:, units_to_kill_l0] = 0 # l0: w_hi, w_hf, w_hc, w_ho
@@ -177,7 +180,7 @@ for unit_group in tqdm(target_units):
             'verb_pos': list(gold.loc[:, 'verb_pos'])
         }
         print(output_fn)
-
+        print('\naccuracy: ' + str(100*score_on_task/len(sentences)) + '%\n')
         # Save to file
         if args.format == 'npz':
             np.savez(output, **out)
