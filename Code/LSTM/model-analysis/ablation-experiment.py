@@ -168,6 +168,9 @@ for unit_group in tqdm(target_units):
                     log_p_targets_wrong[i] = out[0, 0, vocab.word2idx[gold.loc[i, 'wrong']]].data[0]
         # Score the performance of the model w/o ablation
         score_on_task = np.sum(log_p_targets_correct > log_p_targets_wrong)
+        p_difference = np.exp(log_p_targets_correct) - np.exp(log_p_targets_wrong)
+        score_on_task_p_difference = np.mean(p_difference)
+        score_on_task_p_difference_std = np.std(p_difference)
 
         out = {
             'log_p_targets_correct': log_p_targets_correct,
@@ -181,6 +184,7 @@ for unit_group in tqdm(target_units):
         }
         print(output_fn)
         print('\naccuracy: ' + str(100*score_on_task/len(sentences)) + '%\n')
+        print('p_difference: %1.3f +- %1.3f' % (score_on_task_p_difference, score_on_task_p_difference_std))
         # Save to file
         if args.format == 'npz':
             np.savez(output, **out)
