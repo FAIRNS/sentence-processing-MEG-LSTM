@@ -34,7 +34,7 @@ for line in raw_sentences:
     curr_info['number_2'] = curr_line[3]
     if not adv_conjunction: curr_info['number_3'] = curr_line[4+double_subjrel]
     if not adv_conjunction: curr_info['verb_1_wrong'] = curr_line[5+double_subjrel]
-    if not nounpp: curr_info['verb_2_wrong'] = curr_line[6+double_subjrel]
+    if not nounpp and not adv_conjunction: curr_info['verb_2_wrong'] = curr_line[6+double_subjrel]
     if double_subjrel:
         curr_info['number_4'] = curr_line[4]
         curr_info['verb_3_wrong'] = curr_line[8]
