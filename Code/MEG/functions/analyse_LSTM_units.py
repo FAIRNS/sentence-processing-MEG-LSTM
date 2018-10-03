@@ -211,10 +211,10 @@ def plot_units_activation(LSTM_data, label, curr_stimuli, units, settings, param
         ax[1].set_xticks(range(1, mean_gates_structure['gates.c_tilde'].shape[0]+1))
         ax[1].set_xticklabels(curr_stimuli[0].split(' '), rotation='vertical', fontsize=22)
 
-        file_name = 'units_activation_unit_' + str(unit) + '_' + label
-        plt.savefig(op.join(settings.path2figures, file_name + '.svg'))
-        plt.savefig(op.join(settings.path2figures, file_name + '.png'))
-        plt.close(fig)
+        #file_name = 'units_activation_unit_' + str(unit) + '_' + label
+        #plt.savefig(op.join(settings.path2figures, file_name + '.svg'))
+        #plt.savefig(op.join(settings.path2figures, file_name + '.png'))
+        #plt.close(fig)
 
 
         fig, ax = plt.subplots(figsize=(24, 16))
