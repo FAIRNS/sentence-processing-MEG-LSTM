@@ -46,6 +46,7 @@
 # simple: The carpenter admires
 # conjunction: The carpenter admires and encourages 
 # nounpp: The carpeneter near the car admires
+# adv_conjunction: The carpenter openly and knowingly admires
 # objrel: The carpenter the women admire encourages
 # objrel_that: The carpenter that the women admire encourages
 # subjrel_that: The carpenter that admires the women encourages
@@ -236,6 +237,13 @@
 @noun_loc_preps =("near",
 		  "behind",
 		  "beside");
+@conj_adverbs_1 = ("gently",
+		   "openly",
+		   "overtly");
+@conj_adverbs_2 = ("carefully",
+		   "deliberately",
+		   "knowingly");
+
     
 $i=0;
 while ($i<=$#{$nouns{"singular"}}) {
@@ -375,6 +383,62 @@ sub generate_conjunction {
     	}
     }
 }
+
+sub generate_adv_conjunction {
+    my $complete_flag = shift;
+    my $number_subj = shift;
+    my $number_obj = shift;
+    my $embedded = shift;
+    my $other_number_subj = other_number($number_subj);
+    
+    # pick random begin det
+    if ($embedded) {
+	push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
+    }
+    else {
+	push @words,$determiners_begin[int(rand(scalar(@determiners_begin)))];
+    }
+    # pick random subj noun with stem not in bucket, add stem to bucket
+    while (1) {
+    	my $noun = $nouns{$number_subj}[int(rand(scalar(@{$nouns{$number_subj}})))];
+    	if (!defined($seen_bucket{$stem_of{$noun}})) {
+    	    push @words,$noun;
+    	    $seen_bucket{$stem_of{$noun}} = 1;
+    	    last;
+    	}
+    }
+    # produce adverb conjunction
+    push @words,$conj_adverbs_1[int(rand(scalar(@conj_adverbs_1)))];
+    push @words,"and";
+    push @words,$conj_adverbs_2[int(rand(scalar(@conj_adverbs_2)))];
+    
+    # pick random verb not in bucket, add to bucket
+    while (1) {
+	my $random_index = int(rand(scalar(@{$verbs{$number_subj}})));
+    	my $verb = $verbs{$number_subj}[$random_index];
+    	if (!defined($seen_bucket{$stem_of{$verb}})) {
+    	    push @words,$verb;
+	    push @alternates,$verbs{$other_number_subj}[$random_index];
+    	    $seen_bucket{$stem_of{$verb}} = 1;
+    	    last;
+    	}
+    }
+    # if requested, complete sentence
+    if ($complete_flag) {
+	# determiner for object
+	push @words,$determiners_inner[int(rand(scalar(@determiners_inner)))];
+	# pick random obj noun with stem not in bucket, add stem to bucket
+	while (1) {
+	    my $noun = $nouns{$number_obj}[int(rand(scalar(@{$nouns{$number_obj}})))];
+	    if (!defined($seen_bucket{$stem_of{$noun}})) {
+		push @words,$noun;
+		$seen_bucket{$stem_of{$noun}} = 1;
+		last;
+	    }
+	}
+    }
+}
+
 
 sub generate_matrix {
     my $number = shift;
@@ -747,6 +811,35 @@ for $structure (sort (keys %requested_structures)) {
 		    foreach $sentence (sort (keys(%sentences))) {
 			print $sentence,"\n";
 		    }
+		}
+	    }
+	}
+    }
+    elsif ($structure eq "adv_conjunction") {
+	my $embedded = 0;
+	foreach my $number_subj ("singular","plural") {
+	    if ($complete_flag) {
+		@numbers_obj = ("singular","plural");
+	    }
+	    else {
+		@numbers_obj = ("singular"); # dummy!
+	    }
+	    foreach my $number_obj (@numbers_obj) {
+		%sentences = ();
+		while (scalar(keys (%sentences)) < $sentence_count) {
+		    @words = ();
+		    @alternates = ();
+		    %seen_bucket = ();
+		    generate_adv_conjunction($complete_flag,$number_subj,$number_obj,$embedded);
+		    if ($complete_flag) {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, $number_obj, @alternates))} = 1;
+		    }
+		    else {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, @alternates))} = 1;
+		    }
+		}
+		foreach $sentence (sort (keys(%sentences))) {
+		    print $sentence,"\n";
 		}
 	    }
 	}
