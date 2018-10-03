@@ -30,7 +30,7 @@ else:
     units = [950, 373, 984, 932, 179, 697, 924, 396, 554, 94,
                  552, 726, 612, 969, 731, 478, 733, 178, 604, 588]
     units = [758, 759, 930, 1041, 1101, 1149, 1198, 769, 775]
-os.makedirs(os.path.join(args.output_file_name, 'units_activation'), exist_ok=True)
+os.makedirs(os.path.join(args.output_file_name), exist_ok=True)
 
 ###### LOAD ############
 # Load stimuli in groups according to struct
