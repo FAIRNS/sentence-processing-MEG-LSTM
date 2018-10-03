@@ -27,16 +27,19 @@ for line in raw_sentences:
     curr_info['RC_type'] = curr_line[0]
     double_subjrel = True if curr_info['RC_type'] == 'double_subjrel_that' else False # double_subjrel has a different number of elements in each row of Marco generator output.
     nounpp = True if curr_info['RC_type'] == 'nounpp' or curr_info['RC_type'] == 'nounpp_adv' else False # nounpp has only a single verb
+    adv_conjunction = True if curr_info['RC_type'] == 'adv_conjunction' else False # adv_conjunction has only a single verb and two nouns
 
     curr_info['sentence_length'] = len(curr_line)
     curr_info['number_1'] = curr_line[2]
     curr_info['number_2'] = curr_line[3]
-    curr_info['number_3'] = curr_line[4+double_subjrel]
-    curr_info['verb_1_wrong'] = curr_line[5+double_subjrel]
+    if not adv_conjunction: curr_info['number_3'] = curr_line[4+double_subjrel]
+    if not adv_conjunction: curr_info['verb_1_wrong'] = curr_line[5+double_subjrel]
     if not nounpp: curr_info['verb_2_wrong'] = curr_line[6+double_subjrel]
     if double_subjrel:
         curr_info['number_4'] = curr_line[4]
         curr_info['verb_3_wrong'] = curr_line[8]
+    if adv_conjunction:
+        curr_info['verb_1_wrong'] = curr_line[4]
     info.append(curr_info)
 
 # Filter certain sentence types if desired.
@@ -79,6 +82,10 @@ for sentence, curr_info in zip(sentences, info):
        verb2_wrong = curr_info['verb_1_wrong'].strip()
    elif curr_info['RC_type'] == 'nounpp_adv':
        verb2_position = 6 # We test on verb_1 (see two lines below)
+       verb2_correct = sentence.split(' ')[verb2_position].strip()
+       verb2_wrong = curr_info['verb_1_wrong'].strip()
+   elif curr_info['RC_type'] == 'adv_conjunction':
+       verb2_position = 5 # We test on verb_1 (see two lines below)
        verb2_correct = sentence.split(' ')[verb2_position].strip()
        verb2_wrong = curr_info['verb_1_wrong'].strip()
    else:
