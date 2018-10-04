@@ -1,4 +1,4 @@
-import pickle, argparse
+import os, pickle, argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
