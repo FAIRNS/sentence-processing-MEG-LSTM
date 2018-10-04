@@ -132,7 +132,6 @@ def get_stimuli_and_info(settings, params, relevant_keys):
             stimuli = f.readlines()
         info =  pickle.load(open(os.path.join(settings.path2stimuli, settings.stimuli_meta_data), 'rb'))
 
-        #relevant_keys = ['RC_type', 'sentence_length', 'number_1', 'number_2', 'success']
         list_values = []
         d = {} # dict containing all possible values of each relevant key
         for k in relevant_keys:
