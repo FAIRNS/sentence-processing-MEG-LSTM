@@ -40,7 +40,7 @@ def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
             IX_to_sentences.append(i)
     return unit, gate, IX_to_sentences, label
 
-def add_graph_to_plot(LSTM_data, label, curr_stimuli, unit, gate):
+def add_graph_to_plot(LSTM_data, curr_stimuli, unit, gate):
     print('Unit ' + str(unit))
     if gate.find('gate')==0: gate = gate[6::]
     # Calc mean and std
@@ -74,7 +74,7 @@ for g, graph in enumerate(args.graphs):
     graph_activations = [sentence_matrix for ind, sentence_matrix in enumerate(LSTM_activation[gate]) if ind in IX_to_sentences]
     curr_stimuli = [sentence for ind, sentence in enumerate(stimuli) if ind in IX_to_sentences]
     # print('\n'.join(curr_stimuli))
-    add_graph_to_plot(graph_activations, label, curr_stimuli, unit, gate)
+    add_graph_to_plot(graph_activations, curr_stimuli, unit, gate)
 
 plt.savefig(args.output_file_name)
 plt.close(fig)
