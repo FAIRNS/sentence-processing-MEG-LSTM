@@ -155,8 +155,8 @@ def plot_graph_for_connectivity(weights, layer, gate, from_units, to_units):
     plt.close()
 
 
-def sort_units_according_to_weights_with_number_units():
-    number_units = [769, 775]
+#def sort_units_according_to_weights_with_number_units():
+#    number_units = [769, 775]
 
 
 
@@ -188,37 +188,70 @@ fig, axes = plt.subplots(3, 4, figsize=[30, 20])
 arrow_dy = 10000 # arrow length
 gate_names = ['Input', 'Forget', 'Cell', 'Output']
 recurrent_weights_l0_all = []; recurrent_weights_l1_all = []; weights_l0_l1_all = []
-recurrent_weights_l1_769 = []; weights_l0_l1_769 = []
-[]; recurrent_weights_l1_775 = []; weights_l0_l1_775 = []
+#recurrent_weights_l1_769 = []; weights_l0_l1_769 = []
+#recurrent_weights_l1_775 = []; weights_l0_l1_775 = []
+#recurrent_weights_l1_987 = []; weights_l0_l1_987 = []
+#recurrent_weights_l1_from_curr_unit = []; recurrent_weights_l1_to_curr_unit = []
 for gate in range(4): # loop over the four gates (columns in the final figure)
     # Extract weights among ALL units:
     recurrent_weights_l0_all.append(model.rnn.weight_hh_l0.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     recurrent_weights_l1_all.append(model.rnn.weight_hh_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     weights_l0_l1_all.append(model.rnn.weight_ih_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
-    # all weights to 769:
-    recurrent_weights_l1_769.append(model.rnn.weight_hh_l1.data[(769-650)+gate * 650, :].numpy())
-    weights_l0_l1_769.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 769 - 650].numpy())
-    # all weights to 775:
-    recurrent_weights_l1_775.append(model.rnn.weight_hh_l1.data[(775-650)+gate * 650, :].numpy())
-    weights_l0_l1_775.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 775-650].numpy())
+    
+    for unit in from_units_l1:
+        recurrent_weights_l1_from_curr_unit = model.rnn.weight_hh_l1.data[gate*650:(gate+1)*650, unit].numpy()
+        units_with_highest_neg_proj_from_curr_unit = 650 + np.argsort(recurrent_weights_l1_from_curr_unit)
+        units_with_highest_pos_proj_from_curr_unit = 650 + np.argsort(np.negative(recurrent_weights_l1_from_curr_unit))
+        print('Gate ' + str(gate) + ' - units with highest neg/pos weights FROM ' + str(unit+650) + ':')
+        print(units_with_highest_neg_proj_from_curr_unit[0:10])
+        print(units_with_highest_pos_proj_from_curr_unit[0:10])
+        print('\n')
 
-    units_with_highest_neg_proj_to_775 = 650 + np.argsort(recurrent_weights_l1_775[gate])
-    units_with_highest_pos_proj_to_775 = 650 + np.argsort(np.negative(recurrent_weights_l1_775[gate]))
-    print(units_with_highest_neg_proj_to_775[0:15])
-    print(units_with_highest_pos_proj_to_775[0:15])
+    for unit in to_units_l1:
+        recurrent_weights_l1_to_curr_unit = model.rnn.weight_hh_l1.data[(unit-650)+gate * 650, :].numpy()
+        units_with_highest_neg_proj_to_curr_unit = 650 + np.argsort(recurrent_weights_l1_to_curr_unit)
+        units_with_highest_pos_proj_to_curr_unit = 650 + np.argsort(np.negative(recurrent_weights_l1_to_curr_unit))
+        print('Gate ' + str(gate) + ' - units with highest neg/pos weights TO ' + str(unit+650) + ':')
+        print(units_with_highest_neg_proj_to_curr_unit[0:10])
+        print(units_with_highest_pos_proj_to_curr_unit[0:10])
+        print('\n')
+
+    #recurrent_weights_l1_769.append(model.rnn.weight_hh_l1.data[(769-650)+gate * 650, :].numpy())
+    #weights_l0_l1_769.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 769 - 650].numpy())
+    # all weights to 769:
+    #recurrent_weights_l1_769.append(model.rnn.weight_hh_l1.data[(769-650)+gate * 650, :].numpy())
+    #weights_l0_l1_769.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 769 - 650].numpy())
+    # all weights to 775:
+    #recurrent_weights_l1_775.append(model.rnn.weight_hh_l1.data[(775-650)+gate * 650, :].numpy())
+    #weights_l0_l1_775.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 775-650].numpy())
+    # all weights to 987:
+    #recurrent_weights_l1_987.append(model.rnn.weight_hh_l1.data[(987-650)+gate * 650, :].numpy())
+    #weights_l0_l1_987.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 987-650].numpy())
+
+    #units_with_highest_neg_proj_to_775 = 650 + np.argsort(recurrent_weights_l1_775[gate])
+    #units_with_highest_pos_proj_to_775 = 650 + np.argsort(np.negative(recurrent_weights_l1_775[gate]))
+    #print('units with highest pos/neg weights to 775')
+    #print(units_with_highest_neg_proj_to_775[0:5])
+    #print(units_with_highest_pos_proj_to_775[0:5])
+
+    #print('units with highest pos/neg weights to 987')
+    #units_with_highest_neg_proj_to_987 = 650 + np.argsort(recurrent_weights_l1_987[gate])
+    #units_with_highest_pos_proj_to_987 = 650 + np.argsort(np.negative(recurrent_weights_l1_987[gate]))
+    #print(units_with_highest_neg_proj_to_987[0:5])
+    #print(units_with_highest_pos_proj_to_987[0:5])
 
     # Plot the hist of all weights and add arrows for the weight values of specific units (e.g., number or syntax units)
     plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l0_all, recurrent_weights_l0, recurrent_weights_l0_names, 0, gate, arrow_dy=10000)
-    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l1_775, recurrent_weights_l1, recurrent_weights_l1_names, 1, gate, arrow_dy=10)
+    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l1_all, recurrent_weights_l1, recurrent_weights_l1_names, 1, gate, arrow_dy=10)
     plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_l0_l1_all, weights_l0_l1, weights_l0_l1_names, 2, gate, arrow_dy=10000)
 
 plt.savefig(args.output + '.png')
 plt.close(fig)
-
+print('Hists were saved to: ' + args.output + '.png')
 
 
 #### ------------ Visualize weight matrix with MDS ----------------
-generate_MDS = True
+generate_MDS = False
 if generate_MDS:
     generate_mds_for_connectivity(recurrent_weights_l0_all, 0, 0, from_units_l0, to_units_l0) # input
     generate_mds_for_connectivity(recurrent_weights_l0_all, 0, 1, from_units_l0, to_units_l0) # forget

@@ -1,6 +1,6 @@
-filebase = 'nounpp_nounpp_adv'
-unit = 769
-condition = 'nounpp'
+filebase = 'nounpp'
+unit = 847 
+condition = filebase
 gates = ['gates.forget', 'hidden']
 constraints = ['number_1 singular number_2 singular','number_1 singular number_2 plural','number_1 plural number_2 singular','number_1 plural number_2 plural']
 
