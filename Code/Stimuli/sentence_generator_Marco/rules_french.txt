@@ -433,9 +433,9 @@
 
 @Of of | -locative
 
-@P near | +locative 0locative
-@P behind | +locative 0locative
-@P beside | +locative 0locative
+@P pres de | +locative 0locative
+@P derrire le | +locative 0locative
+@P a cote de | +locative 0locative
 
 @V admire  | +root +vplural
 @V admired | +past

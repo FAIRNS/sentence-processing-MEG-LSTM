@@ -48,7 +48,7 @@ def get_scores_from_gat(epochs):
                                                         random_state=42)
     clf = make_pipeline(StandardScaler(), LogisticRegression())
     time_gen = GeneralizingEstimator(clf, scoring='roc_auc', n_jobs=1)
-    time_gen.fit(X_test, y_test)
+    time_gen.fit(X_train, y_train)
     scores = time_gen.score(X_train, y_train)
     return scores
 
