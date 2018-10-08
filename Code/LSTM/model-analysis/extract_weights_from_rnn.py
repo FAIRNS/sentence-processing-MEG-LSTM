@@ -10,18 +10,18 @@ import matplotlib.pyplot as plt
 import lstm
 import networkx as nx
 
-parser = argparse.ArgumentParser(description='PyTorch PennTreeBank RNN/LSTM Language Model')
-parser.add_argument('-model', type=str, default='model.pt', help='Meta file stored once finished training the corpus')
+parser = argparse.ArgumentParser(description='Extract and plot LSTM weights')
+parser.add_argument('-model', type=str, help='Meta file stored once finished training the corpus')
 parser.add_argument('-o', '--output', default='weights_rnn.pkl', help='Destination for the output weights')
 parser.add_argument('-fu', '--from-units', nargs='+', type=int, default=[], help='Weights FROM which units (counting from zero)')
 parser.add_argument('-tu', '--to-units', nargs='+', type=int, default=[], help='Weights TO which units (counting from zero)')
 parser.add_argument('--cuda', action='store_true', default=False)
 args = parser.parse_args()
 
-os.makedirs(os.path.dirname(args.output), exist_ok=True)
+# os.makedirs(os.path.dirname(args.output), exist_ok=True)
 
 
-def extract_weights_from_nn(weight_type, from_units, to_units):
+def extract_weights_from_nn(model, weight_type, from_units, to_units):
     '''
 
     :param weight_type: (str) 'weight_ih_l1' or 'weight_hh_l0' or 'weight_hh_l1'
@@ -31,6 +31,7 @@ def extract_weights_from_nn(weight_type, from_units, to_units):
     weights: (list of ndarrays) containing the extracted weights
     weights_names (list of str) containing the corresponding names (e.g., '1049_775').
     '''
+
     weights = []
     weights_names = []
     if len(to_units) > 0 and len(from_units) > 0:
@@ -42,12 +43,39 @@ def extract_weights_from_nn(weight_type, from_units, to_units):
                         weights_nn = getattr(model.rnn, weight_type)
                         curr_weights_all_gates.append(weights_nn.data[gate * 650 + to_unit, from_unit])
                     weights.append(curr_weights_all_gates)
+                    # Give a name to the weight according to units (unit1_unit2)
                     if weight_type in ('weight_hh_l1', 'weight_ih_l1'):
                         to_unit_str = 650 + to_unit
                         if weight_type == 'weight_hh_l1':
                             from_unit_str = 650 + from_unit
                     weights_names.append(str(from_unit_str) + '_' + str(to_unit_str))
     return weights, weights_names
+
+
+def get_weight_type(fu, tu):
+    if fu < 650:
+        if tu < 650:
+            w_type = 'weight_hh_l0'
+        else:
+            tu = tu - 650
+            w_type = 'weight_ih_l1'
+    else:
+        fu = from_unit - 650
+        if tu >= 650:
+            tu = tu - 650
+            w_type = 'weight_hh_l1'
+    return fu, tu, w_type
+
+
+def get_weight_between_two_units(model, from_unit, to_unit):
+
+    from_unit, to_unit, weight_type = get_weight_type(from_unit, to_unit)
+    weights_all_gates = []
+    weights_nn = getattr(model.rnn, weight_type)
+    for gate in range(4):
+        weights_all_gates.append(weights_nn.data[gate * 650 + to_unit, from_unit])
+
+    return weights_all_gates
 
 
 def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, weight_of_interest, weight_names, layer, gate, arrow_dy=100):
@@ -63,7 +91,6 @@ def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, w
     :return:
     '''
 
-    gate_names = ['Input', 'Forget', 'Cell', 'Output']
     colors = ['r', 'g', 'b', 'y']
     print('Weight histogram for: ' + 'layer ' + str(layer) + ' gate ' + gate_names[gate] )
     axes[layer, gate].hist(weights_all[gate].flatten(), bins=100, facecolor=colors[gate], lw=0, alpha=0.5)
@@ -155,17 +182,13 @@ def plot_graph_for_connectivity(weights, layer, gate, from_units, to_units):
     plt.close()
 
 
-#def sort_units_according_to_weights_with_number_units():
-#    number_units = [769, 775]
-
-
-
-
+gate_names = ['Input', 'Forget', 'Cell', 'Output']
 # Load model
 print('Loading models...')
 print('\nmodel: ' + args.model+'\n')
 model = torch.load(args.model)
 model.rnn.flatten_parameters()
+print(model.rnn._all_weights)
 
 # generate unit lists per layer
 from_units_l0 = [u for u in args.from_units if u < 650]  # units 1-650 (0-649) in layer 0 (l0)
@@ -175,28 +198,76 @@ to_units_l1 = [u - 650 for u in args.to_units if u > 649]  # units 651-1300 (650
 
 # collect weights for each of the three cases (l0-l0, l1-l1, l0-l1):
 # gates order in model.rnn.weight.data tensor: w_hi, w_hf, w_hc, w_ho
-recurrent_weights_l0, recurrent_weights_l0_names = extract_weights_from_nn('weight_hh_l0', from_units_l0, to_units_l0)
-recurrent_weights_l1, recurrent_weights_l1_names = extract_weights_from_nn('weight_hh_l1', from_units_l1, to_units_l1)
-weights_l0_l1, weights_l0_l1_names = extract_weights_from_nn('weight_ih_l1', from_units_l0, to_units_l1)
+recurrent_weights_l0, recurrent_weights_l0_names = extract_weights_from_nn(model, 'weight_hh_l0', from_units_l0, to_units_l0)
+recurrent_weights_l1, recurrent_weights_l1_names = extract_weights_from_nn(model, 'weight_hh_l1', from_units_l1, to_units_l1)
+forward_weights_l0_l1, forward_weights_l0_l1_names = extract_weights_from_nn(model, 'weight_ih_l1', from_units_l0, to_units_l1)
 
 # save weights to output file
-with open(args.output, 'wb') as fout:
-    pickle.dump([recurrent_weights_l0, recurrent_weights_l1, weights_l0_l1], fout, -1)
+with open(os.path.join('Output', args.output), 'wb') as fout:
+    pickle.dump([recurrent_weights_l0, recurrent_weights_l1, forward_weights_l0_l1], fout, -1)
+print('Weights save into a pickle: ' + os.path.join('Output', args.output))
+
+############### Add a table at the bottom of the axes
+bar_width = 0.4
+rowLabels = [str(u) for u in args.from_units]
+colLabels = [str(u) for u in args.to_units]
+for gate in range(4):
+    colors = []
+    fig, ax = plt.subplots(1, figsize = (10, 3))
+    cell_text = np.empty((len(args.from_units), len(args.to_units)))
+    ax2 = fig.add_axes([0.5, 0.12, 0.4, 0.195])
+    for i, from_unit in enumerate(args.from_units):
+        all_weights_from_curr_unit = model.rnn.weight_hh_l1.data[gate * 650:(gate + 1) * 650, from_unit - 650].numpy()
+        colors_row = []
+        for j, to_unit in enumerate(args.to_units):
+            if i == 0: # Draw distributions above first row of the table
+                all_weights_to_curr_unit = model.rnn.weight_hh_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+                ax.scatter(j + np.random.random(all_weights_to_curr_unit.size) * bar_width - 3*bar_width / 4, all_weights_to_curr_unit, s=3)
+            curr_weight_all_gates = get_weight_between_two_units(model, from_unit, to_unit)
+            cell_text[i, j] = '%1.2f' % curr_weight_all_gates[gate]
+            colors_row.append('w' if np.abs(cell_text[i, j])<0.5 or i==j else '#56b5fd')
+        colors.append(colors_row)
+        num_from_units = cell_text.shape[0]
+        ax2.scatter(all_weights_from_curr_unit, num_from_units - i + np.random.random(all_weights_from_curr_unit.size) * bar_width - bar_width / 2, s=1)
+    the_table = ax.table(cellText=cell_text,
+                          rowLabels=rowLabels,
+                          colLabels=colLabels, rowLoc='center', cellColours=colors,
+                          loc='bottom')
+    the_table.set_fontsize(6)
+
+    #print(the_table.get_window_extent('Agg'))
+
+
+    ax.set_ylim((-2, 2))
+    ax2.set_xlim((-2, 2))
+    ax.get_xaxis().set_visible(False)
+    ax2.get_yaxis().set_visible(False)
+    ax.set_ylabel('Weight size (afferent)', fontsize=12)
+    ax2.set_xlabel('Weight size (efferent)', fontsize=12)
+    ax2.xaxis.set_label_position('top')
+    plt.subplots_adjust(bottom=0.35, right=0.5)
+    ax.set_title(gate_names[gate])
+    fig.savefig('Figures/table_' + str(gate) + '.png')
+
+
+################# Embeddings:
+# embeddings = model.decoder.weight.data.numpy() # 50,001 X 650
+# print(embeddings.shape)
+
+
+
+#############
 
 # for each gate and for each of the three cases above, extract ALL weights in the network and plot corresponding hists:
 fig, axes = plt.subplots(3, 4, figsize=[30, 20])
 arrow_dy = 10000 # arrow length
 gate_names = ['Input', 'Forget', 'Cell', 'Output']
-recurrent_weights_l0_all = []; recurrent_weights_l1_all = []; weights_l0_l1_all = []
-#recurrent_weights_l1_769 = []; weights_l0_l1_769 = []
-#recurrent_weights_l1_775 = []; weights_l0_l1_775 = []
-#recurrent_weights_l1_987 = []; weights_l0_l1_987 = []
-#recurrent_weights_l1_from_curr_unit = []; recurrent_weights_l1_to_curr_unit = []
+recurrent_weights_l0_all = []; recurrent_weights_l1_all = []; forward_weights_l0_l1_all = []
 for gate in range(4): # loop over the four gates (columns in the final figure)
     # Extract weights among ALL units:
     recurrent_weights_l0_all.append(model.rnn.weight_hh_l0.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     recurrent_weights_l1_all.append(model.rnn.weight_hh_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
-    weights_l0_l1_all.append(model.rnn.weight_ih_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
+    forward_weights_l0_l1_all.append(model.rnn.weight_ih_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     
     for unit in from_units_l1:
         recurrent_weights_l1_from_curr_unit = model.rnn.weight_hh_l1.data[gate*650:(gate+1)*650, unit].numpy()
@@ -216,38 +287,16 @@ for gate in range(4): # loop over the four gates (columns in the final figure)
         print(units_with_highest_pos_proj_to_curr_unit[0:10])
         print('\n')
 
-    #recurrent_weights_l1_769.append(model.rnn.weight_hh_l1.data[(769-650)+gate * 650, :].numpy())
-    #weights_l0_l1_769.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 769 - 650].numpy())
-    # all weights to 769:
-    #recurrent_weights_l1_769.append(model.rnn.weight_hh_l1.data[(769-650)+gate * 650, :].numpy())
-    #weights_l0_l1_769.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 769 - 650].numpy())
-    # all weights to 775:
-    #recurrent_weights_l1_775.append(model.rnn.weight_hh_l1.data[(775-650)+gate * 650, :].numpy())
-    #weights_l0_l1_775.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 775-650].numpy())
-    # all weights to 987:
-    #recurrent_weights_l1_987.append(model.rnn.weight_hh_l1.data[(987-650)+gate * 650, :].numpy())
-    #weights_l0_l1_987.append(model.rnn.weight_ih_l1.data[gate * 650:(gate + 1) * 650, 987-650].numpy())
 
-    #units_with_highest_neg_proj_to_775 = 650 + np.argsort(recurrent_weights_l1_775[gate])
-    #units_with_highest_pos_proj_to_775 = 650 + np.argsort(np.negative(recurrent_weights_l1_775[gate]))
-    #print('units with highest pos/neg weights to 775')
-    #print(units_with_highest_neg_proj_to_775[0:5])
-    #print(units_with_highest_pos_proj_to_775[0:5])
-
-    #print('units with highest pos/neg weights to 987')
-    #units_with_highest_neg_proj_to_987 = 650 + np.argsort(recurrent_weights_l1_987[gate])
-    #units_with_highest_pos_proj_to_987 = 650 + np.argsort(np.negative(recurrent_weights_l1_987[gate]))
-    #print(units_with_highest_neg_proj_to_987[0:5])
-    #print(units_with_highest_pos_proj_to_987[0:5])
 
     # Plot the hist of all weights and add arrows for the weight values of specific units (e.g., number or syntax units)
     plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l0_all, recurrent_weights_l0, recurrent_weights_l0_names, 0, gate, arrow_dy=10000)
     plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l1_all, recurrent_weights_l1, recurrent_weights_l1_names, 1, gate, arrow_dy=10)
-    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_l0_l1_all, weights_l0_l1, weights_l0_l1_names, 2, gate, arrow_dy=10000)
+    plot_hist_all_weights_with_arrows_for_units_of_interest(axes, forward_weights_l0_l1_all, forward_weights_l0_l1, forward_weights_l0_l1_names, 2, gate, arrow_dy=10000)
 
-plt.savefig(args.output + '.png')
+plt.savefig(os.path.join('Figures', args.output + '.png'))
 plt.close(fig)
-print('Hists were saved to: ' + args.output + '.png')
+print('Hists were saved to: ' + os.path.join('Figures', args.output + '.png'))
 
 
 #### ------------ Visualize weight matrix with MDS ----------------
