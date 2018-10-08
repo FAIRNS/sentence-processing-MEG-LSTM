@@ -168,13 +168,15 @@
 @VPger @AdvP @Vintr_ger
 @VPger @Adv @Vbar_ger
 @VPger @Adv @Vintr_ger
-@Vbar_ger @Vger @DP
-@Vbar_ger @Vger @NumP
-@Vbar_ger @Vger @Name
+@Vbar_ger @En @Vger @DP
+@Vbar_ger @En @Vger @NumP
+@Vbar_ger @En @Vger @Name
+
 
 @AdvP @Degree @Adv
 
 ### terminals ###
+@En en
 
 @Adj big*big | +consonant 0consonant
 @Adj ecstatic*ecstatic | 0vowel +vowel -inanimate
@@ -292,7 +294,7 @@
 @Nloc building*building | +consonant +inanimate +singular 0vowel 0consonant 0singular 0plural 0inanimate
 @Nloc buildings*building | +consonant +inanimate +plural 0vowel 0consonant 0singular 0plural 0inanimate
 @Nloc car*car | +consonant +inanimate +singular 0vowel 0consonant 0singular 0plural 0inanimate
-@Nloc cars*cars | +consonant +inanimate +plural 0vowel 0consonant 0singular 0plural 0inanimate
+@Nloc cars*car | +consonant +inanimate +plural 0vowel 0consonant 0singular 0plural 0inanimate
 @Nloc cart*cart | +consonant +inanimate +singular 0vowel 0consonant 0singular 0plural 0inanimate
 @Nloc carts*cart | +consonant +inanimate +plural 0vowel 0consonant 0singular 0plural 0inanimate
 @Nloc forest*forest | +consonant +inanimate +singular 0vowel 0consonant 0singular 0plural 0inanimate
@@ -433,9 +435,9 @@
 
 @Of of | -locative
 
-@P pres de | +locative 0locative
-@P derrire le | +locative 0locative
-@P a cote de | +locative 0locative
+@P devant | +locative 0locative
+@P derrèire | +locative 0locative
+#@P dans | +locative 0locative
 
 @V admire  | +root +vplural
 @V admired | +past
@@ -512,8 +514,8 @@
 @V understands  | +third +vsingular
 @V understood | +past
 
-@Vger admiring
-@Vger amusing
+@Vger admirant
+@Vger amusant
 @Vger approving
 @Vger attacking
 @Vger avoiding
@@ -538,9 +540,13 @@
 @Vger thrilling
 @Vger understanding
 
-@Vintr appear | +root +vplural
-@Vintr appeared | +past
-@Vintr appears | +third +vsingular
+@Vintr apparaître | +root
+@Vintr apparu | +past
+@Vintr apparue | +past +vsingular +vfeminine
+@Vintr apparus | +past +vplural
+@Vintr apparues | +past +vplural +vfeminine
+@Vintr apparaît | +third +vsingular
+@Vintr apparaissent | +third +vplural
 @Vintr arrive | +root +vplural
 @Vintr arrived | +past
 @Vintr arrives | +third +vsingular
