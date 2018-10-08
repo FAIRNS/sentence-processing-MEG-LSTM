@@ -53,6 +53,7 @@
 # objdep_objrel_that: The carpenter admires the women that the girl encourages
 # double_subjrel_that: The carpenter that admires the women that greet the girl encourages
 # simple_adv: The carpenter definitely admires the women
+# adv_adv: The carpenter quite definitely admires the women
 # nounpp_adv: The carpeneter near the car definitely admires
 # objrel_adv: The carpenter the women admire definitely encourages
 # objrel_that_adv: The carpenter that the women admire definitely encourages
@@ -243,7 +244,10 @@
 @conj_adverbs_2 = ("carefully",
 		   "deliberately",
 		   "knowingly");
-
+@pre_adverbs = ("now",
+		"most",
+		"indeed",
+		"quite");
     
 $i=0;
 while ($i<=$#{$nouns{"singular"}}) {
@@ -303,7 +307,13 @@ sub generate_simple {
     }
     # if requested, produce adverb
     if ($adv) {
-	push @words,$adverbs[int(rand(scalar(@adverbs)))];
+	if ($adv ==1) { # just one adverb
+	    push @words,$adverbs[int(rand(scalar(@adverbs)))];
+	}
+	else { # adv == 2, generate adverb sequence
+	    push @words,$pre_adverbs[int(rand(scalar(@pre_adverbs)))];
+	    push @words,$adverbs[int(rand(scalar(@adverbs)))];
+	}
     }
     # pick random verb not in bucket, add to bucket
     while (1) {
@@ -1007,6 +1017,37 @@ for $structure (sort (keys %requested_structures)) {
     }
     elsif ($structure eq "simple_adv") {
 	my $adv = 1;
+	my $namepp = 0;
+	my $embedded = 0;
+	foreach my $number_subj ("singular","plural") {
+	    if ($complete_flag) {
+		@numbers_obj = ("singular","plural");
+	    }
+	    else {
+		@numbers_obj = ("singular"); # dummy!
+	    }
+	    foreach my $number_obj (@numbers_obj) {
+		%sentences = ();
+		while (scalar(keys (%sentences)) < $sentence_count) {
+		    @words = ();
+		    @alternates = ();
+		    %seen_bucket = ();
+		    generate_simple($complete_flag,$number_subj,$number_obj,$adv,$namepp,$embedded);
+		    if ($complete_flag) {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, $number_obj, @alternates))} = 1;
+		    }
+		    else {
+			$sentences{join ("\t",($structure, join(" ",@words), $number_subj, @alternates))} = 1;
+		    }
+		}
+		foreach $sentence (sort (keys(%sentences))) {
+		    print $sentence,"\n";
+		}
+	    }
+	}
+    }
+    elsif ($structure eq "adv_adv") {
+	my $adv = 2;
 	my $namepp = 0;
 	my $embedded = 0;
 	foreach my $number_subj ("singular","plural") {
