@@ -9,10 +9,10 @@ parser.add_argument('-activations', '--LSTM-file-name', type=str, help='The corr
 parser.add_argument('-o', '--output-file-name', type=str, help='Path to output folder for figures')
 parser.add_argument('-c', '--condition', type=str, help='Which condition to plot: RC, nounpp, etc.')
 parser.add_argument('-g', '--graphs', nargs='+', action='append', type=str,
-                    help='Specify a curve to be added to the figure according to unit number, '
+                    help='Specify a curve to be added to the figure according to color, line-style, unit number, '
                          'gate, and the key + value as in Theo\'s meta info, '
-                         'e.g., -k 775 forget number_1 singular number_2 singular '
-                         '-k 769 output number_1 plural number_2 singular. '
+                         'e.g., -g b -- 775 forget number_1 singular number_2 singular '
+                         '-g g - 769 output number_1 plural number_2 singular. '
                          'The gate should be one of: '
                          'gates.in, gates.forget, gates.out, gates.c_tilde, hidden, cell')
 args = parser.parse_args()
@@ -29,11 +29,14 @@ def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
     gate - gate type (gates.in, gates.forget, gates.out, gates.c_tilde, hidden, cell)
     IX_sentences - list of indices pointing to sentences numbers that meet the constraints specified in the arg graph
     '''
-    unit = int(graph[0])
-    gate = graph[1]
+    #print(graph)
+    color = graph[0]
+    ls = graph[1]
+    unit = int(graph[2])
+    gate = graph[3]
     # constraints are given in pairs such as 'number_1', 'singular' after unit number and gate
-    keys_values = [(graph[i], graph[i + 1]) for i in range(2, len(graph), 2)]
-    label = '_'.join([key + '_' + value for (key, value) in keys_values])
+    keys_values = [(graph[i], graph[i + 1]) for i in range(4, len(graph), 2)]
+    label = str(unit) + '_' + gate + '_' + '_'.join([key + '_' + value for (key, value) in keys_values])
     IX_to_sentences = []
     for i, curr_info in enumerate(info):
         check_if_contraints_are_met = True
@@ -43,9 +46,9 @@ def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
                 check_if_contraints_are_met = False
         if check_if_contraints_are_met and curr_info['RC_type']==condition:
             IX_to_sentences.append(i)
-    return unit, gate, IX_to_sentences, label
+    return unit, gate, IX_to_sentences, label, color, ls
 
-def add_graph_to_plot(LSTM_activations, stimuli, unit, gate):
+def add_graph_to_plot(LSTM_activations, unit, gate, label, c, ls):
     '''
 
     :param LSTM_activations(ndarray):  LSTM activations for current *gate*
@@ -61,13 +64,7 @@ def add_graph_to_plot(LSTM_activations, stimuli, unit, gate):
     std_activity = np.std(np.vstack([LSTM_activations[i][unit, :] for i in range(len(LSTM_activations))]), axis=0)
 
     # Add curve to plot
-    ax.errorbar(range(1, mean_activity.shape[0] + 1), mean_activity, yerr=std_activity, label=str(unit)+' '+gate, linewidth=5) #, ls='--')
-    ax.set_ylabel('Activation', fontsize=35)
-    ax.set_xticks(range(1, mean_activity.shape[0] + 1))
-    ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
-    ax.legend(fontsize=24, numpoints=1, loc=(1, 0.5), framealpha=0)
-    ax.tick_params(labelsize=30)
-    fig.subplots_adjust(bottom=0.25)
+    ax.errorbar(range(1, mean_activity.shape[0] + 1), mean_activity, yerr=std_activity, label=label, linewidth=5, ls=ls, color=c)
 
 
 # make output dir in case it doesn't exist
@@ -84,14 +81,23 @@ info = pickle.load(open(args.stimuli_meta_data, 'rb'))
 ##### Plot all curves on the same figure #########
 fig, ax = plt.subplots(1, 1, figsize=(35, 20))
 for g, graph in enumerate(args.graphs):
-    unit, gate, IX_to_sentences, label = get_unit_gate_and_indices_for_current_graph(graph, info, args.condition)
+    unit, gate, IX_to_sentences, label, color, ls = get_unit_gate_and_indices_for_current_graph(graph, info, args.condition)
     print(gate, label)
     graph_activations = [sentence_matrix for ind, sentence_matrix in enumerate(LSTM_activation[gate]) if ind in IX_to_sentences]
     curr_stimuli = [sentence for ind, sentence in enumerate(stimuli) if ind in IX_to_sentences]
     # print('\n'.join(curr_stimuli))
-    add_graph_to_plot(graph_activations, curr_stimuli, unit, gate)
+    add_graph_to_plot(graph_activations, unit, gate, label, color, ls)
+
+# Cosmetics
+ax.set_ylabel('Activation', fontsize=35)
+ax.set_xticks(range(1, graph_activations[1].shape[1] + 1))
+ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
+ax.legend(fontsize=24, numpoints=1, loc=(1, 0.5), framealpha=0)
+ax.tick_params(labelsize=30)
 
 # Save and close figure
+plt.subplots_adjust(bottom=0.25, right = 0.7)
 plt.savefig(args.output_file_name)
 plt.close(fig)
 print('The figure was saved to: ' + args.output_file_name)
+
