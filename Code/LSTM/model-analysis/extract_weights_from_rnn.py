@@ -113,10 +113,11 @@ def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, w
             axes[layer, gate].set_ylabel('# l0-to-l1 connections', fontsize=20)
 
 
-def generate_mds_for_connectivity(weights, layer, gate, from_units, to_units):
+def generate_mds_for_connectivity(curr_ax, weights, layer, gate, from_units, to_units):
     '''
 
     :param weights:
+    :param ax: axis of figure on which to plot MDS
     :param layer: 0, 1, or 2 = l0-l0, l1-l1 or l0-l2 connections
     :param gate: 0, 1, 2, or 3 = input, forget, cell or output.
     :param from_units: (list of int) weights FROM which units to extract
@@ -129,29 +130,31 @@ def generate_mds_for_connectivity(weights, layer, gate, from_units, to_units):
     gate_names = ['Input', 'Forget', 'Cell', 'Output']
     print('MDS for weights: layer - ' + layer_names[layer] + ', gate -' + gate_names[gate])
     seed = np.random.RandomState(seed=3)
-    A = np.abs(weights[gate])
+    # A = np.abs(weights[gate])
+    A = np.abs(weights)
     A = np.maximum(A, A.transpose())
     A = np.exp(-A)
 
     mds = manifold.MDS(n_components=2, max_iter=3000, eps=1e-9, random_state=seed,
                        dissimilarity="precomputed", n_jobs=-2)
 
+    # print('fitting MDS')
     pos = mds.fit(A).embedding_
-
-    fig_mds, ax = plt.subplots(figsize=(40, 30))
+    # print('Done')
+    # fig_mds, ax = plt.subplots(figsize=(40, 30))
     for i in range(650):
-        c = 'k'; label = 'unidentified'
-        if i in from_units:
-            c = 'b'; label = 'syntax unit'
-        elif i in to_units:
-            c = 'r'; label = 'number unit'
-        plt.text(pos[i, 0], pos[i, 1], str(i + layer*650), color=c, label=label)
-    plt.xlim(np.min(pos[:, 0]), np.max(pos[:, 0]))
-    plt.ylim(np.min(pos[:, 1]), np.max(pos[:, 1]))
-    plt.axis('off')
-    ax.set_title('Layer: ' + layer_names[layer] + ', Gate:' + gate_names[gate], fontsize=30)
-    plt.savefig(args.output + '_gate_' + str(gate) + '_layers_' + str(layer) + '.mds.png')
-    plt.close(fig_mds)
+        c = 'k'; label = 'unidentified'; s = 5; fontweight = 'light'
+        if i in [1149-650]:
+            c = 'b'; label = 'syntax unit'; s = 12; fontweight = 'bold'
+        elif i in [769-650, 775-650, 987-650]:
+            c = 'r'; label = 'number unit'; s = 12; fontweight = 'bold'
+        curr_ax.text(pos[i, 0], pos[i, 1], str(i + layer*650), color=c, label=label, size=s, fontweight=fontweight)
+        curr_ax.set_xlim(np.min(pos[:, 0]), np.max(pos[:, 0]))
+    curr_ax.set_ylim(np.min(pos[:, 1]), np.max(pos[:, 1]))
+    curr_ax.axis('off')
+    # curr_ax.set_title('Layer: ' + layer_names[layer] + ', Gate:' + gate_names[gate], fontsize=30)
+    # plt.savefig(args.output + '_gate_' + str(gate) + '_layers_' + str(layer) + '.mds.png')
+    # plt.close(fig_mds)
 
 
 def plot_graph_for_connectivity(weights, layer, gate, from_units, to_units):
@@ -181,6 +184,16 @@ def plot_graph_for_connectivity(weights, layer, gate, from_units, to_units):
     plt.savefig(args.output + '_gate_' + str(gate) + '_layers_' + str(layer) + '.graph.png')
     plt.close()
 
+
+def check_if_weight_is_outlier(curr_weight, all_weights_to_unit, all_weights_from_unit):
+    mean_to = np.mean(all_weights_to_unit)
+    std_to = np.std(all_weights_to_unit)
+    mean_from = np.mean(all_weights_from_unit)
+    std_from = np.std(all_weights_from_unit)
+    outlier_to = curr_weight >= mean_to + 3 * std_to or curr_weight <= mean_to - 3 * std_to
+    outlier_from = curr_weight >= mean_from + 3 * std_from or curr_weight <= mean_from - 3 * std_from
+
+    return (outlier_to or outlier_from)
 
 gate_names = ['Input', 'Forget', 'Cell', 'Output']
 # Load model
@@ -215,7 +228,7 @@ for gate in range(4):
     colors = []
     fig, ax = plt.subplots(1, figsize = (10, 3))
     cell_text = np.empty((len(args.from_units), len(args.to_units)))
-    ax2 = fig.add_axes([0.5, 0.12, 0.4, 0.195])
+    ax2 = fig.add_axes([0.5, 0.19, 0.4, 0.14]) # for 5 units: 0.5, 0.12, 0.4, 0.195
     for i, from_unit in enumerate(args.from_units):
         all_weights_from_curr_unit = model.rnn.weight_hh_l1.data[gate * 650:(gate + 1) * 650, from_unit - 650].numpy()
         colors_row = []
@@ -225,7 +238,8 @@ for gate in range(4):
                 ax.scatter(j + np.random.random(all_weights_to_curr_unit.size) * bar_width - 3*bar_width / 4, all_weights_to_curr_unit, s=3)
             curr_weight_all_gates = get_weight_between_two_units(model, from_unit, to_unit)
             cell_text[i, j] = '%1.2f' % curr_weight_all_gates[gate]
-            colors_row.append('w' if np.abs(cell_text[i, j])<0.5 or i==j else '#56b5fd')
+            is_weight_high = check_if_weight_is_outlier(curr_weight_all_gates[gate], all_weights_to_curr_unit, all_weights_from_curr_unit)
+            colors_row.append('w' if (not is_weight_high) else '#56b5fd')
         colors.append(colors_row)
         num_from_units = cell_text.shape[0]
         ax2.scatter(all_weights_from_curr_unit, num_from_units - i + np.random.random(all_weights_from_curr_unit.size) * bar_width - bar_width / 2, s=1)
@@ -236,7 +250,12 @@ for gate in range(4):
     the_table.set_fontsize(6)
 
     #print(the_table.get_window_extent('Agg'))
+    ### Add MDS
+    ax3 = fig.add_axes([0.52, 0.37, 0.4, 0.46])
+    recurrent_weights_l1_all = model.rnn.weight_hh_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy()
+    generate_mds_for_connectivity(ax3, recurrent_weights_l1_all, 1, gate, from_units_l1, to_units_l1)
 
+    ###
 
     ax.set_ylim((-2, 2))
     ax2.set_xlim((-2, 2))
@@ -244,8 +263,8 @@ for gate in range(4):
     ax2.get_yaxis().set_visible(False)
     ax.set_ylabel('Weight size (afferent)', fontsize=12)
     ax2.set_xlabel('Weight size (efferent)', fontsize=12)
-    ax2.xaxis.set_label_position('top')
-    plt.subplots_adjust(bottom=0.35, right=0.5)
+    # ax2.xaxis.set_label_position('top')
+    plt.subplots_adjust(bottom=0.37, right=0.5)
     ax.set_title(gate_names[gate])
     fig.savefig('Figures/table_' + str(gate) + '.png')
 
@@ -268,7 +287,7 @@ for gate in range(4): # loop over the four gates (columns in the final figure)
     recurrent_weights_l0_all.append(model.rnn.weight_hh_l0.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     recurrent_weights_l1_all.append(model.rnn.weight_hh_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
     forward_weights_l0_l1_all.append(model.rnn.weight_ih_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
-    
+
     for unit in from_units_l1:
         recurrent_weights_l1_from_curr_unit = model.rnn.weight_hh_l1.data[gate*650:(gate+1)*650, unit].numpy()
         units_with_highest_neg_proj_from_curr_unit = 650 + np.argsort(recurrent_weights_l1_from_curr_unit)
