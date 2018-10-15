@@ -13,8 +13,13 @@ parser.add_argument('-model', type=str, help='Meta file stored once finished tra
 parser.add_argument('-v', '--vocabulary', default='Data/LSTM/english_vocab.txt')
 parser.add_argument('-o', '--output', default='Figures/verbs.png', help='Destination for the output figure')
 parser.add_argument('-u', '--units', nargs='+', help='Which units to plot')
-parser.add_argument('-i', '--input', default='Data/Stimuli/singular_plural_verbs.txt', help='Text file with two tab delimited columns with the lists of output words to contrast with the PCA')
+parser.add_argument('-c', '--colors', nargs='+', help='corresponding colors for each unit')
+parser.add_argument('-i', '--input', default='Data/Stimuli/singular_plural_verbs.txt',
+					help='Text file with two tab delimited columns with the lists of output words to contrast with the PCA')
 args = parser.parse_args()
+
+if args.colors is not None:
+	assert len(args.units) == len(args.colors), "!!!---Number of colors is not equal to number of units---!!!"
 
 gate_names = ['Input', 'Forget', 'Cell', 'Output']
 # Parse output dir and file names:
