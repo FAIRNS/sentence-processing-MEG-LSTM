@@ -89,9 +89,9 @@ for u, from_unit in enumerate(units):
 		label_sing = ''; label_plur = ''
 	from_unit = from_unit - 650
 	output_weights_singular = embeddings[idx_verbs_singular, from_unit]
-	ax.scatter(u + np.random.random(output_weights_singular.size) * bar_width - bar_width/2, output_weights_singular, s=10, color='b', label=label_sing)
+	ax.scatter(u + np.random.random(output_weights_singular.size) * bar_width - bar_width/2, output_weights_singular, s=30, color=args.colors[u], label=label_sing, marker='.')
 	output_weights_plural = embeddings[idx_verbs_plural, from_unit]
-	ax.scatter(u + np.random.random(output_weights_plural.size) * bar_width - bar_width/2, output_weights_plural, s=10, color='g', label=label_plur)
+	ax.scatter(u + np.random.random(output_weights_plural.size) * bar_width - bar_width/2, output_weights_plural, s=30, color=args.colors[u], label=label_plur, marker='_')
 
 
 plt.legend()
