@@ -10,11 +10,11 @@ from tqdm import tqdm
 
 parser = argparse.ArgumentParser(description='Extract and plot LSTM weights')
 parser.add_argument('-model', type=str, help='Meta file stored once finished training the corpus')
-parser.add_argument('-v', '--vocabulary', default='Data/LSTM/english_vocab.txt')
+parser.add_argument('-v', '--vocabulary', default='../../../Data/LSTM/english_vocab.txt')
 parser.add_argument('-o', '--output', default='Figures/verbs.png', help='Destination for the output figure')
 parser.add_argument('-u', '--units', nargs='+', help='Which units to plot')
 parser.add_argument('-c', '--colors', nargs='+', help='corresponding colors for each unit')
-parser.add_argument('-i', '--input', default='Data/Stimuli/singular_plural_verbs.txt',
+parser.add_argument('-i', '--input', default='../../../Data/Stimuli/singular_plural_verbs.txt',
 					help='Text file with two tab delimited columns with the lists of output words to contrast with the PCA')
 args = parser.parse_args()
 
@@ -50,9 +50,15 @@ idx_verbs_all = idx_verbs_singular + idx_verbs_plural
 embeddings_verbs_singular = embeddings[idx_verbs_singular, :]
 embeddings_verbs_plural = embeddings[idx_verbs_plural, :]
 embeddings_verbs_all = embeddings[idx_verbs_singular + idx_verbs_plural ,:]
+y = '1'*len(idx_verbs_singular) + '2' * len(idx_verbs_plural)
+y = np.asarray([int(j) for j in y])
 
 #### Plot verb embeddings
 from sklearn.decomposition import PCA
+from sklearn.svm import LinearSVC
+clf = LinearSVC(random_state=0, tol=1e-5, penalty='l2')
+clf.fit(embeddings_verbs_all, y)
+print(650 + np.argsort(np.negative(np.abs(clf.coef_)))[0:20])
 
 pca = PCA(n_components=2)
 pca.fit(embeddings_verbs_all)
@@ -61,8 +67,8 @@ V = pca.components_
 X_transformed = pca.fit_transform(embeddings_verbs_all)
 PC1 = V[0, :]
 PC2 = V[1, :]
-print(650 + np.argsort(np.negative(np.abs(PC1))))
-print(650 + np.argsort(np.negative(np.abs(PC2))))
+print(650 + np.argsort(np.negative(np.abs(PC1)))[0:20])
+print(650 + np.argsort(np.negative(np.abs(PC2)))[0:20])
 
 fig, ax = plt.subplots(1, figsize = (40, 30))
 for i in tqdm(range(X_transformed.shape[0])):
