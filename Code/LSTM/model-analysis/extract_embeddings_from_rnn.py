@@ -87,7 +87,7 @@ plt.close(fig)
 units = [int(u) for u in args.units]
 bar_width = 0.2
 ## Extract weights from number units to verbs
-fig, ax = plt.subplots(1, figsize = (10,10))
+fig, ax = plt.subplots(1, figsize = (30,30))
 for u, from_unit in enumerate(units):
 	if u == 0:
 		label_sing = 'Singular form of verb'; label_plur = 'Plural form of verb'
@@ -95,15 +95,16 @@ for u, from_unit in enumerate(units):
 		label_sing = ''; label_plur = ''
 	from_unit = from_unit - 650
 	output_weights_singular = embeddings[idx_verbs_singular, from_unit]
-	ax.scatter(u + np.random.random(output_weights_singular.size) * bar_width - bar_width/2, output_weights_singular, s=30, color=args.colors[u], label=label_sing, marker='.')
+	ax.scatter(u + np.random.random(output_weights_singular.size) * bar_width - bar_width/2, output_weights_singular, s=400, color=args.colors[u], label=label_sing, marker='.')
 	output_weights_plural = embeddings[idx_verbs_plural, from_unit]
-	ax.scatter(u + np.random.random(output_weights_plural.size) * bar_width - bar_width/2, output_weights_plural, s=30, color=args.colors[u], label=label_plur, marker='_')
+	ax.scatter(u + np.random.random(output_weights_plural.size) * bar_width - bar_width/2, output_weights_plural, s=400, color=args.colors[u], label=label_plur, marker='_')
 
 
-plt.legend()
+plt.legend(fontsize=40)
+plt.tick_params(axis='both', which='major', labelsize=40)
 plt.xticks(range(len(units)), [str(u) for u in units])
-ax.set_ylabel('Size of output weight', fontsize = 16)
-ax.set_xlabel('Unit', fontsize = 16)
+ax.set_ylabel('Size of output weight', fontsize = 40)
+ax.set_xlabel('Unit', fontsize = 40)
 ax.axhline(linewidth=2, color='k', ls = '--')
 fig.savefig(os.path.join(dirname, 'weight_dists_'+filename))
 print('saved to: ' + os.path.join(dirname, 'weight_dists_'+filename))
