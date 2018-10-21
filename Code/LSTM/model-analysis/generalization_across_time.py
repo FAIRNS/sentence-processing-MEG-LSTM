@@ -15,6 +15,7 @@ parser.add_argument('-g', '--gate', type=str, help='One of: gates.in, gates.forg
 parser.add_argument('-o', '--output-file-name', type=str, help='Path to output folder for figures')
 parser.add_argument('-l', '--omit-units', nargs = '+', action = 'append', type=str, default = [], help='Which units to omit from the model')
 parser.add_argument('-k', '--keep-units', nargs='+', action='append', type=str, default = [], help='Which units to keep in the model')
+parser.add_argument('--gat',  action='store_true', default=False, help='Plot also generalization across time matrices')
 args = parser.parse_args()
 
 
@@ -54,32 +55,49 @@ def get_scores_from_gat(epochs):
 
 def add_gat_matrix(ax1, ax2, data, omit_units, title, first_in_row=True, last_row=True):
     # Generalization across time
-    data_reduced = np.delete(data, omit_units, 1)
-    epochs, _, _ = generate_epochs_object(data_reduced)
-    scores_reduced_model = get_scores_from_gat(epochs)
-    # Add to 1d figure
-    ax1.plot(scores_reduced_model[1, :], linewidth=3, label=title)
-    # Add to 2d GAT matrix figure
-    tmin = int(epochs.times[0])
-    tmax = int(epochs.times[-1])+1
-    extent = [tmin, tmax, tmin, tmax]
-    ticks = [i+0.5 for i in range(tmin, tmax)]
-    im = ax2.matshow(scores_reduced_model, vmin=0, vmax=1., cmap='RdBu_r', origin='lower', extent=extent)
-    ax2.set_title(title, fontsize=12)
-    ax2.xaxis.set_ticks_position('bottom')
-    ax2.set_xlim([tmin, tmax])
-    ax2.set_ylim([tmin, tmax])
-    ax2.set_xticks(ticks)
-    ax2.set_yticks(ticks)
-    ax2.tick_params(axis=u'both', which=u'both', length=0)
-    if last_row:  # Add xticks/labels only for last row
-        ax2.set_xticklabels(sentences[0], rotation=90, fontsize=11)
+    im = None
+    # print(omit_units)
+    if omit_units != 'non_number_units':
+        data_reduced = np.delete(data, omit_units, 1)
+        epochs, _, _ = generate_epochs_object(data_reduced)
+        scores_reduced_model = get_scores_from_gat(epochs)
+        # Add to 1d figure
+        ax1.plot(range(scores_reduced_model.shape[1]), scores_reduced_model[1, :], linewidth=3, label=title)
+        # Add to 2d GAT matrix figure
+        tmin = int(epochs.times[0])
+        tmax = int(epochs.times[-1])+1
+        extent = [tmin, tmax, tmin, tmax]
+        ticks = [i+0.5 for i in range(tmin, tmax)]
+        if args.gat:
+            im = ax2.matshow(scores_reduced_model, vmin=0, vmax=1., cmap='RdBu_r', origin='lower', extent=extent)
+            ax2.set_title(title, fontsize=12)
+            ax2.xaxis.set_ticks_position('bottom')
+            ax2.set_xlim([tmin, tmax])
+            ax2.set_ylim([tmin, tmax])
+            ax2.set_xticks(ticks)
+            ax2.set_yticks(ticks)
+            ax2.tick_params(axis=u'both', which=u'both', length=0)
+            if last_row:  # Add xticks/labels only for last row
+                ax2.set_xticklabels(sentences[0], rotation=90, fontsize=11)
+            else:
+                ax2.get_xaxis().set_visible(False)
+            if first_in_row:
+                ax2.set_yticklabels(sentences[0], fontsize=11)
+            else:
+                ax2.get_yaxis().set_visible(False)
     else:
-        ax2.get_xaxis().set_visible(False)
-    if first_in_row:
-        ax2.set_yticklabels(sentences[0], fontsize=11)
-    else:
-        ax2.get_yaxis().set_visible(False)
+        scores_reduced_model_all = []
+        number_units = [702, 769, 775, 847, 987, 1282]
+        for unit in list(set(range(650, 1300)) - set(number_units)):
+            print('unit ' + str(unit))
+            omit_units = list(set(range(data.shape[1])) - set([unit]))
+            data_reduced = np.delete(data, omit_units, 1)
+            epochs, _, _ = generate_epochs_object(data_reduced)
+            scores_reduced_model = get_scores_from_gat(epochs)
+            scores_reduced_model_all.append(scores_reduced_model[1, :])
+        scores_reduced_model_all = np.vstack(scores_reduced_model_all)
+        # Add to 1d figure
+        ax1.errorbar(x=range(scores_reduced_model.shape[1]), y=np.mean(scores_reduced_model_all, axis=0), yerr=np.std(scores_reduced_model_all, axis=0), linewidth=3, label=title, color='k')
 
     return im
 
@@ -93,16 +111,18 @@ with open(args.sentences, 'r') as f:
     sentences = f.readlines()
 sentences = [s.split(' ') for s in sentences]
 
-#### Plot Full model
-fig1, ax = plt.subplots(1)
 num_omits = len(args.omit_units); num_keeps = len(args.keep_units)
 num_subplots_rows = int(np.floor(np.sqrt(num_keeps+num_omits+1)))
 num_subplots_cols = int(np.ceil((num_keeps+num_omits+1)/num_subplots_rows))
-fig2, axs = plt.subplots(num_subplots_rows, num_subplots_cols)
-if num_subplots_cols > 1:
-    axs = axs.flatten()
-else:
-    axs = [axs] # To make compatible with indexing of the case of many plots
+#### Plot Full model
+fig1, ax = plt.subplots(1)
+axs = [None] * (num_keeps+num_omits+1)
+if args.gat:
+    fig2, axs = plt.subplots(num_subplots_rows, num_subplots_cols)
+    if num_subplots_cols > 1:
+        axs = axs.flatten()
+    else:
+        axs = [axs] # To make compatible with indexing of the case of many plots
 
 omit_units = [] # Omit nothing (Full model)
 title = 'Full model'
@@ -121,10 +141,14 @@ for omit_units in args.omit_units: # When leaving out units
 
 for keep_units in args.keep_units: # When keeping only some units
     # Generalization across time (reduced model)
-    omit_units = list(set(range(data.shape[1])) - set(map(int, keep_units)))
     first_in_row = True if (cnt % num_subplots_cols) == 0 else False
-    last_row = True if np.ceil((cnt+1) / num_subplots_cols) == num_subplots_rows else False
-    title = '+' + ','.join(map(str, keep_units))
+    last_row = True if np.ceil((cnt + 1) / num_subplots_cols) == num_subplots_rows else False
+    if keep_units[0] == 'non_number_units':
+        omit_units = keep_units[0]
+        title = keep_units[0]
+    else:
+        omit_units = list(set(range(data.shape[1])) - set(map(int, keep_units)))
+        title = '+' + ','.join(map(str, keep_units))
     im = add_gat_matrix(ax, axs[cnt], data, omit_units, title, first_in_row=first_in_row, last_row=last_row)
     cnt += 1
 
@@ -142,13 +166,14 @@ ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 fig1.savefig(os.path.join(path2figures, 'GAT1d_' + filename))
 
 # Fig 2d
-fig2.subplots_adjust(left=0.15, right=0.8, bottom = 0.18) #, wspace = 0.5)
-for a in range(cnt, len(axs)): axs[a].remove() # Omit empty plots from subplots figure
-cbar = plt.axes([0.85, 0.3, 0.05, 0.45])
-cbar1=plt.colorbar(im, cax=cbar)
-cbar1.set_label('AUC', fontsize=16, rotation=270, labelpad=20)
-fig2.text(0.5, 0.03, 'Testing Time (s)', ha='center')
-fig2.text(0.03, 0.5, 'Training Time (s)', va='center', rotation='vertical')
-fig2.savefig(os.path.join(path2figures, 'GAT2d_' + filename))
+if args.gat:
+    fig2.subplots_adjust(left=0.15, right=0.8, bottom = 0.18) #, wspace = 0.5)
+    for a in range(cnt, len(axs)): axs[a].remove() # Omit empty plots from subplots figure
+    cbar = plt.axes([0.85, 0.3, 0.05, 0.45])
+    cbar1=plt.colorbar(im, cax=cbar)
+    cbar1.set_label('AUC', fontsize=16, rotation=270, labelpad=20)
+    fig2.text(0.5, 0.03, 'Testing Time (s)', ha='center')
+    fig2.text(0.03, 0.5, 'Training Time (s)', va='center', rotation='vertical')
+    fig2.savefig(os.path.join(path2figures, 'GAT2d_' + filename))
 
 print('Figures were saved to: ' + os.path.join(path2figures, 'GAT?d_' + filename))
