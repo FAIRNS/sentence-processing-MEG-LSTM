@@ -17,7 +17,6 @@ parser.add_argument('-g', '--graphs', nargs='+', action='append', type=str,
                          'gates.in, gates.forget, gates.out, gates.c_tilde, hidden, cell')
 parser.add_argument('-r', '--remove', type=int, default=0, help='How many words to omit from the end of sentence')
 args = parser.parse_args()
-# print(args)
 
 def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
     '''
