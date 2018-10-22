@@ -102,9 +102,9 @@ for g, graph in enumerate(args.graphs):
 axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for ax in axs:
     ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
-    ax.tick_params(labelsize=30)
-    ax.set_ylabel('Activation', fontsize=35)
-    ax.legend(fontsize=14, numpoints=1, loc=(1, 0), framealpha=0)
+    ax.tick_params(labelsize=45)
+    ax.set_ylabel('Activation', fontsize=45)
+    ax.legend(fontsize=35, numpoints=1, loc=(1, 0), framealpha=0)
 
 # Save and close figure
 plt.subplots_adjust(bottom=0.25, right = 0.5)
