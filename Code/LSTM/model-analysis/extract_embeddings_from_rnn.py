@@ -70,10 +70,10 @@ PC2 = V[1, :]
 print(650 + np.argsort(np.negative(np.abs(PC1)))[0:20])
 print(650 + np.argsort(np.negative(np.abs(PC2)))[0:20])
 
-fig, ax = plt.subplots(1, figsize = (40, 30))
+fig, ax = plt.subplots(1, figsize = (35, 20))
 for i in tqdm(range(X_transformed.shape[0])):
 	# if w % 10 == 1:
-	ax.text(X_transformed[i, 0], X_transformed[i, 1], verbs_all[i], size=30)
+	ax.text(X_transformed[i, 0], X_transformed[i, 1], verbs_all[i], size=45)
 
 lim_max = np.max(X_transformed)
 lim_min = np.min(X_transformed)
@@ -87,7 +87,7 @@ plt.close(fig)
 units = [int(u) for u in args.units]
 bar_width = 0.2
 ## Extract weights from number units to verbs
-fig, ax = plt.subplots(1, figsize = (30,30))
+fig, ax = plt.subplots(1, figsize = (35,20))
 for u, from_unit in enumerate(units):
 	if u == 0:
 		label_sing = 'Singular form of verb'; label_plur = 'Plural form of verb'
@@ -100,11 +100,11 @@ for u, from_unit in enumerate(units):
 	ax.scatter(u + np.random.random(output_weights_plural.size) * bar_width - bar_width/2, output_weights_plural, s=400, color=args.colors[u], label=label_plur, marker='_')
 
 
-plt.legend(fontsize=40)
-plt.tick_params(axis='both', which='major', labelsize=40)
+plt.legend(fontsize=35)
+plt.tick_params(axis='both', which='major', labelsize=45)
 plt.xticks(range(len(units)), [str(u) for u in units])
-ax.set_ylabel('Size of output weight', fontsize = 40)
-ax.set_xlabel('Unit', fontsize = 40)
+ax.set_ylabel('Size of output weight', fontsize = 45)
+ax.set_xlabel('Unit', fontsize = 45)
 ax.axhline(linewidth=2, color='k', ls = '--')
 fig.savefig(os.path.join(dirname, 'weight_dists_'+filename))
 print('saved to: ' + os.path.join(dirname, 'weight_dists_'+filename))
