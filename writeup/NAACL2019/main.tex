@@ -9,6 +9,19 @@
 \usepackage{graphicx}
 \usepackage{lipsum}
 \usepackage{url}
+\usepackage{array}
+\usepackage{lmodern}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+% New command for horizontal alignment in tables (P instead of p):
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+% New command for making text bold in tables (\B):
+\sisetup{detect-weight,mode=text}
+\renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
+\renewrobustcmd{\boldmath}{}
+\newrobustcmd{\B}{\bfseries}
+
 
 %\naaclfinalcopy % Uncomment this line for the final submission
 \def\naaclpaperid{***} %  Enter the naacl Paper ID here
@@ -87,3 +100,4 @@
 
 
 \end{document}
+
