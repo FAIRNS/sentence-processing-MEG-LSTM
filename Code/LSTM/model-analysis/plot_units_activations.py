@@ -16,6 +16,9 @@ parser.add_argument('-g', '--graphs', nargs='+', action='append', type=str,
                          'gate should be one of: '
                          'gates.in, gates.forget, gates.out, gates.c_tilde, hidden, cell')
 parser.add_argument('-r', '--remove', type=int, default=0, help='How many words to omit from the end of sentence')
+parser.add_argument('-x', '--xlabels', nargs='+', type=str, help='List with xlabels for all subplors. Must match the number of time points')
+parser.add_argument('-y', '--ylabels', nargs='+', type=str, help='List with ylabels for all subplors. Must match the number of subplots provided by --graphs')
+parser.add_argument('--no-legend', action='store_true', default=False, help='If specified, legend will be omitted')
 args = parser.parse_args()
 
 def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
@@ -100,14 +103,21 @@ for g, graph in enumerate(args.graphs):
 
 # Cosmetics
 axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
-for ax in axs:
-    ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
+for i, ax in enumerate(axs):
+    if args.xlabels:
+        ax.set_xticklabels(args.xlabels, rotation='vertical')
+    else:
+        ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
     ax.tick_params(labelsize=45)
-    ax.set_ylabel('Activation', fontsize=45)
-    ax.legend(fontsize=35, numpoints=1, loc=(1, 0), framealpha=0)
+    if args.ylabels:
+        ax.set_ylabel(args.ylabels[i], fontsize=45)
+    else:
+        ax.set_ylabel('Activation', fontsize=45)
+    if not args.no_legend: ax.legend(fontsize=35, numpoints=1, loc=(1, 0), framealpha=0)
 
 # Save and close figure
-plt.subplots_adjust(bottom=0.25, right = 0.5)
+plt.subplots_adjust(bottom=0.25)
+if not args.no_legend: plt.subplots_adjust(right = 0.5)
 plt.savefig(args.output_file_name)
 plt.savefig(os.path.splitext(args.output_file_name)[0] +'.svg') # Save also as svg
 plt.close(fig)
