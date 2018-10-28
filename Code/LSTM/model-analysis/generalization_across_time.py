@@ -51,6 +51,36 @@ def get_scores_from_gat(epochs):
     time_gen = GeneralizingEstimator(clf, scoring='roc_auc', n_jobs=1)
     time_gen.fit(X_train, y_train)
     scores = time_gen.score(X_train, y_train)
+
+    from sklearn.svm import LinearSVC
+
+    clf2 = LinearSVC(random_state=0, tol=1e-5, penalty='l2')
+    clf2.fit(X_train[:, :, 1], y_train)
+    print(np.transpose(np.argsort(np.negative(np.abs(clf2.coef_))))[0:20], np.transpose(np.sort(np.negative(np.abs(clf2.coef_))))[0:10])
+
+    from sklearn import linear_model
+    from sklearn.model_selection import GridSearchCV
+
+    alphas = [0.1, 0.5, 1, 10]
+    tuned_parameters = [{'alpha': alphas}]
+    model_ridge = GridSearchCV(linear_model.Ridge(), tuned_parameters, cv=5, refit=True, return_train_score=True)
+    model_ridge.fit(X_train[:,:,1], y_train)
+    model_ridge.alphas = alphas
+    print(np.transpose(np.argsort(np.negative(np.abs(model_ridge.best_estimator_.coef_))))[0:20],
+          np.transpose(np.sort(np.negative(np.abs(model_ridge.best_estimator_.coef_))))[0:10])
+
+
+
+    alphas, coefs_lasso, _ = linear_model.lasso_path(X_train[:,:,1], y_train, fit_intercept=True)
+    # Grid search - calculate train/validation error for all regularization sizes
+    lasso = linear_model.Lasso()
+    tuned_parameters = [{'alpha': alphas}]
+    model_lasso = GridSearchCV(lasso, tuned_parameters, cv=5, return_train_score=True, refit=True)
+    model_lasso.fit(X_train[:,:,1], y_train)
+
+    model_lasso.alphas = alphas
+    model_lasso.coefs = np.transpose(coefs_lasso)
+
     return scores
 
 def add_gat_matrix(ax1, ax2, data, omit_units, title, first_in_row=True, last_row=True):

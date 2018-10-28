@@ -89,6 +89,7 @@ bar_width = 0.2
 ## Extract weights from number units to verbs
 fig, ax = plt.subplots(1, figsize = (35,20))
 for u, from_unit in enumerate(units):
+	print(u, from_unit)
 	if u == 0:
 		label_sing = 'Singular form of verb'; label_plur = 'Plural form of verb'
 	else:
