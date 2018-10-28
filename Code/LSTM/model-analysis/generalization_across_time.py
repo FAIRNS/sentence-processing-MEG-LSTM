@@ -53,33 +53,34 @@ def get_scores_from_gat(epochs):
     scores = time_gen.score(X_train, y_train)
 
     from sklearn.svm import LinearSVC
-
     clf2 = LinearSVC(random_state=0, tol=1e-5, penalty='l2')
     clf2.fit(X_train[:, :, 1], y_train)
-    print(np.transpose(np.argsort(np.negative(np.abs(clf2.coef_))))[0:20], np.transpose(np.sort(np.negative(np.abs(clf2.coef_))))[0:10])
+    print('Units with highest weights of a classifier trained to predict subject''s number:')
+    print([(i, j) for (i, j) in zip(np.transpose(np.argsort(np.negative(np.abs(clf2.coef_))))[0:20], np.transpose(np.sort(np.negative(np.abs(clf2.coef_))))[0:20])])
 
-    from sklearn import linear_model
-    from sklearn.model_selection import GridSearchCV
+    # ###### ALSO RUN RIDGE AND LASSO REGRESSION:
+    # from sklearn import linear_model
+    # from sklearn.model_selection import GridSearchCV
+    #
+    # alphas = [0.1, 0.5, 1, 10]
+    # tuned_parameters = [{'alpha': alphas}]
+    # model_ridge = GridSearchCV(linear_model.Ridge(), tuned_parameters, cv=5, refit=True, return_train_score=True)
+    # model_ridge.fit(X_train[:,:,1], y_train)
+    # model_ridge.alphas = alphas
+    # print(np.transpose(np.argsort(np.negative(np.abs(model_ridge.best_estimator_.coef_))))[0:20],
+    #       np.transpose(np.sort(np.negative(np.abs(model_ridge.best_estimator_.coef_))))[0:10])
 
-    alphas = [0.1, 0.5, 1, 10]
-    tuned_parameters = [{'alpha': alphas}]
-    model_ridge = GridSearchCV(linear_model.Ridge(), tuned_parameters, cv=5, refit=True, return_train_score=True)
-    model_ridge.fit(X_train[:,:,1], y_train)
-    model_ridge.alphas = alphas
-    print(np.transpose(np.argsort(np.negative(np.abs(model_ridge.best_estimator_.coef_))))[0:20],
-          np.transpose(np.sort(np.negative(np.abs(model_ridge.best_estimator_.coef_))))[0:10])
 
 
-
-    alphas, coefs_lasso, _ = linear_model.lasso_path(X_train[:,:,1], y_train, fit_intercept=True)
-    # Grid search - calculate train/validation error for all regularization sizes
-    lasso = linear_model.Lasso()
-    tuned_parameters = [{'alpha': alphas}]
-    model_lasso = GridSearchCV(lasso, tuned_parameters, cv=5, return_train_score=True, refit=True)
-    model_lasso.fit(X_train[:,:,1], y_train)
-
-    model_lasso.alphas = alphas
-    model_lasso.coefs = np.transpose(coefs_lasso)
+    # alphas, coefs_lasso, _ = linear_model.lasso_path(X_train[:,:,1], y_train, fit_intercept=True)
+    # # Grid search - calculate train/validation error for all regularization sizes
+    # lasso = linear_model.Lasso()
+    # tuned_parameters = [{'alpha': alphas}]
+    # model_lasso = GridSearchCV(lasso, tuned_parameters, cv=5, return_train_score=True, refit=True)
+    # model_lasso.fit(X_train[:,:,1], y_train)
+    #
+    # model_lasso.alphas = alphas
+    # model_lasso.coefs = np.transpose(coefs_lasso)
 
     return scores
 
