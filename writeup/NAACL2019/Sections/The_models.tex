@@ -1,12 +1,27 @@
 
 \section{The models}
-\lipsum[1]
+I would describe in this section the regression and language models. 
 
-\subsection{Architecture}
-\lipsum[1]
 
-\subsection{Model training}
-\lipsum[1]
+\subsection{LSTM language model}
+\subsubsection{Architecture and dynamics}
+TODOs:
+- Number and type (embedding, LSTM, softmax) of layers, including dimensions. 
+- Describe the dynamics of the network (list of equations of the LSTM)
 
-\subsection{Model evaluation}
-\lipsum[1]
+\subsubsection{Model training and evaluation}
+- Task (refer to Gulordava et. al)
+- Describe and give (nick) names for the other models, e.g., LM-high-dropout, LM-SEED1
+- The model was evaulated on a left-out test set...perplexity..
+
+\subsection{Regression model}
+- Explain that the model was used to predict the depth of the syntactic tree from network activity
+\subsubsection{Model description}
+- Describe the Features: network activity (hidden/cell activity)
+- Describe the label: Tree depth (refer to the section describing the synthetic data)
+- Describe the model: A Ridge/LASSO model.
+\subsubsection{Model training and evalution}
+- Model training: nested 5-fold CV procedure. Train/val/test. Optimal regularization size was estimated from the validation set (report optimal lamda - figures in FAIRNS.pdf on slack)
+- model evaluation: R-squared on test set. Report resulting values (text+figures in FAIRNS.pdf). 
+
+
