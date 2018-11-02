@@ -71,6 +71,10 @@ def add_graph_to_plot(ax, LSTM_activations, unit, gate, label, c, ls, lw):
     # Add curve to plot
     ax.errorbar(range(1, mean_activity.shape[0] + 1), mean_activity, yerr=std_activity,
                 label=label, ls=ls, lw=lw, color=c)
+    if gate in ['in', 'forget', 'out']:
+        ax.set_yticks([0, 1])
+    else:
+        ax.set_yticks(np.arange(min(-1, min(mean_activity)), 1+max(np.ceil(max(mean_activity)), 1), 1.0))
 
 
 # make output dir in case it doesn't exist
@@ -110,13 +114,13 @@ for i, ax in enumerate(axs):
         ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
     ax.tick_params(labelsize=45)
     if args.ylabels:
-        ax.set_ylabel(args.ylabels[i], fontsize=45)
+        ax.set_ylabel(args.ylabels[i], fontsize=45, rotation='horizontal', ha='right')
     else:
         ax.set_ylabel('Activation', fontsize=45)
     if not args.no_legend: ax.legend(fontsize=35, numpoints=1, loc=(1, 0), framealpha=0)
 
 # Save and close figure
-plt.subplots_adjust(bottom=0.25)
+plt.subplots_adjust(bottom=0.25, left=0.15)
 if not args.no_legend: plt.subplots_adjust(right = 0.5)
 plt.savefig(args.output_file_name)
 plt.savefig(os.path.splitext(args.output_file_name)[0] +'.svg') # Save also as svg

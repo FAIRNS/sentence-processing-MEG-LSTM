@@ -15,6 +15,9 @@ parser.add_argument('-model', type=str, help='Meta file stored once finished tra
 parser.add_argument('-o', '--output', help='Destination for the output weights')
 parser.add_argument('-fu', '--from-units', nargs='+', type=int, default=[], help='Weights FROM which units (counting from zero)')
 parser.add_argument('-tu', '--to-units', nargs='+', type=int, default=[], help='Weights TO which units (counting from zero)')
+parser.add_argument('-sr', '--short-range', nargs='+', type=int, default=[], help='list of short-range numebr units')
+parser.add_argument('-lr', '--long-range', nargs='+', type=int, default=[], help='list of long-range numebr units')
+parser.add_argument('-sy', '--syntax', nargs='+', type=int, default=[], help='list of syntax units')
 parser.add_argument('--no-mds', action='store_true', default=False)
 args = parser.parse_args()
 
@@ -142,10 +145,19 @@ def generate_mds_for_connectivity(curr_ax, weights, layer, gate, from_units, to_
     # fig_mds, ax = plt.subplots(figsize=(40, 30))
     for i in range(650):
         c = 'k'; label = 'unidentified'; s = 5; fontweight = 'light'
-        if i in [1149-650]:
-            c = 'b'; label = 'syntax unit'; s = 12; fontweight = 'bold'
-        elif i in [769-650, 775-650, 987-650]:
+        if i in [u-650 for u in args.syntax]:
+            c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
+        elif i in [u-650 for u in args.short_range]:
+            c = 'm'; label = 'LR unit'; s = 12; fontweight = 'bold'
+        elif i in [u-650 for u in args.long_range]:
+            c = 'c'; label = 'number unit'; s = 12; fontweight = 'bold'
+        elif i == 987-650:
             c = 'r'; label = 'number unit'; s = 12; fontweight = 'bold'
+        elif i == 775-650:
+            c = 'b'; label = 'number unit'; s = 12; fontweight = 'bold'
+        elif i == 1149-650:
+            c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
+
         curr_ax.text(pos[i, 0], pos[i, 1], str(i + layer*650), color=c, label=label, size=s, fontweight=fontweight)
         curr_ax.set_xlim(np.min(pos[:, 0]), np.max(pos[:, 0]))
     curr_ax.set_ylim(np.min(pos[:, 1]), np.max(pos[:, 1]))

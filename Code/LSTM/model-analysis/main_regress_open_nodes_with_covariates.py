@@ -108,6 +108,26 @@ data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences
 for split in range(params.CV_fold):
     # Preparing the data for regression, by breaking down sentences into X, y matrices that are word-wise:
     X_train, y_train, X_test, y_test = data_manip.prepare_data_for_regression(data_sentences_train[split], data_sentences_test[split], feature_type=feature_type)
+    ### Plot scatter num-open-nodes vs. activations
+    activations_1149 = [vec[1149] for vec in X_train]
+    fig_scatter, ax_scatter = plt.subplots(1)
+    # ax_scatter.scatter(y_train, activations_1149)
+    x = []
+    y = []
+    yerr = []
+    for open_n in range(max(y_train)):
+        if open_n >= 1 and open_n < 12:
+            x.append(open_n)
+            y.append(np.mean(np.asarray(activations_1149)[y_train == open_n]))
+            yerr.append(np.std(np.asarray(activations_1149)[y_train == open_n])/np.sqrt(np.sum(y_train == open_n)))
+    ax_scatter.errorbar(x, y, yerr=yerr, color='k', lw=3)
+    ax_scatter.set_xlabel('Number of open nodes', fontsize=20)
+    ax_scatter.set_ylabel(feature_type.capitalize() + ' activity of unit 1149', fontsize=20)
+    ax_scatter.set_ylim([-0.1, 0.27])
+    ax_scatter.set_xlim([1, 12])
+    fig_scatter.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'scatter_num_open_nodes_1149_' + feature_type + '.png'))
+    plt.close(fig_scatter)
+
     X_train, X_test = data_manip.standardize_data(X_train, X_test)
 
     # Omit high-VIF units:
@@ -184,8 +204,12 @@ plt.ylabel('Weight size', size=18)
 plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'weights_' + model_type + '_synthetic.png'))
 plt.close()
 
-plt.hist(weights_mean, 50)
-plt.xlabel('Weight size', size=18)
-plt.ylabel('Number of units', size=18)
-plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'weights_' + model_type + '_synthetic_dist.png'))
-plt.close()
+
+fig1, ax1 = plt.subplots(1, figsize=[10,10])
+N, bins, patches = ax1.hist(weights_mean, 50)
+for i, bin in enumerate(bins):
+    if bin < ave -3 *std or bin > 3 * std: patches[i-1].set_facecolor('r')
+ax1.set_xlabel('Weight size', size=36)
+ax1.set_ylabel('Number of units', size=36)
+fig1.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'weights_' + model_type + '_synthetic_dist.png'))
+plt.close(fig1)
