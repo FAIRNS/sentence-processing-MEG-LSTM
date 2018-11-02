@@ -48,7 +48,7 @@ def get_p_value_from_null_dist(null_distribution, performance):
 
     return p_value
 
-def plot_null_dist(performances_null, k, performance_test, p_value, fontsize=40):
+def plot_null_dist(performances_null, k, performance_test, p_value, fontsize=30):
     '''
     Generate png file of the null disttribution together with a labeled arrow indicating the test performance and its p-value
     :param performances_null: (list) of task-performance values from random ablation experiments
@@ -58,13 +58,13 @@ def plot_null_dist(performances_null, k, performance_test, p_value, fontsize=40)
     :param fontsize: (float, optional) fontsize for the labels and title in the plot
     :return:
     '''
-    fig, ax = plt.subplots(figsize=(40, 30))
-    ax.hist(performances_null, bins=100)
+    fig, ax = plt.subplots(figsize=(10, 10))
+    ax.hist(performances_null, bins=60)
     ax.set_xlabel('Task performance (fraction of correct trials)', fontsize=fontsize)
     ax.set_ylabel('Number of random ablation experiments', fontsize=fontsize)
     ax.set_title('Number of ablated units: k = ' + str(k), fontsize=fontsize)
-    ax.tick_params(axis='both', labelsize=fontsize*0.8)
-    ax.set_xlim(0.6, 1)
+    ax.tick_params(axis='both', labelsize=fontsize*0.6)
+    ax.set_xlim(0.7, 1)
     ax.set_ylim(0, 600)
 
     # add arrow for p-value:
@@ -73,7 +73,7 @@ def plot_null_dist(performances_null, k, performance_test, p_value, fontsize=40)
         ax.arrow(performance_test, arrow_dy, 0, -40, color='k', width=0.001,
                                 head_length=10, head_width=0.01)
         ax.text(performance_test, 10 + arrow_dy, 'task-performance = ' + str("{:.3f}".format(performance_test)) + '\np-value = '+str("{:.3f}".format(p_value)),
-                               {'ha': 'center', 'va': 'bottom', 'fontsize':fontsize},
+                               {'ha': 'center', 'va': 'bottom', 'fontsize':0.8*fontsize},
                                rotation=90)
 
     # Save figure per k
