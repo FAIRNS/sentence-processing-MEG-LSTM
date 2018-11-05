@@ -107,7 +107,7 @@ For long-range dependencies, storing the number of the subject in the cell is ne
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{Figures/Figure5_output_weights.png}
+\includegraphics[width=\textwidth]{Figures/Figure4_GAT_SR_vs_LR.png}
 \caption{Connectivity structure to output layer. (A) Output activity $h_t$ of all number units during the processing of a sentence with a PP between subject and verb. (B) Weight values from various units to output layer. Note that only for number units the output weights are clearly separated between singular and plural form of the verb, either positive or negative, compare to the syntax unit (1149) and two non-number units in the second layer. (C) Visualization of 18 verbs in their plural and singular forms (36 words in total) on the plane spanned by the two first principal components of their embeddings by the output weight matrix. A clear separation is observed between the singular and plural form along the first PC.}
 \end{figure*}
 
@@ -117,12 +117,5 @@ Next, to see whether number units meet the second condition, figure 3B presents 
 
 \subsubsection{Short-range number units}
 We saw in section 5.3.1 that performance on several NA-tasks was not impaired after the ablation of any unit, nor by ablating the LR-number units 776 and 988, which suggested that number information may be encoded also elsewhere in the network and thus available for short-range dependecies without an interfering noun. To explore this, we tested whether there are units in the network from which grammatical number of the subject can be decoded at time points \textit{following the presentation of the subject}. High decoding performance would be
-
-\begin{figure}
-\centering
-\includegraphics[width=\linewidth]{Figures/Figure4_GAT_SR_vs_LR.png}
-\caption{Generalization across time. To test whether the grammatical number of the first noun can be decoded from units activity at different time points, a linear-SVM was trained on unit activations $h_t$ at the time step of the first noun and then evaluated on all other time points. Area Under of Curve (AUC) values are shown for several cases: decoding from all LSTM units (full-model, black), a single number unit (775, purple; 1282, red...), average across all non-number units (black, error-bars represent standard-deviation). Note that the decoding of first-noun number is significantly higher from number units compared to all other units ($p-value<0.$).}
-\end{figure}
-
 
 
