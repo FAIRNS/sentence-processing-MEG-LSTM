@@ -81,7 +81,7 @@ To anticipate the results and facilitate their interpretations, we begin by disc
 Figure 2 presents the actual gate and state dynamics of units 776 and 988 during the processing of sentences from the nounPP NA-task. For each unit, we draw the dynamics of the suggestion $\tilde{C}_t$ (panels A-B), input-gate (panels C-D), forget-gate (panels E-F) and the cell variable (G-H). For each of these cases, the four condition (SS, SP, PS and PP) are described in separate curves. Error-bars represent standard deviation across 1000 sentences in each condition.
 
 \begin{figure*}[ht]
-\includegraphics[width=\textwidth]{Figures/Figure2_number_units_775_987.png}
+\includegraphics[width=\textwidth]{Figures/Figure2_number_units_775_987_suggestion_input_forget.png}
 \caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. (A) Cell activity $C_t$ for the two number units 775 and 987 and output activity $h_t$ for the syntax unit 1149, for all four combinations of grammatical numbers of the two nouns. Note that the cell activity of units 775/987 is non-zero only when the first noun is plural/singular, respectively. (B) Corresponding forget-gate activity for the same number units. Note that gate activity is indifferent of the grammatical number of both nouns and that its value is close to one during the PP until after the verb. (C) Input-gate activity of the same units. Note that the gate value of unit 775/987 spikes around the first noun only when it is plural/singular.}
 \end{figure*}
 
@@ -97,16 +97,6 @@ Finally, cell activity should reflect the dynamics of the suggestion, input and 
 Taken together, these results describe the intricate mechanism underlying subject-verb agreement in LSTM number units. They also clarify why ablating either one of these two units may bring the network close to chance level on the NA-task. Without the stored information in the cell of a number unit the network hopelessly tries to solve the task.
 
 
-\subsubsection{Short-range number units}
-\lipsum[1]
-
-\begin{figure}
-\centering
-\includegraphics[width=\linewidth]{Figures/Figure3_number_units_GAT.png}
-\caption{Generalization across time. To test whether the grammatical number of the first noun can be decoded from units activity at different time points, a linear-SVM was trained on unit activations $h_t$ at the time step of the first noun and then evaluated on all other time points. Area Under of Curve (AUC) values are shown for several cases: decoding from all LSTM units (full-model, black), a single number unit (775, purple; 1282, red...), average across all non-number units (black, error-bars represent standard-deviation). Note that the decoding of first-noun number is significantly higher from number units compared to all other units ($p-value<0.$).}
-\end{figure}
-
-
 \subsubsection{Predicting the verb form}
 For long-range dependencies, storing the number of the subject in the cell is necessary for correct prediction in the NA-task (except for cases of mere chance) but is not sufficient. Two more conditions need to be met: (1) the stored number should be output from the cell at the right moment $t_{verb}-1$; and (2) The output from the number unit should increase activations only in units that represent the matching verb form in the output layer. For example, the output from unit 988 should be projected differently to singular and plural verb forms in the output layer, such that it will increase activity only in units representing the singular form. Given that the encoding of singular by unit 988 is with a negative value $C_{t_{verb}-1}<-1$, and therefore $h_{t_{verb}-1}<-1$ (equation 1.x), this means that weights from unit 988 to units in the output layer that correspond to singular forms should be negative too, but not those projecting to plural forms.
 
@@ -117,10 +107,22 @@ For long-range dependencies, storing the number of the subject in the cell is ne
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{Figures/Figure4_output_weights.png}
+\includegraphics[width=\textwidth]{Figures/Figure5_output_weights.png}
 \caption{Connectivity structure to output layer. (A) Output activity $h_t$ of all number units during the processing of a sentence with a PP between subject and verb. (B) Weight values from various units to output layer. Note that only for number units the output weights are clearly separated between singular and plural form of the verb, either positive or negative, compare to the syntax unit (1149) and two non-number units in the second layer. (C) Visualization of 18 verbs in their plural and singular forms (36 words in total) on the plane spanned by the two first principal components of their embeddings by the output weight matrix. A clear separation is observed between the singular and plural form along the first PC.}
 \end{figure*}
 
-To see whether number units meet the first condition, figure 4 shows the output-gate and hidden state dynamics of units 988 and 776. Indeed, the output gate opens at $t_{verb}-1$, reaching its almost maximal value (Panels A-B). This ensures that the stored number information is output from the cell and propagates to the output layer via $h_t$ (equation 1.X) at the right moment (Panels C-D). Note also that for both units, output-gate dynamics are quite similar across all four conditions. This may seem sub-optimal, since one may expect that the network would learn to close the output gate for the irrelevant conditions (PS and PP for unit 987 and SS and SP for unit 776). However, as we saw, the cell value for these condition is anyway approximately zero and therefore an open output gate will have the same effect as closed one.
+To see whether number units meet the first condition, figure 3A shows the output-gate and hidden state dynamics of units 988 and 776. Indeed, the output gate opens at $t_{verb}-1$, reaching its almost maximal value (Panels A-B). This ensures that the stored number information is output from the cell and propagates to the output layer via $h_t$ (equation 1.X) at the right moment (Panels C-D). Note also that for both units, output-gate dynamics are quite similar across all four conditions. This may seem sub-optimal, since one may expect that the network would learn to close the output gate for the irrelevant conditions (PS and PP for unit 987 and SS and SP for unit 776). However, as we saw, the cell value for these condition is anyway approximately zero and therefore an open output gate will have the same effect as closed one.
 
-Next, to see whether number units meet the second condition, figure 5 presents the distribution of weight values from all number units and from several other units to 36 units at the output layer - 18 corresponds to verbs in the singular form and 18 to verbs in the plural forms (TODO: extend to more/all verbs in the vocab). Clearly, for number units, weights to singular and plural forms have different values, but for other non-number units, there's no clear structure (panel B). Moreover, the weight values correspond to the encoding of singular/plural in the number unit. For example, weight values from unit 988 to singular forms are indeed negative, and those to plural forms are not. For all other units as well, the sign of $h_{t_{verb}-1}$ corresponds to the sign of the relevant weight values (panels A-B), such that their product is always positive. This ensures that number units increase activations only in the matching units in the output layer.
+Next, to see whether number units meet the second condition, figure 3B presents the distribution of weight values from the two number units and from several other units to 36 units at the output layer - 18 corresponds to verbs in the singular form and 18 to verbs in the plural forms (TODO: extend to more/all verbs in the vocab). Clearly, for number units, weights to singular and plural forms have different values, but for other non-number units, there's no clear structure. Moreover, the weight values correspond to the encoding of singular/plural in the number unit. For example, weight values from unit 988 to singular forms are indeed negative, and those to plural forms are not. For all other units as well, the sign of $h_{t_{verb}-1}$ corresponds to the sign of the relevant weight values (panels A-B), such that their product is always positive. This ensures that number units increase activations only in the matching units in the output layer.
+
+\subsubsection{Short-range number units}
+We saw in section 5.3.1 that performance on several NA-tasks was not impaired after the ablation of any unit, nor by ablating the LR-number units 776 and 988, which suggested that number information may be encoded also elsewhere in the network and thus available for short-range dependecies without an interfering noun. To explore this, we tested whether there are units in the network from which grammatical number of the subject can be decoded at time points \textit{following the presentation of the subject}. High decoding performance would be
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{Figures/Figure4_GAT_SR_vs_LR.png}
+\caption{Generalization across time. To test whether the grammatical number of the first noun can be decoded from units activity at different time points, a linear-SVM was trained on unit activations $h_t$ at the time step of the first noun and then evaluated on all other time points. Area Under of Curve (AUC) values are shown for several cases: decoding from all LSTM units (full-model, black), a single number unit (775, purple; 1282, red...), average across all non-number units (black, error-bars represent standard-deviation). Note that the decoding of first-noun number is significantly higher from number units compared to all other units ($p-value<0.$).}
+\end{figure}
+
+
+

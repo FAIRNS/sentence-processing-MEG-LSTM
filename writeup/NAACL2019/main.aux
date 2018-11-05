@@ -1,0 +1,44 @@
+\relax 
+\citation{Gulordava:etal:2018,Kuncoro:etal:2018a}
+\citation{Bernardy:Lappin:2017,Linzen:etal:2016}
+\citation{Kuncoro:etal:2018b,Linzen:Leonard:2018}
+\citation{Bowers:2009}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Caption.}}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related literature}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Interpreting LSTM networks}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Subject-verb agreement in English}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}The data}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Synthetic data}{1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Stimuli for the number-agreement task (NA-task)}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Corpus data}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}The models}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}LSTM language model}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Architecture and dynamics}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Model training and evaluation}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Regression model}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Model description}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Model training and evalution}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Long-range number-units}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Local vs. distributed code - an ablation study}{3}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Ablation experiments results: Percentage of correct subject-verb agreements in all NA-tasks (section 3.1). Full - non-ablated model, C - condition, S - singular, P - plural. For task with two nouns, SS - singular-singular, SP - singular-plural, PS - plural-singular, PP - plural-plural. Red: singluar number units, Blue: Plural number units.}}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Visualizing gate and cell-state dynamics}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. (A) Cell activity $C_t$ for the two number units 775 and 987 and output activity $h_t$ for the syntax unit 1149, for all four combinations of grammatical numbers of the two nouns. Note that the cell activity of units 775/987 is non-zero only when the first noun is plural/singular, respectively. (B) Corresponding forget-gate activity for the same number units. Note that gate activity is indifferent of the grammatical number of both nouns and that its value is close to one during the PP until after the verb. (C) Input-gate activity of the same units. Note that the gate value of unit 775/987 spikes around the first noun only when it is plural/singular.}}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.3}Predicting the verb form}{6}}
+\bibdata{marco}
+\bibstyle{naaclhlt2016}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.4}Short-range number units}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Syntax units}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Predicting syntactic-tree depth from network activity}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Ablation study}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Syntax-number units interactions}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Processing of relative clauses}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Hidden and output-gate activations during processing of a sentence with a prepositional phrase between subject and verb. }}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Connectivity structure to output layer. (A) Output activity $h_t$ of all number units during the processing of a sentence with a PP between subject and verb. (B) Weight values from various units to output layer. Note that only for number units the output weights are clearly separated between singular and plural form of the verb, either positive or negative, compare to the syntax unit (1149) and two non-number units in the second layer. (C) Visualization of 18 verbs in their plural and singular forms (36 words in total) on the plane spanned by the two first principal components of their embeddings by the output weight matrix. A clear separation is observed between the singular and plural form along the first PC.}}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Generalization across time. To test whether the grammatical number of the first noun can be decoded from units activity at different time points, a linear-SVM was trained on unit activations $h_t$ at the time step of the first noun and then evaluated on all other time points. Area Under of Curve (AUC) values are shown for several cases: decoding from all LSTM units (full-model, black), a single number unit (775, purple; 1282, red...), average across all non-number units (black, error-bars represent standard-deviation). Note that the decoding of first-noun number is significantly higher from number units compared to all other units ($p-value<0.$).}}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces (A) Distribution of the resulting weight values from the tree-depth regression model. Outlier weights were defined as having a value that is distant from the mean by more than three standard deviations (17 outlier weights in total - marked in red). (B) Task performance of 1000 models after ablating 17 random units (in blue) and based on the 17 outlier weights from the tree-depth regression model (black arrow). The reduction in performance due to outlier-weights ablation is statistically significant ($p-value < 0.05$) when compared to the null distribution generated by the random ablations.}}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Interaction among the syntax and number units. A value in the table represents the weight size from the unit appearing on the left to the unit appearing on the top row. (A) Distribution of all weight values to the unit appearing on the top row of the table. Outlier weights from the table (more than three standard-deviation above/below the mean) are marked in red; Weight values from the syntax to number units have in addition a corresponding text label. (B) Distribution of all weight values from the unit appearing on the left column of the table. Outlier weights are marked in red. (C) A visualization of unit interactions. For each gate $g$, an interaction distance $d_{ij}^g$ between a pair of units $i$ and $j$ was first defined as: $d_{ij}^g=exp{-max{w_{ij}^g, w_{ji}^g}}$, where $w_{ij}^g$ is the weight from unit $j$ to the gate $g$ of unit $i$. Then, all interaction distances in the network were visualized using multidimensional scaling. Note that the interaction distances between the number units and between the syntax and number units are relatively close compared to the mean interaction distance in the network.}}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Subject-verb agreement in relative clauses: agreement-task accuracy for (A) subject relatives and (B) object relatives. (C \& D) The corresponding cell activations for the number units (775 and 987) and the syntax unit 1149. (E \& F) The corresponding forget-gate activity and (G \& H) input-gate activity of the number units. }}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Processing of subject relatives with double embeddings. (A) Cell activity of the number and syntax units (775, 987 and 1149) (B) The corresponding forget-gate and (C) input-gate activity.}}{13}}
