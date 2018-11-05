@@ -59,9 +59,9 @@ embeddings_verbs_out_all = embeddings_out[idx_verbs_singular + idx_verbs_plural 
 y = '1'*len(idx_verbs_singular) + '2' * len(idx_verbs_plural)
 y = np.asarray([int(j) for j in y])
 # Also from encoder
-embeddings_in_verbs_singular = embeddings_out[idx_verbs_singular, :]
-embeddings_in_verbs_plural = embeddings_out[idx_verbs_plural, :]
-embeddings_in_verbs_all = embeddings_out[idx_verbs_singular + idx_verbs_plural ,:]
+embeddings_in_verbs_singular = embeddings_in[idx_verbs_singular, :]
+embeddings_in_verbs_plural = embeddings_in[idx_verbs_plural, :]
+embeddings_in_verbs_all = embeddings_in[idx_verbs_singular + idx_verbs_plural ,:]
 
 
 #### Plot verb embeddings
@@ -96,13 +96,13 @@ fig.savefig(os.path.join(dirname, 'PCA_'+filename))
 print('Saved to: ' + os.path.join(dirname, 'PCA_'+filename))
 plt.close(fig)
 
+# Plot weights
 units = [int(u) for u in args.units] # Second-layer units
-units_first = [int(u) for u in args.units_first] # First-layer units
 bar_width = 0.2
 ## Extract weights from number units to verbs
 fig, ax = plt.subplots(1, figsize = (15,10))
 for u, from_unit in enumerate(units):
-	print(u, from_unit)
+	# print(u, from_unit)
 	if u == 0:
 		label_sing = 'Singular form of verb'; label_plur = 'Plural form of verb'
 	else:
@@ -112,21 +112,25 @@ for u, from_unit in enumerate(units):
 	ax.scatter(u + np.random.random(output_weights_singular.size) * bar_width - bar_width/2, output_weights_singular, s=400, color=args.colors[u], label=label_sing, marker='.')
 	output_weights_plural = embeddings_out[idx_verbs_plural, from_unit]
 	ax.scatter(u + np.random.random(output_weights_plural.size) * bar_width - bar_width/2, output_weights_plural, s=400, color=args.colors[u], label=label_plur, marker='_')
+	print('Unit %i, SNR = %1.2f' % (from_unit+650, np.abs(np.mean(output_weights_singular)-np.mean(output_weights_plural))/(np.std(output_weights_singular)+np.std(output_weights_plural))))
 
-for u, to_unit in enumerate(units_first):
-	print(u, to_unit)
-	label_sing = ''; label_plur = ''
-	to_unit = to_unit
-	input_weights_singular = embeddings_in[idx_verbs_singular, to_unit]
-	ax.scatter(len(units) + u + np.random.random(input_weights_singular.size) * bar_width - bar_width/2, input_weights_singular, s=400, color=args.colors_first[u], label=label_sing, marker='.')
-	input_weights_plural = embeddings_in[idx_verbs_plural, to_unit]
-	ax.scatter(len(units) + u + np.random.random(input_weights_plural.size) * bar_width - bar_width/2, input_weights_plural, s=400, color=args.colors_first[u], label=label_plur, marker='_')
+units_first = []
+if args.units_first:
+	units_first = [int(u) for u in args.units_first] # First-layer units
+	for u, to_unit in enumerate(units_first):
+		print(u, to_unit)
+		label_sing = ''; label_plur = ''
+		to_unit = to_unit
+		input_weights_singular = embeddings_in[idx_verbs_singular, to_unit]
+		ax.scatter(len(units) + u + np.random.random(input_weights_singular.size) * bar_width - bar_width/2, input_weights_singular, s=400, color=args.colors_first[u], label=label_sing, marker='.')
+		input_weights_plural = embeddings_in[idx_verbs_plural, to_unit]
+		ax.scatter(len(units) + u + np.random.random(input_weights_plural.size) * bar_width - bar_width/2, input_weights_plural, s=400, color=args.colors_first[u], label=label_plur, marker='_')
 
 
 plt.legend(fontsize=20, bbox_to_anchor=(1,1))
 # plt.subplots_adjust(top=0.8)
 plt.tick_params(axis='both', which='major', labelsize=25)
-plt.xticks(range(len(units)+len(units_first)), [str(u+1) for u in units] + [str(u+1) for u in units_first])
+plt.xticks(range(len(units)+len(units_first)), [str(u+1) for u in units] + [str(u+1) for u in units_first], rotation=45)
 ax.set_ylabel('Efferent weight', fontsize = 25)
 ax.set_xlabel('Unit', fontsize = 25)
 ax.axhline(linewidth=2, color='k', ls = '--')

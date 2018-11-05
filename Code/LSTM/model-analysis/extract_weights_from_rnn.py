@@ -158,7 +158,7 @@ def generate_mds_for_connectivity(curr_ax, weights, layer, gate, from_units, to_
         elif i == 1149-650:
             c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
 
-        curr_ax.text(pos[i, 0], pos[i, 1], str(i + layer*650), color=c, label=label, size=s, fontweight=fontweight)
+        curr_ax.text(pos[i, 0], pos[i, 1], str(1 + i + layer*650), color=c, label=label, size=s, fontweight=fontweight)
         curr_ax.set_xlim(np.min(pos[:, 0]), np.max(pos[:, 0]))
     curr_ax.set_ylim(np.min(pos[:, 1]), np.max(pos[:, 1]))
     curr_ax.axis('off')
@@ -230,9 +230,21 @@ for gate in range(4):
     for i, from_unit in enumerate(args.from_units):
         # Plot right distribution
         all_weights_from_curr_unit = model.rnn.weight_hh_l1.data[gate * 650:(gate + 1) * 650, from_unit - 650].numpy()
+        top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_from_curr_unit)))[0:5]
+        top_5_weights = all_weights_from_curr_unit[top_5_units-650]
+        print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights from unit ' + str(from_unit), top_5_units, top_5_weights)
         colors_row = []
         for j, to_unit in enumerate(args.to_units):
             all_weights_to_curr_unit = model.rnn.weight_hh_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+            if i == len(args.from_units)-1:
+                top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:5]
+                top_5_weights = all_weights_to_curr_unit[top_5_units - 650]
+                print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights to unit ' + str(to_unit), top_5_units, top_5_weights)
+                weights = model.rnn.weight_ih_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+                top_5_units = np.argsort(np.negative(np.absolute(weights)))[0:5]
+                top_5_weights = weights[top_5_units]
+                print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights to unit ' + str(to_unit), top_5_units, top_5_weights)
+
             # Plot top distributions
             if i == 0:
                 jitter_to.append(np.random.random(all_weights_to_curr_unit.size) * bar_width - 3 * bar_width / 4)
@@ -296,7 +308,6 @@ for gate in range(4):
 
 
 ##########################################################################
-
 old_figs = False
 if old_figs:
 
