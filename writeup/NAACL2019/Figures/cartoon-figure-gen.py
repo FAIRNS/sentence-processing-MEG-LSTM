@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
 
-sentence = 'The \\textbf{athlete(s)} behind the \\underline{bike(s)} \\textbf{observe(s)}'.split()
+sentence = 'The \\textbf{boy(s)} near the \\underline{car(s)} \\textbf{greet(s)}'.split()
 
 # nouns and verb positions
 N1=1
