@@ -69,7 +69,7 @@ def get_SR_LR_AUC_based_units(results):
         curr_AUC_vec = results['scores_all_single_units'][u, :]
         cnt = -1
         for pos in range(1, 5):
-            has_high_AUC = curr_AUC_vec[pos] > percentile_AUC[pos]
+            has_high_AUC = curr_AUC_vec[pos] > 0.9 # percentile_AUC[pos]
             is_in_2nd_layer = u >= 650
             has_high_SNR = SNRs[u - 650] > np.percentile(SNRs, 95)
             if is_in_2nd_layer and has_high_AUC and has_high_SNR:
