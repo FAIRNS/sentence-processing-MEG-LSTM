@@ -1,18 +1,18 @@
 
 \section{The models}
-I would describe in this section the regression and language models. 
 
+The recurrent models that are the focus of our studies are LSTM models \cite{Hochreiter:Schmidhuber:1997}.
+To inspect the internal dynamics of these models, we use additional linear models trained to predict information from the hidden state activations of the language models. \dieuwke{Or something like this. I'd put \cite{Adi:etal:2017} and \cite{Hupkes:etal:2018}, but @yair perhaps we have also some neuroscience ref? Would you mind calling it diagnostic classifiers?}
+In this section, we describe how we train the language models we study, as well as our diagnostic classifier protocol.
 
 \subsection{LSTM language model}
-\subsubsection{Architecture and dynamics}
-TODOs:
-- Number and type (embedding, LSTM, softmax) of layers, including dimensions. 
-- Describe the dynamics of the network (list of equations of the LSTM)
 
-\subsubsection{Model training and evaluation}
-- Task (refer to Gulordava et. al)
-- Describe and give (nick) names for the other models, e.g., LM-high-dropout, LM-SEED1
-- The model was evaulated on a left-out test set...perplexity..
+Following \cite{Gulordava:etal:2018}, we study LSTM language models with two layers containing 650 nodes and an embedding size of 650.
+We consider the pretrained model that was made available by \cite{Gulordava:etal:2018}, as well as 3 (?) additional models that were trained following the same protocol, but with a different seed and/or different dropout rate.
+
+This leaves us with 4 (?) models that \ldots \dieuwke{One sentence describing the number of modes that we used and how they differed. Here also name the models. I believe this can be very short, for details we can refer to the code/appendix, we shouldn't waste our space here with too much information unimportant to the story. E.g., LSTM equations, the exact training data\ldots these details can be found in earlier papers.}
+
+The models we consider were comparable in terms of perplexity on a heldout dataset (with perplexities of W, X, Y and Z, respectively) but differ in their accuracy on the \textit{agreement task} \ldots \dieuwke{I have to find these numbers, then I'll finish this subsection.}
 
 \subsection{Regression model}
 - Explain that the model was used to predict the depth of the syntactic tree from network activity
