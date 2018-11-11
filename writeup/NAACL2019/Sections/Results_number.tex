@@ -33,7 +33,7 @@ For each NA-task, the performance of the full, non-ablated, model is also report
 
 \B Co-Adv & \B S &  - &  - &  \textcolor{red}{84.0} &  \textcolor{red}{84.0} &  98.8 \\
 
-\B namePP & \B S &  - &  - &  - &  - &  98.9 \\
+\B namePP & \B SS &  - &  - &  - &  - &  98.9 \\
 
 \B nounPP & \B SS &  - &  - & - &  - &  97.5 \\
 
@@ -57,7 +57,7 @@ For each NA-task, the performance of the full, non-ablated, model is also report
 
 \B Co-Adv & \B P &  - &  \textcolor{blue}{78.9} & - &  - &  99.7 \\
 
-\B namePP & \B P & - &  \textcolor{blue}{57.6} &  - &  - &  66.8 \\
+\B namePP & \B PS & - &  \textcolor{blue}{57.6} &  - &  - &  66.8 \\
 
 \B nounPP & \B PS &  \textcolor{blue}{85.2} &  \textcolor{blue}{49.7} & - &  - &  93.2 \\
 
@@ -75,9 +75,18 @@ For each NA-task, the performance of the full, non-ablated, model is also report
 \B Linzen & \B - &  ? &  ? &  ? &  ? &  ? \\
 \hline
 \end{tabular}
-\caption{Ablation experiments results: Percentage of correct subject-verb agreements in all NA-tasks (section 3.1). Full - non-ablated model, C - condition, S - singular, P - plural. For task with two nouns, SS - singular-singular, SP - singular-plural, PS - plural-singular, PP - plural-plural. Red: singluar number units, Blue: Plural number units.}
+\caption{Ablation experiments results: Percentage of correct subject-verb agreements in all NA-tasks (section 3.1). Full - non-ablated model, C - condition, S - singular, P - plural. For task with two nouns, SS - singular-singular, SP - singular-plural, PS - plural-singular, PP - plural-plural. Red: singluar number units, Blue: Plural number units. \label{tab:ablation-results}}
 \end{table}
 \end{center}
+
+\textbf{The discussion of Table \ref{tab:ablation-results} should lead
+  more clearly to the following discussion in which we focus on 776
+  and 988. We should say at a certain point that the 770 and 1283
+  might be complementary cells, but clearly the main job of tracking
+  LD number is left to 776 and 988.}
+
+\textbf{It's still unclear to me that the relative clause results
+  really fit here.}
 
 We first highlight several aspects of the behavioral results of the full network (table 1 - right column) before describing in more details the ablation results. 
 First, some NA-tasks and conditions are clearly more difficult for the network than others. 
@@ -111,7 +120,7 @@ In the next section, we therefore focus on these two units when exemplifying gat
 \subsubsection{Visualizing gate and cell-state dynamics}
 Results from the ablation study suggest that there's a small set of units that encodes number information for long-range dependencies, in particular, we find that in some conditions two units can bring the network from relatively high performance to around chance-level performance on the NA-task (section 5.1.1). 
 However, it remains unclear what is the exact mechanism underlying successful trials in the NA-task, and what goes wrong in unsuccessful ones. 
-To better understand this, we now looks into gate and state dynamics of these units during the processing of sentences from the nounPP NA-task. 
+To better understand this, we now looks into gate and state dynamics of these units during the processing of sentences from the nounPP NA-task.  \textbf{Why do we focus on nounPP: because it is the minimal case with the four conditions, but without the complications of tracking another agreement relation as in the relatives.}
 
 To anticipate the results and facilitate their interpretations, we begin by discussing what could be a solution to the NA-task implemented by number units in their gate and state activity. 
 We recall that the update rule of the LSTM cell has two terms (equation 1.x). 
@@ -136,7 +145,7 @@ Note that the cell activity of units 775/987 is non-zero only when the first nou
 (B) Corresponding forget-gate activity for the same number units. 
 Note that gate activity is indifferent of the grammatical number of both nouns and that its value is close to one during the PP until after the verb. 
 (C) Input-gate activity of the same units. 
-Note that the gate value of unit 775/987 spikes around the first noun only when it is plural/singular.}
+Note that the gate value of unit 775/987 spikes around the first noun only when it is plural/singular. \textbf{Change bike to bike(s) in caption? Also, I think the NLP audience will understand $\tilde{C}$ and $C$ better than Suggestion and Cell. Also, do we really need  $\tilde{C}$? Isn't the important information already there in the $C$ plot?}}
 \end{figure*}
 
 
@@ -183,7 +192,7 @@ Given that the encoding of singular by unit 988 is with a negative value $C_{t_{
 
 \begin{figure*}[ht]
 \includegraphics[width=\textwidth]{Figures/Figure3_number_units_775_987_output_hidden.png}
-\caption{Hidden and output-gate activations during processing of a sentence with a prepositional phrase between subject and verb. }
+\caption{Hidden and output-gate activations during processing of a sentence with a prepositional phrase between subject and verb. \textbf{Do we need both? Isn't it a bit redundant? I mean, I see you can make the point fo the output gate behaving in the same way in both cases, but that's perhaps a bit minor?}}
 \end{figure*}
 
 \begin{figure*}[t]
@@ -212,7 +221,9 @@ For all other units as well, the sign of $h_{t_{verb}-1}$ corresponds to the sig
 This ensures that number units increase activations only in the matching units in the output layer.
 
 \subsubsection{Short-range number units}
-We saw in section 5.3.1 that performance on several NA-tasks was not impaired after the ablation of any unit, nor by ablating the LR-number units 776 and 988, which suggested that number information may be encoded also elsewhere in the network, in other units. 
+
+\textbf{I got lost in this discussion. Why does the continuous code requirement have to be met?}
+We saw in section 5.3.1 that performance on several NA-tasks was not impaired after the ablation of any unit, nor by ablating the LR-number units 776 and 988, which suggested that number information may be encoded also elsewhere in the network, in other units. \textbf{Cite Dieuwke's paper on this.} 
 We therefore start by defining requirements that a unit should meet to count as a (grammatical) \textit{number unit}. 
 For convenice, we focus on sentences that start by a subject and define two such requirements: 
 \begin{enumerate}
