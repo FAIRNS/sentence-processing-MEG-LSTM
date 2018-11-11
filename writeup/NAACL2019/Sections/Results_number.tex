@@ -10,7 +10,7 @@ Finally, subsection 5.1.4 characterizes the structure of the efferent weights of
 Generally, number information may be stored in the network in either a local, sparse, or a distributed way, depending on the fraction of active units that carry number information. 
 We hypothesized that if the network uses a local or sparse coding, meaning that there's a small set of units that encode number information, then ablating these units would lead to a drastic decrease in performance on the NA-task, compared to when ablating other units. 
 To test this, we conducted ablation experiments in which each time a single unit of the network is ablated and the resulting model is then evaluated on several NA-tasks. 
-Each NA-task contained sentences with a fixed syntactic structure, such as "Det Noun Adv Verb" or "Det Noun P Det Noun Verb", and each task was composed of several conditions depending on the possible assignments of grammatical number to the nonu(s) in the sentence (see section 3.1 for details about all NA-tasks). 
+Each NA-task contained sentences with a fixed syntactic structure, such as "Det Noun Adv Verb" or "Det Noun P Det Noun Verb", and each task was composed of several conditions depending on the possible assignments of grammatical number to the noun(s) in the sentence (see section 3.1 for details about all NA-tasks). 
 In addition, we also evaluated each ablated model on the Linzen task (cite). 
 Tables 1 summarizes the results from all ablation experiments, showing units whose ablation resulted in a performance decrease of more than 10\% (TODO: choose a non-arbitrary threshold by looking at the distribution). 
 For each NA-task, the performance of the full, non-ablated, model is also reported.
@@ -75,7 +75,7 @@ For each NA-task, the performance of the full, non-ablated, model is also report
 \B Linzen & \B - &  ? &  ? &  ? &  ? &  ? \\
 \hline
 \end{tabular}
-\caption{Ablation experiments results: Percentage of correct subject-verb agreements in all NA-tasks (section 3.1). Full - non-ablated model, C - condition, S - singular, P - plural. For task with two nouns, SS - singular-singular, SP - singular-plural, PS - plural-singular, PP - plural-plural. Red: singluar number units, Blue: Plural number units. \label{tab:ablation-results}}
+\caption{Ablation experiments results: Percentage of correct subject-verb agreements in all NA-tasks (section 3.1). Full - non-ablated model, C - condition, S - singular, P - plural. For task with two nouns, SS - singular-singular, SP - singular-plural, PS - plural-singular, PP - plural-plural. Red: singular number units, Blue: Plural number units. \label{tab:ablation-results}}
 \end{table}
 \end{center}
 
@@ -83,7 +83,7 @@ For each NA-task, the performance of the full, non-ablated, model is also report
   more clearly to the following discussion in which we focus on 776
   and 988. We should say at a certain point that the 770 and 1283
   might be complementary cells, but clearly the main job of tracking
-  LD number is left to 776 and 988.}
+  LR number is left to 776 and 988.}
 
 \textbf{It's still unclear to me that the relative clause results
   really fit here.}
@@ -192,7 +192,7 @@ Given that the encoding of singular by unit 988 is with a negative value $C_{t_{
 
 \begin{figure*}[ht]
 \includegraphics[width=\textwidth]{Figures/Figure3_number_units_775_987_output_hidden.png}
-\caption{Hidden and output-gate activations during processing of a sentence with a prepositional phrase between subject and verb. \textbf{Do we need both? Isn't it a bit redundant? I mean, I see you can make the point fo the output gate behaving in the same way in both cases, but that's perhaps a bit minor?}}
+\caption{Hidden and output-gate activations during processing of a sentence with a prepositional phrase between subject and verb. \textbf{Do we need both? Isn't it a bit redundant? I mean, I see you can make the point of the output gate behaving in the same way in both cases, but that's perhaps a bit minor?}}
 \end{figure*}
 
 \begin{figure*}[t]
@@ -222,18 +222,18 @@ This ensures that number units increase activations only in the matching units i
 
 \subsubsection{Short-range number units}
 
-\textbf{I got lost in this discussion. Why does the continuous code requirement have to be met?}
+\textbf{I got lost in this discussion. Why does the continuous code requirement have to be met? The fundamental thing to be shown here should be that ablating \emph{all} the candidate SR units (plus the LR units) and show they cause a large decrease in performance on the SR NA-tasks (controlling with random ablations of similar numbers of units). What's here now seems more like a \emph{post-hoc} analysis of these units.}
 We saw in section 5.3.1 that performance on several NA-tasks was not impaired after the ablation of any unit, nor by ablating the LR-number units 776 and 988, which suggested that number information may be encoded also elsewhere in the network, in other units. \textbf{Cite Dieuwke's paper on this.} 
 We therefore start by defining requirements that a unit should meet to count as a (grammatical) \textit{number unit}. 
-For convenice, we focus on sentences that start by a subject and define two such requirements: 
+For convenience, we focus on sentences that start by a subject and define two such requirements: 
 \begin{enumerate}
-    \item \textit{Continuous code}: The grammatical-number of the subject should be decodable from unit's cell activity in a continuous manner. Continuity means that decoding performance is high for \textit{all} subsequent time points and that the code for grammatical number is the same code as that used by the unit during the presentation of the subject. This excludes units for which grammatical code can be decoded from their activity at subsequent time points but that there is no consistent code, e.g., cell values for singular and plurl flips from one time point to another. Units that meet this requirement for continuous code could be therefore interpreted as \textit{storing} grammatical-number information.
+    \item \textit{Continuous code}: The grammatical-number of the subject should be decodable from unit's cell activity in a continuous manner. Continuity means that decoding performance is high for \textit{all} subsequent time points and that the code for grammatical number is the same code as that used by the unit during the presentation of the subject. This excludes units for which grammatical code can be decoded from their activity at subsequent time points but that there is no consistent code, e.g., cell values for singular and plural flips from one time point to another. Units that meet this requirement for continuous code could be therefore interpreted as \textit{storing} grammatical-number information.
 
-    \item \textit{Number-segregated efferent weights}: The efferent weights of a number unit should be segrarated for singular and plural forms of the verb. This is similarly to what was described above for the LR number units. 
+    \item \textit{Number-segregated efferent weights}: The efferent weights of a number unit should be segregated for singular and plural forms of the verb. This is similarly to what was described above for the LR number units. 
 
 \end{enumerate}
 
-To quantify the first requirement, we use a generalization across time (GAT) approach (cite). Specifically, for each unit, we trained a model to predict the grammatical number of the subject based on cell activity during the presentation of the subject but tested its prediction based on activity \textit{from all time points}. We evaluate model performance using the Area under of Curve (AUC), and for each time point, we define 'high' performance as AUC values greater than 0.95. To quantify the second requirement, given two sets of weights to singular and plural verb forms $W_S, W_P$ of unit $u$, with means $\bar{W_S}, \bar{W_P}$ and standard deviations $\sigma_S, \sigma_P$, we define a statistical distance: $d^u_{W_P, W_S}=\frac{|\bar{W_S}-\bar{W_P}|}{\sigma_S+\sigma_P}$. A unit is then said to have highly segregated weights if $d^u_{W_P, W_S}$ is at the top five percentile across all units. Units that meetFinally, as discussed in section 5.3.1, we distinguish between two types of units: (1) SR-units - units
+To quantify the first requirement, we use a generalization across time (GAT) approach (cite). Specifically, for each unit, we trained a model to predict the grammatical number of the subject based on cell activity during the presentation of the subject but tested its prediction based on activity \textit{from all time points}. We evaluate model performance using the Area under of Curve (AUC), and for each time point, we define 'high' performance as AUC values greater than 0.95. To quantify the second requirement, given two sets of weights to singular and plural verb forms $W_S, W_P$ of unit $u$, with means $\bar{W_S}, \bar{W_P}$ and standard deviations $\sigma_S, \sigma_P$, we define a statistical distance: $d^u_{W_P, W_S}=\frac{|\bar{W_S}-\bar{W_P}|}{\sigma_S+\sigma_P}$. A unit is then said to have highly segregated weights if $d^u_{W_P, W_S}$ is at the top five percentile across all units. Units that meet Finally, as discussed in section 5.3.1, we distinguish between two types of units: (1) SR-units - units
 
 Figure 4B presents shows the Area Under of Curve (AUC) for all units in the network that meet these two requirements. 
 
