@@ -4,6 +4,7 @@
 
 \documentclass[11pt,letterpaper]{article}
 \usepackage{naaclhlt2016}
+% \usepackage[textsize=tiny]{todonotes}
 \usepackage{times}
 \usepackage{latexsym}
 \usepackage{graphicx}
@@ -34,7 +35,11 @@
 % \addtolength\titlebox{.5in}    
 
 \newcommand\BibTeX{B{\sc ib}\TeX}
-
+% \newcommand{\marco}[1]{\todo[color=green!40]{MB: #1}}
+% \newcommand{\dieuwke}[1]{\todo[color=red!40]{DH: #1}}
+\newcommand{\dieuwke}[1]{\textcolor{red}{(DH: #1)}}
+% \newcommand{\yair}[1]{\todo[color=blue!40]{YL: #1}}
+% \newcommand{\german}[1]{\todo[color=purple!40]{GK: #1}}
 
 \title{The emergence of number and syntax units in LSTM language models}
 
@@ -88,13 +93,13 @@
 \input{Sections/Results_number.tex}
 \input{Sections/Results_syntax.tex}
 \input{Sections/Results_RC.tex}
-
+% 
 % Discussion
 \input{Sections/Discussion.tex}
 
 % Acknowledgments
-\section*{Acknowledgments}
-\lipsum[1]
+% \section*{Acknowledgments}
+% \lipsum[1]
 
 \bibliography{marco}
 \bibliographystyle{naaclhlt2016}
