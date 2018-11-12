@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.7)  9 NOV 2018 21:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.7)  12 NOV 2018 13:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
+**main.tex main.pdf
 (./main.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
@@ -457,51 +457,51 @@ or enter new name. (Default extension: sty)
 
 Enter file name: 
 ! Undefined control sequence.
-l.21 \renewrobustcmd
+l.22 \renewrobustcmd
                     {\bfseries}{\fontseries{b}\selectfont}
 ? 
 ! Undefined control sequence.
-l.22 \renewrobustcmd
+l.23 \renewrobustcmd
                     {\boldmath}{}
 ? 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 22.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 23.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 22.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 23.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 22.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 23.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 22.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 23.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 22.
+(Font)              <10.95> on input line 23.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 22.
+(Font)              <8> on input line 23.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 22.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 22.
+(Font)              <6> on input line 23.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 ! Undefined control sequence.
-l.23 \newrobustcmd
+l.24 \newrobustcmd
                   {\B}{\bfseries}
 ? 
 ! Undefined control sequence.
-l.23 \newrobustcmd{\B
+l.24 \newrobustcmd{\B
                      }{\bfseries}
 ? 
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -535,18 +535,18 @@ Package: ulem 2012/05/18
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -618,21 +618,21 @@ Dictionary: translator-basic-dictionary, Language: English
 File: siunitx-abbreviations.cfg 2016/03/01 v2.6q siunitx: Abbreviated units
 )
 \c__siunitx_mathsf_int=\count149
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 78.
 
 
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 \c__siunitx_mathtt_int=\count150
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 78.
 
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 75.
+(Font)              <12> on input line 80.
  (./Sections/Abstract.tex
 Underfull \hbox (badness 2443) in paragraph at lines 2--9
 []\OT1/lmr/m/n/10 Recent work has shown that LSTMs
@@ -679,8 +679,44 @@ Package pdftex.def Info: Figures/Figure1_intro.png used on input line 11.
 ) (./Sections/Related_literature.tex
 Underfull \vbox (badness 3492) has occurred while \output is active []
 
-)
-(./Sections/The_data.tex
+
+
+LaTeX Warning: Citation `Karpathy:etal:2016' on page 1 undefined on input line 
+10.
+
+
+LaTeX Warning: Citation `Radford:etal:2017' on page 1 undefined on input line 1
+1.
+
+
+LaTeX Warning: Citation `Kementchedjhieva:Lopez:2018' on page 1 undefined on in
+put line 12.
+
+
+LaTeX Warning: Citation `Linzen:etal:2016' on page 1 undefined on input line 20
+.
+
+
+LaTeX Warning: Citation `Bernardy:Lappin:2017' on page 1 undefined on input lin
+e 20.
+
+
+LaTeX Warning: Citation `Gulordava:etal:2018' on page 1 undefined on input line
+ 20.
+
+
+LaTeX Warning: Citation `Kuncoro:etal:2018a' on page 1 undefined on input line 
+20.
+
+
+LaTeX Warning: Citation `Kuncoro:etal:2018b' on page 1 undefined on input line 
+20.
+
+
+LaTeX Warning: Citation `Linzen:Leonard:2018' on page 1 undefined on input line
+ 20.
+
+) (./Sections/The_data.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 7.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -743,275 +779,196 @@ Overfull \hbox (10.55356pt too wide) in paragraph at lines 7--20
  [][] 
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+Underfull \vbox (badness 7504) has occurred while \output is active []
+
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
  <./Figures/Figure1_intro.png>]
-Underfull \hbox (badness 2173) in paragraph at lines 42--50
-|   []   |   []   |   []   |   []   |   []   |   []
- []
 
-
-Underfull \vbox (badness 5592) has occurred while \output is active []
-
-
-
-LaTeX Warning: Citation `Linzen:etal:2016' on page 2 undefined on input line 61
+LaTeX Warning: Citation `Linzen:etal:2016' on page 2 undefined on input line 62
 .
 
 
 LaTeX Warning: Citation `Gulordava:etal:2018' on page 2 undefined on input line
- 61.
+ 62.
 
-) (./Sections/The_models.tex [2]
+) (./Sections/The_models.tex
+
+LaTeX Warning: Citation `Hochreiter:Schmidhuber:1997' on page 2 undefined on in
+put line 4.
+
+
+LaTeX Warning: Citation `Adi:etal:2017' on page 2 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Hupkes:etal:2017' on page 2 undefined on input line 5.
+
+
+
+LaTeX Warning: Citation `Gulordava:etal:2018' on page 2 undefined on input line
+ 10.
+
+
+LaTeX Warning: Citation `Gulordava:etal:2018' on page 2 undefined on input line
+ 11.
+
+[2]
 Underfull \hbox (badness 1817) in paragraph at lines 20--23
 []\OT1/lmr/m/n/10.95 - De-scribe the Fea-tures: net-work ac-tiv-
  []
 
-)
-! Undefined control sequence.
-l.89 \lipsum
-            [1]
-? 
-(./Sections/Results_number.tex
+) (./Sections/Results_number.tex [3]
 ! Undefined control sequence.
 <recently read> \B 
                    
-l.12 \B
+l.20 \B
         NA task & \B C & \B \textcolor{blue}{770} & \B \textcolor{blue}{776}...
 
 ? 
 ! Undefined control sequence.
-l.12 \B NA task & \B
+l.20 \B NA task & \B
                      C & \B \textcolor{blue}{770} & \B \textcolor{blue}{776}...
 
 ? 
 ! Undefined control sequence.
-l.12 \B NA task & \B C & \B
+l.20 \B NA task & \B C & \B
                             \textcolor{blue}{770} & \B \textcolor{blue}{776}...
 
 ? 
 ! Undefined control sequence.
-l.12 ...ask & \B C & \B \textcolor{blue}{770} & \B
+l.20 ...ask & \B C & \B \textcolor{blue}{770} & \B
                                                    \textcolor{blue}{776} & \...
 
 ? 
 ! Undefined control sequence.
-l.12 ...blue}{770} & \B \textcolor{blue}{776} & \B
+l.20 ...blue}{770} & \B \textcolor{blue}{776} & \B
                                                    \textcolor{red}{988} & \B...
 
 ? 
 ! Undefined control sequence.
-l.12 ...{blue}{776} & \B \textcolor{red}{988} & \B
+l.20 ...{blue}{776} & \B \textcolor{red}{988} & \B
                                                    \textcolor{red}{1283} & \...
 
 ? 
 
-Overfull \hbox (4.82814pt too wide) in paragraph at lines 12--12
+Overfull \hbox (4.82814pt too wide) in paragraph at lines 20--20
  []|[]\OT1/lmr/m/n/10.95 1283[]| 
  []
 
 ! Undefined control sequence.
-l.12 ...{red}{988} & \B \textcolor{red}{1283} & \B
+l.20 ...{red}{988} & \B \textcolor{red}{1283} & \B
                                                    Full \\
 ? 
 
-Overfull \hbox (1.33035pt too wide) in paragraph at lines 12--13
+Overfull \hbox (1.33035pt too wide) in paragraph at lines 20--21
  []|\OT1/lmr/m/n/10.95 Full| 
  []
 
 ! Undefined control sequence.
-l.18 \B
+l.26 \B
         Simple & \B S & - &  - &    - &  - &  100 \\
 ? 
 ! Undefined control sequence.
-l.18 \B Simple & \B
+l.26 \B Simple & \B
                     S & - &  - &    - &  - &  100 \\
 ? 
 ! Undefined control sequence.
-l.20 \B
+l.28 \B
         Adv & \B S &  - &  - &  - &  - &  100 \\
 ? 
 ! Undefined control sequence.
-l.20 \B Adv & \B
+l.28 \B Adv & \B
                  S &  - &  - &  - &  - &  100 \\
 ? 
 ! Undefined control sequence.
-l.22 \B
+l.30 \B
         2Adv & \B S &  - &  - &  - &  - &  99.8 \\
 ? 
 ! Undefined control sequence.
-l.22 \B 2Adv & \B
+l.30 \B 2Adv & \B
                   S &  - &  - &  - &  - &  99.8 \\
 ? 
 
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 22--23
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 30--31
  []|\OT1/lmr/m/n/10.95 99.8| 
  []
 
 ! Undefined control sequence.
-l.24 \B
+l.32 \B
         Co-Adv & \B S &  - &  - &  \textcolor{red}{84.0} &  \textcolor{red}{...
 
 ? 
 ! Undefined control sequence.
-l.24 \B Co-Adv & \B
+l.32 \B Co-Adv & \B
                     S &  - &  - &  \textcolor{red}{84.0} &  \textcolor{red}{...
 
 ? 
 
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 24--24
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 32--32
  []|[]\OT1/lmr/m/n/10.95 84.0[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 24--24
- []|[]\OT1/lmr/m/n/10.95 84.0[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 24--25
- []|\OT1/lmr/m/n/10.95 98.8| 
- []
-
-! Undefined control sequence.
-l.26 \B
-        namePP & \B S &  - &  - &  - &  - &  98.9 \\
-? 
-
-Overfull \hbox (0.61993pt too wide) in paragraph at lines 26--26
- []|\OT1/lmr/m/n/10.95 namePP| 
- []
-
-! Undefined control sequence.
-l.26 \B namePP & \B
-                    S &  - &  - &  - &  - &  98.9 \\
-? 
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 26--27
- []|\OT1/lmr/m/n/10.95 98.9| 
- []
-
-! Undefined control sequence.
-l.28 \B
-        nounPP & \B SS &  - &  - & - &  - &  97.5 \\
-? 
-! Undefined control sequence.
-l.28 \B nounPP & \B
-                    SS &  - &  - & - &  - &  97.5 \\
-? 
-
-Overfull \hbox (0.78558pt too wide) in paragraph at lines 28--28
- []|\OT1/lmr/m/n/10.95 SS| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 28--29
- []|\OT1/lmr/m/n/10.95 97.5| 
- []
-
-! Undefined control sequence.
-l.30 \B
-        nounPP & \B SP &  \B - &  - &  \textcolor{red}{58.8} &  - &  88.5 \\
-? 
-! Undefined control sequence.
-l.30 \B nounPP & \B
-                    SP &  \B - &  - &  \textcolor{red}{58.8} &  - &  88.5 \\
-? 
-
-Overfull \hbox (2.15434pt too wide) in paragraph at lines 30--30
- []|\OT1/lmr/m/n/10.95 SP| 
- []
-
-! Undefined control sequence.
-l.30 \B nounPP & \B SP &  \B
-                             - &  - &  \textcolor{red}{58.8} &  - &  88.5 \\
-? 
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 30--30
- []|[]\OT1/lmr/m/n/10.95 58.8[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 30--31
- []|\OT1/lmr/m/n/10.95 88.5| 
- []
-
-! Undefined control sequence.
-l.32 \B
-        subjrel & \B SS &   - &  - & \textcolor{red}{88.0} &  - &  97.0 \\
-? 
-! Undefined control sequence.
-l.32 \B subjrel & \B
-                     SS &   - &  - & \textcolor{red}{88.0} &  - &  97.0 \\
-? 
-
-Overfull \hbox (0.78558pt too wide) in paragraph at lines 32--32
- []|\OT1/lmr/m/n/10.95 SS| 
  []
 
 
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 32--32
- []|[]\OT1/lmr/m/n/10.95 88.0[]| 
+ []|[]\OT1/lmr/m/n/10.95 84.0[]| 
  []
 
 
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 32--33
- []|\OT1/lmr/m/n/10.95 97.0| 
+ []|\OT1/lmr/m/n/10.95 98.8| 
  []
 
 ! Undefined control sequence.
 l.34 \B
-        subjrel & \B SP &  \B - &  - &  - &  - &  58.8 \\
-? 
-! Undefined control sequence.
-l.34 \B subjrel & \B
-                     SP &  \B - &  - &  - &  - &  58.8 \\
+        namePP & \B SS &  - &  - &  - &  - &  98.9 \\
 ? 
 
-Overfull \hbox (2.15434pt too wide) in paragraph at lines 34--34
- []|\OT1/lmr/m/n/10.95 SP| 
+Overfull \hbox (0.61993pt too wide) in paragraph at lines 34--34
+ []|\OT1/lmr/m/n/10.95 namePP| 
  []
 
 ! Undefined control sequence.
-l.34 \B subjrel & \B SP &  \B
-                              - &  - &  - &  - &  58.8 \\
+l.34 \B namePP & \B
+                    SS &  - &  - &  - &  - &  98.9 \\
 ? 
 
+Overfull \hbox (0.78558pt too wide) in paragraph at lines 34--34
+ []|\OT1/lmr/m/n/10.95 SS| 
+ []
+
+
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 34--35
- []|\OT1/lmr/m/n/10.95 58.8| 
+ []|\OT1/lmr/m/n/10.95 98.9| 
  []
 
 ! Undefined control sequence.
 l.36 \B
-        objrel & \B SS & \B - &  - &  - &  - &  64.7 \\
+        nounPP & \B SS &  - &  - & - &  - &  97.5 \\
 ? 
 ! Undefined control sequence.
-l.36 \B objrel & \B
-                    SS & \B - &  - &  - &  - &  64.7 \\
+l.36 \B nounPP & \B
+                    SS &  - &  - & - &  - &  97.5 \\
 ? 
 
 Overfull \hbox (0.78558pt too wide) in paragraph at lines 36--36
  []|\OT1/lmr/m/n/10.95 SS| 
  []
 
-! Undefined control sequence.
-l.36 \B objrel & \B SS & \B
-                            - &  - &  - &  - &  64.7 \\
-? 
 
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 36--37
- []|\OT1/lmr/m/n/10.95 64.7| 
+ []|\OT1/lmr/m/n/10.95 97.5| 
  []
 
 ! Undefined control sequence.
 l.38 \B
-        objrel & \B SP &  \B - &  - &  - &  - &  45.7 \\
+        nounPP & \B SP &  \B - &  - &  \textcolor{red}{58.8} &  - &  88.5 \\
 ? 
 ! Undefined control sequence.
-l.38 \B objrel & \B
-                    SP &  \B - &  - &  - &  - &  45.7 \\
+l.38 \B nounPP & \B
+                    SP &  \B - &  - &  \textcolor{red}{58.8} &  - &  88.5 \\
 ? 
 
 Overfull \hbox (2.15434pt too wide) in paragraph at lines 38--38
@@ -1019,199 +976,194 @@ Overfull \hbox (2.15434pt too wide) in paragraph at lines 38--38
  []
 
 ! Undefined control sequence.
-l.38 \B objrel & \B SP &  \B
+l.38 \B nounPP & \B SP &  \B
+                             - &  - &  \textcolor{red}{58.8} &  - &  88.5 \\
+? 
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 38--38
+ []|[]\OT1/lmr/m/n/10.95 58.8[]| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 38--39
+ []|\OT1/lmr/m/n/10.95 88.5| 
+ []
+
+! Undefined control sequence.
+l.40 \B
+        subjrel & \B SS &   - &  - & \textcolor{red}{88.0} &  - &  97.0 \\
+? 
+! Undefined control sequence.
+l.40 \B subjrel & \B
+                     SS &   - &  - & \textcolor{red}{88.0} &  - &  97.0 \\
+? 
+
+Overfull \hbox (0.78558pt too wide) in paragraph at lines 40--40
+ []|\OT1/lmr/m/n/10.95 SS| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 40--40
+ []|[]\OT1/lmr/m/n/10.95 88.0[]| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 40--41
+ []|\OT1/lmr/m/n/10.95 97.0| 
+ []
+
+! Undefined control sequence.
+l.42 \B
+        subjrel & \B SP &  \B - &  - &  - &  - &  58.8 \\
+? 
+! Undefined control sequence.
+l.42 \B subjrel & \B
+                     SP &  \B - &  - &  - &  - &  58.8 \\
+? 
+
+Overfull \hbox (2.15434pt too wide) in paragraph at lines 42--42
+ []|\OT1/lmr/m/n/10.95 SP| 
+ []
+
+! Undefined control sequence.
+l.42 \B subjrel & \B SP &  \B
+                              - &  - &  - &  - &  58.8 \\
+? 
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 42--43
+ []|\OT1/lmr/m/n/10.95 58.8| 
+ []
+
+! Undefined control sequence.
+l.44 \B
+        objrel & \B SS & \B - &  - &  - &  - &  64.7 \\
+? 
+! Undefined control sequence.
+l.44 \B objrel & \B
+                    SS & \B - &  - &  - &  - &  64.7 \\
+? 
+
+Overfull \hbox (0.78558pt too wide) in paragraph at lines 44--44
+ []|\OT1/lmr/m/n/10.95 SS| 
+ []
+
+! Undefined control sequence.
+l.44 \B objrel & \B SS & \B
+                            - &  - &  - &  - &  64.7 \\
+? 
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 44--45
+ []|\OT1/lmr/m/n/10.95 64.7| 
+ []
+
+! Undefined control sequence.
+l.46 \B
+        objrel & \B SP &  \B - &  - &  - &  - &  45.7 \\
+? 
+! Undefined control sequence.
+l.46 \B objrel & \B
+                    SP &  \B - &  - &  - &  - &  45.7 \\
+? 
+
+Overfull \hbox (2.15434pt too wide) in paragraph at lines 46--46
+ []|\OT1/lmr/m/n/10.95 SP| 
+ []
+
+! Undefined control sequence.
+l.46 \B objrel & \B SP &  \B
                              - &  - &  - &  - &  45.7 \\
 ? 
 
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 38--39
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 46--47
  []|\OT1/lmr/m/n/10.95 45.7| 
  []
 
 ! Undefined control sequence.
 <recently read> \B 
                    
-l.42 \B
+l.50 \B
         Simple & \B P &  - &  - &  - &  - &  100 \\
 ? 
 ! Undefined control sequence.
-l.42 \B Simple & \B
+l.50 \B Simple & \B
                     P &  - &  - &  - &  - &  100 \\
 ? 
 ! Undefined control sequence.
-l.44 \B
+l.52 \B
         Adv & \B P &  - &  - &  - &  - &  99.6 \\
 ? 
 ! Undefined control sequence.
-l.44 \B Adv & \B
+l.52 \B Adv & \B
                  P &  - &  - &  - &  - &  99.6 \\
 ? 
 
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 44--45
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 52--53
  []|\OT1/lmr/m/n/10.95 99.6| 
  []
 
 ! Undefined control sequence.
-l.46 \B
+l.54 \B
         2Adv & \B P & - &  - & - & - &  99 \\
 ? 
 ! Undefined control sequence.
-l.46 \B 2Adv & \B
+l.54 \B 2Adv & \B
                   P & - &  - & - & - &  99 \\
 ? 
 ! Undefined control sequence.
-l.48 \B
+l.56 \B
         Co-Adv & \B P &  - &  \textcolor{blue}{78.9} & - &  - &  99.7 \\
 ? 
 ! Undefined control sequence.
-l.48 \B Co-Adv & \B
+l.56 \B Co-Adv & \B
                     P &  - &  \textcolor{blue}{78.9} & - &  - &  99.7 \\
 ? 
 
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 48--48
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 56--56
  []|[]\OT1/lmr/m/n/10.95 78.9[]| 
  []
 
 
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 48--49
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 56--57
  []|\OT1/lmr/m/n/10.95 99.7| 
  []
 
 ! Undefined control sequence.
-l.50 \B
-        namePP & \B P & - &  \textcolor{blue}{57.6} &  - &  - &  66.8 \\
+l.58 \B
+        namePP & \B PS & - &  \textcolor{blue}{57.6} &  - &  - &  66.8 \\
 ? 
 
-Overfull \hbox (0.61993pt too wide) in paragraph at lines 50--50
+Overfull \hbox (0.61993pt too wide) in paragraph at lines 58--58
  []|\OT1/lmr/m/n/10.95 namePP| 
  []
 
 ! Undefined control sequence.
-l.50 \B namePP & \B
-                    P & - &  \textcolor{blue}{57.6} &  - &  - &  66.8 \\
+l.58 \B namePP & \B
+                    PS & - &  \textcolor{blue}{57.6} &  - &  - &  66.8 \\
 ? 
 
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 50--50
- []|[]\OT1/lmr/m/n/10.95 57.6[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 50--51
- []|\OT1/lmr/m/n/10.95 66.8| 
- []
-
-! Undefined control sequence.
-l.52 \B
-        nounPP & \B PS &  \textcolor{blue}{85.2} &  \textcolor{blue}{49.7} &...
-
-? 
-! Undefined control sequence.
-l.52 \B nounPP & \B
-                    PS &  \textcolor{blue}{85.2} &  \textcolor{blue}{49.7} &...
-
-? 
-
-Overfull \hbox (2.15434pt too wide) in paragraph at lines 52--52
+Overfull \hbox (2.15434pt too wide) in paragraph at lines 58--58
  []|\OT1/lmr/m/n/10.95 PS| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 52--52
- []|[]\OT1/lmr/m/n/10.95 85.2[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 52--52
- []|[]\OT1/lmr/m/n/10.95 49.7[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 52--53
- []|\OT1/lmr/m/n/10.95 93.2| 
- []
-
-! Undefined control sequence.
-l.54 \B
-        nounPP & \B PP &  - &  \textcolor{blue}{81.7} &  - &  - &  98.3 \\
-? 
-! Undefined control sequence.
-l.54 \B nounPP & \B
-                    PP &  - &  \textcolor{blue}{81.7} &  - &  - &  98.3 \\
-? 
-
-Overfull \hbox (3.5231pt too wide) in paragraph at lines 54--54
- []|\OT1/lmr/m/n/10.95 PP| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 54--54
- []|[]\OT1/lmr/m/n/10.95 81.7[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 54--55
- []|\OT1/lmr/m/n/10.95 98.3| 
- []
-
-! Undefined control sequence.
-l.56 \B
-        subjrel & \B PS &  \textcolor{blue}{85.8}  &  \textcolor{blue}{58.6}...
-
-? 
-! Undefined control sequence.
-l.56 \B subjrel & \B
-                     PS &  \textcolor{blue}{85.8}  &  \textcolor{blue}{58.6}...
-
-? 
-
-Overfull \hbox (2.15434pt too wide) in paragraph at lines 56--56
- []|\OT1/lmr/m/n/10.95 PS| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 56--56
- []|[]\OT1/lmr/m/n/10.95 85.8[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 56--56
- []|[]\OT1/lmr/m/n/10.95 58.6[]| 
- []
-
-
-Overfull \hbox (2.39479pt too wide) in paragraph at lines 56--57
- []|\OT1/lmr/m/n/10.95 87.8| 
- []
-
-! Undefined control sequence.
-l.58 \B
-        subjrel & \B PP &  - &  \textcolor{blue}{88.1} &  - &  - &  99.3 \\
-? 
-! Undefined control sequence.
-l.58 \B subjrel & \B
-                     PP &  - &  \textcolor{blue}{88.1} &  - &  - &  99.3 \\
-? 
-
-Overfull \hbox (3.5231pt too wide) in paragraph at lines 58--58
- []|\OT1/lmr/m/n/10.95 PP| 
  []
 
 
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 58--58
- []|[]\OT1/lmr/m/n/10.95 88.1[]| 
+ []|[]\OT1/lmr/m/n/10.95 57.6[]| 
  []
 
 
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 58--59
- []|\OT1/lmr/m/n/10.95 99.3| 
+ []|\OT1/lmr/m/n/10.95 66.8| 
  []
 
 ! Undefined control sequence.
 l.60 \B
-        objrel & \B PS & - &  - &  - &  - &  69.0 \\
+        nounPP & \B PS &  \textcolor{blue}{85.2} &  \textcolor{blue}{49.7} &...
+
 ? 
 ! Undefined control sequence.
-l.60 \B objrel & \B
-                    PS & - &  - &  - &  - &  69.0 \\
+l.60 \B nounPP & \B
+                    PS &  \textcolor{blue}{85.2} &  \textcolor{blue}{49.7} &...
+
 ? 
 
 Overfull \hbox (2.15434pt too wide) in paragraph at lines 60--60
@@ -1219,17 +1171,27 @@ Overfull \hbox (2.15434pt too wide) in paragraph at lines 60--60
  []
 
 
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 60--60
+ []|[]\OT1/lmr/m/n/10.95 85.2[]| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 60--60
+ []|[]\OT1/lmr/m/n/10.95 49.7[]| 
+ []
+
+
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 60--61
- []|\OT1/lmr/m/n/10.95 69.0| 
+ []|\OT1/lmr/m/n/10.95 93.2| 
  []
 
 ! Undefined control sequence.
 l.62 \B
-        objrel & \B PP &  - &  - &  - &  - &  81.0 \\
+        nounPP & \B PP &  - &  \textcolor{blue}{81.7} &  - &  - &  98.3 \\
 ? 
 ! Undefined control sequence.
-l.62 \B objrel & \B
-                    PP &  - &  - &  - &  - &  81.0 \\
+l.62 \B nounPP & \B
+                    PP &  - &  \textcolor{blue}{81.7} &  - &  - &  98.3 \\
 ? 
 
 Overfull \hbox (3.5231pt too wide) in paragraph at lines 62--62
@@ -1237,129 +1199,218 @@ Overfull \hbox (3.5231pt too wide) in paragraph at lines 62--62
  []
 
 
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 62--62
+ []|[]\OT1/lmr/m/n/10.95 81.7[]| 
+ []
+
+
 Overfull \hbox (2.39479pt too wide) in paragraph at lines 62--63
+ []|\OT1/lmr/m/n/10.95 98.3| 
+ []
+
+! Undefined control sequence.
+l.64 \B
+        subjrel & \B PS &  \textcolor{blue}{85.8}  &  \textcolor{blue}{58.6}...
+
+? 
+! Undefined control sequence.
+l.64 \B subjrel & \B
+                     PS &  \textcolor{blue}{85.8}  &  \textcolor{blue}{58.6}...
+
+? 
+
+Overfull \hbox (2.15434pt too wide) in paragraph at lines 64--64
+ []|\OT1/lmr/m/n/10.95 PS| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 64--64
+ []|[]\OT1/lmr/m/n/10.95 85.8[]| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 64--64
+ []|[]\OT1/lmr/m/n/10.95 58.6[]| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 64--65
+ []|\OT1/lmr/m/n/10.95 87.8| 
+ []
+
+! Undefined control sequence.
+l.66 \B
+        subjrel & \B PP &  - &  \textcolor{blue}{88.1} &  - &  - &  99.3 \\
+? 
+! Undefined control sequence.
+l.66 \B subjrel & \B
+                     PP &  - &  \textcolor{blue}{88.1} &  - &  - &  99.3 \\
+? 
+
+Overfull \hbox (3.5231pt too wide) in paragraph at lines 66--66
+ []|\OT1/lmr/m/n/10.95 PP| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 66--66
+ []|[]\OT1/lmr/m/n/10.95 88.1[]| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 66--67
+ []|\OT1/lmr/m/n/10.95 99.3| 
+ []
+
+! Undefined control sequence.
+l.68 \B
+        objrel & \B PS & - &  - &  - &  - &  69.0 \\
+? 
+! Undefined control sequence.
+l.68 \B objrel & \B
+                    PS & - &  - &  - &  - &  69.0 \\
+? 
+
+Overfull \hbox (2.15434pt too wide) in paragraph at lines 68--68
+ []|\OT1/lmr/m/n/10.95 PS| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 68--69
+ []|\OT1/lmr/m/n/10.95 69.0| 
+ []
+
+! Undefined control sequence.
+l.70 \B
+        objrel & \B PP &  - &  - &  - &  - &  81.0 \\
+? 
+! Undefined control sequence.
+l.70 \B objrel & \B
+                    PP &  - &  - &  - &  - &  81.0 \\
+? 
+
+Overfull \hbox (3.5231pt too wide) in paragraph at lines 70--70
+ []|\OT1/lmr/m/n/10.95 PP| 
+ []
+
+
+Overfull \hbox (2.39479pt too wide) in paragraph at lines 70--71
  []|\OT1/lmr/m/n/10.95 81.0| 
  []
 
 ! Undefined control sequence.
 <recently read> \B 
                    
-l.65 \B
+l.73 \B
         Linzen & \B - &  ? &  ? &  ? &  ? &  ? \\
 ? 
 ! Undefined control sequence.
-l.65 \B Linzen & \B
+l.73 \B Linzen & \B
                     - &  ? &  ? &  ? &  ? &  ? \\
 ? 
-[3]
-Underfull \hbox (badness 2409) in paragraph at lines 74--75
+
+Underfull \hbox (badness 2409) in paragraph at lines 100--117
 \OT1/lmr/m/n/10.95 of the ablation-experiment re-sults. First,
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 74--75
+Underfull \hbox (badness 1596) in paragraph at lines 100--117
 \OT1/lmr/m/n/10.95 in all NA-tasks, only four units from the
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 74--75
+Underfull \hbox (badness 1038) in paragraph at lines 100--117
 \OT1/lmr/m/n/10.95 en-tire net-work (1300 LSTM units in to-tal)
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 74--75
+Underfull \hbox (badness 1275) in paragraph at lines 100--117
 \OT1/lmr/m/n/10.95 This re-sult sug-gests a lo-cal cod-ing scheme
  []
 
-
+[4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4]
-<Figures/Figure2_number_units_775_987_suggestion_input_forget.png, id=29, 666.5
+
+Underfull \vbox (badness 5908) has occurred while \output is active []
+
+ [5]
+<Figures/Figure2_number_units_775_987_suggestion_input_forget.png, id=35, 666.5
 703pt x 406.6392pt>
 File: Figures/Figure2_number_units_775_987_suggestion_input_forget.png Graphic 
 file (type png)
 
 <use Figures/Figure2_number_units_775_987_suggestion_input_forget.png>
 Package pdftex.def Info: Figures/Figure2_number_units_775_987_suggestion_input_
-forget.png used on input line 84.
+forget.png used on input line 139.
 (pdftex.def)             Requested size: 469.75499pt x 286.5752pt.
 
 Underfull \vbox (badness 7308) has occurred while \output is active []
 
- [5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6 <./Figures/Figure2_number_units_775_987_suggestion_input_forget.png>]
-Underfull \hbox (badness 1983) in paragraph at lines 97--98
+ [6]
+Underfull \hbox (badness 1983) in paragraph at lines 178--181
 \OT1/lmr/m/n/10.95 in-tri-cate mech-a-nism un-der-ly-ing subject-verb
  []
 
 
-<Figures/Figure3_number_units_775_987_output_hidden.png, id=41, 617.4267pt x 45
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./Figures/Figure2_number_units_775_987_suggestion_input_forget.png>]
+<Figures/Figure3_number_units_775_987_output_hidden.png, id=45, 617.4267pt x 45
 7.71pt>
 File: Figures/Figure3_number_units_775_987_output_hidden.png Graphic file (type
  png)
  <use Figures/Figure3_number_units_775_987_output_hidden.png>
 Package pdftex.def Info: Figures/Figure3_number_units_775_987_output_hidden.png
- used on input line 104.
+ used on input line 192.
 (pdftex.def)             Requested size: 469.75499pt x 348.24734pt.
 
-<Figures/Figure4_GAT_SR_vs_LR.png, id=42, 2849.6061pt x 1197.9957pt>
+<Figures/Figure4_GAT_SR_vs_LR.png, id=46, 2849.6061pt x 1197.9957pt>
 File: Figures/Figure4_GAT_SR_vs_LR.png Graphic file (type png)
 
 <use Figures/Figure4_GAT_SR_vs_LR.png>
-Package pdftex.def Info: Figures/Figure4_GAT_SR_vs_LR.png used on input line 11
-0.
+Package pdftex.def Info: Figures/Figure4_GAT_SR_vs_LR.png used on input line 19
+8.
 (pdftex.def)             Requested size: 469.75499pt x 197.47797pt.
- [7]
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
 []\OT1/lmr/m/it/10.95 Continuous code\OT1/lmr/m/n/10.95 : The grammatical-
  []
 
-! Undefined control sequence.
-l.129 ...d its prediction based on activity \texti
-                                                  {from all time points}. We...
+[8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-? 
-[8 <./Figures/Figure3_number_units_775_987_output_hidden.png>])
+)
 (./Sections/Results_syntax.tex
-! Undefined control sequence.
-l.2 \lipsum
-           [1]
-? 
-! Undefined control sequence.
-l.5 \lipsum
-           [1]
-? 
 <Figures/Figure6_regression.png, id=51, 3889.53125pt x 1529.715pt>
 File: Figures/Figure6_regression.png Graphic file (type png)
 
 <use Figures/Figure6_regression.png>
-Package pdftex.def Info: Figures/Figure6_regression.png used on input line 8.
+Package pdftex.def Info: Figures/Figure6_regression.png used on input line 4.
 (pdftex.def)             Requested size: 227.6506pt x 89.5148pt.
-
+ [9 <./Figures/Figure3_number_units_775_987_output_hidden.png>]
 ! Undefined control sequence.
-l.13 \lipsum
-            [1]
-? 
-! Undefined control sequence.
-l.16 \lipsum
-            [1]
-? 
-<Figures/Figure7_interactions.png, id=52, 1004.75375pt x 604.2575pt>
-File: Figures/Figure7_interactions.png Graphic file (type png)
+l.10 ...open nodes in the syntactic tree as \texit
+                                                  {syntactic-tree depth}. We...
 
-<use Figures/Figure7_interactions.png>
-Package pdftex.def Info: Figures/Figure7_interactions.png used on input line 20
-.
-(pdftex.def)             Requested size: 469.75499pt x 282.50739pt.
-) (./Sections/Results_RC.tex
+? 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10 <./Figures/Figure4_GAT_SR_vs_LR.png>]) (./Sections/Results_RC.tex
 ! Undefined control sequence.
 l.3 \lipsum
            [1]
 ? 
-<Figures/Figure8_RC.png, id=53, 2873.73625pt x 1963.335pt>
+<Figures/Figure8_RC.png, id=60, 2873.73625pt x 1963.335pt>
 File: Figures/Figure8_RC.png Graphic file (type png)
 
 <use Figures/Figure8_RC.png>
@@ -1370,7 +1421,7 @@ Package pdftex.def Info: Figures/Figure8_RC.png used on input line 7.
 l.11 \lipsum
             [1]
 ? 
-<Figures/Figure9_doubleRC.png, id=54, 1482.53876pt x 1937.2375pt>
+<Figures/Figure9_doubleRC.png, id=61, 1482.53876pt x 1937.2375pt>
 File: Figures/Figure9_doubleRC.png Graphic file (type png)
 
 <use Figures/Figure9_doubleRC.png>
@@ -1382,46 +1433,42 @@ l.3 \lipsum
            [1]
 ? 
 )
-! Undefined control sequence.
-l.99 \lipsum
-            [1]
-? 
 No file main.bbl.
-[9 <./Figures/Figure4_GAT_SR_vs_LR.png>] [10
+[11] [12
 
- <./Figures/Figure6_regression.png>] [11 <./Figures/Figure7_interactions.png>] 
-[12 <./Figures/Figure8_RC.png>]
-[13
+ <./Figures/Figure6_regression.png>] [13 <./Figures/Figure8_RC.png>]
+[14
 
 
  <./Figures/Figure9_doubleRC.png>] (./main.aux) )
 (\end occurred when \iffalse on line 298 was incomplete) 
 Here is how much of TeX's memory you used:
- 11926 strings out of 494953
- 248307 string characters out of 6180978
- 289570 words of memory out of 5000000
- 15050 multiletter control sequences out of 15000+600000
- 68760 words of font info for 63 fonts, out of 8000000 for 9000
+ 11932 strings out of 494953
+ 248340 string characters out of 6180978
+ 275596 words of memory out of 5000000
+ 15056 multiletter control sequences out of 15000+600000
+ 72986 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,10n,42p,10376b,531s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,10n,42p,10385b,531s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts
-/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/f
+/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/us
+r/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/f
 onts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb><
 /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on main.pdf (13 pages, 35216174 bytes).
+/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+r10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/helvetic/uhvb8a.pfb>
+Output written on main.pdf (14 pages, 35073737 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
+ 137 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
