@@ -6,6 +6,8 @@
 \usepackage{naaclhlt2016}
 % \usepackage[textsize=tiny]{todonotes}
 \usepackage{times}
+\usepackage{xstring}
+\usepackage{amsmath}
 \usepackage{latexsym}
 \usepackage{graphicx}
 \usepackage{lipsum}
@@ -38,6 +40,12 @@
 % \newcommand{\marco}[1]{\todo[color=green!40]{MB: #1}}
 % \newcommand{\dieuwke}[1]{\todo[color=red!40]{DH: #1}}
 \newcommand{\dieuwke}[1]{\textcolor{red}{(DH: #1)}}
+\newcommand{\layer}[1]{\IfEqCase{#1}{%
+        {1}{1$^{nd}$}
+        {2}{2$^{nd}$}
+        }
+}
+\newcommand{\unit}[2]{\layer{#1}-$#2$}
 % \newcommand{\yair}[1]{\todo[color=blue!40]{YL: #1}}
 % \newcommand{\german}[1]{\todo[color=purple!40]{GK: #1}}
 
@@ -90,9 +98,9 @@
 
 
 % Results
-\input{Sections/Results_number.tex}
-\input{Sections/Results_syntax.tex}
-\input{Sections/Results_RC.tex}
+% \input{Sections/Results_number.tex}
+% \input{Sections/Results_syntax.tex}
+% \input{Sections/Results_RC.tex}
 % 
 % Discussion
 \input{Sections/Discussion.tex}
