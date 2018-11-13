@@ -1,18 +1,27 @@
 
 \section{The models}
 
-The recurrent models that are the focus of our studies are LSTM models \cite{Hochreiter:Schmidhuber:1997}.
-To inspect the internal dynamics of these models, we use additional linear models trained to predict information from the hidden state activations of the language models. \dieuwke{Or something like this. I'd put \cite{Adi:etal:2017} and \cite{Hupkes:etal:2017}, but @yair perhaps we have also some neuroscience ref? Would you mind calling it diagnostic classifiers?}
-In this section, we describe how we train the language models we study, as well as our diagnostic classifier protocol.
+The recurrent models that are the focus of our studies are long short term memory models \cite[LSTMs]{Hochreiter:Schmidhuber:1997}.
+To inspect the internal dynamics of these models, we use additional linear models to extract information from the hidden state of trained language models \cite[see, e.g.\ ]{Adi:etal:2017,Hupkes:etal:2017} \dieuwke{Or something like this. @yair perhaps we have also some neuroscience ref?}
+In this section, we describe the language model we study (\ref{ssec:lstm_lm}) as well as the diagnostic classifiers we use to analyse the models (\ref{ssec:dc})
 
-\subsection{LSTM language model}
+\subsection{LSTM language model}\label{ssec:lstm_lm}
 
-Following \cite{Gulordava:etal:2018}, we study LSTM language models with two layers containing 650 nodes and an embedding size of 650.
-We consider the pretrained model that was made available by \cite{Gulordava:etal:2018}, as well as 3 (?) additional models that were trained following the same protocol, but with a different seed and/or different dropout rate.
+We consider the pretrained LSTM LM that was made available by \cite{Gulordava:etal:2018}.\footnote{We report our results only for this model, but acertained the robustness of these results by repeating the tests for models trained with different seeds and drop-out values}
+This model has two LSTM layers with 650 dimensions, an output layer with vocabulary size 50000 and an embedding layer of 650 dimensions.
+In our experiments, we investigate the different components of both layers of the LSTM, given by the equations below:
+\begin{align}
+    h_t & = o_t\circ \tanh(c_t)\\ 
+     \widetilde{c}_t & = \tanh(W_ch_{t-1} + b_c)\\
+     c_t & = f_t\circ c_{t-1} + i_t\circ \widetilde{c}_t\\
+     f_t & = \sigma(W_fx_t + U_fh_{t-1} + b_f) \\
+     i_t & = \sigma(W_ix_t + U_ih_{t-1} + b_i) \\
+     o_t & = \sigma(W_ox_t + U_oh_{t-1} + b_o)
+\end{align}
 
-This leaves us with 4 (?) models that \ldots \dieuwke{One sentence describing the number of modes that we used and how they differed. Here also name the models. I believe this can be very short, for details we can refer to the code/appendix, we shouldn't waste our space here with too much information unimportant to the story. E.g., LSTM equations, the exact training data\ldots these details can be found in earlier papers.}
+We will refer to the n$^{th}$ unit in the first and second layer with the terms \unit{1}{n} and \unit{2}{n}, respectively.
 
-The models we consider were comparable in terms of perplexity on a heldout dataset (with perplexities of W, X, Y and Z, respectively) but differ in their accuracy on the \textit{agreement task} \ldots \dieuwke{I have to find these numbers, then I'll finish this subsection.}
+\dieuwke{@Yair, would you like to say also something about the perplexity of this model and its accuracy on the agreement task?}
 
 \subsection{Regression model}
 - Explain that the model was used to predict the depth of the syntactic tree from network activity
