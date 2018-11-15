@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 plt.rc('text', usetex=False)
 plt.rc('font', family='serif')
 
-sentence = 'The \\textbf{boy(s)} near the \\underline{car(s)} \\textbf{greet(s)}'.split()
+sentence = 'The \\textbf{boy(s)} near the \\underline{car(s)} \\textbf{greet(s)} the'.split()
 
 # nouns and verb positions
 N1=1
@@ -45,29 +45,37 @@ PP_input[N2] = 0 + PP_off
 SS_forget = [1 + SS_off]*len(sentence)
 SS_forget[N1] = 0 + SS_off
 SS_forget[N1-1] = 0 + SS_off
+SS_forget[-1] = 0 + SS_off
 PS_forget = [1 + PS_off]*len(sentence)
 PS_forget[N1] = 0 + PS_off
 PS_forget[N1-1] = 0 + PS_off
+PS_forget[-1] = 0 + PS_off
 SP_forget = [1 + SP_off]*len(sentence)
 SP_forget[N1] = 0 + SP_off
 SP_forget[N1-1] = 0 + SP_off
+SP_forget[-1] = 0 + SP_off
 PP_forget = [1 + PP_off]*len(sentence)
 PP_forget[N1] = 0 + PP_off
 PP_forget[N1-1] = 0 + PP_off
+PP_forget[-1] = 0 + PP_off
 
 
 SS_cell = [1 + SS_off]*len(sentence)
 SS_cell[N1] = 0 + SS_off
 SS_cell[N1-1] = 0 + SS_off
+SS_cell[-1] = 0 + SS_off
 PS_cell = [-1 + PS_off]*len(sentence)
 PS_cell[N1] = 0 + PS_off
 PS_cell[N1-1] = 0 + PS_off
+PS_cell[-1] = 0 + PS_off
 SP_cell = [1 + SP_off]*len(sentence)
 SP_cell[N1] = 0 + SP_off
 SP_cell[N1-1] = 0 + SP_off
+SP_cell[-1] = 0 + SP_off
 PP_cell = [-1 + PP_off]*len(sentence)
 PP_cell[N1] = 0 + PP_off
 PP_cell[N1-1] = 0 + PP_off
+PP_cell[-1] = 0 + PP_off
 
 
 plt.figure(figsize=(10,10))
