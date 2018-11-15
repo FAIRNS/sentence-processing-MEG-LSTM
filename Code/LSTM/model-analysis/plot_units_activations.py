@@ -1,6 +1,7 @@
 import os, pickle, argparse
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rc('font', family='serif')
 
 parser = argparse.ArgumentParser(description='Visualize unit activations from an LSTM Language Model')
 parser.add_argument('-sentences', '--stimuli-file-name', type=str, help='Path to text file containing the list of sentences to analyze')
@@ -125,7 +126,7 @@ for i, ax in enumerate(axs):
 plt.subplots_adjust(left=0.15, hspace=0.25)
 if not args.no_legend: plt.subplots_adjust(right = 0.5)
 plt.savefig(args.output_file_name)
-plt.savefig(os.path.splitext(args.output_file_name)[0] +'.svg') # Save also as svg
+#plt.savefig(os.path.splitext(args.output_file_name)[0] +'.svg') # Save also as svg
 plt.close(fig)
-print('The figure was saved to: ' + args.output_file_name + ', '+ os.path.splitext(args.output_file_name)[0] +'.svg')
+print('The figure was saved to: ' + args.output_file_name)
 
