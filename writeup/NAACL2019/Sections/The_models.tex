@@ -12,8 +12,8 @@ This model has two LSTM layers with 650 dimensions, an output layer with vocabul
 In our experiments, we investigate the different components of both layers of the LSTM, given by the equations below:
 \begin{align}
     h_t & = o_t\circ \tanh(c_t)\\ 
-     \widetilde{c}_t & = \tanh(W_ch_{t-1} + b_c)\\
      c_t & = f_t\circ c_{t-1} + i_t\circ \widetilde{c}_t\\
+     \widetilde{c}_t & = \tanh(W_cx_t + U_ch_{t-1} + b_c)\\
      f_t & = \sigma(W_fx_t + U_fh_{t-1} + b_f) \\
      i_t & = \sigma(W_ix_t + U_ih_{t-1} + b_i) \\
      o_t & = \sigma(W_ox_t + U_oh_{t-1} + b_o)
