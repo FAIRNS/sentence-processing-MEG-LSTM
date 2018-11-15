@@ -74,8 +74,8 @@ plt.figure(figsize=(10,10))
 fig, (sugg_ax, input_ax, forget_ax, cell_ax) = plt.subplots(4, 1) # two plots in a single column
 sugg_ax.plot(PP_sugg, ls='-', lw=2, label=r'\textbf{Plural}-\underline{Plural}', color='blue')
 sugg_ax.plot(SS_sugg, ls='-', lw=2, label=r'\textbf{Singular}-\underline{Singular}', color='red')
-sugg_ax.plot(PS_sugg, ls=':', lw=3, label=r'\textbf{Plural}-\underline{Plural}', color='blue')
-sugg_ax.plot(SP_sugg, ls=':', lw=3, label=r'\textbf{Singular}-\underline{Singular}', color='red')
+sugg_ax.plot(PS_sugg, ls=':', lw=3, label=r'\textbf{Plural}-\underline{Singular}', color='blue')
+sugg_ax.plot(SP_sugg, ls=':', lw=3, label=r'\textbf{Singular}-\underline{Plural}', color='red')
 sugg_ax.set_ylabel("Suggestion")
 sugg_ax.set_xticks([])
 
