@@ -136,7 +136,7 @@ For each of these cases, the four condition (SS, SP, PS and PP) are described in
 Error-bars represent standard deviation across 1000 sentences in each condition.
 
 \begin{figure*}[ht]
-\includegraphics[width=\textwidth]{Figures/Figure2_number_units_775_987_suggestion_input_forget.png}
+\includegraphics[width=\textwidth]{Figures/Figure2_cartoon_LR_units.png}
 \caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. 
 (A) Cell activity $C_t$ for the two number units 775 and 987 and output activity $h_t$ for the syntax unit 1149, for all four combinations of grammatical numbers of the two nouns. 
 Note that the cell activity of units 775/987 is non-zero only when the first noun is plural/singular, respectively. 
@@ -188,21 +188,28 @@ For example, the output from unit 988 should be projected differently to singula
 Given that the encoding of singular by unit 988 is with a negative value $C_{t_{verb}-1}<-1$, and therefore $h_{t_{verb}-1}<-1$ (equation 1.x), this means that weights from unit 988 to units in the output layer that correspond to singular forms should be negative too, but not those projecting to plural forms.
 
 
-\begin{figure*}[ht]
-\includegraphics[width=\textwidth]{Figures/Figure3_number_units_775_987_output_hidden.png}
-\caption{Hidden and output-gate activations during processing of a sentence with a prepositional phrase between subject and verb. \textbf{Do we need both? Isn't it a bit redundant? I mean, I see you can make the point of the output gate behaving in the same way in both cases, but that's perhaps a bit minor?}}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{Figures/Figure4_GAT_SR_vs_LR.png}
-\caption{Connectivity structure to output layer. 
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[height=5cm]{Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png}
+    \label{fig:fig1}
+    \end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[height=5cm]{Figures/Figure5_output_weights.png}
+    \label{fig:fig2}
+    \end{subfigure}
+    \caption{Connectivity structure to output layer. 
 (A) Output activity $h_t$ of all number units during the processing of a sentence with a PP between subject and verb. 
 (B) Weight values from various units to output layer. 
 Note that only for number units the output weights are clearly separated between singular and plural form of the verb, either positive or negative, compare to the syntax unit (1149) and two non-number units in the second layer. 
 (C) Visualization of 18 verbs in their plural and singular forms (36 words in total) on the plane spanned by the two first principal components of their embeddings by the output weight matrix. 
 A clear separation is observed between the singular and plural form along the first PC.}
+
+
 \end{figure*}
+
 
 To see whether number units meet the first condition, figure 3A shows the output-gate and hidden state dynamics of units 988 and 776. 
 Indeed, the output gate opens at $t_{verb}-1$, reaching its almost maximal value (Panels A-B). 
