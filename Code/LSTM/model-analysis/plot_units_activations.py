@@ -120,11 +120,13 @@ for i, ax in enumerate(axs):
         ax.set_ylabel(args.ylabels[i], fontsize=45, rotation='horizontal', ha='right')
     #else:
         #ax.set_ylabel('Activation', fontsize=45)
-    if not args.no_legend: ax.legend(fontsize=35, numpoints=1, loc=(1, 0), framealpha=0)
+if not args.no_legend: 
+    handles, labels = axs[3].get_legend_handles_labels() # take labels from cell, which also has a curve for the syntax unit 1150
+    labels = ['Singular-Singular', 'Singular-Plural', 'Plural-Singular', 'Plural-Plural', 'Syntax unit 1150 (all conditions)']
+    fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=20)
 
 # Save and close figure
 plt.subplots_adjust(left=0.15, hspace=0.25)
-if not args.no_legend: plt.subplots_adjust(right = 0.5)
 plt.savefig(args.output_file_name)
 plt.savefig(os.path.splitext(args.output_file_name)[0] +'.png') # Save also as svg
 plt.close(fig)
