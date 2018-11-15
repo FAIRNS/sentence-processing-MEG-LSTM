@@ -19,6 +19,6 @@ Output/
 
 *.out
 *.log
-*.pdf
+main.pdf
 *.aux
 *.blg
