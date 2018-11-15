@@ -78,7 +78,7 @@ PP_cell[N1-1] = 0 + PP_off
 PP_cell[-1] = 0 + PP_off
 
 
-plt.figure(figsize=(10,10))
+plt.figure(figsize=(20,15))
 fig, (sugg_ax, input_ax, forget_ax, cell_ax) = plt.subplots(4, 1) # two plots in a single column
 sugg_ax.plot(PP_sugg, ls='-', lw=2, label=r'\textbf{Plural}-\underline{Plural}', color='blue')
 sugg_ax.plot(SS_sugg, ls='-', lw=2, label=r'\textbf{Singular}-\underline{Singular}', color='red')
@@ -87,17 +87,17 @@ sugg_ax.plot(SP_sugg, ls=':', lw=3, label=r'\textbf{Singular}-\underline{Plural}
 sugg_ax.set_ylabel(r"Suggestion ($\tilde{C_t}$)")
 sugg_ax.set_xticks([])
 
-input_ax.plot(PP_input, ls='-', lw=2, color='blue')
-input_ax.plot(SS_input, ls='-', lw=2, color='red')
-input_ax.plot(PS_input, ls=':', lw=3, color='blue')
-input_ax.plot(SP_input, ls=':', lw=3, color='red')
+input_ax.plot(PP_input, ls='-', lw=6, color='blue')
+input_ax.plot(SS_input, ls='-', lw=6, color='red')
+input_ax.plot(PS_input, ls=':', lw=6, color='blue')
+input_ax.plot(SP_input, ls=':', lw=6, color='red')
 input_ax.set_ylabel("Input ($i_t$)", labelpad=12)
 input_ax.set_xticks([])
 
-forget_ax.plot(PP_forget, ls='-', lw=2, color='blue')
-forget_ax.plot(SS_forget, ls='-', lw=2, color='red')
-forget_ax.plot(PS_forget, ls=':', lw=3, color='blue')
-forget_ax.plot(SP_forget, ls=':', lw=3, color='red')
+forget_ax.plot(PP_forget, ls='-', lw=6, color='blue')
+forget_ax.plot(SS_forget, ls='-', lw=6, color='red')
+forget_ax.plot(PS_forget, ls=':', lw=6, color='blue')
+forget_ax.plot(SP_forget, ls=':', lw=6, color='red')
 forget_ax.set_ylabel("Forget ($f_t$)", labelpad=12)
 forget_ax.set_xticks([])
 
@@ -108,7 +108,7 @@ cell_ax.plot(SP_cell, ls=':', lw=3, color='red')
 cell_ax.set_ylabel("Cell ($C_t$)")
 #forget_ax.set_xticks([])
 #plt.plot(forget, ls=':', lw=4, label='The girl/girls $f_t$', color='C2')
-plt.xticks(ticks=range(len(sentence)), labels=sentence, fontsize=14, rotation=0)
+plt.xticks(ticks=range(len(sentence)), labels=sentence, fontsize=45, rotation=0)
 handles, labels = sugg_ax.get_legend_handles_labels()
-fig.legend(handles, labels, loc='upper center', ncol=2)
+fig.legend(handles, labels, loc='upper center', ncol=2, fontsize=35)
 fig.savefig('unit-timeseries-cartoon.png')
