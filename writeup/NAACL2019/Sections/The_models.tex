@@ -1,24 +1,39 @@
 
 \section{The models}
-I would describe in this section the regression and language models. 
 
+The recurrent models that are the focus of our studies are long short term memory models \cite[LSTMs]{Hochreiter:Schmidhuber:1997}.
+To inspect the internal dynamics of these models, we use additional linear models to extract information from the hidden state of trained language models.
+In this section, we describe the language model we study (\ref{ssec:lstm_lm}) as well as the meta models we use to analyse the hidden states of this language model (\ref{ssec:dc}).
 
-\subsection{LSTM language model}
-\subsubsection{Architecture and dynamics}
-TODOs:
-- Number and type (embedding, LSTM, softmax) of layers, including dimensions. 
-- Describe the dynamics of the network (list of equations of the LSTM)
+\subsection{LSTM language model}\label{ssec:lstm_lm}
 
-\subsubsection{Model training and evaluation}
-- Task (refer to Gulordava et. al)
-- Describe and give (nick) names for the other models, e.g., LM-high-dropout, LM-SEED1
-- The model was evaulated on a left-out test set...perplexity..
+We consider the pretrained LSTM LM that was made available by \cite{Gulordava:etal:2018}.\footnote{We report our results only for this model, but acertained the robustness of these results by repeating the tests for models trained with different seeds and drop-out values}
+This model has two LSTM layers with 650 dimensions, an output layer with vocabulary size 50000 and an embedding layer of 650 dimensions.
+In our experiments, we investigate the different components of both layers of the LSTM, given by the equations below:
+\begin{align}
+    h_t & = o_t\circ \tanh(c_t)\\ 
+     \widetilde{c}_t & = \tanh(W_ch_{t-1} + b_c)\\
+     c_t & = f_t\circ c_{t-1} + i_t\circ \widetilde{c}_t\\
+     f_t & = \sigma(W_fx_t + U_fh_{t-1} + b_f) \\
+     i_t & = \sigma(W_ix_t + U_ih_{t-1} + b_i) \\
+     o_t & = \sigma(W_ox_t + U_oh_{t-1} + b_o)
+\end{align}
 
-\subsection{Regression model}
+We will refer to the n$^{th}$ unit in the first and second layer with the terms \unit{1}{n} and \unit{2}{n}, respectively.
+
+\dieuwke{@Yair, would you like to say also something about the perplexity of this model and its accuracy on the agreement task?}
+
+\subsection{Regression model}\label{ssec:dc}
+
+To understand which information is encoded in the hidden states and gates of the LSTM language model, we use a technique that is commonly used in neuroscience (ref?) but has recently also gained traction in the field of computational linguistics: training an additional model to predict information from these hidden states and gates \cite{Adi:etal:2017,Hupkes:etal:2017}.  
+
+In our case, we aim to assess if the internal states of our language model incode information about the \textit{syntactic depth} of the sentence it is processing.
+The setup is as follows.
+
 - Explain that the model was used to predict the depth of the syntactic tree from network activity
 \subsubsection{Model description}
 - Describe the Features: network activity (hidden/cell activity)
-- Describe the label: Tree depth (refer to the section describing the synthetic data)
+- Describe the label: Tree depth (\ref{ssec:n_opennodes})
 - Describe the model: A Ridge/LASSO model.
 \subsubsection{Model training and evalution}
 - Model training: nested 5-fold CV procedure. Train/val/test. Optimal regularization size was estimated from the validation set (report optimal lamda - figures in FAIRNS.pdf on slack)
