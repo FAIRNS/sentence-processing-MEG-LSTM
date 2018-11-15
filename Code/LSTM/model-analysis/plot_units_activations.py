@@ -74,7 +74,8 @@ def add_graph_to_plot(ax, LSTM_activations, unit, gate, label, c, ls, lw):
     if gate in ['in', 'forget', 'out']:
         ax.set_yticks([0, 1])
     else:
-        ax.set_yticks(np.arange(min(-1, min(mean_activity)), 1+max(np.ceil(max(mean_activity)), 1), 1.0))
+        ax.set_yticks([-1.5, 1.5])
+        #ax.set_yticks(np.arange(min(-1, min(mean_activity)), 1+max(np.ceil(max(mean_activity)), 1), 1.0))
 
 
 # make output dir in case it doesn't exist
@@ -91,7 +92,7 @@ info = pickle.load(open(args.stimuli_meta_data, 'rb'))
 ##### Plot all curves on the same figure #########
 subplot_numbers = [int(graph_info[0]) for graph_info in args.graphs]
 num_subplots = np.max(subplot_numbers)
-fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(35, 20))
+fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(20, 15))
 if num_subplots==1: axs=[axs] # To make the rest compatible in case of a single subplot
 for g, graph in enumerate(args.graphs):
     subplot_number = subplot_numbers[g]-1
@@ -109,10 +110,11 @@ for g, graph in enumerate(args.graphs):
 axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for i, ax in enumerate(axs):
     if args.xlabels:
-        ax.set_xticklabels(args.xlabels, rotation='vertical')
+        ax.set_xticklabels(args.xlabels) #, rotation='vertical')
     else:
-        ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
+        ax.set_xticklabels(stimuli[0].split(' ')) #, rotation='vertical')
     ax.tick_params(labelsize=45)
+    ax.tick_params(axis='x', pad=40)
     if args.ylabels:
         ax.set_ylabel(args.ylabels[i], fontsize=45, rotation='horizontal', ha='right')
     else:
@@ -120,7 +122,7 @@ for i, ax in enumerate(axs):
     if not args.no_legend: ax.legend(fontsize=35, numpoints=1, loc=(1, 0), framealpha=0)
 
 # Save and close figure
-plt.subplots_adjust(bottom=0.25, left=0.15)
+plt.subplots_adjust(left=0.15, hspace=0.25)
 if not args.no_legend: plt.subplots_adjust(right = 0.5)
 plt.savefig(args.output_file_name)
 plt.savefig(os.path.splitext(args.output_file_name)[0] +'.svg') # Save also as svg
