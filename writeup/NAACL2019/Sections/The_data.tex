@@ -63,8 +63,19 @@ Finally, we also used the naturalistic, corpus-derived agreement test set of \ne
 
 \subsection{Number of open nodes}\label{ssec:n_opennodes}
 
-We generated 1M sentences with different syntactic structures using the same
-grammar that we used to generate the NA-tasks.
+For each length between ???? and ????, we randomly sampled 300 sentences
+containing different syntactic structures following the same grammar that we
+used to generate the NA-tasks. For each position in each sentence, we computed
+the number of open nodes in the syntactic tree following the same procedure of
+\newcite{Nelson:etal:2017}. Since, as noted by \newcite{Conneau:etal:2018}, the
+number of open nodes is correlated with the position of the word in the
+sentence, we only added to our dataset points (given by a sentence at a given
+position) such that the two would be decorrelated.  For this, we picked
+examples that would uniformly cover all possible combinations in a range of
+word position (between 7 and 12) and number of open nodes (between 3 and 8).
+The final dataset is composed by a list of sentences and the positions
+within these sentences that we sampled in the decorrelation procedure. In
+total, our dataset contains ???? points from ???? sentences.
 
 
 % \subsection{Synthetic data}
