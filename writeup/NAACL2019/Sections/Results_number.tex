@@ -136,7 +136,31 @@ For each of these cases, the four condition (SS, SP, PS and PP) are described in
 Error-bars represent standard deviation across 1000 sentences in each condition.
 
 \begin{figure*}[ht]
-\includegraphics[width=\textwidth]{Figures/Figure2_cartoon_LR_units.png}
+%\includegraphics[width=\textwidth]{Figures/Figure2_cartoon_LR_units.png}
+    \centering
+    \begin{subfigure}{\textwidth}
+            \centering
+            \includegraphics[width=0.3\linewidth]{Figures/legend.pdf}
+    \end{subfigure}
+    \bigskip
+    \begin{subfigure}{0.3\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Figures/unit-timeseries-cartoon.pdf}
+            \subcaption{Prediction (singular)}
+    \label{fig:unit-timeseries-cartoon}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Figures/nounpp_998.pdf}
+            \subcaption{Unit 998 (singular)}
+    \label{fig:998-timeseries}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Figures/nounpp_775.pdf}
+            \subcaption{Unit 876 (plural)}
+    \label{fig:775-timeseries}
+    \end{subfigure}
 \caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. 
 (A) Cell activity $C_t$ for the two number units 775 and 987 and output activity $h_t$ for the syntax unit 1149, for all four combinations of grammatical numbers of the two nouns. 
 Note that the cell activity of units 775/987 is non-zero only when the first noun is plural/singular, respectively. 
@@ -190,12 +214,12 @@ Given that the encoding of singular by unit 988 is with a negative value $C_{t_{
 
 \begin{figure*}[t!]
     \centering
-    \begin{subfigure}{0.5\textwidth}
+    \begin{subfigure}{0.45\textwidth}
             \centering
             \includegraphics[height=5cm]{Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png}
     \label{fig:fig1}
     \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.45\textwidth}
             \centering
             \includegraphics[height=5cm]{Figures/Figure5_output_weights.png}
     \label{fig:fig2}

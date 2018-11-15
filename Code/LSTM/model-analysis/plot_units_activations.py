@@ -20,6 +20,7 @@ parser.add_argument('-r', '--remove', type=int, default=0, help='How many words 
 parser.add_argument('-x', '--xlabels', nargs='+', type=str, help='List with xlabels for all subplors. Must match the number of time points')
 parser.add_argument('-y', '--ylabels', nargs='+', type=str, help='List with ylabels for all subplors. Must match the number of subplots provided by --graphs')
 parser.add_argument('--no-legend', action='store_true', default=False, help='If specified, legend will be omitted')
+parser.add_argument('--use-tex', default=False, action='store_true')
 args = parser.parse_args()
 
 def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
@@ -40,9 +41,17 @@ def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
     lw = int(graph[3])
     unit = int(graph[4])
     gate = graph[5]
+    print(len(graph))
+    if len(graph) % 2 == 1:
+        label = graph[-1]
+    else:
+        label = None
     # constraints are given in pairs such as 'number_1', 'singular' after unit number and gate
-    keys_values = [(graph[i], graph[i + 1]) for i in range(6, len(graph), 2)]
-    label = str(unit) + '_' + gate + '_' + '_'.join([key + '_' + value for (key, value) in keys_values])
+    keys_values = [(graph[i], graph[i + 1]) for i in range(6, len(graph)-1, 2)]
+    if not label:
+        label = str(unit) + '_' + gate + '_' + '_'.join([key + '_' + value for (key, value) in keys_values])
+        if args.use_tex:
+            label = label.replace("_", "-")
     IX_to_sentences = []
     for i, curr_info in enumerate(info):
         check_if_contraints_are_met = True
@@ -72,12 +81,17 @@ def add_graph_to_plot(ax, LSTM_activations, unit, gate, label, c, ls, lw):
     # Add curve to plot
     ax.errorbar(range(1, mean_activity.shape[0] + 1), mean_activity, yerr=std_activity,
                 label=label, ls=ls, lw=lw, color=c)
+    offset = 0.15
     if gate in ['in', 'forget', 'out']:
         ax.set_yticks([0, 1])
+        ax.set_ylim([0-offset, 1+offset])
     else:
         ax.set_yticks([-1.5, 1.5])
+        ax.set_ylim([-1.5-offset, 1.5+offset])
         #ax.set_yticks(np.arange(min(-1, min(mean_activity)), 1+max(np.ceil(max(mean_activity)), 1), 1.0))
 
+if args.use_tex:
+    plt.rc('text', usetex=True)
 
 # make output dir in case it doesn't exist
 os.makedirs(os.path.dirname(args.output_file_name), exist_ok=True)
@@ -93,7 +107,8 @@ info = pickle.load(open(args.stimuli_meta_data, 'rb'))
 ##### Plot all curves on the same figure #########
 subplot_numbers = [int(graph_info[0]) for graph_info in args.graphs]
 num_subplots = np.max(subplot_numbers)
-fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(20, 15))
+plt.figure(figsize=(10,10))
+fig, axs = plt.subplots(num_subplots, 1, sharex=True)
 if num_subplots==1: axs=[axs] # To make the rest compatible in case of a single subplot
 for g, graph in enumerate(args.graphs):
     subplot_number = subplot_numbers[g]-1
@@ -111,22 +126,26 @@ for g, graph in enumerate(args.graphs):
 axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for i, ax in enumerate(axs):
     if args.xlabels:
-        ax.set_xticklabels(args.xlabels) #, rotation='vertical')
+        ax.set_xticklabels(args.xlabels, fontsize=16) #, rotation='vertical')
     else:
-        ax.set_xticklabels(stimuli[0].split(' ')) #, rotation='vertical')
-    ax.tick_params(labelsize=45)
-    ax.tick_params(axis='x', pad=40)
+        ax.set_xticklabels(stimuli[0].split(' '), fontsize=16) #, rotation='vertical')
+    #ax.tick_params(labelsize=10)
+    #ax.tick_params(axis='x', pad=40)
     if args.ylabels:
-        ax.set_ylabel(args.ylabels[i], fontsize=45, rotation='horizontal', ha='right')
+        ax.set_ylabel(args.ylabels[i], rotation='vertical', ha='center', fontsize=16)
     #else:
         #ax.set_ylabel('Activation', fontsize=45)
-if not args.no_legend: 
-    handles, labels = axs[3].get_legend_handles_labels() # take labels from cell, which also has a curve for the syntax unit 1150
-    labels = ['Singular-Singular', 'Singular-Plural', 'Plural-Singular', 'Plural-Plural', 'Syntax unit 1150 (all conditions)']
-    fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=20)
+# adding legend
+handles, labels = axs[3].get_legend_handles_labels() # take labels from cell, which also has a curve for the syntax unit 1150
+#labels = ['Singular-Singular', 'Singular-Plural', 'Plural-Singular', 'Plural-Plural', 'Syntax unit 1150 (all conditions)']
+legend = fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=10)
+if args.no_legend: 
+    legend.set_visible(False)
 
+fig.align_ylabels(axs)
+fig.align_ylabels(axs)
 # Save and close figure
-plt.subplots_adjust(left=0.15, hspace=0.25)
+#plt.subplots_adjust(left=0.15, hspace=0.25)
 plt.savefig(args.output_file_name)
 plt.savefig(os.path.splitext(args.output_file_name)[0] +'.png') # Save also as svg
 plt.close(fig)
