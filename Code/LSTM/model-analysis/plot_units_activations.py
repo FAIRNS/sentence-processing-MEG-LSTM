@@ -118,15 +118,15 @@ for i, ax in enumerate(axs):
     ax.tick_params(axis='x', pad=40)
     if args.ylabels:
         ax.set_ylabel(args.ylabels[i], fontsize=45, rotation='horizontal', ha='right')
-    else:
-        ax.set_ylabel('Activation', fontsize=45)
+    #else:
+        #ax.set_ylabel('Activation', fontsize=45)
     if not args.no_legend: ax.legend(fontsize=35, numpoints=1, loc=(1, 0), framealpha=0)
 
 # Save and close figure
 plt.subplots_adjust(left=0.15, hspace=0.25)
 if not args.no_legend: plt.subplots_adjust(right = 0.5)
 plt.savefig(args.output_file_name)
-#plt.savefig(os.path.splitext(args.output_file_name)[0] +'.svg') # Save also as svg
+plt.savefig(os.path.splitext(args.output_file_name)[0] +'.png') # Save also as svg
 plt.close(fig)
 print('The figure was saved to: ' + args.output_file_name)
 
