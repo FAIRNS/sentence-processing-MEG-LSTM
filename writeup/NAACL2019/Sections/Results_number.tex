@@ -61,13 +61,13 @@ For each NA-task, the performance of the full, non-ablated, model is also report
 
 \B nounPP & \B PP &  - &  \textcolor{blue}{81.7} &  - &  - &  98.3 \\
 
-\B subjrel & \B PS &  \textcolor{blue}{85.8}  &  \textcolor{blue}{58.6}  &  - &  - &  87.8 \\
+%\B subjrel & \B PS &  \textcolor{blue}{85.8}  &  \textcolor{blue}{58.6}  &  - &  - &  87.8 \\
 
-\B subjrel & \B PP &  - &  \textcolor{blue}{88.1} &  - &  - &  99.3 \\
+%\B subjrel & \B PP &  - &  \textcolor{blue}{88.1} &  - &  - &  99.3 \\
 
-\B objrel & \B PS & - &  - &  - &  - &  69.0 \\
+%\B objrel & \B PS & - &  - &  - &  - &  69.0 \\
 
-\B objrel & \B PP &  - &  - &  - &  - &  81.0 \\
+%\B objrel & \B PP &  - &  - &  - &  - &  81.0 \\
 \hline
 \hline
 \B Linzen & \B - &  ? &  ? &  ? &  ? &  ? \\
@@ -161,13 +161,7 @@ Error-bars represent standard deviation across 1000 sentences in each condition.
             \subcaption{Unit 776 (plural)}
     \label{fig:775-timeseries}
     \end{subfigure}
-\caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. 
-(A) Cell activity $C_t$ for the two number units 775 and 987 and output activity $h_t$ for the syntax unit 1149, for all four combinations of grammatical numbers of the two nouns. 
-Note that the cell activity of units 775/987 is non-zero only when the first noun is plural/singular, respectively. 
-(B) Corresponding forget-gate activity for the same number units. 
-Note that gate activity is indifferent of the grammatical number of both nouns and that its value is close to one during the PP until after the verb. 
-(C) Input-gate activity of the same units. 
-Note that the gate value of unit 775/987 spikes around the first noun only when it is plural/singular. \textbf{Change bike to bike(s) in caption? Also, I think the NLP audience will understand $\tilde{C}$ and $C$ better than Suggestion and Cell. Also, do we really need  $\tilde{C}$? Isn't the important information already there in the $C$ plot?}}
+\caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb.}
 \end{figure*}
 
 
@@ -224,14 +218,7 @@ Given that the encoding of singular by unit 988 is with a negative value $C_{t_{
             \includegraphics[height=5cm]{Figures/Figure5_output_weights.png}
     \label{fig:fig2}
     \end{subfigure}
-    \caption{Connectivity structure to output layer. 
-(A) Output activity $h_t$ of all number units during the processing of a sentence with a PP between subject and verb. 
-(B) Weight values from various units to output layer. 
-Note that only for number units the output weights are clearly separated between singular and plural form of the verb, either positive or negative, compare to the syntax unit (1149) and two non-number units in the second layer. 
-(C) Visualization of 18 verbs in their plural and singular forms (36 words in total) on the plane spanned by the two first principal components of their embeddings by the output weight matrix. 
-A clear separation is observed between the singular and plural form along the first PC.}
-
-
+\caption{(A) Generalization across time of network units. (B) Output weights of SR units, LR units, syntax unit, and two arbitrary units.}
 \end{figure*}
 
 

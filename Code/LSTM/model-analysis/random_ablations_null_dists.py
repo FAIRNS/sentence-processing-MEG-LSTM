@@ -2,7 +2,7 @@ import sys, os, pickle
 from matplotlib import pyplot as plt
 
 
-def generate_and_plot_null_dists(path2ablation_results):
+def generate_and_plot_null_dists(path2ablation_results, many_k_or_single, filter_units):
     '''
     Collect ablation experiments for group of units of size k, save the results per k,
     and plot the corresponding distributions.
@@ -14,24 +14,44 @@ def generate_and_plot_null_dists(path2ablation_results):
     then it plots and saves them to separate png files.
     '''
 
+    performance_per_k = {}
     with open(path2ablation_results, 'r') as f:
         results = f.readlines()
 
     experiment_info = [line.rstrip().split('\t')[0] for line in results]
-    task_performance = [float(line.rstrip().split('\t')[2]) for line in results]
-    k_s = [int(line[line.find('_k_')+3:line.find('_units_')]) for line in experiment_info]
 
-    performance_per_k = {}
-    sys.stdout.write('Plotting null dist for k = ')
-    for k_loop in set(k_s):
-        sys.stdout.write(str(k_loop) + ', ')
-        sys.stdout.flush()
-        curr_performance = [p for (k, p) in zip(k_s, task_performance) if k == k_loop]
-        performance_per_k[k_loop] = curr_performance
+    filtered_units = []; filtered_performance = []
+    if many_k_or_single != 'many' and isinstance(many_k_or_single, int):  # ablation results contain only a single size of group of units (e.g., k=17)
+        task_performance = [float(line.rstrip().split('\t')[1]) for line in results]
+        units = [list(map(int, s.split('_')[1::])) for s in experiment_info]
+        for i, (curr_units, curr_performance) in enumerate(zip(units, task_performance)):
+            if not set(curr_units).intersection(set(filter_units)):
+                filtered_units.append(curr_units)
+                filtered_performance.append(curr_performance)
+        performance_per_k[many_k_or_single] = filtered_performance
 
-    with open(path2ablation_results + '.pkl', 'wb') as f:
-        pickle.dump(performance_per_k, f)
-    print('\nNull dists were saved to: ' + path2ablation_results + '.pkl')
+
+    elif many_k_or_single == 'many':  # ablation results contain are for many size groups (k)
+        filtered_k_s = []
+        task_performance = [float(line.rstrip().split('\t')[2]) for line in results]
+        k_s = [int(line[line.find('_k_')+3:line.find('_units_')]) for line in experiment_info]
+        units = [list(map(int, s[s.find('pkl')+3:s.find('groupsize')-1].split('_'))) for s in experiment_info]
+        for i, (curr_units, curr_performance, curr_k) in enumerate(zip(units, task_performance, k_s)):
+            if not set(curr_units).intersection(set(filter_units)):
+                filtered_units.append(curr_units)
+                filtered_performance.append(curr_performance)
+                filtered_k_s.append(curr_k)
+
+        sys.stdout.write('Plotting null dist for k = ')
+        for k_loop in set(filtered_k_s):
+            sys.stdout.write(str(k_loop) + ', ')
+            sys.stdout.flush()
+            curr_performance = [p for (k, p) in zip(filtered_k_s, filtered_performance) if k == k_loop]
+            performance_per_k[k_loop] = curr_performance
+
+        with open(path2ablation_results + '.pkl', 'wb') as f:
+            pickle.dump(performance_per_k, f)
+        print('\nNull dists were saved to: ' + path2ablation_results + '.pkl')
 
     return performance_per_k
 
@@ -64,7 +84,7 @@ def plot_null_dist(performances_null, k, performance_test, p_value, fontsize=30)
     ax.set_ylabel('Number of random ablation experiments', fontsize=fontsize)
     ax.set_title('Number of ablated units: k = ' + str(k), fontsize=fontsize)
     ax.tick_params(axis='both', labelsize=fontsize*0.6)
-    ax.set_xlim(0.7, 1)
+    ax.set_xlim(0.6, 1)
     ax.set_ylim(0, 600)
 
     # add arrow for p-value:
@@ -108,15 +128,21 @@ def plot_all_null_dists(performance_per_k, fontsize=25):
     file_name = 'null_distribution_ablation_experiment.png'
     plt.savefig(os.path.join('..', '..', '..', 'Figures', file_name))
     plt.close(fig)
+    print('Figure saved at %s' % os.path.join('..', '..', '..', 'Figures', file_name))
 
+# Settings
+filter_units = [776, 988] # counting from 1 - which units are not allowed in the ablated units (e.g, LR number units)
+many_k_or_single = 'many' # either the str 'many' or an int representing the size of the ablated group of units (k)
 
 # MAIN
 path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/regression_unit_ablation_results.txt'
-performance_per_k = generate_and_plot_null_dists(path2ablation_results)
+# path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/nounpp_singular_plural_control.txt'
+
+performance_per_k = generate_and_plot_null_dists(path2ablation_results, many_k_or_single, filter_units)
 
 # Example
-with open(path2ablation_results + '.pkl', 'rb') as f:
-    performance_per_k = pickle.load(f)
+# with open(path2ablation_results + '.pkl', 'rb') as f:
+#     performance_per_k = pickle.load(f)
 
 
 output_fn = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/ablation_results_killing_regression_unit_579_989_1042_1150_1230_759_1102_917_1006_30_187_1062_760_32_1199_931_489_groupsize_1_seed_1_True.pkl'
@@ -125,6 +151,8 @@ with open(output_fn, 'rb') as f:
     results = pickle.load(f)
 
 performance_test = results['score_on_task']/results['num_sentences']
+# performance_test = 0.91 # nounpp PS
+# performance_test = 0.7896825396825397 * 0.84 # nounpp SP
 p_value = get_p_value_from_null_dist(performance_per_k[17], performance_test)
 print(performance_test, p_value)
 
