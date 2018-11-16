@@ -11,9 +11,9 @@
     \B CoAdv &  the boy openly and deliberately greets the guy\\
     \B NamePP & the boy near Pat greets the guy\\
     \B NounPP & the boy near the car greets the guy\\
-    \B SubjRel & the boy that avoids the girl greets the guy\\
-    \B ObjRel  & the boy that the girl avoids greets the guy \\
-    \B ObjRel0 &  the boy the girl avoids greets the guy\\
+    %\B SubjRel & the boy that avoids the girl greets the guy\\
+    %\B ObjRel  & the boy that the girl avoids greets the guy \\
+    %\B ObjRel0 &  the boy the girl avoids greets the guy\\
   \end{tabular}
   \end{footnotesize}
   \caption{NA tasks illustrated by representative
@@ -49,10 +49,10 @@ immediately preceding the main verb. If the model assigned higher
 likelihood to the correct form of the verb than to its counterpart
 with the wrong number, then the trial was marked as a hit.
 
-\textcolor{red}{Yair: consider move these explanations about contrasts to the results section:} \sout{Note that 2Adv features the same subject-verb
+\yair{perhaps to consider to move these explanations about contrasts to the results section:} Note that 2Adv features the same subject-verb
 distance as NamePP, but without gender-carrying words acting as
 possible distractors in the middle. Similarly, CoAdv can serve as a
-distractor-free control for NounPP.}
+distractor-free control for NounPP.
 
 Task sata-set sizes across conditions ranged from 600 (Simple) to 18k sentences (relatives),
 based on the possibilities for variation allowed by the combinatorics
@@ -65,7 +65,7 @@ Finally, we also used the naturalistic, corpus-derived agreement test set of \ne
 
 For each length between ???? and ????, we randomly sampled 300 sentences
 containing different syntactic structures following the same grammar that we
-used to generate the NA-tasks. For each position in each sentence, we computed
+used to generate the NA-tasks \yair{I don't think that it's the 'same grammar'. perhaps Marco can elaborate on the important points to make here.}. For each position in each sentence, we computed
 the number of open nodes in the syntactic tree following the same procedure of
 \newcite{Nelson:etal:2017}. Since, as noted by \newcite{Conneau:etal:2018}, the
 number of open nodes is correlated with the position of the word in the
@@ -76,23 +76,3 @@ word position (between 7 and 12) and number of open nodes (between 3 and 8).
 The final dataset is composed by a list of sentences and the positions
 within these sentences that we sampled in the decorrelation procedure. In
 total, our dataset contains ???? points from ???? sentences.
-
-
-% \subsection{Synthetic data}
-
-% \subsubsection{Stimuli for the number-agreement task (NA-task)}
-% This section describes the generation process of synthetic sentence stimuli for the number-agreement task (NA-task). 
-% These sets of stimuli were used to evaluate the performance of both full- and ablated models on the NA-task. 
-
-% Each NA-task contained sentences with a fixed syntactic structure, such as ``Det Noun Adv Verb'' or ``Det Noun P Det Noun Verb'', and each task was composed of several \textit{conditions} depending on the possible assignments of grammatical number to the nonu(s) in the sentence. 
-% For example, one NA-task contained sentences of the form: ``Det Noun Verb'', and had two conditions corresponding to the two possible number values of its noun. 
-% So the first conditiond such as ``The boy runs'', and the ablated network was tested on predicting the correct verb form. 
-% This task had two conditions, corresponding to the two possible assignments of grammatical number (singular or plural) to the main noun. 
-% Another NA-task contained sentences of the form: ``Det Noun-1 P Det Noun-1 Verb'', such as ``The boy behind the girls jumps''. 
-% This task had four conditions, corresponding to the four possible assignments of grammatical number to noun-1 and noun-2.
-
-% The network was evaluated on predicting the correct verb form (singular or plural).
-
-% \subsection{Corpus data}
-
-% \textcolor{gray}{\lipsum[1]}
