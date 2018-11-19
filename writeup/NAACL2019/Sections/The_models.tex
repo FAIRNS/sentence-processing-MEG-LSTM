@@ -22,7 +22,7 @@ In our experiments, we investigate the different components of both layers of th
 We will refer to the n$^{th}$ unit in the first and second layer with the terms \unit{1}{n} and \unit{2}{n}, respectively.
 
 \paragraph{Model evaluation on NA-tasks}
-Model performance was evaluated on each NA-task and conditions by computing its accuracy in predicting the correct form of the main verb. Specifically, for each sentence, the model was presented with all words up to the one immediately preceding the main verb. If the model assigned higher likelihood to the correct form of the verb than to its counterpart with the wrong number then the trial was marked as a hit. Model accuracy was then computed by counting the fraction of hits across the entire set of sentences in the condition, and is denoted in what follows as ACC_{NA-task, condition}.
+Model performance was evaluated on each NA-task and conditions by computing its accuracy in predicting the correct form of the main verb. Specifically, for each sentence, the model was presented with all words up to the one immediately preceding the main verb. If the model assigned higher likelihood to the correct form of the verb than to its counterpart with the wrong number then the trial was marked as a hit. Model accuracy was then computed by counting the fraction of hits across the entire set of sentences in the condition, and is denoted in what follows as ACC$_{NA-task, condition}$.
 
 
 \subsection{Regression model}\label{ssec:dc}
@@ -37,7 +37,7 @@ The setup is as follows.
 - Describe the Features: network activity (hidden/cell activity)
 - Describe the label: Tree depth (\ref{ssec:n_opennodes})
 - Describe the model: A Ridge/LASSO model.
-\Describe{Model training and evalution}
+- Describe{Model training and evalution}
 - Model training: nested 5-fold CV procedure. Train/val/test. Optimal regularization size was estimated from the validation set (report optimal lamda - figures in FAIRNS.pdf on slack)
 - model evaluation: R-squared on test set. Report resulting values (text+figures in FAIRNS.pdf). 
 
