@@ -51,18 +51,22 @@ given each structure.\footnote{We uploaded the data-set generation
 
 Finally, we also used the naturalistic, corpus-derived agreement test set of \newcite{Linzen:etal:2016}, in the version made available by \newcite{Gulordava:etal:2018}.
 
-\subsection{Tree-depth data-set}\label{ssec:n_opennodes}
+\subsection{Syntactic depth data-set}\label{ssec:n_opennodes}
 
-For each length between ???? and ????, we randomly sampled 300 sentences
-containing different syntactic structures following the same grammar that we
-used to generate the NA-tasks. \yair{I don't think that it's the 'same grammar'. perhaps Marco can elaborate on the important points to make here.} \marco{Yair is right, I will add this}. For each position in each sentence, we computed
-the number of open nodes in the syntactic tree following the same procedure of
-\newcite{Nelson:etal:2017}. Since, as noted by \newcite{Conneau:etal:2018}, the
-number of open nodes is correlated with the position of the word in the
-sentence, we only added to our dataset points (given by a sentence at a given
-position) such that the two would be decorrelated.  For this, we picked
-examples that would uniformly cover all possible combinations in a range of
-word position (between 7 and 12) and number of open nodes (between 3 and 8).
-The final dataset is composed by a list of sentences and the positions
-within these sentences that we sampled in the decorrelation procedure. In
-total, our dataset contains ???? points from ???? sentences.
+We probed the LSTM's implicit syntax parsing abilities by testing
+whether the its representations predict the syntactic depth of the
+words they process. Following \newcite{Nelson:etal:2017}, this was
+operationalized as predicting the number of open syntactic nodes at
+each word, given a standard syntactic parse of a sentence.  We
+generated a data-set of sentences with unambiguous but varied
+syntactic structures (for example: ``[$_S$ [$_{NP}$ the [$_{N''}$ [$_{N'}$ [$_{AP}$ really tiny ]  actress  ] [$_{PP}$ behind  Jim  ] ] ] [$_{VP}$ fights [$_{NP}$ four [$_{N''}$ friends [$_{PP}$ of  John ] ] ] ] ]''). Since syntactic depth is naturally correlated with
+the position of a word in a sentence, we used a data-point sampling
+strategy de-correlating these factors. For each length between ????
+and ????, we randomly generated 300 sentences. From this set, we
+randomly picked examples uniformly covering all possible
+position-depth combinations within the 7-12 position and 3-8
+depth ranges.  The final data-set contains ???? positions
+from ???? sentences.\footnote{Sentence generation script and grammar
+  available in the supplementary materials.}
+
+
