@@ -6,6 +6,7 @@ import argparse
 parser = argparse.ArgumentParser(description='Switching from Marco files to Tal format')
 parser.add_argument('-i', '--input', required=True, help='Input sentences in Marco\'s format')
 parser.add_argument('-o', '--output', required=True, help='Filename (without extension) for Tal\'s format - only path and basename should be specified. The script will then generate three files with the following extensions: text (sentences), gold (labels)  and info (pickle in Theo\'s format), which can be then used for further analyses and ablation experiments.')
+parser.add_argument('-p', '--pattern', type=str, nargs=2, action='append', help='Info regarding where the is the field (counting from ZERO) in Marco metadata regarding the number of first noun, second noun,..., first verb form, second verb form, etc. This should be provided as pairs as in the following example: -p number_1 2 -p number_2 3 -p number_3 4 -p verb_1_wrong = 5 -p verb_2_wrong 6 -p verb_3_wrong 7.') 
 parser.add_argument('-f', '--filter-sentences', action='store_true', default=False, help = 'whether to filter sentences according to specific stimulus types (e.g., only subjrel_that). If this argument is given then the user needs to change the \'hard-coded\' keep_sentences var at the top of the code.')
 args = parser.parse_args()
 
@@ -25,21 +26,10 @@ for line in raw_sentences:
     curr_info = {}
     curr_line = line.split('\t')
     curr_info['RC_type'] = curr_line[0]
-    double_subjrel = True if curr_info['RC_type'] == 'double_subjrel_that' else False # double_subjrel has a different number of elements in each row of Marco generator output.
-    nounpp = True if curr_info['RC_type'] == 'nounpp' or curr_info['RC_type'] == 'nounpp_adv' else False # nounpp has only a single verb
-    adv_conjunction = True if curr_info['RC_type'] == 'adv_conjunction' else False # adv_conjunction has only a single verb and two nouns
-
+    for key, value in args.pattern:
+        print(key, value)
+        curr_info[key] = curr_line[int(value)]
     curr_info['sentence_length'] = len(curr_line)
-    curr_info['number_1'] = curr_line[2]
-    curr_info['number_2'] = curr_line[3]
-    if not adv_conjunction: curr_info['number_3'] = curr_line[4+double_subjrel]
-    if not adv_conjunction: curr_info['verb_1_wrong'] = curr_line[5+double_subjrel]
-    if not nounpp and not adv_conjunction: curr_info['verb_2_wrong'] = curr_line[6+double_subjrel]
-    if double_subjrel:
-        curr_info['number_4'] = curr_line[4]
-        curr_info['verb_3_wrong'] = curr_line[8]
-    if adv_conjunction:
-        curr_info['verb_1_wrong'] = curr_line[4]
     info.append(curr_info)
 
 # Filter certain sentence types if desired.

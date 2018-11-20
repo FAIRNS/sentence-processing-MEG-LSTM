@@ -1,0 +1,47 @@
+
+\section{Models}
+
+% The recurrent models that are the focus of our studies are long short term memory models \cite[LSTMs]{Hochreiter:Schmidhuber:1997}.
+% To inspect the internal dynamics of these models, we use additional linear models to extract information from the hidden state of trained language models.
+% In this section, we describe the language model we study (\ref{ssec:lstm_lm}) as well as the meta models we use to analyse the hidden states of this language model (\ref{ssec:dc}).
+
+\paragraph{LSTM language model}\label{ssec:lstm_lm}
+
+We consider the pretrained LSTM LM that was made available by \cite{Gulordava:etal:2018}.
+This model has two LSTM layers with 650 dimensions, an output layer with vocabulary size 50000 and an embedding layer of 650 dimensions. The model was trained with the language model objective on Wikipedia data, without fine-tuning for the agreement task.\footnote{While we report results for the pre-trained model only, we ascertained their robustness by re-training the same configuration with different seeds, and exploring higher drop-out values. The latter experiments were motivated by the observation that one of our main results pertains to local number encoding, and the low dropout value used used by Gulordava et al.~(0.2) might have favoired such localist solutions. We replicated our main results with all the variations.} In our experiments, we investigate the different components of both layers of the LSTM, given by the equations below \cite{Hochreiter:Schmidhuber:1997}:
+\begin{align}
+    h_t & = o_t\circ \tanh(c_t)\\ 
+     c_t & = f_t\circ c_{t-1} + i_t\circ \widetilde{c}_t\\
+     \widetilde{c}_t & = \tanh(W_cx_t + U_ch_{t-1} + b_c)\\
+     f_t & = \sigma(W_fx_t + U_fh_{t-1} + b_f) %\\
+     % i_t & = \sigma(W_ix_t + U_ih_{t-1} + b_i) \\
+     % o_t & = \sigma(W_ox_t + U_oh_{t-1} + b_o)
+\end{align}
+\noindent{}with $i_t$ and $o_t$ computed analogously to $f_t$. We will
+refer to the n$^{th}$ unit in the first and second layer with the
+terms \unit{1}{n} and \unit{2}{n}, respectively.
+
+Model performance was evaluated on each NA-task and conditions by computing its accuracy in predicting the correct form of the main verb. Specifically, for each sentence, the model was presented with all words up to the one immediately preceding the main verb. If the model assigned higher likelihood to the correct form of the verb than to its counterpart with the wrong number then the trial was marked as a hit. Model accuracy was then computed by counting the fraction of hits across the entire set of sentences in the condition, and is denoted in what follows as ACC$_{NA-task, condition}$.
+
+
+\paragraph{Regression model}\label{ssec:dc} \marco{This is very standard for now, so I don't think there is a need for the motivation part.} To understand which
+information is encoded in the hidden states and gates of the LSTM
+language model, we use a technique that is commonly used in
+neuroscience (ref?) but has recently also gained traction in the field
+of computational linguistics: training an additional model to predict
+information from these hidden states and gates
+\cite{Adi:etal:2017,Hupkes:etal:2017}.
+
+In our case, we aim to assess if the internal states of our language model incode information about the \textit{syntactic depth} of the sentence it is processing.
+The setup is as follows.
+
+- Explain that the model was used to predict the depth of the syntactic tree from network activity
+\paragraph{Model description}
+- Describe the Features: network activity (hidden/cell activity)
+- Describe the label: Tree depth (\ref{ssec:n_opennodes})
+- Describe the model: A Ridge/LASSO model.
+- Describe{Model training and evalution}
+- Model training: nested 5-fold CV procedure. Train/val/test. Optimal regularization size was estimated from the validation set (report optimal lamda - figures in FAIRNS.pdf on slack)
+- model evaluation: R-squared on test set. Report resulting values (text+figures in FAIRNS.pdf). 
+
+

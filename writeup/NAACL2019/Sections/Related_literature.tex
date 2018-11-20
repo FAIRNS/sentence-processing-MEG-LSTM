@@ -1,0 +1,25 @@
+
+\section{Related literature}
+
+\marco{This can be made more compact by removing the intro par, and in the behavioural part only discussing studies of agreement. I would remove the part about which studies suggested agreement is done via heuristics and which argued it's genuinely structure-sensitive from the intro, and move it here. Happy to do that myself.}
+
+Previous studies on understanding RNNs can be roughly characterized in two classes: studies that focus on visualising or interpreting the hidden state activations of such networks; and work that focuses on the behavior or performance of a model by studying the learnability of particular datasets or phenomena.
+We briefly discuss the most important studies concerning RNNs applied for natural language processing.
+For the second class, we specifically focus on behavioral studies concerning \textit{neural language models},a topic particularly relevant for the current paper.
+
+\paragraph{Interpreting internal states}
+The first attempts to understand high-dimensional the internal representations of trained RNNs concerned visualisation based methods \cite{Karpathy:etal:2016,tang2017memory,li2016visualizing,Radford:etal:2017}.
+Most related to this study, \newcite{Radford:etal:2017} found a ``sentiment'' grandmother cell and \newcite{Kementchedjhieva:Lopez:2018} found a character-level RNN to track morpheme boundaries in a single cell.
+Other approaches use `probes' or `diagnostic classifiers': meta-models to extract information from the hidden states of an RNN \cite{Adi:etal:2017,Hupkes:etal:2017,alain2017understanding}.
+This approach is not limited to finding properties that are encoded in a localist fashion and has yielded interesting linguistic results.
+E.g., \newcite{gelderloos2016phonemes} find evidence that a multilayer RNN trained in a visually grounded learning paradigm learns to represent linguistic information in a hierarchy, encoding form in the lower and meaning in the higher layers.
+\dieuwke{This is of course not very extensive, but maybe this is not really the place to put a too elaborate analysis?}
+
+\paragraph{Behavioral studies}
+An entirely different line of research concerning understanding how RNNs process different types of phenomena by looking at their behavior when presented with carefully selected inputs.
+A large part of these studies has focusses on using the perplexity assigned to different sentences by a neural language model to investigate a range of (psycho)linguistic phenomena, such as subject-verb agreement \cite{Linzen:etal:2016,Bernardy:Lappin:2017,Gulordava:etal:2018,Kuncoro:etal:2018a,Kuncoro:etal:2018b,Linzen:Leonard:2018}, negative polarity items \cite{marvin2018targeted,jumelet2018language} and filler-gap dependencies \cite{wilcox2018rnn}.
+Their results -- LSTM language models are capable of correctly processing a number of such interesting linguistic phenomena -- are the premise of our study, in which we investigate \textit{how} they do so.
+
+\paragraph{Neuroscientific studies}
+\dieuwke{Should we include a section like this to refer to Nelson but potentially also other studies that present a more neurosciency take on this?}
+- Relate to Nelson et. al 2017 PNAS, an intracranial study that identifies electrodes whose high-gamma activity correlates with syntactic tree-depth (numnber of open nodes)
