@@ -10,9 +10,15 @@ Code/LSTM/model-analysis/Logs/
 Code/LSTM/model-analysis/main_ablation_experiment.py
 
 Data/
-Figures/
+/Figures/
 Output/
 .idea/
 
 *.pyc
 *.sh
+
+*.out
+*.log
+main.pdf
+*.aux
+*.blg

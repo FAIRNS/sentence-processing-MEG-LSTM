@@ -39,11 +39,21 @@ class Data(object):
         for line in tqdm(f):
             vals = str(line).split(separator)
             vals[0]=vals[0][2::]
-            column_names.append('constituent_boundary')
             num_oNodes = [int(i) for i in vals[2].strip(' ').split(' ')]
+
+            # Add constituent boundary to features
+            column_names.append('constituent_boundary')
             constituent_boundary = [0] + [1 if num_oNodes[i]<=num_oNodes[i-1] else 0 for i in range(1, len(num_oNodes))]
             constituent_boundary = ' '.join(map(str, constituent_boundary))
             vals.append(constituent_boundary)
+
+            # Add embedded constituent to features
+            column_names.append('embedded constituent')
+            embedded_constituent = [0] + [1 if num_oNodes[i] > num_oNodes[i - 1] else 0 for i in
+                                          range(1, len(num_oNodes))]
+            embedded_constituent = ' '.join(map(str, embedded_constituent))
+            vals.append(embedded_constituent)
+
             self.data.append(dict(zip(column_names, vals)))
             length = len(vals[0].split())
             lengths.append(length)

@@ -1,0 +1,72 @@
+\section{Data}
+\subsection{Number-agreement tasks}
+
+\begin{table}[tb]
+  \centering
+  \begin{footnotesize}
+  \begin{tabular}{l@{\hskip1pt}l}
+    \B Simple & the boy greets the guy\\
+    \B Adv & the boy probably greets the guy\\
+    \B 2Adv & the boy most probably greets the guy\\
+    \B CoAdv &  the boy openly and deliberately greets the guy\\
+    \B NamePP & the boy near Pat greets the guy\\
+    \B NounPP & the boy near the car greets the guy\\
+    %\B SubjRel & the boy that avoids the girl greets the guy\\
+    %\B ObjRel  & the boy that the girl avoids greets the guy \\
+    %\B ObjRel0 &  the boy the girl avoids greets the guy\\
+  \end{tabular}
+  \end{footnotesize}
+  \caption{NA tasks illustrated by representative
+    singular sentences.}
+  \label{tab:data-sets}
+\end{table}
+
+We generated number-agreement tasks (NA-tasks) with fixed syntactic
+structures and varied lexical material that probe subject-verb number
+agreement in increasingly challenging setups. The different structures
+are illustrated in Table \ref{tab:data-sets} by examples where all
+forms are in the singular. Distinct sentences were randomly generated
+by selecting (different) words from pools of 20 subject/object nouns,
+15 verbs, 10 adverbs, 5 prepositions, 10 proper nouns and 10 location
+nouns. The items were selected so that their combination would not
+lead to semantic anomalies.For each NA-task, we generated singular and
+plural versions of each sentence. We refer to each such version as a
+\textit{condition}. For NA-tasks that have other nouns occurring between
+subject and main verb, we also systematically varied their number,
+resulting in four conditions. For example, the NounPP sentence in the
+table illustrates the SS (singular-singular) condition. The
+corresponding sentences in the other conditions are: ``the boy near
+the cars greets the guy'' (SP), ``the boys near the car greet the
+guy'' (PS), and ``the boys near the cars greet the guy'' (PP).
+
+\yair{perhaps to consider to move these explanations about contrasts to the results section:} Note that 2Adv features the same subject-verb
+distance as NamePP, but without gender-carrying words acting as
+possible distractors in the middle. Similarly, CoAdv can serve as a
+distractor-free control for NounPP.
+
+Task sata-set sizes across conditions ranged from 600 (Simple) to 18k sentences (relatives),
+based on the possibilities for variation allowed by the combinatorics
+given each structure.\footnote{We uploaded the data-set generation
+  script as supplementary material.}
+
+Finally, we also used the naturalistic, corpus-derived agreement test set of \newcite{Linzen:etal:2016}, in the version made available by \newcite{Gulordava:etal:2018}.
+
+\subsection{Syntactic depth data-set}\label{ssec:n_opennodes}
+
+We probed the LSTM's implicit syntax parsing abilities by testing
+whether the its representations predict the syntactic depth of the
+words they process. Following \newcite{Nelson:etal:2017}, this was
+operationalized as predicting the number of open syntactic nodes at
+each word, given a standard syntactic parse of a sentence.  We
+generated a data-set of sentences with unambiguous but varied
+syntactic structures (for example: ``[$_S$ [$_{NP}$ the [$_{N''}$ [$_{N'}$ [$_{AP}$ really tiny ]  actress  ] [$_{PP}$ behind  Jim  ] ] ] [$_{VP}$ fights [$_{NP}$ four [$_{N''}$ friends [$_{PP}$ of  John ] ] ] ] ]''). Since syntactic depth is naturally correlated with
+the position of a word in a sentence, we used a data-point sampling
+strategy de-correlating these factors. For each length between ????
+and ????, we randomly generated 300 sentences. From this set, we
+randomly picked examples uniformly covering all possible
+position-depth combinations within the 7-12 position and 3-8
+depth ranges.  The final data-set contains ???? positions
+from ???? sentences.\footnote{Sentence generation script and grammar
+  available in the supplementary materials.}
+
+

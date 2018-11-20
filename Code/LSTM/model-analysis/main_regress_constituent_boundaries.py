@@ -29,7 +29,7 @@ vocab = os.path.join(base_folder, 'Data/LSTM/english_vocab.txt')
 data_file = os.path.join(base_folder, 'Output/num_open_nodes/activations_1M_sentences_n=%i.pkl'%n)
 frequency_file = os.path.join(base_folder, 'Data/LSTM/english_word_frequencies.txt')
 
-regenerate_data=True
+regenerate_data=False
 
 eos = '<eos>'
 use_unk = True
@@ -79,7 +79,8 @@ models = []; weights = []; scores = []; scores_reduced_model = []; units_outlier
 data_sentences_train, data_sentences_test = data_manip.split_data(data_sentences.data, params) # Train-test split
 for split in range(params.CV_fold):
     # Preparing the data for regression, by breaking down sentences into X, y matrices that are word-wise:
-    X_train, y_train, X_test, y_test = data_manip.prepare_data_for_regression(data_sentences_train[split], data_sentences_test[split], feature_type=feature_type, dependent_var_name = 'constituent_boundary')
+    # ###### !!embedded constituent!!:
+    X_train, y_train, X_test, y_test = data_manip.prepare_data_for_regression(data_sentences_train[split], data_sentences_test[split], feature_type=feature_type, dependent_var_name = 'embedded constituent')
     X_train, X_test = data_manip.standardize_data(X_train, X_test)
 
     # # Omit high-VIF units:
