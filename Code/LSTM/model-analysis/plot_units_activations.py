@@ -34,14 +34,13 @@ def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
     gate - gate type (gates.in, gates.forget, gates.out, gates.c_tilde, hidden, cell)
     IX_sentences - list of indices pointing to sentences numbers that meet the constraints specified in the arg graph
     '''
-    #print(graph)
     color = graph[1]
     ls = graph[2]
     ls = ls.replace("\\", '')
     lw = int(graph[3])
     unit = int(graph[4])
     gate = graph[5]
-    print(len(graph))
+    #print(len(graph))
     if len(graph) % 2 == 1:
         label = graph[-1]
     else:
@@ -72,24 +71,26 @@ def add_graph_to_plot(ax, LSTM_activations, unit, gate, label, c, ls, lw):
     :param gate (str): gate type (gates.in, gates.forget, gates.out, gates.c_tilde, hidden, cell)
     :return: None (only append curve on active figure)
     '''
-    print('Unit ' + str(unit))
+    if LSTM_activations: print('Unit ' + str(unit))
     if gate.find('gate')==0: gate = gate[6::] # for legend, omit 'gates.' prefix in e.g. 'gates.forget'
     # Calc mean and std
-    mean_activity = np.mean(np.vstack([LSTM_activations[i][unit, :] for i in range(len(LSTM_activations))]), axis=0)
-    std_activity = np.std(np.vstack([LSTM_activations[i][unit, :] for i in range(len(LSTM_activations))]), axis=0)
+    if LSTM_activations:
+        mean_activity = np.mean(np.vstack([LSTM_activations[i][unit, :] for i in range(len(LSTM_activations))]), axis=0)
+        std_activity = np.std(np.vstack([LSTM_activations[i][unit, :] for i in range(len(LSTM_activations))]), axis=0)
 
-    # Add curve to plot
-    ax.errorbar(range(1, mean_activity.shape[0] + 1), mean_activity, yerr=std_activity,
+        # Add curve to plot
+        ax.errorbar(range(1, mean_activity.shape[0] + 1), mean_activity, yerr=std_activity,
                 label=label, ls=ls, lw=lw, color=c)
-    offset = 0.15
-    if gate in ['in', 'forget', 'out']:
-        ax.set_yticks([0, 1])
-        ax.set_ylim([0-offset, 1+offset])
-    else:
-        ax.set_yticks([-1.5, 1.5])
-        ax.set_ylim([-1.5-offset, 1.5+offset])
+        offset = 0.15
+        if gate in ['in', 'forget', 'out']:
+            ax.set_yticks([0, 1])
+            ax.set_ylim([0-offset, 1+offset])
+        else:
+            ax.set_yticks([-1.5, 1.5])
+            ax.set_ylim([-1.5-offset, 1.5+offset])
         #ax.set_yticks(np.arange(min(-1, min(mean_activity)), 1+max(np.ceil(max(mean_activity)), 1), 1.0))
-
+    else:
+        print('No trials found for: ' + label)
 if args.use_tex:
     plt.rc('text', usetex=True)
 
@@ -113,7 +114,7 @@ if num_subplots==1: axs=[axs] # To make the rest compatible in case of a single 
 for g, graph in enumerate(args.graphs):
     subplot_number = subplot_numbers[g]-1
     unit, gate, IX_to_sentences, label, color, ls, lw = get_unit_gate_and_indices_for_current_graph(graph, info, args.condition)
-    print(gate, label)
+    if IX_to_sentences: print(gate, label)
     graph_activations = [sentence_matrix for ind, sentence_matrix in enumerate(LSTM_activation[gate]) if ind in IX_to_sentences]
     curr_stimuli = [sentence for ind, sentence in enumerate(stimuli) if ind in IX_to_sentences]
     if args.remove > 0:
@@ -123,7 +124,7 @@ for g, graph in enumerate(args.graphs):
     add_graph_to_plot(axs[subplot_number], graph_activations, unit, gate, label, color, ls, lw)
 
 # Cosmetics
-axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
+if graph_activations: axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for i, ax in enumerate(axs):
     if args.xlabels:
         ax.set_xticklabels(args.xlabels, fontsize=16) #, rotation='vertical')
@@ -142,8 +143,8 @@ legend = fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=10)
 if args.no_legend: 
     legend.set_visible(False)
 
-fig.align_ylabels(axs)
-fig.align_ylabels(axs)
+#fig.align_ylabels(axs)
+#fig.align_ylabels(axs)
 # Save and close figure
 #plt.subplots_adjust(left=0.15, hspace=0.25)
 plt.savefig(args.output_file_name)
