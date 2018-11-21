@@ -6,15 +6,37 @@
 # from functions import load_settings_params as lsp
 # from functions import prepare_for_ablation_exp as prep
 
+import os, pickle
+# wrong_info = pickle.load(open('../../../Data/Stimuli/wrong_nounpp.info', 'rb'))
+# prob_verbs = ['admire', 'admires', 'avoid', 'avoids', 'understand', 'understands']
+def modify_file(path2file):
+    dest_folder, filename = os.path.split(path2file)
+    lines = open(path2file, 'r').readlines()
+    sentences_row1 = [l.split('\t')[0] for l in lines if l.split('\t')[2]=='correct']
+    sentences_row2 = [l.split('\t')[0] for l in lines if l.split('\t')[2] == 'wrong']
+    conditions = [l.split('\t')[1] for l in lines if l.split('\t')[2]=='correct']
+    new_lines = ['nounpp\t' + s1 + '\t' + c.split('_')[0] + '\t' + c.split('_')[1] + '\t' + s2.split(' ')[-1] for (s1, s2, c) in zip (sentences_row1, sentences_row2, conditions)]# if not w.split(' ')[-1] in prob_verbs]
+    with open(os.path.join(dest_folder, filename[5::]), 'w') as f:
+        for item in new_lines:
+            f.write("%s\n" % item)
 
-split1 = set('578 1149 988 1041 1101 29 186 1198 198 31 264 131 916 758 1241 1005 488'.split(' '))
-split2 = set('988 1041 578 1101 1149 186 1198 29 198 759 31 916 1019 758 1082 1229 488'.split(' '))
-split3 = set('988 578 1149 1041 29 1198 758 186 198 916 1101 488 355'.split(' '))
-split4 = set('78 1149 186 1041 1198 988 1101 29 198 131 488 916 31 758 264 355 646'.split(' '))
-split5 = set('578 988 1041 1149 1229 758 1101 916 1005 29 186 1061 759 31 1198 930 488'.split(' '))
 
-units_to_ablate = split1.intersection(split2, split3, split4, split5)
-print(units_to_ablate)
+file_correct='/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/temp_correct_nounpp.txt'
+file_wrong='/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Data/Stimuli/temp_wrong_nounpp.txt'
+
+modify_file(file_correct)
+modify_file(file_wrong)
+
+
+
+# split1 = set('578 1149 988 1041 1101 29 186 1198 198 31 264 131 916 758 1241 1005 488'.split(' '))
+# split2 = set('988 1041 578 1101 1149 186 1198 29 198 759 31 916 1019 758 1082 1229 488'.split(' '))
+# split3 = set('988 578 1149 1041 29 1198 758 186 198 916 1101 488 355'.split(' '))
+# split4 = set('78 1149 186 1041 1198 988 1101 29 198 131 488 916 31 758 264 355 646'.split(' '))
+# split5 = set('578 988 1041 1149 1229 758 1101 916 1005 29 186 1061 759 31 1198 930 488'.split(' '))
+#
+# units_to_ablate = split1.intersection(split2, split3, split4, split5)
+# print(units_to_ablate)
 ##
 
 
