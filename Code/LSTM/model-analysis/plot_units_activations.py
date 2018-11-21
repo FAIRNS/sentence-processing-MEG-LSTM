@@ -38,7 +38,7 @@ def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
     color = graph[1]
     ls = graph[2]
     ls = ls.replace("\\", '')
-    lw = int(graph[3])
+    lw = float(graph[3])
     unit = int(graph[4])
     gate = graph[5]
     print(len(graph))
@@ -126,9 +126,9 @@ for g, graph in enumerate(args.graphs):
 axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for i, ax in enumerate(axs):
     if args.xlabels:
-        ax.set_xticklabels(args.xlabels, fontsize=16) #, rotation='vertical')
+        ax.set_xticklabels(args.xlabels, fontsize=14) #, rotation='vertical')
     else:
-        ax.set_xticklabels(stimuli[0].split(' '), fontsize=16) #, rotation='vertical')
+        ax.set_xticklabels(stimuli[0].split(' '), fontsize=14) #, rotation='vertical')
     #ax.tick_params(labelsize=10)
     #ax.tick_params(axis='x', pad=40)
     if args.ylabels:
@@ -144,6 +144,8 @@ if args.no_legend:
 
 fig.align_ylabels(axs)
 fig.align_ylabels(axs)
+
+plt.tight_layout()
 # Save and close figure
 #plt.subplots_adjust(left=0.15, hspace=0.25)
 plt.savefig(args.output_file_name)

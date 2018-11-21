@@ -9,12 +9,13 @@ sentence = 'The \\textbf{boy(s)} near the \\underline{car(s)} \\textbf{greet(s)}
 N1=1
 N2=4
 V=5
-off = .2
+off = .15
 PP_off= off+off/2
 PS_off = off/2
 SP_off= -off/2
 SS_off = -off-off/2
 SY_off = 0
+no_legend = True
 
 max_off = max(PP_off, PS_off, SP_off, SS_off)
 
@@ -104,22 +105,17 @@ for i in range(N1+1, V):
     SY_cell[i] = 1
 
 SS_output = [0 + SS_off]*len(sentence)
-SS_output[N1+1] = 1 + SS_off
-SS_output[N2+1] = 1 + SS_off
+SS_output[V] = 1 + SS_off
 SS_output[-1] = 0 + SS_off
 PS_output = [0 + PS_off]*len(sentence)
-PS_output[N1+1] = 1 + PS_off
-PS_output[N2+1] = 1 + PS_off
+PS_output[V] = 1 + PS_off
 SP_output = [0 + SP_off]*len(sentence)
-SP_output[N1+1] = 1 + SP_off
-SP_output[N2+1] = 1 + SP_off
+SP_output[V] = 1 + SP_off
 PP_output = [0 + PP_off]*len(sentence)
-PP_output[N1+1] = 1 + PP_off
-PP_output[N2+1] = 1 + PP_off
+PP_output[V] = 1 + PP_off
 
 HY_output = [0] * len(sentence)
-HY_output[N1+1] = 1
-HY_output[N2+1] = 1
+HY_output[V] = 1
 
 def lighten_color(color, amount=0.5):
     """
@@ -201,7 +197,8 @@ sugg_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 plot_all_series(input_ax, PP_input, SS_input, PS_input, SP_input, HY_input)
 input_ax.set_ylabel("$i_t$", fontsize=16)
 ticks = [0, 1]
-lims = [-0.05-max_off, 1.05 + max_off]
+#lims = [0.1-max_off, 0.9+max_off]
+lims = [0-max_off/2., 1 + max_off/2.]
 input_ax.set_yticks(ticks)
 input_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 input_ax.set_xticks([])
@@ -209,7 +206,7 @@ input_ax.set_xticks([])
 plot_all_series(forget_ax, PP_forget, SS_forget, PS_forget, SP_forget, HY_forget)
 forget_ax.set_ylabel("$f_t$", fontsize=16)
 ticks = [0, 1]
-lims = [-0.05-max_off, 1.05 + max_off]
+lims = [0-max_off/2., 1 + max_off/2.]
 forget_ax.set_yticks(ticks)
 forget_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 forget_ax.set_xticks([])
@@ -237,10 +234,12 @@ for ax in axs:
 plt.xticks(ticks=range(len(sentence)), labels=sentence, fontsize=14, rotation=0)
 plt.setp(fig.gca().get_xticklabels(), visible=True)
 handles, labels = cell_ax.get_legend_handles_labels()
-fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=9)
+if not no_legend:
+    legend = fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=9)
 
 path = os.path.dirname(os.path.realpath(__file__))
 output_path = os.path.join(path, 'unit-timeseries-cartoon.pdf')
 print("Saving to {}".format(output_path))
 fig.align_ylabels(axs)
+plt.tight_layout()
 fig.savefig(output_path)
