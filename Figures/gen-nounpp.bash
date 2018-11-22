@@ -33,7 +33,6 @@ python3 $HOME_DIR/Code/LSTM/model-analysis/plot_units_activations.py \
     -g 4 r "\-." $LW ${UNIT} cell number_1 singular number_2 plural success correct "\\textbf{Singular}-\\underline{Plural}"\
     -g 4 b "\-." $LW ${UNIT} cell number_1 plural number_2 singular success correct "\\textbf{Plural}-\\underline{Singular}"\
     -g 4 b \- $LW ${UNIT} cell number_1 plural number_2 plural success correct "\\textbf{Plural}-\\underline{Plural}"\
-    -g 4 g "\-\-" $LW 1149 cell success correct "Syntax Unit 1150"\
     -g 5 r \- $LW ${UNIT} gates.out number_1 singular number_2 singular success correct \
     -g 5 r "\--" $LW ${UNIT} gates.out number_1 singular number_2 plural success correct \
     -g 5 b "\--" $LW ${UNIT} gates.out number_1 plural number_2 singular success correct \
@@ -42,4 +41,5 @@ python3 $HOME_DIR/Code/LSTM/model-analysis/plot_units_activations.py \
     --use-tex \
     -r 1 -x "The" "\\textbf{boy(s)}" "near" "the" "\\underline{car(s)}" "\\textbf{greet(s)}" "the" \
     --no-legend
+    #-g 4 g "\-\-" $LW 1149 cell success correct "Syntax Unit 1150"\
 

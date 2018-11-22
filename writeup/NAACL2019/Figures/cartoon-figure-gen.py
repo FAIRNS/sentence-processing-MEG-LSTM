@@ -105,17 +105,17 @@ for i in range(N1+1, V):
     SY_cell[i] = 1
 
 SS_output = [0 + SS_off]*len(sentence)
-SS_output[V] = 1 + SS_off
+SS_output[N2] = 1 + SS_off
 SS_output[-1] = 0 + SS_off
 PS_output = [0 + PS_off]*len(sentence)
-PS_output[V] = 1 + PS_off
+PS_output[N2] = 1 + PS_off
 SP_output = [0 + SP_off]*len(sentence)
-SP_output[V] = 1 + SP_off
+SP_output[N2] = 1 + SP_off
 PP_output = [0 + PP_off]*len(sentence)
-PP_output[V] = 1 + PP_off
+PP_output[N2] = 1 + PP_off
 
 HY_output = [0] * len(sentence)
-HY_output[V] = 1
+HY_output[N2] = 1
 
 def lighten_color(color, amount=0.5):
     """
@@ -212,7 +212,7 @@ forget_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 forget_ax.set_xticks([])
 
 plot_all_series(cell_ax, PP_cell, SS_cell, PS_cell, SP_cell, HY_cell)
-cell_ax.plot(SY_cell, ls='--', lw=2, label=r'Syntax Unit', color='green')
+#cell_ax.plot(SY_cell, ls='--', lw=2, label=r'Syntax Unit', color='green')
 cell_ax.set_ylabel("$C_t$", fontsize=16)
 lims = [-1.5, 1.5]
 ticks = lims
@@ -235,7 +235,7 @@ plt.xticks(ticks=range(len(sentence)), labels=sentence, fontsize=14, rotation=0)
 plt.setp(fig.gca().get_xticklabels(), visible=True)
 handles, labels = cell_ax.get_legend_handles_labels()
 if not no_legend:
-    legend = fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=9)
+    legend = fig.legend(handles, labels, loc='upper center', ncol=2, fontsize=9)
 
 path = os.path.dirname(os.path.realpath(__file__))
 output_path = os.path.join(path, 'unit-timeseries-cartoon.pdf')
