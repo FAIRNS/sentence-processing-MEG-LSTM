@@ -80,7 +80,6 @@ HY_forget[-1] = 0
 
 
 SS_cell = [-1 + SS_off]*len(sentence)
-SS_cell[N1] = 0 + SS_off
 SS_cell[N1-1] = 0 + SS_off
 SS_cell[-1] = 0 + SS_off
 PS_cell = [0 + PS_off]*len(sentence)
@@ -88,7 +87,6 @@ PS_cell[N1] = 0 + PS_off
 PS_cell[N1-1] = 0 + PS_off
 PS_cell[-1] = 0 + PS_off
 SP_cell = [-1 + SP_off]*len(sentence)
-SP_cell[N1] = 0 + SP_off
 SP_cell[N1-1] = 0 + SP_off
 SP_cell[-1] = 0 + SP_off
 PP_cell = [0 + PP_off]*len(sentence)
