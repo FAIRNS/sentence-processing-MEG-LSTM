@@ -1,24 +1,27 @@
-\subsection{Syntax-number units interactions}[t]
+\subsection{Syntax-number units interactions}
 
-\begin{figure*}[t!]
-    \centering
-    \begin{subfigure}{\textwidth}
-            \centering
-            \includegraphics[width=\textwidth, height=5cm]{Figures/gate_Input_interactions.png}
-    \label{fig:fig1}
-    \end{subfigure}
-\begin{subfigure}{\textwidth}
-            \centering
-            \includegraphics[width=\textwidth, height=5cm]{Figures/gate_Forget_interactions.png}
-    \label{fig:fig2}
-    \end{subfigure}
+\begin{figure*}[t]
+    \centering 
+    \includegraphics[width=\textwidth, height=5cm]{Figures/gate_Input_interactions.png}
+ %   \centering
+    %\begin{subfigure}{\textwidth}
+    %        \centering
+    %        \includegraphics[width=\textwidth, height=5cm]{Figures/gate_Input_interactions.png}
+    %\label{fig:fig1}
+    %\end{subfigure}
+%\begin{subfigure}{\textwidth}
+ %           \centering
+  %          \includegraphics[width=\textwidth, height=5cm]{Figures/gate_Forget_interactions.png}
+   % \label{fig:fig2}
+%    \end{subfigure}
 \caption{Connectivity among the syntax unit 1150 and the two LR-number units.}
+\label{fig:interaction}
 \end{figure*}
 
+The previous sections described two crucial factors required to solve the NA-task by the network - units that encode and carry the subject number across long-range dependencies, and a unit that encodes the main subject-verb dependency. We now look into the interactions among these units by analyzing the weights in the network. We note that for each pair of units there are four types of connections corresponding to the four types of gates in the units. Each type of weight can thus contribute to a different type of interaction, depending on the function of the gate. 
 
+Figure \ref{fig:interaction} shows the distribution of all afferent recurrent weights to the singular and plural units, for the input (panel A) and forget (panel B) gates. Weights from the syntax units are marked in red and are labeled. Table values represent weight sizes among the units (projecting units appear to the left of the table), and blue background represents significance of the corresponding weight size compared to all other weights ($p-value<0.05$). Results show that the weights from the syntax unit to the forget gate of both number units are exceptionally high compared to all other afferent connections in the network (rank, $p-value=$,), and exceptionally low to their input gates (rank, $p-value$). 
 
-To explore the interaction between the syntax and LR-number units, we now look into the connectivity of the network, with a focus on the connection weights among these units. Note that for each pair of units there are four types of connection corresponding to the four types of gates: suggestion, input, forget and output gates. Each type of weight can thus contribute to a different type of interaction, depending on the function of the gate. Figure X shows the distribution of all afferent (top-left) and efferent (bottom-right) recurrent weights of units 776, 988 and 1150, for both input and forget gates (panels A\&B), and the tables show all weight values among the three units. In addition, we visualized the interactions among all units in networks in the following way: for each type of gate $g$ and a pair of units $i$ and $j$, we defined an interaction distance as: $d_{ij}=e^{-\max{\{|W_{ji}^{g}|, |W_{ij}^{g}|\}}}$. That is, the stronger the interaction between unit $i$ and $j$ is the closer these units are. The maximal possible distance is one, which corresponds to zero weights in both direction. Next, to visualize network interacitons, we projected all pairwise distances on the plane, using multi-dimensional scaling (MDS) (cite) (upper-right side of panels A\&B.).
+Since cell activity of the syntax unit is positive across the entire subject-verb dependency (e.g., figure \ref{fig:syntax-unit-double-subjrel}), the connectivity from the syntax unit drives the forget gate of the number units towards a value of one ($W^f_{776, 1150}h_{1150}>0$) and their input gates towards a value of zero ($W^i_{776, 1150}h_{1150}<0$). Looking at the r.h.s. of equation 1, this means that the first term becomes dominant and the second term goes to zero, suggesting that across the entire dependency the syntax unit conveys a \textit{'remembering signal'} to the number units, and, similarly, when the activity of the syntax unit becomes negative, the syntax unit conveys an \textit{'update signal'} to them both at the end of the dependency. 
 
-From the MDS results, it is apparent that the interaction distances between the syntax and LR-number units are relatively small compared to the average distance in the network. This corresponds to both types of weights from the syntax unit 1150 to the LR-number units, which are exceptionally high compared to all afferent connections to the forget gates of the number units (rank, $p-value=$,), and exceptiaonlly low to their input gates (rank, $p-value$). This means that when the activity of the syntax unit is relatively high $h_1150 > 0$ the syntax unit is driving the forget gate of the number units towards a value of one (since, $W^f_{776, 1150}h_1150>0$) and their input gates towards a value of zero ($W^i_{776, 1150}h_1150<0$). Looking at the r.h.s. of equation X.X, this means that the first term becomes dominante and the second term goes to zero, meaning that in this way the syntax unit conveys a \textit{'remembering signal'} to the LR-number units, that is, to ignore any coming input and to keep the (number) information stored in the cell. similarly, when $h_1150<0$, the syntax unit conveys an 'updating signal' to the LR-number units, that is, to forget the stored number information in the cell and to refresh it with the new cell-suggestion value. Indeed, as shown in section 5.2, $h_1150$ is positive during the embedded phrase within the subject-verb dependency, which then changes abruptly to a negative value at the time point of the main verb. This is in accordance with the interpretation that the syntax unit 1150 controls the storage and update of grammatical-number information in the LR-number units - throughout the processing of the embedded phrase within the subject-verb dependency the syntax unit propagtes a 'remembering signal' to the LR-number units, and only when the main verb appears it signals to these units that it is time to forget the stored number infromation and update it. 
-
-We also note that the weight values between the two LR-number units are significanly high compared to all other afferent connections. Given that their output activity $h_776$ and $h_988$ is negative during the storage of number information (Figure 2), this means that these units are \textit{mutually inhibiting}. In other words, when the singular unit stores the information that the subject is currently singular it inhibits the activity of the plural unit, and vice versa in the case of a plural subject. This seems to warrant an unequivocal signal about the grammatical number of the subject to the output layer.
+Last, we note that the weight values between the two LR-number units are significantly high compared to all other afferent connections. Since their activity of both units is negative across the dependency (Figure \ref{fig:singular-unit} and \ref{fig:plural-unit}), this means that they are \textit{mutually inhibiting}, thus warranting an unequivocal signal about the grammatical number of the subject to the output layer.
