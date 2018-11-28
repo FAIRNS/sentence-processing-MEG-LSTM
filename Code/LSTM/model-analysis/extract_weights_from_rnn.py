@@ -15,6 +15,9 @@ parser.add_argument('-model', type=str, help='Meta file stored once finished tra
 parser.add_argument('-o', '--output', help='Destination for the output weights')
 parser.add_argument('-fu', '--from-units', nargs='+', type=int, default=[], help='Weights FROM which units (counting from zero)')
 parser.add_argument('-tu', '--to-units', nargs='+', type=int, default=[], help='Weights TO which units (counting from zero)')
+parser.add_argument('-sr', '--short-range', nargs='+', type=int, default=[], help='list of short-range numebr units')
+parser.add_argument('-lr', '--long-range', nargs='+', type=int, default=[], help='list of long-range numebr units')
+parser.add_argument('-sy', '--syntax', nargs='+', type=int, default=[], help='list of syntax units')
 parser.add_argument('--no-mds', action='store_true', default=False)
 args = parser.parse_args()
 
@@ -142,11 +145,20 @@ def generate_mds_for_connectivity(curr_ax, weights, layer, gate, from_units, to_
     # fig_mds, ax = plt.subplots(figsize=(40, 30))
     for i in range(650):
         c = 'k'; label = 'unidentified'; s = 5; fontweight = 'light'
-        if i in [1149-650]:
-            c = 'b'; label = 'syntax unit'; s = 12; fontweight = 'bold'
-        elif i in [769-650, 775-650, 987-650]:
+        if i in [u-650 for u in args.syntax]:
+            c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
+        elif i in [u-650 for u in args.short_range]:
+            c = 'm'; label = 'LR unit'; s = 12; fontweight = 'bold'
+        elif i in [u-650 for u in args.long_range]:
+            c = 'c'; label = 'number unit'; s = 12; fontweight = 'bold'
+        elif i == 987-650:
             c = 'r'; label = 'number unit'; s = 12; fontweight = 'bold'
-        curr_ax.text(pos[i, 0], pos[i, 1], str(i + layer*650), color=c, label=label, size=s, fontweight=fontweight)
+        elif i == 775-650:
+            c = 'b'; label = 'number unit'; s = 12; fontweight = 'bold'
+        elif i == 1149-650:
+            c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
+
+        curr_ax.text(pos[i, 0], pos[i, 1], str(1 + i + layer*650), color=c, label=label, size=s, fontweight=fontweight)
         curr_ax.set_xlim(np.min(pos[:, 0]), np.max(pos[:, 0]))
     curr_ax.set_ylim(np.min(pos[:, 1]), np.max(pos[:, 1]))
     curr_ax.axis('off')
@@ -206,8 +218,8 @@ to_units_l1 = [u - 650 for u in args.to_units if u > 649]  # units 651-1300 (650
 
 ############## Generate a figure for each gate with connectivity table, weights dists, and MDS
 bar_width = 0.4
-rowLabels = [str(u) for u in args.from_units]
-colLabels = [str(u) for u in args.to_units]
+rowLabels = [str(u+1) for u in args.from_units]
+colLabels = [str(u+1) for u in args.to_units]
 for gate in range(4):
     colors = []
     # Create a table at the bottom-left of the figure
@@ -218,9 +230,21 @@ for gate in range(4):
     for i, from_unit in enumerate(args.from_units):
         # Plot right distribution
         all_weights_from_curr_unit = model.rnn.weight_hh_l1.data[gate * 650:(gate + 1) * 650, from_unit - 650].numpy()
+        top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_from_curr_unit)))[0:5]
+        top_5_weights = all_weights_from_curr_unit[top_5_units-650]
+        print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights from unit ' + str(from_unit), top_5_units, top_5_weights)
         colors_row = []
         for j, to_unit in enumerate(args.to_units):
             all_weights_to_curr_unit = model.rnn.weight_hh_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+            if i == len(args.from_units)-1:
+                top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:5]
+                top_5_weights = all_weights_to_curr_unit[top_5_units - 650]
+                print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights to unit ' + str(to_unit), top_5_units, top_5_weights)
+                weights = model.rnn.weight_ih_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+                top_5_units = np.argsort(np.negative(np.absolute(weights)))[0:5]
+                top_5_weights = weights[top_5_units]
+                print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights to unit ' + str(to_unit), top_5_units, top_5_weights)
+
             # Plot top distributions
             if i == 0:
                 jitter_to.append(np.random.random(all_weights_to_curr_unit.size) * bar_width - 3 * bar_width / 4)
@@ -282,88 +306,78 @@ for gate in range(4):
     print('Figures saved to: ' + os.path.join(dirname, 'gate_' + gate_names[gate] + '_' + basename))
     # print(the_table.get_window_extent('Agg'))
 
+    ############# Re-generate the figure but only with afferent distributions
+    # Create a table at the bottom-left of the figure
+    colors = []
+    bar_width = 0.4
+    fig, ax1 = plt.subplots(1, figsize = (10, 5)) # Top-left distrubtions
+    cell_text = np.empty((len(args.from_units), len(args.to_units)))
+    jitter_to = []; jitter_from = []
+    for i, from_unit in enumerate(args.from_units):
+        # Plot right distribution
+        all_weights_from_curr_unit = model.rnn.weight_hh_l1.data[gate * 650:(gate + 1) * 650, from_unit - 650].numpy()
+        top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_from_curr_unit)))[0:5]
+        top_5_weights = all_weights_from_curr_unit[top_5_units-650]
+        colors_row = []
+        for j, to_unit in enumerate(args.to_units):
+            all_weights_to_curr_unit = model.rnn.weight_hh_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+            if i == len(args.from_units)-1:
+                top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:5]
+                top_5_weights = all_weights_to_curr_unit[top_5_units - 650]
+                weights = model.rnn.weight_ih_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+                top_5_units = np.argsort(np.negative(np.absolute(weights)))[0:5]
+                top_5_weights = weights[top_5_units]
 
-##########################################################################
+            # Plot top distributions
+            if i == 0:
+                jitter_to.append(np.random.random(all_weights_to_curr_unit.size) * bar_width - 2 * bar_width / 4)
+                ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3)
+            curr_weight = get_weight_between_two_units(model, gate, from_unit, to_unit)
+            cell_text[i, j] = '%1.2f' % curr_weight
 
-old_figs = False
-if old_figs:
+            # If weight is outlier color it in table and dists
+            outlier_to, outlier_from = check_if_weight_is_outlier(curr_weight, all_weights_to_curr_unit,
+                                                                  all_weights_from_curr_unit)
+            if outlier_to and i!=j:
+                colors_row.append('#56b5fd')
+                IX_to = np.where(all_weights_to_curr_unit == curr_weight)
+                if from_unit == 1149 and i!=j:
+                    ax1.scatter(j, curr_weight, color='r', s=3)
+                    ax1.text(j, curr_weight, str(from_unit+1) + '-' + str(to_unit+1), fontsize=16)
+            else:
+                colors_row.append('w')
 
-    # generate unit lists per layer
-    from_units_l0 = [u for u in args.from_units if u < 650]  # units 1-650 (0-649) in layer 0 (l0)
-    from_units_l1 = [u - 650 for u in args.from_units if u > 649]  # units 651-1300 (650-1299) in layer 1 (l1)
-    to_units_l0 = [u for u in args.to_units if u < 650]  # units 1-650 (0-649) in layer 0 (l0)
-    to_units_l1 = [u - 650 for u in args.to_units if u > 649]  # units 651-1300 (650-1299) in layer 1 (l1)
+            # if outlier_from and i!=j:
+            #     IX_from = np.where(all_weights_from_curr_unit == curr_weight)
+            #     colors_row.append('w')
+            # else:
+            #     colors_row.append('w')
+        colors.append(colors_row)
+    print(colors)
+    the_table = ax1.table(cellText=cell_text,
+                          rowLabels=rowLabels,
+                          colLabels=colLabels, rowLoc='center', cellColours=colors,
+                          loc='bottom')
+    the_table.set_fontsize(10)
+    for cell in the_table._cells:
+        the_table._cells[cell]._loc = 'center'
+        if cell[0]==0 or cell[1]==-1: # make bold the row and colLabels
+            the_table._cells[cell].set_text_props(weight='bold')
+        if cell[0] == cell[1]+1: the_table._cells[cell]._text.set_color('w')
 
-    # collect weights for each of the three cases (l0-l0, l1-l1, l0-l1):
-    # gates order in model.rnn.weight.data tensor: w_hi, w_hf, w_hc, w_ho
-    recurrent_weights_l0, recurrent_weights_l0_names = extract_weights_from_nn(model, 'weight_hh_l0', from_units_l0, to_units_l0)
-    recurrent_weights_l1, recurrent_weights_l1_names = extract_weights_from_nn(model, 'weight_hh_l1', from_units_l1, to_units_l1)
-    forward_weights_l0_l1, forward_weights_l0_l1_names = extract_weights_from_nn(model, 'weight_ih_l1', from_units_l0, to_units_l1)
-
-    # save weights to output file
-    with open(os.path.join('Output', args.output), 'wb') as fout:
-        pickle.dump([recurrent_weights_l0, recurrent_weights_l1, forward_weights_l0_l1], fout, -1)
-    print('Weights save into a pickle: ' + os.path.join('Output', args.output))
-
-    # for each gate and for each of the three cases above, extract ALL weights in the network and plot corresponding hists:
-    fig, axes = plt.subplots(3, 4, figsize=[30, 20])
-    arrow_dy = 10000 # arrow length
-    gate_names = ['Input', 'Forget', 'Cell', 'Output']
-    recurrent_weights_l0_all = []; recurrent_weights_l1_all = []; forward_weights_l0_l1_all = []
-    for gate in range(4): # loop over the four gates (columns in the final figure)
-        # Extract weights among ALL units:
-        recurrent_weights_l0_all.append(model.rnn.weight_hh_l0.data[range(gate * 650, (gate + 1) * 650), :].numpy())
-        recurrent_weights_l1_all.append(model.rnn.weight_hh_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
-        forward_weights_l0_l1_all.append(model.rnn.weight_ih_l1.data[range(gate * 650, (gate + 1) * 650), :].numpy())
-
-        for unit in from_units_l1:
-            recurrent_weights_l1_from_curr_unit = model.rnn.weight_hh_l1.data[gate*650:(gate+1)*650, unit].numpy()
-            units_with_highest_neg_proj_from_curr_unit = 650 + np.argsort(recurrent_weights_l1_from_curr_unit)
-            units_with_highest_pos_proj_from_curr_unit = 650 + np.argsort(np.negative(recurrent_weights_l1_from_curr_unit))
-            print('Gate ' + str(gate) + ' - units with highest neg/pos weights FROM ' + str(unit+650) + ':')
-            print(units_with_highest_neg_proj_from_curr_unit[0:10])
-            print(units_with_highest_pos_proj_from_curr_unit[0:10])
-            print('\n')
-
-        for unit in to_units_l1:
-            recurrent_weights_l1_to_curr_unit = model.rnn.weight_hh_l1.data[(unit-650)+gate * 650, :].numpy()
-            units_with_highest_neg_proj_to_curr_unit = 650 + np.argsort(recurrent_weights_l1_to_curr_unit)
-            units_with_highest_pos_proj_to_curr_unit = 650 + np.argsort(np.negative(recurrent_weights_l1_to_curr_unit))
-            print('Gate ' + str(gate) + ' - units with highest neg/pos weights TO ' + str(unit+650) + ':')
-            print(units_with_highest_neg_proj_to_curr_unit[0:10])
-            print(units_with_highest_pos_proj_to_curr_unit[0:10])
-            print('\n')
-
-
-
-        # Plot the hist of all weights and add arrows for the weight values of specific units (e.g., number or syntax units)
-        plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l0_all, recurrent_weights_l0, recurrent_weights_l0_names, 0, gate, arrow_dy=10000)
-        plot_hist_all_weights_with_arrows_for_units_of_interest(axes, recurrent_weights_l1_all, recurrent_weights_l1, recurrent_weights_l1_names, 1, gate, arrow_dy=10)
-        plot_hist_all_weights_with_arrows_for_units_of_interest(axes, forward_weights_l0_l1_all, forward_weights_l0_l1, forward_weights_l0_l1_names, 2, gate, arrow_dy=10000)
-
-    plt.savefig(os.path.join('Figures', args.output + '.png'))
-    plt.close(fig)
-    print('Hists were saved to: ' + os.path.join('Figures', args.output + '.png'))
+    # the_table.scale(1.5, 1.5)
 
 
-    #### ------------ Visualize weight matrix with MDS ----------------
-    generate_MDS = False
-    if generate_MDS:
-        generate_mds_for_connectivity(recurrent_weights_l0_all, 0, 0, from_units_l0, to_units_l0) # input
-        generate_mds_for_connectivity(recurrent_weights_l0_all, 0, 1, from_units_l0, to_units_l0) # forget
-        generate_mds_for_connectivity(recurrent_weights_l0_all, 0, 2, from_units_l0, to_units_l0) # cell
-        generate_mds_for_connectivity(recurrent_weights_l0_all, 0, 3, from_units_l0, to_units_l0) # output
-        generate_mds_for_connectivity(recurrent_weights_l1_all, 1, 0, from_units_l1, to_units_l1) # input
-        generate_mds_for_connectivity(recurrent_weights_l1_all, 1, 1, from_units_l1, to_units_l1) # forget
-        generate_mds_for_connectivity(recurrent_weights_l1_all, 1, 2, from_units_l1, to_units_l1) # cell
-        generate_mds_for_connectivity(recurrent_weights_l1_all, 1, 3, from_units_l1, to_units_l1) # output
+    ### cosmetics
+    ax1.get_xaxis().set_visible(False)
+    ax1.set_ylabel('Afferent weight', fontsize=16)
+    plt.subplots_adjust(bottom=0.2)
+    # ax1.set_title(gate_names[gate])
 
-    #### ------------ Visualize adjacency matrix with networkX----------------
-    # plot_graph_for_connectivity(recurrent_weights_l0_all, 0, 0, from_units_l0, to_units_l0)
-    generate_graph = False
-    if generate_graph:
-        plot_graph_for_connectivity(recurrent_weights_l1_all, 1, 0, from_units_l1, to_units_l1)
-        plot_graph_for_connectivity(recurrent_weights_l1_all, 1, 1, from_units_l1, to_units_l1)
-        plot_graph_for_connectivity(recurrent_weights_l1_all, 1, 2, from_units_l1, to_units_l1)
-        plot_graph_for_connectivity(recurrent_weights_l1_all, 1, 3, from_units_l1, to_units_l1)
-
+    ### Save figure
+    dirname = os.path.dirname(args.output)
+    basename = os.path.basename(args.output)
+    fig.savefig(os.path.join(dirname, 'gate_' + gate_names[gate] + '_afferent_' + basename))
+    fig.savefig(os.path.join(dirname, 'gate_' + gate_names[gate] + '_afferent_' + basename[:-4]+'.pdf'))
+    print('Figures saved to: ' + os.path.join(dirname, 'gate_' + gate_names[gate] + '_' + basename))
+    # print(the_table.get_window_extent('Agg'))

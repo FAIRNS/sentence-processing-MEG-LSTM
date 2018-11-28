@@ -45,12 +45,14 @@ def generate_epochs_object(data, sampling_rate = 1):
 
 
 def get_scores_from_gat(epochs):
+    from sklearn.svm import LinearSVC
     X_train, X_test, y_train, y_test = train_test_split(epochs.get_data(), epochs.events[:, 2] == 2, test_size=0.2,
                                                         random_state=42)
-    clf = make_pipeline(StandardScaler(), LogisticRegression())
-    time_gen = GeneralizingEstimator(clf, scoring='roc_auc', n_jobs=1)
+    # clf = make_pipeline(StandardScaler(), LogisticRegression())
+    clf2 = LinearSVC(random_state=0, tol=1e-5, penalty='l2')
+    time_gen = GeneralizingEstimator(clf2, scoring='roc_auc', n_jobs=1)
     time_gen.fit(X_train, y_train)
-    scores = time_gen.score(X_train, y_train)
+    scores = time_gen.score(X_test, y_test)
 
     from sklearn.svm import LinearSVC
     clf2 = LinearSVC(random_state=0, tol=1e-5, penalty='l2')
@@ -118,7 +120,7 @@ def add_gat_matrix(ax1, ax2, data, omit_units, title, first_in_row=True, last_ro
                 ax2.get_yaxis().set_visible(False)
     else:
         scores_reduced_model_all = []
-        number_units = [702, 769, 775, 847, 987, 1282]
+        number_units = []# [769, 775, 847, 987, 1282]
         for unit in list(set(range(650, 1300)) - set(number_units)):
             print('unit ' + str(unit))
             omit_units = list(set(range(data.shape[1])) - set([unit]))
@@ -128,7 +130,33 @@ def add_gat_matrix(ax1, ax2, data, omit_units, title, first_in_row=True, last_ro
             scores_reduced_model_all.append(scores_reduced_model[1, :])
         scores_reduced_model_all = np.vstack(scores_reduced_model_all)
         # Add to 1d figure
-        ax1.errorbar(x=range(scores_reduced_model.shape[1]), y=np.mean(scores_reduced_model_all, axis=0), yerr=np.std(scores_reduced_model_all, axis=0), linewidth=3, label=title, color='k')
+        ax1.errorbar(x=range(scores_reduced_model.shape[1]), y=np.mean(scores_reduced_model_all, axis=0), yerr=np.std(scores_reduced_model_all, axis=0), linewidth=0.5, label=title, color='k')
+
+        # ###### plot dist of scores
+        fig3, ax3 = plt.subplots(1)
+        bar_width = 0.1
+        scores_single_unit_on_subject_number = np.asarray(scores_reduced_model_all[:, 1])
+        scores_single_unit_on_second_noun_number = np.asarray(scores_reduced_model_all[:, 4])
+        for u, unit_num in enumerate(list(set(range(650, 1300)) - set(number_units))):
+            jitter = np.random.random(1) * bar_width - 3 * bar_width / 4
+            ax3.scatter(1 + jitter, scores_single_unit_on_subject_number[u], s=3)
+            ax3.scatter(2 + jitter, scores_single_unit_on_second_noun_number[u], s=3)
+        ax3.set_ylabel('AUC', fontsize=16)
+        ax3.set_xlim((0.5, 2.5))
+        ax3.set_ylim((-0.1, 1.1))
+        ax3.set_xticks([1, 2])
+        ax3.set_xticklabels(['Subject', '2nd noun'])
+        path2figures, filename = os.path.split(args.output_file_name)
+        fig3.savefig(os.path.join(path2figures, 'AUCdist_' + filename))
+
+        print('Units with highest AUC on subject:')
+        print([(i+650, j) for (i, j) in zip(np.transpose(np.argsort(np.negative(scores_single_unit_on_subject_number)))[0:20],
+                                        np.transpose(-np.sort(np.negative(scores_single_unit_on_subject_number)))[0:20])])
+
+        print('Units with highest AUC on second noun but trained on subject:')
+        print([(i + 650, j) for (i, j) in
+               zip(np.transpose(np.argsort(np.negative(scores_single_unit_on_second_noun_number)))[0:20],
+               np.transpose(-np.sort(np.negative(scores_single_unit_on_second_noun_number)))[0:20])])
 
     return im
 

@@ -36,7 +36,6 @@ parser.add_argument('-k', '--kbow-value', default=2, type=int)
 
 
 args = parser.parse_args()
-print(args.cuda)
 if args.perplexity and 'lstm' not in args.get_representations:
     args.get_representations.append('lstm')
 elif not args.perplexity and len(args.get_representations) == 0:
@@ -61,7 +60,10 @@ print('Loading models...', file=sys.stderr)
 sentence_length = [len(s) for s in sentences]
 max_length = max(*sentence_length)
 import lstm
-model = torch.load(args.model)
+if not args.cuda:
+    model = torch.load(args.model, map_location='cpu')
+else:
+    model = torch.load(args.model)
 #model.rnn.flatten_parameters()
 # hack the forward function to send an extra argument containing the model parameters
 model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
