@@ -1,5 +1,14 @@
 \subsection{Syntax units}
-The previous section described how the input and forget gate of the singular and plural units control the storage of subject number in the cell. It remains unclear, however, how are the dynamics of these gates controlled by the network. We hypothesized that other units in the network may encode information about the syntactic structure of the sentence, and in particular, encode information regarding the subject-verb dependency. To explore this, we tested whether syntactic information can be decoded from other units in the network, by using the depth of the syntactic tree as a proxy for syntactic structure \yair{cite Nelson et. al 2017} and testing whether this information can be decoded from the pattern of activity of the network (section \ref{ssec:regress_model}). 
+The previous section described how the input and forget gate of the singular and plural units control the storage of subject number in the cell. It remains unclear, however, how are the dynamics of these gates controlled by the network. We hypothesized that other units in the network may encode information about the syntactic structure of the sentence, and in particular, encode information regarding the subject-verb dependency. To explore this, we tested whether syntactic information can be decoded from other units in the network, by using the depth of the syntactic tree as a proxy for syntactic structure \yair{cite Nelson et. al 2017} and testing whether this information can be decoded from the pattern of activity of the network.
+
+Specifically, we trained an L1 and L2-regularized regression models to
+predict syntactic tree-depth from the hidden-state activity of all
+units, using a nested 5-fold cross-validation procedure. The optimal
+regularization size was determined from a separated validation set
+\yair{report lambda values}. Word position and tree-depth were
+decorrelated before training the models (section~\ref{sec:the_data})
+and word-frequency was added as a covariate to the model. All findings
+below were consistent across the two types of regularizations.
 
 We found that syntactic tree-depth can be efficiently decoded from network activity \yair{mean R-squared + std}, and that a small subset of units resulted with relatively high weights \yair{number of units; outlier detection mean + 3std}, to which we will refer as syntax units. The syntax units were found to be crucial for accomplishing the NA-task, since ablating them resulted in significant performance reduction compared to 1000 random ablations of subsets of units of the same size ($p-value=0.024$), as seen in figure \ref{fig:ablation-syntax}. 
 
