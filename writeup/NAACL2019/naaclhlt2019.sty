@@ -1,23 +1,22 @@
-% File naacl2016.sty
-% September 4, 2015
-% Contact: margarmitchell@gmail.com
+% This is the LaTex style file for NAACL 2019, based off of ACL 2018 and NAACL 2018.
+% Addressing bibtex issues mentioned in https://github.com/acl-org/acl-pub/issues/2
+% Other major modifications include
+% changing the color of the line numbers to a light gray; changing font size of abstract to be 10pt; changing caption font size to be 10pt.
+% -- M Mitchell and Stephanie Lukin
 
-% This is the LaTeX style file for NAACL HLT 2016.  
-% Changes from previous years include:
-% (1) Line numbers and confidentiality header for paper submissions
-% (2) Bold-facing Title/Figure labels in captions
-% (3) Shortening abovecaptionskip (from 10\p@ to 3\p@)
-% Other than that,  it is nearly identical to the
-% style files for NAACL HLT 2015, NAACL HLT 2012, NAACL HLT 2010, 
-% ACL 2005, ACL 2002, ACL 2001, ACL 2000, EACL 95 and EACL 99. 
-% -- Margaret Mitchell, 4th September 2015
+% 2017: modified to support DOI links in bibliography.  Now uses
+% natbib package rather than defining citation commands in this file.
+% Use with acl_natbib.bst bib style.  -- Dan Gildea
 
-% October 11, 2004
-% Contact: oflazer@sabanciuniv.edu
-% This is the LaTeX style file for NAACL HLT 2012.  It is nearly identical to the
-% style files for NAACL HLT 2010, 
-% ACL 2005, ACL 2002, ACL 2001, ACL 2000, EACL 95 and EACL 99. 
+% This is the LaTeX style for ACL 2016. It contains Margaret Mitchell's
+% line number adaptations (ported by Hai Zhao and Yannick Versley).
+
+% It is nearly identical to the style files for ACL 2015,
+% ACL 2014, EACL 2006, ACL2005, ACL 2002, ACL 2001, ACL 2000,
+% EACL 95 and EACL 99. 
 %
+% Changes made include: adapt layout to A4 and centimeters, widen abstract
+
 % This is the LaTeX style file for ACL 2000.  It is nearly identical to the
 % style files for EACL 95 and EACL 99.  Minor changes include editing the
 % instructions to reflect use of \documentclass rather than \documentstyle
@@ -33,6 +32,22 @@
 % prepared by Fernando Pereira and others and some minor changes 
 % by Paul Jacobs.
 
+% Papers prepared using the aclsub.sty file and acl.bst bibtex style
+% should be easily converted to final format using this style.  
+% (1) Submission information (\wordcount, \subject, and \makeidpage)
+% should be removed.
+% (2) \summary should be removed.  The summary material should come
+% after \maketitle and should be in the ``abstract'' environment
+% (between \begin{abstract} and \end{abstract}).
+% (3) Check all citations.  This style should handle citations correctly
+% and also allows multiple citations separated by semicolons.
+% (4) Check figures and examples.  Because the final format is double-
+% column, some adjustments may have to be made to fit text in the column
+% or to choose full-width (\figure*} figures.
+
+% Place this in a file called aclap.sty in the TeX search path.  
+% (Placing it in the same directory as the paper should also work.)
+
 % Prepared by Peter F. Patel-Schneider, liberally using the ideas of
 % other style hackers, including Barbara Beeton.
 % This style is NOT guaranteed to work.  It is provided in the hope
@@ -42,65 +57,95 @@
 % improvements, etc.  please let me know.  My e-mail address is:
 %       pfps@research.att.com
 
-% Papers are to be prepared using the ``acl'' bibliography style,
-% e.g.:
+% Papers are to be prepared using the ``acl_natbib'' bibliography style,
+% as follows:
 %       \documentclass[11pt]{article}
-%       \usepackage{naacl}
+%       \usepackage{acl2000}
 %       \title{Title}
 %       \author{Author 1 \and Author 2 \\ Address line \\ Address line \And
 %               Author 3 \\ Address line \\ Address line}
 %       \begin{document}
 %       ...
 %       \bibliography{bibliography-file}
-%       \bibliographystyle{naacl}
+%       \bibliographystyle{acl_natbib}
 %       \end{document}
 
-\typeout{Conference Style for NAACL-HLT 2016 -- released October 13, 2015}
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a seperate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+% If the title and author information does not fit in the area allocated,
+% place \setlength\titlebox{<new height>} right after
+% \usepackage{acl2015}
+% where <new height> can be something larger than 5cm
+
+% include hyperref, unless user specifies nohyperref option like this:
+% \usepackage[nohyperref]{naaclhlt2018}
+\newif\ifacl@hyperref
+\DeclareOption{hyperref}{\acl@hyperreftrue}
+\DeclareOption{nohyperref}{\acl@hyperreffalse}
+\ExecuteOptions{hyperref} % default is to use hyperref
+\ProcessOptions\relax
+\ifacl@hyperref
+  \RequirePackage{hyperref}
+  \usepackage{xcolor}		% make links dark blue
+  \definecolor{darkblue}{rgb}{0, 0, 0.5}
+  \hypersetup{colorlinks=true,citecolor=darkblue, linkcolor=darkblue, urlcolor=darkblue}
+\else
+  % This definition is used if the hyperref package is not loaded.
+  % It provides a backup, no-op definiton of \href.
+  % This is necessary because \href command is used in the acl_natbib.bst file.
+  \def\href#1#2{{#2}}
+\fi
+
+\typeout{Conference Style for NAACL-HLT 2019}
+%\typeout{Conference Style for ACL 2018}
 
 % NOTE:  Some laser printers have a serious problem printing TeX output.
 % These printing devices, commonly known as ``write-white'' laser
 % printers, tend to make characters too light.  To get around this
 % problem, a darker set of fonts must be created for these devices.
+%
 
-%% Physical page layout - slightly modified from IJCAI by pj %%
-%% US Letter version of pay layout
-\setlength\paperheight{11in}
-\setlength\paperwidth{8.5in}
-\setlength\topmargin{0.0in} 
-\setlength\oddsidemargin{-0.0in}
-\setlength\textheight{9.0in} 
-\setlength\textwidth{6.5in}
-\setlength\columnsep{0.2in}
-\newlength\titlebox
-\setlength\titlebox{2.25in}
-\setlength\headheight{0pt}   
+\newcommand{\Thanks}[1]{\thanks{\ #1}}
+
+% A4 modified by Eneko; again modified by Alexander for 5cm titlebox
+\setlength{\paperwidth}{21cm}   % A4
+\setlength{\paperheight}{29.7cm}% A4
+\setlength\topmargin{-0.5cm}    
+\setlength\oddsidemargin{0cm}   
+\setlength\textheight{24.7cm} 
+\setlength\textwidth{16.0cm}
+\setlength\columnsep{0.6cm}  
+\newlength\titlebox 
+\setlength\titlebox{5cm}
+\setlength\headheight{5pt}   
 \setlength\headsep{0pt}
-\setlength\footskip{0pt}
-\thispagestyle{empty}      
+\thispagestyle{empty}        
 \pagestyle{empty}
+
+
 \flushbottom \twocolumn \sloppy
 
-%% A4 version of page layout
-%\setlength\topmargin{-0.45cm}    % changed by Rz  -1.4
-%\setlength\oddsidemargin{.8mm}   % was -0cm, changed by Rz
-%\setlength\textheight{23.5cm} 
-%\setlength\textwidth{15.8cm}
-%\setlength\columnsep{0.6cm}  
-%\newlength\titlebox 
-%\setlength\titlebox{2.00in}
-%\setlength\headheight{5pt}   
-%\setlength\headsep{0pt}
-%%\setlength\footheight{0pt}
-%\setlength\footskip{0pt}
-%\thispagestyle{empty}        
-%\pagestyle{empty}
+% We're never going to need a table of contents, so just flush it to
+% save space --- suggested by drstrip@sandia-2
+\def\addcontentsline#1#2#3{}
 
-
-%%%% ----- Begin settings for placing additional items into the submitted version --MM ----- %%%%
-
-\newif\ifnaaclfinal
-\naaclfinalfalse
-\def\naaclfinalcopy{\global\naaclfinaltrue}
+\newif\ifaclfinal
+\aclfinalfalse
+\def\aclfinalcopy{\global\aclfinaltrue}
 
 %% ----- Set up hooks to repeat content on every page of the output doc, 
 %% necessary for the line numbers in the submitted version.  --MM
@@ -125,36 +170,36 @@
 %% 
 %% Happy users are requested to send [Martin] a postcard. :-)
 %%
-\newcommand{\@EveryShipout@Hook}{}
-\newcommand{\@EveryShipout@AtNextHook}{}
-\newcommand*{\EveryShipout}[1]
-   {\g@addto@macro\@EveryShipout@Hook{#1}}
-\newcommand*{\AtNextShipout}[1]
-   {\g@addto@macro\@EveryShipout@AtNextHook{#1}}
-\newcommand{\@EveryShipout@Shipout}{%
-   \afterassignment\@EveryShipout@Test
+\newcommand{\@EveryShipoutACL@Hook}{}
+\newcommand{\@EveryShipoutACL@AtNextHook}{}
+\newcommand*{\EveryShipoutACL}[1]
+   {\g@addto@macro\@EveryShipoutACL@Hook{#1}}
+\newcommand*{\AtNextShipoutACL@}[1]
+   {\g@addto@macro\@EveryShipoutACL@AtNextHook{#1}}
+\newcommand{\@EveryShipoutACL@Shipout}{%
+   \afterassignment\@EveryShipoutACL@Test
    \global\setbox\@cclv= %
    }
-\newcommand{\@EveryShipout@Test}{%
+\newcommand{\@EveryShipoutACL@Test}{%
    \ifvoid\@cclv\relax
-      \aftergroup\@EveryShipout@Output
+      \aftergroup\@EveryShipoutACL@Output
    \else
-      \@EveryShipout@Output
+      \@EveryShipoutACL@Output
    \fi%
    }
-\newcommand{\@EveryShipout@Output}{%
-   \@EveryShipout@Hook%
-   \@EveryShipout@AtNextHook%
-      \gdef\@EveryShipout@AtNextHook{}%
-   \@EveryShipout@Org@Shipout\box\@cclv%
+\newcommand{\@EveryShipoutACL@Output}{%
+   \@EveryShipoutACL@Hook%
+   \@EveryShipoutACL@AtNextHook%
+      \gdef\@EveryShipoutACL@AtNextHook{}%
+   \@EveryShipoutACL@Org@Shipout\box\@cclv%
    }
-\newcommand{\@EveryShipout@Org@Shipout}{}
-\newcommand*{\@EveryShipout@Init}{%
+\newcommand{\@EveryShipoutACL@Org@Shipout}{}
+\newcommand*{\@EveryShipoutACL@Init}{%
    \message{ABD: EveryShipout initializing macros}%
-   \let\@EveryShipout@Org@Shipout\shipout
-   \let\shipout\@EveryShipout@Shipout
+   \let\@EveryShipoutACL@Org@Shipout\shipout
+   \let\shipout\@EveryShipoutACL@Shipout
    }
-\AtBeginDocument{\@EveryShipout@Init}
+\AtBeginDocument{\@EveryShipoutACL@Init}
 
 %% ----- Set up for placing additional items into the submitted version --MM
 %%
@@ -176,7 +221,7 @@
 %% In contrast to the original, we do not include the definitions for/using:
 %% gridpicture, div[2], isMEMOIR[1], gridSetup[6][], subgridstyle{dotted}, labelfactor{}, gap{}, gridunitname{}, gridunit{}, gridlines{\thinlines}, subgridlines{\thinlines}, the {keyval} package, evenside margin, nor any definitions with 'color'.
 %%
-%% These are beyond  what is needed for the NAACL style.
+%% These are beyond  what is needed for the NAACL/ACL style.
 %%
 \newcommand\LenToUnit[1]{#1\@gobble}
 \newcommand\AtPageUpperLeft[1]{%
@@ -233,7 +278,7 @@
     \fi
   \egroup
 }
-\EveryShipout{\@ShipoutPicture}
+\EveryShipoutACL{\@ShipoutPicture}
 \newif\ifESO@dvips\ESO@dvipsfalse 
 \newif\ifESO@grid\ESO@gridfalse
 \newif\ifESO@texcoord\ESO@texcoordfalse
@@ -256,9 +301,9 @@
 %% Define vruler %%
 
 %\makeatletter
-\newbox\naaclrulerbox
-\newcount\naaclrulercount
-\newdimen\naaclruleroffset
+\newbox\aclrulerbox
+\newcount\aclrulercount
+\newdimen\aclruleroffset
 \newdimen\cv@lineheight
 \newdimen\cv@boxheight
 \newbox\cv@tmpbox
@@ -276,36 +321,39 @@
 % \makevruler[<SCALE>][<INITIAL_COUNT>][<STEP>][<DIGITS>][<HEIGHT>]
 \def\makevruler[#1][#2][#3][#4][#5]{\begingroup\offinterlineskip
 \textheight=#5\vbadness=10000\vfuzz=120ex\overfullrule=0pt%
-\global\setbox\naaclrulerbox=\vbox to \textheight{%
+\global\setbox\aclrulerbox=\vbox to \textheight{%
 {\parskip=0pt\hfuzz=150em\cv@boxheight=\textheight
-\cv@lineheight=#1\global\naaclrulercount=#2%
+\color{gray}
+\cv@lineheight=#1\global\aclrulercount=#2%
 \cv@tot\cv@boxheight\divide\cv@tot\cv@lineheight\advance\cv@tot2%
 \cv@refno1\vskip-\cv@lineheight\vskip1ex%
-\loop\setbox\cv@tmpbox=\hbox to0cm{{\naaclhv\hfil\fillzeros[#4]\naaclrulercount}}%
+\loop\setbox\cv@tmpbox=\hbox to0cm{{\naaclhv\hfil\fillzeros[#4]\aclrulercount}}%
 \ht\cv@tmpbox\cv@lineheight\dp\cv@tmpbox0pt\box\cv@tmpbox\break
-\advance\cv@refno1\global\advance\naaclrulercount#3\relax
+\advance\cv@refno1\global\advance\aclrulercount#3\relax
 \ifnum\cv@refno<\cv@tot\repeat}}\endgroup}%
 %\makeatother
 
-\def\naaclpaperid{***}
-\def\confidential{NAACL 2016 Submission~\naaclpaperid.  Confidential review copy.  DO NOT DISTRIBUTE.}
+
+\def\aclpaperid{***}
+%\def\confidential{ACL 2018 Submission~\aclpaperid.  Confidential Review Copy.  DO NOT DISTRIBUTE.}
+\def\confidential{NAACL-HLT 2019 Submission~\aclpaperid.  Confidential Review Copy.  DO NOT DISTRIBUTE.}
 
 %% Page numbering, Vruler and Confidentiality %%
 % \makevruler[<SCALE>][<INITIAL_COUNT>][<STEP>][<DIGITS>][<HEIGHT>]
-\def\naaclruler#1{\makevruler[13.73pt][#1][1][3][\textheight]\usebox{\naaclrulerbox}}
-\def\leftoffset{-45pt}
-\def\rightoffset{500pt}
-\ifnaaclfinal\else\pagenumbering{arabic}
+\def\aclruler#1{\makevruler[14.17pt][#1][1][3][\textheight]\usebox{\aclrulerbox}}
+\def\leftoffset{-2.1cm} %original: -45pt
+\def\rightoffset{17.5cm} %original: 500pt
+\ifaclfinal\else\pagenumbering{arabic}
 \AddToShipoutPicture{%
-\ifnaaclfinal\else
+\ifaclfinal\else
 \AtPageLowishCenter{\thepage}
-\naaclruleroffset=\textheight
-\advance\naaclruleroffset4pt
-  \AtTextUpperLeft{%
-    \put(\LenToUnit{\leftoffset},\LenToUnit{-\naaclruleroffset}){%left ruler
-      \naaclruler{\naaclrulercount}}
-    \put(\LenToUnit{\rightoffset},\LenToUnit{-\naaclruleroffset}){%right ruler
-      \naaclruler{\naaclrulercount}}
+\aclruleroffset=\textheight
+\advance\aclruleroffset4pt
+  \AtTextUpperLeft{% 
+    \put(\LenToUnit{\leftoffset},\LenToUnit{-\aclruleroffset}){%left ruler
+      \aclruler{\aclrulercount}}
+    \put(\LenToUnit{\rightoffset},\LenToUnit{-\aclruleroffset}){%right ruler
+      \aclruler{\aclrulercount}}
   }
   \AtTextUpperLeft{%confidential
     \put(0,\LenToUnit{1cm}){\parbox{\textwidth}{\centering\naaclhv\confidential}}
@@ -315,25 +363,24 @@
 
 %%%% ----- End settings for placing additional items into the submitted version --MM ----- %%%%
 
-
-
 %%%% ----- Begin settings for both submitted and camera-ready version ----- %%%%
 
 %% Title and Authors %%
 
 \newcommand\outauthor{
     \begin{tabular}[t]{c}
-	\ifnaaclfinal 
+	\ifaclfinal 
 	     \bf\@author
 	\else 
 		% Avoiding common accidental de-anonymization issue. --MM
-     		\bf Anonymous NAACL submission
+        %\bf Anonymous ACL submission
+        \bf Anonymous NAACL submission
 	\fi
     \end{tabular}}
 
 % Changing the expanded titlebox for submissions to 2.5 in (rather than 6.5cm)
 % and moving it to the style sheet, rather than within the example tex file. --MM
-\ifnaaclfinal 
+\ifaclfinal 
 \else 
 	\addtolength\titlebox{.25in}
 \fi
@@ -365,15 +412,48 @@
   \vskip 0.3in plus 2fil minus 0.1in
 }}
 
-%% Abstract %%
+% margins and font size for abstract
+\renewenvironment{abstract}%
+		 {\centerline{\large\bf Abstract}%
+		  \begin{list}{}%
+		     {\setlength{\rightmargin}{0.6cm}%
+		      \setlength{\leftmargin}{0.6cm}}%
+		   \item[]\ignorespaces%
+		   \@setsize\normalsize{12pt}\xpt\@xpt
+		   }%
+		 {\unskip\end{list}}
+  
+%\renewenvironment{abstract}{\centerline{\large\bf  
+% Abstract}\vspace{0.5ex}\begin{quote}}{\par\end{quote}\vskip 1ex}
 
-\renewenvironment{abstract}{\centerline{\large\bf  
- Abstract}\vspace{0.5ex}\begin{quote} \small}{\par\end{quote}\vskip 1ex}
- 
-%% Bibliography %%
+% Resizing figure and table captions - SL
+\newcommand{\figcapfont}{\rm}
+\newcommand{\tabcapfont}{\rm}
+\renewcommand{\fnum@figure}{\figcapfont Figure \thefigure}
+\renewcommand{\fnum@table}{\tabcapfont Table \thetable}
+\renewcommand{\figcapfont}{\@setsize\normalsize{12pt}\xpt\@xpt}
+\renewcommand{\tabcapfont}{\@setsize\normalsize{12pt}\xpt\@xpt}	
+% Support for interacting with the caption, subfigure, and subcaption packages - SL
+\usepackage{caption}
+\DeclareCaptionFont{10pt}{\fontsize{10pt}{12pt}\selectfont}
+\captionsetup{font=10pt}
 
-% Change how the bibliography entries are displayed/spaced.
-\def\thebibliography#1{\small\vskip\parskip%
+\RequirePackage{natbib}
+% for citation commands in the .tex, authors can use:
+% \citep, \citet, and \citeyearpar for compatibility with natbib, or
+% \cite, \newcite, and \shortcite for compatibility with older ACL .sty files
+\renewcommand\cite{\citep}	% to get "(Author Year)" with natbib    
+\newcommand\shortcite{\citeyearpar}% to get "(Year)" with natbib    
+\newcommand\newcite{\citet}	% to get "Author (Year)" with natbib    
+
+
+% bibliography
+
+\def\@up#1{\raise.2ex\hbox{#1}}
+
+% Don't put a label in the bibliography at all.  Just use the unlabeled format
+% instead.
+\def\thebibliography#1{\vskip\parskip%
 \vskip\baselineskip%
 \def\baselinestretch{1}%
 \ifx\@currsize\normalsize\@normalsize\else\@currsize\fi%
@@ -382,82 +462,49 @@
 \section*{References\@mkboth
  {References}{References}}\list
  {}{\setlength{\labelwidth}{0pt}\setlength{\leftmargin}{\parindent}
- \setlength{\itemsep}{-0.5ex}
  \setlength{\itemindent}{-\parindent}}
  \def\newblock{\hskip .11em plus .33em minus -.07em}
  \sloppy\clubpenalty4000\widowpenalty4000
  \sfcode`\.=1000\relax}
 \let\endthebibliography=\endlist
 
-% Don't put a label in the bibliography at all.  
-% Just use the unlabeled format instead.
-\def\@lbibitem[#1]#2{\item[]\if@filesw 
-      { \def\protect##1{\string ##1\space}\immediate
-        \write\@auxout{\string\bibcite{#2}{#1}}\fi\ignorespaces}}
 
-\def\@bibitem#1{\item\if@filesw \immediate\write\@auxout
-       {\string\bibcite{#1}{\the\c@enumi}}\fi\ignorespaces}
+% Allow for a bibliography of sources of attested examples
+\def\thesourcebibliography#1{\vskip\parskip%
+\vskip\baselineskip%
+\def\baselinestretch{1}%
+\ifx\@currsize\normalsize\@normalsize\else\@currsize\fi%
+\vskip-\parskip%
+\vskip-\baselineskip%
+\section*{Sources of Attested Examples\@mkboth
+ {Sources of Attested Examples}{Sources of Attested Examples}}\list
+ {}{\setlength{\labelwidth}{0pt}\setlength{\leftmargin}{\parindent}
+ \setlength{\itemindent}{-\parindent}}
+ \def\newblock{\hskip .11em plus .33em minus -.07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\let\endthesourcebibliography=\endlist
 
-%% Citations %%
-
-% most of cite format was from aclsub.sty by SMS
-% don't box citations, separate with ; and a space
-% Replaced for multiple citations (pj) 
-% don't box citations and also add space, semicolon between multiple citations
-\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
-  \def\@citea{}\@cite{\@for\@citeb:=#2\do
-     {\@citea\def\@citea{; }\@ifundefined
-       {b@\@citeb}{{\bf ?}\@warning
-        {Citation `\@citeb' on page \thepage \space undefined}}%
- {\csname b@\@citeb\endcsname}}}{#1}}
-
-% Allow short (name-less) citations, when used in
-% conjunction with a bibliography style that creates labels like
-%       \citename{<names>, }<year>
-\let\@internalcite\cite
-\def\cite{\def\citename##1{##1, }\@internalcite}
-\def\shortcite{\def\citename##1{}\@internalcite}
-\def\newcite{\def\citename##1{{\frenchspacing##1} (}\@internalciteb}
-
-% Macros for \newcite, which leaves name in running text, and is
-% otherwise like \shortcite.
-\def\@citexb[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
-  \def\@citea{}\@newcite{\@for\@citeb:=#2\do
-    {\@citea\def\@citea{;\penalty\@m\ }\@ifundefined
-       {b@\@citeb}{{\bf ?}\@warning
-       {Citation `\@citeb' on page \thepage \space undefined}}%
-{\csname b@\@citeb\endcsname}}}{#1}}
-\def\@internalciteb{\@ifnextchar [{\@tempswatrue\@citexb}{\@tempswafalse\@citexb[]}}
-
-\def\@newcite#1#2{{#1\if@tempswa, #2\fi)}}
-\def\@biblabel#1{\def\citename##1{##1}[#1]\hfill}
-
-% Use parentheses instead of square brackets in the text. --  SMS (originals in latex.tex)
-\def\@cite#1#2{({#1\if@tempswa , #2\fi})}
-
-%% Sections %%
-
-% sections with less space than is inherited
+% sections with less space
 \def\section{\@startsection {section}{1}{\z@}{-2.0ex plus
     -0.5ex minus -.2ex}{1.5ex plus 0.3ex minus .2ex}{\large\bf\raggedright}}
 \def\subsection{\@startsection{subsection}{2}{\z@}{-1.8ex plus
     -0.5ex minus -.2ex}{0.8ex plus .2ex}{\normalsize\bf\raggedright}}
-\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{1.5ex plus
-   0.5ex minus .2ex}{0.5ex plus .2ex}{\normalsize\bf\raggedright}}
+%% changed by KO to - values to get teh initial parindent right
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-1.5ex plus
+   -0.5ex minus -.2ex}{0.5ex plus .2ex}{\normalsize\bf\raggedright}}
 \def\paragraph{\@startsection{paragraph}{4}{\z@}{1.5ex plus
    0.5ex minus .2ex}{-1em}{\normalsize\bf}}
 \def\subparagraph{\@startsection{subparagraph}{5}{\parindent}{1.5ex plus
    0.5ex minus .2ex}{-1em}{\normalsize\bf}}
 
-%% Footnotes %% 
-
+% Footnotes
 \footnotesep 6.65pt %
 \skip\footins 9pt plus 4pt minus 2pt
 \def\footnoterule{\kern-3pt \hrule width 5pc \kern 2.6pt }
 \setcounter{footnote}{0}
 
-%% Lists and paragraphs %% 
-
+% Lists and paragraphs
 \parindent 1em
 \topsep 4pt plus 1pt minus 2pt
 \partopsep 1pt plus 0.5pt minus 0.5pt
@@ -493,52 +540,13 @@
 
 % Less leading in most fonts (due to the narrow columns)
 % The choices were between 1-pt and 1.5-pt leading
-%\def\@normalsize{\@setsize\normalsize{11pt}\xpt\@xpt}
-%\def\small{\@setsize\small{10pt}\ixpt\@ixpt}
-%\def\footnotesize{\@setsize\footnotesize{10pt}\ixpt\@ixpt}
-%\def\scriptsize{\@setsize\scriptsize{8pt}\viipt\@viipt}
-%\def\tiny{\@setsize\tiny{7pt}\vipt\@vipt}
-%\def\large{\@setsize\large{14pt}\xiipt\@xiipt}
-%\def\Large{\@setsize\Large{16pt}\xivpt\@xivpt}
-%\def\LARGE{\@setsize\LARGE{20pt}\xviipt\@xviipt}
-%\def\huge{\@setsize\huge{23pt}\xxpt\@xxpt}
-%\def\Huge{\@setsize\Huge{28pt}\xxvpt\@xxvpt}
-
-%% Captions %%
-
-% Changes definition inherited from article.cls. --MM
-\setlength\abovecaptionskip{3\p@}
-\setlength\belowcaptionskip{0\p@}
-\long\def\@makecaption#1#2{%
-   \vskip\abovecaptionskip
-   \sbox\@tempboxa{\footnotesize {\bf #1:} #2}%
-   \ifdim \wd\@tempboxa >\hsize
-     {\footnotesize {\bf #1:} #2}\par
-   \else
-     \global \@minipagefalse
-     \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-   \fi
-   \vskip\belowcaptionskip}
-
-
-%% Minor details %%
-
-\newcommand{\Thanks}[1]{\thanks{\ #1}}
-   
-% Add a period to the end of an abbreviation unless there's one
-% already, then remove the extra space that latex will add 
-% (handles latex bug where all periods are treated as end-of-sentence markers) --MM
-\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
-\def\@onedot{\ifx\@let@token.\else.\null\fi~}
-\DeclareRobustCommand\dotcomma{\futurelet\@let@token\@dotcomma}
-\def\@dotcomma{\ifx\@let@token.,\else.,\null\fi~}
-
-
-\def\esp{esp\onedot} \def\Esp{Esp\onedot}
-
-% pdflatex ignores letterpaper option
-\ifx\pdfoutput\undefined % LaTeX is used, pdf sizes are undefined
-\else% pdfLaTeX is used, pds sizes are defined
-   \pdfpagewidth 8.5in
-   \pdfpageheight 11in
-\fi
+\def\@normalsize{\@setsize\normalsize{11pt}\xpt\@xpt}
+\def\small{\@setsize\small{10pt}\ixpt\@ixpt}
+\def\footnotesize{\@setsize\footnotesize{10pt}\ixpt\@ixpt}
+\def\scriptsize{\@setsize\scriptsize{8pt}\viipt\@viipt}
+\def\tiny{\@setsize\tiny{7pt}\vipt\@vipt}
+\def\large{\@setsize\large{14pt}\xiipt\@xiipt}
+\def\Large{\@setsize\Large{16pt}\xivpt\@xivpt}
+\def\LARGE{\@setsize\LARGE{20pt}\xviipt\@xviipt}
+\def\huge{\@setsize\huge{23pt}\xxpt\@xxpt}
+\def\Huge{\@setsize\Huge{28pt}\xxvpt\@xxvpt}
