@@ -20,18 +20,7 @@ agreement.\footnote{While we report results for this pre-trained model
   that one of our main results pertains to single-cell number
   encoding, and the low dropout value used used by Gulordava et
   al.~(0.2) might have favoured such localist solution. We replicated
-  our main results with all the variations.} The dynamics of the LSTM
-are governed by the equations described in
-\newcite{Hochreiter:Schmidhuber:1997}, we mention here only the output
-and update rules, on which we focus later:
-\begin{equation} \label{eq:update-rule}
-     c_t = f_t\circ c_{t-1} + i_t\circ \widetilde{c}_t
-\end{equation}
-
-\begin{equation} \label{eq:output}
-     h_t = o_t\circ \tanh(c_t)
-\end{equation}
-
+  our main results with all the variations.} 
 
 
 % \paragraph{Syntactic tree-depth models}\label{ssec:regress_model} We tested whether the syntactic tree-depth can be decoded from network activity. We trained an L1 and L2-regularized regression models to predict syntactic tree-depth from the hidden-state activity of all units, using a nested 5-fold cross-validation procedure. The optimal regularization size was determined from a separated validation set \yair{report lambda values}. Word position and tree-depth were decorrelated before training the models (section~\ref{sec:the_data}) and word-frequency was added as a covariate to the model. All below findings were found to be consistent across the two types of regularizations.
