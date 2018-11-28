@@ -107,7 +107,7 @@ for i, ax in enumerate(axs):
     if args.xlabels:
         ax.set_xticklabels(args.xlabels, rotation='vertical')
     else:
-        ax.set_xticklabels(stimuli[0].split(' '), rotation='vertical')
+        ax.set_xticklabels(stimuli[0].split(' '), rotation=45)
     ax.tick_params(labelsize=45)
     if args.ylabels:
         ax.set_ylabel(args.ylabels[i], fontsize=45)
