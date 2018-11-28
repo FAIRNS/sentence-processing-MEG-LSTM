@@ -18,7 +18,7 @@ base_folder = os.sep + os.path.join(*path[:i+1])
 
 # number for filtering
 n = 300
-feature_type = 'cell'
+feature_type = 'hidden'
 calc_VIF = False # VIF calc may be slow
 omit_high_VIF_features = False
 
