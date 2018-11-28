@@ -1,43 +1,32 @@
 \section{Introduction}
 
-In the last years, recurrent neural networks, and particularly
+In the last years, recurrent neural networks (RNNs), and particularly
 long-short-term-memory (LSTM) architectures
 \cite{Hochreiter:Schmidhuber:1997}, have been successfully applied to
-a variety of challenging NLP tasks. This has spurred interest in
-whether these generic sequence-processing devices are discovering
-genuine structural properties of language in their training data, or
-whether their success can be explained by opportunistic
-heuristics\yair{, by e.g. overfitting to simple patterns that are predictive in most cases and which do not require deeper, structure-based, language understanding}. Starting with the seminal work of \newcite{Linzen:etal:2016}, long-distance number agreement (``the
-\textbf{boy} behind the cars \textbf{greets}\ldots'') has played a
-central role in this debate. After mixed initial results by Linzen and
-colleagues and \newcite{Bernardy:Lappin:2017},
-\newcite{Gulordava:etal:2018} and \newcite{Kuncoro:etal:2018a} have
-robustly established that LSTMs trained with the language modeling
-objective on raw data achieve near-human performance on the
-agreement task. While Gulordava and colleagues provided some evidence that the
-LSTMs are relying on genuine syntactic generalizations,
-\newcite{Kuncoro:etal:2018b} and \newcite{Linzen:Leonard:2018}
-suggested that the LSTM achievements can, at least in part, be
-accounted by superficial heuristics.
+a variety of NLP tasks. This has spurred interest in whether these
+generic sequence-processing devices are discovering genuine structural
+properties of language in their training data, or whether their
+success can be explained by opportunistic surface-pattern-based
+heuristics.
 
-Until now, the debate has relied on ``behavioural'' evidence: The
-LSTM is treated as a black box, and its capacities are indirectly
+Until now, this debate has mostly relied on ``behavioural'' evidence:
+The LSTM is treated as a black box, and its capacities are indirectly
 inferred by its performance on linguistic tasks. We take here a
 complementary ``neuroscientific'' approach: We thoroughly investigate
 the inner dynamics of an LSTM performing the number agreement task,
 striving to achieve a mechanistic understanding of how it accomplishes
-it.
-
-We find that the LSTM specialized very few ``grandma'' cells
+it. We find that the LSTM specialized very few ``grandma'' cells
 \cite{Bowers:2009} to carry number features from the subject to the
-verb across the intervening material in a highly localist
-fashion. Interestingly, the LSTM also possesses a more distributed
-mechanism to predict number when subject and verb are close, with the
-grandma number cells only playing a crucial role in more difficult
-long-distance cases. Crucially, we independently identified a set of
-cells tracking syntactic structure, and found that one of them \yair{encodes the presence of an embedded phrase separating the main subject-verb dependency, and has} strong efferent connections to the long-distance number cells,
-suggesting that the network relies on genuine syntactic information to
-regulate agreement-feature percolation.
+verb across the intervening material. Interestingly, the LSTM also
+possesses a more distributed mechanism to predict number when subject
+and verb are close, with the grandma number cells only playing a
+crucial role in more difficult long-distance cases. Crucially, we
+independently identified a set of cells tracking syntactic structure,
+and found that one of them encodes the presence of an embedded phrase
+separating the main subject-verb dependency, and has strong efferent
+connections to the long-distance number cells, suggesting that the
+network relies on genuine syntactic information to regulate
+agreement-feature percolation.
 
 Our analysis thus provides direct evidence for the claim that LSTMs
 trained with language modeling on unannotated corpus data, despite
