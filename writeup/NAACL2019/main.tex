@@ -1,15 +1,11 @@
-%
-% File naaclhlt2016.tex
-%
-
-\documentclass[11pt,letterpaper]{article}
-\usepackage{naaclhlt2016}
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{naaclhlt2019}
+\usepackage{times}
+\usepackage{latexsym}
 % \usepackage[textsize=tiny]{todonotes}
 \usepackage{subcaption}
-\usepackage{times}
 \usepackage{xstring}
 \usepackage{amsmath}
-\usepackage{latexsym}
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{array}
@@ -29,14 +25,16 @@
 \usepackage{color}
 \usepackage[normalem]{ulem} % for striking out text (for commenting process) using \sout
 
-%\naaclfinalcopy % Uncomment this line for the final submission
-\def\naaclpaperid{***} %  Enter the naacl Paper ID here
 
-% To expand the titlebox for more authors, uncomment
-% below and set accordingly.
-% \addtolength\titlebox{.5in}    
+%\aclfinalcopy % Uncomment this line for the final submission
+%\def\aclpaperid{***} %  Enter the acl Paper ID here
 
-\newcommand\BibTeX{B{\sc ib}\TeX}
+%\setlength\titlebox{5cm}
+% You can expand the titlebox if you need extra space
+% to show all the authors. Please do not make the titlebox
+% smaller than 5cm (the original size); we will check this
+% in the camera-ready version and ask you to change it back.
+
 % \newcommand{\marco}[1]{\todo[color=green!40]{MB: #1}}
 % \newcommand{\dieuwke}[1]{\todo[color=red!40]{DH: #1}}
 \newcommand{\dieuwke}[1]{\textcolor{red}{(DH: #1)}}
@@ -113,7 +111,7 @@
 % \lipsum[1]
 
 \bibliography{marco,dieuwke}
-\bibliographystyle{naaclhlt2016}
+\bibliographystyle{acl_natbib}
 
 
 \end{document}
