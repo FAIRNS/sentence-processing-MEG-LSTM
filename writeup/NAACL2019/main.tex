@@ -1,16 +1,15 @@
-%
-% File naaclhlt2016.tex
-%
-
-\documentclass[11pt,letterpaper]{article}
-\usepackage{naaclhlt2016}
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{naaclhlt2019}
 \usepackage{times}
 \usepackage{latexsym}
+% \usepackage[textsize=tiny]{todonotes}
+\usepackage{subcaption}
+\usepackage{xstring}
+\usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{lipsum}
 \usepackage{url}
 \usepackage{array}
-\usepackage{lmodern}
+%\usepackage{lmodern}
 \usepackage{siunitx}
 \usepackage{booktabs}
 \usepackage{etoolbox}
@@ -23,18 +22,34 @@
 \newrobustcmd{\B}{\bfseries}
 % Coloring text in table
 \usepackage{xcolor}
-
-%\naaclfinalcopy % Uncomment this line for the final submission
-\def\naaclpaperid{***} %  Enter the naacl Paper ID here
-
-% To expand the titlebox for more authors, uncomment
-% below and set accordingly.
-% \addtolength\titlebox{.5in}    
-
-\newcommand\BibTeX{B{\sc ib}\TeX}
+\usepackage{color}
+\usepackage[normalem]{ulem} % for striking out text (for commenting process) using \sout
 
 
-\title{Grandmother number cells and syntactic structure in LSTM language models}
+%\aclfinalcopy % Uncomment this line for the final submission
+%\def\aclpaperid{***} %  Enter the acl Paper ID here
+
+%\setlength\titlebox{5cm}
+% You can expand the titlebox if you need extra space
+% to show all the authors. Please do not make the titlebox
+% smaller than 5cm (the original size); we will check this
+% in the camera-ready version and ask you to change it back.
+
+% \newcommand{\marco}[1]{\todo[color=green!40]{MB: #1}}
+% \newcommand{\dieuwke}[1]{\todo[color=red!40]{DH: #1}}
+\newcommand{\dieuwke}[1]{\textcolor{red}{(DH: #1)}}
+\newcommand{\yair}[1]{\textcolor{blue}{(YL: #1)}}
+\newcommand{\marco}[1]{\textcolor{green}{(MB: #1)}}
+\newcommand{\layer}[1]{\IfEqCase{#1}{%
+        {1}{1$^{nd}$}
+        {2}{2$^{nd}$}
+        }
+}
+\newcommand{\unit}[2]{\layer{#1}-$#2$}
+% \newcommand{\yair}[1]{\todo[color=blue!40]{YL: #1}}
+% \newcommand{\german}[1]{\todo[color=purple!40]{GK: #1}}
+
+\title{The emergence of number and syntax units in LSTM language models}
 
 % Author information can be set in various styles:
 % For several authors from the same institution:
@@ -83,21 +98,20 @@
 
 
 % Results
-\section{Results}
-\lipsum[1]
 \input{Sections/Results_number.tex}
 \input{Sections/Results_syntax.tex}
-\input{Sections/Results_RC.tex}
-
+\input{Sections/Results_interaction.tex}
+%\input{Sections/Results_RC.tex}
+% 
 % Discussion
 \input{Sections/Discussion.tex}
 
 % Acknowledgments
-\section*{Acknowledgments}
-\lipsum[1]
+% \section*{Acknowledgments}
+% \lipsum[1]
 
-\bibliography{marco}
-\bibliographystyle{naaclhlt2016}
+\bibliography{marco,dieuwke}
+\bibliographystyle{acl_natbib}
 
 
 \end{document}

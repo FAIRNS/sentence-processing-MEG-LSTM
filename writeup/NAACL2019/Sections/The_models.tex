@@ -1,12 +1,25 @@
 
-\section{The models}
-\lipsum[1]
+\section{Models}
 
-\subsection{Architecture}
-\lipsum[1]
+% The recurrent models that are the focus of our studies are long short term memory models \cite[LSTMs]{Hochreiter:Schmidhuber:1997}.
+% To inspect the internal dynamics of these models, we use additional linear models to extract information from the hidden state of trained language models.
+% In this section, we describe the language model we study (\ref{ssec:lstm_lm}) as well as the meta models we use to analyse the hidden states of this language model (\ref{ssec:dc}).
 
-\subsection{Model training}
-\lipsum[1]
+\paragraph{LSTM language model}\label{ssec:lstm_lm}
+We consider the pretrained LSTM-LM that was made available by \cite{Gulordava:etal:2018}.
+This model has two LSTM layers with 650 dimensions, an output layer with vocabulary size 50,000 and an embedding layer of 650 dimensions. We will refer to the n$^{th}$ unit in the first and second layer with the terms \unit{1}{n} and \unit{2}{n}, respectively. The model was trained with the language model objective on Wikipedia data, without fine-tuning for the NA-task, and was evaluated on the NA-tasks in the same way as in \footnote{While we report results for the pre-trained model only, we ascertained their robustness by re-training the same configuration with different seeds, and exploring higher drop-out values. The latter experiments were motivated by the observation that one of our main results pertains to local number encoding, and the low dropout value used used by Gulordava et al.~(0.2) might have favoired such localist solutions. We replicated our main results with all the variations.} The dynamics of the LSTM are governed by the equations described in \cite{Hochreiter:Schmidhuber:1997}, we mention here only the output and update rules on which we focus later:
+\begin{equation} \label{eq:update-rule}
+     c_t = f_t\circ c_{t-1} + i_t\circ \widetilde{c}_t
+\end{equation}
 
-\subsection{Model evaluation}
-\lipsum[1]
+\begin{equation} \label{eq:output}
+     h_t = o_t\circ \tanh(c_t)
+\end{equation}
+
+\paragraph{Syntactic tree-depth models}\label{ssec:regress_model} We tested whether the syntactic tree-depth can be decoded from network activity. We trained an L1 and L2-regularized regression models to predict syntactic tree-depth from the hidden-state activity of all units, using a nested 5-fold cross-validation procedure. The optimal regularization size was determined from a separated validation set \yair{report lambda values}. Word position and tree-depth were decorrelated before training the models (section~\ref{sec:the_data}) and word-frequency was added as a covariate to the model. All below findings were found to be consistent across the two types of regularizations.
+
+%\widetilde{c}_t & = \tanh(W_cx_t + U_ch_{t-1} + b_c)\\
+     %f_t & = \sigma(W_fx_t + U_fh_{t-1} + b_f) %\\
+     % i_t & = \sigma(W_ix_t + U_ih_{t-1} + b_i) \\
+     % o_t & = \sigma(W_ox_t + U_oh_{t-1} + b_o)
+     %with $i_t$ and $o_t$ computed analogously to $f_t$. We will

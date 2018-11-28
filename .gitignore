@@ -16,3 +16,9 @@ Output/
 
 *.pyc
 *.sh
+
+*.out
+*.log
+main.pdf
+*.aux
+*.blg
