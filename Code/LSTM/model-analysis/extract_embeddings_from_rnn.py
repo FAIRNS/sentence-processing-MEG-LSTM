@@ -127,12 +127,12 @@ if args.units_first:
 		ax.scatter(len(units) + u + np.random.random(input_weights_plural.size) * bar_width - bar_width/2, input_weights_plural, s=400, color=args.colors_first[u], label=label_plur, marker='_')
 
 
-plt.legend(fontsize=20, bbox_to_anchor=(1,1))
+plt.legend(fontsize=30, bbox_to_anchor=(1,1))
 # plt.subplots_adjust(top=0.8)
 plt.tick_params(axis='both', which='major', labelsize=25)
-plt.xticks(range(len(units)+len(units_first)), [str(u+1) for u in units] + [str(u+1) for u in units_first], rotation=45)
-ax.set_ylabel('Efferent weight', fontsize = 25)
-ax.set_xlabel('Unit', fontsize = 25)
+plt.xticks(range(len(units)+len(units_first)), ['2$^{nd}-$'+str(u-650+1) for u in units] + [str(u+1) for u in units_first])
+ax.set_ylabel('Weight size', fontsize = 35)
+# ax.set_xlabel('Unit', fontsize = 35)
 ax.axhline(linewidth=2, color='k', ls = '--')
 fig.savefig(os.path.join(dirname, 'weight_dists_'+filename))
 print('saved to: ' + os.path.join(dirname, 'weight_dists_'+filename))

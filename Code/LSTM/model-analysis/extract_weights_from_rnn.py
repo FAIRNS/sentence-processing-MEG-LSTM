@@ -218,8 +218,8 @@ to_units_l1 = [u - 650 for u in args.to_units if u > 649]  # units 651-1300 (650
 
 ############## Generate a figure for each gate with connectivity table, weights dists, and MDS
 bar_width = 0.4
-rowLabels = [str(u+1) for u in args.from_units]
-colLabels = [str(u+1) for u in args.to_units]
+rowLabels = ['2$^{nd}-$'+str(u-650+1) for u in args.from_units]
+colLabels = ['2$^{nd}-$'+str(u-650+1) for u in args.to_units]
 for gate in range(4):
     colors = []
     # Create a table at the bottom-left of the figure
@@ -343,7 +343,11 @@ for gate in range(4):
                 IX_to = np.where(all_weights_to_curr_unit == curr_weight)
                 if from_unit == 1149 and i!=j:
                     ax1.scatter(j, curr_weight, color='r', s=3)
-                    ax1.text(j, curr_weight, str(from_unit+1) + '-' + str(to_unit+1), fontsize=16)
+                    ax1.text(j, curr_weight, '2$^{nd}-$'+str(from_unit-650+1), fontsize=20)
+
+                    z = (curr_weight - np.mean(all_weights_from_curr_unit))/np.std(all_weights_from_curr_unit)
+                    print('z-score ' + str(from_unit+1) + '_' + str(to_unit+1) + ': %1.1f' % z)
+
             else:
                 colors_row.append('w')
 
@@ -358,20 +362,21 @@ for gate in range(4):
                           rowLabels=rowLabels,
                           colLabels=colLabels, rowLoc='center', cellColours=colors,
                           loc='bottom')
-    the_table.set_fontsize(10)
+    the_table.set_fontsize(20)
     for cell in the_table._cells:
         the_table._cells[cell]._loc = 'center'
         if cell[0]==0 or cell[1]==-1: # make bold the row and colLabels
             the_table._cells[cell].set_text_props(weight='bold')
         if cell[0] == cell[1]+1: the_table._cells[cell]._text.set_color('w')
 
-    # the_table.scale(1.5, 1.5)
+    plt.subplots_adjust(left = 0.2, bottom=0.26)
+
+    the_table.scale(1, 2.3)
 
 
     ### cosmetics
     ax1.get_xaxis().set_visible(False)
-    ax1.set_ylabel('Afferent weight', fontsize=16)
-    plt.subplots_adjust(bottom=0.2)
+    ax1.set_ylabel('Afferent weight', fontsize=24)
     # ax1.set_title(gate_names[gate])
 
     ### Save figure

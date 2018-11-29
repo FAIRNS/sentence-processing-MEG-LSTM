@@ -16,62 +16,60 @@ decorrelated in the data, and word frequency was added as a covariate
 to the model. The optimal regularization $\lambda$ parameters, found
 on the validation set, were \yair{report lambda values}. The test-set
 findings reported below were consistent across the two regularization
-types. \textbf{And which one are we reporting?}
+types. \marco{And which one are we reporting?}
 
 Syntactic tree-depth can be efficiently decoded from network activity
 \yair{mean R-squared + std}. A small subset of units we will refer to
 as `syntax units' had relatively high weights in the regression model
-\yair{number of units; outlier detection mean + 3std}. The syntax
+\yair{number of units; outlier detection mean + 3std. Discuss issues with interpreting weights}. The syntax
 units, as a set, were found to be crucial for accomplishing the NA-task, since
 ablating them resulted in significant performance reduction compared
 to 1000 random ablations of subsets of units of the same size
-($p=0.024$), as seen in Figure
-\ref{fig:ablation-syntax}. \textbf{Which set of data is this based on?
+($p=0.024$) \yair{report ablation results from all NA-tasks}. \marco{Which set of data is this based on?
   I would add the accuracy when ablating the two number units in the
   plot, and, as I expect this to be larger, discuss the fact that
   probably what we identified here is not the complete syntax-tracking
   sub-network.}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[height=5cm]{Figures/null_distribution_ablation_experiment_k_17.png}
-    \caption{Distribution of NA-tasks accuracy when ablating 17 units,
-      either random (N=1000) or the syntax units (downward arrow).}
-    \label{fig:ablation-syntax}
-\end{figure}
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[height=5cm]{Figures/null_distribution_ablation_experiment_k_17.png}
+%    \caption{Distribution of NA-tasks accuracy when ablating 17 units,
+%      either random (N=1000) or the syntax units (downward arrow).}
+%    \label{fig:ablation-syntax}
+%\end{figure}
 
 \begin{figure*}[t]
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{0.32\textwidth}
             \centering
             \includegraphics[width=\linewidth, height=3cm]{Figures/adv_conjunction_1149_cell}
             \caption{2Adv}
             \label{fig:syntax-unit-2Adv}
     \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{0.32\textwidth}
             \centering
             \includegraphics[width=\linewidth, height=3cm]{Figures/nounpp_1149_cell.png}
             \caption{nounPP}
             \label{fig:syntax-unit-nounpp}
     \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{0.32\textwidth}
             \centering
             \includegraphics[width=\linewidth, height=3cm]{Figures/subjrel_that_1149_cell.png}
             \caption{subject relative}
             \label{fig:syntax-unit-subjrel}
     \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{\textwidth}
             \centering
             \includegraphics[width=\linewidth, height=3cm]{Figures/double_subjrel_that_1149_cell.png}
             \caption{Two embeddings with subject relatives}
             \label{fig:syntax-unit-double-subjrel}
     \end{subfigure}
-\caption{Cell activity of syntax unit 1150 \textbf{Update} while processing various syntactic structures. \textbf{What are these lines average of? what's the error bar?}}
+\caption{Cell activity of syntax unit \unit{2}{500} while processing various syntactic structures. Error bars represent standard deviations across all stimuli. \yair{improve visualization}}
 \end{figure*}
 
 We next looked into the dynamics of the syntax units by visualizing
 their gate and cell dynamics during sentence processing. We found that
-cell activity of one of them, unit 1150 \textbf{Change to new
-  notation, I'm not doing it myself as I'm not sure about the offset},
+cell activity of one of them, unit \unit{2}{500},
 which also had the highest weight in the regression model above, was
 remarkably structured. Cell activity of this unit was found to
 increase across the entire subject-verb dependency and to abruptly
@@ -83,9 +81,8 @@ main verb, as in subject relatives (Figure
 \ref{fig:syntax-unit-subjrel}), and in exceptionally long-distance
 dependencies with two interfering nouns and verbs (Figure
 \ref{fig:syntax-unit-double-subjrel}). Taken together, these results
-suggest that unit 1150 \textbf{(Update)} consistently encodes
+suggest that unit \unit{2}{500} consistently encodes
 subject-verb dependency in a syntax-sensitive manner. 
 \footnote{Other syntax units did not show an easily interpretable
   dynamics, nor clear interactions with the number units, as shown below, but\ldots}
-
 
