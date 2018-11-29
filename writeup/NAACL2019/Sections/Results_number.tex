@@ -10,6 +10,7 @@ To successfully perform the NA-task, the LSTM should encode and store at least t
 \hline
 \B NA task & \B C & \B \unit{2}{\textbf{126}} & \B \unit{2}{\textbf{338}} & \B Full \\
 \hline
+\B Linzen & \B - &  ? &  ? &  ? \\
 \hline
 
 % Singular conditions
@@ -54,16 +55,13 @@ nounPPAdv & PS & \textcolor{blue}{63.7} &  - &  99.2 \\
 nounPPAdv & PP & - &  - &  99.8 \\
 
 \hline
-\hline
-\B Linzen & \B - &  ? &  ? &  ? \\
-\hline
 \end{tabular}
 \caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. For tasks with two nouns, SS: singular-singular, SP: singular-plural, PS: plural-singular, PP: plural-plural. Red: Singular subject, Blue: Plural subject. \textbf{Shouldn't the Full column also be colored?} \textbf{Explain what do the dashes in the table mean.} \label{tab:ablation-results}}
 \end{table}
 \end{center}
 
-We first measured LSTM performance on the various NA-tasks of Table
-\ref{tab:data-sets}, as well as on Linzen's data-set. Following
+We first measured LSTM performance on Linzen's data-set and on the various NA-tasks of Table
+\ref{tab:data-sets}. Following
 \newcite{Linzen:etal:2016} and later work, we compute the likelihood
 that the LSTM assigns to the main verb of each sentence given the
 preceding context, and compare it to the likelihood it assigns to the
@@ -72,9 +70,9 @@ context. Accuracy in a given condition is the proportion of sentences
 in the condition where the model assigned a higher likelihood to the
 correct form than to the wrong one.%, and it is denoted $ACC_{NA−task}$.
 
-Network performance on each NA-task is reported in Table
+Network performance is reported in Table
 \ref{tab:ablation-results} (right column -- `Full'). We highlight
-several aspect of these results. First, some NA-tasks and conditions
+several aspect of these results. \textbf{Discuss Linzen} First, some NA-tasks and conditions
 are clearly more difficult than others. For example, performance on
 the Simple (0-distance) NA-task is better than that on the Co-Adv
 NA-task, which in turn is better than that of the nounPP
@@ -91,7 +89,7 @@ frequent than the singular one, as the latter only marks third person
 singular, whereas the former is identical to the infinitive and other
 forms. Thus, if the network reverts to unigram probabilities, it will
 tend to prefer the plural. \textbf{We will have to say something about
-  the Linzen results.}
+  the Linzen results also re ablation.}
 
 % $ACC_{nounPP-SP}<ACC_{nounPP-PS}$ and
 % $ACC_{nounPPadv-SP}<ACC_{nounPPadv-PS}$ \yair{is it still the case in
@@ -235,42 +233,43 @@ The singular and plural units have emerged at the second layer of the network. T
 Performance on the easier NA-tasks (Simple, Adv, 2Adv) was not
 impaired by single-unit ablations. This suggests that number may be
 encoded also elsewhere in the network, perhaps via a more distributed
-code. To check if this is the case, we tested whether subject number
-can be decoded from the whole pattern of activities in the network
-(excluding the two number units) and whether this decoding is stable
-at succeeding time points \cite[see][for similar observations and
-related methods]{Giulianelli:etal:2018}. Our prediction is that this
-distributed number representation will be able to track number for a
-small time window after the subject, but, unlike the number units,
-will not be able to carry number information across incongruent
-distractor nouns.
+code. We tested whether subject number can be decoded from the whole
+pattern of activities in the network (excluding the two number units)
+and whether this decoding is stable across time \cite[see][for similar
+observations and related methods]{Giulianelli:etal:2018}. We exepct
+this distributed activity network to track number in a
+small time window after the subject, but, unlike the proper number units,
+to be affected by  incongruent intervening nouns.
 
 We trained a linear model to predict the grammatical number of the
 subject from network activity in response to the presentation of the
 subject, and tested its prediction on test sets from all time points
 \yair{cite King and Dehaene}, in incongruent conditions
-only.\textbf{More details needed: across all NA-tasks? which test
+only. \textbf{More details needed: across all NA-tasks? which test
   sets?} We used Area under of Curve (AUC) to evaluate model
 performance. Figure \ref{fig:GAT} shows decoding across time of
-subject number from cell activity of each of number unit separately
-and from cell activity of the entire network without these two units
+subject number from cell activity of each number unit separately and
+from cell activity of the entire network without these two units
 (`Full model minus number units'). Results show that number
 information can be efficiently decoded from other units in the
 network, and that this information can be carried for several time
 steps (relatively high AUC up to the second determiner). However, the
 way in which these units encode number is sensitive to the last
-encountered noun, with test performance (AUC) going towards zero
-around the second noun (`cars'), whereas test performance of the
-models trained on number unit cell activity only is stably high. This
-confirms our hypothesis that number prediction is supported both by
-the number units, and by distributed activation patters of other
-units. The latter mechanism, however, is not syntax-sensitive, and
-simply encodes the number of the last noun encountered. \textbf{I'd
-  remove the non-number units from the plot.} A aualitative inspection
-of the short-range unit gate and cell dynamics suggested they are
-considerably different from those of the long-distance units, further
-suggesting they encode number information in a more opaque,
-distributed way.
+encountered noun, with AUC decreasing to zero around the second noun
+(`cars'), whereas test performance of the models trained on number
+unit cell activity only is consistently high. This confirms our
+hypothesis that number prediction is supported both by the number
+units, and by distributed activation patterns of other units. The
+latter mechanism, however, is not syntax-sensitive, and simply encodes
+the number of the last noun encountered. \textbf{I'd remove the
+  non-number units from the plot.} Qualitative inspection of cell and
+gate dynamics of the units with the largest linear-model weghts
+suggested they are considerably different from those of the
+long-distance units, further suggesting that they encode number
+information in a more opaque, distributed way. \textbf{There were
+  several claims that there is a large number of SR units: if we have
+  evidence for this (top weights in the linear mdoel?, it's worth
+  mentioning.}
 
 % This suggests a distinction between two types of units in the network: short-range (SR) vs. Long-Range (LR) number units. Only the latter type can carry subject-number information across LR dependencies with interfering nouns. Finally, we also evaluated decoding performance from cell activity of single units in the network that weren't found to decode number information ('non-number units'; Error-bars represent standard deviation across units). As expected, decoding performance is around chance level across the entire sentence. \yair{Do we want to explain how SR units were specifically identified (see commented-out part in this tex, from the previous version)? If not, we could take this part out also from the output-weight figure.}
 
