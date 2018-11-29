@@ -245,7 +245,33 @@ small time window after the subject, but, unlike the number units,
 will not be able to carry number information across incongruent
 distractor nouns.
 
-We trained a linear model to predict the grammatical number of the subject from network activity in response to the presentation of the subject, and tested its prediction on test sets from all time points \yair{cite King and Dehaene}, in incongruent conditions only.\textbf{More details needed: across all NA-tasks? which test sets?} We used Area under of Curve (AUC) to evaluate model performance. Figure \ref{fig:GAT} shows decoding across time of subject number from cell activity of each of number unit separately and  from cell activity of the entire network without these two units (`Full model minus number units'). Results show that number information can be efficiently decoded from other units in the network, and that this information can be carried for several time steps (relatively high AUC up to the second determiner). However, the way in which these units encode number is sensitive to the last encountered noun, with test performance (AUC) going towards zero around the second noun (`cars'), whereas test performance of the models trained on number unit cell activity only is stably high. This confirms our hypothesis that number prediction is supported both by the number units, and by distributed activation patters of other units. The latter mechanism, however, is not syntax-sensitive, and simply encodes the number of the last noun encountered. \textbf{I'd remove the non-number units from the plot.}
+We trained a linear model to predict the grammatical number of the
+subject from network activity in response to the presentation of the
+subject, and tested its prediction on test sets from all time points
+\yair{cite King and Dehaene}, in incongruent conditions
+only.\textbf{More details needed: across all NA-tasks? which test
+  sets?} We used Area under of Curve (AUC) to evaluate model
+performance. Figure \ref{fig:GAT} shows decoding across time of
+subject number from cell activity of each of number unit separately
+and from cell activity of the entire network without these two units
+(`Full model minus number units'). Results show that number
+information can be efficiently decoded from other units in the
+network, and that this information can be carried for several time
+steps (relatively high AUC up to the second determiner). However, the
+way in which these units encode number is sensitive to the last
+encountered noun, with test performance (AUC) going towards zero
+around the second noun (`cars'), whereas test performance of the
+models trained on number unit cell activity only is stably high. This
+confirms our hypothesis that number prediction is supported both by
+the number units, and by distributed activation patters of other
+units. The latter mechanism, however, is not syntax-sensitive, and
+simply encodes the number of the last noun encountered. \textbf{I'd
+  remove the non-number units from the plot.} A aualitative inspection
+of the short-range unit gate and cell dynamics suggested they are
+considerably different from those of the long-distance units, further
+suggesting they encode number information in a more opaque,
+distributed way.
+
 % This suggests a distinction between two types of units in the network: short-range (SR) vs. Long-Range (LR) number units. Only the latter type can carry subject-number information across LR dependencies with interfering nouns. Finally, we also evaluated decoding performance from cell activity of single units in the network that weren't found to decode number information ('non-number units'; Error-bars represent standard deviation across units). As expected, decoding performance is around chance level across the entire sentence. \yair{Do we want to explain how SR units were specifically identified (see commented-out part in this tex, from the previous version)? If not, we could take this part out also from the output-weight figure.}
 
 

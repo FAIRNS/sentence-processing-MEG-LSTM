@@ -22,10 +22,15 @@ Syntactic tree-depth can be efficiently decoded from network activity
 \yair{mean R-squared + std}. A small subset of units we will refer to
 as `syntax units' had relatively high weights in the regression model
 \yair{number of units; outlier detection mean + 3std}. The syntax
-units were found to be crucial for accomplishing the NA-task, since
+units, as a set, were found to be crucial for accomplishing the NA-task, since
 ablating them resulted in significant performance reduction compared
 to 1000 random ablations of subsets of units of the same size
-($p=0.024$), as seen in Figure \ref{fig:ablation-syntax}. \textbf{Which set of data is this based on?}
+($p=0.024$), as seen in Figure
+\ref{fig:ablation-syntax}. \textbf{Which set of data is this based on?
+  I would add the accuracy when ablating the two number units in the
+  plot, and, as I expect this to be larger, discuss the fact that
+  probably what we identified here is not the complete syntax-tracking
+  sub-network.}
 
 \begin{figure}[h]
     \centering
