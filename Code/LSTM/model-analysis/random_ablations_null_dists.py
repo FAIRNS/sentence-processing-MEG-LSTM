@@ -55,6 +55,28 @@ def generate_and_plot_null_dists(path2ablation_results, many_k_or_single, filter
 
     return performance_per_k
 
+
+def generate_and_plot_null_dists_simple(path2ablation_results, many_k_or_single, filter_units):
+    '''
+    Collect ablation experiments for group of units of size k, save the results per k,
+    and plot the corresponding distributions.
+
+    :param path2ablation_results: (string) indicating the path to the summary text file of all ablation experiments.
+    :return: performance_per_k: (dict) key: k, value: list with 1000 performances on random ablations of k units.
+
+    In addition, the scripts saves to a pkl the null distributions for all k's found,
+    then it plots and saves them to separate png files.
+    '''
+
+    performance = {}
+    with open(path2ablation_results, 'r') as f:
+        results = f.readlines()
+    performance[many_k_or_single] = [float(line.rstrip().split('\t')[0]) for line in results]
+
+    return performance
+
+
+
 def get_p_value_from_null_dist(null_distribution, performance):
     '''
     :param null_distribution: (list) of performance values
@@ -132,31 +154,46 @@ def plot_all_null_dists(performance_per_k, fontsize=25):
 
 # Settings
 filter_units = [776, 988] # counting from 1 - which units are not allowed in the ablated units (e.g, LR number units)
-many_k_or_single = 'many' # either the str 'many' or an int representing the size of the ablated group of units (k)
+many_k_or_single = 12 # either the str 'many' or an int representing the size of the ablated group of units (k)
+condition = ['simple_plural_control', 'simple_singular_control', 'adv_plural_control', 'adv_singular_control', 'adv_adv_plural_control', 'adv_adv_singular_control']
 
-# MAIN
-path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/regression_unit_ablation_results.txt'
-# path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/nounpp_singular_plural_control.txt'
+for cond in range(6):
+    # MAIN
+    # path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/nounpp_plural_singular_control.txt'
+    # path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/nounpp_singular_plural_control.txt'
+    path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/' + condition[cond] + '.txt'
 
-performance_per_k = generate_and_plot_null_dists(path2ablation_results, many_k_or_single, filter_units)
+    # performance_per_k = generate_and_plot_null_dists(path2ablation_results, many_k_or_single, filter_units)
+    performance_per_k = generate_and_plot_null_dists_simple(path2ablation_results, many_k_or_single, filter_units)
 
-# Example
-# with open(path2ablation_results + '.pkl', 'rb') as f:
-#     performance_per_k = pickle.load(f)
+    # Example
+    # with open(path2ablation_results + '.pkl', 'rb') as f:
+    #     performance_per_k = pickle.load(f)
 
 
-output_fn = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/ablation_results_killing_regression_unit_579_989_1042_1150_1230_759_1102_917_1006_30_187_1062_760_32_1199_931_489_groupsize_1_seed_1_True.pkl'
+    #output_fn = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/ablation_results_killing_regression_unit_579_989_1042_1150_1230_759_1102_917_1006_30_187_1062_760_32_1199_931_489_groupsize_1_seed_1_True.pkl'
 
-with open(output_fn, 'rb') as f:
-    results = pickle.load(f)
+    #with open(output_fn, 'rb') as f:
+    #    results = pickle.load(f)
 
-performance_test = results['score_on_task']/results['num_sentences']
-# performance_test = 0.91 # nounpp PS
-# performance_test = 0.7896825396825397 * 0.84 # nounpp SP
-p_value = get_p_value_from_null_dist(performance_per_k[17], performance_test)
-print(performance_test, p_value)
+    # performance_test = results['score_on_task']/results['num_sentences']
+    # performance_test = 0.9466666666666667 # nounpp PS
+    # performance_test = 0.65 # nounpp SP
 
-plot_null_dist(performance_per_k[17], 17, performance_test, p_value)
-plot_all_null_dists(performance_per_k)
+    performance_test = {}
+    performance_test['simple_singular_control'] = 0.8833333333333333 # simple S
+    performance_test['simple_plural_control'] = 0.8733333333333333 # simple P
+    performance_test['adv_singular_control'] = 0.8933333333333333 # adv S
+    performance_test['adv_plural_control'] = 0.6422222222222222 # adv P
+    performance_test['adv_adv_singular_control'] = 0.6144444444444445 # adv_adv S
+    performance_test['adv_adv_plural_control'] = 0.7111111111111111 # adv_adv P
 
-# 0.023976023976023976
+
+    #
+    p_value = get_p_value_from_null_dist(performance_per_k[many_k_or_single], performance_test[condition[cond]])
+    print(condition[cond], performance_test[condition[cond]], p_value)
+
+    # plot_null_dist(performance_per_k[many_k_or_single], many_k_or_single, performance_test[condition[cond]], p_value)
+    # plot_all_null_dists(performance_per_k)
+
+    # 0.023976023976023976
