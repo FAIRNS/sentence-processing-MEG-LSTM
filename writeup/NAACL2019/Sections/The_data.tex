@@ -49,19 +49,28 @@ condition and the corresponding sentence in the incongruent PS (plural-singular)
 condition is: ``the \emph{boys} near the \emph{car} \emph{greet} the guy''. For all
 NA-tasks, each condition consisted of 600 sentences
 
-\paragraph{Syntactic depth data-set} We probed the model implicit syntax parsing abilities by testing whether its representations predict the syntactic depth of the
-words they process. Following \newcite{Nelson:etal:2017}, this was
-operationalized as predicting the number of open syntactic nodes at
-each word, given the canonical syntactic parse of a sentence.  We
-generated a data-set of sentences with unambiguous but varied
-syntactic structures (for example: ``[$_S$ [$_{NP}$ the [$_{N''}$ [$_{N'}$ [$_{AP}$ really tiny ]  actress  ] [$_{PP}$ behind  Jim  ] ] ] [$_{VP}$ fights [$_{NP}$ four [$_{N''}$ friends [$_{PP}$ of  John ] ] ] ] ]''). Since syntactic depth is naturally correlated with
-the position of a word in a sentence, we used a data-point sampling
-strategy de-correlating these factors. For each  length between ????
-and ???? words, we randomly generated 300 sentences. From this set, we
-randomly picked examples uniformly covering all possible
-position-depth combinations within the 7-12 position and 3-8
-depth ranges.  The final data-set contains ???? positions
-from ???? sentences.\footnote{All our data-sets are uploaded as supplementary materials and will be openly released upon publication.}
+\paragraph{Syntactic depth data-set} We probed the model implicit
+syntax parsing abilities by testing whether its representations
+predict the syntactic depth of the words they process. Following
+\newcite{Nelson:etal:2017}, this was operationalized as predicting the
+number of open syntactic nodes at each word, given the canonical
+syntactic parse of a sentence.  We generated a data-set of sentences
+with unambiguous but varied syntactic structures (for example: ``[$_S$
+[$_{NP}$ the [$_{N''}$ [$_{N'}$ [$_{AP}$ really tiny ] actress ]
+[$_{PP}$ behind Jim ] ] ] [$_{VP}$ fights [$_{NP}$ four [$_{N''}$
+friends [$_{PP}$ of John ] ] ] ] ]''). Since syntactic depth is
+naturally correlated with the position of a word in a sentence, we
+used a data-point sampling strategy de-correlating these factors. For
+each length between ????  and ???? words, we randomly generated 300
+sentences. From this set, we randomly picked examples uniformly
+covering all possible position-depth combinations within the 7-12
+position and 3-8 depth ranges.  The final data-set contains ????
+positions from ???? sentences. These were split into ???? training,
+???? validation and ???? positions for the experiment detailed in
+Section \ref{sec:syntax-units} below.\footnote{All our data-sets are
+  uploaded as supplementary materials and will be openly released upon
+  publication.} \textbf{Was the train/valid/test split by sentence or
+  position?}
 
 %\yair{perhaps to consider to move these explanations about contrasts to the results section:} %Note that 2Adv features the same subject-verb
 %distance as NamePP, but without gender-carrying words acting as
