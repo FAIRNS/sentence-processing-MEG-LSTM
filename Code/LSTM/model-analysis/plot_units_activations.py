@@ -133,7 +133,7 @@ for i, ax in enumerate(axs):
     #ax.tick_params(labelsize=10)
     #ax.tick_params(axis='x', pad=40)
     if args.ylabels:
-        ax.set_ylabel(args.ylabels[i], rotation='vertical', ha='center', fontsize=20)
+        ax.set_ylabel(args.ylabels[i], rotation='horizontal', ha='center', va='center', fontsize=24)
     #else:
         #ax.set_ylabel('Activation', fontsize=45)
 # adding legend
