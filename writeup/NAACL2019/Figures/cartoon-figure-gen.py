@@ -186,14 +186,14 @@ plt.figure(figsize=(10,5))
 fig, axs = plt.subplots(5, 1) # two plots in a single column
 (sugg_ax, input_ax, forget_ax, cell_ax, output_ax) = axs
 plot_all_series(sugg_ax, PP_sugg, SS_sugg, PS_sugg, SP_sugg, HY_sugg)
-sugg_ax.set_ylabel(r"$\tilde{C_t}$", fontsize=20)
+sugg_ax.set_ylabel(r"$\tilde{C_t}$", fontsize=24, rotation='horizontal', ha='center', va='center')
 lims = [-1.5, 1.5]
 ticks = lims
 sugg_ax.set_yticks(lims)
 sugg_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 
 plot_all_series(input_ax, PP_input, SS_input, PS_input, SP_input, HY_input)
-input_ax.set_ylabel("$i_t$", fontsize=20)
+input_ax.set_ylabel("$i_t$", fontsize=24, rotation='horizontal', ha='center', va='center')
 ticks = [0, 1]
 #lims = [0.1-max_off, 0.9+max_off]
 lims = [0-max_off/2., 1 + max_off/2.]
@@ -202,7 +202,7 @@ input_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 input_ax.set_xticks([])
 
 plot_all_series(forget_ax, PP_forget, SS_forget, PS_forget, SP_forget, HY_forget)
-forget_ax.set_ylabel("$f_t$", fontsize=20)
+forget_ax.set_ylabel("$f_t$", fontsize=24, rotation='horizontal', ha='center', va='center')
 ticks = [0, 1]
 lims = [0-max_off/2., 1 + max_off/2.]
 forget_ax.set_yticks(ticks)
@@ -211,14 +211,14 @@ forget_ax.set_xticks([])
 
 plot_all_series(cell_ax, PP_cell, SS_cell, PS_cell, SP_cell, HY_cell)
 #cell_ax.plot(SY_cell, ls='--', lw=2, label=r'Syntax Unit', color='green')
-cell_ax.set_ylabel("$C_t$", fontsize=16)
+cell_ax.set_ylabel("$C_t$", fontsize=24, rotation='horizontal', ha='center', va='center')
 lims = [-1.5, 1.5]
 ticks = lims
 cell_ax.set_yticks(ticks)
 cell_ax.set_ylim([lims[0] - max_off, lims[1] + max_off])
 
 plot_all_series(output_ax, PP_output, SS_output, PS_output, SP_output, HY_output)
-output_ax.set_ylabel("$o_t$", fontsize=20)
+output_ax.set_ylabel("$o_t$", fontsize=24, rotation='horizontal', ha='center', va='center')
 ticks = [0, 1]
 lims = [-0.05-max_off, 1.05 + max_off]
 output_ax.set_yticks(ticks)
