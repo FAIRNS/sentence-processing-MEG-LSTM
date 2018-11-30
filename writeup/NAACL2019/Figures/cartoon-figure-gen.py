@@ -186,14 +186,14 @@ plt.figure(figsize=(10,5))
 fig, axs = plt.subplots(5, 1) # two plots in a single column
 (sugg_ax, input_ax, forget_ax, cell_ax, output_ax) = axs
 plot_all_series(sugg_ax, PP_sugg, SS_sugg, PS_sugg, SP_sugg, HY_sugg)
-sugg_ax.set_ylabel(r"$\tilde{C_t}$", fontsize=16)
+sugg_ax.set_ylabel(r"$\tilde{C_t}$", fontsize=20)
 lims = [-1.5, 1.5]
 ticks = lims
 sugg_ax.set_yticks(lims)
 sugg_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 
 plot_all_series(input_ax, PP_input, SS_input, PS_input, SP_input, HY_input)
-input_ax.set_ylabel("$i_t$", fontsize=16)
+input_ax.set_ylabel("$i_t$", fontsize=20)
 ticks = [0, 1]
 #lims = [0.1-max_off, 0.9+max_off]
 lims = [0-max_off/2., 1 + max_off/2.]
@@ -202,7 +202,7 @@ input_ax.set_ylim([lims[0] - max_off, lims[1] +max_off])
 input_ax.set_xticks([])
 
 plot_all_series(forget_ax, PP_forget, SS_forget, PS_forget, SP_forget, HY_forget)
-forget_ax.set_ylabel("$f_t$", fontsize=16)
+forget_ax.set_ylabel("$f_t$", fontsize=20)
 ticks = [0, 1]
 lims = [0-max_off/2., 1 + max_off/2.]
 forget_ax.set_yticks(ticks)
@@ -218,7 +218,7 @@ cell_ax.set_yticks(ticks)
 cell_ax.set_ylim([lims[0] - max_off, lims[1] + max_off])
 
 plot_all_series(output_ax, PP_output, SS_output, PS_output, SP_output, HY_output)
-output_ax.set_ylabel("$o_t$", fontsize=16)
+output_ax.set_ylabel("$o_t$", fontsize=20)
 ticks = [0, 1]
 lims = [-0.05-max_off, 1.05 + max_off]
 output_ax.set_yticks(ticks)
@@ -229,7 +229,7 @@ for ax in axs:
     ax.tick_params(labelsize=10)
 #forget_ax.set_xticks([])
 #plt.plot(forget, ls=':', lw=4, label='The girl/girls $f_t$', color='C2')
-plt.xticks(ticks=range(len(sentence)), labels=sentence, fontsize=14, rotation=0)
+plt.xticks(ticks=range(len(sentence)), labels=sentence, fontsize=17, rotation=0)
 plt.setp(fig.gca().get_xticklabels(), visible=True)
 handles, labels = cell_ax.get_legend_handles_labels()
 if not no_legend:
