@@ -39,7 +39,7 @@ parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--cuda', action='store_true', default=False)
 parser.add_argument('--do-ablation', action='store_true', default=False)
 args = parser.parse_args()
-
+print(args)
 stime = time.time()
 
 os.makedirs(os.path.dirname(args.output), exist_ok=True)
@@ -104,9 +104,16 @@ for unit_group in tqdm(target_units):
     stime = time.time()
     # Which unit to kill + a random subset of g-1 more units
     np.random.seed(int(args.seed))
-    add_random_subset = np.random.permutation(1301).astype(int)
-    add_random_subset = [i for i in add_random_subset if i not in unit_group] # omit current test unit from random set
-    units_to_kill = unit_group + add_random_subset[0:(int(args.groupsize)-1)] # add g-1 random units
+#    add_random_subset = np.random.permutation(1301).astype(int)
+    if unit_group:
+        units_to_kill = unit_group
+    else:
+#        add_random_subset = np.random.permutation(651).astype(int) + 650
+#    add_random_subset = [i for i in add_random_subset if i not in unit_group] # omit current test unit from random set
+        add_random_subset = np.random.permutation(1301).astype(int)
+        units_to_kill = add_random_subset[0:(int(args.groupsize))] # add g random units
+        unit_group = ['CONTROL'] + list(units_to_kill)
+
     units_to_kill = [u-1 for u in units_to_kill] # Change counting to zero
     units_to_kill_l0 = torch.LongTensor(np.array([u for u in units_to_kill if u <650])) # units 1-650 (0-649) in layer 0 (l0)
     units_to_kill_l1 = torch.LongTensor(np.array([u-650 for u in units_to_kill if u >649])) # units 651-1300 (650-1299) in layer 1 (l1)
@@ -119,7 +126,10 @@ for unit_group in tqdm(target_units):
         output_fn = output_fn + "_".join(map(str, unit_group)) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
     output_fn = output_fn + '.abl'
 
-    print(units_to_kill_l0, units_to_kill_l1)
+    print("\n\n\n")
+    print("ablated units: ", units_to_kill_l0.cpu().numpy() + 1, units_to_kill_l1.cpu().numpy() + 651)
+    print("\n\n\n")
+
     for ablation in [args.do_ablation]: #[False, True]:
         if ablation:
             # Kill corresponding weights if list is not empty
