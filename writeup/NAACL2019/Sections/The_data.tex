@@ -54,11 +54,16 @@ syntax parsing abilities by testing whether its representations
 predict the syntactic depth of the words they process. Following
 \newcite{Nelson:etal:2017}, this was operationalized as predicting the
 number of open syntactic nodes at each word, given the canonical
-syntactic parse of a sentence.  We generated a data-set of sentences
-with unambiguous but varied syntactic structures (for example: ``[$_S$
-[$_{NP}$ the [$_{N''}$ [$_{N'}$ [$_{AP}$ really tiny ] actress ]
-[$_{PP}$ behind Jim ] ] ] [$_{VP}$ fights [$_{NP}$ four [$_{N''}$
-friends [$_{PP}$ of John ] ] ] ] ]''). Since syntactic depth is
+syntactic parse of a sentence.  We generated a data-set of sentences with
+unambiguous but varied syntactic structures (for example:
+%1 2 3 3 4 5 6 2 3 4
+``Ten$_1$ really$_2$ ecstatic$_3$ cousins$_3$ of$_4$ four$_5$ teachers$_6$
+are$_2$ quickly$_3$ laughing$_4$", where subindexes show the corresponding
+number of open nodes).
+%(for example: ``[$_S$ [$_{NP}$ the [$_{N''}$ [$_{N'}$ [$_{AP}$ really tiny ]
+%actress ] [$_{PP}$ behind Jim ] ] ] [$_{VP}$ fights [$_{NP}$ four [$_{N''}$
+%friends [$_{PP}$ of John ] ] ] ] ]''). 
+Since syntactic depth is
 naturally correlated with the position of a word in a sentence, we
 used a data-point sampling strategy de-correlating these factors. For
 each length between ????  and ???? words, we randomly generated 300

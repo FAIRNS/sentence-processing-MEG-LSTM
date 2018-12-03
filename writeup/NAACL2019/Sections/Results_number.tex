@@ -147,14 +147,12 @@ long-range dependency having an interfering noun in both SP and PS
 incongruent conditions.
 
 Recall the standard LSTM memory update and output rules \cite{Hochreiter:Schmidhuber:1997}:
-
-\begin{equation} \label{eq:update-rule}
-     C_t = f_t\circ C_{t-1} + i_t\circ \widetilde{C}_t
-\end{equation}
-
-\begin{equation} \label{eq:output}
-     h_t = o_t\circ \tanh(C_t)
-\end{equation}
+\begin{align} 
+    C_t &= f_t\circ C_{t-1} + i_t\circ \widetilde{C}_t \label{eq:update-rule} \\
+     h_t &= o_t\circ \tanh(C_t) \label{eq:output}
+\end{align}
+where $f_t, i_t, o_t \in (0,1)$ and $\widetilde{C}_t \in (-1, 1)$ are 
+gating scalars computed by the network.
 
 Consider now how a number unit may reliably encode and store subject
 number across interfering nouns.  Figure\ref{fig:cartoon} exemplifies
