@@ -9,8 +9,6 @@ To successfully perform the NA-task, the LSTM should: (1) encode and store the g
 \hline
 \B NA task & \B C & \B \unit{2}{\textbf{126}} & \B \unit{2}{\textbf{338}} & \B Full \\
 \hline
-\B Linzen & \B - &  ? &  ? &  ? \\
-\hline
 
 % Singular conditions
 
@@ -54,8 +52,12 @@ nounPPAdv & PS & \textcolor{blue}{63.7} &  - &  99.2 \\
 nounPPAdv & PP & - &  - &  99.8 \\
 
 \hline
+
+\B Linzen & \B - &   \textcolor{blue}{75.3} &  - &  93.9 \\
+\hline
+
 \end{tabular}
-\caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. For tasks with two nouns, SS: singular-singular, SP: singular-plural, PS: plural-singular, PP: plural-plural. Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% is denoted by `-'. \marco{Shouldn't the Full column also be colored?}\yair{Why? For now, blue represents plural subject and red singular. Green represents the syntax unit.} \label{tab:ablation-results}}
+\caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. For tasks with two nouns, SS: singular-singular, SP: singular-plural, PS: plural-singular, PP: plural-plural. Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% is denoted by `-'.  \label{tab:ablation-results}}
 \end{table}
 \end{center}
 
@@ -81,8 +83,7 @@ explanation is that in English the plural form is almost always more
 frequent than the singular one, as the latter only marks third person
 singular, whereas the former is identical to the infinitive and other
 forms. Thus, if the network reverts to unigram probabilities, it will
-tend to prefer the plural. \yair{contrast with Miller and Bock 'segmental' conjecture?} \marco{We will have to say something about
-  the Linzen results also re ablation.}
+tend to prefer the plural. \yair{contrast with Miller and Bock 'segmental' conjecture?} 
 
 \subsubsection{Local vs. distributed code - an ablation study}
 Number information may be stored in the network in either a local,
@@ -102,10 +103,10 @@ whose ablation consistently brought network performance to around
 chance level in the more difficult incongruent conditions of the
 namePP, nounPP and nounPPAdv tasks\footnote{A small subset of other units
 also had an impact on network performance, reducing performance by more than 10\%, but not as dramatically and consistently as the LR-number units. The corresponding accuracies are (performance reduction in parentheses) - \unit{2}{120}: 79.8 (13.3\%, nounPP-PS), 55.6 (17.9\%, namePP-P); \unit{2}{198}: 58.9 (14.5\%, namePP-P) \unit{2}{633}: 78.0 (14.5\%, nounPPAdv-SP), 82.0 (16.9\%, CoAdv-S). Note that full-model performance is relatively low in the namePP-P condition, and that the performance reduction of these units is small than the effect of ablating the plural unit in this condition (42.1\%).}. Moreover, the ablation effect depended on the grammatical number of the subject: \unit{2}{126} significantly reduces
-network performance only if the subject is plural and \unit{2}{338}
-only if the subject is singular. In what follows, we will therefore
+network performance only if the subject is plural (table frame with S, SP or SS conditions) and \unit{2}{338}
+only if the subject is singular (frame with P, PS or PP conditions). In what follows, we will therefore
 refer to these units as the `plural' and `singular' units, respectively,
-or long-range (LR) number units when referring to both. Taken
+or long-range (LR) number units when referring to both. Finally, we note that for the Linzen dataset, as opposed to the nounPP and nounPPAdv tasks, only the plural unit had an effect of reducing performance by more than \%10. This highlights the importance of using carefully crafted stimuli for understanding network dynamics, as is commonly done in, e.g., psycho-linguistics and neuroscience. Taken
 together, these results suggest a highly local coding scheme of
 grammatical number when processing long-range dependencies.
 
@@ -202,7 +203,7 @@ The singular and plural units have emerged at the second layer of the network. T
 \begin{figure}[h]
     \centering
     \includegraphics[height=5cm]{Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png}
-    \caption{Generalization across time.}
+    \caption{Generalization across time. \yair{add error bars across CV sets}}
     \label{fig:GAT}
 \end{figure}
 
@@ -236,4 +237,5 @@ encountered noun, with AUC decreasing to zero around the second noun
 hypothesis that number prediction is supported both by the LR-number
 units, and by distributed activation patterns of other units, to which we refer as short-range (SR) number units. The
 mechanism of the latter, however, is not syntax-sensitive, and simply encodes
-the number of the last noun encountered\footnote{A full description of the SR-number units is beyond the scope of this paper. We only note that specific SR-number units can be identified by training a model to predict subject number from single-unit activations, or alternatively, by a careful inspection of the weights of a classifier trained on the full model (figure \ref{fig:GAT}) and inspection of unit dynamics. We have identified 10 SR-number units in the second layer of the network that had efferent weights with a similar segregated structure as that of the LR-units (figure \ref{fig:output-weights}). All these units were indeed sensitive to the last encountered noun - subject number could be well decoded from unit activity during its presentation (AUC$>0.9$), but SR-unit activity `swaps' once an interfering noun appears (i.e., AUC decreases to zero for a generalization-across-time analysis). Qualitative inspection of cell and gate dynamics of these units confirmed this, showing a considerable difference with those of the LR-number units.}. Finally, to validate the effect of SR-number units on network performance, we performed an ablation experiment - ablating all types of number units (SR and LR; 12 units in total \yair{we should test without the LR units. Also to discuss competition among SR and LR when there's an interfering noun.}) resulted in the lowest task performance compared to 1000 random ablations of equi-size sets of units (i.e., p-value<0.001), for all conditions of the Simple, Adv and CoAdv tasks. \marco{I'd remove the non-number units from the plot.}
+the number of the last noun encountered\footnote{A full description of the SR-number units is beyond the scope of this paper. We only note that specific SR-number units can be identified by training a model to predict subject number from single-unit activations, or alternatively, by a careful inspection of the weights of a classifier trained on the full model (figure \ref{fig:GAT}) and inspection of unit dynamics. We have identified 10 SR-number units in the second layer of the network that had efferent weights with a similar segregated structure as that of the LR-units (figure \ref{fig:output-weights}). All these units were indeed sensitive to the last encountered noun - subject number could be well decoded from unit activity during its presentation (AUC$>0.9$), but SR-unit activity `swaps' once an interfering noun appears (i.e., AUC decreases to zero for a generalization-across-time analysis). Qualitative inspection of cell and gate dynamics of these units confirmed this, showing a considerable difference with those of the LR-number units.}. Finally, to validate the effect of SR-number units on network performance, we performed an ablation experiment - for all conditions in the easier tasks described above, ablating all types of number units (SR and LR; 12 units in total) or ablating all SR units (10 in total) resulted in a significance reduction in task performance compared to 1000 random ablations of equi-size sets of units ($p-value<0.01$).
+\yair{Consider discussing competition among SR and LR when there's an interfering noun.}
