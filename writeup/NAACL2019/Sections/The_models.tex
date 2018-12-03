@@ -8,7 +8,9 @@
 \paragraph{LSTM language model}\label{ssec:lstm_lm}
 
 We consider the pretrained LSTM LM that was made available by \cite{Gulordava:etal:2018}.
-This model has two LSTM layers with 650 dimensions, an output layer with vocabulary size 50000 and an embedding layer of 650 dimensions. The model was trained with the language model objective on Wikipedia data, without fine-tuning for the agreement task.\footnote{While we report results for the pre-trained model only, we ascertained their robustness by re-training the same configuration with different seeds, and exploring higher drop-out values. The latter experiments were motivated by the observation that one of our main results pertains to local number encoding, and the low dropout value used used by Gulordava et al.~(0.2) might have favoired such localist solutions. We replicated our main results with all the variations.} In our experiments, we investigate the different components of both layers of the LSTM, given by the equations below \cite{Hochreiter:Schmidhuber:1997}:
+This model has two LSTM layers with 650 dimensions, an output layer with vocabulary size 50000 and an embedding layer of 650 dimensions. 
+The model was trained with the language model objective on Wikipedia data, without fine-tuning for the agreement task.
+\footnote{While we report results for the pre-trained model only, we ascertained their robustness by re-training the same configuration with different seeds and different drop-out values. The latter experiments were motivated by the observation that one of our main results pertains to local number encoding, and the low dropout value used used by Gulordava et al.~(0.2) might have favoired such localist solutions. We replicated our main results with all the variations.} In our experiments, we investigate the different components of both layers of the LSTM, given by the equations below \cite{Hochreiter:Schmidhuber:1997}:
 \begin{align}
     h_t & = o_t\circ \tanh(c_t)\\ 
      c_t & = f_t\circ c_{t-1} + i_t\circ \widetilde{c}_t\\
@@ -21,7 +23,7 @@ This model has two LSTM layers with 650 dimensions, an output layer with vocabul
 refer to the n$^{th}$ unit in the first and second layer with the
 terms \unit{1}{n} and \unit{2}{n}, respectively.
 
-Model performance was evaluated on each NA-task and conditions by computing its accuracy in predicting the correct form of the main verb. Specifically, for each sentence, the model was presented with all words up to the one immediately preceding the main verb. If the model assigned higher likelihood to the correct form of the verb than to its counterpart with the wrong number then the trial was marked as a hit. Model accuracy was then computed by counting the fraction of hits across the entire set of sentences in the condition, and is denoted in what follows as ACC$_{NA-task, condition}$.
+Model performance was evaluated on each NA-task and condition by computing its accuracy in predicting the correct form of the main verb. Specifically, for each sentence, the model was presented all words up to the one immediately preceding the main verb. If the model assigned a higher likelihood to the correct form of the verb than to its counterpart with the wrong number, the trial was marked as a hit. Model accuracy was then computed by counting the fraction of hits across the entire set of sentences in the condition, and is denoted in what follows as ACC$_{NA-task, condition}$.
 
 
 \paragraph{Regression model}\label{ssec:dc} \marco{This is very standard for now, so I don't think there is a need for the motivation part.} To understand which
