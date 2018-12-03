@@ -2,6 +2,7 @@
 \usepackage[hyperref]{naaclhlt2019}
 \usepackage{times}
 \usepackage{latexsym}
+\usepackage{calculator}
 % \usepackage[textsize=tiny]{todonotes}
 \usepackage{subcaption}
 \usepackage{xstring}
@@ -46,7 +47,12 @@
         }
 }
 % \newcommand{\unit}[2]{\layer{#1}-$#2$}
-\newcommand{\unit}[2]{$#2$}
+%\newcommand{\unit}[2]{$#2$}
+\newcommand{\unit}[2]{\IfEqCase{#1}{
+    {1}{#2} 
+    {2}{\ADD{#2}{650}{\unitnr}\unitnr}
+    }
+}
 
 % \newcommand{\yair}[1]{\todo[color=blue!40]{YL: #1}}
 % \newcommand{\german}[1]{\todo[color=purple!40]{GK: #1}}
