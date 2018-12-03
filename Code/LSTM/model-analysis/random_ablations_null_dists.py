@@ -155,9 +155,10 @@ def plot_all_null_dists(performance_per_k, fontsize=25):
 # Settings
 filter_units = [776, 988] # counting from 1 - which units are not allowed in the ablated units (e.g, LR number units)
 many_k_or_single = 12 # either the str 'many' or an int representing the size of the ablated group of units (k)
-condition = ['simple_plural_control', 'simple_singular_control', 'adv_plural_control', 'adv_singular_control', 'adv_adv_plural_control', 'adv_adv_singular_control']
+condition = ['simple_plural_control', 'simple_singular_control', 'adv_plural_control', 'adv_singular_control', 'adv_adv_plural_control', 'adv_adv_singular_control',
+'simple_plural_control_SR', 'simple_singular_control_SR', 'adv_plural_control_SR', 'adv_singular_control_SR', 'adv_adv_plural_control_SR', 'adv_adv_singular_control_SR']
 
-for cond in range(6):
+for cond in range(len(condition)):
     # MAIN
     # path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/nounpp_plural_singular_control.txt'
     # path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/nounpp_singular_plural_control.txt'
@@ -188,6 +189,12 @@ for cond in range(6):
     performance_test['adv_adv_singular_control'] = 0.6144444444444445 # adv_adv S
     performance_test['adv_adv_plural_control'] = 0.7111111111111111 # adv_adv P
 
+    performance_test['simple_singular_control_SR'] = 0.9766666666666667  # simple S
+    performance_test['simple_plural_control_SR'] = 0.9766666666666667  # simple P
+    performance_test['adv_singular_control_SR'] = 0.9922222222222222  # adv S
+    performance_test['adv_plural_control_SR'] = 0.8733333333333333  # adv P
+    performance_test['adv_adv_singular_control_SR'] = 0.96  # adv_adv S
+    performance_test['adv_adv_plural_control_SR'] = 0.8666666666666667  # adv_adv P
 
     #
     p_value = get_p_value_from_null_dist(performance_per_k[many_k_or_single], performance_test[condition[cond]])

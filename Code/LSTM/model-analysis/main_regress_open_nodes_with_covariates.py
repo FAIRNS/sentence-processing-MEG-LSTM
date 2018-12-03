@@ -96,7 +96,7 @@ if calc_VIF:
     # Plot VIF values hist:
     plt.hist(VIF, 50)
     plt.xlabel('VIF', size=18)
-    plt.ylabel('Number of featuress', size=18)
+    plt.ylabel('Number of features', size=18)
     plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'VIF_dist.png'))
     plt.close()
 
