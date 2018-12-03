@@ -8,25 +8,19 @@ of the sentence, and in particular, about the subject-verb
 dependency. To explore this, we tested whether syntactic information
 can be decoded from other units in the network, by using the depth of
 the syntactic tree as a proxy \cite{Nelson:etal:2017}. Specifically,
-we trained L1 and L2-regularized regression models to predict
+we trained an L2-regularized regression models to predict
 syntactic tree-depth from the hidden-state activity of all units,
 using the data presented in Section \ref{sec:the_data} above in nested
-5-fold cross-validation procedure.  Word position and tree-depth were
-decorrelated in the data, and word frequency was added as a covariate
-to the model. The optimal regularization $\lambda$ parameters, found
-on the validation set, were \yair{report lambda values}. The test-set
-findings reported below were consistent across the two regularization
-types. \marco{And which one are we reporting?}
+5-fold cross-validation (CV) procedure (the optimal regularization size was found to be consistent across CV-splits, $\lambda=784.76$, among 20 possible values log-uniformly distributed in $[10^-5, 10^5]$ \yair{add regularization plots to SOM?}). Word position and tree-depth were decorrelated in the data and word frequency was added as a covariate
+to the model and had a negligable effect on the results.
 
 Syntactic tree-depth can be efficiently decoded from network activity
-\yair{mean R-squared + std}. A small subset of units we will refer to
-as `syntax units' had relatively high weights in the regression model
-\yair{number of units; outlier detection mean + 3std. Discuss issues with interpreting weights}. The syntax
+($R^2_{test-set}=0.85\pm0.009$; covariate corrected). A small subset of units we will refer to
+as `syntax units' had relatively high weights in the regression model (mean weight = $7.6*10^{-4}$, standard deviation(SD)=$7.86*10^{-2}$; cutoff for outlier weights was set to three SDs)\yair{Discuss issues with interpreting weights}. The syntax
 units, as a set, were found to be crucial for accomplishing the NA-task, since
-ablating them resulted in significant performance reduction compared
+ablating them resulted in significant performance reduction in several NA-tasks compared
 to 1000 random ablations of subsets of units of the same size
-($p=0.024$) \yair{report ablation results from all NA-tasks}. \marco{Which set of data is this based on?
-  I would add the accuracy when ablating the two number units in the
+(Linzen NA-task: $p-value=0.024$, nounPP-SP: $p-value=$, nounPP-PS: $p-value=$ \yair{complete: report ablation results from all NA-tasks}).\marco{I would add the accuracy when ablating the two number units in the
   plot, and, as I expect this to be larger, discuss the fact that
   probably what we identified here is not the complete syntax-tracking
   sub-network.}
