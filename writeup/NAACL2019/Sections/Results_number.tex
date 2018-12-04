@@ -12,44 +12,44 @@ To successfully perform the NA-task, the LSTM should: (1) encode and store the g
 
 % Singular conditions
 
-Simple & S & - &  - &  100 \\
+Simple & S & - &  - &  \textcolor{red}{100} \\
 
-Adv & S & - &  - &  100 \\
+Adv & S & - &  - &  \textcolor{red}{100} \\
 
-2Adv & S & - &  - &  99.9 \\
+2Adv & S & - &  - &  \textcolor{red}{99.9} \\
 
-CoAdv & S & - &  \textcolor{red}{82} &  98.7 \\
+CoAdv & S & - &  \textcolor{red}{82} &  \textcolor{red}{98.7} \\
 
-namePP & SS & - &  - &  99.3 \\
+namePP & SS & - &  - &  \textcolor{red}{99.3} \\
 
-nounPP & SS & - &  - &  99.2 \\
+nounPP & SS & - &  - &  \textcolor{red}{99.2} \\
 
-nounPP & SP &  - &  \textcolor{red}{54.2} &  87.2 \\
+nounPP & SP &  - &  \textcolor{red}{54.2} &  \textcolor{red}{87.2} \\
 
-nounPPAdv & SS &  - &  - & 99.5 \\
+nounPPAdv & SS &  - &  - & \textcolor{red}{99.5} \\
 
-nounPPAdv & SP &  - &  \textcolor{red}{54.0} & 91.2 \\
+nounPPAdv & SP &  - &  \textcolor{red}{54.0} & \textcolor{red}{91.2} \\
 
 
 \hline
 % Plural conditions
-Simple & P &  - &  - &  100 \\
+Simple & P &  - &  - &  \textcolor{blue}{100} \\
 
-Adv & P &  - &  - &  99.6 \\
+Adv & P &  - &  - &  \textcolor{blue}{99.6} \\
 
-2Adv & P & - &  - &  99.3 \\
+2Adv & P & - &  - &   \textcolor{blue}{99.3} \\
 
-CoAdv & P &  \textcolor{blue}{79.2} &  - &  99.3 \\
+CoAdv & P &  \textcolor{blue}{79.2} &  - &   \textcolor{blue}{99.3} \\
 
-namePP & PS & \textcolor{blue}{39.9} &  - &  68.9 \\
+namePP & PS & \textcolor{blue}{39.9} &  - &   \textcolor{blue}{68.9} \\
 
-nounPP & PS &  \textcolor{blue}{48.0} & - &  92.0 \\
+nounPP & PS &  \textcolor{blue}{48.0} & - &   \textcolor{blue}{92.0} \\
 
-nounPP & PP &  \textcolor{blue}{78.3} & - &  99.0 \\
+nounPP & PP &  \textcolor{blue}{78.3} & - &   \textcolor{blue}{99.0} \\
 
-nounPPAdv & PS & \textcolor{blue}{63.7} &  - &  99.2 \\
+nounPPAdv & PS & \textcolor{blue}{63.7} &  - &   \textcolor{blue}{99.2} \\
 
-nounPPAdv & PP & - &  - &  99.8 \\
+nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
 
 \hline
 
@@ -57,11 +57,12 @@ nounPPAdv & PP & - &  - &  99.8 \\
 \hline
 
 \end{tabular}
-\caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. For tasks with two nouns, SS: singular-singular, SP: singular-plural, PS: plural-singular, PP: plural-plural. Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% is denoted by `-'.  \label{tab:ablation-results}}
+\caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. %For tasks with two nouns, SS: singular-singular, SP: singular-plural, PS: plural-singular, PP: plural-plural.
+  Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% denoted by `-'.  \label{tab:ablation-results}}
 \end{table}
 \end{center}
 
-We first measured LSTM performance on Linzen's data-set and on the various NA-tasks of Table
+We first tested LSTM performance on Linzen's data and on the NA-tasks of Table
 \ref{tab:data-sets}. Following
 \newcite{Linzen:etal:2016} and later work, we compute the likelihood
 that the LSTM assigns to the main verb of each sentence given the
@@ -71,21 +72,24 @@ context. Accuracy in a given condition is the proportion of sentences
 in the condition where the model assigned a higher likelihood to the
 correct form than to the wrong one.
 
-Network performance is reported in Table
-\ref{tab:ablation-results} (right column -- `Full'). We highlight
-several aspect of these results. First, some NA-tasks and conditions
-are clearly more difficult than others. For example, performance on
+Network performance is reported in Table \ref{tab:ablation-results}
+(right column -- `Full'). We see, first, that some NA-tasks and
+conditions are more difficult than others. For example, performance on
 the Simple (0-distance) NA-task is better than that on the Co-Adv
 NA-task, which in turn is better than that of the nounPP
-tasks. Second, as expected, incongruent conditions (the mismatch-number conditions of namePP, nounPP and nounPPAdv) reduce network performance. Third, for long-range dependencies, reliably encoding singular subject across an interfering noun is more difficult than a plural subject:
-for both nounPP and nounPPAdv, PS is easier than SP. A possible
-explanation is that in English the plural form is almost always more
-frequent than the singular one, as the latter only marks third person
-singular, whereas the former is identical to the infinitive and other
-forms. Thus, if the network reverts to unigram probabilities, it will
-tend to prefer the plural. Last, we note that we have replicated the results reported in \newcite{Gulordava:etal:2018} for the Linzen NA-task.
+tasks. Second, as expected, incongruent conditions (the
+number-mismatch conditions of namePP, nounPP and nounPPAdv) reduce
+network performance. Third, for long-range dependencies, reliably
+encoding singular subject across an interfering noun is more difficult
+than a plural subject: for both nounPP and nounPPAdv, PS is easier
+than SP. A possible explanation is that in English the plural form is
+almost always more frequent than the singular one, as the latter only
+marks third person singular, whereas the former is identical to the
+infinitive and other forms. Thus, if the network reverts to unigram
+probabilities, it will tend to prefer the plural. Last, we replicated
+the results of \newcite{Gulordava:etal:2018} for the Linzen NA-task.
 
-\subsubsection{Local vs. distributed code - an ablation study}
+\subsubsection{Looking for number units through ablation}
 
 Number information may be stored in the network in either a local,
 sparse, or a distributed way, depending on the fraction of active
