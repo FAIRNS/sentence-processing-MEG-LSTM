@@ -1,4 +1,4 @@
-        Presenting the Number Agreement data
+# Presenting the Number Agreement data
 
 Every file in this folder corresponds to one category of stimuli used in the Number Agreement (NA) task presented in the paper. 
 They contains 4 columns, separated by tabulations:
