@@ -1,7 +1,6 @@
 \section{Experiments}\label{sec:results}
 To successfully perform the NA-task, the LSTM should: (1) encode and store the grammatical number of the subject; and (2) track the main subject-verb syntactic dependency. The latter information is important for identifying the time period during which the network should store the subject number, and when it should output it and update number information. This section describes the `neural circuit' that encodes and processes this information in the LSTM.
 
-\subsection{Long-range number units}\label{subsec:ablation}
 \begin{center}
 \begin{table}[ht]
 \centering
@@ -62,6 +61,7 @@ nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
 \end{table}
 \end{center}
 
+\subsection{Long-range number units}\label{subsec:ablation}
 We first tested LSTM performance on Linzen's data and on the NA-tasks of Table
 \ref{tab:data-sets}. Following
 \newcite{Linzen:etal:2016} and later work, we compute the likelihood
@@ -89,33 +89,34 @@ infinitive and other forms. Thus, if the network reverts to unigram
 probabilities, it will tend to prefer the plural. Last, we replicated
 the results of \newcite{Gulordava:etal:2018} for the Linzen NA-task.
 
-\subsubsection{Looking for number units through ablation}
-
-Number information may be stored in the network in either a local,
-sparse, or a distributed way, depending on the fraction of active
-units that carry it.  We hypothesized that if the network uses a local
-or sparse coding, meaning that there's a small set of units that
-encode number information, then ablating these units would lead to a
-drastic decrease in performance in the NA-tasks.  To test this, we
-ablated each unit of the network at a time, by fixing its activation
-to zero, and tested on the tasks.
+\paragraph{Looking for number units through ablation} Number
+information may be stored in the network in either a local, sparse, or
+a distributed way, depending on the fraction of active units that
+carry it.  We hypothesized that if the network uses a local or sparse
+coding, meaning that there's a small set of units that encode number
+information, then ablating these units would lead to a drastic
+decrease in performance in the NA-tasks.  To test this, we ablated
+each unit of the network at a time, by fixing its activation to zero,
+and tested on the tasks.
 
 Two units were found to have exceptional effect on network performance
 (Table \ref{tab:ablation-results}, \unit{2}{126} and \unit{2}{338}
-columns). Ablating them reduced network performance by more than 10\%
+columns).\footnote{Units 1-650 belong to the first layer, 651-1300 to
+  the second. All units detected by our analyses come from the latter.} Ablating them reduced network performance by more than 10\%
 across various conditions, and importantly, they were the only units
 whose ablation consistently brought network performance to around
 chance level in the more difficult incongruent conditions of the
-namePP, nounPP and nounPPAdv tasks\footnote{A small subset of other units
-also had an impact on network performance, reducing performance by more than 10\%, but not as dramatically and consistently as the LR-number units. The corresponding accuracies are (performance reduction in parentheses) - \unit{2}{120}: 79.8 (13.3\%, nounPP-PS), 55.6 (17.9\%, namePP-P); \unit{2}{198}: 58.9 (14.5\%, namePP-P) \unit{2}{633}: 78.0 (14.5\%, nounPPAdv-SP), 82.0 (16.9\%, CoAdv-S). Note that full-model performance is relatively low in the namePP-P condition, and that the performance reduction of these units is small than the effect of ablating the plural unit in this condition (42.1\%).}. Moreover, the ablation effect depended on the grammatical number of the subject: \unit{2}{126} significantly reduces
-network performance only if the subject is plural (table frame with S, SP or SS conditions) and \unit{2}{338}
-only if the subject is singular (frame with P, PS or PP conditions). In what follows, we will therefore
+namePP, nounPP and nounPPAdv
+tasks. % \footnote{A small subset of other units
+  % also occasionally reduced performance by more than 10\%, but not as dramatically and consistently as the LR-number units. The corresponding accuracies are (performance reduction in parentheses): \unit{2}{120}: 79.8 (13.3\%, nounPP-PS), 55.6 (17.9\%, namePP-PS); \unit{2}{198}: 58.9 (14.5\%, namePP-PS) \unit{2}{633}: 78.0 (14.5\%, nounPPAdv-SP), 82.0 (16.9\%, CoAdv-S). Note that full-model performance is relatively low in the namePP-PS condition, and that the performance reduction of these units is smaller than that of the plural unit in this condition (42.1\%).}
+Moreover, the ablation effect depended on the grammatical number of the subject: \unit{2}{126} significantly reduces
+network performance only if the subject is plural (S, SP or SS conditions) and \unit{2}{338}
+only if the subject is singular (P, PS or PP conditions). In what follows, we will therefore
 refer to these units as the `plural' and `singular' units, respectively,
 or long-range (LR) number units when referring to both. Finally, we note that although the Linzen NA-task contained mixed stimuli from many types of conditions, the plural unit was found to have a substantial effect on average on network performance. The singular unit didn't show a similar effect in this case, which highlights the importance of using carefully crafted stimuli, as in the nounPP and nounPPAdv tasks, for understanding network dynamics. Taken
-together, these results suggest a highly local coding scheme of
+together, the results suggest a highly local coding scheme of
 grammatical number when processing long-range dependencies.
 
-\subsubsection{Visualizing gate and cell-state dynamics}\label{subsec:gate-dynamics}
 \begin{figure*}[ht]
 %\includegraphics[width=\textwidth]{Figures/Figure2_cartoon_LR_units.png}
     \centering
@@ -145,6 +146,7 @@ grammatical number when processing long-range dependencies.
 \caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. Values in (b) and (c) are averaged across all condition sentences, with error bars showing standard deviations}
 \end{figure*}
 
+\paragraph{Visualizing gate and cell-state dynamics}\label{subsec:gate-dynamics}
 To understand the functioning of the number units, we now look
 into their gate and state dynamics during sentence processing. We
 focus on the nounPP NA-task, which is the simplest NA-task including a
@@ -166,32 +168,37 @@ dynamics. The four conditions are represented with separated curves -
 red for singular subject, blue for plural, and dashed lines for
 incongruent conditions. Gate and cell activity at time points
 unrelated to solving the NA-task are masked with white, as we do not
-make precise predictions for them. The update rule of the LSTM cell
-has two terms (Eq.~\ref{eq:update-rule}).\footnote{We abuse notation
-  here, using the symbols normally denoting whole layers in
-  (\ref{eq:update-rule}) and (\ref{eq:output}) to denote the elements of single
-  cells.} In the first, $f_t \circ{} C_{t-1}$, the forget gate
-controls whether to keep the previous cell content ($f_t=1$: perfect
-remembering) or forget it ($f_t=0$: complete forgetting). In the
-second term, $i_t\circ{} \tilde{C}_t$, the input gate controls whether
-the information currently presented to the network, as encoded by
+make precise predictions for them.
+
+The update rule of the LSTM cell has two terms
+(Eq.~\ref{eq:update-rule}).\footnote{We abuse notation here, using the
+  symbols denoting whole layers in equations (\ref{eq:update-rule}) and
+  (\ref{eq:output}) to denote the components of single cells.} In the
+first, $f_t \circ{} C_{t-1}$, the forget gate controls whether to keep
+the previous cell content ($f_t=1$: perfect remembering) or forget it
+($f_t=0$: complete forgetting). In the second,
+$i_t\circ{} \tilde{C}_t$, the input gate controls whether the
+information currently presented to the network, as encoded by
 $\tilde{C}_t$, should be written onto the cell ($i_t=1$: full access)
 or not ($i_t=0$). The singular unit can thus use these gates to
 reliably store number information across long-range
-dependencies. Specifically, the unit can (numbers correspond to panels in Figure\ref{fig:cartoon} counting from the top): (1) encode subject number
-via $\tilde{C}_{t_{subject}}$ with different values for singular and
-plural; (2) open the input gate \textit{only} when a singular subject
-is presented (red curves \textit{only}) and protect it from
-interfering nouns ($i_t=0, t<t_{verb}$); (3) at the same time, clear
-the cell from previously stored information ($f_{t_{subject}}=0$) and
-then store subject number across the entire dependency
-($f_t=1, t_{subject}<t<t_{verb}$); (4) these will result in stable encoding of subject number in the cell $C_t$ throughout the dependency; (5) finally, output subject number
-at the right moment, when predicting the verb form $o_{t_{verb}-1}=1$
+dependencies. Specifically, the unit can (numbers correspond to panels
+in Figure\ref{fig:cartoon} counting from the top): (1) encode subject
+number via $\tilde{C}_{t_{subject}}$ with different values for
+singular and plural; (2) open the input gate \textit{only} when a
+singular subject is presented (red curves \textit{only}) and protect
+it from interfering nouns ($i_t=0, t<t_{verb}$); (3) at the same time,
+clear the cell from previously stored information
+($f_{t_{subject}}=0$) and then store subject number across the entire
+dependency ($f_t=1, t_{subject}<t<t_{verb}$); (4) this will result in
+stable encoding of subject number in the cell $C_t$ throughout the
+dependency; (5) finally, output subject number at the right moment,
+when predicting the verb form ($o_{t_{verb}-1}=1$)
 (Eq.~\ref{eq:output}).
 
-Figures \ref{fig:singular-unit} and \ref{fig:plural-unit} present the actual gate and cell dynamics of the singular and plural units. Both units follow the general solution for reliable number storage described above. Note that for $\tilde{C}_t$ and $i_t$, and as a result also for $C_t$, the plural unit `mirrors' the singular unit with respect to subject number (red curves of PP and PS vs. blue curves of SS and SP). This is in accordance with the results of the ablation experiments, which showed that ablating these units had an effect that depended on the grammatical number of the subject (table \ref{tab:ablation-results}). This provides complementary support for the identification of these units as `singular' and `plural'.
+Figures \ref{fig:singular-unit} and \ref{fig:plural-unit} present the actual gate and cell dynamics of the singular and plural units. Both units follow the general solution for reliable number storage described above. Note that for $\tilde{C}_t$ and $i_t$, and as a result also for $C_t$, the plural unit `mirrors' the singular unit with respect to subject number (red curves of PP and PS vs. blue curves of SS and SP). This is in accordance with the results of the ablation experiments, which showed that ablating these units had an effect that depended on the grammatical number of the subject (Table \ref{tab:ablation-results}). This provides complementary support for the identification of these units as `singular' and `plural'.
 
-A single divergence between the solution depicted in Figure \ref{fig:cartoon} and the actual dynamics of the number units, is that input-gate activity is smaller, but not zero, at the time step immediately following the subject. One speculative explanation is that this might be useful to process compound nouns. In these cases, subject number information is stored with the second noun, whereas in the case of simple nouns there is no `risk' of encountering an interfering noun immediately after the subject, making the delay in closing the gate safe.
+A single divergence between the solution depicted in Figure \ref{fig:cartoon} and the actual dynamics of the number units is that input gate activity is smaller, but not zero, at the time step immediately following the subject. One speculative explanation is that this might be useful to process compound nouns. In these cases, subject number information is stored with the second noun, whereas in the case of simple nouns there is no `risk' of encountering an interfering noun immediately after the subject, making the delay in closing the gate safe.
 
 \begin{figure}[b]
     \centering
@@ -200,9 +207,9 @@ A single divergence between the solution depicted in Figure \ref{fig:cartoon} an
     \label{fig:output-weights}
 \end{figure}
 
-The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets, we find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units \unit{2}{1} and \unit{2}{650} and the syntax unit \unit{2}{500} described below (section \ref{sec:syntax-units}), do not have segregated efferent weights to verb forms, as expected from number units only. 
+The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650} (representative of the general pattern) and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
 
-\subsubsection{Short-range number information}
+\subsection{Short-range number information}
 \begin{figure}
     \centering
     \includegraphics[height=5cm]{Figures/GAT1d_cell_.png}
@@ -224,20 +231,50 @@ to be affected by incongruent intervening nouns.
 We trained a linear model to predict the grammatical number of the
 subject from network activity in response to the presentation of the
 subject, and tested its prediction on test sets from all time points
-\yair{cite King and Dehaene}, in incongruent conditions
-only of the nounPP task. We used Area under of Curve (AUC) to evaluate model
+\cite{King:Dehaene:2014}, in incongruent conditions only of the nounPP
+task. We used Area under of Curve (AUC) to evaluate model
 performance. Figure \ref{fig:GAT} shows decoding across time of
 subject number from cell activity of each number unit separately and
 from cell activity of the entire network without these two units
-(`Full model minus number units'). Results show that number
-information can be efficiently decoded from other units in the
-network, and that this information can be carried for several time
-steps (relatively high AUC up to the second determiner). However, the
-way in which these units encode number is sensitive to the last
-encountered noun, with AUC decreasing to zero around the second noun
-(`cars'), whereas test performance of the models trained on cell activity of the LR-number units is consistently high. This confirms our
-hypothesis that number prediction is supported both by the LR-number
-units, and by distributed activation patterns of other units, to which we refer as short-range (SR) number units. The
-mechanism of the latter, however, is not syntax-sensitive, and simply encodes
-the number of the last noun encountered\footnote{A full description of the SR-number units is beyond the scope of this paper. We only note that specific SR-number units can be identified by training a model to predict subject number from single-unit activations, or alternatively, by a careful inspection of the weights of a classifier trained on the full model (figure \ref{fig:GAT}) and inspection of unit dynamics. We have identified 10 SR-number units in the second layer of the network that had efferent weights with a similar segregated structure as that of the LR-units (figure \ref{fig:output-weights}). All these units were indeed sensitive to the last encountered noun - subject number could be well decoded from unit activity during its presentation (AUC$>0.9$), but SR-unit activity `swaps' once an interfering noun appears (i.e., AUC decreases to zero for a generalization-across-time analysis). Qualitative inspection of cell and gate dynamics of these units confirmed this, showing a considerable difference with those of the LR-number units.}. Finally, to validate the effect of SR-number units on network performance, we performed an ablation experiment - for all conditions in the easier tasks described above, ablating all types of number units (SR and LR; 12 units in total) or ablating all SR units (10 in total) resulted in a significance reduction in task performance compared to 1000 random ablations of equi-size sets of units ($p-value<0.01$).
-\yair{Consider discussing competition among SR and LR when there's an interfering noun.}
+(`Full model minus LR-units'). Results show that number information
+can be efficiently decoded from other units in the network, and that
+this information can be carried for several time steps (relatively
+high AUC up to the second determiner). However, the way in which these
+units encode number is sensitive to the last encountered noun, with
+AUC decreasing to zero around the second noun (`cars'), whereas test
+performance of the models trained on cell activity of the LR-number
+units is consistently high. This confirms that number prediction is
+supported both by the LR-number units, and by distributed activation
+patterns of other short-range (SR) number units. The latter, however,
+are not syntax-sensitive, and simply encode the number of the last
+noun encountered.
+
+A full description of the SR-number units is beyond our scope. We
+tried however to identify specific SR-number units by training a
+linear model to predict subject number from single-unit activations,
+and by a careful inspection of the weights of a classifier trained on
+the full model (Figure \ref{fig:GAT}), accompanied by informal
+inspection of unit dynamics.
+
+10 SR-number units consistently emerged in the second layer of the
+network. They further had efferent weights with a similar segregated
+structure as that of the LR units (Figure
+\ref{fig:output-weights}). The units were indeed sensitive to the last
+encountered noun: subject number could be decoded from unit activity
+during its presentation (AUC$>0.9$), but activity `swaps' once an
+interfering noun appears (i.e., AUC decreases to zero in a
+generalization-across-time analysis). % Qualitative inspection of cell
+% and gate dynamics confirmed  a considerable difference with LR
+% units.
+Finally, to validate the effect of SR-number units on network
+performance, for all easier NA-tasks we ablated both SR and LR number
+units (12 in total) or SR units only (10 in total). Both experiments
+resulted in a significant reduction in task performance compared to
+1,000 random equi-size ablations ($p<0.01$).
+
+Intriguingly, we observed qualitatively that LR units are almost
+always making the right prediction, even when the network predicts the
+wrong number. The wrong outcome, in such cases, might be due to
+interference from the syntax-unaware SR units. We leave the study of LR-SR
+unit interplay to future work.
+
