@@ -157,6 +157,27 @@ filter_units = [776, 988] # counting from 1 - which units are not allowed in the
 conditions = ['nounpp_plural_singular_control', 'nounpp_singular_plural_control', 'simple_plural_control', 'simple_singular_control', 'adv_plural_control', 'adv_singular_control', 'adv_adv_plural_control', 'adv_adv_singular_control',
 'simple_plural_control_SR', 'simple_singular_control_SR', 'adv_plural_control_SR', 'adv_singular_control_SR', 'adv_adv_plural_control_SR', 'adv_adv_singular_control_SR']
 
+# Dict for performance in all conditions
+performance_test = {}
+performance_test['nounpp_singular_plural_control'] = 0.6916666666666667
+performance_test['nounpp_plural_singular_control'] = 0.94
+
+performance_test['simple_singular_control'] = 0.8833333333333333 # simple S
+performance_test['simple_plural_control'] = 0.8733333333333333 # simple P
+performance_test['adv_singular_control'] = 0.8933333333333333 # adv S
+performance_test['adv_plural_control'] = 0.6422222222222222 # adv P
+performance_test['adv_adv_singular_control'] = 0.6144444444444445 # adv_adv S
+performance_test['adv_adv_plural_control'] = 0.7111111111111111 # adv_adv P
+
+performance_test['simple_singular_control_SR'] = 0.9766666666666667  # simple S
+performance_test['simple_plural_control_SR'] = 0.9766666666666667  # simple P
+performance_test['adv_singular_control_SR'] = 0.9922222222222222  # adv S
+performance_test['adv_plural_control_SR'] = 0.8733333333333333  # adv P
+performance_test['adv_adv_singular_control_SR'] = 0.96  # adv_adv S
+performance_test['adv_adv_plural_control_SR'] = 0.8666666666666667  # adv_adv P
+
+
+# LOOP OVER ALL CONDITIONS
 for cond, condition in enumerate(conditions):
     # MAIN
     path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/' + condition + '.txt'
@@ -169,28 +190,11 @@ for cond, condition in enumerate(conditions):
         performance_per_k = generate_and_plot_null_dists_simple(path2ablation_results, many_k_or_single, filter_units)
 
 
-    performance_test = {}
 
-    performance_test['nounpp_singular_plural_control'] = 0.8483333333333334  # simple S
-    performance_test['nounpp_plural_singular_control'] = 0.9266666666666666  # simple S
-
-    performance_test['simple_singular_control'] = 0.8833333333333333 # simple S
-    performance_test['simple_plural_control'] = 0.8733333333333333 # simple P
-    performance_test['adv_singular_control'] = 0.8933333333333333 # adv S
-    performance_test['adv_plural_control'] = 0.6422222222222222 # adv P
-    performance_test['adv_adv_singular_control'] = 0.6144444444444445 # adv_adv S
-    performance_test['adv_adv_plural_control'] = 0.7111111111111111 # adv_adv P
-
-    performance_test['simple_singular_control_SR'] = 0.9766666666666667  # simple S
-    performance_test['simple_plural_control_SR'] = 0.9766666666666667  # simple P
-    performance_test['adv_singular_control_SR'] = 0.9922222222222222  # adv S
-    performance_test['adv_plural_control_SR'] = 0.8733333333333333  # adv P
-    performance_test['adv_adv_singular_control_SR'] = 0.96  # adv_adv S
-    performance_test['adv_adv_plural_control_SR'] = 0.8666666666666667  # adv_adv P
 
     #
     p_value = get_p_value_from_null_dist(performance_per_k[many_k_or_single], performance_test[condition])
-    print(condition, performance_test[condition], '%1.3f'%p_value)
+    print(condition, performance_test[condition], 'p-value = %1.3f'%p_value)
 
     # plot_null_dist(performance_per_k[many_k_or_single], many_k_or_single, performance_test[condition[cond]], p_value)
     # plot_all_null_dists(performance_per_k)
