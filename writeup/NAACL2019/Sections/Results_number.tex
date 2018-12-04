@@ -53,7 +53,7 @@ nounPPAdv & PP & - &  - &  99.8 \\
 
 \hline
 
-\B Linzen & \B - &   \textcolor{blue}{75.3} &  - &  93.9 \\
+\B Linzen & \B - &   75.3 &  - &  93.9 \\
 \hline
 
 \end{tabular}
@@ -73,19 +73,20 @@ correct form than to the wrong one.
 
 Network performance is reported in Table
 \ref{tab:ablation-results} (right column -- `Full'). We highlight
-several aspect of these results. \marco{Discuss Linzen} First, some NA-tasks and conditions
+several aspect of these results. First, some NA-tasks and conditions
 are clearly more difficult than others. For example, performance on
 the Simple (0-distance) NA-task is better than that on the Co-Adv
 NA-task, which in turn is better than that of the nounPP
-tasks. Second, as expected, incongruent conditions (the mismatch-number conditions of namePP, nounPP and nounPPAdv) reduce network performance. Last, for long-range dependencies, reliably encoding singular subject across an interfering noun is more difficult than a plural subject:
+tasks. Second, as expected, incongruent conditions (the mismatch-number conditions of namePP, nounPP and nounPPAdv) reduce network performance. Third, for long-range dependencies, reliably encoding singular subject across an interfering noun is more difficult than a plural subject:
 for both nounPP and nounPPAdv, PS is easier than SP. A possible
 explanation is that in English the plural form is almost always more
 frequent than the singular one, as the latter only marks third person
 singular, whereas the former is identical to the infinitive and other
 forms. Thus, if the network reverts to unigram probabilities, it will
-tend to prefer the plural. \yair{contrast with Miller and Bock 'segmental' conjecture?} 
+tend to prefer the plural. Last, we note that we have replicated the results reported in \newcite{Gulordava:etal:2018} for the Linzen NA-task.
 
 \subsubsection{Local vs. distributed code - an ablation study}
+
 Number information may be stored in the network in either a local,
 sparse, or a distributed way, depending on the fraction of active
 units that carry it.  We hypothesized that if the network uses a local
@@ -106,7 +107,7 @@ also had an impact on network performance, reducing performance by more than 10\
 network performance only if the subject is plural (table frame with S, SP or SS conditions) and \unit{2}{338}
 only if the subject is singular (frame with P, PS or PP conditions). In what follows, we will therefore
 refer to these units as the `plural' and `singular' units, respectively,
-or long-range (LR) number units when referring to both. Finally, we note that for the Linzen dataset, as opposed to the nounPP and nounPPAdv tasks, only the plural unit had an effect of reducing performance by more than \%10. This highlights the importance of using carefully crafted stimuli for understanding network dynamics, as is commonly done in, e.g., psycho-linguistics and neuroscience. Taken
+or long-range (LR) number units when referring to both. Finally, we note that although the Linzen NA-task contained mixed stimuli from many types of conditions, the plural unit was found to have a substantial effect on average on network performance. The singular unit didn't show a similar effect in this case, which highlights the importance of using carefully crafted stimuli, as in the nounPP and nounPPAdv tasks, for understanding network dynamics. Taken
 together, these results suggest a highly local coding scheme of
 grammatical number when processing long-range dependencies.
 
@@ -184,11 +185,11 @@ then store subject number across the entire dependency
 at the right moment, when predicting the verb form $o_{t_{verb}-1}=1$
 (Eq.~\ref{eq:output}).
 
-Figures \ref{fig:singular-unit} and \ref{fig:plural-unit} present the actual gate and cell dynamics of the singular and plural units. Both units follow the general solution for reliable number storage described above. Note that for $\tilde{C}_t$ and $i_t$, and as a result also for $C_t$, the plural unit `mirrors' the singular unit with respect to subject number (red curves of PP and PS vs. blue curves of SS and SP). This is in accordance with the results of the ablation experiments, which showed that ablating these units had an effect that depended on the grammatical number of the subject (table \ref{tab:ablation-results}). This provides complementary support for the identification of these units as `singular' and `plural'\yair{modified following marco's comment}.
+Figures \ref{fig:singular-unit} and \ref{fig:plural-unit} present the actual gate and cell dynamics of the singular and plural units. Both units follow the general solution for reliable number storage described above. Note that for $\tilde{C}_t$ and $i_t$, and as a result also for $C_t$, the plural unit `mirrors' the singular unit with respect to subject number (red curves of PP and PS vs. blue curves of SS and SP). This is in accordance with the results of the ablation experiments, which showed that ablating these units had an effect that depended on the grammatical number of the subject (table \ref{tab:ablation-results}). This provides complementary support for the identification of these units as `singular' and `plural'.
 
 A single divergence between the solution depicted in Figure \ref{fig:cartoon} and the actual dynamics of the number units, is that input-gate activity is smaller, but not zero, at the time step immediately following the subject. One speculative explanation is that this might be useful to process compound nouns. In these cases, subject number information is stored with the second noun, whereas in the case of simple nouns there is no `risk' of encountering an interfering noun immediately after the subject, making the delay in closing the gate safe.
 
-\begin{figure}
+\begin{figure}[b]
     \centering
     \includegraphics[height=5cm]{Figures/weight_dists_verbs.png}
     \caption{Efferent weights of number units.}
@@ -198,10 +199,10 @@ A single divergence between the solution depicted in Figure \ref{fig:cartoon} an
 The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets, we find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units \unit{2}{1} and \unit{2}{650} and the syntax unit \unit{2}{500} described below (section \ref{sec:syntax-units}), do not have segregated efferent weights to verb forms, as expected from number units only. 
 
 \subsubsection{Short-range number information}
-\begin{figure}[h]
+\begin{figure}
     \centering
-    \includegraphics[height=5cm]{Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png}
-    \caption{Generalization across time. \yair{add error bars across CV sets}}
+    \includegraphics[height=5cm]{Figures/GAT1d_cell_.png}
+    \caption{Generalization across time. Error bars represent standard deviations across cross-validation splits.}
     \label{fig:GAT}
 \end{figure}
 
@@ -220,8 +221,7 @@ We trained a linear model to predict the grammatical number of the
 subject from network activity in response to the presentation of the
 subject, and tested its prediction on test sets from all time points
 \yair{cite King and Dehaene}, in incongruent conditions
-only of the nounPP task. \marco{More details needed: across all NA-tasks? which test
-  sets?} We used Area under of Curve (AUC) to evaluate model
+only of the nounPP task. We used Area under of Curve (AUC) to evaluate model
 performance. Figure \ref{fig:GAT} shows decoding across time of
 subject number from cell activity of each number unit separately and
 from cell activity of the entire network without these two units

@@ -44,10 +44,10 @@ def generate_epochs_object(data, sampling_rate = 1):
     return epochs, events, IX
 
 
-def get_scores_from_gat(epochs):
+def get_scores_from_gat(epochs, seed=42):
     from sklearn.svm import LinearSVC
     X_train, X_test, y_train, y_test = train_test_split(epochs.get_data(), epochs.events[:, 2] == 2, test_size=0.2,
-                                                        random_state=42)
+                                                        random_state=seed)
     # clf = make_pipeline(StandardScaler(), LogisticRegression())
     clf2 = LinearSVC(random_state=0, tol=1e-5, penalty='l2')
     time_gen = GeneralizingEstimator(clf2, scoring='roc_auc', n_jobs=1)
@@ -93,9 +93,15 @@ def add_gat_matrix(ax1, ax2, data, omit_units, title, first_in_row=True, last_ro
     if omit_units != 'non_number_units':
         data_reduced = np.delete(data, omit_units, 1)
         epochs, _, _ = generate_epochs_object(data_reduced)
-        scores_reduced_model = get_scores_from_gat(epochs)
+        scores_reduced_model = []
+        for seed in range(5):
+            scores_reduced_model.append(get_scores_from_gat(epochs, seed + 1))
         # Add to 1d figure
-        ax1.plot(range(scores_reduced_model.shape[1]), scores_reduced_model[1, :], linewidth=3, label=title)
+        x = range(scores_reduced_model[0].shape[1])
+        scores = np.vstack([s[1, :] for s in scores_reduced_model])
+        y = np.mean(scores, axis=0)
+        e = np.std(scores, axis=0)
+        ax1.errorbar(x, y, e, linewidth=3, label=title)
         # Add to 2d GAT matrix figure
         tmin = int(epochs.times[0])
         tmax = int(epochs.times[-1])+1

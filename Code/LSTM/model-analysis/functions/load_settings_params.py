@@ -5,7 +5,7 @@ class settings:
     def __init__(self):
 
         # Regression
-        self.method = 'Lasso' # Ridge/Lasso
+        self.method = 'Ridge' # Ridge/Lasso
         self.y_label = 'all'  # Which label to regress from the meta text data
         self.h_or_c = 0  # zero or one. 0: hidden 1: cell
         self.which_layer = 0  # 0: both, 1: first, 2: second
