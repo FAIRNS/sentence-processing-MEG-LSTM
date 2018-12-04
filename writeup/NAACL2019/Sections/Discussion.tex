@@ -3,9 +3,16 @@ We provided the first  detailed description of the underlying mechanism by which
 %NA-tasks are of particular interest given that they require the network to capture structural relations in sentences.
 Strikingly, simply training an LSTM with the language-model objective on raw corpus data brought about single units carrying exceptionally specific linguistic information. Three of these units were found to form a highly interactive local network, which makes up the central part of a `neural' circuit performing long-distance number agreement.
 
-One of these units encodes and stores grammatical number information when the main subject of a sentence is singular, and it successfully carries this information across long-range dependencies. Another unit similarly encodes plurality. These number units show that a highly local encoding of linguistic features can emerge in LSTMs during language-model training, as was previously suggested by studies on neural networks (e.g., \cite{Bowers:2009}) and in neuroscience (Kutter:Neuron:2018).
+One of these units encodes and stores grammatical number information
+when the main subject of a sentence is singular, and it successfully
+carries this information across long-range dependencies. Another unit
+similarly encodes plurality. These number units show that a highly
+local encoding of linguistic features can emerge in LSTMs during
+language-model training, as was previously suggested by theoretical
+studies of artificial neural networks \cite[e.g.][]{Bowers:2009} and in
+neuroscience \cite[e.g.,][]{Kutter:etal:2018}.
 
-Our analysis also identified units whose activity correlates with syntactic complexity. These units, as a whole, affect performance on the agreement tasks. We found that one of them, more specifically, encodes the main subject-verb dependency across various syntactic constructions. Two of its highest efferent weights were to the number unit forget and input gates. A natural interpretation is that this unit propagates syntax-based `remember' and `update' flags that control when the number units store and release information. % Together, the LR-number units and the syntax unit thus form the main component of the circuit underlying LSTM capacity in performing the NA-task.
+Our analysis also identified units whose activity correlates with syntactic complexity. These units, as a whole, affect performance on the agreement tasks. We found that one of them, more specifically, encodes the main subject-verb dependency across various syntactic constructions. Two of its highest efferent weights were to the number unit forget and input gates. A natural interpretation is that this unit propagates syntax-based remember and update flags that control when the number units store and release information. % Together, the LR-number units and the syntax unit thus form the main component of the circuit underlying LSTM capacity in performing the NA-task.
 
 Finally, number is also redundantly encoded in a more distributed way, but the latter mechanism is unable to carry information across embedded syntactic structures. The computational burden of tracking number information thus gave rise to two types of units in the network,  encoding similar information  with distinct properties and dynamics.
 
