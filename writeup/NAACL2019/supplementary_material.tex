@@ -1,0 +1,34 @@
+\documentclass{article}
+
+\title{Supplementary Material}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Number Agreement data}
+
+For our experiments we use several 7 synthetically generated datasets, that each contain sentences with one particular syntactic structure, and varied lexical material.
+Each construction is stored in a distinct file.
+Each file contains 4 columns, that are separated by tabs:\begin{enumerate}
+    \item the first column contains the sentence
+    \item the second column  contains the number of the subject (singular or plural)
+    \item the third column contains whether the main verb of the sentence agrees with the subject (`correct') or not (`wrong'). Each of the sentences is present twice, once with the correct agreement and once with the wrong one.
+    \item the fourth column contains the sentence id (which is the same for both correct and wrong version of the same sentence).
+\end{enumerate}
+
+The results of the paper can be reproduced using the scripts in our github repository, which will be made available upon acceptance.
+% the sentences to reproduce the results of the paper, optionally with your own model. 
+% If you want to use these sentences to reproduce the results of the paper, optionnaly with your own model, 
+% you can pass each file to the script ../convert\_sentences\_to\_tal\_format.pl, which will create a .text and a .gold file, 
+% that are directly read by the /sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/ablation-experiment.py script. 
+
+% The full ablation pipeline can be found in sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/run\_full\_ablation\_pipeline.sh and analyse\_ablation\_results.sh
+
+\section*{Tree Depth Data}
+
+For our alation studies with 
+
+\end{document}
