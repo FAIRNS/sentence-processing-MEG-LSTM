@@ -177,11 +177,10 @@ information currently presented to the network, as encoded by
 $\tilde{C}_t$, should be written onto the cell ($i_t=1$: full access)
 or not ($i_t=0$). The singular unit can thus use these gates to
 reliably store number information across long-range
-dependencies. Specifically, the unit can (the enumeration follows the same order as the panels in Figure~\ref{fig:cartoon}): (1) encode subject
+dependencies. Specifically, the unit can (enumeration follows the same order as the panels in Figure~\ref{fig:cartoon}): (1) encode subject
 number via $\tilde{C}_{t_{subject}}$ with different values for
 singular and plural; (2) open the input gate \textit{only} when a
-singular subject is presented (red curves \textit{only}) and protect
-it from interfering nouns ($i_t=0, t<t_{verb}$); (3) at the same time,
+singular subject is presented ($i_{t_{subject}} = 1$ in red curves \textit{only}) and protect it from interfering nouns ($i_t=0, t_{subject}<t<t_{verb}$); (3) at the same time,
 clear the cell from previously stored information
 ($f_{t_{subject}}=0$) and then store subject number across the entire
 dependency ($f_t=1, t_{subject}<t<t_{verb}$); (4) this will result in
@@ -197,11 +196,11 @@ A single divergence between the solution depicted in Figure \ref{fig:cartoon} an
 \begin{figure}[b]
     \centering
     \includegraphics[height=5cm]{Figures/weight_dists_verbs.png}
-    \caption{Efferent weights of number units.}
+    \caption{Efferent weights of the LR-units (\unit{2}{126} and \unit{2}{338}), the syntax unit (\unit{2}{500}, section \ref{sec:syntax-units}) and two arbitrary units (\unit{2}{1}, \unit{2}{650}).}
     \label{fig:output-weights}
 \end{figure}
 
-The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650} (representative of the general pattern) and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
+The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650} and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
 
 \subsection{Short-range number information}
 \begin{figure}
@@ -214,10 +213,10 @@ The singular and plural units have emerged at the second layer of the network. T
 Performance on the easier NA-tasks (Simple, Adv, 2Adv) was not
 impaired by single-unit ablations. This suggests that number may be
 encoded also elsewhere in the network, perhaps via a more distributed
-code. We tested whether subject number can be decoded from the whole
+code. To verify this, we tested whether subject number can be decoded from the whole
 pattern of activities in the network (excluding the two LR-number units)
 and whether this decoding is stable across time \cite[see][for similar
-observations and related methods]{Giulianelli:etal:2018}. We expect
+observations and related methods]{Giulianelli:etal:2018}. We expected
 this distributed activity network to track number in a
 small time window after the subject, but, unlike the proper number units,
 to be affected by incongruent intervening nouns.
@@ -243,23 +242,21 @@ patterns of other short-range (SR) number units. The latter, however,
 are not syntax-sensitive, and simply encode the number of the last
 noun encountered.
 
-A full description of the SR-number units is beyond our scope. We
-tried however to identify specific SR-number units by training a
-linear model to predict subject number from single-unit activations,
-and by a careful inspection of the weights of a classifier trained on
-the full model (Figure \ref{fig:GAT}), accompanied by informal
-inspection of unit dynamics.
+%A full description of the SR-number units is beyond our scope. We
+%tried however to identify specific SR-number units by training a
+%linear model to predict subject number from single-unit activations,
+%and by a careful inspection of the weights of a classifier trained on
+%the full model (Figure \ref{fig:GAT}), accompanied by informal
+%inspection of unit dynamics.
 
-10 SR-number units consistently emerged in the second layer of the
-network. They further had efferent weights with a similar segregated
+A full description of the SR-number units is beyond our scope. However, we note that 10 SR-number units in the second layer of the
+network were identified, which had efferent weights with a similar segregated
 structure as that of the LR units (Figure
-\ref{fig:output-weights}). The units were indeed sensitive to the last
-encountered noun: subject number could be decoded from unit activity
+\ref{fig:output-weights}). These units were indeed sensitive to the last
+encountered noun: subject number could be decoded from single-unit cell activity
 during its presentation (AUC$>0.9$), but activity `swaps' once an
 interfering noun appears (i.e., AUC decreases to zero in a
-generalization-across-time analysis).
-Finally, to validate the effect of SR-number units on network
-performance, for all easier NA-tasks we ablated both SR and LR number
+generalization-across-time analysis). Finally, to validate the effect of SR-number units on network performance, for all easier NA-tasks, we ablated both SR and LR number
 units (12 in total) or SR units only (10 in total). Both experiments
 resulted in a significant reduction in task performance compared to
 1,000 random equi-size ablations ($p<0.01$).
@@ -267,6 +264,6 @@ resulted in a significant reduction in task performance compared to
 Intriguingly, we observed qualitatively that LR units are almost
 always making the right prediction, even when the network predicts the
 wrong number. The wrong outcome, in such cases, might be due to
-interference from the syntax-unaware SR units. We leave the study of LR-SR
+interference from the syntax-insensitive SR units. We leave the study of LR-SR
 unit interplay to future work.
 

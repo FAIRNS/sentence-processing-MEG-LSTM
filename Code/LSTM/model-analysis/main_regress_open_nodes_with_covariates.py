@@ -69,8 +69,8 @@ pos_min=7; pos_max=12; depth_min=3; depth_max=8
 c_dict, plt = data_sentences.decorrelation_matrix(plot_pos_depth=True, pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max) # get position-depth tuples in data
 plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'position_numON_plane.png'))
 plt.close()
-# min_n = data_sentences.get_min_number_of_samples_in_rectangle(c_dict, pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max)
-# data_sentences.decorrelate(pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max, n=min_n) # decorrelate data
+min_n = data_sentences.get_min_number_of_samples_in_rectangle(c_dict, pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max)
+data_sentences.decorrelate(pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max, n=min_n) # decorrelate data
 
 # TODO implement function to find max rectangle
 # TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator
@@ -123,8 +123,8 @@ for split in range(params.CV_fold):
     ax_scatter.errorbar(x, y, yerr=yerr, color='k', lw=3)
     ax_scatter.set_xlabel('Number of open nodes', fontsize=20)
     ax_scatter.set_ylabel(feature_type.capitalize() + ' activity of unit 1149', fontsize=20)
-    ax_scatter.set_ylim([-0.1, 0.27])
-    ax_scatter.set_xlim([0, 12])
+    # ax_scatter.set_ylim([-0.1, 0.27])
+    # ax_scatter.set_xlim([0, 12])
     fig_scatter.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'scatter_num_open_nodes_1149_' + feature_type + '.png'))
     plt.close(fig_scatter)
 
