@@ -371,7 +371,7 @@ for gate in range(4):
                 IX_to = np.where(all_weights_to_curr_unit == curr_weight)
 
                 if from_unit == 1149 and i!=j:
-                    ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=3)
+                    ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=15)
                     ax1.text(j+ jitter_to[j][IX_to[0][0]], curr_weight, str(from_unit+1)+'-'+str(to_unit+1), fontsize=20)
 
                     z = (curr_weight - np.mean(all_weights_to_curr_unit))/np.std(all_weights_to_curr_unit)
