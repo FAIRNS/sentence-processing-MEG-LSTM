@@ -26,11 +26,11 @@
             \caption{Two embeddings with subject relatives}
             \label{fig:syntax-unit-double-subjrel}
     \end{subfigure}
-\caption{Cell activity of syntax unit \unit{2}{500} while processing various syntactic structures. Values averaged across all stimuli in an NA-task, with error bars representing standard deviations. Relative clause NA-task stimuli specifically generated for this visualization. \yair{improve visualization}}
+\caption{Cell activity of syntax unit \unit{2}{500} while processing various syntactic structures. Values averaged across all stimuli in an NA-task, with error bars representing standard deviations. Relative clause NA-task stimuli were specifically generated for this visualization. \yair{improve visualization}}
 \end{figure*}
 
-We saw how the LR number unit input and forget gates control the flow
-of subject number information. It remains unclear, however, how the dynamics of these gates are controlled by the network. We hypothesized
+We saw how the input and forget gates of the LR-number units control the flow
+of subject-number information. It remains unclear, however, how the dynamics of these gates are controlled by the network. We hypothesized
 that other units may encode information about the syntactic structure
 of the sentence, and thus about the subject-verb dependency. To
 search for them, we tested whether syntactic information can be
@@ -38,7 +38,7 @@ decoded from some network units, by using depth of the
 syntactic tree as a proxy \cite{Nelson:etal:2017}. Specifically, we
 trained an L2-regularized regression model to predict syntactic
 tree-depth from the hidden-state activity of all units, using the data
-presented in Section \ref{sec:the_data} above in a nested 5-fold
+presented in Section \ref{sec:the_data} above, in a nested 5-fold
 cross-validation procedure. %
 % (the optimal regularization size was found to be consistent across CV-splits, $\lambda=784.76$, among 20 possible values log-uniformly distributed in $[10^-5, 10^5]$). Word position and tree-depth were decorrelated in the data and
 Word frequency was added as a covariate
@@ -51,7 +51,7 @@ To gain further insight regarding the functioning of the syntax units,
 we next visualized their gate and cell dynamics during sentence
 processing. We found that cell activity of unit
 \unit{2}{500}, which also had one of the highest weights in the
-regression model above, was remarkably structured. The activity of
+regression model, was remarkably structured. The activity of
 this unit increases across the entire subject-verb
 dependency and drops abruptly right after. Figures
 \ref{fig:syntax-unit-2Adv} and \ref{fig:syntax-unit-nounpp} show cell
@@ -65,4 +65,4 @@ results suggest that unit \unit{2}{500} consistently encodes
 subject-verb dependency in a syntax-sensitive manner. Other syntax
 units did not show an easily interpretable dynamics, and had no clear
 interactions with the number units in the analysis discussed next,
-suggesting that they perform different syntactic, or other, functions.
+suggesting that they perform different syntactic, or possibly other, functions.
