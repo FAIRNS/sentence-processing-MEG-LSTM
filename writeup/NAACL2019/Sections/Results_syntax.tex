@@ -30,8 +30,7 @@
 \end{figure*}
 
 We saw how the LR number unit input and forget gates control the flow
-of subject number information. It remains unclear, however, how are
-the dynamics of these gates controlled by the network. We hypothesized
+of subject number information. It remains unclear, however, how the dynamics of these gates are controlled by the network. We hypothesized
 that other units may encode information about the syntactic structure
 of the sentence, and thus about the subject-verb dependency. To
 search for them, we tested whether syntactic information can be
@@ -46,7 +45,7 @@ Word frequency was added as a covariate
 to the model, and had a negligible effect on the results.
 
 Syntactic tree-depth can be efficiently decoded from network activity
-($R^2_{test-set}=0.85\pm0.009$; covariate-corrected). A small subset of `syntax' units had relatively high weights in the regression model (mean weight = $7.6\times{}10^{-4}$, SD=$7.86\times{}10^{-2}$; cutoff for outlier weights was set to three SDs). Since the interpretation of the regression weights may depend on possible correlations among the features, we also tested the causal effect of these units on NA-task performance. Ablating the syntax units together resulted in significant performance reduction in several NA-tasks: Linzen NA-task: $p=0.024$, nounPP-SP: $p<0.001$ and marginally significant in nounPP-PS: $p=0.052$ (compared to 1000 random ablations of subsets of units of the same size) \yair{add nounPPAdv}.
+($R^2_{test-set}=0.85\pm0.009$; covariate-corrected). A small subset of `syntax' units had relatively high weights in the regression model (mean weight = $7.6\times{}10^{-4}$, SD=$7.86\times{}10^{-2}$; cutoff for outlier weights was set to three SDs). Since the interpretation of the regression weights may depend on possible correlations among the features, we also tested the causal effect of these units on NA-task performance. Ablating the syntax units together resulted in significant performance reduction in NA-tasks that have an interfering noun: Linzen NA-task: $p=0.024$, nounPPAdv-SP: $p=0.011$, nounPPAdv-PS: $p=0.034$, nounPP-SP: $p<0.001$ and marginally significant in nounPP-PS: $p=0.052$ (compared to 1000 random ablations of subsets of units of the same size).
 
 To gain further insight regarding the functioning of the syntax units,
 we next visualized their gate and cell dynamics during sentence
@@ -63,9 +62,7 @@ verb occurs between subject and main verb, as in subject relatives
 long-distance dependencies with two interfering nouns and verbs
 (Figure \ref{fig:syntax-unit-double-subjrel}). Taken together, the
 results suggest that unit \unit{2}{500} consistently encodes
-subject-verb dependency in a syntax-sensitive manner.  Other syntax
+subject-verb dependency in a syntax-sensitive manner. Other syntax
 units did not show an easily interpretable dynamics, and had no clear
 interactions with the number units in the analysis discussed next,
-suggesting that they perform different syntactic functions.
-
-
+suggesting that they perform different syntactic, or other, functions.

@@ -154,13 +154,16 @@ def plot_all_null_dists(performance_per_k, fontsize=25):
 
 # Settings
 filter_units = [776, 988] # counting from 1 - which units are not allowed in the ablated units (e.g, LR number units)
-conditions = ['nounpp_plural_singular_control', 'nounpp_singular_plural_control', 'simple_plural_control', 'simple_singular_control', 'adv_plural_control', 'adv_singular_control', 'adv_adv_plural_control', 'adv_adv_singular_control',
+conditions = ['nounpp_plural_singular_control', 'nounpp_singular_plural_control', 'nounpp_adv_singular_plural_control', 'nounpp_adv_plural_singular_control', 'simple_plural_control', 'simple_singular_control', 'adv_plural_control', 'adv_singular_control', 'adv_adv_plural_control', 'adv_adv_singular_control',
 'simple_plural_control_SR', 'simple_singular_control_SR', 'adv_plural_control_SR', 'adv_singular_control_SR', 'adv_adv_plural_control_SR', 'adv_adv_singular_control_SR']
 
 # Dict for performance in all conditions
 performance_test = {}
 performance_test['nounpp_singular_plural_control'] = 0.6916666666666667
 performance_test['nounpp_plural_singular_control'] = 0.94
+
+performance_test['nounpp_adv_singular_plural_control'] = 0.7616666666666667
+performance_test['nounpp_adv_plural_singular_control'] = 0.9766666666666667
 
 performance_test['simple_singular_control'] = 0.8833333333333333 # simple S
 performance_test['simple_plural_control'] = 0.8733333333333333 # simple P
@@ -182,7 +185,7 @@ for cond, condition in enumerate(conditions):
     # MAIN
     path2ablation_results = '/home/yl254115/Projects/FAIRNS/sentence-processing-MEG-LSTM/Output/ablation_experiments/' + condition + '.txt'
 
-    if condition in ['nounpp_plural_singular_control', 'nounpp_singular_plural_control']:
+    if condition in ['nounpp_plural_singular_control', 'nounpp_singular_plural_control', 'nounpp_adv_singular_plural_control', 'nounpp_adv_plural_singular_control']:
         many_k_or_single = 17  # either the str 'many' or an int representing the size of the ablated group of units (k)
         performance_per_k = generate_and_plot_null_dists(path2ablation_results, many_k_or_single, filter_units)
     else:

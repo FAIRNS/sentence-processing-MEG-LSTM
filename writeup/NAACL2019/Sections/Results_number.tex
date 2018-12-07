@@ -1,5 +1,5 @@
 \section{Experiments}\label{sec:results}
-To successfully perform the NA-task, the LSTM should: (1) encode and store the grammatical number of the subject; and (2) track the main subject-verb syntactic dependency. The latter information is important for identifying the time period during which the network should store the subject number, and when it should output it and update number information. This section describes the `neural circuit' that encodes and processes this information in the LSTM.
+To successfully perform the NA-task, the LSTM should: (1) encode and store the grammatical number of the subject; and (2) track the main subject-verb syntactic dependency. The latter information is important for identifying the time period during which the network should store the subject number, and when it should output it and allow to update number information. This section describes the `neural circuit' that encodes and processes this information in the LSTM.
 
 \begin{center}
 \begin{table}[ht]
@@ -10,7 +10,6 @@ To successfully perform the NA-task, the LSTM should: (1) encode and store the g
 \hline
 
 % Singular conditions
-
 Simple & S & - &  - &  \textcolor{red}{100} \\
 
 Adv & S & - &  - &  \textcolor{red}{100} \\
@@ -56,69 +55,11 @@ nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
 \hline
 
 \end{tabular}
-\caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. %For tasks with two nouns, SS: singular-singular, SP: singular-plural, PS: plural-singular, PP: plural-plural.
-  Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% denoted by `-'.  \label{tab:ablation-results}}
+\caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% denoted by `-'.  \label{tab:ablation-results}}
 \end{table}
 \end{center}
 
-\subsection{Long-range number units}\label{subsec:ablation}
-We first tested LSTM performance on Linzen's data and on the NA-tasks of Table
-\ref{tab:data-sets}. Following
-\newcite{Linzen:etal:2016} and later work, we compute the likelihood
-that the LSTM assigns to the main verb of each sentence given the
-preceding context, and compare it to the likelihood it assigns to the
-verb inflected with the wrong number presented in the same
-context. Accuracy in a given condition is the proportion of sentences
-in the condition where the model assigned a higher likelihood to the
-correct form than to the wrong one.
-
-Network performance is reported in Table \ref{tab:ablation-results}
-(right column -- `Full'). We see, first, that some NA-tasks and
-conditions are more difficult than others. For example, performance on
-the Simple (0-distance) NA-task is better than that on the Co-Adv
-NA-task, which in turn is better than that of the nounPP
-tasks. Second, as expected, incongruent conditions (the
-number-mismatch conditions of namePP, nounPP and nounPPAdv) reduce
-network performance. Third, for long-range dependencies, reliably
-encoding singular subject across an interfering noun is more difficult
-than a plural subject: for both nounPP and nounPPAdv, PS is easier
-than SP. A possible explanation is that in English the plural form is
-almost always more frequent than the singular one, as the latter only
-marks third person singular, whereas the former is identical to the
-infinitive and other forms. Thus, if the network reverts to unigram
-probabilities, it will tend to prefer the plural. Last, we replicated
-the results of \newcite{Gulordava:etal:2018} for the Linzen NA-task.
-
-\paragraph{Looking for number units through ablation} Number
-information may be stored in the network in either a local, sparse, or
-a distributed way, depending on the fraction of active units that
-carry it.  We hypothesized that if the network uses a local or sparse
-coding, meaning that there's a small set of units that encode number
-information, then ablating these units would lead to a drastic
-decrease in performance in the NA-tasks.  To test this, we ablated
-each unit of the network at a time, by fixing its activation to zero,
-and tested on the tasks.
-
-Two units were found to have exceptional effect on network performance
-(Table \ref{tab:ablation-results}, \unit{2}{126} and \unit{2}{338}
-columns).\footnote{Units 1-650 belong to the first layer, 651-1300 to
-  the second. All units detected by our analyses come from the latter.} Ablating them reduced network performance by more than 10\%
-across various conditions, and importantly, they were the only units
-whose ablation consistently brought network performance to around
-chance level in the more difficult incongruent conditions of the
-namePP, nounPP and nounPPAdv
-tasks. % \footnote{A small subset of other units
-  % also occasionally reduced performance by more than 10\%, but not as dramatically and consistently as the LR-number units. The corresponding accuracies are (performance reduction in parentheses): \unit{2}{120}: 79.8 (13.3\%, nounPP-PS), 55.6 (17.9\%, namePP-PS); \unit{2}{198}: 58.9 (14.5\%, namePP-PS) \unit{2}{633}: 78.0 (14.5\%, nounPPAdv-SP), 82.0 (16.9\%, CoAdv-S). Note that full-model performance is relatively low in the namePP-PS condition, and that the performance reduction of these units is smaller than that of the plural unit in this condition (42.1\%).}
-Moreover, the ablation effect depended on the grammatical number of the subject: \unit{2}{126} significantly reduces
-network performance only if the subject is plural (S, SP or SS conditions) and \unit{2}{338}
-only if the subject is singular (P, PS or PP conditions). In what follows, we will therefore
-refer to these units as the `plural' and `singular' units, respectively,
-or long-range (LR) number units when referring to both. Finally, we note that although the Linzen NA-task contained mixed stimuli from many types of conditions, the plural unit was found to have a substantial effect on average on network performance. The singular unit didn't show a similar effect in this case, which highlights the importance of using carefully crafted stimuli, as in the nounPP and nounPPAdv tasks, for understanding network dynamics. Taken
-together, the results suggest a highly local coding scheme of
-grammatical number when processing long-range dependencies.
-
 \begin{figure*}[ht]
-%\includegraphics[width=\textwidth]{Figures/Figure2_cartoon_LR_units.png}
     \centering
     \begin{subfigure}{\textwidth}
             \centering
@@ -146,6 +87,61 @@ grammatical number when processing long-range dependencies.
 \caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. Values in (b) and (c) are averaged across all condition sentences, with error bars showing standard deviations}
 \end{figure*}
 
+\subsection{Long-range number units}\label{subsec:ablation}
+We first tested LSTM performance on Linzen's data and on the NA-tasks of Table
+\ref{tab:data-sets}. Following
+\newcite{Linzen:etal:2016} and later work, we compute the likelihood
+that the LSTM assigns to the main verb of each sentence given the
+preceding context, and compare it to the likelihood it assigns to the
+wrong verb inflection for the opposite number. Accuracy in a given condition is the proportion of sentences
+in the condition where the model assigned a higher likelihood to the
+correct form than to the wrong one.
+
+Network performance is reported in Table \ref{tab:ablation-results}
+(right column -- `Full'). We see, first, that some NA-tasks and
+conditions are more difficult than others. For example, performance on
+the Simple (0-distance) NA-task is better than that on the Co-Adv
+NA-task, which in turn is better than that of the nounPP
+tasks. Second, as expected, incongruent conditions (the
+number-mismatch conditions of namePP, nounPP and nounPPAdv) reduce
+network performance. Third, for long-range dependencies, reliably
+encoding singular subject across an interfering noun is more difficult
+than a plural subject: for both nounPP and nounPPAdv, PS is easier
+than SP. A possible explanation is that in English the plural form is
+almost always more frequent than the singular one, as the latter only
+marks third person singular, whereas the former is identical to the
+infinitive and other forms. Thus, if the network reverts to unigram
+probabilities, it will tend to prefer the plural. Last, we replicated
+the results of \newcite{Gulordava:etal:2018} for the Linzen NA-task.
+
+\paragraph{Looking for number units through ablation} Number
+information may be stored in the network in either a local, sparse, or
+a distributed way, depending on the fraction of active units that
+carry it.  We hypothesized that if the network uses a local or sparse
+coding, meaning that there's a small set of units that encode number
+information, then ablating these units would lead to a drastic
+decrease in performance in the NA-tasks.  To test this, we ablated
+each unit of the network one at a time, by fixing its activation to zero,
+and tested on the tasks.
+
+Two units were found to have exceptional effect on network performance
+(Table \ref{tab:ablation-results}, \unit{2}{126} and \unit{2}{338}
+columns).\footnote{Units 1-650 belong to the first layer, 651-1300 to
+  the second. All units detected by our analyses come from the latter.} Ablating them reduced network performance by more than 10\%
+across various conditions, and importantly, they were the only units
+whose ablation consistently brought network performance to around
+chance level in the more difficult incongruent conditions of the
+namePP, nounPP and nounPPAdv
+tasks. 
+
+Moreover, the ablation effect depended on the grammatical number of the subject: \unit{2}{126} significantly reduces
+network performance only if the subject is plural (P, PS or PP conditions) and \unit{2}{338}
+only if the subject is singular (S, SP or SS conditions). In what follows, we will therefore
+refer to these units as the `plural' and `singular' units, respectively,
+or long-range (LR) number units when referring to both. Finally, we note that although the Linzen NA-task contained mixed stimuli from many types of conditions, the plural unit was found to have a substantial effect on average on network performance. The singular unit didn't show a similar effect in this case, which highlights the importance of using carefully crafted stimuli, as in the nounPP and nounPPAdv tasks, for understanding network dynamics. Taken
+together, the results suggest a highly local coding scheme of
+grammatical number when processing long-range dependencies.
+
 \paragraph{Visualizing gate and cell-state dynamics}\label{subsec:gate-dynamics}
 To understand the functioning of the number units, we now look
 into their gate and state dynamics during sentence processing. We
@@ -156,10 +152,9 @@ incongruent conditions.
 Recall the standard LSTM memory update and output rules \cite{Hochreiter:Schmidhuber:1997}:
 \begin{align} 
     C_t &= f_t\circ C_{t-1} + i_t\circ \widetilde{C}_t \label{eq:update-rule} \\
-     h_t &= o_t\circ \tanh(C_t) \label{eq:output}
+     h_t &= o_t\circ \tanh(C_t) \label{eq:output},
 \end{align}
-where $f_t, i_t, o_t \in (0,1)$ and $\widetilde{C}_t \in (-1, 1)$ are 
-gating scalars computed by the network.
+where $f_t, i_t, o_t \in (0,1)$ are gating scalars computed by the network, and $\widetilde{C}_t \in (-1, 1)$ is an update candidate for cell value.
 
 Consider now how a number unit may reliably encode and store subject
 number across interfering nouns.  Figure\ref{fig:cartoon} exemplifies
@@ -182,8 +177,7 @@ information currently presented to the network, as encoded by
 $\tilde{C}_t$, should be written onto the cell ($i_t=1$: full access)
 or not ($i_t=0$). The singular unit can thus use these gates to
 reliably store number information across long-range
-dependencies. Specifically, the unit can (numbers correspond to panels
-in Figure\ref{fig:cartoon} counting from the top): (1) encode subject
+dependencies. Specifically, the unit can (the enumeration follows the same order as the panels in Figure~\ref{fig:cartoon}): (1) encode subject
 number via $\tilde{C}_{t_{subject}}$ with different values for
 singular and plural; (2) open the input gate \textit{only} when a
 singular subject is presented (red curves \textit{only}) and protect
@@ -263,9 +257,7 @@ structure as that of the LR units (Figure
 encountered noun: subject number could be decoded from unit activity
 during its presentation (AUC$>0.9$), but activity `swaps' once an
 interfering noun appears (i.e., AUC decreases to zero in a
-generalization-across-time analysis). % Qualitative inspection of cell
-% and gate dynamics confirmed  a considerable difference with LR
-% units.
+generalization-across-time analysis).
 Finally, to validate the effect of SR-number units on network
 performance, for all easier NA-tasks we ablated both SR and LR number
 units (12 in total) or SR units only (10 in total). Both experiments
