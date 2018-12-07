@@ -55,7 +55,7 @@ nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
 \hline
 
 \end{tabular}
-\caption{Ablation experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% denoted by `-'.  \label{tab:ablation-results}}
+\caption{Ablation-experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% is denoted by `-'.  \label{tab:ablation-results}}
 \end{table}
 \end{center}
 
@@ -84,7 +84,7 @@ nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
             \subcaption{\unit{2}{126} (plural)}
     \label{fig:plural-unit}
     \end{subfigure}
-\caption{Cell and gate activations during processing of a sentence with a prepositional phrase between subject and verb. Values in (b) and (c) are averaged across all condition sentences, with error bars showing standard deviations}
+\caption{Cell and gate activations during processing of sentences with a prepositional phrase between subject and verb. Values in (b) and (c) are averaged across all condition sentences, with error bars showing standard deviations.}
 \end{figure*}
 
 \subsection{Long-range number units}\label{subsec:ablation}
@@ -93,9 +93,7 @@ We first tested LSTM performance on Linzen's data and on the NA-tasks of Table
 \newcite{Linzen:etal:2016} and later work, we compute the likelihood
 that the LSTM assigns to the main verb of each sentence given the
 preceding context, and compare it to the likelihood it assigns to the
-wrong verb inflection for the opposite number. Accuracy in a given condition is the proportion of sentences
-in the condition where the model assigned a higher likelihood to the
-correct form than to the wrong one.
+wrong verb inflection. Accuracy in a given condition is the proportion of sentences in the condition where the model assigned a higher likelihood to the correct form than to the wrong one.
 
 Network performance is reported in Table \ref{tab:ablation-results}
 (right column -- `Full'). We see, first, that some NA-tasks and
@@ -134,7 +132,7 @@ chance level in the more difficult incongruent conditions of the
 namePP, nounPP and nounPPAdv
 tasks. 
 
-Moreover, the ablation effect depended on the grammatical number of the subject: \unit{2}{126} significantly reduces
+Moreover, the ablation effect depended on the grammatical number of the subject: ablating \unit{2}{126} significantly reduces
 network performance only if the subject is plural (P, PS or PP conditions) and \unit{2}{338}
 only if the subject is singular (S, SP or SS conditions). In what follows, we will therefore
 refer to these units as the `plural' and `singular' units, respectively,
@@ -196,17 +194,17 @@ A single divergence between the solution depicted in Figure \ref{fig:cartoon} an
 \begin{figure}[b]
     \centering
     \includegraphics[height=5cm]{Figures/weight_dists_verbs.png}
-    \caption{Efferent weights of the LR-units (\unit{2}{126} and \unit{2}{338}), the syntax unit (\unit{2}{500}, section \ref{sec:syntax-units}) and two arbitrary units (\unit{2}{1}, \unit{2}{650}).}
+    \caption{Efferent weights of the LR-units (\unit{2}{126} and \unit{2}{338}), the syntax unit (\unit{2}{500}; section \ref{sec:syntax-units}) and two arbitrary units (\unit{2}{1} and \unit{2}{650}).}
     \label{fig:output-weights}
 \end{figure}
 
-The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650} and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
+The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650}, and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
 
 \subsection{Short-range number information}
 \begin{figure}
     \centering
     \includegraphics[height=5cm]{Figures/GAT1d_cell_.png}
-    \caption{Generalization across time. Error bars represent standard deviations across cross-validation splits.}
+    \caption{Generalization across time of subject-number prediction. Error bars represent standard deviations across cross-validation splits.}
     \label{fig:GAT}
 \end{figure}
 
@@ -218,7 +216,7 @@ pattern of activities in the network (excluding the two LR-number units)
 and whether this decoding is stable across time \cite[see][for similar
 observations and related methods]{Giulianelli:etal:2018}. We expected
 this distributed activity network to track number in a
-small time window after the subject, but, unlike the proper number units,
+small time window after the subject, but, unlike the LR-number units,
 to be affected by incongruent intervening nouns.
 
 We trained a linear model to predict the grammatical number of the
@@ -256,10 +254,8 @@ structure as that of the LR units (Figure
 encountered noun: subject number could be decoded from single-unit cell activity
 during its presentation (AUC$>0.9$), but activity `swaps' once an
 interfering noun appears (i.e., AUC decreases to zero in a
-generalization-across-time analysis). Finally, to validate the effect of SR-number units on network performance, for all easier NA-tasks, we ablated both SR and LR number
-units (12 in total) or SR units only (10 in total). Both experiments
-resulted in a significant reduction in task performance compared to
-1,000 random equi-size ablations ($p<0.01$).
+generalization-across-time analysis). Finally, to validate the role of SR-number units in encoding number for easier NA-tasks, we ablated both SR and LR number
+units (12 in total) or SR units only (10 in total) and evaluated network performance on these NA-tasks. Both experiments resulted in a significant reduction in task performance compared to 1,000 random equi-size ablations ($p<0.01$ in all `easier' tasks).
 
 Intriguingly, we observed qualitatively that LR units are almost
 always making the right prediction, even when the network predicts the
