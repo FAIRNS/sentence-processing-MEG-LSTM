@@ -6,10 +6,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__
 import data
 
 
-sentence = ['The', 'athletes', 'behind', 'the', 'table', 'observe(s)']
-path2savefig = '../../../Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png'
+sentence = ['The', 'boy', 'near', 'the', 'cars', 'nicely', 'greets']
+path2savefig = '../../../Figures/GAT1d_cell_nounpp_adv_SR_LR_single_unit.png'
 # Load GAT results
-path2pkl = '../../../Figures/GAT1d_cell_nounpp_SR_LR.pkl'
+path2pkl = '../../../Output/GAT1d_cell_Ou.pkl'
 # path2pkl = '../../../Figures/GAT1d_hidden_nounpp_SR_LR.pkl'
 results = pickle.load(open(path2pkl, 'rb'))
 
