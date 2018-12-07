@@ -126,13 +126,13 @@ for g, graph in enumerate(args.graphs):
 if graph_activations: axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for i, ax in enumerate(axs):
     if args.xlabels:
-        ax.set_xticklabels(args.xlabels, fontsize=24)#, rotation='vertical')
+        ax.set_xticklabels(args.xlabels, fontsize=17)#, rotation='vertical')
     else:
         ax.set_xticklabels(stimuli[0].split(' '), fontsize=24) #, rotation='vertical')
     #ax.tick_params(labelsize=10)
     ax.tick_params(axis='y', labelsize=16)
     if args.ylabels:
-        ax.set_ylabel(args.ylabels[i], rotation='horizontal', ha='center', fontsize=24)
+        ax.set_ylabel(args.ylabels[i], rotation='horizontal', ha='center', va='center', fontsize=24)
     #else:
         #ax.set_ylabel('Activation', fontsize=45)
 # adding legend

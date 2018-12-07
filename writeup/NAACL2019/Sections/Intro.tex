@@ -15,9 +15,12 @@ inferred by its performance on linguistic tasks. We take here a
 complementary ``neuroscientific'' approach: We thoroughly investigate
 the inner dynamics of an LSTM performing the number agreement task,
 striving to achieve a mechanistic understanding of how it accomplishes
-it. We find that the LSTM specialized very few ``grandma'' cells
+it. We find that the LSTM specialized two ``grandma'' cells
 \cite{Bowers:2009} to carry number features from the subject to the
-verb across the intervening material. Interestingly, the LSTM also
+verb across the intervening material.\footnote{In the neuroscientific
+  literature, ``grandma'' cells are (sets of) neurons coding for
+  specific information, e.g., about your grandmother, in a
+  non-distributed manner.} Interestingly, the LSTM also
 possesses a more distributed mechanism to predict number when subject
 and verb are close, with the grandma number cells only playing a
 crucial role in more difficult long-distance cases. Crucially, we

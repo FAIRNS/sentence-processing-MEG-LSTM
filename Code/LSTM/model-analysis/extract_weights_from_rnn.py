@@ -12,6 +12,7 @@ import networkx as nx
 
 parser = argparse.ArgumentParser(description='Extract and plot LSTM weights')
 parser.add_argument('-model', type=str, help='Meta file stored once finished training the corpus')
+parser.add_argument('-activations', '--LSTM-file-name', type=str, default = [], help='The corresponding sentence (LSTM) activations')
 parser.add_argument('-o', '--output', help='Destination for the output weights')
 parser.add_argument('-fu', '--from-units', nargs='+', type=int, default=[], help='Weights FROM which units (counting from zero)')
 parser.add_argument('-tu', '--to-units', nargs='+', type=int, default=[], help='Weights TO which units (counting from zero)')
@@ -19,6 +20,9 @@ parser.add_argument('-sr', '--short-range', nargs='+', type=int, default=[], hel
 parser.add_argument('-lr', '--long-range', nargs='+', type=int, default=[], help='list of long-range numebr units')
 parser.add_argument('-sy', '--syntax', nargs='+', type=int, default=[], help='list of syntax units')
 parser.add_argument('--no-mds', action='store_true', default=False)
+#parser.add_argument('-sentences', '--stimuli-file-name', type=str, help='Path to text file containing the list of sentences to analyze')
+#parser.add_argument('-meta', '--stimuli-meta-data', type=str, help='The corresponding meta data of the sentences')
+
 args = parser.parse_args()
 
 # os.makedirs(os.path.dirname(args.output), exist_ok=True)
@@ -195,13 +199,15 @@ def plot_graph_for_connectivity(weights, layer, gate, from_units, to_units):
     plt.close()
 
 
-def check_if_weight_is_outlier(curr_weight, all_weights_to_unit, all_weights_from_unit):
-    mean_to = np.mean(all_weights_to_unit)
-    std_to = np.std(all_weights_to_unit)
+def check_if_weight_is_outlier(curr_weight, all_weights_to_unit, all_weights_from_unit, activation_from):
     mean_from = np.mean(all_weights_from_unit)
     std_from = np.std(all_weights_from_unit)
-    outlier_to = curr_weight >= mean_to + 3 * std_to or curr_weight <= mean_to - 3 * std_to
     outlier_from = curr_weight >= mean_from + 3 * std_from or curr_weight <= mean_from - 3 * std_from
+
+    if activation_from: curr_weight = curr_weight*activation_from # correct if weights_to were multiplied by pre-synaptic activations
+    mean_to = np.mean(all_weights_to_unit)
+    std_to = np.std(all_weights_to_unit)
+    outlier_to = curr_weight >= mean_to + 3 * std_to or curr_weight <= mean_to - 3 * std_to
 
     return outlier_to, outlier_from
 
@@ -212,6 +218,17 @@ print('\nmodel: ' + args.model+'\n')
 model = torch.load(args.model)
 model.rnn.flatten_parameters()
 # print(model.rnn._all_weights)
+###### Load LSTM activations, stimuli and meta-data ############
+if args.LSTM_file_name:
+    print('Loading pre-trained LSTM data...')
+    LSTM_activation = pickle.load(open(args.LSTM_file_name, 'rb'))
+    max_activations = []
+    for unit in range(650, 1300):
+        activations_all_stimuli = [LSTM_activation['hidden'][i][unit, :] for i in range(len(LSTM_activation['hidden']))]
+        activation_matrix = np.vstack(activations_all_stimuli) # num_stimuli X num_words_in_sentence
+        max_activations.append(np.amax(activation_matrix))
+else:
+    max_activations = [1] * 650
 
 from_units_l1 = [u - 650 for u in args.from_units if u > 649]  # units 651-1300 (650-1299) in layer 1 (l1)
 to_units_l1 = [u - 650 for u in args.to_units if u > 649]  # units 651-1300 (650-1299) in layer 1 (l1)
@@ -230,14 +247,15 @@ for gate in range(4):
     for i, from_unit in enumerate(args.from_units):
         # Plot right distribution
         all_weights_from_curr_unit = model.rnn.weight_hh_l1.data[gate * 650:(gate + 1) * 650, from_unit - 650].numpy()
-        top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_from_curr_unit)))[0:5]
+        top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_from_curr_unit)))[0:10]
         top_5_weights = all_weights_from_curr_unit[top_5_units-650]
         print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights from unit ' + str(from_unit), top_5_units, top_5_weights)
         colors_row = []
         for j, to_unit in enumerate(args.to_units):
             all_weights_to_curr_unit = model.rnn.weight_hh_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+            all_weights_to_curr_unit = np.multiply(all_weights_to_curr_unit, np.asarray(max_activations))
             if i == len(args.from_units)-1:
-                top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:5]
+                top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:10]
                 top_5_weights = all_weights_to_curr_unit[top_5_units - 650]
                 print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights to unit ' + str(to_unit), top_5_units, top_5_weights)
                 weights = model.rnn.weight_ih_l1.data[(to_unit - 650) + gate * 650, :].numpy()
@@ -256,17 +274,11 @@ for gate in range(4):
                 ax2.scatter(all_weights_from_curr_unit, num_from_units - i + jitter_from[i], s=1)
             # Get weight
             curr_weight = get_weight_between_two_units(model, gate, from_unit, to_unit)
-            # if i!=j:
-            cell_text[i, j] = '%1.2f' % curr_weight
 
             # If weight is outlier color it in table and dists
             outlier_to, outlier_from = check_if_weight_is_outlier(curr_weight, all_weights_to_curr_unit,
-                                                                  all_weights_from_curr_unit)
-            if outlier_to:
-                IX_to = np.where(all_weights_to_curr_unit == curr_weight)
-                if i != j: ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=3)
-                if from_unit == 1149: # Mark weights from 1149
-                    if i != j: ax1.text(j, curr_weight, str(from_unit) + '-' + str(to_unit), fontsize=8)
+                                                                  all_weights_from_curr_unit, max_activations[from_unit - 650])
+
 
             if outlier_from and i!=j:
                 IX_from = np.where(all_weights_from_curr_unit == curr_weight)
@@ -274,6 +286,18 @@ for gate in range(4):
                 colors_row.append('#56b5fd')
             else:
                 colors_row.append('w')
+
+            curr_weight = curr_weight * max_activations[from_unit - 650]
+            # if i!=j:
+            cell_text[i, j] = '%1.2f' % curr_weight
+
+            if outlier_to:
+                IX_to = np.where(all_weights_to_curr_unit == curr_weight)
+                if i != j: ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=3)
+                if from_unit == 1149: # Mark weights from 1149
+                    if i != j: ax1.text(j, curr_weight, str(from_unit) + '-' + str(to_unit), fontsize=8)
+
+
         colors.append(colors_row)
 
     the_table = ax1.table(cellText=cell_text,
@@ -321,6 +345,7 @@ for gate in range(4):
         colors_row = []
         for j, to_unit in enumerate(args.to_units):
             all_weights_to_curr_unit = model.rnn.weight_hh_l1.data[(to_unit - 650) + gate * 650, :].numpy()
+            all_weights_to_curr_unit = np.multiply(all_weights_to_curr_unit, np.asarray(max_activations))
             if i == len(args.from_units)-1:
                 top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:5]
                 top_5_weights = all_weights_to_curr_unit[top_5_units - 650]
@@ -333,17 +358,25 @@ for gate in range(4):
                 jitter_to.append(np.random.random(all_weights_to_curr_unit.size) * bar_width - 2 * bar_width / 4)
                 ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3)
             curr_weight = get_weight_between_two_units(model, gate, from_unit, to_unit)
-            cell_text[i, j] = '%1.2f' % curr_weight
 
             # If weight is outlier color it in table and dists
             outlier_to, outlier_from = check_if_weight_is_outlier(curr_weight, all_weights_to_curr_unit,
-                                                                  all_weights_from_curr_unit)
+                                                                  all_weights_from_curr_unit, max_activations[from_unit - 650])
+
+            curr_weight = curr_weight * max_activations[from_unit - 650]
+            cell_text[i, j] = '%1.2f' % curr_weight
+
             if outlier_to and i!=j:
                 colors_row.append('#56b5fd')
                 IX_to = np.where(all_weights_to_curr_unit == curr_weight)
+
                 if from_unit == 1149 and i!=j:
-                    ax1.scatter(j, curr_weight, color='r', s=3)
-                    ax1.text(j, curr_weight, str(from_unit+1) + '-' + str(to_unit+1), fontsize=16)
+                    ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=15)
+                    ax1.text(j+ jitter_to[j][IX_to[0][0]], curr_weight, str(from_unit+1)+'-'+str(to_unit+1), fontsize=20)
+
+                    z = (curr_weight - np.mean(all_weights_to_curr_unit))/np.std(all_weights_to_curr_unit)
+                    print('z-score ' + str(from_unit+1) + '_' + str(to_unit+1) + ': %1.1f' % z)
+
             else:
                 colors_row.append('w')
 
@@ -352,26 +385,32 @@ for gate in range(4):
             #     colors_row.append('w')
             # else:
             #     colors_row.append('w')
+
+            if (from_unit == 775 and to_unit == 987) or (from_unit == 987 and to_unit == 775):
+                z = (curr_weight - np.mean(all_weights_to_curr_unit))/np.std(all_weights_to_curr_unit)
+                print('z-score ' + str(from_unit+1) + '_' + str(to_unit+1) + ': %1.1f' % z)
+
         colors.append(colors_row)
     print(colors)
     the_table = ax1.table(cellText=cell_text,
                           rowLabels=rowLabels,
                           colLabels=colLabels, rowLoc='center', cellColours=colors,
                           loc='bottom')
-    the_table.set_fontsize(10)
+    the_table.set_fontsize(20)
     for cell in the_table._cells:
         the_table._cells[cell]._loc = 'center'
         if cell[0]==0 or cell[1]==-1: # make bold the row and colLabels
             the_table._cells[cell].set_text_props(weight='bold')
         if cell[0] == cell[1]+1: the_table._cells[cell]._text.set_color('w')
 
-    # the_table.scale(1.5, 1.5)
+    plt.subplots_adjust(left = 0.2, bottom=0.26)
+
+    the_table.scale(1, 2.3)
 
 
     ### cosmetics
     ax1.get_xaxis().set_visible(False)
-    ax1.set_ylabel('Afferent weight', fontsize=16)
-    plt.subplots_adjust(bottom=0.2)
+    ax1.set_ylabel('Afferent weight', fontsize=24)
     # ax1.set_title(gate_names[gate])
 
     ### Save figure

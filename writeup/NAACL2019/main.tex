@@ -2,6 +2,7 @@
 \usepackage[hyperref]{naaclhlt2019}
 \usepackage{times}
 \usepackage{latexsym}
+\usepackage{calculator}
 % \usepackage[textsize=tiny]{todonotes}
 \usepackage{subcaption}
 \usepackage{xstring}
@@ -41,11 +42,19 @@
 \newcommand{\yair}[1]{\textcolor{blue}{(YL: #1)}}
 \newcommand{\marco}[1]{\textcolor{green}{(MB: #1)}}
 \newcommand{\layer}[1]{\IfEqCase{#1}{%
-        {1}{1$^{nd}$}
+        {1}{1$^{st}$}
         {2}{2$^{nd}$}
         }
 }
-\newcommand{\unit}[2]{\layer{#1}-$#2$}
+% \newcommand{\unit}[2]{\layer{#1}-$#2$}
+%\newcommand{\unit}[2]{$#2$}
+\newcommand{\unit}[2]{\IfEqCase{#1}{
+    {1}{#2} 
+    {2}{\ADD{#2}{650}{\unitnr}\unitnr\,}
+    }
+}
+
+
 % \newcommand{\yair}[1]{\todo[color=blue!40]{YL: #1}}
 % \newcommand{\german}[1]{\todo[color=purple!40]{GK: #1}}
 
@@ -93,9 +102,7 @@
 % Sections
 \input{Sections/Intro.tex}
 \input{Sections/Related_literature.tex}
-\input{Sections/The_data.tex}
-\input{Sections/The_models.tex}
-
+\input{Sections/Setup.tex}
 
 % Results
 \input{Sections/Results_number.tex}

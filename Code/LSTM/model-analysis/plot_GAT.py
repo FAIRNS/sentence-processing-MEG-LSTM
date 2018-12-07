@@ -6,8 +6,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__
 import data
 
 
-sentence = ['The', 'boy', 'near', 'the', 'cars', 'nicely', 'greets']
-path2savefig = '../../../Figures/GAT1d_cell_nounpp_adv_SR_LR_single_unit.png'
+sentence = ['The', 'boy', 'near', 'the', 'cars', 'greets']
+path2savefig = '../../../Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png'
 # Load GAT results
 path2pkl = '../../../Output/GAT1d_cell_Ou.pkl'
 # path2pkl = '../../../Figures/GAT1d_hidden_nounpp_SR_LR.pkl'
@@ -102,7 +102,7 @@ SR_units_weights_based, LR_units_weights_based = get_SR_LR_weights_based(results
 SR_units_AUC_based, LR_units_AUC_based = get_SR_LR_AUC_based_units(results)
 
 # Plot results
-fig1, ax1 = plt.subplots(1)
+fig1, ax1 = plt.subplots(figsize=(10, 10))
 colors = ['b', 'r']
 line_styles = [':', '--']
 # colors += colors; line_styles += line_styles
@@ -114,47 +114,61 @@ for u, LR_unit in enumerate(LR_units_weights_based):
     label = 'Unit ' + str(unit+1) + ' (LR)'
     ax1.errorbar(x=range(curr_data.size), y=curr_data, linewidth=6, label=label, color=colors[u], ls=line_styles[u])
 
-for u, LR_unit in enumerate(LR_units_AUC_based):
-    unit, curr_data = LR_unit
-    curr_data = curr_data[:-2]
-    label = 'Unit ' + str(unit + 1) + ' (LR)'
-    color = np.random.rand(1,3).tolist()[0]
-    if unit not in [775, 987]:
-        ax1.errorbar(x=range(curr_data.size), y=curr_data, linewidth=1, label=label, color='c', ls='--')
-print('LR based on AUC:')
-print([u for (u, _) in LR_units_AUC_based])
+#for u, LR_unit in enumerate(LR_units_AUC_based):
+#    unit, curr_data = LR_unit
+#    curr_data = curr_data[:-2]
+#    label = 'Unit ' + str(unit + 1) + ' (LR)'
+#    color = np.random.rand(1,3).tolist()[0]
+#    if unit not in [775, 987]:
+#        ax1.errorbar(x=range(curr_data.size), y=curr_data, linewidth=1, label=label, color='c', ls='--')
+#print('LR based on AUC:')
+#print([u for (u, _) in LR_units_AUC_based])
 
 
-colors = ['y', '#d3d3d3', 'm', 'c']
-for pos, SR_pos in enumerate(SR_units_AUC_based):
-    print('position: ' + str(pos))
-    print([u for (u, vec) in SR_pos])
-    for u, SR_unit in enumerate(SR_pos):
-        unit, curr_data = SR_unit
-        curr_data = curr_data[:-2]
-        label = 'Unit ' + str(unit + 1) + ' (SR ' + str(pos) + ')'
-        color = np.random.rand(1,3).tolist()[0]
-        if unit not in [775, 987]:
-            ax1.errorbar(x=range(curr_data.size), y=curr_data, linewidth=2, label=label, color=colors[pos], ls='--')
+#colors = ['y', '#d3d3d3', 'm', 'c']
+#for pos, SR_pos in enumerate(SR_units_AUC_based):
+#    print('position: ' + str(pos))
+#    print([u for (u, vec) in SR_pos])
+#    for u, SR_unit in enumerate(SR_pos):
+#        unit, curr_data = SR_unit
+#        curr_data = curr_data[:-2]
+#        label = 'Unit ' + str(unit + 1) + ' (SR ' + str(pos) + ')'
+#        color = np.random.rand(1,3).tolist()[0]
+#        if unit not in [775, 987]:
+#            ax1.errorbar(x=range(curr_data.size), y=curr_data, linewidth=2, label=label, color=colors[pos], ls='--')
 
 
+
+# Plot full model
+ax1.plot(range(results['scores_full_model'].shape[0]), results['scores_full_model'], linewidth=2, label='Full-model minus LR-units', color='k')
 
 # Plot number units and average across number units
 all_SR_units = [tuple[0] for sublist in SR_units_AUC_based for tuple in sublist]
 all_LR_units = [tuple[0] for tuple in LR_units_AUC_based]
 non_number_units = list(set(range(1300)) - set(all_LR_units) - set(all_SR_units))
 curr_data = results['scores_all_single_units'][non_number_units, :-2]
-ax1.errorbar(x=range(curr_data.shape[1]), y=np.mean(curr_data, axis=0), yerr=np.std(curr_data, axis=0), linewidth=2, label='Other units', color='k')
+#ax1.errorbar(x=range(curr_data.shape[1]), y=np.mean(curr_data, axis=0), yerr=np.std(curr_data, axis=0), lw=2, ls=':', label='non-number units', color='k')
+
 
 
 #### Cosmetics and save figures
-fig1.subplots_adjust(right=0.6, bottom=0.25)
+# fig1.subplots_adjust(right=0.75)
+ax1.set_xlim((0, len(sentence)-1))
 ax1.axhline(0.5, color='k', ls = '--')
-ax1.axvline(4, color='r', ls = '-.')
-ax1.set_xticklabels(sentence, rotation=45, fontsize=18)
-ax1.set_ylabel('AUC', fontsize = 18)
-ax1.set_title('Training time: subject ("athletes")', fontsize=16)
+# ax1.axvline(4, color='r', ls = '-.')
+ax1.set_xticklabels(sentence, fontsize=30)
+ax1.tick_params(axis='x', which='major', pad=15)
+ax1.set_ylabel('AUC', fontsize = 30)
+ax1.set_yticks([0, 0.5, 1])
+ax1.set_yticklabels([0, 0.5, 1], fontsize=30)
+# ax1.set_title('Training time: subject ("athletes")', fontsize=16)
 ax1.set_ylim((0, 1.05))
-ax1.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+# ax1.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+handles, labels = ax1.get_legend_handles_labels()
+a, b = labels.index('Full-model minus LR-units'), labels.index('Unit 988 (LR)')
+labels[b], labels[a] = labels[a], labels[b]
+handles[b], handles[a] = handles[a], handles[b]
+# ax1.legend(handles, labels, loc='upper center', ncol=1, fontsize=25, bbox_to_anchor=(0., 1.02, 1., .102))
+ax1.legend(handles, labels, loc=3, fontsize=20)#, bbox_to_anchor=(1.05, 1))
 plt.show()
 fig1.savefig(path2savefig, dpi=100)
