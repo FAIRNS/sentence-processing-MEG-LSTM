@@ -58,7 +58,7 @@ if os.path.exists(data_file) and not regenerate_data:
 else:
     data_sentences = annotated_data.Data()
     data_sentences.add_corpus(txt_file, separator='|', column_names=['sentence', 'structure', 'open_nodes_count', 'adjacent_boundary_count'])
-    data_sentences.data = data_sentences.filter_sentences(n=n, elements=list(range(18))) # Filter data to get a uniform distribution of sentence types
+    data_sentences.data = data_sentences.filter_sentences(n=n, elements=list(range(26))) # Filter data to get a uniform distribution of sentence types
     data_sentences.add_word_frequency_counts(frequency_file)
     data_sentences.add_activation_data(model, vocab, eos, unk, use_unk, lang, get_representations)
     pickle.dump(data_sentences, open(data_file, 'wb'))
@@ -71,6 +71,7 @@ plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'position_numO
 plt.close()
 min_n = data_sentences.get_min_number_of_samples_in_rectangle(c_dict, pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max)
 data_sentences.decorrelate(pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max, n=min_n) # decorrelate data
+print('number of sentences after decorrelation = ', len(data_sentences.data))
 
 # TODO implement function to find max rectangle
 # TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator

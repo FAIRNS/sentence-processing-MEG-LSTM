@@ -55,6 +55,7 @@ nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
 \hline
 
 \end{tabular}
+% \tiny
 \caption{Ablation-experiments results: Percentage accuracy in all NA-tasks. Full: non-ablated model, C: condition, S: singular, P: plural. Red: Singular subject, Blue: Plural subject. Performance reduction less than 10\% is denoted by `-'.  \label{tab:ablation-results}}
 \end{table}
 \end{center}
@@ -90,13 +91,13 @@ nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
 \subsection{Long-range number units}\label{subsec:ablation}
 We first tested LSTM performance on Linzen's data and on the NA-tasks of Table
 \ref{tab:data-sets}. Following
-\newcite{Linzen:etal:2016} and later work, we compute the likelihood
+\newcite{Linzen:etal:2016} and later work, we computed the likelihood
 that the LSTM assigns to the main verb of each sentence given the
-preceding context, and compare it to the likelihood it assigns to the
-wrong verb inflection. Accuracy in a given condition is the proportion of sentences in the condition where the model assigned a higher likelihood to the correct form than to the wrong one.
+preceding context, and compared it to the likelihood it assigns to the
+wrong verb inflection. Accuracy in a given condition was measured as the proportion of sentences in the condition where the model assigned a higher likelihood to the correct form than to the wrong one.
 
 Network performance is reported in Table \ref{tab:ablation-results}
-(right column -- `Full'). We see, first, that some NA-tasks and
+(right column -- `Full'). First, results show that some NA-tasks and
 conditions are more difficult than others. For example, performance on
 the Simple (0-distance) NA-task is better than that on the Co-Adv
 NA-task, which in turn is better than that of the nounPP
@@ -105,7 +106,7 @@ number-mismatch conditions of namePP, nounPP and nounPPAdv) reduce
 network performance. Third, for long-range dependencies, reliably
 encoding singular subject across an interfering noun is more difficult
 than a plural subject: for both nounPP and nounPPAdv, PS is easier
-than SP. A possible explanation is that in English the plural form is
+than SP. A possible explanation for this finding is that in English the plural form is
 almost always more frequent than the singular one, as the latter only
 marks third person singular, whereas the former is identical to the
 infinitive and other forms. Thus, if the network reverts to unigram
@@ -137,7 +138,7 @@ network performance only if the subject is plural (P, PS or PP conditions) and \
 only if the subject is singular (S, SP or SS conditions). In what follows, we will therefore
 refer to these units as the `plural' and `singular' units, respectively,
 or long-range (LR) number units when referring to both. Finally, we note that although the Linzen NA-task contained mixed stimuli from many types of conditions, the plural unit was found to have a substantial effect on average on network performance. The singular unit didn't show a similar effect in this case, which highlights the importance of using carefully crafted stimuli, as in the nounPP and nounPPAdv tasks, for understanding network dynamics. Taken
-together, the results suggest a highly local coding scheme of
+together, these results suggest a highly local coding scheme of
 grammatical number when processing long-range dependencies.
 
 \paragraph{Visualizing gate and cell-state dynamics}\label{subsec:gate-dynamics}
@@ -193,17 +194,17 @@ A single divergence between the solution depicted in Figure \ref{fig:cartoon} an
 
 \begin{figure}[b]
     \centering
-    \includegraphics[height=5cm]{Figures/weight_dists_verbs.png}
+    \includegraphics[height=4.6cm]{Figures/weight_dists_verbs.png}
     \caption{Efferent weights of the LR-units (\unit{2}{126} and \unit{2}{338}), the syntax unit (\unit{2}{500}; section \ref{sec:syntax-units}) and two arbitrary units (\unit{2}{1} and \unit{2}{650}).}
     \label{fig:output-weights}
 \end{figure}
 
-The singular and plural units have emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We find that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650}, and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
+The singular and plural units had emerged at the second layer of the network. This seems appropriate if number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We found that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650}, and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
 
 \subsection{Short-range number information}
 \begin{figure}
     \centering
-    \includegraphics[height=5cm]{Figures/GAT1d_cell_.png}
+    \includegraphics[height=4cm, width=8cm]{Figures/GAT1d_cell_.png}
     \caption{Generalization across time of subject-number prediction. Error bars represent standard deviations across cross-validation splits.}
     \label{fig:GAT}
 \end{figure}

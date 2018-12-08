@@ -78,7 +78,7 @@ with open(args.sentences, 'r') as f:
 sentences = [s.split(' ') for s in sentences]
 
 #### Plot Full model
-fig1, ax1 = plt.subplots(1, figsize=(10,10))
+fig1, ax1 = plt.subplots(1, figsize=(18,10))
 # omit_units = [] # Omit nothing (Full model)
 # title = 'Full model'
 # print('model for: ' + title)
@@ -153,9 +153,9 @@ path2figures, filename = os.path.split(args.output_file_name)
 sentence = ['The', 'boy', 'near', 'the', 'cars', 'greets']
 ax1.set_xlim((0, len(sentence)-1))
 ax1.axhline(0.5, color='k', ls = '--')
-ax1.set_xticklabels(sentence, fontsize=30)
+ax1.set_xticklabels(sentence, fontsize=40)
 ax1.tick_params(axis='x', which='major', pad=15)
-ax1.set_ylabel('AUC', fontsize = 30)
+ax1.set_ylabel('AUC', fontsize = 40)
 ax1.set_yticks([0, 0.5, 1])
 ax1.set_yticklabels([0, 0.5, 1], fontsize=30)
 ax1.set_ylim((0, 1.05))
@@ -163,7 +163,7 @@ handles, labels = ax1.get_legend_handles_labels()
 a, b = labels.index('Full-model minus LR-units'), labels.index('Unit 988 (LR)')
 labels[b], labels[a] = labels[a], labels[b]
 handles[b], handles[a] = handles[a], handles[b]
-ax1.legend(handles, labels, loc=3, fontsize=20)#, bbox_to_anchor=(1.05, 1))
+ax1.legend(handles, labels, loc=3, fontsize=35)#, bbox_to_anchor=(1.05, 1))
 fig1.savefig(os.path.join(path2figures, 'GAT1d_' + args.gate + '_' + filename))
 
 print('Figures were saved to: ' + os.path.join(path2figures, 'GAT1d_' + args.gate + '_' + filename))

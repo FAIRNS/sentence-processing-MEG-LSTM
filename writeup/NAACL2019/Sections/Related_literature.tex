@@ -1,16 +1,10 @@
 
 \section{Related work}
 
-% \marco{This can be made more compact by removing the intro par, and in the behavioural part only discussing studies of agreement. I would remove the part about which studies suggested agreement is done via heuristics and which argued it's genuinely structure-sensitive from the intro, and move it here. Happy to do that myself.}
-
-% Previous studies on understanding RNNs can be roughly characterized in two classes: studies that focus on visualising or interpreting the hidden state activations of such networks; and work that focuses on the behavior or performance of a model by studying the learnability of particular datasets or phenomena.
-% We briefly discuss the most important studies concerning RNNs applied for natural language processing.
-% For the second class, we specifically focus on behavioral studies concerning \textit{neural language models},a topic particularly relevant for the current paper.
-
 Starting with the seminal work of \newcite{Linzen:etal:2016},
 long-distance number agreement (``the \textbf{boy} near the cars
 \textbf{greets}\ldots'') has emerged as a standard way to probe the
-syntactic capabilities of RNNs. After
+syntactic capabilities of RNNs. Following
 mixed initial results by Linzen and colleagues and
 \newcite{Bernardy:Lappin:2017}, \newcite{Gulordava:etal:2018} and
 \newcite{Kuncoro:etal:2018a} have robustly established that LSTMs
@@ -28,20 +22,13 @@ While \newcite{Linzen:etal:2016} presented intriguing qualitative data
 showing cells that track number in a network specifically trained on
 the agreement task, most work of this sort focuses on testing the
 network output behaviour, rather than on understanding how the latter
-follows from the network inner representations. Another research line
-studies linguistic processing in neural networks through `diagnostic classifiers', that is, classifiers trained to
+follows from the inner representations of the network. Another research line
+studied linguistic processing in neural networks through `diagnostic classifiers', that is, classifiers trained to
 predict a certain property from network activations
-\cite[e.g.,][]{gelderloos2016phonemes,Adi:etal:2017,alain2017understanding,Hupkes:etal:2017}. This
-approach can shed insights on which information is encoded by the
+\cite[e.g.,][]{gelderloos2016phonemes,Adi:etal:2017,alain2017understanding,Hupkes:etal:2017}. This approach may give insight into which information is encoded by the
 network in different layers or at different time points, but it only
 provides indirect evidence about the specific mechanics of linguistic
 processing in the network.
-% E.g., \newcite{gelderloos2016phonemes} find evidence that a multilayer
-% RNN trained in a visually grounded learning paradigm learns to
-% represent linguistic information in a hierarchy, encoding form in the
-% lower and meaning in the higher layers.  \dieuwke{This is of course
-%   not very extensive, but maybe this is not really the place to put a
-%   too elaborate analysis?}
 
 Other studies are closer to our approach in that they attempt to
 attribute function to specific network cells, often by means of
@@ -52,7 +39,7 @@ language-model-trained network.  \newcite{Kementchedjhieva:Lopez:2018}
 recently found a character-level RNN to track morpheme boundaries in a
 single cell. We are however not aware of others studies systematically
 characterizing the processing of a linguistic phenomenon at the level of
-RNN cell dynamics as we attempt to do here.
+RNN cell dynamics, as is the attempt in the study hereby presented.
 
 
 % E.g., \newcite{gelderloos2016phonemes} find evidence that a multilayer
