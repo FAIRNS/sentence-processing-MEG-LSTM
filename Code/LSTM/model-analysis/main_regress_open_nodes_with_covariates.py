@@ -48,8 +48,8 @@ base_filename = os.path.join(base_folder, 'Output/num_open_nodes/' + model_type 
 
 
 # Set random seeds:
-np.random.seed(0)
-random.seed(0)
+np.random.seed(1)
+random.seed(1)
 
 ### check if datafile exists, if not, create it, otherwise load it:
 if os.path.exists(data_file) and not regenerate_data:
@@ -102,6 +102,8 @@ if calc_VIF:
     plt.close()
 
 
+# X, y, _, _ = data_manip.prepare_data_for_regression(data_sentences.data, data_sentences.data, feature_type=feature_type)
+# print('number of positions for regression: ', y.shape[0])
 ### Train/test regression model:
 print('Splitting train/test data')
 models = []; weights = []; scores = []; scores_reduced_model = []; units_outliers = []
