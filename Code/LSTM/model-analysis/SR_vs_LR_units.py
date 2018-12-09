@@ -110,7 +110,9 @@ for u, unit in enumerate([775, 987]):
         scores = get_gat_scores(data, omit_units, seed)
         scores_LR_unit.append(scores[1, :]) # Scores only when trained on subject (first noun)
     scores_LR_unit = np.vstack(scores_LR_unit)
-    ax1.errorbar(x=range(scores_LR_unit.shape[1]), y=np.mean(scores_LR_unit, axis=0), yerr=np.std(scores_LR_unit, axis=0), linewidth=6, label=title, color=colors[u], ls=line_styles[u])
+    jitter = 0
+    if u == 1: jitter = 0.01
+    ax1.errorbar(x=range(scores_LR_unit.shape[1]), y=np.mean(scores_LR_unit, axis=0)+jitter, yerr=np.std(scores_LR_unit, axis=0), linewidth=6, label=title, color=colors[u], ls=line_styles[u])
     scores_LR_units.append(scores_LR_unit)
 
 #### Plot 2nd layer
@@ -155,7 +157,7 @@ ax1.set_xlim((0, len(sentence)-1))
 ax1.axhline(0.5, color='k', ls = '--')
 ax1.set_xticklabels(sentence, fontsize=40)
 ax1.tick_params(axis='x', which='major', pad=15)
-ax1.set_ylabel('AUC', fontsize = 40)
+ax1.set_ylabel('Singular vs. Plural (AUC)', fontsize = 40)
 ax1.set_yticks([0, 0.5, 1])
 ax1.set_yticklabels([0, 0.5, 1], fontsize=30)
 ax1.set_ylim((0, 1.05))
