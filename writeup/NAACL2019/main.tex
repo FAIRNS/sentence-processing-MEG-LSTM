@@ -50,8 +50,8 @@
 % \newcommand{\unit}[2]{\layer{#1}-$#2$}
 %\newcommand{\unit}[2]{$#2$}
 \newcommand{\unit}[2]{\IfEqCase{#1}{
-    {1}{#2} 
-    {2}{\ADD{#2}{650}{\unitnr}\unitnr\,}
+    {1}{#2\;} 
+    {2}{\ADD{#2}{650}{\unitnr}\unitnr\;}
     }
 }
 
