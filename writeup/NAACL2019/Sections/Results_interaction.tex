@@ -42,8 +42,8 @@ those to their input gates exceptionally negative ($z-score=-16.2,
 positive across the entire subject-verb dependency (e.g., Figure
 \ref{fig:syntax-unit-double-subjrel}), the connectivity from the
 syntax unit drives the number unit forget gates towards one
-($W^f_{776, 1150}h^{1150}>>0$ and $W^f_{988, 1150}h^{1150}>>0$; $t_{subject}<t<t_{verb}$) and their input gates towards zero
-($W^i_{776, 1150}h^{1150}<<0$ and $W^i_{988, 1150}h^{1150}<<0$). Looking at the right-hand-side of
+($W^f_{776, 1150}h^{1150}\gg0$ and $W^f_{988, 1150}h^{1150}\gg0$; $t_{subject}<t<t_{verb}$) and their input gates towards zero
+($W^i_{776, 1150}h^{1150}\ll0$ and $W^i_{988, 1150}h^{1150}\ll0$). Looking at the right-hand-side of
 Eq.~(\ref{eq:update-rule}), this means that the first term becomes
 dominant and the second vanishes, suggesting that, across the entire
 dependency, the syntax unit conveys a `remember flag' to the number
