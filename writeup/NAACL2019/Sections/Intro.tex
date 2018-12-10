@@ -13,7 +13,7 @@ Until now, this debate has mostly relied on ``behavioural'' evidence:
 The LSTM had been treated as a black box, and its capacities had been indirectly
 inferred by its performance on linguistic tasks. In this study, we took a
 complementary ``neuroscientific'' approach: We thoroughly investigated
-the inner dynamics of an LSTM performing the number agreement task,
+the inner dynamics of an LSTM language model performing the number agreement task,
 striving to achieve a mechanistic understanding of how it accomplishes
 it. We found that the LSTM had specialized two ``grandmother'' cells
 \cite{Bowers:2009} to carry number features from the subject to the
@@ -22,7 +22,7 @@ verb across the intervening material.\footnote{In the neuroscientific
   specific information, e.g., about your grandmother, in a
   non-distributed manner.} Interestingly, the LSTM also
 possesses a more distributed mechanism to predict number when subject
-and verb are close, with the grandma number cells only playing a
+and verb are close, with the grandmother number cells only playing a
 crucial role in more difficult long-distance cases. Crucially, we
 independently identified a set of cells tracking syntactic structure,
 and found that one of them encodes the presence of an embedded phrase
@@ -32,7 +32,7 @@ network relies on genuine syntactic information to regulate
 agreement-feature percolation.
 
 Our analysis thus provides direct evidence for the claim that LSTMs
-trained with language modeling on unannotated corpus data, despite
+trained on unannotated corpus data, despite
 lacking significant linguistic priors, learn to perform
 structure-dependent linguistic operations. In turn, this suggests that
 raw linguistic input and generic memory mechanisms, such as those
