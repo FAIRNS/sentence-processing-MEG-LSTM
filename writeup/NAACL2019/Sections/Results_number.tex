@@ -1,8 +1,8 @@
 \section{Experiments}\label{sec:results}
-To successfully perform the NA-task, the LSTM should: (1) encode and store the grammatical number of the subject; and (2) track the main subject-verb syntactic dependency. The latter information is important for identifying the time period during which subject number should be stored, output and updated by the network. This section describes the `neural circuit' that encodes and processes this information in the LSTM.
+To successfully perform the NA-task, the LSTM should: (1) encode and store the grammatical number of the subject; and (2) track the main subject-verb syntactic dependency. The latter information is important for identifying the time period during which subject number should be stored, output and then updated by the network. This section describes the `neural circuit' that encodes and processes this information in the LSTM.
 
 \begin{center}
-\begin{table}[ht]
+\begin{table}[t]
 \centering
 \begin{tabular}{|P{2.3cm}|P{0.4cm}||P{0.6cm}|P{0.6cm}|P{0.6cm}|}
 \hline
@@ -99,7 +99,7 @@ preceding context and compared it to the likelihood it assigns to the
 wrong verb inflection. Accuracy in a given condition was measured as the proportion of sentences in this condition for which the model assigned a higher likelihood to the correct verb form than to the wrong one.
 
 Network performance is reported in Table \ref{tab:ablation-results}
-(right column -- `Full'). We first confirmed the results of \newcite{Gulordava:etal:2018} for the Linzen NA-task. For the other NA-tasks, results show that some tasks and
+(right column -- `Full'). We first note that our results on the Linzen NA-task confirm those reported in \newcite{Gulordava:etal:2018}. For the other NA-tasks, results show that some tasks and
 conditions are more difficult than others. For example, performance on
 the Simple (0-distance) NA-task is better than that on the Co-Adv
 NA-task, which in turn is better than that of the nounPP
@@ -121,7 +121,7 @@ carry it.  We hypothesized that if the network uses a local or sparse
 coding, meaning that there's a small set of units that encode number
 information, then ablating these units would lead to a drastic
 decrease in performance in the NA-tasks.  To test this, we ablated
-each unit of the network one at a time, by fixing its activation to zero,
+each unit of the network, one at a time, by fixing its activation to zero,
 and tested on the NA-tasks.
 
 Two units were found to have exceptional effect on network performance
@@ -217,7 +217,7 @@ code. To verify this, we tested whether subject number can be decoded from the w
 pattern of activities in the network (excluding the two LR-number units)
 and whether this decoding is stable across time \cite[see][for similar
 observations and related methods]{Giulianelli:etal:2018}. We expected
-this distributed activity network to track number in a
+this distributed activity to track number in a
 small time window after the subject, but, unlike the LR-number units,
 to be affected by incongruent intervening nouns.
 
