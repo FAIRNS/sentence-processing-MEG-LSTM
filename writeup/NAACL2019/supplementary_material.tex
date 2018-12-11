@@ -27,8 +27,8 @@ For our regression experiments we used a large corpus with sentences with unambi
 The output of this script is a four column file containing:\begin{enumerate}
     \item The generated sentence.
     \item The syntactic parse tree of the sentence, according to the grammar that was used to generate it.
-    \item The depth of the syntactic parse tree for each word position (i.e., corresponding to the number of open brackets)
-    \item The number of open syntactic nodes at each word position (as described in Nelson et al., 2017)
+    \item The number of open nodes (syntactic tree-depth), following Nelson et. al, 2017.
+    \item The number of adjacent open and closing brackets before each word
 \end{enumerate}
 
 \noindent The columns of the file are separated with the character $|$.

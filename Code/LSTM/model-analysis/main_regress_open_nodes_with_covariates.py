@@ -48,8 +48,8 @@ base_filename = os.path.join(base_folder, 'Output/num_open_nodes/' + model_type 
 
 
 # Set random seeds:
-np.random.seed(1)
-random.seed(1)
+np.random.seed(0)
+random.seed(0)
 
 ### check if datafile exists, if not, create it, otherwise load it:
 if os.path.exists(data_file) and not regenerate_data:
@@ -70,8 +70,19 @@ c_dict, plt = data_sentences.decorrelation_matrix(plot_pos_depth=True, pos_min=p
 plt.savefig(os.path.join(settings.path2figures, 'num_open_nodes', 'position_numON_plane.png'))
 plt.close()
 min_n = data_sentences.get_min_number_of_samples_in_rectangle(c_dict, pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max)
-data_sentences.decorrelate(pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max, n=min_n) # decorrelate data
+_, filtered_data_full_dicts = data_sentences.decorrelate(pos_min=pos_min, pos_max=pos_max, depth_min=depth_min, depth_max=depth_max, n=min_n) # decorrelate data
 print('number of sentences after decorrelation = ', len(data_sentences.data))
+pickle.dump(data_sentences, open(data_file+'.dcl', 'wb'))
+
+with open(data_file+'.txt', 'w') as f:
+    for d in filtered_data_full_dicts:
+        sentence = d['sentence']
+        structure = d['structure']
+        open_nodes_count = d['open_nodes_count']
+        adjacent_boundary_count = d['adjacent_boundary_count']
+        curr_line = '|'.join([sentence, structure, open_nodes_count, adjacent_boundary_count])
+        f.write(curr_line+'\n')
+
 
 # TODO implement function to find max rectangle
 # TODO(?): data_sentences.omit_depth_zero() # Not needed for Marco's sentence generator
