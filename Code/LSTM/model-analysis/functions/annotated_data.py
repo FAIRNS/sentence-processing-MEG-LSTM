@@ -279,6 +279,7 @@ class Data(object):
                  )
 
         # initialise list for filtered data
+        filtered_data_full_dicts = []
         filtered_data = []
 
         pos_range = [i for i in range(pos_min, pos_max+1)]
@@ -309,11 +310,13 @@ class Data(object):
                         if positions:
                             filtered_dict = self.filter_dict(s_dict, positions)
                             filtered_data.append(filtered_dict)
+                            filtered_data_full_dicts.append(s_dict)
                         break
 
             if positions:
                 filtered_dict = self.filter_dict(s_dict, positions)
                 filtered_data.append(filtered_dict)
+                filtered_data_full_dicts.append(s_dict)
 
         if to_find:
             tups = to_find.keys()
@@ -326,7 +329,7 @@ class Data(object):
         if set_as_attr:
             self.data = filtered_data
 
-        return filtered_data
+        return filtered_data, filtered_data_full_dicts
 
     def omit_words(self, key='depth', elements=[0],
                          set_as_attr=True):
