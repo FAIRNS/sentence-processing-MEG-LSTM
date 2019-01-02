@@ -27,9 +27,9 @@ generate_jabberwocky_and_wordlists = False # Wether to create the jabbberwocky a
 
 generate_NP_VP_transition = True # necessary for all structures
 
-include_relative_clauses = True
+include_relative_clauses = False
 
-generate_all_struct = False
+generate_all_struct = True
 
 ## Construct sentences
 
@@ -65,7 +65,8 @@ if generate_all_struct:
 for i in range(nb_sent):
     
     create_info(info)
-    
+    #print(info)
+
     type = get_type(Types, Types_counter)
 
     ###### !!! Stop the usage of sentences of type 0 and 3 , that use passive verbs , this also makes the type counter wrong !!!
@@ -90,6 +91,8 @@ for i in range(nb_sent):
     sentence = construct_sentence(structure, det, subject, prepo, verb, det2, object)
     sentences.append(sentence)
     
+    #print('t=%s, struct=%s, sub=%s, d=%s, v=%s, o=%s, det2=%s, p=%s, %s' % (type, structure, subject, det, verb, object, det2, prepo, sentence))
+    #print(sentence)
     # ind_anomaly_pos, anmaly_position, anomaly_position_counter = get_anomaly_position(structure, type, anomaly_position_counter)
             
     # sentence_string_anomaly = generate_string_anomaly(sentence, ind_anomaly_pos, structure)

@@ -1,0 +1,2160 @@
+des fruits du marché ont nourri	past	masc	plur	masc	sing
+des fruits du marché ont rassasié	past	masc	plur	masc	sing
+des fruits du marché vont nourrir	future	masc	plur	masc	sing
+des fruits du marché vont rassasier	future	masc	plur	masc	sing
+des fruits du magasin ont nourri	past	masc	plur	masc	sing
+des fruits du magasin ont rassasié	past	masc	plur	masc	sing
+des fruits du magasin vont nourrir	future	masc	plur	masc	sing
+des fruits du magasin vont rassasier	future	masc	plur	masc	sing
+des fruits du commerce ont nourri	past	masc	plur	masc	sing
+des fruits du commerce ont rassasié	past	masc	plur	masc	sing
+des fruits du commerce vont nourrir	future	masc	plur	masc	sing
+des fruits du commerce vont rassasier	future	masc	plur	masc	sing
+des fruits du jardin ont nourri	past	masc	plur	masc	sing
+des fruits du jardin ont rassasié	past	masc	plur	masc	sing
+des fruits du jardin vont nourrir	future	masc	plur	masc	sing
+des fruits du jardin vont rassasier	future	masc	plur	masc	sing
+des fruits du verger ont nourri	past	masc	plur	masc	sing
+des fruits du verger ont rassasié	past	masc	plur	masc	sing
+des fruits du verger vont nourrir	future	masc	plur	masc	sing
+des fruits du verger vont rassasier	future	masc	plur	masc	sing
+des fruits des marchés ont nourri	past	masc	plur	masc	plur
+des fruits des marchés ont rassasié	past	masc	plur	masc	plur
+des fruits des marchés vont nourrir	future	masc	plur	masc	plur
+des fruits des marchés vont rassasier	future	masc	plur	masc	plur
+des fruits des magasins ont nourri	past	masc	plur	masc	plur
+des fruits des magasins ont rassasié	past	masc	plur	masc	plur
+des fruits des magasins vont nourrir	future	masc	plur	masc	plur
+des fruits des magasins vont rassasier	future	masc	plur	masc	plur
+des fruits des commerces ont nourri	past	masc	plur	masc	plur
+des fruits des commerces ont rassasié	past	masc	plur	masc	plur
+des fruits des commerces vont nourrir	future	masc	plur	masc	plur
+des fruits des commerces vont rassasier	future	masc	plur	masc	plur
+des fruits des jardins ont nourri	past	masc	plur	masc	plur
+des fruits des jardins ont rassasié	past	masc	plur	masc	plur
+des fruits des jardins vont nourrir	future	masc	plur	masc	plur
+des fruits des jardins vont rassasier	future	masc	plur	masc	plur
+des fruits des vergers ont nourri	past	masc	plur	masc	plur
+des fruits des vergers ont rassasié	past	masc	plur	masc	plur
+des fruits des vergers vont nourrir	future	masc	plur	masc	plur
+des fruits des vergers vont rassasier	future	masc	plur	masc	plur
+des fruits de la X ont nourri	past	masc	plur	femi	sing
+des fruits de la X ont rassasié	past	masc	plur	femi	sing
+des fruits de la X vont nourrir	future	masc	plur	femi	sing
+des fruits de la X vont rassasier	future	masc	plur	femi	sing
+des fruits de la Y ont nourri	past	masc	plur	femi	sing
+des fruits de la Y ont rassasié	past	masc	plur	femi	sing
+des fruits de la Y vont nourrir	future	masc	plur	femi	sing
+des fruits de la Y vont rassasier	future	masc	plur	femi	sing
+des fruits de la Z ont nourri	past	masc	plur	femi	sing
+des fruits de la Z ont rassasié	past	masc	plur	femi	sing
+des fruits de la Z vont nourrir	future	masc	plur	femi	sing
+des fruits de la Z vont rassasier	future	masc	plur	femi	sing
+des fruits de la A ont nourri	past	masc	plur	femi	sing
+des fruits de la A ont rassasié	past	masc	plur	femi	sing
+des fruits de la A vont nourrir	future	masc	plur	femi	sing
+des fruits de la A vont rassasier	future	masc	plur	femi	sing
+des fruits de la B ont nourri	past	masc	plur	femi	sing
+des fruits de la B ont rassasié	past	masc	plur	femi	sing
+des fruits de la B vont nourrir	future	masc	plur	femi	sing
+des fruits de la B vont rassasier	future	masc	plur	femi	sing
+des fruits des Xes ont nourri	past	masc	plur	femi	plur
+des fruits des Xes ont rassasié	past	masc	plur	femi	plur
+des fruits des Xes vont nourrir	future	masc	plur	femi	plur
+des fruits des Xes vont rassasier	future	masc	plur	femi	plur
+des fruits des Yes ont nourri	past	masc	plur	femi	plur
+des fruits des Yes ont rassasié	past	masc	plur	femi	plur
+des fruits des Yes vont nourrir	future	masc	plur	femi	plur
+des fruits des Yes vont rassasier	future	masc	plur	femi	plur
+des fruits des Zes ont nourri	past	masc	plur	femi	plur
+des fruits des Zes ont rassasié	past	masc	plur	femi	plur
+des fruits des Zes vont nourrir	future	masc	plur	femi	plur
+des fruits des Zes vont rassasier	future	masc	plur	femi	plur
+des fruits des Aes ont nourri	past	masc	plur	femi	plur
+des fruits des Aes ont rassasié	past	masc	plur	femi	plur
+des fruits des Aes vont nourrir	future	masc	plur	femi	plur
+des fruits des Aes vont rassasier	future	masc	plur	femi	plur
+des fruits des Bes ont nourri	past	masc	plur	femi	plur
+des fruits des Bes ont rassasié	past	masc	plur	femi	plur
+des fruits des Bes vont nourrir	future	masc	plur	femi	plur
+des fruits des Bes vont rassasier	future	masc	plur	femi	plur
+les fruits du marché ont nourri	past	masc	plur	masc	sing
+les fruits du marché ont rassasié	past	masc	plur	masc	sing
+les fruits du marché vont nourrir	future	masc	plur	masc	sing
+les fruits du marché vont rassasier	future	masc	plur	masc	sing
+les fruits du magasin ont nourri	past	masc	plur	masc	sing
+les fruits du magasin ont rassasié	past	masc	plur	masc	sing
+les fruits du magasin vont nourrir	future	masc	plur	masc	sing
+les fruits du magasin vont rassasier	future	masc	plur	masc	sing
+les fruits du commerce ont nourri	past	masc	plur	masc	sing
+les fruits du commerce ont rassasié	past	masc	plur	masc	sing
+les fruits du commerce vont nourrir	future	masc	plur	masc	sing
+les fruits du commerce vont rassasier	future	masc	plur	masc	sing
+les fruits du jardin ont nourri	past	masc	plur	masc	sing
+les fruits du jardin ont rassasié	past	masc	plur	masc	sing
+les fruits du jardin vont nourrir	future	masc	plur	masc	sing
+les fruits du jardin vont rassasier	future	masc	plur	masc	sing
+les fruits du verger ont nourri	past	masc	plur	masc	sing
+les fruits du verger ont rassasié	past	masc	plur	masc	sing
+les fruits du verger vont nourrir	future	masc	plur	masc	sing
+les fruits du verger vont rassasier	future	masc	plur	masc	sing
+les fruits des marchés ont nourri	past	masc	plur	masc	plur
+les fruits des marchés ont rassasié	past	masc	plur	masc	plur
+les fruits des marchés vont nourrir	future	masc	plur	masc	plur
+les fruits des marchés vont rassasier	future	masc	plur	masc	plur
+les fruits des magasins ont nourri	past	masc	plur	masc	plur
+les fruits des magasins ont rassasié	past	masc	plur	masc	plur
+les fruits des magasins vont nourrir	future	masc	plur	masc	plur
+les fruits des magasins vont rassasier	future	masc	plur	masc	plur
+les fruits des commerces ont nourri	past	masc	plur	masc	plur
+les fruits des commerces ont rassasié	past	masc	plur	masc	plur
+les fruits des commerces vont nourrir	future	masc	plur	masc	plur
+les fruits des commerces vont rassasier	future	masc	plur	masc	plur
+les fruits des jardins ont nourri	past	masc	plur	masc	plur
+les fruits des jardins ont rassasié	past	masc	plur	masc	plur
+les fruits des jardins vont nourrir	future	masc	plur	masc	plur
+les fruits des jardins vont rassasier	future	masc	plur	masc	plur
+les fruits des vergers ont nourri	past	masc	plur	masc	plur
+les fruits des vergers ont rassasié	past	masc	plur	masc	plur
+les fruits des vergers vont nourrir	future	masc	plur	masc	plur
+les fruits des vergers vont rassasier	future	masc	plur	masc	plur
+les fruits de la X ont nourri	past	masc	plur	femi	sing
+les fruits de la X ont rassasié	past	masc	plur	femi	sing
+les fruits de la X vont nourrir	future	masc	plur	femi	sing
+les fruits de la X vont rassasier	future	masc	plur	femi	sing
+les fruits de la Y ont nourri	past	masc	plur	femi	sing
+les fruits de la Y ont rassasié	past	masc	plur	femi	sing
+les fruits de la Y vont nourrir	future	masc	plur	femi	sing
+les fruits de la Y vont rassasier	future	masc	plur	femi	sing
+les fruits de la Z ont nourri	past	masc	plur	femi	sing
+les fruits de la Z ont rassasié	past	masc	plur	femi	sing
+les fruits de la Z vont nourrir	future	masc	plur	femi	sing
+les fruits de la Z vont rassasier	future	masc	plur	femi	sing
+les fruits de la A ont nourri	past	masc	plur	femi	sing
+les fruits de la A ont rassasié	past	masc	plur	femi	sing
+les fruits de la A vont nourrir	future	masc	plur	femi	sing
+les fruits de la A vont rassasier	future	masc	plur	femi	sing
+les fruits de la B ont nourri	past	masc	plur	femi	sing
+les fruits de la B ont rassasié	past	masc	plur	femi	sing
+les fruits de la B vont nourrir	future	masc	plur	femi	sing
+les fruits de la B vont rassasier	future	masc	plur	femi	sing
+les fruits des Xes ont nourri	past	masc	plur	femi	plur
+les fruits des Xes ont rassasié	past	masc	plur	femi	plur
+les fruits des Xes vont nourrir	future	masc	plur	femi	plur
+les fruits des Xes vont rassasier	future	masc	plur	femi	plur
+les fruits des Yes ont nourri	past	masc	plur	femi	plur
+les fruits des Yes ont rassasié	past	masc	plur	femi	plur
+les fruits des Yes vont nourrir	future	masc	plur	femi	plur
+les fruits des Yes vont rassasier	future	masc	plur	femi	plur
+les fruits des Zes ont nourri	past	masc	plur	femi	plur
+les fruits des Zes ont rassasié	past	masc	plur	femi	plur
+les fruits des Zes vont nourrir	future	masc	plur	femi	plur
+les fruits des Zes vont rassasier	future	masc	plur	femi	plur
+les fruits des Aes ont nourri	past	masc	plur	femi	plur
+les fruits des Aes ont rassasié	past	masc	plur	femi	plur
+les fruits des Aes vont nourrir	future	masc	plur	femi	plur
+les fruits des Aes vont rassasier	future	masc	plur	femi	plur
+les fruits des Bes ont nourri	past	masc	plur	femi	plur
+les fruits des Bes ont rassasié	past	masc	plur	femi	plur
+les fruits des Bes vont nourrir	future	masc	plur	femi	plur
+les fruits des Bes vont rassasier	future	masc	plur	femi	plur
+ces fruits du marché ont nourri	past	masc	plur	masc	sing
+ces fruits du marché ont rassasié	past	masc	plur	masc	sing
+ces fruits du marché vont nourrir	future	masc	plur	masc	sing
+ces fruits du marché vont rassasier	future	masc	plur	masc	sing
+ces fruits du magasin ont nourri	past	masc	plur	masc	sing
+ces fruits du magasin ont rassasié	past	masc	plur	masc	sing
+ces fruits du magasin vont nourrir	future	masc	plur	masc	sing
+ces fruits du magasin vont rassasier	future	masc	plur	masc	sing
+ces fruits du commerce ont nourri	past	masc	plur	masc	sing
+ces fruits du commerce ont rassasié	past	masc	plur	masc	sing
+ces fruits du commerce vont nourrir	future	masc	plur	masc	sing
+ces fruits du commerce vont rassasier	future	masc	plur	masc	sing
+ces fruits du jardin ont nourri	past	masc	plur	masc	sing
+ces fruits du jardin ont rassasié	past	masc	plur	masc	sing
+ces fruits du jardin vont nourrir	future	masc	plur	masc	sing
+ces fruits du jardin vont rassasier	future	masc	plur	masc	sing
+ces fruits du verger ont nourri	past	masc	plur	masc	sing
+ces fruits du verger ont rassasié	past	masc	plur	masc	sing
+ces fruits du verger vont nourrir	future	masc	plur	masc	sing
+ces fruits du verger vont rassasier	future	masc	plur	masc	sing
+ces fruits des marchés ont nourri	past	masc	plur	masc	plur
+ces fruits des marchés ont rassasié	past	masc	plur	masc	plur
+ces fruits des marchés vont nourrir	future	masc	plur	masc	plur
+ces fruits des marchés vont rassasier	future	masc	plur	masc	plur
+ces fruits des magasins ont nourri	past	masc	plur	masc	plur
+ces fruits des magasins ont rassasié	past	masc	plur	masc	plur
+ces fruits des magasins vont nourrir	future	masc	plur	masc	plur
+ces fruits des magasins vont rassasier	future	masc	plur	masc	plur
+ces fruits des commerces ont nourri	past	masc	plur	masc	plur
+ces fruits des commerces ont rassasié	past	masc	plur	masc	plur
+ces fruits des commerces vont nourrir	future	masc	plur	masc	plur
+ces fruits des commerces vont rassasier	future	masc	plur	masc	plur
+ces fruits des jardins ont nourri	past	masc	plur	masc	plur
+ces fruits des jardins ont rassasié	past	masc	plur	masc	plur
+ces fruits des jardins vont nourrir	future	masc	plur	masc	plur
+ces fruits des jardins vont rassasier	future	masc	plur	masc	plur
+ces fruits des vergers ont nourri	past	masc	plur	masc	plur
+ces fruits des vergers ont rassasié	past	masc	plur	masc	plur
+ces fruits des vergers vont nourrir	future	masc	plur	masc	plur
+ces fruits des vergers vont rassasier	future	masc	plur	masc	plur
+ces fruits de la X ont nourri	past	masc	plur	femi	sing
+ces fruits de la X ont rassasié	past	masc	plur	femi	sing
+ces fruits de la X vont nourrir	future	masc	plur	femi	sing
+ces fruits de la X vont rassasier	future	masc	plur	femi	sing
+ces fruits de la Y ont nourri	past	masc	plur	femi	sing
+ces fruits de la Y ont rassasié	past	masc	plur	femi	sing
+ces fruits de la Y vont nourrir	future	masc	plur	femi	sing
+ces fruits de la Y vont rassasier	future	masc	plur	femi	sing
+ces fruits de la Z ont nourri	past	masc	plur	femi	sing
+ces fruits de la Z ont rassasié	past	masc	plur	femi	sing
+ces fruits de la Z vont nourrir	future	masc	plur	femi	sing
+ces fruits de la Z vont rassasier	future	masc	plur	femi	sing
+ces fruits de la A ont nourri	past	masc	plur	femi	sing
+ces fruits de la A ont rassasié	past	masc	plur	femi	sing
+ces fruits de la A vont nourrir	future	masc	plur	femi	sing
+ces fruits de la A vont rassasier	future	masc	plur	femi	sing
+ces fruits de la B ont nourri	past	masc	plur	femi	sing
+ces fruits de la B ont rassasié	past	masc	plur	femi	sing
+ces fruits de la B vont nourrir	future	masc	plur	femi	sing
+ces fruits de la B vont rassasier	future	masc	plur	femi	sing
+ces fruits des Xes ont nourri	past	masc	plur	femi	plur
+ces fruits des Xes ont rassasié	past	masc	plur	femi	plur
+ces fruits des Xes vont nourrir	future	masc	plur	femi	plur
+ces fruits des Xes vont rassasier	future	masc	plur	femi	plur
+ces fruits des Yes ont nourri	past	masc	plur	femi	plur
+ces fruits des Yes ont rassasié	past	masc	plur	femi	plur
+ces fruits des Yes vont nourrir	future	masc	plur	femi	plur
+ces fruits des Yes vont rassasier	future	masc	plur	femi	plur
+ces fruits des Zes ont nourri	past	masc	plur	femi	plur
+ces fruits des Zes ont rassasié	past	masc	plur	femi	plur
+ces fruits des Zes vont nourrir	future	masc	plur	femi	plur
+ces fruits des Zes vont rassasier	future	masc	plur	femi	plur
+ces fruits des Aes ont nourri	past	masc	plur	femi	plur
+ces fruits des Aes ont rassasié	past	masc	plur	femi	plur
+ces fruits des Aes vont nourrir	future	masc	plur	femi	plur
+ces fruits des Aes vont rassasier	future	masc	plur	femi	plur
+ces fruits des Bes ont nourri	past	masc	plur	femi	plur
+ces fruits des Bes ont rassasié	past	masc	plur	femi	plur
+ces fruits des Bes vont nourrir	future	masc	plur	femi	plur
+ces fruits des Bes vont rassasier	future	masc	plur	femi	plur
+des pommes du marché ont nourri	past	femi	plur	masc	sing
+des pommes du marché ont rassasié	past	femi	plur	masc	sing
+des pommes du marché vont nourrir	future	femi	plur	masc	sing
+des pommes du marché vont rassasier	future	femi	plur	masc	sing
+des pommes du magasin ont nourri	past	femi	plur	masc	sing
+des pommes du magasin ont rassasié	past	femi	plur	masc	sing
+des pommes du magasin vont nourrir	future	femi	plur	masc	sing
+des pommes du magasin vont rassasier	future	femi	plur	masc	sing
+des pommes du commerce ont nourri	past	femi	plur	masc	sing
+des pommes du commerce ont rassasié	past	femi	plur	masc	sing
+des pommes du commerce vont nourrir	future	femi	plur	masc	sing
+des pommes du commerce vont rassasier	future	femi	plur	masc	sing
+des pommes du jardin ont nourri	past	femi	plur	masc	sing
+des pommes du jardin ont rassasié	past	femi	plur	masc	sing
+des pommes du jardin vont nourrir	future	femi	plur	masc	sing
+des pommes du jardin vont rassasier	future	femi	plur	masc	sing
+des pommes du verger ont nourri	past	femi	plur	masc	sing
+des pommes du verger ont rassasié	past	femi	plur	masc	sing
+des pommes du verger vont nourrir	future	femi	plur	masc	sing
+des pommes du verger vont rassasier	future	femi	plur	masc	sing
+des pommes des marchés ont nourri	past	femi	plur	masc	plur
+des pommes des marchés ont rassasié	past	femi	plur	masc	plur
+des pommes des marchés vont nourrir	future	femi	plur	masc	plur
+des pommes des marchés vont rassasier	future	femi	plur	masc	plur
+des pommes des magasins ont nourri	past	femi	plur	masc	plur
+des pommes des magasins ont rassasié	past	femi	plur	masc	plur
+des pommes des magasins vont nourrir	future	femi	plur	masc	plur
+des pommes des magasins vont rassasier	future	femi	plur	masc	plur
+des pommes des commerces ont nourri	past	femi	plur	masc	plur
+des pommes des commerces ont rassasié	past	femi	plur	masc	plur
+des pommes des commerces vont nourrir	future	femi	plur	masc	plur
+des pommes des commerces vont rassasier	future	femi	plur	masc	plur
+des pommes des jardins ont nourri	past	femi	plur	masc	plur
+des pommes des jardins ont rassasié	past	femi	plur	masc	plur
+des pommes des jardins vont nourrir	future	femi	plur	masc	plur
+des pommes des jardins vont rassasier	future	femi	plur	masc	plur
+des pommes des vergers ont nourri	past	femi	plur	masc	plur
+des pommes des vergers ont rassasié	past	femi	plur	masc	plur
+des pommes des vergers vont nourrir	future	femi	plur	masc	plur
+des pommes des vergers vont rassasier	future	femi	plur	masc	plur
+des pommes de la X ont nourri	past	femi	plur	femi	sing
+des pommes de la X ont rassasié	past	femi	plur	femi	sing
+des pommes de la X vont nourrir	future	femi	plur	femi	sing
+des pommes de la X vont rassasier	future	femi	plur	femi	sing
+des pommes de la Y ont nourri	past	femi	plur	femi	sing
+des pommes de la Y ont rassasié	past	femi	plur	femi	sing
+des pommes de la Y vont nourrir	future	femi	plur	femi	sing
+des pommes de la Y vont rassasier	future	femi	plur	femi	sing
+des pommes de la Z ont nourri	past	femi	plur	femi	sing
+des pommes de la Z ont rassasié	past	femi	plur	femi	sing
+des pommes de la Z vont nourrir	future	femi	plur	femi	sing
+des pommes de la Z vont rassasier	future	femi	plur	femi	sing
+des pommes de la A ont nourri	past	femi	plur	femi	sing
+des pommes de la A ont rassasié	past	femi	plur	femi	sing
+des pommes de la A vont nourrir	future	femi	plur	femi	sing
+des pommes de la A vont rassasier	future	femi	plur	femi	sing
+des pommes de la B ont nourri	past	femi	plur	femi	sing
+des pommes de la B ont rassasié	past	femi	plur	femi	sing
+des pommes de la B vont nourrir	future	femi	plur	femi	sing
+des pommes de la B vont rassasier	future	femi	plur	femi	sing
+des pommes des Xes ont nourri	past	femi	plur	femi	plur
+des pommes des Xes ont rassasié	past	femi	plur	femi	plur
+des pommes des Xes vont nourrir	future	femi	plur	femi	plur
+des pommes des Xes vont rassasier	future	femi	plur	femi	plur
+des pommes des Yes ont nourri	past	femi	plur	femi	plur
+des pommes des Yes ont rassasié	past	femi	plur	femi	plur
+des pommes des Yes vont nourrir	future	femi	plur	femi	plur
+des pommes des Yes vont rassasier	future	femi	plur	femi	plur
+des pommes des Zes ont nourri	past	femi	plur	femi	plur
+des pommes des Zes ont rassasié	past	femi	plur	femi	plur
+des pommes des Zes vont nourrir	future	femi	plur	femi	plur
+des pommes des Zes vont rassasier	future	femi	plur	femi	plur
+des pommes des Aes ont nourri	past	femi	plur	femi	plur
+des pommes des Aes ont rassasié	past	femi	plur	femi	plur
+des pommes des Aes vont nourrir	future	femi	plur	femi	plur
+des pommes des Aes vont rassasier	future	femi	plur	femi	plur
+des pommes des Bes ont nourri	past	femi	plur	femi	plur
+des pommes des Bes ont rassasié	past	femi	plur	femi	plur
+des pommes des Bes vont nourrir	future	femi	plur	femi	plur
+des pommes des Bes vont rassasier	future	femi	plur	femi	plur
+les pommes du marché ont nourri	past	femi	plur	masc	sing
+les pommes du marché ont rassasié	past	femi	plur	masc	sing
+les pommes du marché vont nourrir	future	femi	plur	masc	sing
+les pommes du marché vont rassasier	future	femi	plur	masc	sing
+les pommes du magasin ont nourri	past	femi	plur	masc	sing
+les pommes du magasin ont rassasié	past	femi	plur	masc	sing
+les pommes du magasin vont nourrir	future	femi	plur	masc	sing
+les pommes du magasin vont rassasier	future	femi	plur	masc	sing
+les pommes du commerce ont nourri	past	femi	plur	masc	sing
+les pommes du commerce ont rassasié	past	femi	plur	masc	sing
+les pommes du commerce vont nourrir	future	femi	plur	masc	sing
+les pommes du commerce vont rassasier	future	femi	plur	masc	sing
+les pommes du jardin ont nourri	past	femi	plur	masc	sing
+les pommes du jardin ont rassasié	past	femi	plur	masc	sing
+les pommes du jardin vont nourrir	future	femi	plur	masc	sing
+les pommes du jardin vont rassasier	future	femi	plur	masc	sing
+les pommes du verger ont nourri	past	femi	plur	masc	sing
+les pommes du verger ont rassasié	past	femi	plur	masc	sing
+les pommes du verger vont nourrir	future	femi	plur	masc	sing
+les pommes du verger vont rassasier	future	femi	plur	masc	sing
+les pommes des marchés ont nourri	past	femi	plur	masc	plur
+les pommes des marchés ont rassasié	past	femi	plur	masc	plur
+les pommes des marchés vont nourrir	future	femi	plur	masc	plur
+les pommes des marchés vont rassasier	future	femi	plur	masc	plur
+les pommes des magasins ont nourri	past	femi	plur	masc	plur
+les pommes des magasins ont rassasié	past	femi	plur	masc	plur
+les pommes des magasins vont nourrir	future	femi	plur	masc	plur
+les pommes des magasins vont rassasier	future	femi	plur	masc	plur
+les pommes des commerces ont nourri	past	femi	plur	masc	plur
+les pommes des commerces ont rassasié	past	femi	plur	masc	plur
+les pommes des commerces vont nourrir	future	femi	plur	masc	plur
+les pommes des commerces vont rassasier	future	femi	plur	masc	plur
+les pommes des jardins ont nourri	past	femi	plur	masc	plur
+les pommes des jardins ont rassasié	past	femi	plur	masc	plur
+les pommes des jardins vont nourrir	future	femi	plur	masc	plur
+les pommes des jardins vont rassasier	future	femi	plur	masc	plur
+les pommes des vergers ont nourri	past	femi	plur	masc	plur
+les pommes des vergers ont rassasié	past	femi	plur	masc	plur
+les pommes des vergers vont nourrir	future	femi	plur	masc	plur
+les pommes des vergers vont rassasier	future	femi	plur	masc	plur
+les pommes de la X ont nourri	past	femi	plur	femi	sing
+les pommes de la X ont rassasié	past	femi	plur	femi	sing
+les pommes de la X vont nourrir	future	femi	plur	femi	sing
+les pommes de la X vont rassasier	future	femi	plur	femi	sing
+les pommes de la Y ont nourri	past	femi	plur	femi	sing
+les pommes de la Y ont rassasié	past	femi	plur	femi	sing
+les pommes de la Y vont nourrir	future	femi	plur	femi	sing
+les pommes de la Y vont rassasier	future	femi	plur	femi	sing
+les pommes de la Z ont nourri	past	femi	plur	femi	sing
+les pommes de la Z ont rassasié	past	femi	plur	femi	sing
+les pommes de la Z vont nourrir	future	femi	plur	femi	sing
+les pommes de la Z vont rassasier	future	femi	plur	femi	sing
+les pommes de la A ont nourri	past	femi	plur	femi	sing
+les pommes de la A ont rassasié	past	femi	plur	femi	sing
+les pommes de la A vont nourrir	future	femi	plur	femi	sing
+les pommes de la A vont rassasier	future	femi	plur	femi	sing
+les pommes de la B ont nourri	past	femi	plur	femi	sing
+les pommes de la B ont rassasié	past	femi	plur	femi	sing
+les pommes de la B vont nourrir	future	femi	plur	femi	sing
+les pommes de la B vont rassasier	future	femi	plur	femi	sing
+les pommes des Xes ont nourri	past	femi	plur	femi	plur
+les pommes des Xes ont rassasié	past	femi	plur	femi	plur
+les pommes des Xes vont nourrir	future	femi	plur	femi	plur
+les pommes des Xes vont rassasier	future	femi	plur	femi	plur
+les pommes des Yes ont nourri	past	femi	plur	femi	plur
+les pommes des Yes ont rassasié	past	femi	plur	femi	plur
+les pommes des Yes vont nourrir	future	femi	plur	femi	plur
+les pommes des Yes vont rassasier	future	femi	plur	femi	plur
+les pommes des Zes ont nourri	past	femi	plur	femi	plur
+les pommes des Zes ont rassasié	past	femi	plur	femi	plur
+les pommes des Zes vont nourrir	future	femi	plur	femi	plur
+les pommes des Zes vont rassasier	future	femi	plur	femi	plur
+les pommes des Aes ont nourri	past	femi	plur	femi	plur
+les pommes des Aes ont rassasié	past	femi	plur	femi	plur
+les pommes des Aes vont nourrir	future	femi	plur	femi	plur
+les pommes des Aes vont rassasier	future	femi	plur	femi	plur
+les pommes des Bes ont nourri	past	femi	plur	femi	plur
+les pommes des Bes ont rassasié	past	femi	plur	femi	plur
+les pommes des Bes vont nourrir	future	femi	plur	femi	plur
+les pommes des Bes vont rassasier	future	femi	plur	femi	plur
+ces pommes du marché ont nourri	past	femi	plur	masc	sing
+ces pommes du marché ont rassasié	past	femi	plur	masc	sing
+ces pommes du marché vont nourrir	future	femi	plur	masc	sing
+ces pommes du marché vont rassasier	future	femi	plur	masc	sing
+ces pommes du magasin ont nourri	past	femi	plur	masc	sing
+ces pommes du magasin ont rassasié	past	femi	plur	masc	sing
+ces pommes du magasin vont nourrir	future	femi	plur	masc	sing
+ces pommes du magasin vont rassasier	future	femi	plur	masc	sing
+ces pommes du commerce ont nourri	past	femi	plur	masc	sing
+ces pommes du commerce ont rassasié	past	femi	plur	masc	sing
+ces pommes du commerce vont nourrir	future	femi	plur	masc	sing
+ces pommes du commerce vont rassasier	future	femi	plur	masc	sing
+ces pommes du jardin ont nourri	past	femi	plur	masc	sing
+ces pommes du jardin ont rassasié	past	femi	plur	masc	sing
+ces pommes du jardin vont nourrir	future	femi	plur	masc	sing
+ces pommes du jardin vont rassasier	future	femi	plur	masc	sing
+ces pommes du verger ont nourri	past	femi	plur	masc	sing
+ces pommes du verger ont rassasié	past	femi	plur	masc	sing
+ces pommes du verger vont nourrir	future	femi	plur	masc	sing
+ces pommes du verger vont rassasier	future	femi	plur	masc	sing
+ces pommes des marchés ont nourri	past	femi	plur	masc	plur
+ces pommes des marchés ont rassasié	past	femi	plur	masc	plur
+ces pommes des marchés vont nourrir	future	femi	plur	masc	plur
+ces pommes des marchés vont rassasier	future	femi	plur	masc	plur
+ces pommes des magasins ont nourri	past	femi	plur	masc	plur
+ces pommes des magasins ont rassasié	past	femi	plur	masc	plur
+ces pommes des magasins vont nourrir	future	femi	plur	masc	plur
+ces pommes des magasins vont rassasier	future	femi	plur	masc	plur
+ces pommes des commerces ont nourri	past	femi	plur	masc	plur
+ces pommes des commerces ont rassasié	past	femi	plur	masc	plur
+ces pommes des commerces vont nourrir	future	femi	plur	masc	plur
+ces pommes des commerces vont rassasier	future	femi	plur	masc	plur
+ces pommes des jardins ont nourri	past	femi	plur	masc	plur
+ces pommes des jardins ont rassasié	past	femi	plur	masc	plur
+ces pommes des jardins vont nourrir	future	femi	plur	masc	plur
+ces pommes des jardins vont rassasier	future	femi	plur	masc	plur
+ces pommes des vergers ont nourri	past	femi	plur	masc	plur
+ces pommes des vergers ont rassasié	past	femi	plur	masc	plur
+ces pommes des vergers vont nourrir	future	femi	plur	masc	plur
+ces pommes des vergers vont rassasier	future	femi	plur	masc	plur
+ces pommes de la X ont nourri	past	femi	plur	femi	sing
+ces pommes de la X ont rassasié	past	femi	plur	femi	sing
+ces pommes de la X vont nourrir	future	femi	plur	femi	sing
+ces pommes de la X vont rassasier	future	femi	plur	femi	sing
+ces pommes de la Y ont nourri	past	femi	plur	femi	sing
+ces pommes de la Y ont rassasié	past	femi	plur	femi	sing
+ces pommes de la Y vont nourrir	future	femi	plur	femi	sing
+ces pommes de la Y vont rassasier	future	femi	plur	femi	sing
+ces pommes de la Z ont nourri	past	femi	plur	femi	sing
+ces pommes de la Z ont rassasié	past	femi	plur	femi	sing
+ces pommes de la Z vont nourrir	future	femi	plur	femi	sing
+ces pommes de la Z vont rassasier	future	femi	plur	femi	sing
+ces pommes de la A ont nourri	past	femi	plur	femi	sing
+ces pommes de la A ont rassasié	past	femi	plur	femi	sing
+ces pommes de la A vont nourrir	future	femi	plur	femi	sing
+ces pommes de la A vont rassasier	future	femi	plur	femi	sing
+ces pommes de la B ont nourri	past	femi	plur	femi	sing
+ces pommes de la B ont rassasié	past	femi	plur	femi	sing
+ces pommes de la B vont nourrir	future	femi	plur	femi	sing
+ces pommes de la B vont rassasier	future	femi	plur	femi	sing
+ces pommes des Xes ont nourri	past	femi	plur	femi	plur
+ces pommes des Xes ont rassasié	past	femi	plur	femi	plur
+ces pommes des Xes vont nourrir	future	femi	plur	femi	plur
+ces pommes des Xes vont rassasier	future	femi	plur	femi	plur
+ces pommes des Yes ont nourri	past	femi	plur	femi	plur
+ces pommes des Yes ont rassasié	past	femi	plur	femi	plur
+ces pommes des Yes vont nourrir	future	femi	plur	femi	plur
+ces pommes des Yes vont rassasier	future	femi	plur	femi	plur
+ces pommes des Zes ont nourri	past	femi	plur	femi	plur
+ces pommes des Zes ont rassasié	past	femi	plur	femi	plur
+ces pommes des Zes vont nourrir	future	femi	plur	femi	plur
+ces pommes des Zes vont rassasier	future	femi	plur	femi	plur
+ces pommes des Aes ont nourri	past	femi	plur	femi	plur
+ces pommes des Aes ont rassasié	past	femi	plur	femi	plur
+ces pommes des Aes vont nourrir	future	femi	plur	femi	plur
+ces pommes des Aes vont rassasier	future	femi	plur	femi	plur
+ces pommes des Bes ont nourri	past	femi	plur	femi	plur
+ces pommes des Bes ont rassasié	past	femi	plur	femi	plur
+ces pommes des Bes vont nourrir	future	femi	plur	femi	plur
+ces pommes des Bes vont rassasier	future	femi	plur	femi	plur
+des citrons du marché ont nourri	past	masc	plur	masc	sing
+des citrons du marché ont rassasié	past	masc	plur	masc	sing
+des citrons du marché vont nourrir	future	masc	plur	masc	sing
+des citrons du marché vont rassasier	future	masc	plur	masc	sing
+des citrons du magasin ont nourri	past	masc	plur	masc	sing
+des citrons du magasin ont rassasié	past	masc	plur	masc	sing
+des citrons du magasin vont nourrir	future	masc	plur	masc	sing
+des citrons du magasin vont rassasier	future	masc	plur	masc	sing
+des citrons du commerce ont nourri	past	masc	plur	masc	sing
+des citrons du commerce ont rassasié	past	masc	plur	masc	sing
+des citrons du commerce vont nourrir	future	masc	plur	masc	sing
+des citrons du commerce vont rassasier	future	masc	plur	masc	sing
+des citrons du jardin ont nourri	past	masc	plur	masc	sing
+des citrons du jardin ont rassasié	past	masc	plur	masc	sing
+des citrons du jardin vont nourrir	future	masc	plur	masc	sing
+des citrons du jardin vont rassasier	future	masc	plur	masc	sing
+des citrons du verger ont nourri	past	masc	plur	masc	sing
+des citrons du verger ont rassasié	past	masc	plur	masc	sing
+des citrons du verger vont nourrir	future	masc	plur	masc	sing
+des citrons du verger vont rassasier	future	masc	plur	masc	sing
+des citrons des marchés ont nourri	past	masc	plur	masc	plur
+des citrons des marchés ont rassasié	past	masc	plur	masc	plur
+des citrons des marchés vont nourrir	future	masc	plur	masc	plur
+des citrons des marchés vont rassasier	future	masc	plur	masc	plur
+des citrons des magasins ont nourri	past	masc	plur	masc	plur
+des citrons des magasins ont rassasié	past	masc	plur	masc	plur
+des citrons des magasins vont nourrir	future	masc	plur	masc	plur
+des citrons des magasins vont rassasier	future	masc	plur	masc	plur
+des citrons des commerces ont nourri	past	masc	plur	masc	plur
+des citrons des commerces ont rassasié	past	masc	plur	masc	plur
+des citrons des commerces vont nourrir	future	masc	plur	masc	plur
+des citrons des commerces vont rassasier	future	masc	plur	masc	plur
+des citrons des jardins ont nourri	past	masc	plur	masc	plur
+des citrons des jardins ont rassasié	past	masc	plur	masc	plur
+des citrons des jardins vont nourrir	future	masc	plur	masc	plur
+des citrons des jardins vont rassasier	future	masc	plur	masc	plur
+des citrons des vergers ont nourri	past	masc	plur	masc	plur
+des citrons des vergers ont rassasié	past	masc	plur	masc	plur
+des citrons des vergers vont nourrir	future	masc	plur	masc	plur
+des citrons des vergers vont rassasier	future	masc	plur	masc	plur
+des citrons de la X ont nourri	past	masc	plur	femi	sing
+des citrons de la X ont rassasié	past	masc	plur	femi	sing
+des citrons de la X vont nourrir	future	masc	plur	femi	sing
+des citrons de la X vont rassasier	future	masc	plur	femi	sing
+des citrons de la Y ont nourri	past	masc	plur	femi	sing
+des citrons de la Y ont rassasié	past	masc	plur	femi	sing
+des citrons de la Y vont nourrir	future	masc	plur	femi	sing
+des citrons de la Y vont rassasier	future	masc	plur	femi	sing
+des citrons de la Z ont nourri	past	masc	plur	femi	sing
+des citrons de la Z ont rassasié	past	masc	plur	femi	sing
+des citrons de la Z vont nourrir	future	masc	plur	femi	sing
+des citrons de la Z vont rassasier	future	masc	plur	femi	sing
+des citrons de la A ont nourri	past	masc	plur	femi	sing
+des citrons de la A ont rassasié	past	masc	plur	femi	sing
+des citrons de la A vont nourrir	future	masc	plur	femi	sing
+des citrons de la A vont rassasier	future	masc	plur	femi	sing
+des citrons de la B ont nourri	past	masc	plur	femi	sing
+des citrons de la B ont rassasié	past	masc	plur	femi	sing
+des citrons de la B vont nourrir	future	masc	plur	femi	sing
+des citrons de la B vont rassasier	future	masc	plur	femi	sing
+des citrons des Xes ont nourri	past	masc	plur	femi	plur
+des citrons des Xes ont rassasié	past	masc	plur	femi	plur
+des citrons des Xes vont nourrir	future	masc	plur	femi	plur
+des citrons des Xes vont rassasier	future	masc	plur	femi	plur
+des citrons des Yes ont nourri	past	masc	plur	femi	plur
+des citrons des Yes ont rassasié	past	masc	plur	femi	plur
+des citrons des Yes vont nourrir	future	masc	plur	femi	plur
+des citrons des Yes vont rassasier	future	masc	plur	femi	plur
+des citrons des Zes ont nourri	past	masc	plur	femi	plur
+des citrons des Zes ont rassasié	past	masc	plur	femi	plur
+des citrons des Zes vont nourrir	future	masc	plur	femi	plur
+des citrons des Zes vont rassasier	future	masc	plur	femi	plur
+des citrons des Aes ont nourri	past	masc	plur	femi	plur
+des citrons des Aes ont rassasié	past	masc	plur	femi	plur
+des citrons des Aes vont nourrir	future	masc	plur	femi	plur
+des citrons des Aes vont rassasier	future	masc	plur	femi	plur
+des citrons des Bes ont nourri	past	masc	plur	femi	plur
+des citrons des Bes ont rassasié	past	masc	plur	femi	plur
+des citrons des Bes vont nourrir	future	masc	plur	femi	plur
+des citrons des Bes vont rassasier	future	masc	plur	femi	plur
+les citrons du marché ont nourri	past	masc	plur	masc	sing
+les citrons du marché ont rassasié	past	masc	plur	masc	sing
+les citrons du marché vont nourrir	future	masc	plur	masc	sing
+les citrons du marché vont rassasier	future	masc	plur	masc	sing
+les citrons du magasin ont nourri	past	masc	plur	masc	sing
+les citrons du magasin ont rassasié	past	masc	plur	masc	sing
+les citrons du magasin vont nourrir	future	masc	plur	masc	sing
+les citrons du magasin vont rassasier	future	masc	plur	masc	sing
+les citrons du commerce ont nourri	past	masc	plur	masc	sing
+les citrons du commerce ont rassasié	past	masc	plur	masc	sing
+les citrons du commerce vont nourrir	future	masc	plur	masc	sing
+les citrons du commerce vont rassasier	future	masc	plur	masc	sing
+les citrons du jardin ont nourri	past	masc	plur	masc	sing
+les citrons du jardin ont rassasié	past	masc	plur	masc	sing
+les citrons du jardin vont nourrir	future	masc	plur	masc	sing
+les citrons du jardin vont rassasier	future	masc	plur	masc	sing
+les citrons du verger ont nourri	past	masc	plur	masc	sing
+les citrons du verger ont rassasié	past	masc	plur	masc	sing
+les citrons du verger vont nourrir	future	masc	plur	masc	sing
+les citrons du verger vont rassasier	future	masc	plur	masc	sing
+les citrons des marchés ont nourri	past	masc	plur	masc	plur
+les citrons des marchés ont rassasié	past	masc	plur	masc	plur
+les citrons des marchés vont nourrir	future	masc	plur	masc	plur
+les citrons des marchés vont rassasier	future	masc	plur	masc	plur
+les citrons des magasins ont nourri	past	masc	plur	masc	plur
+les citrons des magasins ont rassasié	past	masc	plur	masc	plur
+les citrons des magasins vont nourrir	future	masc	plur	masc	plur
+les citrons des magasins vont rassasier	future	masc	plur	masc	plur
+les citrons des commerces ont nourri	past	masc	plur	masc	plur
+les citrons des commerces ont rassasié	past	masc	plur	masc	plur
+les citrons des commerces vont nourrir	future	masc	plur	masc	plur
+les citrons des commerces vont rassasier	future	masc	plur	masc	plur
+les citrons des jardins ont nourri	past	masc	plur	masc	plur
+les citrons des jardins ont rassasié	past	masc	plur	masc	plur
+les citrons des jardins vont nourrir	future	masc	plur	masc	plur
+les citrons des jardins vont rassasier	future	masc	plur	masc	plur
+les citrons des vergers ont nourri	past	masc	plur	masc	plur
+les citrons des vergers ont rassasié	past	masc	plur	masc	plur
+les citrons des vergers vont nourrir	future	masc	plur	masc	plur
+les citrons des vergers vont rassasier	future	masc	plur	masc	plur
+les citrons de la X ont nourri	past	masc	plur	femi	sing
+les citrons de la X ont rassasié	past	masc	plur	femi	sing
+les citrons de la X vont nourrir	future	masc	plur	femi	sing
+les citrons de la X vont rassasier	future	masc	plur	femi	sing
+les citrons de la Y ont nourri	past	masc	plur	femi	sing
+les citrons de la Y ont rassasié	past	masc	plur	femi	sing
+les citrons de la Y vont nourrir	future	masc	plur	femi	sing
+les citrons de la Y vont rassasier	future	masc	plur	femi	sing
+les citrons de la Z ont nourri	past	masc	plur	femi	sing
+les citrons de la Z ont rassasié	past	masc	plur	femi	sing
+les citrons de la Z vont nourrir	future	masc	plur	femi	sing
+les citrons de la Z vont rassasier	future	masc	plur	femi	sing
+les citrons de la A ont nourri	past	masc	plur	femi	sing
+les citrons de la A ont rassasié	past	masc	plur	femi	sing
+les citrons de la A vont nourrir	future	masc	plur	femi	sing
+les citrons de la A vont rassasier	future	masc	plur	femi	sing
+les citrons de la B ont nourri	past	masc	plur	femi	sing
+les citrons de la B ont rassasié	past	masc	plur	femi	sing
+les citrons de la B vont nourrir	future	masc	plur	femi	sing
+les citrons de la B vont rassasier	future	masc	plur	femi	sing
+les citrons des Xes ont nourri	past	masc	plur	femi	plur
+les citrons des Xes ont rassasié	past	masc	plur	femi	plur
+les citrons des Xes vont nourrir	future	masc	plur	femi	plur
+les citrons des Xes vont rassasier	future	masc	plur	femi	plur
+les citrons des Yes ont nourri	past	masc	plur	femi	plur
+les citrons des Yes ont rassasié	past	masc	plur	femi	plur
+les citrons des Yes vont nourrir	future	masc	plur	femi	plur
+les citrons des Yes vont rassasier	future	masc	plur	femi	plur
+les citrons des Zes ont nourri	past	masc	plur	femi	plur
+les citrons des Zes ont rassasié	past	masc	plur	femi	plur
+les citrons des Zes vont nourrir	future	masc	plur	femi	plur
+les citrons des Zes vont rassasier	future	masc	plur	femi	plur
+les citrons des Aes ont nourri	past	masc	plur	femi	plur
+les citrons des Aes ont rassasié	past	masc	plur	femi	plur
+les citrons des Aes vont nourrir	future	masc	plur	femi	plur
+les citrons des Aes vont rassasier	future	masc	plur	femi	plur
+les citrons des Bes ont nourri	past	masc	plur	femi	plur
+les citrons des Bes ont rassasié	past	masc	plur	femi	plur
+les citrons des Bes vont nourrir	future	masc	plur	femi	plur
+les citrons des Bes vont rassasier	future	masc	plur	femi	plur
+ces citrons du marché ont nourri	past	masc	plur	masc	sing
+ces citrons du marché ont rassasié	past	masc	plur	masc	sing
+ces citrons du marché vont nourrir	future	masc	plur	masc	sing
+ces citrons du marché vont rassasier	future	masc	plur	masc	sing
+ces citrons du magasin ont nourri	past	masc	plur	masc	sing
+ces citrons du magasin ont rassasié	past	masc	plur	masc	sing
+ces citrons du magasin vont nourrir	future	masc	plur	masc	sing
+ces citrons du magasin vont rassasier	future	masc	plur	masc	sing
+ces citrons du commerce ont nourri	past	masc	plur	masc	sing
+ces citrons du commerce ont rassasié	past	masc	plur	masc	sing
+ces citrons du commerce vont nourrir	future	masc	plur	masc	sing
+ces citrons du commerce vont rassasier	future	masc	plur	masc	sing
+ces citrons du jardin ont nourri	past	masc	plur	masc	sing
+ces citrons du jardin ont rassasié	past	masc	plur	masc	sing
+ces citrons du jardin vont nourrir	future	masc	plur	masc	sing
+ces citrons du jardin vont rassasier	future	masc	plur	masc	sing
+ces citrons du verger ont nourri	past	masc	plur	masc	sing
+ces citrons du verger ont rassasié	past	masc	plur	masc	sing
+ces citrons du verger vont nourrir	future	masc	plur	masc	sing
+ces citrons du verger vont rassasier	future	masc	plur	masc	sing
+ces citrons des marchés ont nourri	past	masc	plur	masc	plur
+ces citrons des marchés ont rassasié	past	masc	plur	masc	plur
+ces citrons des marchés vont nourrir	future	masc	plur	masc	plur
+ces citrons des marchés vont rassasier	future	masc	plur	masc	plur
+ces citrons des magasins ont nourri	past	masc	plur	masc	plur
+ces citrons des magasins ont rassasié	past	masc	plur	masc	plur
+ces citrons des magasins vont nourrir	future	masc	plur	masc	plur
+ces citrons des magasins vont rassasier	future	masc	plur	masc	plur
+ces citrons des commerces ont nourri	past	masc	plur	masc	plur
+ces citrons des commerces ont rassasié	past	masc	plur	masc	plur
+ces citrons des commerces vont nourrir	future	masc	plur	masc	plur
+ces citrons des commerces vont rassasier	future	masc	plur	masc	plur
+ces citrons des jardins ont nourri	past	masc	plur	masc	plur
+ces citrons des jardins ont rassasié	past	masc	plur	masc	plur
+ces citrons des jardins vont nourrir	future	masc	plur	masc	plur
+ces citrons des jardins vont rassasier	future	masc	plur	masc	plur
+ces citrons des vergers ont nourri	past	masc	plur	masc	plur
+ces citrons des vergers ont rassasié	past	masc	plur	masc	plur
+ces citrons des vergers vont nourrir	future	masc	plur	masc	plur
+ces citrons des vergers vont rassasier	future	masc	plur	masc	plur
+ces citrons de la X ont nourri	past	masc	plur	femi	sing
+ces citrons de la X ont rassasié	past	masc	plur	femi	sing
+ces citrons de la X vont nourrir	future	masc	plur	femi	sing
+ces citrons de la X vont rassasier	future	masc	plur	femi	sing
+ces citrons de la Y ont nourri	past	masc	plur	femi	sing
+ces citrons de la Y ont rassasié	past	masc	plur	femi	sing
+ces citrons de la Y vont nourrir	future	masc	plur	femi	sing
+ces citrons de la Y vont rassasier	future	masc	plur	femi	sing
+ces citrons de la Z ont nourri	past	masc	plur	femi	sing
+ces citrons de la Z ont rassasié	past	masc	plur	femi	sing
+ces citrons de la Z vont nourrir	future	masc	plur	femi	sing
+ces citrons de la Z vont rassasier	future	masc	plur	femi	sing
+ces citrons de la A ont nourri	past	masc	plur	femi	sing
+ces citrons de la A ont rassasié	past	masc	plur	femi	sing
+ces citrons de la A vont nourrir	future	masc	plur	femi	sing
+ces citrons de la A vont rassasier	future	masc	plur	femi	sing
+ces citrons de la B ont nourri	past	masc	plur	femi	sing
+ces citrons de la B ont rassasié	past	masc	plur	femi	sing
+ces citrons de la B vont nourrir	future	masc	plur	femi	sing
+ces citrons de la B vont rassasier	future	masc	plur	femi	sing
+ces citrons des Xes ont nourri	past	masc	plur	femi	plur
+ces citrons des Xes ont rassasié	past	masc	plur	femi	plur
+ces citrons des Xes vont nourrir	future	masc	plur	femi	plur
+ces citrons des Xes vont rassasier	future	masc	plur	femi	plur
+ces citrons des Yes ont nourri	past	masc	plur	femi	plur
+ces citrons des Yes ont rassasié	past	masc	plur	femi	plur
+ces citrons des Yes vont nourrir	future	masc	plur	femi	plur
+ces citrons des Yes vont rassasier	future	masc	plur	femi	plur
+ces citrons des Zes ont nourri	past	masc	plur	femi	plur
+ces citrons des Zes ont rassasié	past	masc	plur	femi	plur
+ces citrons des Zes vont nourrir	future	masc	plur	femi	plur
+ces citrons des Zes vont rassasier	future	masc	plur	femi	plur
+ces citrons des Aes ont nourri	past	masc	plur	femi	plur
+ces citrons des Aes ont rassasié	past	masc	plur	femi	plur
+ces citrons des Aes vont nourrir	future	masc	plur	femi	plur
+ces citrons des Aes vont rassasier	future	masc	plur	femi	plur
+ces citrons des Bes ont nourri	past	masc	plur	femi	plur
+ces citrons des Bes ont rassasié	past	masc	plur	femi	plur
+ces citrons des Bes vont nourrir	future	masc	plur	femi	plur
+ces citrons des Bes vont rassasier	future	masc	plur	femi	plur
+des poires du marché ont nourri	past	femi	plur	masc	sing
+des poires du marché ont rassasié	past	femi	plur	masc	sing
+des poires du marché vont nourrir	future	femi	plur	masc	sing
+des poires du marché vont rassasier	future	femi	plur	masc	sing
+des poires du magasin ont nourri	past	femi	plur	masc	sing
+des poires du magasin ont rassasié	past	femi	plur	masc	sing
+des poires du magasin vont nourrir	future	femi	plur	masc	sing
+des poires du magasin vont rassasier	future	femi	plur	masc	sing
+des poires du commerce ont nourri	past	femi	plur	masc	sing
+des poires du commerce ont rassasié	past	femi	plur	masc	sing
+des poires du commerce vont nourrir	future	femi	plur	masc	sing
+des poires du commerce vont rassasier	future	femi	plur	masc	sing
+des poires du jardin ont nourri	past	femi	plur	masc	sing
+des poires du jardin ont rassasié	past	femi	plur	masc	sing
+des poires du jardin vont nourrir	future	femi	plur	masc	sing
+des poires du jardin vont rassasier	future	femi	plur	masc	sing
+des poires du verger ont nourri	past	femi	plur	masc	sing
+des poires du verger ont rassasié	past	femi	plur	masc	sing
+des poires du verger vont nourrir	future	femi	plur	masc	sing
+des poires du verger vont rassasier	future	femi	plur	masc	sing
+des poires des marchés ont nourri	past	femi	plur	masc	plur
+des poires des marchés ont rassasié	past	femi	plur	masc	plur
+des poires des marchés vont nourrir	future	femi	plur	masc	plur
+des poires des marchés vont rassasier	future	femi	plur	masc	plur
+des poires des magasins ont nourri	past	femi	plur	masc	plur
+des poires des magasins ont rassasié	past	femi	plur	masc	plur
+des poires des magasins vont nourrir	future	femi	plur	masc	plur
+des poires des magasins vont rassasier	future	femi	plur	masc	plur
+des poires des commerces ont nourri	past	femi	plur	masc	plur
+des poires des commerces ont rassasié	past	femi	plur	masc	plur
+des poires des commerces vont nourrir	future	femi	plur	masc	plur
+des poires des commerces vont rassasier	future	femi	plur	masc	plur
+des poires des jardins ont nourri	past	femi	plur	masc	plur
+des poires des jardins ont rassasié	past	femi	plur	masc	plur
+des poires des jardins vont nourrir	future	femi	plur	masc	plur
+des poires des jardins vont rassasier	future	femi	plur	masc	plur
+des poires des vergers ont nourri	past	femi	plur	masc	plur
+des poires des vergers ont rassasié	past	femi	plur	masc	plur
+des poires des vergers vont nourrir	future	femi	plur	masc	plur
+des poires des vergers vont rassasier	future	femi	plur	masc	plur
+des poires de la X ont nourri	past	femi	plur	femi	sing
+des poires de la X ont rassasié	past	femi	plur	femi	sing
+des poires de la X vont nourrir	future	femi	plur	femi	sing
+des poires de la X vont rassasier	future	femi	plur	femi	sing
+des poires de la Y ont nourri	past	femi	plur	femi	sing
+des poires de la Y ont rassasié	past	femi	plur	femi	sing
+des poires de la Y vont nourrir	future	femi	plur	femi	sing
+des poires de la Y vont rassasier	future	femi	plur	femi	sing
+des poires de la Z ont nourri	past	femi	plur	femi	sing
+des poires de la Z ont rassasié	past	femi	plur	femi	sing
+des poires de la Z vont nourrir	future	femi	plur	femi	sing
+des poires de la Z vont rassasier	future	femi	plur	femi	sing
+des poires de la A ont nourri	past	femi	plur	femi	sing
+des poires de la A ont rassasié	past	femi	plur	femi	sing
+des poires de la A vont nourrir	future	femi	plur	femi	sing
+des poires de la A vont rassasier	future	femi	plur	femi	sing
+des poires de la B ont nourri	past	femi	plur	femi	sing
+des poires de la B ont rassasié	past	femi	plur	femi	sing
+des poires de la B vont nourrir	future	femi	plur	femi	sing
+des poires de la B vont rassasier	future	femi	plur	femi	sing
+des poires des Xes ont nourri	past	femi	plur	femi	plur
+des poires des Xes ont rassasié	past	femi	plur	femi	plur
+des poires des Xes vont nourrir	future	femi	plur	femi	plur
+des poires des Xes vont rassasier	future	femi	plur	femi	plur
+des poires des Yes ont nourri	past	femi	plur	femi	plur
+des poires des Yes ont rassasié	past	femi	plur	femi	plur
+des poires des Yes vont nourrir	future	femi	plur	femi	plur
+des poires des Yes vont rassasier	future	femi	plur	femi	plur
+des poires des Zes ont nourri	past	femi	plur	femi	plur
+des poires des Zes ont rassasié	past	femi	plur	femi	plur
+des poires des Zes vont nourrir	future	femi	plur	femi	plur
+des poires des Zes vont rassasier	future	femi	plur	femi	plur
+des poires des Aes ont nourri	past	femi	plur	femi	plur
+des poires des Aes ont rassasié	past	femi	plur	femi	plur
+des poires des Aes vont nourrir	future	femi	plur	femi	plur
+des poires des Aes vont rassasier	future	femi	plur	femi	plur
+des poires des Bes ont nourri	past	femi	plur	femi	plur
+des poires des Bes ont rassasié	past	femi	plur	femi	plur
+des poires des Bes vont nourrir	future	femi	plur	femi	plur
+des poires des Bes vont rassasier	future	femi	plur	femi	plur
+les poires du marché ont nourri	past	femi	plur	masc	sing
+les poires du marché ont rassasié	past	femi	plur	masc	sing
+les poires du marché vont nourrir	future	femi	plur	masc	sing
+les poires du marché vont rassasier	future	femi	plur	masc	sing
+les poires du magasin ont nourri	past	femi	plur	masc	sing
+les poires du magasin ont rassasié	past	femi	plur	masc	sing
+les poires du magasin vont nourrir	future	femi	plur	masc	sing
+les poires du magasin vont rassasier	future	femi	plur	masc	sing
+les poires du commerce ont nourri	past	femi	plur	masc	sing
+les poires du commerce ont rassasié	past	femi	plur	masc	sing
+les poires du commerce vont nourrir	future	femi	plur	masc	sing
+les poires du commerce vont rassasier	future	femi	plur	masc	sing
+les poires du jardin ont nourri	past	femi	plur	masc	sing
+les poires du jardin ont rassasié	past	femi	plur	masc	sing
+les poires du jardin vont nourrir	future	femi	plur	masc	sing
+les poires du jardin vont rassasier	future	femi	plur	masc	sing
+les poires du verger ont nourri	past	femi	plur	masc	sing
+les poires du verger ont rassasié	past	femi	plur	masc	sing
+les poires du verger vont nourrir	future	femi	plur	masc	sing
+les poires du verger vont rassasier	future	femi	plur	masc	sing
+les poires des marchés ont nourri	past	femi	plur	masc	plur
+les poires des marchés ont rassasié	past	femi	plur	masc	plur
+les poires des marchés vont nourrir	future	femi	plur	masc	plur
+les poires des marchés vont rassasier	future	femi	plur	masc	plur
+les poires des magasins ont nourri	past	femi	plur	masc	plur
+les poires des magasins ont rassasié	past	femi	plur	masc	plur
+les poires des magasins vont nourrir	future	femi	plur	masc	plur
+les poires des magasins vont rassasier	future	femi	plur	masc	plur
+les poires des commerces ont nourri	past	femi	plur	masc	plur
+les poires des commerces ont rassasié	past	femi	plur	masc	plur
+les poires des commerces vont nourrir	future	femi	plur	masc	plur
+les poires des commerces vont rassasier	future	femi	plur	masc	plur
+les poires des jardins ont nourri	past	femi	plur	masc	plur
+les poires des jardins ont rassasié	past	femi	plur	masc	plur
+les poires des jardins vont nourrir	future	femi	plur	masc	plur
+les poires des jardins vont rassasier	future	femi	plur	masc	plur
+les poires des vergers ont nourri	past	femi	plur	masc	plur
+les poires des vergers ont rassasié	past	femi	plur	masc	plur
+les poires des vergers vont nourrir	future	femi	plur	masc	plur
+les poires des vergers vont rassasier	future	femi	plur	masc	plur
+les poires de la X ont nourri	past	femi	plur	femi	sing
+les poires de la X ont rassasié	past	femi	plur	femi	sing
+les poires de la X vont nourrir	future	femi	plur	femi	sing
+les poires de la X vont rassasier	future	femi	plur	femi	sing
+les poires de la Y ont nourri	past	femi	plur	femi	sing
+les poires de la Y ont rassasié	past	femi	plur	femi	sing
+les poires de la Y vont nourrir	future	femi	plur	femi	sing
+les poires de la Y vont rassasier	future	femi	plur	femi	sing
+les poires de la Z ont nourri	past	femi	plur	femi	sing
+les poires de la Z ont rassasié	past	femi	plur	femi	sing
+les poires de la Z vont nourrir	future	femi	plur	femi	sing
+les poires de la Z vont rassasier	future	femi	plur	femi	sing
+les poires de la A ont nourri	past	femi	plur	femi	sing
+les poires de la A ont rassasié	past	femi	plur	femi	sing
+les poires de la A vont nourrir	future	femi	plur	femi	sing
+les poires de la A vont rassasier	future	femi	plur	femi	sing
+les poires de la B ont nourri	past	femi	plur	femi	sing
+les poires de la B ont rassasié	past	femi	plur	femi	sing
+les poires de la B vont nourrir	future	femi	plur	femi	sing
+les poires de la B vont rassasier	future	femi	plur	femi	sing
+les poires des Xes ont nourri	past	femi	plur	femi	plur
+les poires des Xes ont rassasié	past	femi	plur	femi	plur
+les poires des Xes vont nourrir	future	femi	plur	femi	plur
+les poires des Xes vont rassasier	future	femi	plur	femi	plur
+les poires des Yes ont nourri	past	femi	plur	femi	plur
+les poires des Yes ont rassasié	past	femi	plur	femi	plur
+les poires des Yes vont nourrir	future	femi	plur	femi	plur
+les poires des Yes vont rassasier	future	femi	plur	femi	plur
+les poires des Zes ont nourri	past	femi	plur	femi	plur
+les poires des Zes ont rassasié	past	femi	plur	femi	plur
+les poires des Zes vont nourrir	future	femi	plur	femi	plur
+les poires des Zes vont rassasier	future	femi	plur	femi	plur
+les poires des Aes ont nourri	past	femi	plur	femi	plur
+les poires des Aes ont rassasié	past	femi	plur	femi	plur
+les poires des Aes vont nourrir	future	femi	plur	femi	plur
+les poires des Aes vont rassasier	future	femi	plur	femi	plur
+les poires des Bes ont nourri	past	femi	plur	femi	plur
+les poires des Bes ont rassasié	past	femi	plur	femi	plur
+les poires des Bes vont nourrir	future	femi	plur	femi	plur
+les poires des Bes vont rassasier	future	femi	plur	femi	plur
+ces poires du marché ont nourri	past	femi	plur	masc	sing
+ces poires du marché ont rassasié	past	femi	plur	masc	sing
+ces poires du marché vont nourrir	future	femi	plur	masc	sing
+ces poires du marché vont rassasier	future	femi	plur	masc	sing
+ces poires du magasin ont nourri	past	femi	plur	masc	sing
+ces poires du magasin ont rassasié	past	femi	plur	masc	sing
+ces poires du magasin vont nourrir	future	femi	plur	masc	sing
+ces poires du magasin vont rassasier	future	femi	plur	masc	sing
+ces poires du commerce ont nourri	past	femi	plur	masc	sing
+ces poires du commerce ont rassasié	past	femi	plur	masc	sing
+ces poires du commerce vont nourrir	future	femi	plur	masc	sing
+ces poires du commerce vont rassasier	future	femi	plur	masc	sing
+ces poires du jardin ont nourri	past	femi	plur	masc	sing
+ces poires du jardin ont rassasié	past	femi	plur	masc	sing
+ces poires du jardin vont nourrir	future	femi	plur	masc	sing
+ces poires du jardin vont rassasier	future	femi	plur	masc	sing
+ces poires du verger ont nourri	past	femi	plur	masc	sing
+ces poires du verger ont rassasié	past	femi	plur	masc	sing
+ces poires du verger vont nourrir	future	femi	plur	masc	sing
+ces poires du verger vont rassasier	future	femi	plur	masc	sing
+ces poires des marchés ont nourri	past	femi	plur	masc	plur
+ces poires des marchés ont rassasié	past	femi	plur	masc	plur
+ces poires des marchés vont nourrir	future	femi	plur	masc	plur
+ces poires des marchés vont rassasier	future	femi	plur	masc	plur
+ces poires des magasins ont nourri	past	femi	plur	masc	plur
+ces poires des magasins ont rassasié	past	femi	plur	masc	plur
+ces poires des magasins vont nourrir	future	femi	plur	masc	plur
+ces poires des magasins vont rassasier	future	femi	plur	masc	plur
+ces poires des commerces ont nourri	past	femi	plur	masc	plur
+ces poires des commerces ont rassasié	past	femi	plur	masc	plur
+ces poires des commerces vont nourrir	future	femi	plur	masc	plur
+ces poires des commerces vont rassasier	future	femi	plur	masc	plur
+ces poires des jardins ont nourri	past	femi	plur	masc	plur
+ces poires des jardins ont rassasié	past	femi	plur	masc	plur
+ces poires des jardins vont nourrir	future	femi	plur	masc	plur
+ces poires des jardins vont rassasier	future	femi	plur	masc	plur
+ces poires des vergers ont nourri	past	femi	plur	masc	plur
+ces poires des vergers ont rassasié	past	femi	plur	masc	plur
+ces poires des vergers vont nourrir	future	femi	plur	masc	plur
+ces poires des vergers vont rassasier	future	femi	plur	masc	plur
+ces poires de la X ont nourri	past	femi	plur	femi	sing
+ces poires de la X ont rassasié	past	femi	plur	femi	sing
+ces poires de la X vont nourrir	future	femi	plur	femi	sing
+ces poires de la X vont rassasier	future	femi	plur	femi	sing
+ces poires de la Y ont nourri	past	femi	plur	femi	sing
+ces poires de la Y ont rassasié	past	femi	plur	femi	sing
+ces poires de la Y vont nourrir	future	femi	plur	femi	sing
+ces poires de la Y vont rassasier	future	femi	plur	femi	sing
+ces poires de la Z ont nourri	past	femi	plur	femi	sing
+ces poires de la Z ont rassasié	past	femi	plur	femi	sing
+ces poires de la Z vont nourrir	future	femi	plur	femi	sing
+ces poires de la Z vont rassasier	future	femi	plur	femi	sing
+ces poires de la A ont nourri	past	femi	plur	femi	sing
+ces poires de la A ont rassasié	past	femi	plur	femi	sing
+ces poires de la A vont nourrir	future	femi	plur	femi	sing
+ces poires de la A vont rassasier	future	femi	plur	femi	sing
+ces poires de la B ont nourri	past	femi	plur	femi	sing
+ces poires de la B ont rassasié	past	femi	plur	femi	sing
+ces poires de la B vont nourrir	future	femi	plur	femi	sing
+ces poires de la B vont rassasier	future	femi	plur	femi	sing
+ces poires des Xes ont nourri	past	femi	plur	femi	plur
+ces poires des Xes ont rassasié	past	femi	plur	femi	plur
+ces poires des Xes vont nourrir	future	femi	plur	femi	plur
+ces poires des Xes vont rassasier	future	femi	plur	femi	plur
+ces poires des Yes ont nourri	past	femi	plur	femi	plur
+ces poires des Yes ont rassasié	past	femi	plur	femi	plur
+ces poires des Yes vont nourrir	future	femi	plur	femi	plur
+ces poires des Yes vont rassasier	future	femi	plur	femi	plur
+ces poires des Zes ont nourri	past	femi	plur	femi	plur
+ces poires des Zes ont rassasié	past	femi	plur	femi	plur
+ces poires des Zes vont nourrir	future	femi	plur	femi	plur
+ces poires des Zes vont rassasier	future	femi	plur	femi	plur
+ces poires des Aes ont nourri	past	femi	plur	femi	plur
+ces poires des Aes ont rassasié	past	femi	plur	femi	plur
+ces poires des Aes vont nourrir	future	femi	plur	femi	plur
+ces poires des Aes vont rassasier	future	femi	plur	femi	plur
+ces poires des Bes ont nourri	past	femi	plur	femi	plur
+ces poires des Bes ont rassasié	past	femi	plur	femi	plur
+ces poires des Bes vont nourrir	future	femi	plur	femi	plur
+ces poires des Bes vont rassasier	future	femi	plur	femi	plur
+des raisins du marché ont nourri	past	masc	plur	masc	sing
+des raisins du marché ont rassasié	past	masc	plur	masc	sing
+des raisins du marché vont nourrir	future	masc	plur	masc	sing
+des raisins du marché vont rassasier	future	masc	plur	masc	sing
+des raisins du magasin ont nourri	past	masc	plur	masc	sing
+des raisins du magasin ont rassasié	past	masc	plur	masc	sing
+des raisins du magasin vont nourrir	future	masc	plur	masc	sing
+des raisins du magasin vont rassasier	future	masc	plur	masc	sing
+des raisins du commerce ont nourri	past	masc	plur	masc	sing
+des raisins du commerce ont rassasié	past	masc	plur	masc	sing
+des raisins du commerce vont nourrir	future	masc	plur	masc	sing
+des raisins du commerce vont rassasier	future	masc	plur	masc	sing
+des raisins du jardin ont nourri	past	masc	plur	masc	sing
+des raisins du jardin ont rassasié	past	masc	plur	masc	sing
+des raisins du jardin vont nourrir	future	masc	plur	masc	sing
+des raisins du jardin vont rassasier	future	masc	plur	masc	sing
+des raisins du verger ont nourri	past	masc	plur	masc	sing
+des raisins du verger ont rassasié	past	masc	plur	masc	sing
+des raisins du verger vont nourrir	future	masc	plur	masc	sing
+des raisins du verger vont rassasier	future	masc	plur	masc	sing
+des raisins des marchés ont nourri	past	masc	plur	masc	plur
+des raisins des marchés ont rassasié	past	masc	plur	masc	plur
+des raisins des marchés vont nourrir	future	masc	plur	masc	plur
+des raisins des marchés vont rassasier	future	masc	plur	masc	plur
+des raisins des magasins ont nourri	past	masc	plur	masc	plur
+des raisins des magasins ont rassasié	past	masc	plur	masc	plur
+des raisins des magasins vont nourrir	future	masc	plur	masc	plur
+des raisins des magasins vont rassasier	future	masc	plur	masc	plur
+des raisins des commerces ont nourri	past	masc	plur	masc	plur
+des raisins des commerces ont rassasié	past	masc	plur	masc	plur
+des raisins des commerces vont nourrir	future	masc	plur	masc	plur
+des raisins des commerces vont rassasier	future	masc	plur	masc	plur
+des raisins des jardins ont nourri	past	masc	plur	masc	plur
+des raisins des jardins ont rassasié	past	masc	plur	masc	plur
+des raisins des jardins vont nourrir	future	masc	plur	masc	plur
+des raisins des jardins vont rassasier	future	masc	plur	masc	plur
+des raisins des vergers ont nourri	past	masc	plur	masc	plur
+des raisins des vergers ont rassasié	past	masc	plur	masc	plur
+des raisins des vergers vont nourrir	future	masc	plur	masc	plur
+des raisins des vergers vont rassasier	future	masc	plur	masc	plur
+des raisins de la X ont nourri	past	masc	plur	femi	sing
+des raisins de la X ont rassasié	past	masc	plur	femi	sing
+des raisins de la X vont nourrir	future	masc	plur	femi	sing
+des raisins de la X vont rassasier	future	masc	plur	femi	sing
+des raisins de la Y ont nourri	past	masc	plur	femi	sing
+des raisins de la Y ont rassasié	past	masc	plur	femi	sing
+des raisins de la Y vont nourrir	future	masc	plur	femi	sing
+des raisins de la Y vont rassasier	future	masc	plur	femi	sing
+des raisins de la Z ont nourri	past	masc	plur	femi	sing
+des raisins de la Z ont rassasié	past	masc	plur	femi	sing
+des raisins de la Z vont nourrir	future	masc	plur	femi	sing
+des raisins de la Z vont rassasier	future	masc	plur	femi	sing
+des raisins de la A ont nourri	past	masc	plur	femi	sing
+des raisins de la A ont rassasié	past	masc	plur	femi	sing
+des raisins de la A vont nourrir	future	masc	plur	femi	sing
+des raisins de la A vont rassasier	future	masc	plur	femi	sing
+des raisins de la B ont nourri	past	masc	plur	femi	sing
+des raisins de la B ont rassasié	past	masc	plur	femi	sing
+des raisins de la B vont nourrir	future	masc	plur	femi	sing
+des raisins de la B vont rassasier	future	masc	plur	femi	sing
+des raisins des Xes ont nourri	past	masc	plur	femi	plur
+des raisins des Xes ont rassasié	past	masc	plur	femi	plur
+des raisins des Xes vont nourrir	future	masc	plur	femi	plur
+des raisins des Xes vont rassasier	future	masc	plur	femi	plur
+des raisins des Yes ont nourri	past	masc	plur	femi	plur
+des raisins des Yes ont rassasié	past	masc	plur	femi	plur
+des raisins des Yes vont nourrir	future	masc	plur	femi	plur
+des raisins des Yes vont rassasier	future	masc	plur	femi	plur
+des raisins des Zes ont nourri	past	masc	plur	femi	plur
+des raisins des Zes ont rassasié	past	masc	plur	femi	plur
+des raisins des Zes vont nourrir	future	masc	plur	femi	plur
+des raisins des Zes vont rassasier	future	masc	plur	femi	plur
+des raisins des Aes ont nourri	past	masc	plur	femi	plur
+des raisins des Aes ont rassasié	past	masc	plur	femi	plur
+des raisins des Aes vont nourrir	future	masc	plur	femi	plur
+des raisins des Aes vont rassasier	future	masc	plur	femi	plur
+des raisins des Bes ont nourri	past	masc	plur	femi	plur
+des raisins des Bes ont rassasié	past	masc	plur	femi	plur
+des raisins des Bes vont nourrir	future	masc	plur	femi	plur
+des raisins des Bes vont rassasier	future	masc	plur	femi	plur
+les raisins du marché ont nourri	past	masc	plur	masc	sing
+les raisins du marché ont rassasié	past	masc	plur	masc	sing
+les raisins du marché vont nourrir	future	masc	plur	masc	sing
+les raisins du marché vont rassasier	future	masc	plur	masc	sing
+les raisins du magasin ont nourri	past	masc	plur	masc	sing
+les raisins du magasin ont rassasié	past	masc	plur	masc	sing
+les raisins du magasin vont nourrir	future	masc	plur	masc	sing
+les raisins du magasin vont rassasier	future	masc	plur	masc	sing
+les raisins du commerce ont nourri	past	masc	plur	masc	sing
+les raisins du commerce ont rassasié	past	masc	plur	masc	sing
+les raisins du commerce vont nourrir	future	masc	plur	masc	sing
+les raisins du commerce vont rassasier	future	masc	plur	masc	sing
+les raisins du jardin ont nourri	past	masc	plur	masc	sing
+les raisins du jardin ont rassasié	past	masc	plur	masc	sing
+les raisins du jardin vont nourrir	future	masc	plur	masc	sing
+les raisins du jardin vont rassasier	future	masc	plur	masc	sing
+les raisins du verger ont nourri	past	masc	plur	masc	sing
+les raisins du verger ont rassasié	past	masc	plur	masc	sing
+les raisins du verger vont nourrir	future	masc	plur	masc	sing
+les raisins du verger vont rassasier	future	masc	plur	masc	sing
+les raisins des marchés ont nourri	past	masc	plur	masc	plur
+les raisins des marchés ont rassasié	past	masc	plur	masc	plur
+les raisins des marchés vont nourrir	future	masc	plur	masc	plur
+les raisins des marchés vont rassasier	future	masc	plur	masc	plur
+les raisins des magasins ont nourri	past	masc	plur	masc	plur
+les raisins des magasins ont rassasié	past	masc	plur	masc	plur
+les raisins des magasins vont nourrir	future	masc	plur	masc	plur
+les raisins des magasins vont rassasier	future	masc	plur	masc	plur
+les raisins des commerces ont nourri	past	masc	plur	masc	plur
+les raisins des commerces ont rassasié	past	masc	plur	masc	plur
+les raisins des commerces vont nourrir	future	masc	plur	masc	plur
+les raisins des commerces vont rassasier	future	masc	plur	masc	plur
+les raisins des jardins ont nourri	past	masc	plur	masc	plur
+les raisins des jardins ont rassasié	past	masc	plur	masc	plur
+les raisins des jardins vont nourrir	future	masc	plur	masc	plur
+les raisins des jardins vont rassasier	future	masc	plur	masc	plur
+les raisins des vergers ont nourri	past	masc	plur	masc	plur
+les raisins des vergers ont rassasié	past	masc	plur	masc	plur
+les raisins des vergers vont nourrir	future	masc	plur	masc	plur
+les raisins des vergers vont rassasier	future	masc	plur	masc	plur
+les raisins de la X ont nourri	past	masc	plur	femi	sing
+les raisins de la X ont rassasié	past	masc	plur	femi	sing
+les raisins de la X vont nourrir	future	masc	plur	femi	sing
+les raisins de la X vont rassasier	future	masc	plur	femi	sing
+les raisins de la Y ont nourri	past	masc	plur	femi	sing
+les raisins de la Y ont rassasié	past	masc	plur	femi	sing
+les raisins de la Y vont nourrir	future	masc	plur	femi	sing
+les raisins de la Y vont rassasier	future	masc	plur	femi	sing
+les raisins de la Z ont nourri	past	masc	plur	femi	sing
+les raisins de la Z ont rassasié	past	masc	plur	femi	sing
+les raisins de la Z vont nourrir	future	masc	plur	femi	sing
+les raisins de la Z vont rassasier	future	masc	plur	femi	sing
+les raisins de la A ont nourri	past	masc	plur	femi	sing
+les raisins de la A ont rassasié	past	masc	plur	femi	sing
+les raisins de la A vont nourrir	future	masc	plur	femi	sing
+les raisins de la A vont rassasier	future	masc	plur	femi	sing
+les raisins de la B ont nourri	past	masc	plur	femi	sing
+les raisins de la B ont rassasié	past	masc	plur	femi	sing
+les raisins de la B vont nourrir	future	masc	plur	femi	sing
+les raisins de la B vont rassasier	future	masc	plur	femi	sing
+les raisins des Xes ont nourri	past	masc	plur	femi	plur
+les raisins des Xes ont rassasié	past	masc	plur	femi	plur
+les raisins des Xes vont nourrir	future	masc	plur	femi	plur
+les raisins des Xes vont rassasier	future	masc	plur	femi	plur
+les raisins des Yes ont nourri	past	masc	plur	femi	plur
+les raisins des Yes ont rassasié	past	masc	plur	femi	plur
+les raisins des Yes vont nourrir	future	masc	plur	femi	plur
+les raisins des Yes vont rassasier	future	masc	plur	femi	plur
+les raisins des Zes ont nourri	past	masc	plur	femi	plur
+les raisins des Zes ont rassasié	past	masc	plur	femi	plur
+les raisins des Zes vont nourrir	future	masc	plur	femi	plur
+les raisins des Zes vont rassasier	future	masc	plur	femi	plur
+les raisins des Aes ont nourri	past	masc	plur	femi	plur
+les raisins des Aes ont rassasié	past	masc	plur	femi	plur
+les raisins des Aes vont nourrir	future	masc	plur	femi	plur
+les raisins des Aes vont rassasier	future	masc	plur	femi	plur
+les raisins des Bes ont nourri	past	masc	plur	femi	plur
+les raisins des Bes ont rassasié	past	masc	plur	femi	plur
+les raisins des Bes vont nourrir	future	masc	plur	femi	plur
+les raisins des Bes vont rassasier	future	masc	plur	femi	plur
+ces raisins du marché ont nourri	past	masc	plur	masc	sing
+ces raisins du marché ont rassasié	past	masc	plur	masc	sing
+ces raisins du marché vont nourrir	future	masc	plur	masc	sing
+ces raisins du marché vont rassasier	future	masc	plur	masc	sing
+ces raisins du magasin ont nourri	past	masc	plur	masc	sing
+ces raisins du magasin ont rassasié	past	masc	plur	masc	sing
+ces raisins du magasin vont nourrir	future	masc	plur	masc	sing
+ces raisins du magasin vont rassasier	future	masc	plur	masc	sing
+ces raisins du commerce ont nourri	past	masc	plur	masc	sing
+ces raisins du commerce ont rassasié	past	masc	plur	masc	sing
+ces raisins du commerce vont nourrir	future	masc	plur	masc	sing
+ces raisins du commerce vont rassasier	future	masc	plur	masc	sing
+ces raisins du jardin ont nourri	past	masc	plur	masc	sing
+ces raisins du jardin ont rassasié	past	masc	plur	masc	sing
+ces raisins du jardin vont nourrir	future	masc	plur	masc	sing
+ces raisins du jardin vont rassasier	future	masc	plur	masc	sing
+ces raisins du verger ont nourri	past	masc	plur	masc	sing
+ces raisins du verger ont rassasié	past	masc	plur	masc	sing
+ces raisins du verger vont nourrir	future	masc	plur	masc	sing
+ces raisins du verger vont rassasier	future	masc	plur	masc	sing
+ces raisins des marchés ont nourri	past	masc	plur	masc	plur
+ces raisins des marchés ont rassasié	past	masc	plur	masc	plur
+ces raisins des marchés vont nourrir	future	masc	plur	masc	plur
+ces raisins des marchés vont rassasier	future	masc	plur	masc	plur
+ces raisins des magasins ont nourri	past	masc	plur	masc	plur
+ces raisins des magasins ont rassasié	past	masc	plur	masc	plur
+ces raisins des magasins vont nourrir	future	masc	plur	masc	plur
+ces raisins des magasins vont rassasier	future	masc	plur	masc	plur
+ces raisins des commerces ont nourri	past	masc	plur	masc	plur
+ces raisins des commerces ont rassasié	past	masc	plur	masc	plur
+ces raisins des commerces vont nourrir	future	masc	plur	masc	plur
+ces raisins des commerces vont rassasier	future	masc	plur	masc	plur
+ces raisins des jardins ont nourri	past	masc	plur	masc	plur
+ces raisins des jardins ont rassasié	past	masc	plur	masc	plur
+ces raisins des jardins vont nourrir	future	masc	plur	masc	plur
+ces raisins des jardins vont rassasier	future	masc	plur	masc	plur
+ces raisins des vergers ont nourri	past	masc	plur	masc	plur
+ces raisins des vergers ont rassasié	past	masc	plur	masc	plur
+ces raisins des vergers vont nourrir	future	masc	plur	masc	plur
+ces raisins des vergers vont rassasier	future	masc	plur	masc	plur
+ces raisins de la X ont nourri	past	masc	plur	femi	sing
+ces raisins de la X ont rassasié	past	masc	plur	femi	sing
+ces raisins de la X vont nourrir	future	masc	plur	femi	sing
+ces raisins de la X vont rassasier	future	masc	plur	femi	sing
+ces raisins de la Y ont nourri	past	masc	plur	femi	sing
+ces raisins de la Y ont rassasié	past	masc	plur	femi	sing
+ces raisins de la Y vont nourrir	future	masc	plur	femi	sing
+ces raisins de la Y vont rassasier	future	masc	plur	femi	sing
+ces raisins de la Z ont nourri	past	masc	plur	femi	sing
+ces raisins de la Z ont rassasié	past	masc	plur	femi	sing
+ces raisins de la Z vont nourrir	future	masc	plur	femi	sing
+ces raisins de la Z vont rassasier	future	masc	plur	femi	sing
+ces raisins de la A ont nourri	past	masc	plur	femi	sing
+ces raisins de la A ont rassasié	past	masc	plur	femi	sing
+ces raisins de la A vont nourrir	future	masc	plur	femi	sing
+ces raisins de la A vont rassasier	future	masc	plur	femi	sing
+ces raisins de la B ont nourri	past	masc	plur	femi	sing
+ces raisins de la B ont rassasié	past	masc	plur	femi	sing
+ces raisins de la B vont nourrir	future	masc	plur	femi	sing
+ces raisins de la B vont rassasier	future	masc	plur	femi	sing
+ces raisins des Xes ont nourri	past	masc	plur	femi	plur
+ces raisins des Xes ont rassasié	past	masc	plur	femi	plur
+ces raisins des Xes vont nourrir	future	masc	plur	femi	plur
+ces raisins des Xes vont rassasier	future	masc	plur	femi	plur
+ces raisins des Yes ont nourri	past	masc	plur	femi	plur
+ces raisins des Yes ont rassasié	past	masc	plur	femi	plur
+ces raisins des Yes vont nourrir	future	masc	plur	femi	plur
+ces raisins des Yes vont rassasier	future	masc	plur	femi	plur
+ces raisins des Zes ont nourri	past	masc	plur	femi	plur
+ces raisins des Zes ont rassasié	past	masc	plur	femi	plur
+ces raisins des Zes vont nourrir	future	masc	plur	femi	plur
+ces raisins des Zes vont rassasier	future	masc	plur	femi	plur
+ces raisins des Aes ont nourri	past	masc	plur	femi	plur
+ces raisins des Aes ont rassasié	past	masc	plur	femi	plur
+ces raisins des Aes vont nourrir	future	masc	plur	femi	plur
+ces raisins des Aes vont rassasier	future	masc	plur	femi	plur
+ces raisins des Bes ont nourri	past	masc	plur	femi	plur
+ces raisins des Bes ont rassasié	past	masc	plur	femi	plur
+ces raisins des Bes vont nourrir	future	masc	plur	femi	plur
+ces raisins des Bes vont rassasier	future	masc	plur	femi	plur
+des figues du marché ont nourri	past	femi	plur	masc	sing
+des figues du marché ont rassasié	past	femi	plur	masc	sing
+des figues du marché vont nourrir	future	femi	plur	masc	sing
+des figues du marché vont rassasier	future	femi	plur	masc	sing
+des figues du magasin ont nourri	past	femi	plur	masc	sing
+des figues du magasin ont rassasié	past	femi	plur	masc	sing
+des figues du magasin vont nourrir	future	femi	plur	masc	sing
+des figues du magasin vont rassasier	future	femi	plur	masc	sing
+des figues du commerce ont nourri	past	femi	plur	masc	sing
+des figues du commerce ont rassasié	past	femi	plur	masc	sing
+des figues du commerce vont nourrir	future	femi	plur	masc	sing
+des figues du commerce vont rassasier	future	femi	plur	masc	sing
+des figues du jardin ont nourri	past	femi	plur	masc	sing
+des figues du jardin ont rassasié	past	femi	plur	masc	sing
+des figues du jardin vont nourrir	future	femi	plur	masc	sing
+des figues du jardin vont rassasier	future	femi	plur	masc	sing
+des figues du verger ont nourri	past	femi	plur	masc	sing
+des figues du verger ont rassasié	past	femi	plur	masc	sing
+des figues du verger vont nourrir	future	femi	plur	masc	sing
+des figues du verger vont rassasier	future	femi	plur	masc	sing
+des figues des marchés ont nourri	past	femi	plur	masc	plur
+des figues des marchés ont rassasié	past	femi	plur	masc	plur
+des figues des marchés vont nourrir	future	femi	plur	masc	plur
+des figues des marchés vont rassasier	future	femi	plur	masc	plur
+des figues des magasins ont nourri	past	femi	plur	masc	plur
+des figues des magasins ont rassasié	past	femi	plur	masc	plur
+des figues des magasins vont nourrir	future	femi	plur	masc	plur
+des figues des magasins vont rassasier	future	femi	plur	masc	plur
+des figues des commerces ont nourri	past	femi	plur	masc	plur
+des figues des commerces ont rassasié	past	femi	plur	masc	plur
+des figues des commerces vont nourrir	future	femi	plur	masc	plur
+des figues des commerces vont rassasier	future	femi	plur	masc	plur
+des figues des jardins ont nourri	past	femi	plur	masc	plur
+des figues des jardins ont rassasié	past	femi	plur	masc	plur
+des figues des jardins vont nourrir	future	femi	plur	masc	plur
+des figues des jardins vont rassasier	future	femi	plur	masc	plur
+des figues des vergers ont nourri	past	femi	plur	masc	plur
+des figues des vergers ont rassasié	past	femi	plur	masc	plur
+des figues des vergers vont nourrir	future	femi	plur	masc	plur
+des figues des vergers vont rassasier	future	femi	plur	masc	plur
+des figues de la X ont nourri	past	femi	plur	femi	sing
+des figues de la X ont rassasié	past	femi	plur	femi	sing
+des figues de la X vont nourrir	future	femi	plur	femi	sing
+des figues de la X vont rassasier	future	femi	plur	femi	sing
+des figues de la Y ont nourri	past	femi	plur	femi	sing
+des figues de la Y ont rassasié	past	femi	plur	femi	sing
+des figues de la Y vont nourrir	future	femi	plur	femi	sing
+des figues de la Y vont rassasier	future	femi	plur	femi	sing
+des figues de la Z ont nourri	past	femi	plur	femi	sing
+des figues de la Z ont rassasié	past	femi	plur	femi	sing
+des figues de la Z vont nourrir	future	femi	plur	femi	sing
+des figues de la Z vont rassasier	future	femi	plur	femi	sing
+des figues de la A ont nourri	past	femi	plur	femi	sing
+des figues de la A ont rassasié	past	femi	plur	femi	sing
+des figues de la A vont nourrir	future	femi	plur	femi	sing
+des figues de la A vont rassasier	future	femi	plur	femi	sing
+des figues de la B ont nourri	past	femi	plur	femi	sing
+des figues de la B ont rassasié	past	femi	plur	femi	sing
+des figues de la B vont nourrir	future	femi	plur	femi	sing
+des figues de la B vont rassasier	future	femi	plur	femi	sing
+des figues des Xes ont nourri	past	femi	plur	femi	plur
+des figues des Xes ont rassasié	past	femi	plur	femi	plur
+des figues des Xes vont nourrir	future	femi	plur	femi	plur
+des figues des Xes vont rassasier	future	femi	plur	femi	plur
+des figues des Yes ont nourri	past	femi	plur	femi	plur
+des figues des Yes ont rassasié	past	femi	plur	femi	plur
+des figues des Yes vont nourrir	future	femi	plur	femi	plur
+des figues des Yes vont rassasier	future	femi	plur	femi	plur
+des figues des Zes ont nourri	past	femi	plur	femi	plur
+des figues des Zes ont rassasié	past	femi	plur	femi	plur
+des figues des Zes vont nourrir	future	femi	plur	femi	plur
+des figues des Zes vont rassasier	future	femi	plur	femi	plur
+des figues des Aes ont nourri	past	femi	plur	femi	plur
+des figues des Aes ont rassasié	past	femi	plur	femi	plur
+des figues des Aes vont nourrir	future	femi	plur	femi	plur
+des figues des Aes vont rassasier	future	femi	plur	femi	plur
+des figues des Bes ont nourri	past	femi	plur	femi	plur
+des figues des Bes ont rassasié	past	femi	plur	femi	plur
+des figues des Bes vont nourrir	future	femi	plur	femi	plur
+des figues des Bes vont rassasier	future	femi	plur	femi	plur
+les figues du marché ont nourri	past	femi	plur	masc	sing
+les figues du marché ont rassasié	past	femi	plur	masc	sing
+les figues du marché vont nourrir	future	femi	plur	masc	sing
+les figues du marché vont rassasier	future	femi	plur	masc	sing
+les figues du magasin ont nourri	past	femi	plur	masc	sing
+les figues du magasin ont rassasié	past	femi	plur	masc	sing
+les figues du magasin vont nourrir	future	femi	plur	masc	sing
+les figues du magasin vont rassasier	future	femi	plur	masc	sing
+les figues du commerce ont nourri	past	femi	plur	masc	sing
+les figues du commerce ont rassasié	past	femi	plur	masc	sing
+les figues du commerce vont nourrir	future	femi	plur	masc	sing
+les figues du commerce vont rassasier	future	femi	plur	masc	sing
+les figues du jardin ont nourri	past	femi	plur	masc	sing
+les figues du jardin ont rassasié	past	femi	plur	masc	sing
+les figues du jardin vont nourrir	future	femi	plur	masc	sing
+les figues du jardin vont rassasier	future	femi	plur	masc	sing
+les figues du verger ont nourri	past	femi	plur	masc	sing
+les figues du verger ont rassasié	past	femi	plur	masc	sing
+les figues du verger vont nourrir	future	femi	plur	masc	sing
+les figues du verger vont rassasier	future	femi	plur	masc	sing
+les figues des marchés ont nourri	past	femi	plur	masc	plur
+les figues des marchés ont rassasié	past	femi	plur	masc	plur
+les figues des marchés vont nourrir	future	femi	plur	masc	plur
+les figues des marchés vont rassasier	future	femi	plur	masc	plur
+les figues des magasins ont nourri	past	femi	plur	masc	plur
+les figues des magasins ont rassasié	past	femi	plur	masc	plur
+les figues des magasins vont nourrir	future	femi	plur	masc	plur
+les figues des magasins vont rassasier	future	femi	plur	masc	plur
+les figues des commerces ont nourri	past	femi	plur	masc	plur
+les figues des commerces ont rassasié	past	femi	plur	masc	plur
+les figues des commerces vont nourrir	future	femi	plur	masc	plur
+les figues des commerces vont rassasier	future	femi	plur	masc	plur
+les figues des jardins ont nourri	past	femi	plur	masc	plur
+les figues des jardins ont rassasié	past	femi	plur	masc	plur
+les figues des jardins vont nourrir	future	femi	plur	masc	plur
+les figues des jardins vont rassasier	future	femi	plur	masc	plur
+les figues des vergers ont nourri	past	femi	plur	masc	plur
+les figues des vergers ont rassasié	past	femi	plur	masc	plur
+les figues des vergers vont nourrir	future	femi	plur	masc	plur
+les figues des vergers vont rassasier	future	femi	plur	masc	plur
+les figues de la X ont nourri	past	femi	plur	femi	sing
+les figues de la X ont rassasié	past	femi	plur	femi	sing
+les figues de la X vont nourrir	future	femi	plur	femi	sing
+les figues de la X vont rassasier	future	femi	plur	femi	sing
+les figues de la Y ont nourri	past	femi	plur	femi	sing
+les figues de la Y ont rassasié	past	femi	plur	femi	sing
+les figues de la Y vont nourrir	future	femi	plur	femi	sing
+les figues de la Y vont rassasier	future	femi	plur	femi	sing
+les figues de la Z ont nourri	past	femi	plur	femi	sing
+les figues de la Z ont rassasié	past	femi	plur	femi	sing
+les figues de la Z vont nourrir	future	femi	plur	femi	sing
+les figues de la Z vont rassasier	future	femi	plur	femi	sing
+les figues de la A ont nourri	past	femi	plur	femi	sing
+les figues de la A ont rassasié	past	femi	plur	femi	sing
+les figues de la A vont nourrir	future	femi	plur	femi	sing
+les figues de la A vont rassasier	future	femi	plur	femi	sing
+les figues de la B ont nourri	past	femi	plur	femi	sing
+les figues de la B ont rassasié	past	femi	plur	femi	sing
+les figues de la B vont nourrir	future	femi	plur	femi	sing
+les figues de la B vont rassasier	future	femi	plur	femi	sing
+les figues des Xes ont nourri	past	femi	plur	femi	plur
+les figues des Xes ont rassasié	past	femi	plur	femi	plur
+les figues des Xes vont nourrir	future	femi	plur	femi	plur
+les figues des Xes vont rassasier	future	femi	plur	femi	plur
+les figues des Yes ont nourri	past	femi	plur	femi	plur
+les figues des Yes ont rassasié	past	femi	plur	femi	plur
+les figues des Yes vont nourrir	future	femi	plur	femi	plur
+les figues des Yes vont rassasier	future	femi	plur	femi	plur
+les figues des Zes ont nourri	past	femi	plur	femi	plur
+les figues des Zes ont rassasié	past	femi	plur	femi	plur
+les figues des Zes vont nourrir	future	femi	plur	femi	plur
+les figues des Zes vont rassasier	future	femi	plur	femi	plur
+les figues des Aes ont nourri	past	femi	plur	femi	plur
+les figues des Aes ont rassasié	past	femi	plur	femi	plur
+les figues des Aes vont nourrir	future	femi	plur	femi	plur
+les figues des Aes vont rassasier	future	femi	plur	femi	plur
+les figues des Bes ont nourri	past	femi	plur	femi	plur
+les figues des Bes ont rassasié	past	femi	plur	femi	plur
+les figues des Bes vont nourrir	future	femi	plur	femi	plur
+les figues des Bes vont rassasier	future	femi	plur	femi	plur
+ces figues du marché ont nourri	past	femi	plur	masc	sing
+ces figues du marché ont rassasié	past	femi	plur	masc	sing
+ces figues du marché vont nourrir	future	femi	plur	masc	sing
+ces figues du marché vont rassasier	future	femi	plur	masc	sing
+ces figues du magasin ont nourri	past	femi	plur	masc	sing
+ces figues du magasin ont rassasié	past	femi	plur	masc	sing
+ces figues du magasin vont nourrir	future	femi	plur	masc	sing
+ces figues du magasin vont rassasier	future	femi	plur	masc	sing
+ces figues du commerce ont nourri	past	femi	plur	masc	sing
+ces figues du commerce ont rassasié	past	femi	plur	masc	sing
+ces figues du commerce vont nourrir	future	femi	plur	masc	sing
+ces figues du commerce vont rassasier	future	femi	plur	masc	sing
+ces figues du jardin ont nourri	past	femi	plur	masc	sing
+ces figues du jardin ont rassasié	past	femi	plur	masc	sing
+ces figues du jardin vont nourrir	future	femi	plur	masc	sing
+ces figues du jardin vont rassasier	future	femi	plur	masc	sing
+ces figues du verger ont nourri	past	femi	plur	masc	sing
+ces figues du verger ont rassasié	past	femi	plur	masc	sing
+ces figues du verger vont nourrir	future	femi	plur	masc	sing
+ces figues du verger vont rassasier	future	femi	plur	masc	sing
+ces figues des marchés ont nourri	past	femi	plur	masc	plur
+ces figues des marchés ont rassasié	past	femi	plur	masc	plur
+ces figues des marchés vont nourrir	future	femi	plur	masc	plur
+ces figues des marchés vont rassasier	future	femi	plur	masc	plur
+ces figues des magasins ont nourri	past	femi	plur	masc	plur
+ces figues des magasins ont rassasié	past	femi	plur	masc	plur
+ces figues des magasins vont nourrir	future	femi	plur	masc	plur
+ces figues des magasins vont rassasier	future	femi	plur	masc	plur
+ces figues des commerces ont nourri	past	femi	plur	masc	plur
+ces figues des commerces ont rassasié	past	femi	plur	masc	plur
+ces figues des commerces vont nourrir	future	femi	plur	masc	plur
+ces figues des commerces vont rassasier	future	femi	plur	masc	plur
+ces figues des jardins ont nourri	past	femi	plur	masc	plur
+ces figues des jardins ont rassasié	past	femi	plur	masc	plur
+ces figues des jardins vont nourrir	future	femi	plur	masc	plur
+ces figues des jardins vont rassasier	future	femi	plur	masc	plur
+ces figues des vergers ont nourri	past	femi	plur	masc	plur
+ces figues des vergers ont rassasié	past	femi	plur	masc	plur
+ces figues des vergers vont nourrir	future	femi	plur	masc	plur
+ces figues des vergers vont rassasier	future	femi	plur	masc	plur
+ces figues de la X ont nourri	past	femi	plur	femi	sing
+ces figues de la X ont rassasié	past	femi	plur	femi	sing
+ces figues de la X vont nourrir	future	femi	plur	femi	sing
+ces figues de la X vont rassasier	future	femi	plur	femi	sing
+ces figues de la Y ont nourri	past	femi	plur	femi	sing
+ces figues de la Y ont rassasié	past	femi	plur	femi	sing
+ces figues de la Y vont nourrir	future	femi	plur	femi	sing
+ces figues de la Y vont rassasier	future	femi	plur	femi	sing
+ces figues de la Z ont nourri	past	femi	plur	femi	sing
+ces figues de la Z ont rassasié	past	femi	plur	femi	sing
+ces figues de la Z vont nourrir	future	femi	plur	femi	sing
+ces figues de la Z vont rassasier	future	femi	plur	femi	sing
+ces figues de la A ont nourri	past	femi	plur	femi	sing
+ces figues de la A ont rassasié	past	femi	plur	femi	sing
+ces figues de la A vont nourrir	future	femi	plur	femi	sing
+ces figues de la A vont rassasier	future	femi	plur	femi	sing
+ces figues de la B ont nourri	past	femi	plur	femi	sing
+ces figues de la B ont rassasié	past	femi	plur	femi	sing
+ces figues de la B vont nourrir	future	femi	plur	femi	sing
+ces figues de la B vont rassasier	future	femi	plur	femi	sing
+ces figues des Xes ont nourri	past	femi	plur	femi	plur
+ces figues des Xes ont rassasié	past	femi	plur	femi	plur
+ces figues des Xes vont nourrir	future	femi	plur	femi	plur
+ces figues des Xes vont rassasier	future	femi	plur	femi	plur
+ces figues des Yes ont nourri	past	femi	plur	femi	plur
+ces figues des Yes ont rassasié	past	femi	plur	femi	plur
+ces figues des Yes vont nourrir	future	femi	plur	femi	plur
+ces figues des Yes vont rassasier	future	femi	plur	femi	plur
+ces figues des Zes ont nourri	past	femi	plur	femi	plur
+ces figues des Zes ont rassasié	past	femi	plur	femi	plur
+ces figues des Zes vont nourrir	future	femi	plur	femi	plur
+ces figues des Zes vont rassasier	future	femi	plur	femi	plur
+ces figues des Aes ont nourri	past	femi	plur	femi	plur
+ces figues des Aes ont rassasié	past	femi	plur	femi	plur
+ces figues des Aes vont nourrir	future	femi	plur	femi	plur
+ces figues des Aes vont rassasier	future	femi	plur	femi	plur
+ces figues des Bes ont nourri	past	femi	plur	femi	plur
+ces figues des Bes ont rassasié	past	femi	plur	femi	plur
+ces figues des Bes vont nourrir	future	femi	plur	femi	plur
+ces figues des Bes vont rassasier	future	femi	plur	femi	plur
+des cerises du marché ont nourri	past	femi	plur	masc	sing
+des cerises du marché ont rassasié	past	femi	plur	masc	sing
+des cerises du marché vont nourrir	future	femi	plur	masc	sing
+des cerises du marché vont rassasier	future	femi	plur	masc	sing
+des cerises du magasin ont nourri	past	femi	plur	masc	sing
+des cerises du magasin ont rassasié	past	femi	plur	masc	sing
+des cerises du magasin vont nourrir	future	femi	plur	masc	sing
+des cerises du magasin vont rassasier	future	femi	plur	masc	sing
+des cerises du commerce ont nourri	past	femi	plur	masc	sing
+des cerises du commerce ont rassasié	past	femi	plur	masc	sing
+des cerises du commerce vont nourrir	future	femi	plur	masc	sing
+des cerises du commerce vont rassasier	future	femi	plur	masc	sing
+des cerises du jardin ont nourri	past	femi	plur	masc	sing
+des cerises du jardin ont rassasié	past	femi	plur	masc	sing
+des cerises du jardin vont nourrir	future	femi	plur	masc	sing
+des cerises du jardin vont rassasier	future	femi	plur	masc	sing
+des cerises du verger ont nourri	past	femi	plur	masc	sing
+des cerises du verger ont rassasié	past	femi	plur	masc	sing
+des cerises du verger vont nourrir	future	femi	plur	masc	sing
+des cerises du verger vont rassasier	future	femi	plur	masc	sing
+des cerises des marchés ont nourri	past	femi	plur	masc	plur
+des cerises des marchés ont rassasié	past	femi	plur	masc	plur
+des cerises des marchés vont nourrir	future	femi	plur	masc	plur
+des cerises des marchés vont rassasier	future	femi	plur	masc	plur
+des cerises des magasins ont nourri	past	femi	plur	masc	plur
+des cerises des magasins ont rassasié	past	femi	plur	masc	plur
+des cerises des magasins vont nourrir	future	femi	plur	masc	plur
+des cerises des magasins vont rassasier	future	femi	plur	masc	plur
+des cerises des commerces ont nourri	past	femi	plur	masc	plur
+des cerises des commerces ont rassasié	past	femi	plur	masc	plur
+des cerises des commerces vont nourrir	future	femi	plur	masc	plur
+des cerises des commerces vont rassasier	future	femi	plur	masc	plur
+des cerises des jardins ont nourri	past	femi	plur	masc	plur
+des cerises des jardins ont rassasié	past	femi	plur	masc	plur
+des cerises des jardins vont nourrir	future	femi	plur	masc	plur
+des cerises des jardins vont rassasier	future	femi	plur	masc	plur
+des cerises des vergers ont nourri	past	femi	plur	masc	plur
+des cerises des vergers ont rassasié	past	femi	plur	masc	plur
+des cerises des vergers vont nourrir	future	femi	plur	masc	plur
+des cerises des vergers vont rassasier	future	femi	plur	masc	plur
+des cerises de la X ont nourri	past	femi	plur	femi	sing
+des cerises de la X ont rassasié	past	femi	plur	femi	sing
+des cerises de la X vont nourrir	future	femi	plur	femi	sing
+des cerises de la X vont rassasier	future	femi	plur	femi	sing
+des cerises de la Y ont nourri	past	femi	plur	femi	sing
+des cerises de la Y ont rassasié	past	femi	plur	femi	sing
+des cerises de la Y vont nourrir	future	femi	plur	femi	sing
+des cerises de la Y vont rassasier	future	femi	plur	femi	sing
+des cerises de la Z ont nourri	past	femi	plur	femi	sing
+des cerises de la Z ont rassasié	past	femi	plur	femi	sing
+des cerises de la Z vont nourrir	future	femi	plur	femi	sing
+des cerises de la Z vont rassasier	future	femi	plur	femi	sing
+des cerises de la A ont nourri	past	femi	plur	femi	sing
+des cerises de la A ont rassasié	past	femi	plur	femi	sing
+des cerises de la A vont nourrir	future	femi	plur	femi	sing
+des cerises de la A vont rassasier	future	femi	plur	femi	sing
+des cerises de la B ont nourri	past	femi	plur	femi	sing
+des cerises de la B ont rassasié	past	femi	plur	femi	sing
+des cerises de la B vont nourrir	future	femi	plur	femi	sing
+des cerises de la B vont rassasier	future	femi	plur	femi	sing
+des cerises des Xes ont nourri	past	femi	plur	femi	plur
+des cerises des Xes ont rassasié	past	femi	plur	femi	plur
+des cerises des Xes vont nourrir	future	femi	plur	femi	plur
+des cerises des Xes vont rassasier	future	femi	plur	femi	plur
+des cerises des Yes ont nourri	past	femi	plur	femi	plur
+des cerises des Yes ont rassasié	past	femi	plur	femi	plur
+des cerises des Yes vont nourrir	future	femi	plur	femi	plur
+des cerises des Yes vont rassasier	future	femi	plur	femi	plur
+des cerises des Zes ont nourri	past	femi	plur	femi	plur
+des cerises des Zes ont rassasié	past	femi	plur	femi	plur
+des cerises des Zes vont nourrir	future	femi	plur	femi	plur
+des cerises des Zes vont rassasier	future	femi	plur	femi	plur
+des cerises des Aes ont nourri	past	femi	plur	femi	plur
+des cerises des Aes ont rassasié	past	femi	plur	femi	plur
+des cerises des Aes vont nourrir	future	femi	plur	femi	plur
+des cerises des Aes vont rassasier	future	femi	plur	femi	plur
+des cerises des Bes ont nourri	past	femi	plur	femi	plur
+des cerises des Bes ont rassasié	past	femi	plur	femi	plur
+des cerises des Bes vont nourrir	future	femi	plur	femi	plur
+des cerises des Bes vont rassasier	future	femi	plur	femi	plur
+les cerises du marché ont nourri	past	femi	plur	masc	sing
+les cerises du marché ont rassasié	past	femi	plur	masc	sing
+les cerises du marché vont nourrir	future	femi	plur	masc	sing
+les cerises du marché vont rassasier	future	femi	plur	masc	sing
+les cerises du magasin ont nourri	past	femi	plur	masc	sing
+les cerises du magasin ont rassasié	past	femi	plur	masc	sing
+les cerises du magasin vont nourrir	future	femi	plur	masc	sing
+les cerises du magasin vont rassasier	future	femi	plur	masc	sing
+les cerises du commerce ont nourri	past	femi	plur	masc	sing
+les cerises du commerce ont rassasié	past	femi	plur	masc	sing
+les cerises du commerce vont nourrir	future	femi	plur	masc	sing
+les cerises du commerce vont rassasier	future	femi	plur	masc	sing
+les cerises du jardin ont nourri	past	femi	plur	masc	sing
+les cerises du jardin ont rassasié	past	femi	plur	masc	sing
+les cerises du jardin vont nourrir	future	femi	plur	masc	sing
+les cerises du jardin vont rassasier	future	femi	plur	masc	sing
+les cerises du verger ont nourri	past	femi	plur	masc	sing
+les cerises du verger ont rassasié	past	femi	plur	masc	sing
+les cerises du verger vont nourrir	future	femi	plur	masc	sing
+les cerises du verger vont rassasier	future	femi	plur	masc	sing
+les cerises des marchés ont nourri	past	femi	plur	masc	plur
+les cerises des marchés ont rassasié	past	femi	plur	masc	plur
+les cerises des marchés vont nourrir	future	femi	plur	masc	plur
+les cerises des marchés vont rassasier	future	femi	plur	masc	plur
+les cerises des magasins ont nourri	past	femi	plur	masc	plur
+les cerises des magasins ont rassasié	past	femi	plur	masc	plur
+les cerises des magasins vont nourrir	future	femi	plur	masc	plur
+les cerises des magasins vont rassasier	future	femi	plur	masc	plur
+les cerises des commerces ont nourri	past	femi	plur	masc	plur
+les cerises des commerces ont rassasié	past	femi	plur	masc	plur
+les cerises des commerces vont nourrir	future	femi	plur	masc	plur
+les cerises des commerces vont rassasier	future	femi	plur	masc	plur
+les cerises des jardins ont nourri	past	femi	plur	masc	plur
+les cerises des jardins ont rassasié	past	femi	plur	masc	plur
+les cerises des jardins vont nourrir	future	femi	plur	masc	plur
+les cerises des jardins vont rassasier	future	femi	plur	masc	plur
+les cerises des vergers ont nourri	past	femi	plur	masc	plur
+les cerises des vergers ont rassasié	past	femi	plur	masc	plur
+les cerises des vergers vont nourrir	future	femi	plur	masc	plur
+les cerises des vergers vont rassasier	future	femi	plur	masc	plur
+les cerises de la X ont nourri	past	femi	plur	femi	sing
+les cerises de la X ont rassasié	past	femi	plur	femi	sing
+les cerises de la X vont nourrir	future	femi	plur	femi	sing
+les cerises de la X vont rassasier	future	femi	plur	femi	sing
+les cerises de la Y ont nourri	past	femi	plur	femi	sing
+les cerises de la Y ont rassasié	past	femi	plur	femi	sing
+les cerises de la Y vont nourrir	future	femi	plur	femi	sing
+les cerises de la Y vont rassasier	future	femi	plur	femi	sing
+les cerises de la Z ont nourri	past	femi	plur	femi	sing
+les cerises de la Z ont rassasié	past	femi	plur	femi	sing
+les cerises de la Z vont nourrir	future	femi	plur	femi	sing
+les cerises de la Z vont rassasier	future	femi	plur	femi	sing
+les cerises de la A ont nourri	past	femi	plur	femi	sing
+les cerises de la A ont rassasié	past	femi	plur	femi	sing
+les cerises de la A vont nourrir	future	femi	plur	femi	sing
+les cerises de la A vont rassasier	future	femi	plur	femi	sing
+les cerises de la B ont nourri	past	femi	plur	femi	sing
+les cerises de la B ont rassasié	past	femi	plur	femi	sing
+les cerises de la B vont nourrir	future	femi	plur	femi	sing
+les cerises de la B vont rassasier	future	femi	plur	femi	sing
+les cerises des Xes ont nourri	past	femi	plur	femi	plur
+les cerises des Xes ont rassasié	past	femi	plur	femi	plur
+les cerises des Xes vont nourrir	future	femi	plur	femi	plur
+les cerises des Xes vont rassasier	future	femi	plur	femi	plur
+les cerises des Yes ont nourri	past	femi	plur	femi	plur
+les cerises des Yes ont rassasié	past	femi	plur	femi	plur
+les cerises des Yes vont nourrir	future	femi	plur	femi	plur
+les cerises des Yes vont rassasier	future	femi	plur	femi	plur
+les cerises des Zes ont nourri	past	femi	plur	femi	plur
+les cerises des Zes ont rassasié	past	femi	plur	femi	plur
+les cerises des Zes vont nourrir	future	femi	plur	femi	plur
+les cerises des Zes vont rassasier	future	femi	plur	femi	plur
+les cerises des Aes ont nourri	past	femi	plur	femi	plur
+les cerises des Aes ont rassasié	past	femi	plur	femi	plur
+les cerises des Aes vont nourrir	future	femi	plur	femi	plur
+les cerises des Aes vont rassasier	future	femi	plur	femi	plur
+les cerises des Bes ont nourri	past	femi	plur	femi	plur
+les cerises des Bes ont rassasié	past	femi	plur	femi	plur
+les cerises des Bes vont nourrir	future	femi	plur	femi	plur
+les cerises des Bes vont rassasier	future	femi	plur	femi	plur
+ces cerises du marché ont nourri	past	femi	plur	masc	sing
+ces cerises du marché ont rassasié	past	femi	plur	masc	sing
+ces cerises du marché vont nourrir	future	femi	plur	masc	sing
+ces cerises du marché vont rassasier	future	femi	plur	masc	sing
+ces cerises du magasin ont nourri	past	femi	plur	masc	sing
+ces cerises du magasin ont rassasié	past	femi	plur	masc	sing
+ces cerises du magasin vont nourrir	future	femi	plur	masc	sing
+ces cerises du magasin vont rassasier	future	femi	plur	masc	sing
+ces cerises du commerce ont nourri	past	femi	plur	masc	sing
+ces cerises du commerce ont rassasié	past	femi	plur	masc	sing
+ces cerises du commerce vont nourrir	future	femi	plur	masc	sing
+ces cerises du commerce vont rassasier	future	femi	plur	masc	sing
+ces cerises du jardin ont nourri	past	femi	plur	masc	sing
+ces cerises du jardin ont rassasié	past	femi	plur	masc	sing
+ces cerises du jardin vont nourrir	future	femi	plur	masc	sing
+ces cerises du jardin vont rassasier	future	femi	plur	masc	sing
+ces cerises du verger ont nourri	past	femi	plur	masc	sing
+ces cerises du verger ont rassasié	past	femi	plur	masc	sing
+ces cerises du verger vont nourrir	future	femi	plur	masc	sing
+ces cerises du verger vont rassasier	future	femi	plur	masc	sing
+ces cerises des marchés ont nourri	past	femi	plur	masc	plur
+ces cerises des marchés ont rassasié	past	femi	plur	masc	plur
+ces cerises des marchés vont nourrir	future	femi	plur	masc	plur
+ces cerises des marchés vont rassasier	future	femi	plur	masc	plur
+ces cerises des magasins ont nourri	past	femi	plur	masc	plur
+ces cerises des magasins ont rassasié	past	femi	plur	masc	plur
+ces cerises des magasins vont nourrir	future	femi	plur	masc	plur
+ces cerises des magasins vont rassasier	future	femi	plur	masc	plur
+ces cerises des commerces ont nourri	past	femi	plur	masc	plur
+ces cerises des commerces ont rassasié	past	femi	plur	masc	plur
+ces cerises des commerces vont nourrir	future	femi	plur	masc	plur
+ces cerises des commerces vont rassasier	future	femi	plur	masc	plur
+ces cerises des jardins ont nourri	past	femi	plur	masc	plur
+ces cerises des jardins ont rassasié	past	femi	plur	masc	plur
+ces cerises des jardins vont nourrir	future	femi	plur	masc	plur
+ces cerises des jardins vont rassasier	future	femi	plur	masc	plur
+ces cerises des vergers ont nourri	past	femi	plur	masc	plur
+ces cerises des vergers ont rassasié	past	femi	plur	masc	plur
+ces cerises des vergers vont nourrir	future	femi	plur	masc	plur
+ces cerises des vergers vont rassasier	future	femi	plur	masc	plur
+ces cerises de la X ont nourri	past	femi	plur	femi	sing
+ces cerises de la X ont rassasié	past	femi	plur	femi	sing
+ces cerises de la X vont nourrir	future	femi	plur	femi	sing
+ces cerises de la X vont rassasier	future	femi	plur	femi	sing
+ces cerises de la Y ont nourri	past	femi	plur	femi	sing
+ces cerises de la Y ont rassasié	past	femi	plur	femi	sing
+ces cerises de la Y vont nourrir	future	femi	plur	femi	sing
+ces cerises de la Y vont rassasier	future	femi	plur	femi	sing
+ces cerises de la Z ont nourri	past	femi	plur	femi	sing
+ces cerises de la Z ont rassasié	past	femi	plur	femi	sing
+ces cerises de la Z vont nourrir	future	femi	plur	femi	sing
+ces cerises de la Z vont rassasier	future	femi	plur	femi	sing
+ces cerises de la A ont nourri	past	femi	plur	femi	sing
+ces cerises de la A ont rassasié	past	femi	plur	femi	sing
+ces cerises de la A vont nourrir	future	femi	plur	femi	sing
+ces cerises de la A vont rassasier	future	femi	plur	femi	sing
+ces cerises de la B ont nourri	past	femi	plur	femi	sing
+ces cerises de la B ont rassasié	past	femi	plur	femi	sing
+ces cerises de la B vont nourrir	future	femi	plur	femi	sing
+ces cerises de la B vont rassasier	future	femi	plur	femi	sing
+ces cerises des Xes ont nourri	past	femi	plur	femi	plur
+ces cerises des Xes ont rassasié	past	femi	plur	femi	plur
+ces cerises des Xes vont nourrir	future	femi	plur	femi	plur
+ces cerises des Xes vont rassasier	future	femi	plur	femi	plur
+ces cerises des Yes ont nourri	past	femi	plur	femi	plur
+ces cerises des Yes ont rassasié	past	femi	plur	femi	plur
+ces cerises des Yes vont nourrir	future	femi	plur	femi	plur
+ces cerises des Yes vont rassasier	future	femi	plur	femi	plur
+ces cerises des Zes ont nourri	past	femi	plur	femi	plur
+ces cerises des Zes ont rassasié	past	femi	plur	femi	plur
+ces cerises des Zes vont nourrir	future	femi	plur	femi	plur
+ces cerises des Zes vont rassasier	future	femi	plur	femi	plur
+ces cerises des Aes ont nourri	past	femi	plur	femi	plur
+ces cerises des Aes ont rassasié	past	femi	plur	femi	plur
+ces cerises des Aes vont nourrir	future	femi	plur	femi	plur
+ces cerises des Aes vont rassasier	future	femi	plur	femi	plur
+ces cerises des Bes ont nourri	past	femi	plur	femi	plur
+ces cerises des Bes ont rassasié	past	femi	plur	femi	plur
+ces cerises des Bes vont nourrir	future	femi	plur	femi	plur
+ces cerises des Bes vont rassasier	future	femi	plur	femi	plur
+des pruneaux du marché ont nourri	past	masc	plur	masc	sing
+des pruneaux du marché ont rassasié	past	masc	plur	masc	sing
+des pruneaux du marché vont nourrir	future	masc	plur	masc	sing
+des pruneaux du marché vont rassasier	future	masc	plur	masc	sing
+des pruneaux du magasin ont nourri	past	masc	plur	masc	sing
+des pruneaux du magasin ont rassasié	past	masc	plur	masc	sing
+des pruneaux du magasin vont nourrir	future	masc	plur	masc	sing
+des pruneaux du magasin vont rassasier	future	masc	plur	masc	sing
+des pruneaux du commerce ont nourri	past	masc	plur	masc	sing
+des pruneaux du commerce ont rassasié	past	masc	plur	masc	sing
+des pruneaux du commerce vont nourrir	future	masc	plur	masc	sing
+des pruneaux du commerce vont rassasier	future	masc	plur	masc	sing
+des pruneaux du jardin ont nourri	past	masc	plur	masc	sing
+des pruneaux du jardin ont rassasié	past	masc	plur	masc	sing
+des pruneaux du jardin vont nourrir	future	masc	plur	masc	sing
+des pruneaux du jardin vont rassasier	future	masc	plur	masc	sing
+des pruneaux du verger ont nourri	past	masc	plur	masc	sing
+des pruneaux du verger ont rassasié	past	masc	plur	masc	sing
+des pruneaux du verger vont nourrir	future	masc	plur	masc	sing
+des pruneaux du verger vont rassasier	future	masc	plur	masc	sing
+des pruneaux des marchés ont nourri	past	masc	plur	masc	plur
+des pruneaux des marchés ont rassasié	past	masc	plur	masc	plur
+des pruneaux des marchés vont nourrir	future	masc	plur	masc	plur
+des pruneaux des marchés vont rassasier	future	masc	plur	masc	plur
+des pruneaux des magasins ont nourri	past	masc	plur	masc	plur
+des pruneaux des magasins ont rassasié	past	masc	plur	masc	plur
+des pruneaux des magasins vont nourrir	future	masc	plur	masc	plur
+des pruneaux des magasins vont rassasier	future	masc	plur	masc	plur
+des pruneaux des commerces ont nourri	past	masc	plur	masc	plur
+des pruneaux des commerces ont rassasié	past	masc	plur	masc	plur
+des pruneaux des commerces vont nourrir	future	masc	plur	masc	plur
+des pruneaux des commerces vont rassasier	future	masc	plur	masc	plur
+des pruneaux des jardins ont nourri	past	masc	plur	masc	plur
+des pruneaux des jardins ont rassasié	past	masc	plur	masc	plur
+des pruneaux des jardins vont nourrir	future	masc	plur	masc	plur
+des pruneaux des jardins vont rassasier	future	masc	plur	masc	plur
+des pruneaux des vergers ont nourri	past	masc	plur	masc	plur
+des pruneaux des vergers ont rassasié	past	masc	plur	masc	plur
+des pruneaux des vergers vont nourrir	future	masc	plur	masc	plur
+des pruneaux des vergers vont rassasier	future	masc	plur	masc	plur
+des pruneaux de la X ont nourri	past	masc	plur	femi	sing
+des pruneaux de la X ont rassasié	past	masc	plur	femi	sing
+des pruneaux de la X vont nourrir	future	masc	plur	femi	sing
+des pruneaux de la X vont rassasier	future	masc	plur	femi	sing
+des pruneaux de la Y ont nourri	past	masc	plur	femi	sing
+des pruneaux de la Y ont rassasié	past	masc	plur	femi	sing
+des pruneaux de la Y vont nourrir	future	masc	plur	femi	sing
+des pruneaux de la Y vont rassasier	future	masc	plur	femi	sing
+des pruneaux de la Z ont nourri	past	masc	plur	femi	sing
+des pruneaux de la Z ont rassasié	past	masc	plur	femi	sing
+des pruneaux de la Z vont nourrir	future	masc	plur	femi	sing
+des pruneaux de la Z vont rassasier	future	masc	plur	femi	sing
+des pruneaux de la A ont nourri	past	masc	plur	femi	sing
+des pruneaux de la A ont rassasié	past	masc	plur	femi	sing
+des pruneaux de la A vont nourrir	future	masc	plur	femi	sing
+des pruneaux de la A vont rassasier	future	masc	plur	femi	sing
+des pruneaux de la B ont nourri	past	masc	plur	femi	sing
+des pruneaux de la B ont rassasié	past	masc	plur	femi	sing
+des pruneaux de la B vont nourrir	future	masc	plur	femi	sing
+des pruneaux de la B vont rassasier	future	masc	plur	femi	sing
+des pruneaux des Xes ont nourri	past	masc	plur	femi	plur
+des pruneaux des Xes ont rassasié	past	masc	plur	femi	plur
+des pruneaux des Xes vont nourrir	future	masc	plur	femi	plur
+des pruneaux des Xes vont rassasier	future	masc	plur	femi	plur
+des pruneaux des Yes ont nourri	past	masc	plur	femi	plur
+des pruneaux des Yes ont rassasié	past	masc	plur	femi	plur
+des pruneaux des Yes vont nourrir	future	masc	plur	femi	plur
+des pruneaux des Yes vont rassasier	future	masc	plur	femi	plur
+des pruneaux des Zes ont nourri	past	masc	plur	femi	plur
+des pruneaux des Zes ont rassasié	past	masc	plur	femi	plur
+des pruneaux des Zes vont nourrir	future	masc	plur	femi	plur
+des pruneaux des Zes vont rassasier	future	masc	plur	femi	plur
+des pruneaux des Aes ont nourri	past	masc	plur	femi	plur
+des pruneaux des Aes ont rassasié	past	masc	plur	femi	plur
+des pruneaux des Aes vont nourrir	future	masc	plur	femi	plur
+des pruneaux des Aes vont rassasier	future	masc	plur	femi	plur
+des pruneaux des Bes ont nourri	past	masc	plur	femi	plur
+des pruneaux des Bes ont rassasié	past	masc	plur	femi	plur
+des pruneaux des Bes vont nourrir	future	masc	plur	femi	plur
+des pruneaux des Bes vont rassasier	future	masc	plur	femi	plur
+les pruneaux du marché ont nourri	past	masc	plur	masc	sing
+les pruneaux du marché ont rassasié	past	masc	plur	masc	sing
+les pruneaux du marché vont nourrir	future	masc	plur	masc	sing
+les pruneaux du marché vont rassasier	future	masc	plur	masc	sing
+les pruneaux du magasin ont nourri	past	masc	plur	masc	sing
+les pruneaux du magasin ont rassasié	past	masc	plur	masc	sing
+les pruneaux du magasin vont nourrir	future	masc	plur	masc	sing
+les pruneaux du magasin vont rassasier	future	masc	plur	masc	sing
+les pruneaux du commerce ont nourri	past	masc	plur	masc	sing
+les pruneaux du commerce ont rassasié	past	masc	plur	masc	sing
+les pruneaux du commerce vont nourrir	future	masc	plur	masc	sing
+les pruneaux du commerce vont rassasier	future	masc	plur	masc	sing
+les pruneaux du jardin ont nourri	past	masc	plur	masc	sing
+les pruneaux du jardin ont rassasié	past	masc	plur	masc	sing
+les pruneaux du jardin vont nourrir	future	masc	plur	masc	sing
+les pruneaux du jardin vont rassasier	future	masc	plur	masc	sing
+les pruneaux du verger ont nourri	past	masc	plur	masc	sing
+les pruneaux du verger ont rassasié	past	masc	plur	masc	sing
+les pruneaux du verger vont nourrir	future	masc	plur	masc	sing
+les pruneaux du verger vont rassasier	future	masc	plur	masc	sing
+les pruneaux des marchés ont nourri	past	masc	plur	masc	plur
+les pruneaux des marchés ont rassasié	past	masc	plur	masc	plur
+les pruneaux des marchés vont nourrir	future	masc	plur	masc	plur
+les pruneaux des marchés vont rassasier	future	masc	plur	masc	plur
+les pruneaux des magasins ont nourri	past	masc	plur	masc	plur
+les pruneaux des magasins ont rassasié	past	masc	plur	masc	plur
+les pruneaux des magasins vont nourrir	future	masc	plur	masc	plur
+les pruneaux des magasins vont rassasier	future	masc	plur	masc	plur
+les pruneaux des commerces ont nourri	past	masc	plur	masc	plur
+les pruneaux des commerces ont rassasié	past	masc	plur	masc	plur
+les pruneaux des commerces vont nourrir	future	masc	plur	masc	plur
+les pruneaux des commerces vont rassasier	future	masc	plur	masc	plur
+les pruneaux des jardins ont nourri	past	masc	plur	masc	plur
+les pruneaux des jardins ont rassasié	past	masc	plur	masc	plur
+les pruneaux des jardins vont nourrir	future	masc	plur	masc	plur
+les pruneaux des jardins vont rassasier	future	masc	plur	masc	plur
+les pruneaux des vergers ont nourri	past	masc	plur	masc	plur
+les pruneaux des vergers ont rassasié	past	masc	plur	masc	plur
+les pruneaux des vergers vont nourrir	future	masc	plur	masc	plur
+les pruneaux des vergers vont rassasier	future	masc	plur	masc	plur
+les pruneaux de la X ont nourri	past	masc	plur	femi	sing
+les pruneaux de la X ont rassasié	past	masc	plur	femi	sing
+les pruneaux de la X vont nourrir	future	masc	plur	femi	sing
+les pruneaux de la X vont rassasier	future	masc	plur	femi	sing
+les pruneaux de la Y ont nourri	past	masc	plur	femi	sing
+les pruneaux de la Y ont rassasié	past	masc	plur	femi	sing
+les pruneaux de la Y vont nourrir	future	masc	plur	femi	sing
+les pruneaux de la Y vont rassasier	future	masc	plur	femi	sing
+les pruneaux de la Z ont nourri	past	masc	plur	femi	sing
+les pruneaux de la Z ont rassasié	past	masc	plur	femi	sing
+les pruneaux de la Z vont nourrir	future	masc	plur	femi	sing
+les pruneaux de la Z vont rassasier	future	masc	plur	femi	sing
+les pruneaux de la A ont nourri	past	masc	plur	femi	sing
+les pruneaux de la A ont rassasié	past	masc	plur	femi	sing
+les pruneaux de la A vont nourrir	future	masc	plur	femi	sing
+les pruneaux de la A vont rassasier	future	masc	plur	femi	sing
+les pruneaux de la B ont nourri	past	masc	plur	femi	sing
+les pruneaux de la B ont rassasié	past	masc	plur	femi	sing
+les pruneaux de la B vont nourrir	future	masc	plur	femi	sing
+les pruneaux de la B vont rassasier	future	masc	plur	femi	sing
+les pruneaux des Xes ont nourri	past	masc	plur	femi	plur
+les pruneaux des Xes ont rassasié	past	masc	plur	femi	plur
+les pruneaux des Xes vont nourrir	future	masc	plur	femi	plur
+les pruneaux des Xes vont rassasier	future	masc	plur	femi	plur
+les pruneaux des Yes ont nourri	past	masc	plur	femi	plur
+les pruneaux des Yes ont rassasié	past	masc	plur	femi	plur
+les pruneaux des Yes vont nourrir	future	masc	plur	femi	plur
+les pruneaux des Yes vont rassasier	future	masc	plur	femi	plur
+les pruneaux des Zes ont nourri	past	masc	plur	femi	plur
+les pruneaux des Zes ont rassasié	past	masc	plur	femi	plur
+les pruneaux des Zes vont nourrir	future	masc	plur	femi	plur
+les pruneaux des Zes vont rassasier	future	masc	plur	femi	plur
+les pruneaux des Aes ont nourri	past	masc	plur	femi	plur
+les pruneaux des Aes ont rassasié	past	masc	plur	femi	plur
+les pruneaux des Aes vont nourrir	future	masc	plur	femi	plur
+les pruneaux des Aes vont rassasier	future	masc	plur	femi	plur
+les pruneaux des Bes ont nourri	past	masc	plur	femi	plur
+les pruneaux des Bes ont rassasié	past	masc	plur	femi	plur
+les pruneaux des Bes vont nourrir	future	masc	plur	femi	plur
+les pruneaux des Bes vont rassasier	future	masc	plur	femi	plur
+ces pruneaux du marché ont nourri	past	masc	plur	masc	sing
+ces pruneaux du marché ont rassasié	past	masc	plur	masc	sing
+ces pruneaux du marché vont nourrir	future	masc	plur	masc	sing
+ces pruneaux du marché vont rassasier	future	masc	plur	masc	sing
+ces pruneaux du magasin ont nourri	past	masc	plur	masc	sing
+ces pruneaux du magasin ont rassasié	past	masc	plur	masc	sing
+ces pruneaux du magasin vont nourrir	future	masc	plur	masc	sing
+ces pruneaux du magasin vont rassasier	future	masc	plur	masc	sing
+ces pruneaux du commerce ont nourri	past	masc	plur	masc	sing
+ces pruneaux du commerce ont rassasié	past	masc	plur	masc	sing
+ces pruneaux du commerce vont nourrir	future	masc	plur	masc	sing
+ces pruneaux du commerce vont rassasier	future	masc	plur	masc	sing
+ces pruneaux du jardin ont nourri	past	masc	plur	masc	sing
+ces pruneaux du jardin ont rassasié	past	masc	plur	masc	sing
+ces pruneaux du jardin vont nourrir	future	masc	plur	masc	sing
+ces pruneaux du jardin vont rassasier	future	masc	plur	masc	sing
+ces pruneaux du verger ont nourri	past	masc	plur	masc	sing
+ces pruneaux du verger ont rassasié	past	masc	plur	masc	sing
+ces pruneaux du verger vont nourrir	future	masc	plur	masc	sing
+ces pruneaux du verger vont rassasier	future	masc	plur	masc	sing
+ces pruneaux des marchés ont nourri	past	masc	plur	masc	plur
+ces pruneaux des marchés ont rassasié	past	masc	plur	masc	plur
+ces pruneaux des marchés vont nourrir	future	masc	plur	masc	plur
+ces pruneaux des marchés vont rassasier	future	masc	plur	masc	plur
+ces pruneaux des magasins ont nourri	past	masc	plur	masc	plur
+ces pruneaux des magasins ont rassasié	past	masc	plur	masc	plur
+ces pruneaux des magasins vont nourrir	future	masc	plur	masc	plur
+ces pruneaux des magasins vont rassasier	future	masc	plur	masc	plur
+ces pruneaux des commerces ont nourri	past	masc	plur	masc	plur
+ces pruneaux des commerces ont rassasié	past	masc	plur	masc	plur
+ces pruneaux des commerces vont nourrir	future	masc	plur	masc	plur
+ces pruneaux des commerces vont rassasier	future	masc	plur	masc	plur
+ces pruneaux des jardins ont nourri	past	masc	plur	masc	plur
+ces pruneaux des jardins ont rassasié	past	masc	plur	masc	plur
+ces pruneaux des jardins vont nourrir	future	masc	plur	masc	plur
+ces pruneaux des jardins vont rassasier	future	masc	plur	masc	plur
+ces pruneaux des vergers ont nourri	past	masc	plur	masc	plur
+ces pruneaux des vergers ont rassasié	past	masc	plur	masc	plur
+ces pruneaux des vergers vont nourrir	future	masc	plur	masc	plur
+ces pruneaux des vergers vont rassasier	future	masc	plur	masc	plur
+ces pruneaux de la X ont nourri	past	masc	plur	femi	sing
+ces pruneaux de la X ont rassasié	past	masc	plur	femi	sing
+ces pruneaux de la X vont nourrir	future	masc	plur	femi	sing
+ces pruneaux de la X vont rassasier	future	masc	plur	femi	sing
+ces pruneaux de la Y ont nourri	past	masc	plur	femi	sing
+ces pruneaux de la Y ont rassasié	past	masc	plur	femi	sing
+ces pruneaux de la Y vont nourrir	future	masc	plur	femi	sing
+ces pruneaux de la Y vont rassasier	future	masc	plur	femi	sing
+ces pruneaux de la Z ont nourri	past	masc	plur	femi	sing
+ces pruneaux de la Z ont rassasié	past	masc	plur	femi	sing
+ces pruneaux de la Z vont nourrir	future	masc	plur	femi	sing
+ces pruneaux de la Z vont rassasier	future	masc	plur	femi	sing
+ces pruneaux de la A ont nourri	past	masc	plur	femi	sing
+ces pruneaux de la A ont rassasié	past	masc	plur	femi	sing
+ces pruneaux de la A vont nourrir	future	masc	plur	femi	sing
+ces pruneaux de la A vont rassasier	future	masc	plur	femi	sing
+ces pruneaux de la B ont nourri	past	masc	plur	femi	sing
+ces pruneaux de la B ont rassasié	past	masc	plur	femi	sing
+ces pruneaux de la B vont nourrir	future	masc	plur	femi	sing
+ces pruneaux de la B vont rassasier	future	masc	plur	femi	sing
+ces pruneaux des Xes ont nourri	past	masc	plur	femi	plur
+ces pruneaux des Xes ont rassasié	past	masc	plur	femi	plur
+ces pruneaux des Xes vont nourrir	future	masc	plur	femi	plur
+ces pruneaux des Xes vont rassasier	future	masc	plur	femi	plur
+ces pruneaux des Yes ont nourri	past	masc	plur	femi	plur
+ces pruneaux des Yes ont rassasié	past	masc	plur	femi	plur
+ces pruneaux des Yes vont nourrir	future	masc	plur	femi	plur
+ces pruneaux des Yes vont rassasier	future	masc	plur	femi	plur
+ces pruneaux des Zes ont nourri	past	masc	plur	femi	plur
+ces pruneaux des Zes ont rassasié	past	masc	plur	femi	plur
+ces pruneaux des Zes vont nourrir	future	masc	plur	femi	plur
+ces pruneaux des Zes vont rassasier	future	masc	plur	femi	plur
+ces pruneaux des Aes ont nourri	past	masc	plur	femi	plur
+ces pruneaux des Aes ont rassasié	past	masc	plur	femi	plur
+ces pruneaux des Aes vont nourrir	future	masc	plur	femi	plur
+ces pruneaux des Aes vont rassasier	future	masc	plur	femi	plur
+ces pruneaux des Bes ont nourri	past	masc	plur	femi	plur
+ces pruneaux des Bes ont rassasié	past	masc	plur	femi	plur
+ces pruneaux des Bes vont nourrir	future	masc	plur	femi	plur
+ces pruneaux des Bes vont rassasier	future	masc	plur	femi	plur
+des noix du marché ont nourri	past	femi	plur	masc	sing
+des noix du marché ont rassasié	past	femi	plur	masc	sing
+des noix du marché vont nourrir	future	femi	plur	masc	sing
+des noix du marché vont rassasier	future	femi	plur	masc	sing
+des noix du magasin ont nourri	past	femi	plur	masc	sing
+des noix du magasin ont rassasié	past	femi	plur	masc	sing
+des noix du magasin vont nourrir	future	femi	plur	masc	sing
+des noix du magasin vont rassasier	future	femi	plur	masc	sing
+des noix du commerce ont nourri	past	femi	plur	masc	sing
+des noix du commerce ont rassasié	past	femi	plur	masc	sing
+des noix du commerce vont nourrir	future	femi	plur	masc	sing
+des noix du commerce vont rassasier	future	femi	plur	masc	sing
+des noix du jardin ont nourri	past	femi	plur	masc	sing
+des noix du jardin ont rassasié	past	femi	plur	masc	sing
+des noix du jardin vont nourrir	future	femi	plur	masc	sing
+des noix du jardin vont rassasier	future	femi	plur	masc	sing
+des noix du verger ont nourri	past	femi	plur	masc	sing
+des noix du verger ont rassasié	past	femi	plur	masc	sing
+des noix du verger vont nourrir	future	femi	plur	masc	sing
+des noix du verger vont rassasier	future	femi	plur	masc	sing
+des noix des marchés ont nourri	past	femi	plur	masc	plur
+des noix des marchés ont rassasié	past	femi	plur	masc	plur
+des noix des marchés vont nourrir	future	femi	plur	masc	plur
+des noix des marchés vont rassasier	future	femi	plur	masc	plur
+des noix des magasins ont nourri	past	femi	plur	masc	plur
+des noix des magasins ont rassasié	past	femi	plur	masc	plur
+des noix des magasins vont nourrir	future	femi	plur	masc	plur
+des noix des magasins vont rassasier	future	femi	plur	masc	plur
+des noix des commerces ont nourri	past	femi	plur	masc	plur
+des noix des commerces ont rassasié	past	femi	plur	masc	plur
+des noix des commerces vont nourrir	future	femi	plur	masc	plur
+des noix des commerces vont rassasier	future	femi	plur	masc	plur
+des noix des jardins ont nourri	past	femi	plur	masc	plur
+des noix des jardins ont rassasié	past	femi	plur	masc	plur
+des noix des jardins vont nourrir	future	femi	plur	masc	plur
+des noix des jardins vont rassasier	future	femi	plur	masc	plur
+des noix des vergers ont nourri	past	femi	plur	masc	plur
+des noix des vergers ont rassasié	past	femi	plur	masc	plur
+des noix des vergers vont nourrir	future	femi	plur	masc	plur
+des noix des vergers vont rassasier	future	femi	plur	masc	plur
+des noix de la X ont nourri	past	femi	plur	femi	sing
+des noix de la X ont rassasié	past	femi	plur	femi	sing
+des noix de la X vont nourrir	future	femi	plur	femi	sing
+des noix de la X vont rassasier	future	femi	plur	femi	sing
+des noix de la Y ont nourri	past	femi	plur	femi	sing
+des noix de la Y ont rassasié	past	femi	plur	femi	sing
+des noix de la Y vont nourrir	future	femi	plur	femi	sing
+des noix de la Y vont rassasier	future	femi	plur	femi	sing
+des noix de la Z ont nourri	past	femi	plur	femi	sing
+des noix de la Z ont rassasié	past	femi	plur	femi	sing
+des noix de la Z vont nourrir	future	femi	plur	femi	sing
+des noix de la Z vont rassasier	future	femi	plur	femi	sing
+des noix de la A ont nourri	past	femi	plur	femi	sing
+des noix de la A ont rassasié	past	femi	plur	femi	sing
+des noix de la A vont nourrir	future	femi	plur	femi	sing
+des noix de la A vont rassasier	future	femi	plur	femi	sing
+des noix de la B ont nourri	past	femi	plur	femi	sing
+des noix de la B ont rassasié	past	femi	plur	femi	sing
+des noix de la B vont nourrir	future	femi	plur	femi	sing
+des noix de la B vont rassasier	future	femi	plur	femi	sing
+des noix des Xes ont nourri	past	femi	plur	femi	plur
+des noix des Xes ont rassasié	past	femi	plur	femi	plur
+des noix des Xes vont nourrir	future	femi	plur	femi	plur
+des noix des Xes vont rassasier	future	femi	plur	femi	plur
+des noix des Yes ont nourri	past	femi	plur	femi	plur
+des noix des Yes ont rassasié	past	femi	plur	femi	plur
+des noix des Yes vont nourrir	future	femi	plur	femi	plur
+des noix des Yes vont rassasier	future	femi	plur	femi	plur
+des noix des Zes ont nourri	past	femi	plur	femi	plur
+des noix des Zes ont rassasié	past	femi	plur	femi	plur
+des noix des Zes vont nourrir	future	femi	plur	femi	plur
+des noix des Zes vont rassasier	future	femi	plur	femi	plur
+des noix des Aes ont nourri	past	femi	plur	femi	plur
+des noix des Aes ont rassasié	past	femi	plur	femi	plur
+des noix des Aes vont nourrir	future	femi	plur	femi	plur
+des noix des Aes vont rassasier	future	femi	plur	femi	plur
+des noix des Bes ont nourri	past	femi	plur	femi	plur
+des noix des Bes ont rassasié	past	femi	plur	femi	plur
+des noix des Bes vont nourrir	future	femi	plur	femi	plur
+des noix des Bes vont rassasier	future	femi	plur	femi	plur
+les noix du marché ont nourri	past	femi	plur	masc	sing
+les noix du marché ont rassasié	past	femi	plur	masc	sing
+les noix du marché vont nourrir	future	femi	plur	masc	sing
+les noix du marché vont rassasier	future	femi	plur	masc	sing
+les noix du magasin ont nourri	past	femi	plur	masc	sing
+les noix du magasin ont rassasié	past	femi	plur	masc	sing
+les noix du magasin vont nourrir	future	femi	plur	masc	sing
+les noix du magasin vont rassasier	future	femi	plur	masc	sing
+les noix du commerce ont nourri	past	femi	plur	masc	sing
+les noix du commerce ont rassasié	past	femi	plur	masc	sing
+les noix du commerce vont nourrir	future	femi	plur	masc	sing
+les noix du commerce vont rassasier	future	femi	plur	masc	sing
+les noix du jardin ont nourri	past	femi	plur	masc	sing
+les noix du jardin ont rassasié	past	femi	plur	masc	sing
+les noix du jardin vont nourrir	future	femi	plur	masc	sing
+les noix du jardin vont rassasier	future	femi	plur	masc	sing
+les noix du verger ont nourri	past	femi	plur	masc	sing
+les noix du verger ont rassasié	past	femi	plur	masc	sing
+les noix du verger vont nourrir	future	femi	plur	masc	sing
+les noix du verger vont rassasier	future	femi	plur	masc	sing
+les noix des marchés ont nourri	past	femi	plur	masc	plur
+les noix des marchés ont rassasié	past	femi	plur	masc	plur
+les noix des marchés vont nourrir	future	femi	plur	masc	plur
+les noix des marchés vont rassasier	future	femi	plur	masc	plur
+les noix des magasins ont nourri	past	femi	plur	masc	plur
+les noix des magasins ont rassasié	past	femi	plur	masc	plur
+les noix des magasins vont nourrir	future	femi	plur	masc	plur
+les noix des magasins vont rassasier	future	femi	plur	masc	plur
+les noix des commerces ont nourri	past	femi	plur	masc	plur
+les noix des commerces ont rassasié	past	femi	plur	masc	plur
+les noix des commerces vont nourrir	future	femi	plur	masc	plur
+les noix des commerces vont rassasier	future	femi	plur	masc	plur
+les noix des jardins ont nourri	past	femi	plur	masc	plur
+les noix des jardins ont rassasié	past	femi	plur	masc	plur
+les noix des jardins vont nourrir	future	femi	plur	masc	plur
+les noix des jardins vont rassasier	future	femi	plur	masc	plur
+les noix des vergers ont nourri	past	femi	plur	masc	plur
+les noix des vergers ont rassasié	past	femi	plur	masc	plur
+les noix des vergers vont nourrir	future	femi	plur	masc	plur
+les noix des vergers vont rassasier	future	femi	plur	masc	plur
+les noix de la X ont nourri	past	femi	plur	femi	sing
+les noix de la X ont rassasié	past	femi	plur	femi	sing
+les noix de la X vont nourrir	future	femi	plur	femi	sing
+les noix de la X vont rassasier	future	femi	plur	femi	sing
+les noix de la Y ont nourri	past	femi	plur	femi	sing
+les noix de la Y ont rassasié	past	femi	plur	femi	sing
+les noix de la Y vont nourrir	future	femi	plur	femi	sing
+les noix de la Y vont rassasier	future	femi	plur	femi	sing
+les noix de la Z ont nourri	past	femi	plur	femi	sing
+les noix de la Z ont rassasié	past	femi	plur	femi	sing
+les noix de la Z vont nourrir	future	femi	plur	femi	sing
+les noix de la Z vont rassasier	future	femi	plur	femi	sing
+les noix de la A ont nourri	past	femi	plur	femi	sing
+les noix de la A ont rassasié	past	femi	plur	femi	sing
+les noix de la A vont nourrir	future	femi	plur	femi	sing
+les noix de la A vont rassasier	future	femi	plur	femi	sing
+les noix de la B ont nourri	past	femi	plur	femi	sing
+les noix de la B ont rassasié	past	femi	plur	femi	sing
+les noix de la B vont nourrir	future	femi	plur	femi	sing
+les noix de la B vont rassasier	future	femi	plur	femi	sing
+les noix des Xes ont nourri	past	femi	plur	femi	plur
+les noix des Xes ont rassasié	past	femi	plur	femi	plur
+les noix des Xes vont nourrir	future	femi	plur	femi	plur
+les noix des Xes vont rassasier	future	femi	plur	femi	plur
+les noix des Yes ont nourri	past	femi	plur	femi	plur
+les noix des Yes ont rassasié	past	femi	plur	femi	plur
+les noix des Yes vont nourrir	future	femi	plur	femi	plur
+les noix des Yes vont rassasier	future	femi	plur	femi	plur
+les noix des Zes ont nourri	past	femi	plur	femi	plur
+les noix des Zes ont rassasié	past	femi	plur	femi	plur
+les noix des Zes vont nourrir	future	femi	plur	femi	plur
+les noix des Zes vont rassasier	future	femi	plur	femi	plur
+les noix des Aes ont nourri	past	femi	plur	femi	plur
+les noix des Aes ont rassasié	past	femi	plur	femi	plur
+les noix des Aes vont nourrir	future	femi	plur	femi	plur
+les noix des Aes vont rassasier	future	femi	plur	femi	plur
+les noix des Bes ont nourri	past	femi	plur	femi	plur
+les noix des Bes ont rassasié	past	femi	plur	femi	plur
+les noix des Bes vont nourrir	future	femi	plur	femi	plur
+les noix des Bes vont rassasier	future	femi	plur	femi	plur
+ces noix du marché ont nourri	past	femi	plur	masc	sing
+ces noix du marché ont rassasié	past	femi	plur	masc	sing
+ces noix du marché vont nourrir	future	femi	plur	masc	sing
+ces noix du marché vont rassasier	future	femi	plur	masc	sing
+ces noix du magasin ont nourri	past	femi	plur	masc	sing
+ces noix du magasin ont rassasié	past	femi	plur	masc	sing
+ces noix du magasin vont nourrir	future	femi	plur	masc	sing
+ces noix du magasin vont rassasier	future	femi	plur	masc	sing
+ces noix du commerce ont nourri	past	femi	plur	masc	sing
+ces noix du commerce ont rassasié	past	femi	plur	masc	sing
+ces noix du commerce vont nourrir	future	femi	plur	masc	sing
+ces noix du commerce vont rassasier	future	femi	plur	masc	sing
+ces noix du jardin ont nourri	past	femi	plur	masc	sing
+ces noix du jardin ont rassasié	past	femi	plur	masc	sing
+ces noix du jardin vont nourrir	future	femi	plur	masc	sing
+ces noix du jardin vont rassasier	future	femi	plur	masc	sing
+ces noix du verger ont nourri	past	femi	plur	masc	sing
+ces noix du verger ont rassasié	past	femi	plur	masc	sing
+ces noix du verger vont nourrir	future	femi	plur	masc	sing
+ces noix du verger vont rassasier	future	femi	plur	masc	sing
+ces noix des marchés ont nourri	past	femi	plur	masc	plur
+ces noix des marchés ont rassasié	past	femi	plur	masc	plur
+ces noix des marchés vont nourrir	future	femi	plur	masc	plur
+ces noix des marchés vont rassasier	future	femi	plur	masc	plur
+ces noix des magasins ont nourri	past	femi	plur	masc	plur
+ces noix des magasins ont rassasié	past	femi	plur	masc	plur
+ces noix des magasins vont nourrir	future	femi	plur	masc	plur
+ces noix des magasins vont rassasier	future	femi	plur	masc	plur
+ces noix des commerces ont nourri	past	femi	plur	masc	plur
+ces noix des commerces ont rassasié	past	femi	plur	masc	plur
+ces noix des commerces vont nourrir	future	femi	plur	masc	plur
+ces noix des commerces vont rassasier	future	femi	plur	masc	plur
+ces noix des jardins ont nourri	past	femi	plur	masc	plur
+ces noix des jardins ont rassasié	past	femi	plur	masc	plur
+ces noix des jardins vont nourrir	future	femi	plur	masc	plur
+ces noix des jardins vont rassasier	future	femi	plur	masc	plur
+ces noix des vergers ont nourri	past	femi	plur	masc	plur
+ces noix des vergers ont rassasié	past	femi	plur	masc	plur
+ces noix des vergers vont nourrir	future	femi	plur	masc	plur
+ces noix des vergers vont rassasier	future	femi	plur	masc	plur
+ces noix de la X ont nourri	past	femi	plur	femi	sing
+ces noix de la X ont rassasié	past	femi	plur	femi	sing
+ces noix de la X vont nourrir	future	femi	plur	femi	sing
+ces noix de la X vont rassasier	future	femi	plur	femi	sing
+ces noix de la Y ont nourri	past	femi	plur	femi	sing
+ces noix de la Y ont rassasié	past	femi	plur	femi	sing
+ces noix de la Y vont nourrir	future	femi	plur	femi	sing
+ces noix de la Y vont rassasier	future	femi	plur	femi	sing
+ces noix de la Z ont nourri	past	femi	plur	femi	sing
+ces noix de la Z ont rassasié	past	femi	plur	femi	sing
+ces noix de la Z vont nourrir	future	femi	plur	femi	sing
+ces noix de la Z vont rassasier	future	femi	plur	femi	sing
+ces noix de la A ont nourri	past	femi	plur	femi	sing
+ces noix de la A ont rassasié	past	femi	plur	femi	sing
+ces noix de la A vont nourrir	future	femi	plur	femi	sing
+ces noix de la A vont rassasier	future	femi	plur	femi	sing
+ces noix de la B ont nourri	past	femi	plur	femi	sing
+ces noix de la B ont rassasié	past	femi	plur	femi	sing
+ces noix de la B vont nourrir	future	femi	plur	femi	sing
+ces noix de la B vont rassasier	future	femi	plur	femi	sing
+ces noix des Xes ont nourri	past	femi	plur	femi	plur
+ces noix des Xes ont rassasié	past	femi	plur	femi	plur
+ces noix des Xes vont nourrir	future	femi	plur	femi	plur
+ces noix des Xes vont rassasier	future	femi	plur	femi	plur
+ces noix des Yes ont nourri	past	femi	plur	femi	plur
+ces noix des Yes ont rassasié	past	femi	plur	femi	plur
+ces noix des Yes vont nourrir	future	femi	plur	femi	plur
+ces noix des Yes vont rassasier	future	femi	plur	femi	plur
+ces noix des Zes ont nourri	past	femi	plur	femi	plur
+ces noix des Zes ont rassasié	past	femi	plur	femi	plur
+ces noix des Zes vont nourrir	future	femi	plur	femi	plur
+ces noix des Zes vont rassasier	future	femi	plur	femi	plur
+ces noix des Aes ont nourri	past	femi	plur	femi	plur
+ces noix des Aes ont rassasié	past	femi	plur	femi	plur
+ces noix des Aes vont nourrir	future	femi	plur	femi	plur
+ces noix des Aes vont rassasier	future	femi	plur	femi	plur
+ces noix des Bes ont nourri	past	femi	plur	femi	plur
+ces noix des Bes ont rassasié	past	femi	plur	femi	plur
+ces noix des Bes vont nourrir	future	femi	plur	femi	plur
+ces noix des Bes vont rassasier	future	femi	plur	femi	plur

@@ -16,6 +16,10 @@ def weighted_min_indice(list):
         rnd -= w
         if rnd < 0:
             return i
+
+
+#def weighted_min_indice(list):
+    #return list.index(min(list))
     
 def Count(Counter, word):
     if word not in Counter['word']:
@@ -101,6 +105,8 @@ def add_info(info, word_type, word, ind, type, anomaly=False, tense=None, conjug
         elif anomaly == 'semantic':
             info[-1]['semantic_anomaly_type'] = word_type
             info[-1]['semantic_anomaly'] = word
+    elif word_type == 'sentence':
+        info[-1]['sentence'] = word
     
 def create_info(info):
     info.append({})
@@ -404,6 +410,7 @@ def construct_sentence(structure, det, subject, prepo, verb, det2, object):
         sentence = det + ' ' + subject + ' ' + prepo + ' ' + verb# + '.'
     # sentence = sentence[0].upper() + sentence[1::]
     sentence = ' '.join(sentence.split())
+    add_info(info, 'sentence', sentence, [], [])
     return sentence
   
 ## ANOMALIES
@@ -1273,6 +1280,7 @@ def generate_relative_clauses( old_sentence, counter ):
 
     new_sentence = old_sentence.split()[0:info[-1]['NP_length']] + relative_clause + old_sentence.split()[info[-1]['NP_length']::]
     new_sentence = ' '.join( new_sentence )
+    add_info(info, 'sentence', new_sentence, [], [])
     return new_sentence
 
 def add_PoS_to_info_start( info ):
@@ -1329,6 +1337,7 @@ def generate_adverb_structure( old_sentence, counter ):
     info[-1]['VP_length'] += len(adv)
     add_PoS_to_info_end( info[-1] )
     new_sentence = ' '.join( new_sentence )
+    add_info(info, 'sentence', new_sentence, [], [])
     return new_sentence
 
 ## master structure -> choose structure and call relevant function
