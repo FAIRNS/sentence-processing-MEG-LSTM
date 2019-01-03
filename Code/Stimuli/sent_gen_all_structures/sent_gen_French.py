@@ -26,7 +26,7 @@ if args.natask == 'nounPP':
                                 print('%s\t%s\t%s\t%s\t%s\t%s' % (sentence, tense, gender, number, gender_attractor, number_attractor))
 
 
-if args.natask == 'nounPPAdv':
+if args.natask == 'nounPPAdj':
     for subject, gender, number in zip(Words[type]['subjects']['word'], Words[type]['subjects']['sexe'], Words[type]['subjects']['plurality']):
         det_type = 'determinants' if number == 'sing' else 'determinants_plural'
         for det in Words[type][det_type][gender]:
