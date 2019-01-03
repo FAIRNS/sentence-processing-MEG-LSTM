@@ -70,6 +70,19 @@ prepo_fruits['masc']['plur'] = ['des marchés', 'des magasins', 'des commerces',
 prepo_fruits['femi']['sing'] = ['de la X', 'de la Y', 'de la Z', 'de la A', 'de la B']
 prepo_fruits['femi']['plur']  = ['des Xes', 'des Yes', 'des Zes', 'des Aes', 'des Bes']
 
+
+adjectives = {}
+adjectives['masc'] = {}
+adjectives['femi'] = {}
+adjectives['masc']['sing'] = ['vert', 'lointain']
+adjectives['masc']['plur'] = ['verts', 'lointains']
+adjectives['femi']['sing'] = ['verte', 'lointaine']
+adjectives['femi']['plur']  = ['vertes', 'lointaines']
+
+
+######
+
+
 animate_anomalies = {} #anomalies for animate words
 animate_anomalies['word'] = ['vélo', 'pépin', 'sirop', 'soda', 'thé', 'meuble', 'scooter', 'fusil', 'fruit', 'citron', 'raisin', 'pruneau', 'volet', 'carnet', 'manuel', 'papier']
 make_counter(animate_anomalies)
@@ -147,7 +160,7 @@ exceptions = {}
 exceptions['subjects'] = [0 for i in range(len(subjects['word']))]
 exceptions['objects'] = [0 for i in range(len(objects['word']))]
 
-words = {'subjects':subjects.copy(), 'objects':objects.copy(), 'verbs':verbs.copy(), 'prepositions':prepositions.copy(), 'determinants':determinants.copy(), 'determinants_plural':determinants_plural.copy(), 'exceptions':exceptions.copy(), 'prepositions2':prepositions2.copy()}
+words = {'subjects':subjects.copy(), 'objects':objects.copy(), 'verbs':verbs.copy(), 'prepositions':prepositions.copy(), 'determinants':determinants.copy(), 'determinants_plural':determinants_plural.copy(), 'exceptions':exceptions.copy(), 'prepositions2':prepositions2.copy(), 'adjectives':adjectives.copy()}
 
 Words.append(words)
 
