@@ -5,7 +5,7 @@ from lexicon import Words
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Stimulus generator for French')
-parser.add_argument('-t', '--type', default=all, type=str, help = '{0-5, all}: one of six types of sentences in Theo dataset. "all" for looping over all types')
+parser.add_argument('-t', '--type', default='all', type=str, help = '{0-5, all}: one of six types of sentences in Theo dataset. "all" for looping over all types')
 parser.add_argument('-n', '--natask', default='nounPP', type=str, help = 'Number-agreement (NA) task to generate')
 
 args = parser.parse_args()
@@ -13,6 +13,14 @@ if args.type == 'all':
 	types = range(6)
 else:
 	types = [int(args.type)]
+
+# Create counter
+counter = {}
+for gender_attractor in ['masc', 'femi']:
+    for number_attractor in ['sing', 'plur']:
+        for gender in ['masc', 'femi']:
+            for number in ['sing', 'plur']:
+                counter["_".join([gender_attractor, number_attractor, gender, number])] = 0
 
 # Generate sentences and print to terminal
 for type in types:
@@ -28,6 +36,7 @@ for type in types:
 								for VP in Words[type]['verbs'][tense][number]:
 									sentence = NP + ' ' + VP
 									print('%s\t%s\t%s\t%s\t%s\t%s' % (sentence, tense, gender, number, gender_attractor, number_attractor))
+									counter["_".join([gender_attractor, number_attractor, gender, number])] += 1 
 
 
 	if args.natask == 'nounPPAdj':
@@ -43,3 +52,7 @@ for type in types:
 									for VP in Words[type]['verbs'][tense][number]:
 										sentence = NP + ' ' + VP
 										print('%s\t%s\t%s\t%s\t%s\t%s' % (sentence, tense, gender, number, gender_attractor, number_attractor))
+										counter["_".join([gender_attractor, number_attractor, gender, number])] += 1
+
+if not all(x==list(counter.values())[0] for x in counter.values()): 
+    raise Exception("Numbre of conditions mismatch: ", counter)
