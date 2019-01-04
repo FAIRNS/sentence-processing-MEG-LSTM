@@ -20,7 +20,7 @@ for gender_attractor in ['masc', 'femi']:
     for number_attractor in ['sing', 'plur']:
         for gender in ['masc', 'femi']:
             for number in ['sing', 'plur']:
-                counter["_".join([gender_attractor, number_attractor, gender, number])] = 0
+                counter["_".join([gender, number, gender_attractor, number_attractor])] = 0
 
 # Generate sentences and print to terminal
 for type in types:
@@ -36,7 +36,7 @@ for type in types:
 								for VP in Words[type]['verbs'][tense][number]:
 									sentence = NP + ' ' + VP
 									print('%s\t%s\t%s\t%s\t%s\t%s' % (sentence, tense, gender, number, gender_attractor, number_attractor))
-									counter["_".join([gender_attractor, number_attractor, gender, number])] += 1 
+									counter["_".join([gender, number, gender_attractor, number_attractor])] += 1 
 
 
 	if args.natask == 'nounPPAdj':
@@ -52,7 +52,7 @@ for type in types:
 									for VP in Words[type]['verbs'][tense][number]:
 										sentence = NP + ' ' + VP
 										print('%s\t%s\t%s\t%s\t%s\t%s' % (sentence, tense, gender, number, gender_attractor, number_attractor))
-										counter["_".join([gender_attractor, number_attractor, gender, number])] += 1
+										counter["_".join([gender, number, gender_attractor, number_attractor])] += 1
 
 if not all(x==list(counter.values())[0] for x in counter.values()): 
-    raise Exception("Numbre of conditions mismatch: ", counter)
+    raise Exception("Number of conditions mismatch: ", counter)
