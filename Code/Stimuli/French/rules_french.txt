@@ -1,0 +1,621 @@
+### non-terminals ###
+
+# top structures
+
+@S @PP @Sbar
+
+@Sbar @DPsubj @AuxP
+@S @DPsubj @AuxP
+@S @DP_LocP @AuxP
+@Sbar @DPsubj @VP
+@S @DPsubj @VP
+@S @DP_LocP @VP
+@Sbar @DPsubj @Vbar
+@S @DPsubj @Vbar
+@S @DP_LocP @Vbar
+@Sbar @DPsubj @Vintr
+@S @DPsubj @Vintr
+@S @DP_LocP @Vintr
+
+@Sbar @NumPsubj @AuxP
+@S @NumPsubj @AuxP
+@S @NumP_LocP @AuxP
+@Sbar @NumPsubj @VP
+@S @NumPsubj @VP
+@S @NumP_LocP @VP
+@Sbar @NumPsubj @Vbar
+@S @NumPsubj @Vbar
+@S @NumP_LocP @Vbar
+@Sbar @NumPsubj @Vintr
+@S @NumPsubj @Vintr
+@S @NumP_LocP @Vintr
+
+@Sbar @Name @AuxP
+@S @Name @AuxP
+@Sbar @Name @VP
+@S @Name @VP
+@Sbar @Name @Vbar
+@S @Name @Vbar
+@Sbar @Name @Vintr
+@S @Name @Vintr
+
+# top of prepositional phrases
+
+@PP @P @DPloc
+@PP @P @NumPloc
+@PP @P @Name
+
+@RelP @Of @DPrel
+@RelP @Of @NumPrel
+@RelP @Of @Name
+
+# nominal component
+
+@DP_LocP @D @NPPP
+@DP @D @NumP
+@DP @D @NP
+@DP @D @N
+@DP @D @N_RelP
+@DPrel @D @NumPrel
+@DPrel @D @NPrel
+@DPrel @D @N
+
+@DPsubj @D @NumPsubj
+@DPsubj @D @NPsubj
+@DPsubj @D @Nsubj
+@DPsubj @D @Nsubj_RelP
+@DPsubj @D @NumPsubj
+@DPsubj @D @NPsubj
+@DPsubj @D @Nsubj
+@DPsubj @D @Nsubj_RelP
+@DPloc @D @NumPloc
+@DPloc @D @NPloc
+@DPloc @D @Nloc
+@DPloc @D @N
+@DPloc @D @N_RelP
+
+@NumP_LocP @Num @NPPP
+@NumP @Num @NP
+@NumP @Num @N
+@NumP @Num @N_RelP
+@NumPrel @Num @NPrel
+@NumPrel @Num @N
+
+@NumPsubj @Num @NPsubj
+@NumPsubj @Num @Nsubj
+@NumPsubj @Num @Nsubj_RelP
+@NumPloc @Num @NPloc
+@NumPloc @Num @Nloc
+@NumPloc @Num @N
+@NumPloc @Num @N_RelP
+
+@NPPP @NPsubj @PP
+@NPPP @Nsubj @PP
+
+@NP @N @AdjP
+@NP @AdjP_before @N
+
+#
+######@NP @N_adj @AdjP
+@NP @N_RelP @AdjP
+@NP @AdjP_before @N_RelP
+@NP @N @Adj
+@NP @Adj_before @N
+
+#
+#######@NP @N_adj @Adj
+@NP @N_RelP @Adj
+@NP @Adj_before @N_RelP
+@NPrel @N @AdjP
+@NPrel @AdjP_before @N
+#
+###### @NPrel @AdjP @N_adj
+@NPrel @N @Adj
+@NPrel @Adj_before @N
+#
+###### @NPrel @Adj @N_adj
+@NPsubj @Nsubj @AdjP
+@NPsubj @AdjP_before @Nsubj
+@NPsubj @Nsubj_RelP @AdjP
+@NPsubj @AdjP_before @Nsubj_RelP
+@NPsubj @Nsubj @Adj
+@NPsubj @Adj_before @Nsubj
+@NPsubj @Nsubj_RelP @Adj
+@NPsubj @Adj_before @Nsubj_RelP
+@NPloc @Nloc @AdjP
+@NPloc @AdjP_before @Nloc
+@NPloc @N @AdjP
+@NPloc @AdjP_before @N
+@NPloc @N_RelP @AdjP
+@NPloc @AdjP_before @N_RelP
+@NPloc @Nloc @Adj
+@NPloc @Adj_before @Nloc
+@NPloc @N @Adj
+@NPloc @Adj_before @N
+@NPloc @N_RelP @Adj
+@NPloc @Adj_before @N_RelP
+@AdjP @Degree @Adj
+@AdjP_before @Degree @Adj_before
+
+
+@N_RelP @Nrel @RelP
+@Nsubj_RelP @Nsubj_rel @RelP
+#
+@N_adj @N @Adj
+
+# verbal phrases
+
+@AuxP @Aux @VP
+@AuxP @Aux @Vbar
+@AuxP @Etre @Vintr
+@AuxP @Etre @VP_intr
+@AuxP @Entrain @VP
+@AuxP @Entrain @Vbar
+@AuxP @Entrain @Vintr
+
+@VP @Vbar @AdvP
+@VP_intr @Vintr @AdvP
+@VP @Vbar @Adv
+@VP_intr @Vintr @Adv
+@Vbar @V @DP
+@Vbar @V @NumP
+@Vbar @V @Name
+
+@VPger @AdvP @Vbar_ger
+@VPger @AdvP @Vintr_ger
+@VPger @Adv @Vbar_ger
+@VPger @Adv @Vintr_ger
+#@Vbar_ger @En @Vger @DP
+#@Vbar_ger @En @Vger @NumP
+#@Vbar_ger @En @Vger @Name
+
+
+@AdvP @Degree @Adv
+
+### terminals ###
+@En en
+
+@Adj euphorique*euphorique | +singular 0vowel +vowel
+@Adj euphoriques*euphorique | +plural 0vowel +vowel
+@Adj heureux*heureux | +masculin +consonant 0consonant
+@Adj heureuse*heureux | +feminine +singular +consonant 0consonant
+@Adj heureuses*heureux | +feminine +plural +consonant 0consonant
+@Adj énorme*énorme | +singular +vowel 0vowel
+@Adj énormes*énorme | +plural +vowel 0vowel
+@Adj joyeux*joyeux |  +masculin +consonant 0consonant
+@Adj joyeuse*joyeux |  +feminine +singular +consonant 0consonant
+@Adj joyeuses*joyeux |  +feminine +plural +consonant 0consonant
+@Adj large*large |  +singular +consonant 0consonant
+@Adj larges*large |  +plural +consonant 0consonant
+@Adj misérable*misérable |  +singular +consonant 0consonant
+@Adj misérables*misérable |  +plural +consonant 0consonant
+@Adj triste*triste |  +singular +consonant 0consonant
+@Adj tristes*triste |  +plural +consonant 0consonant
+@Adj minuscule*minuscule |  +singular +consonant 0consonant
+@Adj minuscules*minuscule |  +plural +consonant 0consonant
+
+
+@Adj_before petit*petit |  +consonant 0consonant -feminine -plural
+@Adj_before petite*petit |  +consonant 0consonant -masculine -plural
+@Adj_before petits*petit |  +consonant 0consonant -feminine -singular
+@Adj_before petites*petit |  +consonant 0consonant -masculine -singular
+@Adj_before grand*grand | +consonant 0consonant -feminine -plural
+@Adj_before grande*grande | +consonant 0consonant -masculine -plural
+@Adj_before grands*grand | +consonant 0consonant -feminine -singular
+@Adj_before grandes*grand | +consonant 0consonant -masculine -singular
+@Adj_before jeune*jeune |  +consonant 0consonant -inanimate -plural
+@Adj_before jeunes*jeune |  +consonant 0consonant -inanimate -singular
+@Adj_before vieux*vieux | 0vowel +vowel -feminine
+@Adj_before vieille*vieux | 0consonant +consonant -masculine -plural
+@Adj_before vieilles*vieux | 0consonant +consonant -masculine -singular
+
+
+
+@Adv lentement
+@Adv rapidement
+
+@Aux va | 0root +vsingular -past -third
+@Aux vont | 0root +vplural -past -third
+@Aux vient-de | 0root +vsingular -past -third
+@Aux viennent-de | 0root +vplural -past -third
+@Aux a | +vsingular 0past -third -root
+@Aux ont | +vplural 0past -third -root
+@Etre est | +vsingular 0past -third -root -vplural
+@Etre sont | +vplural 0past -third -root -vsingular
+@Entrain est-en-train-de | 0root +vsingular -third -past
+@Entrain sont-en-train-de | 0root +vplural -third -past
+
+@D un | -plural -feminine
+@D une | -plural -masculine
+@D des | -singular
+@D quelques | -singular -number
+@D ce | -feminine -plural -vowel
+@D cet | -feminine -plural -consonant
+@D cette | -masculine -plural
+@D ces | -feminine -singular
+@D l' | -plural -consonant
+@D le | -plural -feminine -vowel
+@D la | -plural -masculine -vowel
+@D les | -singular
+
+
+@Degree vraiment | +consonant 0consonant
+@Degree très | +consonant 0consonant
+
+
+
+@N acteur*acteur | +singular +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -plural -feminine
+@N acteurs*acteur | +plural +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -singular -feminine
+@N actrice*actrice | +singular +vowel +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -plural -masculin
+@N actrices*actrice | +plural +vowel +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -singular -masculin
+#@N athlète*athlète | +singular +vowel 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N athlètes*athlète | +plural +vowel 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N tante*tante | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N tantes*tante | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N garçon*garçon | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N garçons*garçon | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N frère*frère | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N frères*frère | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N charpentier*charpentier | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N charpentiers*charpentier | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N cousin*cousin | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N cousins*cousin | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N cousine*cousine | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N cousines*cousine | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N fille*fille | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N filles*fille | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N docteur*docteur | +singular +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N docteurs*docteur | +plural +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N fermier*fermier | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N fermiers*fermier | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N fermière*fermière | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N fermières*fermière | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N père*père | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N pères*père | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N ami*ami | +vowel +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N amis*ami | +vowel +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N amie*amie | +vowel +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N amies*amie | +vowel +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N gars*gars | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N gars*gars | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N enfant*enfant | +vowel +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N enfants*enfant | +vowel +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N avocat*avocat | +vowel +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N avocats*avocat | +vowel +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N avocate*avocate | +vowel +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N avocates*avocate | +vowel +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N homme*homme | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N hommes*homme | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N mère*mère | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N mères*mère | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N poète*poète | +consonant +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N poètes*poète | +consonant +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N chanteur*chanteur | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N chanteurs*chanteur | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N soeur*soeur | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N soeurs*soeur | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N fils*fils | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N fils*fils | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N professeur*professeur | +consonant +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N professeurs*professeur | +consonant +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N oncle*oncle | +singular +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N oncles*oncle | +plural +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N victimee*victimee | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N victimees*victimee | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N femme*femme | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@N femme*femme | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+
+@Name Marie*Marie | -past -vplural -root -vmasculin -past
+@Name Patrique*Patrique | -past -vplural -root -vfeminine -past
+# @Name Léa*Léa | -vplural -past -vmasculin
+# @Name Barbara*Barbara | -past -vplural -vfeminine
+# @Name Sara*Sara | -past -vplural -vfeminine
+# @Name Jean*Jean | -past -vplural -vfeminine
+# @Name Jeanne*Jeanne | -past -vplural -vmasculin
+# @Name Bob*Bob | -vplural -past -vfeminine
+# @Name Michelle*Michelle | -past -vplural -vmasculin
+# @Name Stéphane*Stéphane | -past -vplural -vfeminine
+
+@Nloc bâteau*bâteau | -past +consonant +inanimate +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+@Nloc bâteaux*bâteau | -past +consonant +inanimate +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc bâtiment*bâtiment | -past +consonant +inanimate +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc bâtiments*bâtiment | -past +consonant +inanimate +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc voiture*voiture | -past +consonant +inanimate +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc voitures*voiture | -past +consonant +inanimate +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc chariot*chariot | -past +consonant +inanimate +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc chariots*chariot | -past +consonant +inanimate +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc forêt*forêt | -past +consonant +inanimate +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc forêts*forêt | -past +consonant +inanimate +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc maison*maison | -past +consonant +inanimate +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc maisons*maison | -past +consonant +inanimate +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc train*train | -past +consonant +inanimate +singular +masculin0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc trains*train | -past +consonant +inanimate +plural +masculin 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc arbre*arbre | -past +consonant +inanimate +singular +masculin 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc arbres*arbre | -past +consonant +inanimate +plural +masculin 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc camion*camion | -past +consonant +inanimate +singular +masculin 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nloc camions*camion | -past +consonant +inanimate +plural +masculin 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+
+@Nrel tante*tante | -past +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+@Nrel tantes*tante | -past +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel frère*frère | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel frères*frère | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel cousin*cousin | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel cousins*cousin | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel cousine*cousine | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel cousines*cousine | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel fille*fille | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel filles*fille | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel docteur*docteur | +singular +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel docteurs*docteur | +plural +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel père*père | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel pères*père | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel ami*ami | +vowel +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel amis*ami | +vowel +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel amie*amie | +vowel +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel amies*amie | +vowel +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel avocat*avocat | +vowel +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel avocats*avocat | +vowel +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel avocate*avocate | +vowel +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel avocates*avocate | +vowel +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel soeur*soeur | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel soeurs*soeur | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel fils*fils | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel fils*fils | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel professeur*professeur | +consonant +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel professeurs*professeur | +consonant +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel oncle*oncle | +singular +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel oncles*oncle | +plural +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+#@Nrel victimee*victimee | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+
+
+@Nsubj acteur*acteur | +singular +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -plural -vplural -feminine -root -past
+@Nsubj acteurs*acteur | +plural +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -singular -vsingular -feminine -root -past
+@Nsubj actrice*actrice | +singular +vowel +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -plural -vplural -masculin -root -past
+@Nsubj actrices*actrice | +plural +vowel +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -singular -vsingular -masculin -root -past
+# @Nsubj athlète*athlète | +singular +vowel 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj athlètes*athlète | +plural +vowel 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj tante*tante | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj tantes*tante | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj garçon*garçon | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj garçons*garçon | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj frère*frère | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj frères*frère | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj charpentier*charpentier | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj charpentiers*charpentier | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj cousin*cousin | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj cousins*cousin | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj cousine*cousine | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj cousines*cousine | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj fille*fille | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj filles*fille | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj docteur*docteur | +singular +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj docteurs*docteur | +plural +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj fermier*fermier | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj fermiers*fermier | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj fermière*fermière | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj fermières*fermière | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj père*père | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj pères*père | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj ami*ami | +vowel +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj amis*ami | +vowel +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj amie*amie | +vowel +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj amies*amie | +vowel +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj gars*gars | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj gars*gars | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj enfant*enfant | +vowel +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj enfants*enfant | +vowel +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj avocat*avocat | +vowel +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj avocats*avocat | +vowel +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj avocate*avocate | +vowel +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj avocates*avocate | +vowel +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj homme*homme | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj hommes*homme | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj mère*mère | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj mères*mère | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj poète*poète | +consonant +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj poètes*poète | +consonant +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj chanteur*chanteur | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj chanteurs*chanteur | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj soeur*soeur | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj soeurs*soeur | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj fils*fils | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj fils*fils | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj professeur*professeur | +consonant +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj professeurs*professeur | +consonant +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj oncle*oncle | +singular +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj oncles*oncle | +plural +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj victimee*victimee | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj victimees*victimee | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj femme*femme | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj femme*femme | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+
+
+@Nsubj_rel tante*tante | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -vplural -root -past
+@Nsubj_rel tantes*tante | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine -vsingular -root -past
+# @Nsubj_rel frère*frère | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel frères*frère | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel cousin*cousin | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel cousins*cousin | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel cousine*cousine | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel cousines*cousine | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel fille*fille | +singular +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel filles*fille | +plural +consonant +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel docteur*docteur | +singular +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel docteurs*docteur | +plural +consonant 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel père*père | +singular +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel pères*père | +plural +consonant +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel ami*ami | +vowel +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel amis*ami | +vowel +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel amie*amie | +vowel +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel amies*amie | +vowel +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel soeur*soeur | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel soeurs*soeur | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel fils*fils | +consonant +singular +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel fils*fils | +consonant +plural +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel professeur*professeur | +consonant +singular 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel professeurs*professeur | +consonant +plural 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel oncle*oncle | +singular +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel oncles*oncle | +plural +vowel +masculine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel victimee*victimee | +consonant +singular +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+# @Nsubj_rel victimees*victimee | +consonant +plural +feminine 0vowel 0consonant 0singular 0plural 0inanimate 0masculine 0feminine
+
+
+@Num quatre | -singular +plural +number 0number
+@Num cinq | -singular +plural +number 0number
+@Num dix | -singular +plural +number 0number
+@Num trois | -singular +plural +number 0number
+@Num deux | -singular +plural +number 0number
+
+@Of de | -locative
+
+@P devant | +locative 0locative
+@P derrière | +locative 0locative
+#@P dans | +locative 0locative
+
+@V admirer  | +root
+@V admiré | +past
+@V admire  | +third +vsingular
+@V admirent | +third +vplural
+#@V amuser  | +root +vplural
+#@V amusé | +past
+#@V approve  | +root +vplural
+#@V approved | +past
+#@V approves  | +third +vsingular
+#@V attaquer  | +root +vplural
+#@V attaqué | +past
+#@V attaque  | +third +vsingular
+#@V éviter  | +root +vplural
+#@V evité | +past
+#@V évite  | +third +vsingular
+#@V bump  | +root +vplural
+#@V bumped | +past
+#@V bumps  | +third +vsingular
+#@V netoyer  | +root +vplural
+#@V netoyé | +past
+#@V netoie | +third +vsingular
+#@V confuse  | +root +vplural
+#@V confused | +past
+#@V confuses  | +third +vsingular
+#@V criticize  | +root +vplural
+#@V criticized | +past
+#@V criticizes  | +third +vsingular
+#@V discourage  | +root +vplural
+#@V discouraged | +past
+#@V discourages  | +third +vsingular
+#@V encourager  | +root +vplural
+#@V encouragé | +past
+#@V encourage  | +third +vsingular
+#@V engage  | +root +vplural
+#@V engaged | +past
+#@V engages  | +third +vsingular
+#@V fight  | +root +vplural
+#@V fights  | +third +vsingular
+#@V fought | +past
+#@V greet  | +root +vplural
+#@V greeted | +past
+#@V greets  | +third +vsingular
+#@V inspirer  | +root +vplural
+#@V inspiré | +past
+#@V inspire  | +third +vsingular
+#@V rencontrer  | +root +vplural
+#@V rencontre  | +third +vsingular
+#@V rencontré | +past
+#@V observer  | +root +vplural
+#@V observé | +past
+#@V observe  | +third +vsingular
+#@V pousser  | +root +vplural
+#@V poussé | +past
+#@V pousse  | +third +vsingular
+#@V recognize  | +root +vplural
+#@V recognized | +past
+#@V recognizes  | +third +vsingular
+#@V remember  | +root +vplural
+#@V remembered | +past
+#@V remembers  | +third +vsingular
+#@V scare  | +root +vplural
+#@V scared | +past
+#@V scares  | +third +vsingular
+#@V stimuler  | +root +vplural
+#@V stimulé | +past
+#@V stimule  | +third +vsingular
+#@V strike  | +root +vplural
+#@V strikes  | +third +vsingular
+#@V struck | +past
+#@V terrified | +past
+#@V thrill  | +root +vplural
+#@V thrilled | +past
+#@V thrills  | +third +vsingular
+#@V comprendre  | +root +vplural
+#@V comprend  | +third +vsingular
+#@V compris | +past
+
+@Vger admirant
+#@Vger amusant
+#@Vger approving
+#@Vger attacking
+#@Vger avoiding
+#@Vger bumping
+#@Vger cleaning
+#@Vger confusing
+#@Vger criticizing
+#@Vger discouraging
+#@Vger encouraging
+#@Vger engaging
+#@Vger fighting
+#@Vger greeting
+#@Vger inspiring
+#@Vger meeting
+#@Vger observing
+#@Vger pushing
+#@Vger recognizing
+#@Vger remembering
+#@Vger stimulating
+#@Vger striking
+#@Vger terrifying
+#@Vger thrilling
+#@Vger understanding
+
+@Vintr apparaître | +root
+@Vintr apparu | +past +vsingular +masculin
+@Vintr apparue | +past +vsingular +vfeminine
+@Vintr apparus | +past +vplural +masculin
+@Vintr apparues | +past +vplural +vfeminine
+@Vintr apparaît | +third +vsingular
+@Vintr apparaissent | +third +vplural
+#@Vintr arriver | +root +vplural
+#@Vintr arrivé | +past
+#@Vintr arrives | +third +vsingular
+#@Vintr cried | +past
+#@Vintr cries | +third +vsingular
+#@Vintr cry | +root +vplural
+#@Vintr depart | +root +vplural
+#@Vintr departed | +past
+#@Vintr departs | +third +vsingular
+#@Vintr explode | +root +vplural
+#@Vintr exploded | +past
+#@Vintr explodes | +third +vsingular
+#@Vintr fall | +root +vplural
+#@Vintr falls | +third +vsingular
+#@Vintr laugh | +root +vplural
+#@Vintr laughed | +past
+#@Vintr laughs | +third +vsingular
+#@Vintr leave | +root +vplural
+#@Vintr leaves | +third +vsingular
+#@Vintr left | +past
+#@Vintr smile | +root +vplural
+#@Vintr smiled | +past
+#@Vintr smiles | +third +vsingular
+#@Vintr vanish | +root +vplural
+#@Vintr vanished | +past
+#@Vintr vanishes | +third +vsingular
+
+@Vintr_ger apparaissant
+#@Vintr_ger arriving
+#@Vintr_ger crying
+#@Vintr_ger departing
+#@Vintr_ger exploding
+#@Vintr_ger falling 
+#@Vintr_ger laughing
+#@Vintr_ger leaving
+#@Vintr_ger smiling
+#@Vintr_ger vanishing

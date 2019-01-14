@@ -1,0 +1,200 @@
+Admirer cinq acteurs vraiment rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num cinq ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirer deux tantes de dix acteurs vraiment lentement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num deux ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num dix ] [_N acteurs ] ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admirent quelques tantes de Patrique très rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_DP [_D quelques ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirer cinq acteurs euphorique rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num cinq ] [_NP [_N acteurs ] [_Adj euphorique ] ] ] ] [_Adv rapidement ] ]
+Admire trois actrices lentement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num trois ] [_N actrices ] ] ] [_Adv lentement ] ]
+Admire Patrique très lentement | 
+ | [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admirer dix tantes de quatre actrices lentement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num dix ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N actrices ] ] ] ] ] ] [_Adv lentement ] ]
+Admiré Patrique vraiment rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirent cinq actrices joyeuses vraiment lentement | 
+ | [_VP [_Vbar [_V admirent ] [_NumP [_Num cinq ] [_NP [_N actrices ] [_Adj joyeuses ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admire Marie rapidement | 
+ | [_VP [_Vbar [_V admire ] [_Name Marie ] ] [_Adv rapidement ] ]
+Admiré des actrices vraiment rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_DP [_D des ] [_N actrices ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirer Patrique vraiment lentement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admiré dix tantes de Marie très lentement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num dix ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admirent deux actrices rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_NumP [_Num deux ] [_N actrices ] ] ] [_Adv rapidement ] ]
+Admiré quelques actrices très rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_DP [_D quelques ] [_N actrices ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirent Marie vraiment lentement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admiré cet acteur lentement | 
+ | [_VP [_Vbar [_V admiré ] [_DP [_D cet ] [_N acteur ] ] ] [_Adv lentement ] ]
+Admirer quatre acteurs vraiment rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num quatre ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirent Patrique vraiment lentement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admirent la tante de Patrique vraiment rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_DP [_D la ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admire trois acteurs vraiment lentement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num trois ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admire quatre tantes de Patrique très rapidement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num quatre ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admire cinq tantes de Patrique très rapidement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num cinq ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admire Marie vraiment lentement | 
+ | [_VP [_Vbar [_V admire ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admirent Patrique lentement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_Adv lentement ] ]
+Admiré Marie vraiment rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirer Marie rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Marie ] ] [_Adv rapidement ] ]
+Admirer deux tantes de quatre actrices lentement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num deux ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N actrices ] ] ] ] ] ] [_Adv lentement ] ]
+Admiré la tante de Marie vraiment rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_DP [_D la ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirent Patrique très rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admiré Marie vraiment lentement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admiré Patrique lentement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Patrique ] ] [_Adv lentement ] ]
+Admirer deux tantes de Marie très rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num deux ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admire Patrique très rapidement | 
+ | [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirer Marie vraiment lentement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admirer les acteurs lentement | 
+ | [_VP [_Vbar [_V admirer ] [_DP [_D les ] [_N acteurs ] ] ] [_Adv lentement ] ]
+Admire dix acteurs vraiment lentement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num dix ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admire trois tantes de Marie vraiment lentement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num trois ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admirent des actrices très lentement | 
+ | [_VP [_Vbar [_V admirent ] [_DP [_D des ] [_N actrices ] ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admirent Marie très rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admiré Patrique rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Patrique ] ] [_Adv rapidement ] ]
+Admire Marie lentement | 
+ | [_VP [_Vbar [_V admire ] [_Name Marie ] ] [_Adv lentement ] ]
+Admirer trois acteurs très rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num trois ] [_N acteurs ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admire Patrique vraiment rapidement | 
+ | [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirent Patrique très lentement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admirent deux acteurs lentement | 
+ | [_VP [_Vbar [_V admirent ] [_NumP [_Num deux ] [_N acteurs ] ] ] [_Adv lentement ] ]
+Admiré Patrique très lentement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admirer Patrique vraiment rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admiré dix grandes tantes de Marie vraiment lentement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num dix ] [_NP [_Adj grandes ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admirer Patrique très lentement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admirent quatre actrices vraiment rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_NumP [_Num quatre ] [_N actrices ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admire Marie très rapidement | 
+ | [_VP [_Vbar [_V admire ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admiré Patrique vraiment lentement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admirent Marie vraiment rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admiré Marie rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Marie ] ] [_Adv rapidement ] ]
+Admirer Patrique très rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admiré cinq acteurs lentement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num cinq ] [_N acteurs ] ] ] [_Adv lentement ] ]
+Admirer la tante de cinq actrices minuscule lentement | 
+ | [_VP [_Vbar [_V admirer ] [_DP [_D la ] [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num cinq ] [_NPrel [_N actrices ] [_Adj minuscule ] ] ] ] ] ] ] [_Adv lentement ] ]
+Admiré quatre tantes de Marie très rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num quatre ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admiré cinq tantes de Marie rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num cinq ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_Adv rapidement ] ]
+Admire cinq acteurs vraiment rapidement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num cinq ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admire deux acteurs très rapidement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num deux ] [_N acteurs ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirent quatre tantes de Marie rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_NumP [_Num quatre ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_Adv rapidement ] ]
+Admiré deux actrices rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num deux ] [_N actrices ] ] ] [_Adv rapidement ] ]
+Admire dix tantes de Patrique rapidement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num dix ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_Adv rapidement ] ]
+Admirer Marie très lentement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admiré des tantes de Patrique vraiment lentement | 
+ | [_VP [_Vbar [_V admiré ] [_DP [_D des ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admiré dix tantes de des actrices misérable très rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num dix ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_DPrel [_D des ] [_NPrel [_N actrices ] [_Adj misérable ] ] ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirer deux acteurs large rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num deux ] [_NP [_N acteurs ] [_Adj large ] ] ] ] [_Adv rapidement ] ]
+Admiré dix acteurs vraiment rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num dix ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admiré Marie lentement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Marie ] ] [_Adv lentement ] ]
+Admiré dix actrices rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num dix ] [_N actrices ] ] ] [_Adv rapidement ] ]
+Admiré deux actrices vraiment lentement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num deux ] [_N actrices ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admiré Marie très rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirent Patrique rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_Adv rapidement ] ]
+Admire des acteurs très rapidement | 
+ | [_VP [_Vbar [_V admire ] [_DP [_D des ] [_N acteurs ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirent Patrique vraiment rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admirent dix acteurs vraiment rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_NumP [_Num dix ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admiré quatre acteurs vraiment heureuses très rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num quatre ] [_NP [_N acteurs ] [_AdjP [_Degree vraiment ] [_Adj heureuses ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirer Patrique lentement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_Adv lentement ] ]
+Admirent quatre tantes de Patrique vraiment minuscules très lentement | 
+ | [_VP [_Vbar [_V admirent ] [_NumP [_Num quatre ] [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_AdjP [_Degree vraiment ] [_Adj minuscules ] ] ] ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admire dix actrices très lentement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num dix ] [_N actrices ] ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admire une tante de Marie lentement | 
+ | [_VP [_Vbar [_V admire ] [_DP [_D une ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_Adv lentement ] ]
+Admirer quatre actrices très rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_NumP [_Num quatre ] [_N actrices ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirer Marie lentement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Marie ] ] [_Adv lentement ] ]
+Admire deux tantes de Patrique rapidement | 
+ | [_VP [_Vbar [_V admire ] [_NumP [_Num deux ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_Adv rapidement ] ]
+Admirer Marie très rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admiré l' acteur très joyeuses très rapidement | 
+ | [_VP [_Vbar [_V admiré ] [_DP [_D l' ] [_NP [_N acteur ] [_AdjP [_Degree très ] [_Adj joyeuses ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirer Patrique rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_Adv rapidement ] ]
+Admirent une tante de Patrique très rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_DP [_D une ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ]
+Admirer une très petite tante de quatre acteurs rapidement | 
+ | [_VP [_Vbar [_V admirer ] [_DP [_D une ] [_NP [_AdjP [_Degree très ] [_Adj petite ] ] [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N acteurs ] ] ] ] ] ] ] [_Adv rapidement ] ]
+Admiré dix actrices lentement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num dix ] [_N actrices ] ] ] [_Adv lentement ] ]
+Admire Marie vraiment rapidement | 
+ | [_VP [_Vbar [_V admire ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ]
+Admire Patrique vraiment lentement | 
+ | [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ]
+Admire Patrique rapidement | 
+ | [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_Adv rapidement ] ]
+Admirent Marie très lentement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ]
+Admirent Marie lentement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_Adv lentement ] ]
+Admirent Marie rapidement | 
+ | [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_Adv rapidement ] ]
+Admire Patrique lentement | 
+ | [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_Adv lentement ] ]
+Admiré trois tantes de quatre actrices lentement | 
+ | [_VP [_Vbar [_V admiré ] [_NumP [_Num trois ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N actrices ] ] ] ] ] ] [_Adv lentement ] ]
