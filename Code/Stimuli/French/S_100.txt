@@ -1,0 +1,200 @@
+Marie admire Patrique rapidement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_Adv rapidement ] ] ]
+Quatre tantes de les actrices admirent Patrique | 
+ | [_S [_NumPsubj [_Num quatre ] [_Nsubj [_Nsubj tantes ] [_RelP [_Of de ] [_DPrel [_D les ] [_N actrices ] ] ] ] ] [_Vbar [_V admirent ] [_Name Patrique ] ] ]
+Trois actrices viennent-de admirer Marie | 
+ | [_S [_NumPsubj [_Num trois ] [_Nsubj actrices ] ] [_AuxP [_Aux viennent-de ] [_Vbar [_V admirer ] [_Name Marie ] ] ] ]
+Marie est-en-train-de admirer deux actrices lentement | 
+ | [_S [_Name Marie ] [_AuxP [_Entrain est-en-train-de ] [_VP [_Vbar [_V admirer ] [_NumP [_Num deux ] [_N actrices ] ] ] [_Adv lentement ] ] ] ]
+Marie est apparu lentement | 
+ | [_S [_Name Marie ] [_AuxP [_Etre est ] [_VP [_Vintr apparu ] [_Adv lentement ] ] ] ]
+Dix acteurs admirent Patrique rapidement | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj acteurs ] ] [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_Adv rapidement ] ] ]
+Marie admire les très grandes tantes de Patrique vraiment lentement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_DP [_D les ] [_NP [_AdjP [_Degree très ] [_Adj grandes ] ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ]
+Marie admire cinq vraiment petits acteurs vraiment lentement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_NumP [_Num cinq ] [_NP [_AdjP [_Degree vraiment ] [_Adj petits ] ] [_N acteurs ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ]
+Marie va admirer Patrique très lentement | 
+ | [_S [_Name Marie ] [_AuxP [_Aux va ] [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ] ] ]
+Cinq actrices sont apparues vraiment lentement | 
+ | [_S [_NumPsubj [_Num cinq ] [_Nsubj actrices ] ] [_AuxP [_Etre sont ] [_VP [_Vintr apparues ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ] ]
+Des acteurs euphoriques admirent Marie vraiment rapidement | 
+ | [_S [_DPsubj [_D des ] [_NPsubj [_Nsubj acteurs ] [_Adj euphoriques ] ] ] [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ] ]
+Dix tantes de dix acteurs minuscule sont apparus vraiment lentement | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj [_Nsubj tantes ] [_RelP [_Of de ] [_NumPrel [_Num dix ] [_NPrel [_N acteurs ] [_Adj minuscule ] ] ] ] ] ] [_AuxP [_Etre sont ] [_VP [_Vintr apparus ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ] ]
+Patrique est apparu lentement | 
+ | [_S [_Name Patrique ] [_AuxP [_Etre est ] [_VP [_Vintr apparu ] [_Adv lentement ] ] ] ]
+Trois actrices sont-en-train-de admirer Marie très rapidement | 
+ | [_S [_NumPsubj [_Num trois ] [_Nsubj actrices ] ] [_AuxP [_Entrain sont-en-train-de ] [_VP [_Vbar [_V admirer ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ] ] ]
+Marie admire cinq acteurs vraiment rapidement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_NumP [_Num cinq ] [_N acteurs ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ] ]
+Marie admire les actrices | 
+ | [_S [_Name Marie ] [_Vbar [_V admire ] [_DP [_D les ] [_N actrices ] ] ] ]
+Cinq actrices apparaissent | 
+ | [_S [_NumPsubj [_Num cinq ] [_Nsubj actrices ] ] [_Vintr apparaissent ] ]
+Trois actrices apparaissent | 
+ | [_S [_NumPsubj [_Num trois ] [_Nsubj actrices ] ] [_Vintr apparaissent ] ]
+Dix tantes de deux acteurs vraiment large sont-en-train-de apparaître | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj [_Nsubj tantes ] [_RelP [_Of de ] [_NumPrel [_Num deux ] [_NPrel [_N acteurs ] [_AdjP [_Degree vraiment ] [_Adj large ] ] ] ] ] ] ] [_AuxP [_Entrain sont-en-train-de ] [_Vintr apparaître ] ] ]
+Deux acteurs admirent Patrique très rapidement | 
+ | [_S [_NumPsubj [_Num deux ] [_Nsubj acteurs ] ] [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ] ]
+Deux actrices énormes derrière quatre bâteaux apparaissent | 
+ | [_S [_NumP [_Num deux ] [_NPPP [_NPsubj [_Nsubj actrices ] [_Adj énormes ] ] [_PP [_P derrière ] [_NumPloc [_Num quatre ] [_Nloc bâteaux ] ] ] ] ] [_Vintr apparaissent ] ]
+Marie admire Patrique vraiment lentement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ]
+Patrique admire trois actrices | 
+ | [_S [_Name Patrique ] [_Vbar [_V admire ] [_NumP [_Num trois ] [_N actrices ] ] ] ]
+Des acteurs devant dix bâteaux sont-en-train-de apparaître | 
+ | [_S [_DP [_D des ] [_NPPP [_Nsubj acteurs ] [_PP [_P devant ] [_NumPloc [_Num dix ] [_Nloc bâteaux ] ] ] ] ] [_AuxP [_Entrain sont-en-train-de ] [_Vintr apparaître ] ] ]
+Derrière Patrique Marie apparaît | 
+ | [_S [_PP [_P derrière ] [_Name Patrique ] ] [_Sbar [_Name Marie ] [_Vintr apparaît ] ] ]
+Marie admire l' actrice rapidement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_DP [_D l' ] [_N actrice ] ] ] [_Adv rapidement ] ] ]
+Les tantes de dix actrices admirent Patrique | 
+ | [_S [_DPsubj [_D les ] [_Nsubj [_Nsubj tantes ] [_RelP [_Of de ] [_NumPrel [_Num dix ] [_N actrices ] ] ] ] ] [_Vbar [_V admirent ] [_Name Patrique ] ] ]
+Dix tantes de quatre actrices apparaissent | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj [_Nsubj tantes ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N actrices ] ] ] ] ] [_Vintr apparaissent ] ]
+Patrique admire Marie | 
+ | [_S [_Name Patrique ] [_Vbar [_V admire ] [_Name Marie ] ] ]
+L' acteur derrière Patrique apparaît | 
+ | [_S [_DP [_D l' ] [_NPPP [_Nsubj acteur ] [_PP [_P derrière ] [_Name Patrique ] ] ] ] [_Vintr apparaît ] ]
+Deux actrices admirent des deux acteurs lentement | 
+ | [_S [_NumPsubj [_Num deux ] [_Nsubj actrices ] ] [_VP [_Vbar [_V admirent ] [_DP [_D des ] [_NumP [_Num deux ] [_N acteurs ] ] ] ] [_Adv lentement ] ] ]
+Marie a admiré dix actrices très heureuse vraiment lentement | 
+ | [_S [_Name Marie ] [_AuxP [_Aux a ] [_VP [_Vbar [_V admiré ] [_NumP [_Num dix ] [_NP [_N actrices ] [_AdjP [_Degree très ] [_Adj heureuse ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ] ]
+Devant cette actrice Patrique admire deux acteurs | 
+ | [_S [_PP [_P devant ] [_DPloc [_D cette ] [_N actrice ] ] ] [_Sbar [_Name Patrique ] [_Vbar [_V admire ] [_NumP [_Num deux ] [_N acteurs ] ] ] ] ]
+Un acteur admire les actrices lentement | 
+ | [_S [_DPsubj [_D un ] [_Nsubj acteur ] ] [_VP [_Vbar [_V admire ] [_DP [_D les ] [_N actrices ] ] ] [_Adv lentement ] ] ]
+Des acteurs admirent Patrique | 
+ | [_S [_DPsubj [_D des ] [_Nsubj acteurs ] ] [_Vbar [_V admirent ] [_Name Patrique ] ] ]
+Dix actrices apparaissent | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj actrices ] ] [_Vintr apparaissent ] ]
+Patrique est apparu très rapidement | 
+ | [_S [_Name Patrique ] [_AuxP [_Etre est ] [_VP [_Vintr apparu ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ] ] ]
+Patrique est apparu | 
+ | [_S [_Name Patrique ] [_AuxP [_Etre est ] [_Vintr apparu ] ] ]
+Les actrices admirent Patrique | 
+ | [_S [_DPsubj [_D les ] [_Nsubj actrices ] ] [_Vbar [_V admirent ] [_Name Patrique ] ] ]
+Des acteurs sont apparus | 
+ | [_S [_DPsubj [_D des ] [_Nsubj acteurs ] ] [_AuxP [_Etre sont ] [_Vintr apparus ] ] ]
+Cet acteur devant Marie admire Patrique | 
+ | [_S [_DP [_D cet ] [_NPPP [_Nsubj acteur ] [_PP [_P devant ] [_Name Marie ] ] ] ] [_Vbar [_V admire ] [_Name Patrique ] ] ]
+Marie admire Patrique très lentement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ] ]
+La tante de Patrique est-en-train-de apparaître | 
+ | [_S [_DPsubj [_D la ] [_Nsubj [_Nsubj tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] [_AuxP [_Entrain est-en-train-de ] [_Vintr apparaître ] ] ]
+Trois petits acteurs sont-en-train-de apparaître | 
+ | [_S [_NumPsubj [_Num trois ] [_NPsubj [_Adj petits ] [_Nsubj acteurs ] ] ] [_AuxP [_Entrain sont-en-train-de ] [_Vintr apparaître ] ] ]
+Patrique admire quatre actrices | 
+ | [_S [_Name Patrique ] [_Vbar [_V admire ] [_NumP [_Num quatre ] [_N actrices ] ] ] ]
+Marie va admirer Patrique | 
+ | [_S [_Name Marie ] [_AuxP [_Aux va ] [_Vbar [_V admirer ] [_Name Patrique ] ] ] ]
+Cinq actrices admirent deux tantes de Patrique vraiment lentement | 
+ | [_S [_NumPsubj [_Num cinq ] [_Nsubj actrices ] ] [_VP [_Vbar [_V admirent ] [_NumP [_Num deux ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ]
+Les tantes de quatre acteurs vraiment triste apparaissent | 
+ | [_S [_DPsubj [_D les ] [_NPsubj [_Nsubj [_Nsubj tantes ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N acteurs ] ] ] ] [_AdjP [_Degree vraiment ] [_Adj triste ] ] ] ] [_Vintr apparaissent ] ]
+Patrique admire Marie lentement | 
+ | [_S [_Name Patrique ] [_VP [_Vbar [_V admire ] [_Name Marie ] ] [_Adv lentement ] ] ]
+Quelques actrices très triste apparaissent | 
+ | [_S [_DPsubj [_D quelques ] [_NPsubj [_Nsubj actrices ] [_AdjP [_Degree très ] [_Adj triste ] ] ] ] [_Vintr apparaissent ] ]
+Patrique admire trois acteurs très tristes lentement | 
+ | [_S [_Name Patrique ] [_VP [_Vbar [_V admire ] [_NumP [_Num trois ] [_NP [_N acteurs ] [_AdjP [_Degree très ] [_Adj tristes ] ] ] ] ] [_Adv lentement ] ] ]
+Deux acteurs sont-en-train-de admirer Marie rapidement | 
+ | [_S [_NumPsubj [_Num deux ] [_Nsubj acteurs ] ] [_AuxP [_Entrain sont-en-train-de ] [_VP [_Vbar [_V admirer ] [_Name Marie ] ] [_Adv rapidement ] ] ] ]
+Marie est-en-train-de admirer Patrique lentement | 
+ | [_S [_Name Marie ] [_AuxP [_Entrain est-en-train-de ] [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_Adv lentement ] ] ] ]
+Marie est apparu | 
+ | [_S [_Name Marie ] [_AuxP [_Etre est ] [_Vintr apparu ] ] ]
+Dix actrices admirent deux tantes de Marie très lentement | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj actrices ] ] [_VP [_Vbar [_V admirent ] [_NumP [_Num deux ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ] ]
+Marie admire cette actrice | 
+ | [_S [_Name Marie ] [_Vbar [_V admire ] [_DP [_D cette ] [_N actrice ] ] ] ]
+Quelques actrices très minuscule admirent Marie | 
+ | [_S [_DPsubj [_D quelques ] [_NPsubj [_Nsubj actrices ] [_AdjP [_Degree très ] [_Adj minuscule ] ] ] ] [_Vbar [_V admirent ] [_Name Marie ] ] ]
+Cette actrice très heureuses derrière Marie admire Patrique vraiment lentement | 
+ | [_S [_DP [_D cette ] [_NPPP [_NPsubj [_Nsubj actrice ] [_AdjP [_Degree très ] [_Adj heureuses ] ] ] [_PP [_P derrière ] [_Name Marie ] ] ] ] [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ]
+Patrique apparaît | 
+ | [_S [_Name Patrique ] [_Vintr apparaît ] ]
+Patrique admire Marie très lentement | 
+ | [_S [_Name Patrique ] [_VP [_Vbar [_V admire ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv lentement ] ] ] ]
+Les actrices admirent Marie rapidement | 
+ | [_S [_DPsubj [_D les ] [_Nsubj actrices ] ] [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_Adv rapidement ] ] ]
+Dix acteurs devant cinq bâteaux admirent quatre actrices | 
+ | [_S [_NumP [_Num dix ] [_NPPP [_Nsubj acteurs ] [_PP [_P devant ] [_NumPloc [_Num cinq ] [_Nloc bâteaux ] ] ] ] ] [_Vbar [_V admirent ] [_NumP [_Num quatre ] [_N actrices ] ] ] ]
+Patrique admire un acteur | 
+ | [_S [_Name Patrique ] [_Vbar [_V admire ] [_DP [_D un ] [_N acteur ] ] ] ]
+Patrique a admiré Marie lentement | 
+ | [_S [_Name Patrique ] [_AuxP [_Aux a ] [_VP [_Vbar [_V admiré ] [_Name Marie ] ] [_Adv lentement ] ] ] ]
+Devant dix bâteaux Marie apparaît | 
+ | [_S [_PP [_P devant ] [_NumPloc [_Num dix ] [_Nloc bâteaux ] ] ] [_Sbar [_Name Marie ] [_Vintr apparaît ] ] ]
+Dix acteurs apparaissent | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj acteurs ] ] [_Vintr apparaissent ] ]
+Deux acteurs très misérables admirent Marie très rapidement | 
+ | [_S [_NumPsubj [_Num deux ] [_NPsubj [_Nsubj acteurs ] [_AdjP [_Degree très ] [_Adj misérables ] ] ] ] [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ] ]
+Dix acteurs admirent Marie | 
+ | [_S [_NumPsubj [_Num dix ] [_Nsubj acteurs ] ] [_Vbar [_V admirent ] [_Name Marie ] ] ]
+Marie est apparue | 
+ | [_S [_Name Marie ] [_AuxP [_Etre est ] [_Vintr apparue ] ] ]
+Les actrices apparaissent | 
+ | [_S [_DPsubj [_D les ] [_Nsubj actrices ] ] [_Vintr apparaissent ] ]
+Trois actrices admirent trois grandes tantes de cinq acteurs heureuse | 
+ | [_S [_NumPsubj [_Num trois ] [_Nsubj actrices ] ] [_Vbar [_V admirent ] [_NumP [_Num trois ] [_NP [_Adj grandes ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num cinq ] [_NPrel [_N acteurs ] [_Adj heureuse ] ] ] ] ] ] ] ] ]
+Deux actrices admirent Patrique lentement | 
+ | [_S [_NumPsubj [_Num deux ] [_Nsubj actrices ] ] [_VP [_Vbar [_V admirent ] [_Name Patrique ] ] [_Adv lentement ] ] ]
+Cette actrice derrière Marie apparaît | 
+ | [_S [_DP [_D cette ] [_NPPP [_Nsubj actrice ] [_PP [_P derrière ] [_Name Marie ] ] ] ] [_Vintr apparaît ] ]
+Marie admire Patrique très rapidement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ] ]
+Marie apparaît | 
+ | [_S [_Name Marie ] [_Vintr apparaît ] ]
+Marie est apparu très rapidement | 
+ | [_S [_Name Marie ] [_AuxP [_Etre est ] [_VP [_Vintr apparu ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ] ] ]
+Des acteurs apparaissent | 
+ | [_S [_DPsubj [_D des ] [_Nsubj acteurs ] ] [_Vintr apparaissent ] ]
+Quelques actrices apparaissent | 
+ | [_S [_DPsubj [_D quelques ] [_Nsubj actrices ] ] [_Vintr apparaissent ] ]
+Marie admire cinq acteurs | 
+ | [_S [_Name Marie ] [_Vbar [_V admire ] [_NumP [_Num cinq ] [_N acteurs ] ] ] ]
+Marie admire Patrique | 
+ | [_S [_Name Marie ] [_Vbar [_V admire ] [_Name Patrique ] ] ]
+Cinq actrices sont apparues lentement | 
+ | [_S [_NumPsubj [_Num cinq ] [_Nsubj actrices ] ] [_AuxP [_Etre sont ] [_VP [_Vintr apparues ] [_Adv lentement ] ] ] ]
+Patrique admire trois tantes de Marie | 
+ | [_S [_Name Patrique ] [_Vbar [_V admire ] [_NumP [_Num trois ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ] ] ]
+Marie est-en-train-de admirer Patrique vraiment rapidement | 
+ | [_S [_Name Marie ] [_AuxP [_Entrain est-en-train-de ] [_VP [_Vbar [_V admirer ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ] ] ]
+Marie admire ces acteurs rapidement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_DP [_D ces ] [_N acteurs ] ] ] [_Adv rapidement ] ] ]
+Quatre actrices admirent Marie très rapidement | 
+ | [_S [_NumPsubj [_Num quatre ] [_Nsubj actrices ] ] [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree très ] [_Adv rapidement ] ] ] ]
+Marie admire Patrique vraiment rapidement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ] ]
+Ces acteurs admirent Marie vraiment lentement | 
+ | [_S [_DPsubj [_D ces ] [_Nsubj acteurs ] ] [_VP [_Vbar [_V admirent ] [_Name Marie ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ]
+Patrique admire les tantes de quatre actrices vraiment rapidement | 
+ | [_S [_Name Patrique ] [_VP [_Vbar [_V admire ] [_DP [_D les ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N actrices ] ] ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv rapidement ] ] ] ]
+Cinq acteurs vraiment minuscule apparaissent | 
+ | [_S [_NumPsubj [_Num cinq ] [_NPsubj [_Nsubj acteurs ] [_AdjP [_Degree vraiment ] [_Adj minuscule ] ] ] ] [_Vintr apparaissent ] ]
+Marie est-en-train-de admirer deux actrices | 
+ | [_S [_Name Marie ] [_AuxP [_Entrain est-en-train-de ] [_Vbar [_V admirer ] [_NumP [_Num deux ] [_N actrices ] ] ] ] ]
+Trois actrices très tristes derrière deux acteurs admirent Patrique | 
+ | [_S [_NumP [_Num trois ] [_NPPP [_NPsubj [_Nsubj actrices ] [_AdjP [_Degree très ] [_Adj tristes ] ] ] [_PP [_P derrière ] [_NumPloc [_Num deux ] [_N acteurs ] ] ] ] ] [_Vbar [_V admirent ] [_Name Patrique ] ] ]
+Patrique admire cette actrice larges lentement | 
+ | [_S [_Name Patrique ] [_VP [_Vbar [_V admire ] [_DP [_D cette ] [_NP [_N actrice ] [_Adj larges ] ] ] ] [_Adv lentement ] ] ]
+Quatre acteurs admirent trois actrices vraiment heureuse | 
+ | [_S [_NumPsubj [_Num quatre ] [_Nsubj acteurs ] ] [_Vbar [_V admirent ] [_NumP [_Num trois ] [_NP [_N actrices ] [_AdjP [_Degree vraiment ] [_Adj heureuse ] ] ] ] ] ]
+Patrique est-en-train-de apparaître | 
+ | [_S [_Name Patrique ] [_AuxP [_Entrain est-en-train-de ] [_Vintr apparaître ] ] ]
+Patrique admire deux acteurs énorme vraiment lentement | 
+ | [_S [_Name Patrique ] [_VP [_Vbar [_V admire ] [_NumP [_Num deux ] [_NP [_N acteurs ] [_Adj énorme ] ] ] ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ]
+Marie admire Patrique lentement | 
+ | [_S [_Name Marie ] [_VP [_Vbar [_V admire ] [_Name Patrique ] ] [_Adv lentement ] ] ]
+L' actrice derrière dix bâteaux apparaît | 
+ | [_S [_DP [_D l' ] [_NPPP [_Nsubj actrice ] [_PP [_P derrière ] [_NumPloc [_Num dix ] [_Nloc bâteaux ] ] ] ] ] [_Vintr apparaît ] ]
+Patrique est apparu vraiment lentement | 
+ | [_S [_Name Patrique ] [_AuxP [_Etre est ] [_VP [_Vintr apparu ] [_AdvP [_Degree vraiment ] [_Adv lentement ] ] ] ] ]
+Cinq actrices très heureuse apparaissent | 
+ | [_S [_NumPsubj [_Num cinq ] [_NPsubj [_Nsubj actrices ] [_AdjP [_Degree très ] [_Adj heureuse ] ] ] ] [_Vintr apparaissent ] ]
+Quatre acteurs admirent quelques tantes de Marie très triste rapidement | 
+ | [_S [_NumPsubj [_Num quatre ] [_Nsubj acteurs ] ] [_VP [_Vbar [_V admirent ] [_DP [_D quelques ] [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] [_AdjP [_Degree très ] [_Adj triste ] ] ] ] ] [_Adv rapidement ] ] ]

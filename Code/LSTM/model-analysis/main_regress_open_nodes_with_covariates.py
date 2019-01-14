@@ -74,6 +74,8 @@ _, filtered_data_full_dicts = data_sentences.decorrelate(pos_min=pos_min, pos_ma
 print('number of sentences after decorrelation = ', len(data_sentences.data))
 pickle.dump(data_sentences, open(data_file+'.dcl', 'wb'))
 
+
+## write to a text file the full (non-filtered) dicts of the sentences after the decorrelation procedure
 with open(data_file+'.txt', 'w') as f:
     for d in filtered_data_full_dicts:
         sentence = d['sentence']
