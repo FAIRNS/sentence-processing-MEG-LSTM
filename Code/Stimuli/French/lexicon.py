@@ -38,8 +38,8 @@ prepo_fruits['masc'] = {}
 prepo_fruits['femi'] = {}
 prepo_fruits['masc']['sing'] = ['du marché', 'du magasin', 'du commerce', 'du jardin', 'du verger']
 prepo_fruits['masc']['plur'] = ['des marchés', 'des magasins', 'des commerces', 'des jardins', 'des vergers']
-prepo_fruits['femi']['sing'] = ['de la X', 'de la Y', 'de la Z', 'de la A', 'de la B']
-prepo_fruits['femi']['plur']  = ['des Xes', 'des Yes', 'des Zes', 'des Aes', 'des Bes']
+prepo_fruits['femi']['sing'] = ['de la voisine', 'de la coiffeuse', 'de la boulangère', 'de la plombière', 'de la factrice']
+prepo_fruits['femi']['plur']  = ['des voisines', 'des coiffeuses', 'des boulangères', 'des plombières', 'des factrices']
 
 
 adjectives_inanim = {}
@@ -177,9 +177,9 @@ objects['plur'] = objects['word'][int(len(objects['word'])/2)::]
 verbs = {}
 verbs['word'] = ['donner', 'devenir']
 verbs['past'], verbs['future'] = {}, {}
-verbs['past']['sing'] = ['a donné']
+verbs['past']['sing'] = ['a donné', 'est devenu']
 verbs['future']['sing'] = ['va donner', 'va devenir']
-verbs['past']['plur'] = ['ont donné']
+verbs['past']['plur'] = ['ont donné', 'sont devenu']
 verbs['future']['plur'] = ['vont donner', 'vont devenir']
 verbs['tenses'] = ['past', 'future']
 
@@ -191,8 +191,8 @@ for obj in objects['word']:
 
 
 determinants = {}   # we cannot have '...va donner ces plantes'
-determinants['masc'] = ['un']
-determinants['femi'] = ['une']
+determinants['masc'] = ['un', 'ce']
+determinants['femi'] = ['une', 'cette']
 determinants['counter'] = [0]
 
 determinants_plural = {}
