@@ -35,10 +35,10 @@ nouns = {}
 for gender in ['masc', 'femi']:
     nouns[gender] = {}
 # Tokens
-nouns['masc']['sing'] = ['zio', 'ragazzo', 'amico', 'dottore']
-nouns['masc']['plur'] = ['zii', 'ragazzi', 'amici', 'dottori']
-nouns['femi']['sing'] = ['zia', 'ragazza', 'amica', 'dottore']
-nouns['femi']['plur'] = ['zie', 'ragazze', 'amiche', 'dottori']
+nouns['masc']['sing'] = ['fratello', 'studente', 'padre', 'figlio', 'ragazzo', 'bambino', 'amico', 'uomo', 'attore', 'contadino']
+nouns['masc']['plur'] = ['fratelli', 'studenti', 'padri', 'figli', 'ragazzi', 'bambini', 'amici', 'uomini', 'attori', 'contadini']
+nouns['femi']['sing'] = ['sorella', 'studentessa', 'madre', 'figlia', 'ragazza', 'bambina', 'amica', 'donna', 'attrice', 'contadina']
+nouns['femi']['plur'] = ['sorelle', 'studentesse', 'madri', 'figlie', 'ragazze', 'bambine', 'amiche', 'donne', 'attrici', 'contadine']
 # nouns['masc']['sing'] = ['atleta', 'zio', 'ragazzo', 'falegname', 'dottore', 'contadino', 'padre', 'amico', 'avvocato', 'uomo', 'poeta', 'cantante', 'insegnante']
 # nouns['femi']['sing'] = ['zia', 'ragazza', 'madre', 'donna', 'vittima']
 # nouns['masc']['plur'] = ['atleti', 'zii', 'ragazzi', 'falegnami', 'dottori', 'contandini', 'padri', 'amici', 'avvocati', 'uomini', 'poeti', 'cantanti', 'insegnanti']
@@ -70,8 +70,8 @@ location_nouns['femi']['plur'] = ['gatte', 'cagne', 'macchine', 'sedie']
 # Initialization
 verbs = {}
 # Tokens
-verbs['sing'] = ['ammira', 'approva', 'confonde']
-verbs['plur'] = ['ammirano', 'approvano', 'confondono']
+verbs['sing'] = ['accoglie', 'ama', 'attrae', 'blocca', 'conosce', 'critica', 'difende', 'evita', 'ferma', 'guarda', 'ignora', 'incontra', 'indica', 'interrompe', 'osserva', 'ricorda', 'saluta']
+verbs['plur'] = ['accolgono', 'amano', 'attraggono', 'bloccano', 'conoscono', 'criticano', 'difendono', 'evitano', 'fermano', 'guardano', 'ignorano', 'incontrano', 'indicano', 'interrompono', 'osservano', 'ricordano', 'salutano']
 #@{$verbs{"singular"}}=("admires",
 		       # "approves",
 		       # "avoids",
@@ -108,7 +108,8 @@ loc_preps = {}
 for gender in ['masc', 'femi']:
     loc_preps[gender] = {}
 # Tokens (second word will be used to choose the right article from determinats{} - 'a'/'definit'/)
-loc_preps = ['vicino a', 'dietro definit', 'oltre a', 'sopra definit', 'sotto definit']
+loc_preps = ['vicino_a a', 'dietro_a a', 'davanti_a a', 'accanto_a a']
+#loc_preps = ['vicino a', 'dietro definit', 'oltre a', 'sopra definit', 'sotto definit']
 
 
 Words = {'determinants':determinants.copy(), 'nouns':nouns.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps.copy()}

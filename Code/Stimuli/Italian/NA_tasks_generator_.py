@@ -4,7 +4,7 @@ from lexicon_Italian import Words
 # Output is a tab-delimited list of stimuli with info: sentence \t tense \t subject gender \t subject number
 
 # Parse arguments
-parser = argparse.ArgumentParser(description='Stimulus generator for French')
+parser = argparse.ArgumentParser(description='Stimulus generator for Italian')
 parser.add_argument('-n', '--natask', default='nounPP', type=str, help = 'Number-agreement (NA) task to generate')
 args = parser.parse_args()
 
