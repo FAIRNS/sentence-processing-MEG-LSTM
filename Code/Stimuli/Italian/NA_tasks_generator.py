@@ -4,7 +4,7 @@ from lexicon_Italian import Words
 # Output is a tab-delimited list of stimuli with info: sentence \t tense \t subject gender \t subject number
 
 # Parse arguments
-parser = argparse.ArgumentParser(description='Stimulus generator for French')
+parser = argparse.ArgumentParser(description='Stimulus generator for Italian')
 parser.add_argument('-n', '--natask', default='nounPP', type=str, help = 'Number-agreement (NA) task to generate')
 args = parser.parse_args()
 
@@ -68,15 +68,16 @@ if args.natask == 'nounPP':
                 for attractor_gender in ['masc', 'femi']:
                     for attractor_number in ['sing', 'plur']:
                         for attractor in Words['location_nouns'][attractor_gender][attractor_number]:
-                            IX_attractor = construct_DP(attractor, attractor_gender, attractor_number)
-                            for prep in Words['loc_preps']:
-                                prep_word, prep_article = prep.split(' ')
-                                article = Words['determinants'][prep_article][attractor_gender][attractor_number][IX_attractor]
-                                NP = ' '.join([DP] + [prep_word] + [article] + [attractor])
-                                for verb in Words['verbs'][subject_number]:
-                                    sentence = NP + ' ' + verb
-                                    print('%s\t%s\t%s\t%s\t%s' % (sentence, subject_gender, subject_number, attractor_gender, attractor_number))
-                                    counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
+                            if subject != attractor:
+                                IX_attractor = construct_DP(attractor, attractor_gender, attractor_number)
+                                for prep in Words['loc_preps']:
+                                    prep_word, prep_article = prep.split(' ')
+                                    article = Words['determinants'][prep_article][attractor_gender][attractor_number][IX_attractor]
+                                    NP = ' '.join([DP] + [prep_word] + [article] + [attractor])
+                                    for verb in Words['verbs'][subject_number]:
+                                        sentence = NP + ' ' + verb
+                                        print('%s\t%s\t%s\t%s\t%s' % (sentence, subject_gender, subject_number, attractor_gender, attractor_number))
+                                        counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
 
 
 #### nounPPAdj #####
