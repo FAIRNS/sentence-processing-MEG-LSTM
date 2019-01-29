@@ -37,8 +37,8 @@ for gender in ['masc', 'femi']:
 # Tokens
 nouns['masc']['sing'] = ['zio', 'ragazzo', 'amico', 'dottore']
 nouns['masc']['plur'] = ['zii', 'ragazzi', 'amici', 'dottori']
-nouns['femi']['sing'] = ['zia', 'ragazza', 'amica', 'dottore']
-nouns['femi']['plur'] = ['zie', 'ragazze', 'amiche', 'dottori']
+nouns['femi']['sing'] = ['zia', 'ragazza', 'amica', 'dottoressa']
+nouns['femi']['plur'] = ['zie', 'ragazze', 'amiche', 'dottoresse']
 # nouns['masc']['sing'] = ['atleta', 'zio', 'ragazzo', 'falegname', 'dottore', 'contadino', 'padre', 'amico', 'avvocato', 'uomo', 'poeta', 'cantante', 'insegnante']
 # nouns['femi']['sing'] = ['zia', 'ragazza', 'madre', 'donna', 'vittima']
 # nouns['masc']['plur'] = ['atleti', 'zii', 'ragazzi', 'falegnami', 'dottori', 'contandini', 'padri', 'amici', 'avvocati', 'uomini', 'poeti', 'cantanti', 'insegnanti']
