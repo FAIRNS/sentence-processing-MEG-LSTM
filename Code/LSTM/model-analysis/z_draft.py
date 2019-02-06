@@ -6,7 +6,15 @@
 # from functions import load_settings_params as lsp
 # from functions import prepare_for_ablation_exp as prep
 
-import os, pickle
+import os, pickle, sys
+n=300
+path = sys.path[0].split('/')
+i = path.index('sentence-processing-MEG-LSTM')
+base_folder = os.sep + os.path.join(*path[:i+1])
+data_file = os.path.join(base_folder, 'Output/num_open_nodes/activations_1M_sentences_n=%i_decorrelated.pkl'%n)
+data = pickle.load(open(data_file, 'rb'))
+print(len(data.data))
+
 # wrong_info = pickle.load(open('../../../Data/Stimuli/wrong_nounpp.info', 'rb'))
 # prob_verbs = ['admire', 'admires', 'avoid', 'avoids', 'understand', 'understands']
 def modify_file(path2file):

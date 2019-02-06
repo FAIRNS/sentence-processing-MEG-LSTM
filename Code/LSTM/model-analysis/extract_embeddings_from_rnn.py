@@ -128,7 +128,8 @@ if args.units_first:
 
 plt.legend(fontsize=30, bbox_to_anchor=(1,1))
 # plt.subplots_adjust(top=0.8)
-plt.tick_params(axis='both', which='major', labelsize=25)
+plt.tick_params(axis='x', which='major', labelsize=35)
+plt.tick_params(axis='y', which='major', labelsize=30)
 plt.xticks(range(len(units)+len(units_first)), [str(u+1) for u in units] + [str(u+1) for u in units_first])
 ax.set_ylabel('Weight size', fontsize = 35)
 # ax.set_xlabel('Unit', fontsize = 35)
