@@ -17,9 +17,9 @@ definit['masc']['plur'] = ['i', 'gli']
 definit['femi']['sing'] = ['la', "l'"]
 definit['femi']['plur'] = ['le']
 
-a['masc']['sing'] = ['al', 'allo', 'all']
+a['masc']['sing'] = ['al', 'allo', "all'"]
 a['masc']['plur'] = ['ai', 'agli']
-a['femi']['sing'] = ['alla', 'all']
+a['femi']['sing'] = ['alla', "all'"]
 a['femi']['plur'] = ['alle']
 
 determinants = {'definit':definit, 'a':a}
