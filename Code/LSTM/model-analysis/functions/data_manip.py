@@ -73,7 +73,7 @@ def get_design_matrix(data_sentences, dependent_var_name, feature_type):
     word_freq = np.expand_dims(np.asarray([int(w) for ele in data_sentences for w in ele['word_frequencies'].strip().split(' ')]), 1)
     open_nodes = [int(w) for ele in data_sentences for w in ele['open_nodes_count'].strip().split(' ')]
     constituent_boundary = [int(w) for ele in data_sentences for w in ele['constituent_boundary'].strip().split(' ')]
-    embedded_constituent = [int(w) for ele in data_sentences for w in ele['embedded constituent'].strip().split(' ')]
+    #embedded_constituent = [int(w) for ele in data_sentences for w in ele['embedded constituent'].strip().split(' ')]
 
     # Cat all sentences to generate matrices where each row is per word
     X = np.hstack(activations).transpose()
