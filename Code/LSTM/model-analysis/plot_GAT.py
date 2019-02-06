@@ -9,7 +9,7 @@ import data
 sentence = ['The', 'boy', 'near', 'the', 'cars', 'greets']
 path2savefig = '../../../Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png'
 # Load GAT results
-path2pkl = '../../../Figures/GAT1d_cell_nounpp_SR_LR.pkl'
+path2pkl = '../../../Output/GAT1d_cell_Ou.pkl'
 # path2pkl = '../../../Figures/GAT1d_hidden_nounpp_SR_LR.pkl'
 results = pickle.load(open(path2pkl, 'rb'))
 

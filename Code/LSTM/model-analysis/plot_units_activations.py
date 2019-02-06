@@ -108,8 +108,7 @@ info = pickle.load(open(args.stimuli_meta_data, 'rb'))
 ##### Plot all curves on the same figure #########
 subplot_numbers = [int(graph_info[0]) for graph_info in args.graphs]
 num_subplots = np.max(subplot_numbers)
-plt.figure(figsize=(10,10))
-fig, axs = plt.subplots(num_subplots, 1, sharex=True)
+fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(10,3))
 if num_subplots==1: axs=[axs] # To make the rest compatible in case of a single subplot
 for g, graph in enumerate(args.graphs):
     subplot_number = subplot_numbers[g]-1
@@ -127,17 +126,17 @@ for g, graph in enumerate(args.graphs):
 if graph_activations: axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for i, ax in enumerate(axs):
     if args.xlabels:
-        ax.set_xticklabels(args.xlabels, fontsize=17) #, rotation='vertical')
+        ax.set_xticklabels(args.xlabels, fontsize=17)#, rotation='vertical')
     else:
-        ax.set_xticklabels(stimuli[0].split(' '), fontsize=17) #, rotation='vertical')
+        ax.set_xticklabels(stimuli[0].split(' '), fontsize=24) #, rotation='vertical')
     #ax.tick_params(labelsize=10)
-    #ax.tick_params(axis='x', pad=40)
+    ax.tick_params(axis='y', labelsize=16)
     if args.ylabels:
         ax.set_ylabel(args.ylabels[i], rotation='horizontal', ha='center', va='center', fontsize=24)
     #else:
         #ax.set_ylabel('Activation', fontsize=45)
 # adding legend
-handles, labels = axs[3].get_legend_handles_labels() # take labels from cell, which also has a curve for the syntax unit 1150
+handles, labels = axs[0].get_legend_handles_labels() # take labels from cell, which also has a curve for the syntax unit 1150
 #labels = ['Singular-Singular', 'Singular-Plural', 'Plural-Singular', 'Plural-Plural', 'Syntax unit 1150 (all conditions)']
 legend = fig.legend(handles, labels, loc='upper center', ncol=3, fontsize=10)
 if args.no_legend: 
