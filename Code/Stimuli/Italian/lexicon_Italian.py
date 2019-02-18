@@ -8,19 +8,19 @@
 determinants = {}
 definit = {}
 a = {}
-for gender in ['masc', 'femi']:
+for gender in ['masculine', 'feminine']:
     definit[gender] = {}
     a[gender] = {}
 # Tokens
-definit['masc']['sing'] = ['il', 'lo', "l'"]
-definit['masc']['plur'] = ['i', 'gli']
-definit['femi']['sing'] = ['la', "l'"]
-definit['femi']['plur'] = ['le']
+definit['masculine']['singular'] = ['il', 'lo', "l'"]
+definit['masculine']['plural'] = ['i', 'gli']
+definit['feminine']['singular'] = ['la', "l'"]
+definit['feminine']['plural'] = ['le']
 
-a['masc']['sing'] = ['al', 'allo', "all'"]
-a['masc']['plur'] = ['ai', 'agli']
-a['femi']['sing'] = ['alla', "all'"]
-a['femi']['plur'] = ['alle']
+a['masculine']['singular'] = ['al', 'allo', "all'"]
+a['masculine']['plural'] = ['ai', 'agli']
+a['feminine']['singular'] = ['alla', "all'"]
+a['feminine']['plural'] = ['alle']
 
 determinants = {'definit':definit, 'a':a}
 
@@ -32,25 +32,25 @@ determinants = {'definit':definit, 'a':a}
 # -----
 # Initialization
 nouns = {}
-for gender in ['masc', 'femi']:
+for gender in ['masculine', 'feminine']:
     nouns[gender] = {}
 # Tokens
-nouns['masc']['sing'] = ['fratello', 'studente', 'padre', 'figlio', 'ragazzo', 'bambino', 'amico', 'uomo', 'attore', 'contadino']
-nouns['masc']['plur'] = ['fratelli', 'studenti', 'padri', 'figli', 'ragazzi', 'bambini', 'amici', 'uomini', 'attori', 'contadini']
-nouns['femi']['sing'] = ['sorella', 'studentessa', 'madre', 'figlia', 'ragazza', 'bambina', 'amica', 'donna', 'attrice', 'contadina']
-nouns['femi']['plur'] = ['sorelle', 'studentesse', 'madri', 'figlie', 'ragazze', 'bambine', 'amiche', 'donne', 'attrici', 'contadine']
+nouns['masculine']['singular'] = ['fratello', 'studente', 'padre', 'figlio', 'ragazzo', 'bambino', 'amico', 'uomo', 'attore', 'contadino']
+nouns['masculine']['plural'] = ['fratelli', 'studenti', 'padri', 'figli', 'ragazzi', 'bambini', 'amici', 'uomini', 'attori', 'contadini']
+nouns['feminine']['singular'] = ['sorella', 'studentessa', 'madre', 'figlia', 'ragazza', 'bambina', 'amica', 'donna', 'attrice', 'contadina']
+nouns['feminine']['plural'] = ['sorelle', 'studentesse', 'madri', 'figlie', 'ragazze', 'bambine', 'amiche', 'donne', 'attrici', 'contadine']
 
 # LOCATION NOUNS
 # --------------
 # Initialization
 location_nouns = {}
-for gender in ['masc', 'femi']:
+for gender in ['masculine', 'feminine']:
     location_nouns[gender] = {}
 # Tokens
-location_nouns['masc']['sing'] = nouns['masc']['sing']
-location_nouns['masc']['plur'] = nouns['masc']['plur']
-location_nouns['femi']['sing'] = nouns['femi']['sing']
-location_nouns['femi']['plur'] = nouns['femi']['plur']
+location_nouns['masculine']['singular'] = nouns['masculine']['singular']
+location_nouns['masculine']['plural'] = nouns['masculine']['plural']
+location_nouns['feminine']['singular'] = nouns['feminine']['singular']
+location_nouns['feminine']['plural'] = nouns['feminine']['plural']
 
 ###################
 ###### VERBS ######
@@ -61,15 +61,15 @@ location_nouns['femi']['plur'] = nouns['femi']['plur']
 # Initialization
 verbs = {}
 # Tokens
-verbs['sing'] = ['accoglie', 'ama', 'attrae', 'blocca', 'conosce', 'critica', 'difende', 'evita', 'ferma', 'guarda', 'ignora', 'incontra', 'indica', 'interrompe', 'osserva', 'ricorda', 'saluta']
-verbs['plur'] = ['accolgono', 'amano', 'attraggono', 'bloccano', 'conoscono', 'criticano', 'difendono', 'evitano', 'fermano', 'guardano', 'ignorano', 'incontrano', 'indicano', 'interrompono', 'osservano', 'ricordano', 'salutano']
+verbs['singular'] = ['accoglie', 'ama', 'attrae', 'blocca', 'conosce', 'critica', 'difende', 'evita', 'ferma', 'guarda', 'ignora', 'incontra', 'indica', 'interrompe', 'osserva', 'ricorda', 'saluta']
+verbs['plural'] = ['accolgono', 'amano', 'attraggono', 'bloccano', 'conoscono', 'criticano', 'difendono', 'evitano', 'fermano', 'guardano', 'ignorano', 'incontrano', 'indicano', 'interrompono', 'osservano', 'ricordano', 'salutano']
 
 # MATRIX VERBS
 # -----
 # Initialization
 matrix_verbs = {}
 # Tokens
-matrix_verbs['sing'] = ['crede', 'dice', 'pensa']
+matrix_verbs['singular'] = ['crede', 'dice', 'pensa']
 matrix_verbs['plural'] = ['credono', 'dicono', 'pensano']
 
 
