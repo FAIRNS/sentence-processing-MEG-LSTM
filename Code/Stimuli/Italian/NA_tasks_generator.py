@@ -5,7 +5,7 @@ from lexicon_Italian import Words
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Stimulus generator for Italian')
-parser.add_argument('-n', '--natask', default='nounPP', type=str, help = 'Number-agreement (NA) task to generate')
+parser.add_argument('-n', '--natask', default='objrel', type=str, help = 'Number-agreement (NA) task to generate')
 args = parser.parse_args()
 
 def construct_DP(subject, subject_gender, subject_number):
@@ -35,38 +35,38 @@ def construct_DP(subject, subject_gender, subject_number):
     starts_with_special_consonant = subject[0] in special_consonants or subject[0:1] in special_bi_consonants or (subject[0]=='s' and subject[1] not in vowels)
 
     IX = 0
-    if subject_number == 'sing':
+    if subject_number == 'singular':
         if starts_with_vowel:
             IX = -1 # choose det l'
-        elif subject_gender == 'masc' and starts_with_special_consonant:
+        elif subject_gender == 'masculine' and starts_with_special_consonant:
             IX = 1 # choose det 'lo'
     else: #plural
-        if subject_gender == 'masc' and (starts_with_vowel or starts_with_special_consonant or subject[0] == 'x'):
+        if subject_gender == 'masculine' and (starts_with_vowel or starts_with_special_consonant or subject[0] == 'x'):
             IX = 1 # Choose det 'gli'
 
     return IX
 
 # Create counter
 counter = {}
-for attractor_gender in ['masc', 'femi']:
-    for attractor_number in ['sing', 'plur']:
-        for gender in ['masc', 'femi']:
-            for number in ['sing', 'plur']:
+for attractor_gender in ['masculine', 'feminine']:
+    for attractor_number in ['singular', 'plural']:
+        for gender in ['masculine', 'feminine']:
+            for number in ['singular', 'plural']:
                 counter["_".join([gender, number, attractor_gender, attractor_number])] = 0
 
 # Generate sentences and print to terminal
 
 #### nounPP #####
-if args.natask == 'nounPP':
-    for subject_gender in ['masc', 'femi']:
-        for subject_number in ['sing', 'plur']:
+if args.natask == 'nounpp':
+    for subject_gender in ['masculine', 'feminine']:
+        for subject_number in ['singular', 'plural']:
             subjects = Words['nouns'][subject_gender][subject_number]
             for subject in subjects:
                 IX_subject = construct_DP(subject, subject_gender, subject_number)
                 det = Words['determinants']['definit'][subject_gender][subject_number][IX_subject]
                 DP = det + ' ' + subject
-                for attractor_gender in ['masc', 'femi']:
-                    for attractor_number in ['sing', 'plur']:
+                for attractor_gender in ['masculine', 'feminine']:
+                    for attractor_number in ['singular', 'plural']:
                         for attractor in Words['location_nouns'][attractor_gender][attractor_number]:
                             if subject != attractor:
                                 IX_attractor = construct_DP(attractor, attractor_gender, attractor_number)
@@ -74,39 +74,61 @@ if args.natask == 'nounPP':
                                     prep_word, prep_article = prep.split(' ')
                                     article = Words['determinants'][prep_article][attractor_gender][attractor_number][IX_attractor]
                                     NP = ' '.join([DP] + [prep_word] + [article] + [attractor])
-                                    for verb in Words['verbs'][subject_number]:
+                                    for v, verb in enumerate(Words['verbs'][subject_number]):
+                                        opposite_number = 'singular' if subject_number == 'plural' else 'plural'
                                         sentence = NP + ' ' + verb
-                                        print('%s\t%s\t%s\t%s\t%s' % (sentence, subject_gender, subject_number, attractor_gender, attractor_number))
+                                        print('%s\t%s\t%s\t%s\t%s\t%s\t%s' % (args.natask, sentence, subject_gender, subject_number, attractor_gender, attractor_number, Words['verbs'][opposite_number][v]))
                                         counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
 
 
-#### nounPPAdj #####
-if args.natask == 'nounPPAdj':
-    for subject_gender in ['masc', 'femi']:
-        for subject_number in ['sing', 'plur']:
+if args.natask == 'subjrel':
+    for subject_gender in ['masculine', 'feminine']:
+        for subject_number in ['singular', 'plural']:
             subjects = Words['nouns'][subject_gender][subject_number]
             for subject in subjects:
                 IX_subject = construct_DP(subject, subject_gender, subject_number)
                 det = Words['determinants']['definit'][subject_gender][subject_number][IX_subject]
-                DP = det + ' ' + subject
-                for attractor_gender in ['masc', 'femi']:
-                    for attractor_number in ['sing', 'plur']:
-                        for attractor in Words['location_nouns'][attractor_gender][attractor_number]:
-                            IX_attractor = construct_DP(attractor, attractor_gender, attractor_number)
-                            for prep in Words['loc_preps']:
-                                prep_word, prep_article = prep.split(' ')
-                                article = Words['determinants'][prep_article][attractor_gender][attractor_number][IX_attractor]
-                                NP = ' '.join([DP] + [prep_word] + [article] + [attractor])
-                                for verb in Words['verbs'][subject_number]:
-                                    sentence = NP + ' ' + verb
-                                    print('%s\t%s\t%s\t%s\t%s' % (sentence, subject_gender, subject_number, attractor_gender, attractor_number))
-                                    counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
+                NP_start = det + ' ' + subject
+                for attractor_gender in ['masculine', 'feminine']:
+                    for attractor_number in ['singular', 'plural']:
+                        for attractor in Words['nouns'][attractor_gender][attractor_number]:
+                            if subject != attractor:
+                                IX_attractor = construct_DP(attractor, attractor_gender, attractor_number)
+                                article = Words['determinants']['definit'][attractor_gender][attractor_number][IX_attractor]
+                                for v1, verb1 in enumerate(Words['verbs'][subject_number]):
+                                    clause = ' '.join(['che', verb1, article, attractor])
+                                    for v2, verb2 in enumerate(Words['verbs'][subject_number]):
+                                        if verb1 != verb2:
+                                            opposite_number = 'singular' if subject_number == 'plural' else 'plural'
+                                            sentence = NP_start + ' ' + clause + ' ' + verb2
+                                            print('%s\t%s\t%s\t%s\t%s\t%s\t%s' % (args.natask, sentence, subject_gender, subject_number, attractor_gender, attractor_number, Words['verbs'][opposite_number][v1]))
+                                            counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
+
+
+if args.natask == 'objrel':
+    for subject_gender in ['masculine', 'feminine']:
+        for subject_number in ['singular', 'plural']:
+            subjects = Words['nouns'][subject_gender][subject_number]
+            for subject in subjects:
+                IX_subject = construct_DP(subject, subject_gender, subject_number)
+                det = Words['determinants']['definit'][subject_gender][subject_number][IX_subject]
+                NP_start = det + ' ' + subject
+                for attractor_gender in ['masculine', 'feminine']:
+                    for attractor_number in ['singular', 'plural']:
+                        for attractor in Words['nouns'][attractor_gender][attractor_number]:
+                            if subject != attractor:
+                                IX_attractor = construct_DP(attractor, attractor_gender, attractor_number)
+                                article = Words['determinants']['definit'][attractor_gender][attractor_number][IX_attractor]
+                                for v1, verb1 in enumerate(Words['verbs'][attractor_number]):
+                                    clause = ' '.join(['che', article, attractor, verb1])
+                                    for v2, verb2 in enumerate(Words['verbs'][subject_number]):
+                                        if verb1 != verb2:
+                                            opposite_number = 'singular' if subject_number == 'plural' else 'plural'
+                                            sentence = NP_start + ' ' + clause + ' ' + verb2
+                                            print('%s\t%s\t%s\t%s\t%s\t%s\t%s' % (args.natask, sentence, subject_gender, subject_number, attractor_gender, attractor_number, Words['verbs'][opposite_number][v1]))
+                                            counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
+
+
 
 if not all(x==list(counter.values())[0] for x in counter.values()):
     raise Exception("Number of conditions mismatch: ", counter)
-
-
-
-
-
-
