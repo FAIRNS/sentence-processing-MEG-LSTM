@@ -4,12 +4,11 @@ import argparse
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Stimulus generator for Italian')
-parser.add_argument('-f', '--data-filename', default='example_filtered.txt', type=str, help = 'filename of the dataset to be examined')
+parser.add_argument('-f', '--data-filename', default='objrel_4000.txt', type=str, help = 'filename of the dataset to be examined')
 args = parser.parse_args()
 
 
 with open(args.data_filename, 'r') as f:
-    # read line
     stimuli = f.readlines()
 
 features = [s.split('\t')[2::] for s in stimuli]
