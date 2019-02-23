@@ -108,7 +108,7 @@ info = pickle.load(open(args.stimuli_meta_data, 'rb'))
 ##### Plot all curves on the same figure #########
 subplot_numbers = [int(graph_info[0]) for graph_info in args.graphs]
 num_subplots = np.max(subplot_numbers)
-fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(10,3))
+fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(15,15))
 if num_subplots==1: axs=[axs] # To make the rest compatible in case of a single subplot
 for g, graph in enumerate(args.graphs):
     subplot_number = subplot_numbers[g]-1
