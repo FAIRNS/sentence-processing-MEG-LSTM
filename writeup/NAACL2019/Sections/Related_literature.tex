@@ -1,15 +1,13 @@
 
 \section{Related work}
 
-Starting with the seminal work of \newcite{Linzen:etal:2016},
-long-distance number agreement (``the \textbf{boy} near the cars
-\textbf{greets}\ldots'') has emerged as a standard way to probe the
-syntactic capabilities of RNNs. Following
-mixed initial results by Linzen and colleagues and
-\newcite{Bernardy:Lappin:2017}, \newcite{Gulordava:etal:2018} and
-\newcite{Kuncoro:etal:2018a} have robustly established that LSTMs
-trained with a language modeling objective on raw data achieve
-near-human performance on the agreement task. While Gulordava and
+Starting with the seminal work of \newcite{Linzen:etal:2016}, a long-distance number agreement task has emerged as a standard way to probe the syntactic capabilities of neural language models.
+In the number agreement task, a model is asked to predict the verb in a sentence where the subject and main verb are separated by one or more intervening nouns (``the \textbf{boy} near the \textit{cars} \textbf{greets}\ldots'') and evaluated based on how often it predicts the right verb form.
+
+Following mixed initial results by Linzen and colleagues and \newcite{Bernardy:Lappin:2017}, \newcite{Gulordava:etal:2018} and
+\newcite{Kuncoro:etal:2018a} have robustly established that LSTM language models
+%trained with a language modeling objective on raw data 
+achieve near-human performance on the agreement task. While Gulordava and
 colleagues provided some evidence that the LSTMs are relying on
 genuine syntactic generalizations, \newcite{Kuncoro:etal:2018b} and
 \newcite{Linzen:Leonard:2018} suggested that the LSTM achievements
