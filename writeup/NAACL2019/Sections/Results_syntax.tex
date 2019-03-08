@@ -29,26 +29,11 @@
 \caption{Cell activity of syntax unit \unit{2}{500} while processing various syntactic structures. Values averaged across all stimuli in an NA-task, with error bars representing standard deviations. Relative clause NA-task stimuli were specifically generated for this visualization.}
 \end{figure*}
 
-We saw how the input and forget gates of the LR-number units control the flow
-of subject-number information. It remains unclear, however, how the dynamics of these gates are controlled by the network. We hypothesized
-that other units may encode information about the syntactic structure
-of the sentence, and thus about the subject-verb dependency. To
-search for them, we tested whether syntactic information can be
-decoded from some network units, by using depth of the
-syntactic tree as a proxy \cite{Nelson:etal:2017}. Specifically, we
-trained an L2-regularized regression model to predict syntactic
-tree-depth from the hidden-state activity of all units, using the data
-presented in Section \ref{sec:the_data} above, in a nested 5-fold
-cross-validation procedure. Word frequency, which was added as a covariate
-to the model, had a negligible effect on the results.
+We saw how the input and forget gates of the LR-number units control the flow of subject-number information. It remains unclear, however, how the dynamics of these gates are controlled by the network. We hypothesized that other units in the network may encode information about the syntactic structure of the sentence, and thus about the subject-verb dependency. Such synatx units could then control and time the opening and closing of the input and forget gates of the number units. 
 
-Syntactic tree-depth can be efficiently decoded from network activity
-($R^2_{test-set}=0.85\pm0.009$; covariate-corrected). A small subset of `syntax' units had relatively high weights in the regression model (mean weight = $7.6\times{}10^{-4}$, SD=$7.86\times{}10^{-2}$; cutoff for outlier weights was set to three SDs). Since the interpretation of the regression weights may depend on possible correlations among the features, we also tested the causal effect of these units on NA-task performance. Ablating the syntax units together resulted in significant performance reduction in NA-tasks that have an interfering noun: Linzen NA-task: $p=0.024$, nounPPAdv-SP: $p=0.011$, nounPPAdv-PS: $p=0.034$, nounPP-SP: $p<0.001$ and marginally significant in nounPP-PS: $p=0.052$ (compared to 1000 random ablations of subsets of units of the same size).
+To identify syntax units, we tested from which network units syntactic information can be decoded, using depth of the syntactic tree as a proxy for syntactic structure \cite{Nelson:etal:2017}. For this, we trained an L2-regularized regression model to predict syntactic tree-depth from the hidden-state activity of all units, using the data presented in Section \ref{sec:the_data} above, in a nested 5-fold cross-validation procedure. Word frequency, which was added as a covariate to the model, had a negligible effect on the results. Syntactic tree-depth was found to be efficiently decodable from network activity ($R^2_{test-set}=0.85\pm0.009$; covariate-corrected). A small subset of `syntax' units had relatively high weights in the regression model (mean weight = $7.6\times{}10^{-4}$, SD=$7.86\times{}10^{-2}$; cutoff for outlier weights was set to three SDs). Since the interpretation of the regression weights may depend on possible correlations among the features, we also tested the causal effect of these units on NA-task performance. Ablating the syntax units together resulted in significant performance reduction in NA-tasks that have an interfering noun: Linzen NA-task: $p=0.024$, nounPPAdv-SP: $p=0.011$, nounPPAdv-PS: $p=0.034$, nounPP-SP: $p<0.001$ and marginally significant in nounPP-PS: $p=0.052$ (compared to 1000 random ablations of subsets of units of the same size).
 
-To gain further insight regarding the functioning of the syntax units,
-we next visualized their gate and cell dynamics during sentence
-processing. We found that cell activity of unit
-\unit{2}{500}, which also had one of the highest weights in the
+To gain further insight regarding the functioning of the syntax units, we next visualized their gate and cell dynamics during sentence processing. We found that cell activity of unit \unit{2}{500}, which also had one of the highest weights in the
 regression model, was remarkably structured. The activity of
 this unit increases across the entire subject-verb
 dependency and drops abruptly right after. Figures
