@@ -163,8 +163,8 @@ for unit_group in tqdm(target_units):
                 if j==gold.loc[i,'verb_pos']-1:
                     assert s[j+1] == gold.loc[i, 'correct'].lower()
                     # Store surprisal of target word
-                    log_p_targets_correct[i] = out[0, 0, vocab.word2idx[gold.loc[i,'correct']]].data[0]
-                    log_p_targets_wrong[i] = out[0, 0, vocab.word2idx[gold.loc[i, 'wrong']]].data[0]
+                    log_p_targets_correct[i] = out[0, 0, vocab.word2idx[gold.loc[i,'correct']]].data.item()
+                    log_p_targets_wrong[i] = out[0, 0, vocab.word2idx[gold.loc[i, 'wrong']]].data.item()
         # Score the performance of the model w/o ablation
         score_on_task = np.sum(log_p_targets_correct > log_p_targets_wrong)
         p_difference = np.exp(log_p_targets_correct) - np.exp(log_p_targets_wrong)
