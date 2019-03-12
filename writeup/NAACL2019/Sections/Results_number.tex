@@ -66,28 +66,34 @@ nounPPAdv & PP & - &  - &   \textcolor{blue}{99.8} \\
     \centering
     \begin{subfigure}{\textwidth}
             \centering
-            \includegraphics[width=0.3\linewidth]{Figures/legend.pdf}
+            \includegraphics[width=0.4\linewidth]{Figures/legend.pdf}
     \end{subfigure}
     \bigskip
-    \begin{subfigure}{0.32\textwidth}
-            \centering
-            \includegraphics[width=\linewidth]{Figures/unit-timeseries-cartoon.pdf}
-            \subcaption{Prediction (singular)}
-    \label{fig:cartoon}
-    \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.45\textwidth}
             \centering
             \includegraphics[width=\linewidth]{Figures/nounpp_987.pdf}
             \subcaption{\unit{2}{338} (singular)}
     \label{fig:singular-unit}
     \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.45\textwidth}
             \centering
             \includegraphics[width=\linewidth]{Figures/nounpp_775.pdf}
             \subcaption{\unit{2}{126} (plural)}
     \label{fig:plural-unit}
     \end{subfigure}
-\caption{Cell and gate activations during processing of sentences with a prepositional phrase between subject and verb. Values in (b) and (c) are averaged across all condition sentences, with error bars showing standard deviations.}
+    \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Figures/unit-timeseries-cartoon.pdf}
+            \subcaption{Prediction (singular)}
+    \label{fig:cartoon}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[height=4.3cm]{Figures/weight_dists_verbs.png}
+        \caption{Efferent weights of the LR-units (\unit{2}{126} and \unit{2}{338}), the syntax unit (\unit{2}{500}; section \ref{sec:syntax-units}) and two arbitrary units (\unit{2}{1} and \unit{2}{650}).}
+        \label{fig:output-weights}
+    \end{subfigure}
+    \caption{(a) to (c) -- Cell and gate activations during processing of sentences with a prepositional phrase between subject and verb. Values in (\subref{fig:singular-unit}) and (\subref{fig:plural-unit}) are averaged across all condition sentences, with error bars showing standard deviations. (\subref{fig:output-weights}) -- Efferent weights of specific units at the output layer to singular and plural verb forms.}
 \end{figure*}
 
 \subsection{Long-range number units}\label{subsec:ablation}
@@ -193,12 +199,12 @@ Figures \ref{fig:singular-unit} and \ref{fig:plural-unit} present the actual gat
 
 A single divergence between the solution depicted in Figure \ref{fig:cartoon} and the actual dynamics of the number units is that input gate activity is smaller, but not zero, at the time step immediately following the subject. One speculative explanation is that this might be useful to process compound nouns. In these cases, subject number information is stored with the second noun, whereas in the case of simple nouns there is no `risk' of encountering an interfering noun immediately after the subject, making the delay in closing the gate safe.
 
-\begin{figure}[b]
-    \centering
-    \includegraphics[height=4.3cm]{Figures/weight_dists_verbs.png}
-    \caption{Efferent weights of the LR-units (\unit{2}{126} and \unit{2}{338}), the syntax unit (\unit{2}{500}; section \ref{sec:syntax-units}) and two arbitrary units (\unit{2}{1} and \unit{2}{650}).}
-    \label{fig:output-weights}
-\end{figure}
+%\begin{figure}[b]
+%    \centering
+%    \includegraphics[height=4.3cm]{Figures/weight_dists_verbs.png}
+%    \caption{Efferent weights of the LR-units (\unit{2}{126} and \unit{2}{338}), the syntax unit (\unit{2}{500}; section \ref{sec:syntax-units}) and two arbitrary units (\unit{2}{1} and \unit{2}{650}).}
+%    \label{fig:output-weights}
+%\end{figure}
 
 The singular and plural units had emerged at the second layer of the network. This seems appropriate since number information needs to be directly projected to the output layer for correct verb-form prediction. Moreover, number-unit output should be projected differently to singular and plural verb forms in the output layer, only increasing activity in output units representing the suitable form. For example, for the singular unit, since singular subjects are encoded with a negative value ($C_{t_{verb}-1}<-1$ in figure \ref{fig:singular-unit}), the more negative its efferent weights to singular verb forms in the output layer, the higher the probabilities of these verb forms would be. Figure \ref{fig:output-weights} shows the efferent weights of the LR-number units to all verbs in our data-sets. We found that, indeed, the efferent weights to the singular and plural verb forms are segregated from each other, with weight signs that correspond to the negative encoding of subject number used by both singular and plural units. Two other arbitrary units, \unit{2}{1} and \unit{2}{650}, and the syntax unit \unit{2}{500} to be described below (Section \ref{sec:syntax-units}) do not have segregated efferent weights to verb forms, as expected. 
 

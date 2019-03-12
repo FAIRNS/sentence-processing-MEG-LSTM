@@ -143,8 +143,8 @@ if 'lstm' in args.get_representations:
                         "Moore says : \" Tony and I had a good <unk> and off-screen relationship , we are two very different people , but we did share a sense of humour \" . <eos>",
                         "<unk> is also the basis for online games sold through licensed lotteries . <eos>"])
     elif args.lang == 'it':
-        init_sentence = " ".join(["L' <unk> o <unk> ( in francese , \" <unk> \" ) Ã¨ uno strumento musicale azionato con una tastiera , detta manuale . <eos>", "<unk> indiano . <eos>",
-        "Ma altre caratteristiche hanno fatto in modo che si <unk> ugualmente nel contesto della musica indiana ( anche di quella \" classica \" ) . <eos>"])
+        init_sentence = " ".join(['Ma altre caratteristiche hanno fatto in modo che si <unk> ugualmente nel contesto della musica indiana ( anche di quella \" classica \" ) . <eos>',
+        'Il principio di simpatia non viene abbandonato da Adam Smith nella redazione della " <unk> delle nazioni " , al contrario questo <unk> allo scambio e al mercato : il <unk> produce pane non per far- ne dono ( benevolenza ) , ma per vender- lo ( perseguimento del proprio interesse ) . <eos>'])
     else:
         # init_sentence = " ".join([
         # "hier , considéré avec scepticisme du fait de la présence du minitel , le réseau connaît aujourd'hui un véritable engouement . </s>",
