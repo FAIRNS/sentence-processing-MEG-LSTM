@@ -2,12 +2,12 @@ import os, pickle
 
 
 # Collect performance results
-batches = [0]
-perf = [0.5]
+batches = []
+perf = []
 for epoch in range(1,10):
     for batch in range(200, 123000, 200):
         print(epoch, batch)
-        filename = 'Output/english_nounpp_epoch_%i_batch_%i.abl' % (epoch, batch)
+        filename = os.path.join('..', '..', '..', 'Output', 'english_nounpp_epoch_%i_batch_%i.abl' % (epoch, batch))
         if os.path.exists(filename):
             with open(filename, 'rb') as f:
                 results = pickle.load(f)
