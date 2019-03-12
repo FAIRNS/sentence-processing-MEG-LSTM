@@ -36,8 +36,8 @@ print('Loading models...')
 print('\nmodel: ' + args.model+'\n')
 model = torch.load(args.model)
 model.rnn.flatten_parameters()
-embeddings_in = model.encoder.weight.data.numpy()
-embeddings_out = model.decoder.weight.data.numpy()
+embeddings_in = model.encoder.weight.data.cpu().numpy()
+embeddings_out = model.decoder.weight.data.cpu().numpy()
 vocab = data.Dictionary(args.vocabulary)
 
 # Read list of contrasted words (e.g., singular vs. plural verbs).
