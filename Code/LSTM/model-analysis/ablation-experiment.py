@@ -34,6 +34,7 @@ parser.add_argument('-uf', '--unit-from', type=int, default=False, help='Startin
 parser.add_argument('-ut', '--unit-to', type=int, default=False, help='Ending range for test unit to ablate')
 parser.add_argument('-s', '--seed', default=1, help='Random seed when adding random units')
 parser.add_argument('-g', '--groupsize', default=1, help='Group size of units to ablate, including test unit and random ones')
+parser.add_argument('--lang', default='en')
 parser.add_argument('--unk-token', default='<unk>')
 parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--lang', default='en')
@@ -133,9 +134,18 @@ for unit_group in tqdm(target_units):
             if len(units_to_kill_l1)>0: model.decoder.weight.data[:, units_to_kill_l1] = 0
 
         if args.lang == 'en':
-            init_sentence = " ".join(["In service , the aircraft was operated by a crew of five and could accommodate either 30 paratroopers , 32 <unk> and 28 sitting casualties , or 50 fully equipped troops . <eos>", "He even speculated that technical classes might some day be held \" for the better training of workmen in their several crafts and industries . <eos>", "After the War of the Holy League in 1537 against the Ottoman Empire , a truce between Venice and the Ottomans was created in 1539 . <eos>","Moore says : \" Tony and I had a good <unk> and off-screen relationship , we are two very different people , but we did share a sense of humour \" . <eos>", "<unk> is also the basis for online games sold through licensed lotteries . <eos>"])
+            init_sentence = " ".join(["In service , the aircraft was operated by a crew of five and could accommodate either 30 paratroopers , 32 <unk> and 28 sitting casualties , or 50 fully equipped troops . <eos>",
+                            "He even speculated that technical classes might some day be held \" for the better training of workmen in their several crafts and industries . <eos>",
+                            "After the War of the Holy League in 1537 against the Ottoman Empire , a truce between Venice and the Ottomans was created in 1539 . <eos>",
+                            "Moore says : \" Tony and I had a good <unk> and off-screen relationship , we are two very different people , but we did share a sense of humour \" . <eos>",
+                            "<unk> is also the basis for online games sold through licensed lotteries . <eos>"])
         elif args.lang == 'it':
-            init_sentence = " ".join(["Si adottarono quindi nuove tecniche basate sulla rotazione pluriennale e sulla sostituzione del <unk> con pascoli per il bestiame , anche per ottener- ne <unk> naturale . <eos>", "Una parte di questa agricoltura tradizionale prende oggi il nome di agricoltura biologica , che costituisce comunque una nicchia di mercato di una certa rilevanza e presenta prezzi <unk> . <eos>", "L' effetto estetico non scaturisce quindi da un mero impatto visivo : ad esempio , nelle architetture riconducibili al Movimento Moderno , lo spazio viene modellato sulla base di precise esigenze funzionali e quindi il raggiungimento di un risultato estetico deriva dal perfetto adempimento di una funzione . <eos>"])
+            init_sentence = " ".join(['Ma altre caratteristiche hanno fatto in modo che si <unk> ugualmente nel contesto della musica indiana ( anche di quella \" classica \" ) . <eos>',
+            'Il principio di simpatia non viene abbandonato da Adam Smith nella redazione della " <unk> delle nazioni " , al contrario questo <unk> allo scambio e al mercato : il <unk> produce pane non per far- ne dono ( benevolenza ) , ma per vender- lo ( perseguimento del proprio interesse ) . <eos>'])
+
+            #init_sentence = " ".join(["Si adottarono quindi nuove tecniche basate sulla rotazione pluriennale e sulla sostituzione del <unk> con pascoli per il bestiame , anche per ottener- ne <unk> naturale . <eos>", "Una parte di questa agricoltura tradizionale prende oggi il nome di agricoltura biologica , che costituisce comunque una nicchia di mercato di una certa rilevanza e presenta prezzi <unk> . <eos>", "L' effetto estetico non scaturisce quindi da un mero impatto visivo : ad esempio , nelle architetture riconducibili al Movimento Moderno , lo spazio viene modellato sulla base di precise esigenze funzionali e quindi il raggiungimento di un risultato estetico deriva dal perfetto adempimento di una funzione . <eos>"])
+        else:
+            raise NotImplementedError("No init sentences available for this language")
 
         hidden = model.init_hidden(1) 
         init_out, init_h = feed_sentence(model, hidden, init_sentence.split(" "))
