@@ -34,7 +34,6 @@ parser.add_argument('-uf', '--unit-from', type=int, default=False, help='Startin
 parser.add_argument('-ut', '--unit-to', type=int, default=False, help='Ending range for test unit to ablate')
 parser.add_argument('-s', '--seed', default=1, help='Random seed when adding random units')
 parser.add_argument('-g', '--groupsize', default=1, help='Group size of units to ablate, including test unit and random ones')
-parser.add_argument('--lang', default='en')
 parser.add_argument('--unk-token', default='<unk>')
 parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--lang', default='en')
