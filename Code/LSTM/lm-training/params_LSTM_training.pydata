@@ -1,10 +1,10 @@
 {
     "experiment": "lm",
-    "name": "{model}-{data}-{seed}-{nhid}-{emsize}-{nlayers}-{dropout}-{batch_size}-{lr}-{epochs}",
+    "name": "{model}_seed_{seed}_nhid_{nhid}_emsize_{emsize}_nlayers_{nlayers}_dropout_{dropout}_batchsize_{batch_size}_lr_{lr}_epochs_{epochs}",
     "parameters": {
         "model": ["LSTM"],
-        "data": ["corpora/en/wikitext-2/"],
-        "seed": [1, 2, 3]
+        "data": ["path2data_wikitext2"],
+        "seed": [1, 2, 3],
         "nhid": [650],
         "emsize": [650],
         "nlayers": [2],
@@ -14,6 +14,6 @@
         "lr": [10, 20],
         "cuda": [True],
         "epochs": [40],
-        "save": ["/experiments/lm/{name}/model.pt"],
+        "save": ["path2save/English_model_wikitext_{name}.pt"]
     }
 }
