@@ -1,0 +1,19 @@
+{
+    "experiment": "lm",
+    "name": "{model}-{data}-{seed}-{nhid}-{emsize}-{nlayers}-{dropout}-{batch_size}-{lr}-{epochs}",
+    "parameters": {
+        "model": ["LSTM"],
+        "data": ["corpora/en/wikitext-2/"],
+        "seed": [1, 2, 3]
+        "nhid": [650],
+        "emsize": [650],
+        "nlayers": [2],
+        "dropout": [0, 0.1,0.2,0.4],
+        "batch_size": [64, 128],
+        "tied": [False],
+        "lr": [10, 20],
+        "cuda": [True],
+        "epochs": [40],
+        "save": ["/experiments/lm/{name}/model.pt"],
+    }
+}
