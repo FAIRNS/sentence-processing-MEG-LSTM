@@ -1,0 +1,40 @@
+
+\section{Related work}
+
+Starting with the seminal work of \newcite{Linzen:etal:2016}, a long-distance number agreement task has emerged as a standard way to probe the syntactic capabilities of neural language models.
+In the number agreement task, a model is asked to predict the verb in a sentence where the subject and main verb are separated by one or more intervening nouns (``the \textbf{boy} near the \textit{cars} \textbf{greets}\ldots'') and evaluated based on how often it predicts the right verb form.
+
+Following mixed initial results by Linzen and colleagues and \newcite{Bernardy:Lappin:2017}, \newcite{Gulordava:etal:2018} and
+\newcite{Kuncoro:etal:2018a} have robustly established that LSTM language models
+%trained with a language modeling objective on raw data 
+achieve near-human performance on the agreement task. While Gulordava and
+colleagues provided some evidence that the LSTMs are relying on
+genuine syntactic generalizations, \newcite{Kuncoro:etal:2018b} and
+\newcite{Linzen:Leonard:2018} suggested that the LSTM achievements
+can, at least in part, be accounted by superficial heuristics (e.g., ``percolate the number of the first noun in a sentence''). Other
+recent work has extended syntax probing to other phenomena such as
+negative polarity items and island constraints
+\cite{Chowdhury:Zamparelli:2018,jumelet2018language,marvin2018targeted,wilcox2018rnn}.
+
+While \newcite{Linzen:etal:2016} presented intriguing qualitative data
+showing cells that track grammatical number in a network directly trained on
+the agreement task, most of the following work focused on testing the
+network output behaviour, rather than on understanding how the latter
+follows from the inner representations of the network. Another research line
+studied linguistic processing in neural networks through `diagnostic classifiers', that is, classifiers trained to
+predict a certain property from network activations
+\cite[e.g.,][]{gelderloos2016phonemes,Adi:etal:2017,alain2017understanding,Hupkes:etal:2017}. This approach may give insight into which information is encoded by the
+network in different layers or at different time points, but it only
+provides indirect evidence about the specific mechanics of linguistic
+processing in the network.
+
+Other studies are closer to our approach in that they attempt to
+attribute function to specific network cells, often by means of
+visualization
+\cite{Karpathy:etal:2016,li2016visualizing,tang2017memory}. \newcite{Radford:etal:2017},
+for example, detected a ``sentiment'' grandmother cell in a
+language-model-trained network.  \newcite{Kementchedjhieva:Lopez:2018}
+recently found a character-level RNN to track morpheme boundaries in a
+single cell. We are however not aware of others studies systematically
+characterizing the processing of a linguistic phenomenon at the level of
+RNN cell dynamics, as is the attempt in the study hereby presented.
