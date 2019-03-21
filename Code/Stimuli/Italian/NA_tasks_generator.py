@@ -6,7 +6,7 @@ from lexicon_Italian import Words
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Stimulus generator for Italian')
-parser.add_argument('-n', '--natask', default='subjrel', type=str, help = 'Number-agreement (NA) task to generate')
+parser.add_argument('-n', '--natask', default='subjrel_that', type=str, help = 'Number-agreement (NA) task to generate (nounpp/subjrel_that/objrel_that)')
 parser.add_argument('-seed', default=1 , type=int, help = 'Random seed for replicability')
 args = parser.parse_args()
 
@@ -95,7 +95,7 @@ if args.natask == 'nounpp':
                                         counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
 
 
-if args.natask == 'subjrel':
+if args.natask == 'subjrel_that':
     for subject_gender in ['masculine', 'feminine']:
         for subject_number in ['singular', 'plural']:
             N1s = Words['nouns'][subject_gender][subject_number]
@@ -122,7 +122,7 @@ if args.natask == 'subjrel':
                                             counter["_".join([subject_gender, subject_number, attractor_gender, attractor_number])] += 1
 
 
-if args.natask == 'objrel':
+if args.natask == 'objrel_that':
     for subject_gender in ['masculine', 'feminine']:
         for subject_number in ['singular', 'plural']:
             N1s = Words['nouns'][subject_gender][subject_number]
