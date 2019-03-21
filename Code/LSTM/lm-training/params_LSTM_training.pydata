@@ -1,0 +1,19 @@
+{
+    "experiment": "lm",
+    "name": "{model}_seed_{seed}_nhid_{nhid}_emsize_{emsize}_nlayers_{nlayers}_dropout_{dropout}_batchsize_{batch_size}_lr_{lr}_epochs_{epochs}",
+    "parameters": {
+        "model": ["LSTM"],
+        "data": ["path2data_wikitext2"],
+        "seed": [1, 2, 3],
+        "nhid": [650],
+        "emsize": [650],
+        "nlayers": [2],
+        "dropout": [0, 0.1,0.2,0.4],
+        "batch_size": [64, 128],
+        "tied": [False],
+        "lr": [10, 20],
+        "cuda": [True],
+        "epochs": [40],
+        "save": ["path2save/English_model_wikitext_{name}.pt"]
+    }
+}

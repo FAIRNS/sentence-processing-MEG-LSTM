@@ -34,13 +34,13 @@ parser.add_argument('-uf', '--unit-from', type=int, default=False, help='Startin
 parser.add_argument('-ut', '--unit-to', type=int, default=False, help='Ending range for test unit to ablate')
 parser.add_argument('-s', '--seed', default=1, help='Random seed when adding random units')
 parser.add_argument('-g', '--groupsize', default=1, help='Group size of units to ablate, including test unit and random ones')
-parser.add_argument('--lang', default='en')
 parser.add_argument('--unk-token', default='<unk>')
 parser.add_argument('--use-unk', action='store_true', default=False)
+parser.add_argument('--lang', default='en')
 parser.add_argument('--cuda', action='store_true', default=False)
 parser.add_argument('--do-ablation', action='store_true', default=False)
 args = parser.parse_args()
-print(args)
+
 stime = time.time()
 
 os.makedirs(os.path.dirname(args.output), exist_ok=True)
@@ -51,18 +51,6 @@ vocab = data.Dictionary(args.vocabulary)
 # Sentences
 sentences = [l.rstrip('\n').split(' ') for l in open(args.input + '.text', encoding='utf-8')]
 gold = pandas.read_csv(args.input + '.gold', sep='\t', header=None, names=['verb_pos', 'correct', 'wrong', 'nattr'])
-
-# agreement_test_data = pandas.read_csv(args.input, sep='\t')
-# sentences_prefix = [s[7] for s in agreement_test_data._values]
-# correct_wrong = [s[5] for s in agreement_test_data._values]
-# verbs = [s[4] for s in agreement_test_data._values]
-# len_context = [s[11] for s in agreement_test_data._values]
-# len_prefix = [s[12] for s in agreement_test_data._values]
-# log_p = [s[14] for s in agreement_test_data._values]
-
-# sentences_prefix = [s.split() for s in sentences_prefix]
-# sentence_length = [len(s) for s in sentences_prefix]
-# max_length = max(*sentence_length)
 
 # Load model
 print('Loading models...')
@@ -153,6 +141,8 @@ for unit_group in tqdm(target_units):
         elif args.lang == 'it':
             init_sentence = " ".join(['Ma altre caratteristiche hanno fatto in modo che si <unk> ugualmente nel contesto della musica indiana ( anche di quella \" classica \" ) . <eos>',
             'Il principio di simpatia non viene abbandonato da Adam Smith nella redazione della " <unk> delle nazioni " , al contrario questo <unk> allo scambio e al mercato : il <unk> produce pane non per far- ne dono ( benevolenza ) , ma per vender- lo ( perseguimento del proprio interesse ) . <eos>'])
+
+            #init_sentence = " ".join(["Si adottarono quindi nuove tecniche basate sulla rotazione pluriennale e sulla sostituzione del <unk> con pascoli per il bestiame , anche per ottener- ne <unk> naturale . <eos>", "Una parte di questa agricoltura tradizionale prende oggi il nome di agricoltura biologica , che costituisce comunque una nicchia di mercato di una certa rilevanza e presenta prezzi <unk> . <eos>", "L' effetto estetico non scaturisce quindi da un mero impatto visivo : ad esempio , nelle architetture riconducibili al Movimento Moderno , lo spazio viene modellato sulla base di precise esigenze funzionali e quindi il raggiungimento di un risultato estetico deriva dal perfetto adempimento di una funzione . <eos>"])
         else:
             raise NotImplementedError("No init sentences available for this language")
 
@@ -182,8 +172,8 @@ for unit_group in tqdm(target_units):
                 if j==gold.loc[i,'verb_pos']-1:
                     assert s[j+1] == gold.loc[i, 'correct'].lower()
                     # Store surprisal of target word
-                    log_p_targets_correct[i] = out[0, 0, vocab.word2idx[gold.loc[i,'correct']]].data[0]
-                    log_p_targets_wrong[i] = out[0, 0, vocab.word2idx[gold.loc[i, 'wrong']]].data[0]
+                    log_p_targets_correct[i] = out[0, 0, vocab.word2idx[gold.loc[i,'correct']]].data.item()
+                    log_p_targets_wrong[i] = out[0, 0, vocab.word2idx[gold.loc[i, 'wrong']]].data.item()
         # Score the performance of the model w/o ablation
         score_on_task = np.sum(log_p_targets_correct > log_p_targets_wrong)
         p_difference = np.exp(log_p_targets_correct) - np.exp(log_p_targets_wrong)
@@ -200,6 +190,7 @@ for unit_group in tqdm(target_units):
             'nattr': list(gold.loc[:,'nattr']),
             'verb_pos': list(gold.loc[:, 'verb_pos'])
         }
+
         print(output_fn)
         print('\naccuracy: ' + str(100*score_on_task/len(sentences)) + '%\n')
         print('p_difference: %1.3f +- %1.3f' % (score_on_task_p_difference, score_on_task_p_difference_std))
@@ -213,3 +204,4 @@ for unit_group in tqdm(target_units):
         elif args.format == 'pkl':
             with open(output_fn, 'wb') as fout:
                 pickle.dump(out, fout, -1)
+
