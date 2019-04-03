@@ -20,6 +20,7 @@ parser.add_argument('-sr', '--short-range', nargs='+', type=int, default=[], hel
 parser.add_argument('-lr', '--long-range', nargs='+', type=int, default=[], help='list of long-range numebr units')
 parser.add_argument('-sy', '--syntax', nargs='+', type=int, default=[], help='list of syntax units')
 parser.add_argument('--no-mds', action='store_true', default=False)
+parser.add_argument('--cuda', action='store_true', default=False)
 #parser.add_argument('-sentences', '--stimuli-file-name', type=str, help='Path to text file containing the list of sentences to analyze')
 #parser.add_argument('-meta', '--stimuli-meta-data', type=str, help='The corresponding meta data of the sentences')
 
@@ -215,7 +216,11 @@ gate_names = ['Input', 'Forget', 'Cell', 'Output']
 # Load model
 print('Loading models...')
 print('\nmodel: ' + args.model+'\n')
-model = torch.load(args.model)
+if args.cuda:
+    model = torch.load(args.model, map_location=lambda storage, loc: storage)
+else:
+    model = torch.load(args.model)
+
 model.rnn.flatten_parameters()
 # print(model.rnn._all_weights)
 ###### Load LSTM activations, stimuli and meta-data ############
@@ -403,7 +408,7 @@ for gate in range(4):
             the_table._cells[cell].set_text_props(weight='bold')
         if cell[0] == cell[1]+1: the_table._cells[cell]._text.set_color('w')
 
-    plt.subplots_adjust(left = 0.2, bottom=0.26)
+    plt.subplots_adjust(left = 0.2, bottom=0.56)
 
     the_table.scale(1, 2.3)
 
