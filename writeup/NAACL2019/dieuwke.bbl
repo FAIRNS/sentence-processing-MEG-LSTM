@@ -1,0 +1,175 @@
+\begin{thebibliography}{25}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Adi et~al.(2017)Adi, Kermany, Belinkov, Lavi, and
+  Goldberg}]{Adi:etal:2017}
+Yossi Adi, Einat Kermany, Yonatan Belinkov, Ofer Lavi, and Yoav Goldberg. 2017.
+\newblock Fine-grained analysis of sentence embeddings using auxiliary
+  prediction tasks.
+\newblock In \emph{Proceedings of ICLR Conference Track}, Toulon, France.
+\newblock Published online:
+  \url{https://openreview.net/group?id=ICLR.cc/2017/conference}.
+
+\bibitem[{Alain and Bengio(2017)}]{alain2017understanding}
+Guillaume Alain and Yoshua Bengio. 2017.
+\newblock Understanding intermediate layers using linear classifier probes.
+\newblock In \emph{Proceedings of ICLR Conference Track}, Toulon, France.
+
+\bibitem[{Bernardy and Lappin(2017)}]{Bernardy:Lappin:2017}
+{Jean-Philippe} Bernardy and Shalom Lappin. 2017.
+\newblock Using deep neural networks to learn syntactic agreement.
+\newblock \emph{Linguistic Issues in Language Technology}, 15(2):1--15.
+
+\bibitem[{Bowers(2009)}]{Bowers:2009}
+Jeffrey Bowers. 2009.
+\newblock On the biological plausibility of grandmother cells: Implications for
+  neural network theories in psychology and neuroscience.
+\newblock \emph{Psychological Review}, 116(1):220--251.
+
+\bibitem[{Chowdhury and Zamparelli(2018)}]{Chowdhury:Zamparelli:2018}
+Shammur Chowdhury and Roberto Zamparelli. 2018.
+\newblock {RNN} simulations of grammaticality judgments on long-distance
+  dependencies.
+\newblock In \emph{Proceedings of COLING}, pages 133--144, Santa Fe, NM.
+
+\bibitem[{Gelderloos and Chrupa{\l}a(2016)}]{gelderloos2016phonemes}
+Lieke Gelderloos and Grzegorz Chrupa{\l}a. 2016.
+\newblock From phonemes to images: levels of representation in a recurrent
+  neural model of visually-grounded language learning.
+\newblock In \emph{Proceedings of COLING 2016, the 26th International
+  Conference on Computational Linguistics: Technical Papers}, pages 1309--1319.
+
+\bibitem[{Giulianelli et~al.(2018)Giulianelli, Harding, Mohnert, Hupkes, and
+  Zuidema}]{Giulianelli:etal:2018}
+Mario Giulianelli, Jack Harding, Florian Mohnert, Dieuwke Hupkes, and Willem
+  Zuidema. 2018.
+\newblock Under the hood: Using diagnostic classifiers to investigate and
+  improve how language models track agreement information.
+\newblock In \emph{Proceedings of the EMNLP BlackboxNLP Workshop}, pages
+  240--248, Brussels, Belgium.
+
+\bibitem[{Gulordava et~al.(2018)Gulordava, Bojanowski, Grave, Linzen, and
+  Baroni}]{Gulordava:etal:2018}
+Kristina Gulordava, Piotr Bojanowski, Edouard Grave, Tal Linzen, and Marco
+  Baroni. 2018.
+\newblock Colorless green recurrent networks dream hierarchically.
+\newblock In \emph{Proceedings of NAACL}, pages 1195--1205, New Orleans, LA.
+
+\bibitem[{Hochreiter and Schmidhuber(1997)}]{Hochreiter:Schmidhuber:1997}
+Sepp Hochreiter and J\"{u}rgen Schmidhuber. 1997.
+\newblock Long short-term memory.
+\newblock \emph{Neural Computation}, 9(8):1735--1780.
+
+\bibitem[{Hupkes et~al.(2018)Hupkes, Veldhoen, and Zuidema}]{Hupkes:etal:2017}
+Dieuwke Hupkes, Sara Veldhoen, and Willem Zuidema. 2018.
+\newblock Visualisation and 'diagnostic classifiers' reveal how recurrent and
+  recursive neural networks process hierarchical structure.
+\newblock \emph{Journal of Artificial Intelligence Research}, 61:907--926.
+
+\bibitem[{Jumelet and Hupkes(2018)}]{jumelet2018language}
+Jaap Jumelet and Dieuwke Hupkes. 2018.
+\newblock Do language models understand anything? on the ability of lstms to
+  understand negative polarity items.
+\newblock In \emph{Proceedings of the 2018 EMNLP Workshop BlackboxNLP:
+  Analyzing and Interpreting Neural Networks for NLP}, pages 222--231.
+
+\bibitem[{Karpathy et~al.(2016)Karpathy, Johnson, and Li}]{Karpathy:etal:2016}
+Andrej Karpathy, Justin Johnson, and {Fei-Fei} Li. 2016.
+\newblock Visualizing and understanding recurrent networks.
+\newblock In \emph{Proceedings of ICLR Workshop Track}, San Juan, Puerto Rico.
+\newblock Published online:
+  \url{https://openreview.net/group?id=ICLR.cc/2016/workshop}.
+
+\bibitem[{Kementchedjhieva and Lopez(2018)}]{Kementchedjhieva:Lopez:2018}
+Yova Kementchedjhieva and Adam Lopez. 2018.
+\newblock {`Indicatements'} that character language models learn {English}
+  morpho-syntactic units and regularities.
+\newblock In \emph{Proceedings of the EMNLP Workshop on analyzing and
+  interpreting neural networks for {NLP}}, Brussels, Belgium.
+\newblock {I}n press.
+
+\bibitem[{King and Dehaene(2014)}]{King:Dehaene:2014}
+Jean-R\'emi King and Stanislas Dehaene. 2014.
+\newblock Characterizing the dynamics of mental representations: The temporal
+  generalization method.
+\newblock \emph{Trends in Cognitive Sciences}, 18(4):203--210.
+
+\bibitem[{Kuncoro et~al.(2018{\natexlab{a}})Kuncoro, Dyer, Hale, and
+  Blunsom}]{Kuncoro:etal:2018b}
+Adhiguna Kuncoro, Chris Dyer, John Hale, and Phil Blunsom. 2018{\natexlab{a}}.
+\newblock The perils of natural behavioral tests for unnatural models: The case
+  of number agreement.
+\newblock Poster presented at the {Learning Language in Humans and in Machines}
+  conference, online at: \url{https://osf.io/view/L2HM/}.
+
+\bibitem[{Kuncoro et~al.(2018{\natexlab{b}})Kuncoro, Dyer, Hale, Yogatama,
+  Clark, and Blunsom}]{Kuncoro:etal:2018a}
+Adhiguna Kuncoro, Chris Dyer, John Hale, Dani Yogatama, Stephen Clark, and Phil
+  Blunsom. 2018{\natexlab{b}}.
+\newblock {LSTMs} can learn syntax-sensitive dependencies well, but modeling
+  structure makes them better.
+\newblock In \emph{Proceedings of ACL}, pages 1426--1436, Melbourne, Australia.
+
+\bibitem[{Kutter et~al.(2018)Kutter, Bostroem, Elger, Mormann, and
+  Nieder}]{Kutter:etal:2018}
+Esther Kutter, Jan Bostroem, Christian Elger, Florian Mormann, and Andreas
+  Nieder. 2018.
+\newblock Single neurons in the human brain encode numbers.
+\newblock \emph{Neuron}, 100(3):753--761.
+
+\bibitem[{Li et~al.(2016)Li, Chen, Hovy, and Jurafsky}]{li2016visualizing}
+Jiwei Li, Xinlei Chen, Eduard Hovy, and Dan Jurafsky. 2016.
+\newblock Visualizing and understanding neural models in {NLP}.
+\newblock In \emph{Proceedings of the North American Chapter of the Association
+  for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  pages 681--691.
+
+\bibitem[{Linzen et~al.(2016)Linzen, Dupoux, and Goldberg}]{Linzen:etal:2016}
+Tal Linzen, Emmanuel Dupoux, and Yoav Goldberg. 2016.
+\newblock Assessing the ability of {LSTM}s to learn syntax-sensitive
+  dependencies.
+\newblock \emph{Transactions of the Association for Computational Linguistics},
+  4:521--535.
+
+\bibitem[{Linzen and Leonard(2018)}]{Linzen:Leonard:2018}
+Tal Linzen and Brian Leonard. 2018.
+\newblock Distinct patterns of syntactic agreement errors in recurrent networks
+  and humans.
+\newblock In \emph{Proceedings of CogSci}, pages 692--697, Austin, TX.
+
+\bibitem[{Marvin and Linzen(2018)}]{marvin2018targeted}
+Rebecca Marvin and Tal Linzen. 2018.
+\newblock Targeted syntactic evaluation of language models.
+\newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in
+  Natural Language Processing}, pages 1192--1202.
+
+\bibitem[{Nelson et~al.(2017)Nelson, El~Karoui, Giber, Yang, Cohen, Koopman,
+  Cash, Naccache, Hale, Pallier, and Dehaene}]{Nelson:etal:2017}
+Matthew Nelson, Imen El~Karoui, Kristof Giber, Xiaofang Yang, Laurent Cohen,
+  Hilda Koopman, Sydney Cash, Lionel Naccache, John Hale, Christophe Pallier,
+  and Stanislas Dehaene. 2017.
+\newblock Neurophysiological dynamics of phrase-structure building during
+  sentence processing.
+\newblock \emph{Proceedings of the National Academy of Sciences},
+  114(18):E3669--E3678.
+
+\bibitem[{Radford et~al.(2017)Radford, Jozefowicz, and
+  Sutskever}]{Radford:etal:2017}
+Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. 2017.
+\newblock Learning to generate reviews and discovering sentiment.
+\newblock \url{https://arxiv.org/abs/1704.01444}.
+
+\bibitem[{Tang et~al.(2017)Tang, Shi, Wang, Feng, and Zhang}]{tang2017memory}
+Zhiyuan Tang, Ying Shi, Dong Wang, Yang Feng, and Shiyue Zhang. 2017.
+\newblock Memory visualization for gated recurrent neural networks in speech
+  recognition.
+\newblock In \emph{Acoustics, Speech and Signal Processing (ICASSP), 2017 IEEE
+  International Conference on}, pages 2736--2740. IEEE.
+
+\bibitem[{Wilcox et~al.(2018)Wilcox, Levy, Morita, and Futrell}]{wilcox2018rnn}
+Ethan Wilcox, Roger Levy, Takashi Morita, and Richard Futrell. 2018.
+\newblock What do {RNN} language models learn about filler--gap dependencies?
+\newblock In \emph{Proceedings of the 2018 EMNLP Workshop BlackboxNLP:
+  Analyzing and Interpreting Neural Networks for NLP}, pages 211--221.
+
+\end{thebibliography}
