@@ -1,10 +1,10 @@
 ###################
 ###### DET ########
 ###################
-
 # DEFINITE
 # --------
 # Initialization
+
 determinants = {}
 definit = {}
 a = {}
@@ -27,9 +27,6 @@ determinants = {'definit':definit, 'a':a}
 ###################
 ###### NOUNS ######
 ###################
-
-# NOUNS
-# -----
 # Initialization
 nouns = {}
 for gender in ['masculine', 'feminine']:
@@ -55,14 +52,15 @@ location_nouns['feminine']['plural'] = nouns['feminine']['plural']
 ###################
 ###### VERBS ######
 ###################
-
-# VERBS
-# -----
 # Initialization
 verbs = {}
 # Tokens
 verbs['singular'] = ['accoglie', 'ama', 'attrae', 'blocca', 'conosce', 'critica', 'difende', 'evita', 'ferma', 'guarda', 'ignora', 'incontra', 'indica', 'interrompe', 'osserva', 'ricorda', 'saluta']
 verbs['plural'] = ['accolgono', 'amano', 'attraggono', 'bloccano', 'conoscono', 'criticano', 'difendono', 'evitano', 'fermano', 'guardano', 'ignorano', 'incontrano', 'indicano', 'interrompono', 'osservano', 'ricordano', 'salutano']
+
+copula = {}
+copula['singular'] = 'è'
+copula['plural'] = 'sono'
 
 # MATRIX VERBS
 # -----
@@ -83,4 +81,16 @@ matrix_verbs['plural'] = ['credono', 'dicono', 'pensano']
 loc_preps = ['vicino a', 'dietro a', 'davanti a', 'accanto a']
 
 
-Words = {'determinants':determinants.copy(), 'nouns':nouns.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps}
+##########################
+####### ADJECTIVES #######
+##########################
+adjectives = {}
+for gender in ['masculine', 'feminine']:
+    adjectives[gender] = {}
+adjectives['masculine']['singular'] = ['bello', 'simpatico', 'stupido', 'famoso', 'brutto', 'bravo', 'ricco', 'povero', 'basso', 'alto', 'grasso', 'magro', 'cattivo', 'buono', 'lento', 'colto', 'nuovo']
+adjectives['masculine']['plural'] = ['belli', 'simpatici', 'stupidi', 'famosi', 'brutta', 'bravi', 'ricchi', 'poveri', 'bassi', 'alti', 'grassi', 'magri', 'cattivi', 'buoni', 'lenti', 'colti', 'nuovi']
+adjectives['feminine']['singular'] = ['bella', 'simpatica', 'stupida', 'famosa', 'brutti', 'brava', 'ricca', 'povera', 'bassa', 'alta', 'grassa', 'magra', 'cattiva', 'buona', 'lenta', 'colta', 'nuova']
+adjectives['feminine']['plural'] = ['belle', 'simpatiche', 'stupide', 'famose', 'brutte', 'brave', 'ricche', 'povere', 'basse', 'alte', 'grasse', 'magre', 'cattive', 'buone', 'lente', 'colte', 'nuove']
+
+
+Words = {'determinants':determinants.copy(), 'nouns':nouns.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'copula':copula.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps.copy(), 'adjectives':adjectives.copy()}
