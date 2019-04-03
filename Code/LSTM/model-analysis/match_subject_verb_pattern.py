@@ -1,11 +1,4 @@
 import os, sys, pickle, random
-from functions import load_settings_params as lsp
-from functions import model_fitting_and_evaluation as mfe
-from functions import data_manip
-from functions import annotated_data
-from functions import vif
-from functions import plot_results
-from functions import prepare_for_ablation_exp
 import numpy as np
 #import matplotlib
 import matplotlib.pyplot as plt
@@ -31,9 +24,15 @@ LSTM_activations = pickle.load(open(data_file, 'rb'))
 metric_all_units_all_sentences = []
 for activation_pattern in LSTM_activations[variable]:
     curr_sentence_metric = np.ones(1300)
-    for pos in range(subject_position+1, verb_position):
-        curr_sentence_metric *= np.abs(activation_pattern[:, pos])
-    curr_sentence_metric /= verb_position - subject_position - 1
+
+    # for pos in range(subject_position + 1, verb_position):
+
+    for pos in range(subject_position):
+        curr_sentence_metric = np.min(np.vstack((1-np.abs(activation_pattern[:, pos]), curr_sentence_metric)), axis=0)
+    for pos in range(subject_position, verb_position):
+        curr_sentence_metric = np.min(np.vstack((np.abs(activation_pattern[:, pos]), curr_sentence_metric)), axis=0)
+    # curr_sentence_metric /= verb_position - subject_position - 1
+
     metric_all_units_all_sentences.append(curr_sentence_metric)
 
 metric_all_units_average_across_sentences = np.average(np.asarray(metric_all_units_all_sentences), axis=0)
@@ -43,11 +42,10 @@ print(metric_all_units_average_across_sentences[IX][0:10])
 
 # Plot dist metric across all sentences
 fig, ax = plt.subplots(figsize=(10,10))
-# # ax.hist(np.asarray(metric_all_units_all_sentences)[:, 1149])
+# ax.hist(np.asarray(metric_all_units_all_sentences)[:, 1149])
 ax.hist(metric_all_units_average_across_sentences, 100)
 ax.set_ylim((0, 10))
 ax.set_ylabel('Number of units', fontsize = 16)
 ax.set_xlabel('Subject-verb dependency encoding', fontsize = 16)
-plt.savefig('../../../Figures/syntax_subject_verb_dependency_metric_italian_nounpp.png')
+plt.savefig('../../../Figures/syntax_subject_verb_dependency_metric.png')
 plt.show()
-
