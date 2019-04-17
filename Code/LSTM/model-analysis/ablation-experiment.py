@@ -56,7 +56,7 @@ gold = pandas.read_csv(args.input + '.gold', sep='\t', header=None, names=['verb
 print('Loading models...')
 import lstm
 print('\nmodel: ' + args.model+'\n')
-model = torch.load(args.model)  # requires GPU model
+model = torch.load(args.model, map_location=lambda storage, loc: storage)  # requires GPU model
 model.rnn.flatten_parameters()
 # hack the forward function to send an extra argument containing the model parameters
 model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)

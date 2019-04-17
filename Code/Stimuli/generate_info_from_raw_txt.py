@@ -6,7 +6,9 @@ import argparse
 parser = argparse.ArgumentParser(description='Switching from Marco files to Tal format')
 parser.add_argument('-i', '--input', required=True, help='Input sentences in Marco\'s format')
 parser.add_argument('-o', '--output', required=True, help='Filename (without extension) for Tal\'s format - only path and basename should be specified. The script will then generate three files with the following extensions: text (sentences), gold (labels)  and info (pickle in Theo\'s format), which can be then used for further analyses and ablation experiments.')
+parser.add_argument('-c', '--correct-word-position', type=str, help='The position of the (correct) test word (verb or adj) in the sentence, counting from ZERO. For example, <the boy near the cars greets the> it should be set to 5 if prediction test is on the verb') 
 parser.add_argument('-p', '--pattern', type=str, nargs=2, action='append', help='Info regarding where the is the field (counting from ZERO) in Marco metadata regarding the number of first noun, second noun,..., first verb form, second verb form, etc. This should be provided as pairs as in the following example: -p number_1 2 -p number_2 3 -p number_3 4 -p verb_1_wrong = 5 -p verb_2_wrong 6 -p verb_3_wrong 7.') 
+parser.add_argument('-w', '--wrong-word-label', type=str, help='Label (/key) name of the column in the metadata as defined by args.pattern above. For example, for nounpp: verb_1_wrong, and for objrel_that: verb2_wrong.') 
 args = parser.parse_args()
 
 # Open raw text file from Marco's sentence generator
@@ -29,46 +31,14 @@ for line in raw_sentences:
 
 
 # Prepare in Tal's format:
+num_attributes = '-999'
 sentences_Tal = []; gold_Tal = []; info_Tal = []
 for sentence, curr_info in zip(sentences, info):
-   verb_2_position = None
-   if curr_info['RC_type'] == 'objrel':
-       verb_position = 5
-       verb_correct = sentence.split(' ')[verb_position].strip()
-       verb_wrong = curr_info['verb_2_wrong'].strip()
-   elif curr_info['RC_type'] == 'objrel_that':
-       verb_position = 6
-       verb_correct = sentence.split(' ')[verb_position].strip()
-       verb_wrong = curr_info['verb_2_wrong'].strip()
-   elif curr_info['RC_type'] == 'subjrel_that':
-       verb_position = 6
-       verb_correct = sentence.split(' ')[verb_position].strip()
-       verb_wrong = curr_info['verb_2_wrong'].strip()
-   elif curr_info['RC_type'] == 'double_subjrel_that':
-       verb_position = 10 # Note that in this case of double subjrel we typically test the network on the *third* (verb_3) and not second verb in the sentence (see two lines below).
-       verb_correct = sentence.split(' ')[verb_position].strip()
-       verb_wrong = curr_info['verb_3_wrong'].strip()
-   elif curr_info['RC_type'] == 'nounpp':
-       verb_position = 5 # We test on verb_1 (see two lines below)
-       verb_correct = sentence.split(' ')[verb_position].strip()
-       verb_wrong = curr_info['verb_1_wrong'].strip()
-   elif curr_info['RC_type'] == 'nounpp_adv':
-       verb_position = 6 # We test on verb_1 (see two lines below)
-       verb_correct = sentence.split(' ')[verb_position].strip()
-       verb_wrong = curr_info['verb_1_wrong'].strip()
-   elif curr_info['RC_type'] == 'adv_conjunction':
-       verb_position = 5 # We test on verb_1 (see two lines below)
-       verb_correct = sentence.split(' ')[verb_position].strip()
-       verb_wrong = curr_info['verb_1_wrong'].strip()
-   else:
-       print('Empty labels: ' + curr_info['RC_type'])
-       verb_position = '0'
-       verb_correct = ''
-       verb_wrong = ''
-
-
-   num_attributes = '-999'
-   line_Tal = str(verb_position) + '\t' + verb_correct + '\t' + verb_wrong + '\t' + num_attributes + '\n'
+   correct_word = sentence.split(' ')[int(args.correct_word_position)].strip()
+   wrong_word = curr_info[args.wrong_word_label].strip()
+   
+   line_Tal = str(args.correct_word_position) + '\t' + correct_word + '\t' + wrong_word + '\t' + num_attributes + '\n'
+   
    sentences_Tal.append(sentence)
    gold_Tal.append(line_Tal)
    info_Tal.append(curr_info)
