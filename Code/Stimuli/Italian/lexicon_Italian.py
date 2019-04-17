@@ -87,10 +87,10 @@ loc_preps = ['vicino a', 'dietro a', 'davanti a', 'accanto a']
 adjectives = {}
 for gender in ['masculine', 'feminine']:
     adjectives[gender] = {}
-adjectives['masculine']['singular'] = ['bello', 'simpatico', 'stupido', 'famoso', 'brutto', 'bravo', 'ricco', 'povero', 'basso', 'alto', 'grasso', 'magro', 'cattivo', 'buono', 'lento', 'colto', 'nuovo']
-adjectives['masculine']['plural'] = ['belli', 'simpatici', 'stupidi', 'famosi', 'brutta', 'bravi', 'ricchi', 'poveri', 'bassi', 'alti', 'grassi', 'magri', 'cattivi', 'buoni', 'lenti', 'colti', 'nuovi']
-adjectives['feminine']['singular'] = ['bella', 'simpatica', 'stupida', 'famosa', 'brutti', 'brava', 'ricca', 'povera', 'bassa', 'alta', 'grassa', 'magra', 'cattiva', 'buona', 'lenta', 'colta', 'nuova']
-adjectives['feminine']['plural'] = ['belle', 'simpatiche', 'stupide', 'famose', 'brutte', 'brave', 'ricche', 'povere', 'basse', 'alte', 'grasse', 'magre', 'cattive', 'buone', 'lente', 'colte', 'nuove']
+adjectives['masculine']['singular'] = ['bello', 'famoso', 'brutto', 'ricco', 'povero', 'basso', 'alto', 'grasso', 'cattivo', 'buono', 'lento', 'nuovo']
+adjectives['masculine']['plural'] = ['belli', 'famosi', 'brutti', 'ricchi', 'poveri', 'bassi', 'alti', 'grassi', 'cattivi', 'buoni', 'lenti', 'nuovi']
+adjectives['feminine']['singular'] = ['bella', 'famosa', 'brutta', 'ricca', 'povera', 'bassa', 'alta', 'grassa', 'cattiva', 'buona', 'lenta', 'nuova']
+adjectives['feminine']['plural'] = ['belle', 'famose', 'brutte', 'ricche', 'povere', 'basse', 'alte', 'grasse', 'cattive', 'buone', 'lente', 'nuove']
 
 
 Words = {'determinants':determinants.copy(), 'nouns':nouns.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'copula':copula.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps.copy(), 'adjectives':adjectives.copy()}

@@ -85,10 +85,13 @@ def add_graph_to_plot(ax, LSTM_activations, unit, gate, label, c, ls, lw):
         if gate in ['in', 'forget', 'out']:
             ax.set_yticks([0, 1])
             ax.set_ylim([0-offset, 1+offset])
-        else:
-            ax.set_yticks([-1.5, 1.5])
-            ax.set_ylim([-1.5-offset, 1.5+offset])
-        #ax.set_yticks(np.arange(min(-1, min(mean_activity)), 1+max(np.ceil(max(mean_activity)), 1), 1.0))
+        #elif gate in ['hidden']:
+        #    ax.set_yticks([-0.05, 0.05])
+        #    ax.set_ylim([-0.05-offset, 0.05+offset])
+        #elif gate in ['cell', 'c_tilde']:
+        #    ax.set_yticks([-3.5, 3.5])
+        #    ax.set_ylim([-3.5-offset, 3.5+offset])
+        #####ax.set_yticks(np.arange(min(-1, min(mean_activity)), 1+max(np.ceil(max(mean_activity)), 1), 1.0))
     else:
         print('No trials found for: ' + label)
 if args.use_tex:

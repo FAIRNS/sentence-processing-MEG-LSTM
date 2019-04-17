@@ -149,18 +149,18 @@ if args.natask == 'objrel_that':
                                             print('%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (args.natask, sentence, subject_gender, subject_number, attractor1_gender, attractor1_number, Words['verbs'][opposite_number_V1][v1], Words['verbs'][opposite_number_V2][v2]))
                                             counter["_".join([subject_gender, subject_number, attractor1_gender, attractor1_number])] += 1
 
-num_nouns = 5
+#num_nouns = 5
 if args.natask == 'objrel_nounpp':
     for subject_gender in ['masculine', 'feminine']:
         for subject_number in ['singular', 'plural']:
-            N1s = Words['nouns'][subject_gender][subject_number][0:num_nouns]
+            N1s = Words['nouns'][subject_gender][subject_number]#[0:num_nouns]
             for n1, subject in enumerate(N1s):
                 IX_subject = construct_DP(subject, subject_gender, subject_number)
                 det = Words['determinants']['definit'][subject_gender][subject_number][IX_subject]
                 NP_start = det + ' ' + subject
                 for attractor1_gender in ['masculine', 'feminine']:
                     for attractor1_number in ['singular', 'plural']:
-                        N2s = Words['nouns'][attractor1_gender][attractor1_number][0:num_nouns]
+                        N2s = Words['nouns'][attractor1_gender][attractor1_number]#[0:num_nouns]
                         for n2, attractor1 in enumerate(N2s):
                             IX_attractor1 = construct_DP(attractor1, attractor1_gender, attractor1_number)
                             if n1 != n2: # check noun repetition at the lemma level
@@ -168,7 +168,7 @@ if args.natask == 'objrel_nounpp':
                                 for v1, verb1 in enumerate(Words['verbs'][attractor1_number]):
                                     for attractor2_gender in ['masculine', 'feminine']:
                                         for attractor2_number in ['singular', 'plural']:
-                                            N3s = Words['location_nouns'][attractor2_gender][attractor2_number][0:num_nouns]
+                                            N3s = Words['location_nouns'][attractor2_gender][attractor2_number]#[0:num_nouns]
                                             for n3, attractor2 in enumerate(N3s):
                                                 IX_attractor2 = construct_DP(attractor2, attractor2_gender, attractor2_number)
                                                 if n1!=n3 and n2!=n3:
