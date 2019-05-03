@@ -175,7 +175,7 @@ def plot(ax, series, HY_series, args):
 
 def plot_all_series(ax, PP_series, SS_series, PS_series, SP_series, HY_series):
     C0='#08d9d6'
-    C1='#ff2e63'
+    C1='#B22044'
     plot(ax, SS_series, HY_series, {'ls': '-', 'lw': 1.5, 'label': r'\textbf{Singular}-\underline{Singular}', 'color': C0})
     plot(ax, PP_series, HY_series, {'ls': '-', 'lw': 1.5, 'label': r'\textbf{Plural}-\underline{Plural}', 'color': C1})
     plot(ax, SP_series, HY_series, {'ls': '-.', 'lw': 1.5, 'label': r'\textbf{Singular}-\underline{Plural}', 'color': C0})
@@ -185,7 +185,7 @@ def plot_all_series(ax, PP_series, SS_series, PS_series, SP_series, HY_series):
     ax.grid(c='w', ls='-', lw=1)
     plt.setp(ax.get_xticklabels(), visible=False)
 
-FC='#eaeaea'
+FC='#ffffff'
 plt.figure(figsize=(10,5))
 fig, axs = plt.subplots(5, 1, subplot_kw={'fc':FC}) 
 (sugg_ax, input_ax, forget_ax, cell_ax, output_ax) = axs
