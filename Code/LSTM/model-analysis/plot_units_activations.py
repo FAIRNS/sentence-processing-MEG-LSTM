@@ -19,8 +19,14 @@ parser.add_argument('-g', '--graphs', nargs='+', action='append', type=str,
 parser.add_argument('-r', '--remove', type=int, default=0, help='How many words to omit from the end of sentence')
 parser.add_argument('-x', '--xlabels', nargs='+', type=str, help='List with xlabels for all subplors. Must match the number of time points')
 parser.add_argument('-y', '--ylabels', nargs='+', type=str, help='List with ylabels for all subplors. Must match the number of subplots provided by --graphs')
+parser.add_argument('--figwidth', type=int, default=15)
+parser.add_argument('--figheight', type=int, default=15)
+parser.add_argument('--xlabels-size', type=int, default=24)
+parser.add_argument('--ylabels-size', type=int, default=24)
+parser.add_argument('--yticks-size', type=int, default=16)
 parser.add_argument('--no-legend', action='store_true', default=False, help='If specified, legend will be omitted')
 parser.add_argument('--use-tex', default=False, action='store_true')
+parser.add_argument('--facecolor', default=None)
 args = parser.parse_args()
 
 def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
@@ -108,7 +114,7 @@ info = pickle.load(open(args.stimuli_meta_data, 'rb'))
 ##### Plot all curves on the same figure #########
 subplot_numbers = [int(graph_info[0]) for graph_info in args.graphs]
 num_subplots = np.max(subplot_numbers)
-fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(15,15))
+fig, axs = plt.subplots(num_subplots, 1, sharex=True, figsize=(args.figwidth,args.figheight),subplot_kw={'fc':args.facecolor})
 if num_subplots==1: axs=[axs] # To make the rest compatible in case of a single subplot
 for g, graph in enumerate(args.graphs):
     subplot_number = subplot_numbers[g]-1
@@ -125,14 +131,15 @@ for g, graph in enumerate(args.graphs):
 # Cosmetics
 if graph_activations: axs[0].set_xticks(range(1, graph_activations[1].shape[1] + 1))
 for i, ax in enumerate(axs):
+    ax.grid(c='w', ls='-', lw=1)
     if args.xlabels:
-        ax.set_xticklabels(args.xlabels, fontsize=17)#, rotation='vertical')
+        ax.set_xticklabels(args.xlabels, fontsize=args.xlabels_size)#, rotation='vertical')
     else:
-        ax.set_xticklabels(stimuli[0].split(' '), fontsize=24) #, rotation='vertical')
+        ax.set_xticklabels(stimuli[0].split(' '), fontsize=args.xlabels_size) #, rotation='vertical')
     #ax.tick_params(labelsize=10)
-    ax.tick_params(axis='y', labelsize=16)
+    ax.tick_params(axis='y', labelsize=args.yticks_size)
     if args.ylabels:
-        ax.set_ylabel(args.ylabels[i], rotation='horizontal', ha='center', va='center', fontsize=24)
+        ax.set_ylabel(args.ylabels[i], rotation='horizontal', ha='center', va='center', fontsize=args.ylabels_size)
     #else:
         #ax.set_ylabel('Activation', fontsize=45)
 # adding legend
