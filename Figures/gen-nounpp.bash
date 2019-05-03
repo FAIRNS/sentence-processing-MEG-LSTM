@@ -11,8 +11,8 @@ fi
 # Line width
 LW=2
 C0='#08d9d6'
-C1='#ff2e63'
-FC='#eaeaea'
+C1='#B22044'
+FC='#ffffff'
 
 python3 $HOME_DIR/Code/LSTM/model-analysis/plot_units_activations.py \
     -sentences $HOME_DIR/Data/Stimuli/nounpp.text \
