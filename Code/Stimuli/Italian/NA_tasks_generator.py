@@ -150,46 +150,91 @@ if args.natask == 'objrel_that':
                                             counter["_".join([subject_gender, subject_number, attractor1_gender, attractor1_number])] += 1
 
 #num_nouns = 5
+# The N1 that the N2 P the N3 V2 V1 (N1 N2 P N3 V2 V1)
 if args.natask == 'objrel_nounpp':
-    for subject_gender in ['masculine', 'feminine']:
-        for subject_number in ['singular', 'plural']:
-            N1s = Words['nouns'][subject_gender][subject_number]#[0:num_nouns]
-            for n1, subject in enumerate(N1s):
-                IX_subject = construct_DP(subject, subject_gender, subject_number)
-                det = Words['determinants']['definit'][subject_gender][subject_number][IX_subject]
-                NP_start = det + ' ' + subject
-                for attractor1_gender in ['masculine', 'feminine']:
-                    for attractor1_number in ['singular', 'plural']:
-                        N2s = Words['nouns'][attractor1_gender][attractor1_number]#[0:num_nouns]
-                        for n2, attractor1 in enumerate(N2s):
-                            IX_attractor1 = construct_DP(attractor1, attractor1_gender, attractor1_number)
-                            if n1 != n2: # check noun repetition at the lemma level
-                                article = Words['determinants']['definit'][attractor1_gender][attractor1_number][IX_attractor1]
-                                for v1, verb1 in enumerate(Words['verbs'][attractor1_number]):
-                                    for attractor2_gender in ['masculine', 'feminine']:
-                                        for attractor2_number in ['singular', 'plural']:
-                                            N3s = Words['location_nouns'][attractor2_gender][attractor2_number]#[0:num_nouns]
-                                            for n3, attractor2 in enumerate(N3s):
-                                                IX_attractor2 = construct_DP(attractor2, attractor2_gender, attractor2_number)
-                                                if n1!=n3 and n2!=n3:
+    for N1_gender in ['masculine', 'feminine']:
+        for N1_number in ['singular', 'plural']:
+            N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
+            for IX_N1, N1 in enumerate(N1s):
+                IX_det_N1 = construct_DP(N1, N1_gender, N1_number)
+                det = Words['determinants']['definit'][N1_gender][N1_number][IX_det_N1]
+                NP_start = det + ' ' + N1
+                for N2_gender in ['masculine', 'feminine']:
+                    for N2_number in ['singular', 'plural']:
+                        N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
+                        for IX_N2, N2 in enumerate(N2s):
+                            IX_det_N2 = construct_DP(N2, N2_gender, N2_number)
+                            if IX_N1 != IX_N2: # check noun repetition at the lemma level
+                                det_N2 = Words['determinants']['definit'][N2_gender][N2_number][IX_det_N2]
+                                for IX_V2, V2 in enumerate(Words['verbs'][N2_number]): # innter agreement
+                                    for N3_gender in ['masculine', 'feminine']:
+                                        for N3_number in ['singular', 'plural']:
+                                            N3s = Words['location_nouns'][N3_gender][N3_number]#[0:num_nouns]
+                                            for IX_N3, N3 in enumerate(N3s):
+                                                IX_det_N3 = construct_DP(N3, N3_gender, N3_number)
+                                                if IX_N1!=IX_N3 and IX_N2!=IX_N3:
                                                     for prep in Words['loc_preps']:
                                                         prep_word, prep_article = prep.split(' ')
-                                                        article2 = Words['determinants'][prep_article][attractor2_gender][attractor2_number][IX_attractor2]
-                                                        clause = ' '.join(['che', article, attractor1, prep_word, article2, attractor2, verb1])
-                                                        for v2, verb2 in enumerate(Words['verbs'][subject_number]):
-                                                            if v1 != v2: # check verb repetition at the lemma level
-                                                                opposite_number_V1 = 'singular' if attractor1_number == 'plural' else 'plural'
-                                                                opposite_number_V2 = 'singular' if subject_number == 'plural' else 'plural'
+                                                        det_N3 = Words['determinants'][prep_article][N3_gender][N3_number][IX_det_N3]
+                                                        clause = ' '.join(['che', det_N2, N2, prep_word, det_N3, N3, V2])
+                                                        for IX_V1, V1 in enumerate(Words['verbs'][N1_number]):
+                                                            if IX_V1 != IX_V2: # check verb repetition at the lemma level
+                                                                opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+                                                                opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
                                                                 last_article = get_random_article(Words['determinants'])
-                                                                sentence = NP_start + ' ' + clause + ' ' + verb2 + ' ' + last_article
+                                                                sentence = NP_start + ' ' + clause + ' ' + V1 + ' ' + last_article
                                                                 print('%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (
                                                                        args.natask, sentence,
-                                                                       subject_gender, subject_number,
-                                                                       attractor1_gender, attractor1_number,
-                                                                       attractor2_gender, attractor2_number,
-                                                                       Words['verbs'][opposite_number_V1][v1], Words['verbs'][opposite_number_V2][v2]))
-                                                                counter["_".join([subject_gender, subject_number, attractor1_gender, attractor1_number])] += 1
+                                                                       N1_gender, N1_number,
+                                                                       N2_gender, N2_number,
+                                                                       N3_gender, N3_number,
+                                                                       Words['verbs'][opposite_number_V2][IX_V2], Words['verbs'][opposite_number_V1][IX_V1]))
+                                            #                    counter["_".join([N1_gender, N1_number, N2_gender, attractor1_number])] += 1
 
+
+
+#num_nouns = 5
+# The N1 P the N3 that the N2 V2 V1 (N1 P N3 N2 V2 V1)
+if args.natask == 'nounpp_objrel':
+    for N1_gender in ['masculine', 'feminine']:
+        for N1_number in ['singular', 'plural']:
+            N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
+            for IX_N1, N1 in enumerate(N1s):
+                IX_det_N1 = construct_DP(N1, N1_gender, N1_number)
+                det = Words['determinants']['definit'][N1_gender][N1_number][IX_det_N1]
+                NP_start = det + ' ' + N1
+                for N3_gender in ['masculine', 'feminine']:
+                    for N3_number in ['singular', 'plural']:
+                        N3s = Words['location_nouns'][N3_gender][N3_number]#[0:num_nouns]
+                        for IX_N3, N3 in enumerate(N3s):
+                            if IX_N1 != IX_N3: # check noun repetition at the lemma level
+                                IX_det_N3 = construct_DP(N3, N3_gender, N3_number)
+                                for prep in Words['loc_preps']:
+                                    prep_word, prep_article = prep.split(' ')
+                                    det_N3 = Words['determinants'][prep_article][N3_gender][N3_number][IX_det_N3]
+                                    NP = NP_start + ' ' + prep_word + ' ' + det_N3 + ' ' + N3 
+                                    for N2_gender in ['masculine', 'feminine']:
+                                        for N2_number in ['singular', 'plural']:
+                                            N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
+                                            for IX_N2, N2 in enumerate(N2s):
+                                                if IX_N2!=IX_N1 and IX_N2!=IX_N3:
+                                                    IX_det_N2 = construct_DP(N2, N2_gender, N2_number)
+                                                    det_N2 = Words['determinants']['definit'][N2_gender][N2_number][IX_det_N2]
+                                                    for IX_V2, V2 in enumerate(Words['verbs'][N2_number]): # innter agreement
+                                                        clause = ' '.join(['che', det_N2, N2, V2])
+                                                        for IX_V1, V1 in enumerate(Words['verbs'][N1_number]):
+                                                            if IX_V1 != IX_V2: # check verb repetition at the lemma level
+                                                                opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+                                                                opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
+                                                                last_article = get_random_article(Words['determinants'])
+                                                                sentence = NP + ' ' + clause + ' ' + V1 + ' ' + last_article
+                                                                print('%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (
+                                                                       args.natask, sentence,
+                                                                       N1_gender, N1_number,
+                                                                       N3_gender, N3_number,
+                                                                       N2_gender, N2_number,
+                                                                       Words['verbs'][opposite_number_V2][IX_V2], Words['verbs'][opposite_number_V1][IX_V1]))
+                                            #                    counter["_".join([N1_gender, N1_number, N2_gender, attractor1_number])] += 1
 
 if args.natask == 'nounpp_copula':
     for subject_gender in ['masculine', 'feminine']:
