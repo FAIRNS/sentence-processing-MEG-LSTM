@@ -33,6 +33,7 @@ parser.add_argument('--unk-token', default='<unk>')
 parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--lang', default='en')
 parser.add_argument('--cuda', action='store_true', default=False)
+parser.add_argument('--uppercase-first-word', action='store_true', default=False)
 args = parser.parse_args()
 
 stime = time.time()
@@ -109,6 +110,9 @@ for i, s in enumerate(tqdm(sentences)):
     # out, hidden = model(inp, hidden)
     # out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
     for j, w in enumerate(s):
+        if j==0 and args.uppercase_first_word:
+            w = w.capitalize()
+
         if w not in vocab.word2idx and args.use_unk:
             w = args.unk_token
         inp = Variable(torch.LongTensor([[vocab.word2idx[w]]]))
