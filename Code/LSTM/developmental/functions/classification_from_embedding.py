@@ -9,14 +9,9 @@ def get_classification_accuracy(model_fn, path2vocab, path2nouns, path2verbs):
     # Read sg/pl noun and verb files
     ################################
     singular_nouns, plural_nouns = read_singular_plural_file(path2nouns)
-    nouns_all = singular_nouns + plural_nouns
-    print('\nVerbs used:')
-    print(nouns_all)
-
     singular_verbs, plural_verbs = read_singular_plural_file(path2verbs)
+    nouns_all = singular_nouns + plural_nouns
     verbs_all = singular_verbs + plural_verbs
-    print('\nVerbs used:')
-    print(verbs_all)
 
     ######################
     # Load model
@@ -55,6 +50,7 @@ def read_singular_plural_file(path2file):
 
 
 def get_encoding_embeddings_and_labels(model, vocab, singular_words, plural_words):
+    import numpy as np
     embeddings_in = model.encoder.weight.data.cpu().numpy()
     idx_singulars = [vocab.word2idx[w] for w in singular_words]
     idx_plurals = [vocab.word2idx[w] for w in plural_words]
@@ -64,8 +60,11 @@ def get_encoding_embeddings_and_labels(model, vocab, singular_words, plural_word
     return encoding_embeddings, labels
 
 def calc_svm_acc(X, y):
-    from sklearn.svm import LinearSVC
-    clf = LinearSVC(random_state=0, tol=1e-5, penalty='l2')
-    clf.fit(X, y)
-    acc = clf.accuracy
-    return acc
+    from sklearn.model_selection import cross_val_score
+    from sklearn import svm
+    import numpy as np
+
+    svc = svm.SVC(kernel='linear')
+    svc.C = 1 
+    score = cross_val_score(svc, X, y, cv=5, n_jobs=1)
+    return np.mean(score)

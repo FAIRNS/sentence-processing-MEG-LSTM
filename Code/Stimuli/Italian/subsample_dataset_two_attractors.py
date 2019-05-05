@@ -44,6 +44,9 @@ stimuli_filtered = []
 with open(args.data_filename, 'r') as f:
     all_stimuli = f.readlines()
 num_lines = len(all_stimuli)
+features = all_stimuli[0].strip().split('\t')[2:args.IX_last] # N1_gender, N1_number, N2_gender, N2_number
+num_features = len(features)
+p = args.n*(2^num_features)/num_lines # sampling probability (=desired_num_stimuli/file_size)
 for iter in range(args.max_iter):
     with open(args.data_filename, 'r') as f:
         while not finished:
@@ -52,13 +55,11 @@ for iter in range(args.max_iter):
             if not line:
                 break
             features = line.strip().split('\t')[2:args.IX_last] # N1_gender, N1_number, N2_gender, N2_number
-            num_features = len(features)
-            p = args.n*num_features/num_lines # sampling probability (=desired_num_stimuli/file_size)
             if counter["_".join(features)] < args.n:
                 if np.random.rand() < p:
                     curr_sentence = line.strip().split('\t')[1]
-                    all_sampled_sentences = [s[1] for s in stimuli_filtered]
-                    if not all_sampled_sentences or not any(curr_sentence==s for s in all_sampled_sentences):
+                    curr_sentence_was_already_sampled = any(curr_sentence==s[1] for s in stimuli_filtered)
+                    if sum(counter.values()) == 0 or not curr_sentence_was_already_sampled:
                         stimuli_filtered.append(line.strip().split('\t'))
                         # print(line.strip())
                         counter["_".join(features)] += 1

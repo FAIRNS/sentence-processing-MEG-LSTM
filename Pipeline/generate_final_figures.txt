@@ -18,7 +18,8 @@ python3 Code/LSTM/model-analysis/extract_embeddings_from_rnn.py -model Data/LSTM
 
 # ####### FIGURE 7 (units interactions)
 # Unit interactions: plot weight distributions and mds (--no-mds flag for skipping mds analysis)
-python3 Code/LSTM/model-analysis/extract_weights_from_rnn.py -model Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt -fu 769 775 987 1149 -tu 769 775 987 1149 -o Figures/interactions.png
+python3 Code/LSTM/model-analysis/extract_weights_from_rnn.py -model Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.cpu.pt -fu 775 987 1149 -tu 775 987 -o Figures/interactions.png --no-mds -activations Data/LSTM/activations/english/nounpp.pkl
+
 
 # ####### FIGURE 8 (RCs for units 775, 987)
 # subjrel_that

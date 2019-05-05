@@ -12,7 +12,6 @@ print(condition_constraints)
 
 ablation_results = pickle.load(open(args.ablation_results, 'rb'))
 info = pickle.load(open(args.info, 'rb'))
-
 success = []; p_difference = []
 for i, sentence_info in enumerate(info):
     check_if_all_constraints_are_met = True

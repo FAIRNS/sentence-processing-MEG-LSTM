@@ -174,16 +174,20 @@ def plot(ax, series, HY_series, args):
     #ax.plot(series, **args)
 
 def plot_all_series(ax, PP_series, SS_series, PS_series, SP_series, HY_series):
-    plot(ax, SS_series, HY_series, {'ls': '-', 'lw': 1.5, 'label': r'\textbf{Singular}-\underline{Singular}', 'color': 'red'})
-    plot(ax, PP_series, HY_series, {'ls': '-', 'lw': 1.5, 'label': r'\textbf{Plural}-\underline{Plural}', 'color': 'blue'})
-    plot(ax, SP_series, HY_series, {'ls': '-.', 'lw': 1.5, 'label': r'\textbf{Singular}-\underline{Plural}', 'color': 'red'})
-    plot(ax, PS_series, HY_series, {'ls': '-.', 'lw': 1.5, 'label': r'\textbf{Plural}-\underline{Singular}', 'color': 'blue'})
+    C0='#08d9d6'
+    C1='#B22044'
+    plot(ax, SS_series, HY_series, {'ls': '-', 'lw': 1.5, 'label': r'\textbf{Singular}-\underline{Singular}', 'color': C0})
+    plot(ax, PP_series, HY_series, {'ls': '-', 'lw': 1.5, 'label': r'\textbf{Plural}-\underline{Plural}', 'color': C1})
+    plot(ax, SP_series, HY_series, {'ls': '-.', 'lw': 1.5, 'label': r'\textbf{Singular}-\underline{Plural}', 'color': C0})
+    plot(ax, PS_series, HY_series, {'ls': '-.', 'lw': 1.5, 'label': r'\textbf{Plural}-\underline{Singular}', 'color': C1})
     ax.set_xlim([-.5, len(HY_series)-.5])
     ax.set_xticks(range(len(HY_series)))
+    ax.grid(c='w', ls='-', lw=1)
     plt.setp(ax.get_xticklabels(), visible=False)
 
+FC='#ffffff'
 plt.figure(figsize=(10,5))
-fig, axs = plt.subplots(5, 1) # two plots in a single column
+fig, axs = plt.subplots(5, 1, subplot_kw={'fc':FC}) 
 (sugg_ax, input_ax, forget_ax, cell_ax, output_ax) = axs
 plot_all_series(sugg_ax, PP_sugg, SS_sugg, PS_sugg, SP_sugg, HY_sugg)
 sugg_ax.set_ylabel(r"$\tilde{C_t}$", fontsize=24, rotation='horizontal', ha='center', va='center')
