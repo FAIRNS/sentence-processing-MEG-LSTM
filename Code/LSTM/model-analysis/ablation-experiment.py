@@ -146,6 +146,9 @@ for unit_group in tqdm(target_units):
         else:
             raise NotImplementedError("No init sentences available for this language")
 
+        if args.cuda:
+            model = model.cuda()
+
         hidden = model.init_hidden(1) 
         init_out, init_h = feed_sentence(model, hidden, init_sentence.split(" "))
 

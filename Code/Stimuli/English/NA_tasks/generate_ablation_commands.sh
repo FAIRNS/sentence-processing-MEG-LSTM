@@ -8,9 +8,10 @@
 ablation_script_path=~/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/ablation-experiment.py
 #model_path=~/sentence-processing-MEG-LSTM/Code/models/hidden650-dropout0.4-lr20-batch_size128-emsize650.pt
 model_path=$3
-vocab_path=~/sentence-processing-MEG-LSTM/Code/ablation_exp_replic/vocab.txt
+vocab_path$4
+#=~/sentence-processing-MEG-LSTM/Code/data/vocab.txt
 
-if [ "$4" != "" ]; then
+if [ "$5" != "" ]; then
     for unit in {1..1300}
     do
 	echo python3 $ablation_script_path $model_path --input $1_singular_singular_sentences --vocabulary $vocab_path --output $2/singular_singular --eos-separator \"\<eos\>\" --format pkl -u $unit -g 1 --use-unk --s 111 --cuda --do-ablation
