@@ -8,7 +8,7 @@
 ablation_script_path=~/sentence-processing-MEG-LSTM/Code/LSTM/model-analysis/ablation-experiment.py
 #model_path=~/sentence-processing-MEG-LSTM/Code/models/hidden650-dropout0.4-lr20-batch_size128-emsize650.pt
 model_path=$3
-vocab_path$4
+vocab_path=$4
 #=~/sentence-processing-MEG-LSTM/Code/data/vocab.txt
 
 if [ "$5" != "" ]; then
