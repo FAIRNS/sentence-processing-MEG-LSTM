@@ -178,7 +178,7 @@ if 'lstm' in args.get_representations:
                 print('unk word: ' + w)
                 w = args.unk_token
             # store the surprisal for the current word
-            log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data[0]
+            log_probabilities[i][j] = out[0,0,vocab.word2idx[w]].data.item()
             inp = torch.autograd.Variable(torch.LongTensor([[vocab.word2idx[w]]]))
             if args.cuda:
                 inp = inp.cuda()
