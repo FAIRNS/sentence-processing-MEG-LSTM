@@ -67,8 +67,8 @@ copula['plural'] = 'sono'
 # Initialization
 matrix_verbs = {}
 # Tokens
-matrix_verbs['singular'] = ['crede', 'dice', 'pensa']
-matrix_verbs['plural'] = ['credono', 'dicono', 'pensano']
+matrix_verbs['singular'] = ['ricorda', 'dice', 'dichiara', 'sogna']
+matrix_verbs['plural'] = ['ricordano', 'dicono', 'dichiarano', 'sognano']
 
 
 ##########################

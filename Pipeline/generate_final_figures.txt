@@ -11,7 +11,9 @@ python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimu
 # YLABELS:-y "$\tilde{C_t}$" "\$i\_t\$" "\$f\_t\$" "\$C\_t\$" "\$o\_t\$"
 
 # ###### FIGURE 4 (GAT)
-python3 Code/LSTM/model-analysis/plot_GAT.py 
+#### obsolete: python3 Code/LSTM/model-analysis/plot_GAT.py 
+python SR_vs_LR_units.py -s ../../../Data/Stimuli/nounpp.text -m ../../../Data/Stimuli/nounpp.info -a ../../../Data/LSTM/activations/english/nounpp.pkl -g cell -o ../../../Figures/GAT1d_cell_.png
+
 
 # ###### FIGURE 5 (Effernt weights)
 python3 Code/LSTM/model-analysis/extract_embeddings_from_rnn.py -model Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt -v Data/LSTM/english_vocab.txt -i Data/Stimuli/singular_plural_verbs.txt -u 775 987 847 769 772 1282 1149 650 1299 -c b r m c c c g k k

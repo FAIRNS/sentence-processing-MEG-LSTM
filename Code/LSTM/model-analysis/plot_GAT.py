@@ -10,7 +10,7 @@ sentence = ['The', 'boy', 'near', 'the', 'cars', 'greets']
 path2savefig = '../../../Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png'
 # Load GAT results
 path2pkl = '../../../Output/GAT1d_cell_Ou.pkl'
-# path2pkl = '../../../Figures/GAT1d_hidden_nounpp_SR_LR.pkl'
+#path2pkl = '../../../Figures/GAT1d_hidden_nounpp_SR_LR.pkl'
 results = pickle.load(open(path2pkl, 'rb'))
 
 # parser.add_argument('-model', type=str, help='Meta file stored once finished training the corpus')
@@ -18,7 +18,6 @@ results = pickle.load(open(path2pkl, 'rb'))
 model = '../../../Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
 vocabulary = '../../../Data/LSTM/english_vocab.txt'
 input = '../../../Data/Stimuli/singular_plural_verbs.txt'
-
 
 
 def get_SNRs(model, vocabulary):
