@@ -238,6 +238,7 @@ if args.natask == 'nounpp_objrel':
                                                                        Words['verbs'][opposite_number_V2][IX_V2], Words['verbs'][opposite_number_V1][IX_V1]))
                                             #                    counter["_".join([N1_gender, N1_number, N2_gender, attractor1_number])] += 1
 
+<<<<<<< HEAD
 # The N1 that the N2 P the N3 V2 V1 (N1 N2 P N3 V2 V1)
 num_nouns=4
 if args.natask == 'embedding_mental':
