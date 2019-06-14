@@ -80,7 +80,7 @@ def get_weight_between_two_units(model, gate, from_unit, to_unit):
     weights_nn = getattr(model.rnn, weight_type)
     weight = weights_nn.data[gate * 650 + to_unit, from_unit]
 
-    return weight
+    return weight.numpy()
 
 
 def plot_hist_all_weights_with_arrows_for_units_of_interest(axes, weights_all, weight_of_interest, weight_names, layer, gate, arrow_dy=100):
@@ -287,15 +287,15 @@ for gate in range(4):
             else:
                 colors_row.append('w')
 
-            curr_weight = curr_weight * max_activations[from_unit - 650]
+            #curr_weight = curr_weight * max_activations[from_unit - 650]
             # if i!=j:
             cell_text[i, j] = '%1.2f' % curr_weight
 
             if outlier_to:
                 IX_to = np.where(all_weights_to_curr_unit == curr_weight)
-                if i != j: ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=3)
-                if from_unit == 1149: # Mark weights from 1149
-                    if i != j: ax1.text(j, curr_weight, str(from_unit) + '-' + str(to_unit), fontsize=8)
+                #if i != j: ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=3)
+                #if from_unit == 1149: # Mark weights from 1149
+                #    if i != j: ax1.text(j, curr_weight, str(from_unit) + '-' + str(to_unit), fontsize=8)
 
 
         colors.append(colors_row)
@@ -356,7 +356,7 @@ for gate in range(4):
             # Plot top distributions
             if i == 0:
                 jitter_to.append(np.random.random(all_weights_to_curr_unit.size) * bar_width - 2 * bar_width / 4)
-                ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3)
+                ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3, color='k')
             curr_weight = get_weight_between_two_units(model, gate, from_unit, to_unit)
 
             # If weight is outlier color it in table and dists
@@ -371,7 +371,7 @@ for gate in range(4):
                 IX_to = np.where(all_weights_to_curr_unit == curr_weight)
 
                 if from_unit == 1149 and i!=j:
-                    ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', s=15)
+                    ax1.scatter(j + jitter_to[j][IX_to[0][0]], curr_weight, color='r', marker='D', s=50)
                     ax1.text(j+ jitter_to[j][IX_to[0][0]], curr_weight, str(from_unit+1)+'-'+str(to_unit+1), fontsize=20)
 
                     z = (curr_weight - np.mean(all_weights_to_curr_unit))/np.std(all_weights_to_curr_unit)

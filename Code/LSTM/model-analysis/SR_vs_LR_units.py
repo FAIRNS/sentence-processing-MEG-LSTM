@@ -98,7 +98,8 @@ scores_full_model = np.vstack(scores_full_model)
 ax1.errorbar(x=range(scores_full_model.shape[1]), y=np.mean(scores_full_model, axis=0), yerr=np.std(scores_full_model, axis=0), linewidth=3, label=title, color='k', ls='-')
 
 #### LR units
-colors = ['b', 'r']
+#colors = ['b', 'r']
+colors = ['#B22044','#08d9d6']
 line_styles = [':', '--']
 scores_LR_units = []
 for u, unit in enumerate([775, 987]):
