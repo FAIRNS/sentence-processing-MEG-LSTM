@@ -74,17 +74,20 @@ python SR_vs_LR_units.py -s ../../../Data/Stimuli/nounpp.text -m ../../../Data/S
 FIGURE 3: Cell activity of the syntax unit 1150
 -----------------------------------------------------
 
-python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimuli/adv_conjunction.text -meta Data/Stimuli/adv_conjunction.info -activations Data/LSTM/adv_conjunction.pkl -o Figures/adv_conjunction_1149_cell.png -c adv_conjunction -g 1 g \- 6 1149 cell -y "\$C_t$" -x "The" "boy" "gently" "and" "kindly" "greets" "the" -r 1 --no-legend
-
 python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimuli/nounpp.text -meta Data/Stimuli/nounpp.info -activations Data/LSTM/nounpp.pkl -o Figures/nounpp_1149_cell.png -c nounpp -g 1 g \- 6 1149 cell -y "\$C_t$" -x "The" "boy" "near" "the" "car" "greets" "the" -r 1 --no-legend
+
+![alt_text](https://github.com/FAIRNS/sentence-processing-MEG-LSTM/blob/master/Figures_paper/nounpp_1149_cell.png)
+
+* note that to successfully generate all figures you should prepare the stimuli and activations also for the other NA-tasks (adv_conjunction, subjrel_that and double_subjrel_that) in the same way. Then, to get the rest of the sub-figures of Figure 3, run:
+
+python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimuli/adv_conjunction.text -meta Data/Stimuli/adv_conjunction.info -activations Data/LSTM/adv_conjunction.pkl -o Figures/adv_conjunction_1149_cell.png -c adv_conjunction -g 1 g \- 6 1149 cell -y "\$C_t$" -x "The" "boy" "gently" "and" "kindly" "greets" "the" -r 1 --no-legend
 
 python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimuli/subjrel_that.text -meta Data/Stimuli/subjrel_that.info -activations Data/LSTM/subjrel_that.pkl -o Figures/subjrel_that_1149_cell.png -c subjrel_that -g 1 g \- 6 1149 cell -y "\$C_t$" -x "The" "boy" "that" "watches" "the" "dog" "greets" "the" -r 1 --no-legend
 
 python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimuli/double_subjrel_that.text -meta Data/Stimuli/double_subjrel_that.info -activations Data/LSTM/double_subjrel_that.pkl -o Figures/double_subjrel_that_1149_cell.png -c double_subjrel_that -g 1 g \- 6 1149 cell -y "\$C_t$" -x "The" "boy" "that" "watches" "the" "dog" "that" "watches" "the" "cat" "greets" "the" -r 1 --no-legend
 
-* note that to successfully generate all figures you should prepare the stimuli and activations also for the other NA-tasks (adv_conjunction, subjrel_that and double_subjrel_that)
 
-![alt_text](https://github.com/FAIRNS/sentence-processing-MEG-LSTM/blob/master/Figures_paper/nounpp_1149_cell.png)
+
 
 FIGURE 4: connectivity among the syntax (1150) and the LR-number units (776 and 988)
 -----------------------------------------------------------------------------------------------
