@@ -19,22 +19,24 @@ Part 2 describes the scripts required for regenerating figures 1-4 in the paper.
 
 Part 1 - data organization and extraction of LSTM activations:
 -------------------------------------------------------------
--------------------------------------------------------------
+
 TBC
 
 data organization
+-----------------
 -----------------
 TBC
 
 
 extracting gate, cell and unit activations from the LSTM network
 ----------------------------------------------------------------
+----------------------------------------------------------------
 TBC
 
 
 Part 2 - re-generate figures 1-4 in the paper:
 ----------------------------------------------
-----------------------------------------------
+
 
 - The scripts in this part require that the stimuus and metadata files for the *Nounpp* NA-task are in the *Data/Stimuli/* folder: *nounpp.text* and *nounpp.info*, correspondly, and that the LSTM activations for this task are in *Data/LSTM/nounpp.pkl*.
 
@@ -42,6 +44,7 @@ Launch the following commands from the root folder of the project and make sure 
 
 
 FIGURE 1: dynamics of cell-suggestion, input and forget gates for units 776 and 988 and their efferent weights
+--------------------------------------------------
 --------------------------------------------------
 
 ### Unit 776 - nounpp
