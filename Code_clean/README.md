@@ -8,7 +8,7 @@ Part 1 describes the scripts that:
 - Organize the stimuli in the required format.
 - Extract gate and variable activations from the LSTM network and save them in a pkl file. 
 
-Note that this part describes the required steps for the *Nounpp* number-agreement task (NA-task) only, but the step should be easily repeated for all other NA-tasks provided in the dataset folder. 
+Note that this part describes the required steps for the *Nounpp* number-agreement task (NA-task) only, but the step could be easily repeated for all other NA-tasks provided in the dataset folder. 
 
 Part 2 describes the scripts required for regenerating figures 1-4 in the paper. Specifically,
 - [plot_units_activations.py](plot_units_activations.py)
@@ -33,13 +33,13 @@ extracting gate, cell and unit activations from the LSTM network
 TBC
 
 
-# PART 2 - re-generate figures 1-4 in the paper:
+# PART 2 - regenerate figures 1-4 in the paper:
 ----------------------------------------------
 
 The scripts in this part require that:
 - stimulus and metadata files for the *Nounpp* NA-task are in *Data/Stimuli/*: *nounpp.text* and *nounpp.info*, respectively.
 - LSTM activations for the *Nounpp* NA-task are in *Data/LSTM/nounpp.pkl*.
-- The LSTM model is saved in *Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.cpu.pt* (the model can be downloaded from the [colorlessgreenRNNs repo](https://github.com/facebookresearch/colorlessgreenRNNs/tree/master/data))
+- The LSTM model is saved in *Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.pt* (the model can be downloaded from the [colorlessgreenRNNs repo](https://github.com/facebookresearch/colorlessgreenRNNs/tree/master/data))
 
 Launch the following commands from the root folder of the project and make sure that the paths specified in the arguments are indeed according to your local data organization.
 
@@ -94,7 +94,7 @@ python3 Code_clean/plot_units_activations.py -sentences Data/Stimuli/double_subj
 FIGURE 4: connectivity among the syntax (1150) and the LR-number units (776 and 988)
 -----------------------------------------------------------------------------------------------
 
-python3 [Code_clean/extract_weights_from_rnn.py](extract_weights_from_rnn.py) -model Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.cpu.pt -fu 775 987 1149 -tu 775 987 -o Figures/interactions.png --no-mds -activations Data/LSTM/activations/english/nounpp.pkl
+python3 [Code_clean/extract_weights_from_rnn.py](extract_weights_from_rnn.py) -model Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.pt -fu 775 987 1149 -tu 775 987 -o Figures/interactions.png --no-mds -activations Data/LSTM/activations/english/nounpp.pkl
 
 ![alt_text](https://github.com/FAIRNS/sentence-processing-MEG-LSTM/blob/master/Figures_paper/gate_Forget_afferent_interactions.png)
 
