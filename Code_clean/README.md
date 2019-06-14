@@ -2,7 +2,7 @@
 -------------
 -------------
 
-The steps described below will allow you to replicate the figures presented in the [paper](https://arxiv.org/abs/1903.07435): 
+The steps described below will help you to replicate the figures presented in the [paper](https://arxiv.org/abs/1903.07435): 
 
 Part 1 describes the scripts that: 
 - Organize the stimuli in the required format.
