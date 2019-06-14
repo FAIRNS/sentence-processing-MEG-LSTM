@@ -67,7 +67,7 @@ FIGURE 2: generalization across time (GAT)
 
 python SR_vs_LR_units.py -s ../../../Data/Stimuli/nounpp.text -m ../../../Data/Stimuli/nounpp.info -a ../../../Data/LSTM/activations/english/nounpp.pkl -g cell -o ../../../Figures/GAT1d_cell_.png
 
-![alt_text](https://github.com/FAIRNS/sentence-processing-MEG-LSTM/blob/master/Figures_paper/weight_dists_verbs.png)
+![alt_text](https://github.com/FAIRNS/sentence-processing-MEG-LSTM/blob/master/Figures_paper/GAT1d_cell_.png)
 
 FIGURE 3: Cell activity of the syntax unit 1150
 -----------------------------------------------------
