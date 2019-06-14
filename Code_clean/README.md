@@ -17,24 +17,23 @@ Part 2 describes the scripts required for regenerating figures 1-4 in the paper.
 
 
 
-Part 1 - data organization and extraction of LSTM activations:
+# PART 1 - data organization and extraction of LSTM activations:
 -------------------------------------------------------------
 
 TBC
 
 data organization
 -----------------
------------------
+
 TBC
 
 
 extracting gate, cell and unit activations from the LSTM network
 ----------------------------------------------------------------
-----------------------------------------------------------------
 TBC
 
 
-Part 2 - re-generate figures 1-4 in the paper:
+# PART 2 - re-generate figures 1-4 in the paper:
 ----------------------------------------------
 
 
@@ -45,7 +44,7 @@ Launch the following commands from the root folder of the project and make sure 
 
 FIGURE 1: dynamics of cell-suggestion, input and forget gates for units 776 and 988 and their efferent weights
 --------------------------------------------------
---------------------------------------------------
+
 
 ### Unit 776 - nounpp
 python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimuli/nounpp.text -meta Data/Stimuli/nounpp.info -activations Data/LSTM/nounpp.pkl -o Figures/nounpp_775.pdf -c nounpp -g 4 r \- 6 775 cell number_1 singular number_2 singular success correct -g 1 r \- 6 775 gates.c_tilde number_1 singular number_2 singular success correct -g 1 r "\--" 6 775 gates.c_tilde number_1 singular number_2 plural success correct -g 1 b "\--" 6 775 gates.c_tilde number_1 plural number_2 singular success correct -g 1 b \- 6 775 gates.c_tilde number_1 plural number_2 plural success correct -g 2 r \- 6 775 gates.in number_1 singular number_2 singular success correct -g 2 r "\--" 6 775 gates.in number_1 singular number_2 plural success correct -g 2 b "\--" 6 775 gates.in number_1 plural number_2 singular success correct -g 2 b \- 6 775 gates.in number_1 plural number_2 plural success correct -g 3 r \- 6 775 gates.forget number_1 singular number_2 singular success correct -g 3 r "\--" 6 775 gates.forget number_1 singular number_2 plural success correct -g 3 b "\--" 6 775 gates.forget number_1 plural number_2 singular success correct -g 3 b \- 6 775 gates.forget number_1 plural number_2 plural success correct -g 4 r "\--" 6 775 cell number_1 singular number_2 plural success correct -g 4 b "\--" 6 775 cell number_1 plural number_2 singular success correct -g 4 b \- 6 775 cell number_1 plural number_2 plural success correct -g 4 g \- 6 1149 cell success correct -g 5 r \- 6 775 gates.out number_1 singular number_2 singular success correct -g 5 r "\--" 6 775 gates.out number_1 singular number_2 plural success correct -g 5 b "\--" 6 775 gates.out number_1 plural number_2 singular success correct -g 5 b \- 6 775 gates.out number_1 plural number_2 plural success correct -r 1 -x "The" "boy(s)" "near" "the" "car(s)" "greet(s)" "the" --no-legend
