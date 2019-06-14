@@ -10,9 +10,9 @@ Part 1 describes the scripts that:
 Note that this part describes the required steps for the Nounpp number-agreement task (NA-task) only, but the step should be easily repeated for all other NA-tasks provided in the dataset folder. 
 
 Part 2 describes the scripts required for re-generating figures 1-4 in the paper. Specifically, the required scripts are:
-- [a relative link](plot_units_activations.py)
-- [a relative link](extract_embeddings_from_rnn.py)
-- [a relative link](extract_weights_from_rnn.py)
+- [plot_units_activations.py](plot_units_activations.py)
+- [extract_embeddings_from_rnn.py](extract_embeddings_from_rnn.py)
+- [extract_weights_from_rnn.py](extract_weights_from_rnn.py)
 
 
 
