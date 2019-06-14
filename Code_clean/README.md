@@ -18,8 +18,9 @@ Part 2 describes the scripts required for re-generating figures 1-4 in the paper
 
 Part 1 - data organization and extraction of LSTM activations:
 -------------------------------------------------------------
+-------------------------------------------------------------
 
-# ##### data organization
+# data organization
 
 
 # ##### extracting gate, cell and unit activations from the LSTM network
@@ -27,11 +28,12 @@ Part 1 - data organization and extraction of LSTM activations:
 
 Part 2 - re-generate figures 1-4 in the paper:
 ----------------------------------------------
+-------------------------------------------------------------
 The scripts in the part require that the stimuli for the Nounpp NA-task are in the Data/Stimuli/ folder (nounpp.text and nounpp.info) and that the LSTM activations for this task are in Data/LSTM/ (nounpp.pkl).
 Launch the following commands from the root folder of the project, and make sure that the specified paths given in the arguments are indeed according to your local data organization.
 
 
-# ###### FIGURE 1: dynamics of cell-suggestion, input and forget gates for units 776 and 988 and their efferent weights
+FIGURE 1: dynamics of cell-suggestion, input and forget gates for units 776 and 988 and their efferent weights
 --------------------------------------------------
 
 # Unit 776 - nounpp
