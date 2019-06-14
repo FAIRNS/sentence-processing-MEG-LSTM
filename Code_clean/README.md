@@ -36,8 +36,10 @@ TBC
 # PART 2 - re-generate figures 1-4 in the paper:
 ----------------------------------------------
 
-
-- The scripts in this part require that the stimuus and metadata files for the *Nounpp* NA-task are in the *Data/Stimuli/* folder: *nounpp.text* and *nounpp.info*, correspondly, and that the LSTM activations for this task are in *Data/LSTM/nounpp.pkl*.
+The scripts in this part require that:
+- stimulus and metadata files for the *Nounpp* NA-task are in *Data/Stimuli/*: *nounpp.text* and *nounpp.info*, respectively.
+- LSTM activations for the *Nounpp* NA-task are in *Data/LSTM/nounpp.pkl*.
+- The LSTM model is saved in *Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.cpu.pt* (the model can be downloaded from the [colorlessgreenRNNs repo](https://github.com/facebookresearch/colorlessgreenRNNs/tree/master/data))
 
 Launch the following commands from the root folder of the project and make sure that the paths specified in the arguments are indeed according to your local data organization.
 
