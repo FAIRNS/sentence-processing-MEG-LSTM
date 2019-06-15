@@ -16,12 +16,20 @@ parser.add_argument('-activations', '--LSTM-file-name', type=str, default = [], 
 parser.add_argument('-o', '--output', help='Destination for the output weights')
 parser.add_argument('-fu', '--from-units', nargs='+', type=int, default=[], help='Weights FROM which units (counting from zero)')
 parser.add_argument('-tu', '--to-units', nargs='+', type=int, default=[], help='Weights TO which units (counting from zero)')
-parser.add_argument('-sr', '--short-range', nargs='+', type=int, default=[], help='list of short-range numebr units')
-parser.add_argument('-lr', '--long-range', nargs='+', type=int, default=[], help='list of long-range numebr units')
-parser.add_argument('-sy', '--syntax', nargs='+', type=int, default=[], help='list of syntax units')
+parser.add_argument('-c', '--colors', nargs='+', help='corresponding colors for each unit in the TO-UNITS.')
+parser.add_argument('-l', '--labels', nargs='+', help='corresponding label for each unit in the TO-UNITS.')
 parser.add_argument('--no-mds', action='store_true', default=False)
-#parser.add_argument('-sentences', '--stimuli-file-name', type=str, help='Path to text file containing the list of sentences to analyze')
-#parser.add_argument('-meta', '--stimuli-meta-data', type=str, help='The corresponding meta data of the sentences')
+args = parser.parse_args()
+#parser.add_argument('-sr', '--short-range', nargs='+', type=int, default=[], help='list of short-range numebr units')
+#parser.add_argument('-lr', '--long-range', nargs='+', type=int, default=[], help='list of long-range numebr units')
+#parser.add_argument('-sy', '--syntax', nargs='+', type=int, default=[], help='list of syntax units')
+
+if args.colors is not None:
+    assert len(args.to_units) == len(args.colors), "!!!---Number of colors is not equal to number of to-units---!!!"
+if args.labels is not None:
+    assert len(args.to_units) == len(args.labels), "!!!---Number of labels is not equal to number of to-units---!!!"
+if args.labels is not None:
+    assert len(args.to_units) == len(args.from_units), "!!!---currently num from-units must equal that of number of to-units---!!!"
 
 args = parser.parse_args()
 
@@ -148,19 +156,26 @@ def generate_mds_for_connectivity(curr_ax, weights, layer, gate, from_units, to_
     # print('Done')
     # fig_mds, ax = plt.subplots(figsize=(40, 30))
     for i in range(650):
+        # default style:
         c = 'k'; label = 'unidentified'; s = 5; fontweight = 'light'
-        if i in [u-650 for u in args.syntax]:
-            c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
-        elif i in [u-650 for u in args.short_range]:
-            c = 'm'; label = 'LR unit'; s = 12; fontweight = 'bold'
-        elif i in [u-650 for u in args.long_range]:
-            c = 'c'; label = 'number unit'; s = 12; fontweight = 'bold'
-        elif i == 987-650:
-            c = 'r'; label = 'number unit'; s = 12; fontweight = 'bold'
-        elif i == 775-650:
-            c = 'b'; label = 'number unit'; s = 12; fontweight = 'bold'
-        elif i == 1149-650:
-            c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
+        # Set style if in TO-UNITS:
+        if i in [u-650 for u in args.to_units]:
+            IX = args.to_units.index(i+650)
+            c = args.colors[IX] if (args.colors is not None) else 'b'
+            label = args.labels[IX] if (args.labels is not None) else 'unit'
+            fontweight = 'bold'
+        #if i in [u-650 for u in args.syntax]:
+        #    c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
+        #elif i in [u-650 for u in args.short_range]:
+        #    c = 'm'; label = 'LR unit'; s = 12; fontweight = 'bold'
+        #elif i in [u-650 for u in args.long_range]:
+        #    c = 'c'; label = 'number unit'; s = 12; fontweight = 'bold'
+        #elif i == 987-650:
+        #    c = 'r'; label = 'number unit'; s = 12; fontweight = 'bold'
+        #elif i == 775-650:
+        #    c = 'b'; label = 'number unit'; s = 12; fontweight = 'bold'
+        #elif i == 1149-650:
+        #    c = 'g'; label = 'syntax unit'; s = 12; fontweight = 'bold'
 
         curr_ax.text(pos[i, 0], pos[i, 1], str(1 + i + layer*650), color=c, label=label, size=s, fontweight=fontweight)
         curr_ax.set_xlim(np.min(pos[:, 0]), np.max(pos[:, 0]))
@@ -215,7 +230,10 @@ gate_names = ['Input', 'Forget', 'Cell', 'Output']
 # Load model
 print('Loading models...')
 print('\nmodel: ' + args.model+'\n')
-model = torch.load(args.model)
+model = torch.load(args.model, map_location=lambda storage, loc: storage)
+#else:
+#    model = torch.load(args.model)
+
 model.rnn.flatten_parameters()
 # print(model.rnn._all_weights)
 ###### Load LSTM activations, stimuli and meta-data ############
@@ -238,40 +256,56 @@ bar_width = 0.4
 rowLabels = [str(u+1) for u in args.from_units]
 colLabels = [str(u+1) for u in args.to_units]
 for gate in range(4):
+    print('\n\n' + '-'*50)
+    print('--------' + gate_names[gate] + '-'*30)
+    print('-'*50)
     colors = []
     # Create a table at the bottom-left of the figure
     fig, ax1 = plt.subplots(1, figsize = (10, 3)) # Top-left distrubtions
     ax2 = fig.add_axes([0.5, 0.19, 0.4, 0.14])  # for 5 units: 0.5, 0.12, 0.4, 0.195 # Bottom-right distrubtions
     cell_text = np.empty((len(args.from_units), len(args.to_units)))
     jitter_to = []; jitter_from = []
+    
+    print('\n Efferent weights \n ---------------------')
     for i, from_unit in enumerate(args.from_units):
         # Plot right distribution
         all_weights_from_curr_unit = model.rnn.weight_hh_l1.data[gate * 650:(gate + 1) * 650, from_unit - 650].numpy()
-        top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_from_curr_unit)))[0:10]
+        top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_from_curr_unit)))[0:5]
         top_5_weights = all_weights_from_curr_unit[top_5_units-650]
-        print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights from unit ' + str(from_unit), top_5_units, top_5_weights)
+        print('Top 5 (abs) weights from unit ' + str(from_unit), top_5_units, top_5_weights)
         colors_row = []
         for j, to_unit in enumerate(args.to_units):
             all_weights_to_curr_unit = model.rnn.weight_hh_l1.data[(to_unit - 650) + gate * 650, :].numpy()
             all_weights_to_curr_unit = np.multiply(all_weights_to_curr_unit, np.asarray(max_activations))
             if i == len(args.from_units)-1:
-                top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:10]
+                if j==0:
+                    print('\n Afferent weights \n ------------')
+                top_5_units = 650 + np.argsort(np.negative(np.absolute(all_weights_to_curr_unit)))[0:5]
                 top_5_weights = all_weights_to_curr_unit[top_5_units - 650]
-                print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights to unit ' + str(to_unit), top_5_units, top_5_weights)
+                print('Top 5 (abs) recurrent weights to unit ' + str(to_unit), top_5_units, top_5_weights)
                 weights = model.rnn.weight_ih_l1.data[(to_unit - 650) + gate * 650, :].numpy()
                 top_5_units = np.argsort(np.negative(np.absolute(weights)))[0:5]
                 top_5_weights = weights[top_5_units]
-                print('Gate ' + gate_names[gate] + ': Top 5 (abs) weights to unit ' + str(to_unit), top_5_units, top_5_weights)
+                print('Top 5 (abs) input weights from layer-1 to unit ' + str(to_unit), top_5_units, top_5_weights)
 
             # Plot top distributions
+            # Set style if in TO-UNITS:
+            IX = args.to_units.index(to_unit)
+            c = args.colors[IX] if (args.colors is not None) else 'b'
+            label = args.labels[IX] if (args.labels is not None) else 'unit'
+            fontweight = 'bold'
             if i == 0:
                 jitter_to.append(np.random.random(all_weights_to_curr_unit.size) * bar_width - 3 * bar_width / 4)
-                ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3)
+                ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3, color=c)
             # Plot right-side distribution
             if j == 0:
+                IX = args.to_units.index(from_unit)
+                c = args.colors[IX] if (args.colors is not None) else 'b'
+                label = args.labels[IX] if (args.labels is not None) else 'unit'
+                fontweight = 'bold'
                 num_from_units = cell_text.shape[0]
                 jitter_from.append(np.random.random(all_weights_from_curr_unit.size) * bar_width - bar_width / 2)
-                ax2.scatter(all_weights_from_curr_unit, num_from_units - i + jitter_from[i], s=1)
+                ax2.scatter(all_weights_from_curr_unit, num_from_units - i + jitter_from[i], s=1, color=c)
             # Get weight
             curr_weight = get_weight_between_two_units(model, gate, from_unit, to_unit)
 
@@ -280,9 +314,10 @@ for gate in range(4):
                                                                   all_weights_from_curr_unit, max_activations[from_unit - 650])
 
 
-            if outlier_from and i!=j:
-                IX_from = np.where(all_weights_from_curr_unit == curr_weight)
-                ax2.scatter(curr_weight, num_from_units - i + jitter_from[i][IX_from[0][0]], color='r', s=3)
+            if outlier_to and i!=j:
+                #IX_from = np.where(all_weights_from_curr_unit == curr_weight)
+                #print(jitter_from, IX_from)
+                #ax2.scatter(curr_weight, num_from_units - i + jitter_from[i][IX_from[0][0]], color='r', s=3)
                 colors_row.append('#56b5fd')
             else:
                 colors_row.append('w')
@@ -320,17 +355,19 @@ for gate in range(4):
     ax1.set_ylabel('Weight size (afferent)', fontsize=12)
     ax2.set_xlabel('Weight size (efferent)', fontsize=12)
     # ax2.xaxis.set_label_position('top')
-    plt.subplots_adjust(bottom=0.37, right=0.5)
+    plt.subplots_adjust(bottom=0.42, right=0.5)
     ax1.set_title(gate_names[gate])
 
     ### Save figure
     dirname = os.path.dirname(args.output)
     basename = os.path.basename(args.output)
     fig.savefig(os.path.join(dirname, 'gate_' + gate_names[gate] + '_' + basename))
-    print('Figures saved to: ' + os.path.join(dirname, 'gate_' + gate_names[gate] + '_' + basename))
+    #print('\nFigures saved to: ' + os.path.join(dirname, 'gate_' + gate_names[gate] + '_' + basename))
     # print(the_table.get_window_extent('Agg'))
 
+####################################################################################
     ############# Re-generate the figure but only with afferent distributions
+    ################################################################################
     # Create a table at the bottom-left of the figure
     colors = []
     bar_width = 0.4
@@ -354,9 +391,17 @@ for gate in range(4):
                 top_5_weights = weights[top_5_units]
 
             # Plot top distributions
+            IX = args.to_units.index(to_unit)
+            c = args.colors[IX] if (args.colors is not None) else 'b'
+            label = args.labels[IX] if (args.labels is not None) else 'unit'
+            fontweight = 'bold'
             if i == 0:
                 jitter_to.append(np.random.random(all_weights_to_curr_unit.size) * bar_width - 2 * bar_width / 4)
+<<<<<<< HEAD
                 ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3, color='k')
+=======
+                ax1.scatter(j + jitter_to[j], all_weights_to_curr_unit, s=3, color=c)
+>>>>>>> ceae8f6c2a5dd64612a9c4dcf21c19167743d23e
             curr_weight = get_weight_between_two_units(model, gate, from_unit, to_unit)
 
             # If weight is outlier color it in table and dists
@@ -391,7 +436,6 @@ for gate in range(4):
                 print('z-score ' + str(from_unit+1) + '_' + str(to_unit+1) + ': %1.1f' % z)
 
         colors.append(colors_row)
-    print(colors)
     the_table = ax1.table(cellText=cell_text,
                           rowLabels=rowLabels,
                           colLabels=colLabels, rowLoc='center', cellColours=colors,
@@ -403,7 +447,7 @@ for gate in range(4):
             the_table._cells[cell].set_text_props(weight='bold')
         if cell[0] == cell[1]+1: the_table._cells[cell]._text.set_color('w')
 
-    plt.subplots_adjust(left = 0.2, bottom=0.26)
+    plt.subplots_adjust(left = 0.2, bottom=0.5)
 
     the_table.scale(1, 2.3)
 
@@ -418,5 +462,5 @@ for gate in range(4):
     basename = os.path.basename(args.output)
     fig.savefig(os.path.join(dirname, 'gate_' + gate_names[gate] + '_afferent_' + basename))
     fig.savefig(os.path.join(dirname, 'gate_' + gate_names[gate] + '_afferent_' + basename[:-4]+'.pdf'))
-    print('Figures saved to: ' + os.path.join(dirname, 'gate_' + gate_names[gate] + '_' + basename))
+    print('\nFigures saved to: ' + os.path.join(dirname, 'gate_' + gate_names[gate] + '_' + basename))
     # print(the_table.get_window_extent('Agg'))

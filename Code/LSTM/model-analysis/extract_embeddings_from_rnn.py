@@ -34,10 +34,10 @@ filename = os.path.basename(args.output)
 # Load model
 print('Loading models...')
 print('\nmodel: ' + args.model+'\n')
-model = torch.load(args.model)
+model = torch.load(args.model, lambda storage, loc: storage)
 model.rnn.flatten_parameters()
-embeddings_in = model.encoder.weight.data.numpy()
-embeddings_out = model.decoder.weight.data.numpy()
+embeddings_in = model.encoder.weight.data.cpu().numpy()
+embeddings_out = model.decoder.weight.data.cpu().numpy()
 vocab = data.Dictionary(args.vocabulary)
 
 # Read list of contrasted words (e.g., singular vs. plural verbs).
@@ -46,8 +46,10 @@ with open(args.input, 'r') as f:
 verbs_singular = [l.split('\t')[0].strip() for l in lines]
 verbs_plural = [l.split('\t')[1].strip() for l in lines]
 verbs_all = verbs_singular + verbs_plural
-print('\nVerbs used:')
-print(verbs_all)
+print('\nWords used (group 1):')
+print(verbs_singular)
+print('\nWords used (group 2):')
+print(verbs_plural)
 
 # Get index in the vocab for all words and extract embeddings
 idx_verbs_singular = [vocab.word2idx[w] for w in verbs_singular]

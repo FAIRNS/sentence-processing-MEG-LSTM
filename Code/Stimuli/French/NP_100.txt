@@ -1,0 +1,200 @@
+Tantes de Patrique énorme | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_Adj énorme ] ]
+Vieille actrice | 
+ | [_NP [_Adj vieille ] [_N actrice ] ]
+Actrice euphoriques | 
+ | [_NP [_N actrice ] [_Adj euphoriques ] ]
+Tante de Patrique vraiment joyeux | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_AdjP [_Degree vraiment ] [_Adj joyeux ] ] ]
+Grande tante de Patrique | 
+ | [_NP [_Adj grande ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] ]
+Grande actrice | 
+ | [_NP [_Adj grande ] [_N actrice ] ]
+Acteurs tristes | 
+ | [_NP [_N acteurs ] [_Adj tristes ] ]
+Actrice tristes | 
+ | [_NP [_N actrice ] [_Adj tristes ] ]
+Tantes de Patrique heureuses | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_Adj heureuses ] ]
+Acteurs très heureuses | 
+ | [_NP [_N acteurs ] [_AdjP [_Degree très ] [_Adj heureuses ] ] ]
+Actrices très larges | 
+ | [_NP [_N actrices ] [_AdjP [_Degree très ] [_Adj larges ] ] ]
+Acteur joyeuse | 
+ | [_NP [_N acteur ] [_Adj joyeuse ] ]
+Tante de cinq acteurs vraiment euphorique | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num cinq ] [_N acteurs ] ] ] ] [_AdjP [_Degree vraiment ] [_Adj euphorique ] ] ]
+Tantes de dix vraiment grands acteurs énormes | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num dix ] [_NPrel [_AdjP [_Degree vraiment ] [_Adj grands ] ] [_N acteurs ] ] ] ] ] [_Adj énormes ] ]
+Très jeune tante de Patrique | 
+ | [_NP [_AdjP [_Degree très ] [_Adj jeune ] ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] ]
+Tantes de Marie très joyeux | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] [_AdjP [_Degree très ] [_Adj joyeux ] ] ]
+Tantes de Patrique vraiment joyeuses | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_AdjP [_Degree vraiment ] [_Adj joyeuses ] ] ]
+Actrices très minuscules | 
+ | [_NP [_N actrices ] [_AdjP [_Degree très ] [_Adj minuscules ] ] ]
+Vraiment grande tante de dix actrices | 
+ | [_NP [_AdjP [_Degree vraiment ] [_Adj grande ] ] [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num dix ] [_N actrices ] ] ] ] ]
+Tantes de des acteurs très énormes | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_DPrel [_D des ] [_N acteurs ] ] ] ] [_AdjP [_Degree très ] [_Adj énormes ] ] ]
+Acteur très minuscules | 
+ | [_NP [_N acteur ] [_AdjP [_Degree très ] [_Adj minuscules ] ] ]
+Actrices vraiment minuscules | 
+ | [_NP [_N actrices ] [_AdjP [_Degree vraiment ] [_Adj minuscules ] ] ]
+Acteurs heureux | 
+ | [_NP [_N acteurs ] [_Adj heureux ] ]
+Acteur euphoriques | 
+ | [_NP [_N acteur ] [_Adj euphoriques ] ]
+Vraiment jeune tante de Marie | 
+ | [_NP [_AdjP [_Degree vraiment ] [_Adj jeune ] ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Marie ] ] ] ]
+Acteurs heureuses | 
+ | [_NP [_N acteurs ] [_Adj heureuses ] ]
+Acteur large | 
+ | [_NP [_N acteur ] [_Adj large ] ]
+Acteur très heureuses | 
+ | [_NP [_N acteur ] [_AdjP [_Degree très ] [_Adj heureuses ] ] ]
+Tante de quatre actrices vraiment tristes très heureuses | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_NPrel [_N actrices ] [_AdjP [_Degree vraiment ] [_Adj tristes ] ] ] ] ] ] [_AdjP [_Degree très ] [_Adj heureuses ] ] ]
+Tantes de Marie triste | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] [_Adj triste ] ]
+Acteurs misérables | 
+ | [_NP [_N acteurs ] [_Adj misérables ] ]
+Tantes de quatre vraiment grands acteurs triste | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_NPrel [_AdjP [_Degree vraiment ] [_Adj grands ] ] [_N acteurs ] ] ] ] ] [_Adj triste ] ]
+Acteur très joyeuse | 
+ | [_NP [_N acteur ] [_AdjP [_Degree très ] [_Adj joyeuse ] ] ]
+Tante de Patrique vraiment joyeuse | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_AdjP [_Degree vraiment ] [_Adj joyeuse ] ] ]
+Actrice euphorique | 
+ | [_NP [_N actrice ] [_Adj euphorique ] ]
+Actrices misérable | 
+ | [_NP [_N actrices ] [_Adj misérable ] ]
+Acteur larges | 
+ | [_NP [_N acteur ] [_Adj larges ] ]
+Très petites tantes de cinq actrices | 
+ | [_NP [_AdjP [_Degree très ] [_Adj petites ] ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num cinq ] [_N actrices ] ] ] ] ]
+Actrices vraiment tristes | 
+ | [_NP [_N actrices ] [_AdjP [_Degree vraiment ] [_Adj tristes ] ] ]
+Acteur heureux | 
+ | [_NP [_N acteur ] [_Adj heureux ] ]
+Vraiment vieille actrice | 
+ | [_NP [_AdjP [_Degree vraiment ] [_Adj vieille ] ] [_N actrice ] ]
+Très jeune acteur | 
+ | [_NP [_AdjP [_Degree très ] [_Adj jeune ] ] [_N acteur ] ]
+Tante de Patrique très misérables | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_AdjP [_Degree très ] [_Adj misérables ] ] ]
+Vraiment vieilles tantes de deux actrices | 
+ | [_NP [_AdjP [_Degree vraiment ] [_Adj vieilles ] ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num deux ] [_N actrices ] ] ] ] ]
+Actrices vraiment heureuses | 
+ | [_NP [_N actrices ] [_AdjP [_Degree vraiment ] [_Adj heureuses ] ] ]
+Tante de Patrique minuscules | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_Adj minuscules ] ]
+Actrice minuscules | 
+ | [_NP [_N actrice ] [_Adj minuscules ] ]
+Très vieux acteur | 
+ | [_NP [_AdjP [_Degree très ] [_Adj vieux ] ] [_N acteur ] ]
+Tantes de Marie euphorique | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] [_Adj euphorique ] ]
+Tante de Patrique joyeux | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_Adj joyeux ] ]
+Jeune actrice | 
+ | [_NP [_Adj jeune ] [_N actrice ] ]
+Actrices très minuscule | 
+ | [_NP [_N actrices ] [_AdjP [_Degree très ] [_Adj minuscule ] ] ]
+Actrices très misérable | 
+ | [_NP [_N actrices ] [_AdjP [_Degree très ] [_Adj misérable ] ] ]
+Tante de Patrique joyeuses | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_Adj joyeuses ] ]
+Acteurs joyeuses | 
+ | [_NP [_N acteurs ] [_Adj joyeuses ] ]
+Tantes de Patrique vraiment minuscule | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_AdjP [_Degree vraiment ] [_Adj minuscule ] ] ]
+Tante de deux acteurs très énorme | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num deux ] [_N acteurs ] ] ] ] [_AdjP [_Degree très ] [_Adj énorme ] ] ]
+Actrices misérables | 
+ | [_NP [_N actrices ] [_Adj misérables ] ]
+Tantes de Patrique énormes | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_Adj énormes ] ]
+Tante de quatre acteurs vraiment minuscules | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num quatre ] [_N acteurs ] ] ] ] [_AdjP [_Degree vraiment ] [_Adj minuscules ] ] ]
+Très petite tante de Marie | 
+ | [_NP [_AdjP [_Degree très ] [_Adj petite ] ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Marie ] ] ] ]
+Tantes de Marie énorme | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] [_Adj énorme ] ]
+Tantes de Patrique heureuse | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_Adj heureuse ] ]
+Actrice énormes | 
+ | [_NP [_N actrice ] [_Adj énormes ] ]
+Acteur vraiment énorme | 
+ | [_NP [_N acteur ] [_AdjP [_Degree vraiment ] [_Adj énorme ] ] ]
+Tantes de Marie joyeuse | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] [_Adj joyeuse ] ]
+Grands acteurs | 
+ | [_NP [_Adj grands ] [_N acteurs ] ]
+Tante de Marie très énorme | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Marie ] ] ] [_AdjP [_Degree très ] [_Adj énorme ] ] ]
+Acteurs très joyeuses | 
+ | [_NP [_N acteurs ] [_AdjP [_Degree très ] [_Adj joyeuses ] ] ]
+Acteur vraiment triste | 
+ | [_NP [_N acteur ] [_AdjP [_Degree vraiment ] [_Adj triste ] ] ]
+Très petites actrices | 
+ | [_NP [_AdjP [_Degree très ] [_Adj petites ] ] [_N actrices ] ]
+Acteur vraiment large | 
+ | [_NP [_N acteur ] [_AdjP [_Degree vraiment ] [_Adj large ] ] ]
+Acteurs joyeux | 
+ | [_NP [_N acteurs ] [_Adj joyeux ] ]
+Actrice triste | 
+ | [_NP [_N actrice ] [_Adj triste ] ]
+Acteur vraiment joyeuse | 
+ | [_NP [_N acteur ] [_AdjP [_Degree vraiment ] [_Adj joyeuse ] ] ]
+Actrices larges | 
+ | [_NP [_N actrices ] [_Adj larges ] ]
+Tante de Patrique vraiment énormes | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] [_AdjP [_Degree vraiment ] [_Adj énormes ] ] ]
+Petits acteurs | 
+ | [_NP [_Adj petits ] [_N acteurs ] ]
+Acteurs vraiment triste | 
+ | [_NP [_N acteurs ] [_AdjP [_Degree vraiment ] [_Adj triste ] ] ]
+Tante de trois acteurs très énorme | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_NumPrel [_Num trois ] [_N acteurs ] ] ] ] [_AdjP [_Degree très ] [_Adj énorme ] ] ]
+Actrice très tristes | 
+ | [_NP [_N actrice ] [_AdjP [_Degree très ] [_Adj tristes ] ] ]
+Acteur joyeux | 
+ | [_NP [_N acteur ] [_Adj joyeux ] ]
+Vraiment jeunes actrices | 
+ | [_NP [_AdjP [_Degree vraiment ] [_Adj jeunes ] ] [_N actrices ] ]
+Acteur vraiment tristes | 
+ | [_NP [_N acteur ] [_AdjP [_Degree vraiment ] [_Adj tristes ] ] ]
+Acteur très triste | 
+ | [_NP [_N acteur ] [_AdjP [_Degree très ] [_Adj triste ] ] ]
+Vraiment petite actrice | 
+ | [_NP [_AdjP [_Degree vraiment ] [_Adj petite ] ] [_N actrice ] ]
+Très vieilles actrices | 
+ | [_NP [_AdjP [_Degree très ] [_Adj vieilles ] ] [_N actrices ] ]
+Actrices vraiment joyeuses | 
+ | [_NP [_N actrices ] [_AdjP [_Degree vraiment ] [_Adj joyeuses ] ] ]
+Jeunes tantes de Marie | 
+ | [_NP [_Adj jeunes ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] ]
+Très grande tante de Patrique | 
+ | [_NP [_AdjP [_Degree très ] [_Adj grande ] ] [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Patrique ] ] ] ]
+Tantes de deux actrices très euphoriques | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_NumPrel [_Num deux ] [_N actrices ] ] ] ] [_AdjP [_Degree très ] [_Adj euphoriques ] ] ]
+Actrices vraiment heureuse | 
+ | [_NP [_N actrices ] [_AdjP [_Degree vraiment ] [_Adj heureuse ] ] ]
+Actrice énorme | 
+ | [_NP [_N actrice ] [_Adj énorme ] ]
+Tante de ces acteurs misérable | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_DPrel [_D ces ] [_N acteurs ] ] ] ] [_Adj misérable ] ]
+Petite actrice | 
+ | [_NP [_Adj petite ] [_N actrice ] ]
+Tantes de Marie heureuse | 
+ | [_NP [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Marie ] ] ] [_Adj heureuse ] ]
+Tante de Marie heureuse | 
+ | [_NP [_N [_Nrel tante ] [_RelP [_Of de ] [_Name Marie ] ] ] [_Adj heureuse ] ]
+Vraiment jeunes tantes de Patrique | 
+ | [_NP [_AdjP [_Degree vraiment ] [_Adj jeunes ] ] [_N [_Nrel tantes ] [_RelP [_Of de ] [_Name Patrique ] ] ] ]
+Très vieille actrice | 
+ | [_NP [_AdjP [_Degree très ] [_Adj vieille ] ] [_N actrice ] ]
+Actrice vraiment joyeuses | 
+ | [_NP [_N actrice ] [_AdjP [_Degree vraiment ] [_Adj joyeuses ] ] ]
