@@ -29,10 +29,10 @@ line_colors = ['g', 'r', 'b']
 line_widths = [3, 3, 1]
 line_styles = ['-', '-', '--']
 
-# unit_types = ['LR', 'SR']
-# line_colors = ['g', 'r']
-# line_widths = [3, 3]
-# line_styles = ['-', '-']
+unit_types = ['LR', 'SR']
+line_colors = ['g', 'r']
+line_widths = [3, 3]
+line_styles = ['-', '-']
 
 for c, cond in enumerate(conditions):
     for ut, unit_type in enumerate(unit_types):

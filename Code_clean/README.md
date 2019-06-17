@@ -20,24 +20,45 @@ Part 2 describes the scripts required for regenerating figures 1-4 in the paper.
 # PART 1 - data organization and extraction of LSTM activations:
 -------------------------------------------------------------
 
-TBC
-
 data organization
 -----------------
+1. Generate a dataset for the number-agreement task (NA-task):
+Instead of using one of the files in */Datasets/*, you could also generate data for an NA-task by using the script *generate_NA_task.pl*, for example, for the *Nounpp* task, run:
+./generate_NA_task.pl 0 1000 nounpp > Data/Stimuli/nounpp.txt
 
-TBC
+2. You can look into the statistics of the generated file by running:
+python Code_clean/verify_stimuli_file_is_balanced.py -f ../Data/Stimuli/nounpp.txt
 
+3. The result *nounpp.txt* should then be transformed into three files:
+- \*.text: file containing only the sentence stimuli.
+- \*.gold: file that contains for each sentence the correct and wrong predictions of the verb.
+- \*.info: meta-data file with additional information.
 
-extracting gate, cell and unit activations from the LSTM network
-----------------------------------------------------------------
-TBC
+To generate these three files, run:
+python3 Code_clean/generate_info_from_raw_txt.py -i Data/Stimuli/nounpp.txt -o Data/Stimuli/nounpp -p number_1 3 -p number_2 4 -p verb_1_wrong 6 --correct-word-position 5 --wrong-word-label verb_1_wrong
+This will result in three files in Data/Stimuli/: nounpp.text, nounpp.gold and nounpp.info 
+
+4. You can get the 'behavioral' performance of the LSTM on this NA-task, by running:
+python3 Code_clean/extract_predictions.py Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.pt -i Data/Stimuli/nounpp -v Data/LSTM/models/English_vocab.txt -o Output/nounpp --eos-separator "<eos>" --format pkl --lang it --uppercase-first-word
+
+* Note that the pytorch model and vocab are assumed to be in *Data/LSTM/models/*
+* you can use a GPU by adding a --cuda flag to the command.
+
+Following this, run:
+python Code/get_agreement_accuracy_for_contrast.py -ablation-results Output/nounpp.abl -info Data/Stimuli/nounpp.info -condition number_1=singular number_2=singular
+python Code/get_agreement_accuracy_for_contrast.py -ablation-results Output/nounpp.abl -info Data/Stimuli/nounpp.info -condition number_1=singular number_2=plural
+python Code/get_agreement_accuracy_for_contrast.py -ablation-results Output/nounpp.abl -info Data/Stimuli/nounpp.info -condition number_1=plural number_2=singular
+python Code/get_agreement_accuracy_for_contrast.py -ablation-results Output/nounpp.abl -info Data/Stimuli/nounpp.info -condition number_1=plural number_2=plural
+
+5. Next, gate and unit activations should be extracted from the model. This is done by running:
+python Code_clean/extract-activations.py Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.pt -i Data/Stimuli/nounpp.text -v Data/LSTM/models/English_vocab.txt -o Data/LSTM/activations/English/nounpp --eos-separator "<eos>" --cuda --lang en --use-unk
 
 
 # PART 2 - re-generate figures 1-4 in the paper:
 ----------------------------------------------
 
 
-- The scripts in this part require that the stimuus and metadata files for the *Nounpp* NA-task are in the *Data/Stimuli/* folder: *nounpp.text* and *nounpp.info*, correspondly, and that the LSTM activations for this task are in *Data/LSTM/nounpp.pkl*.
+- The scripts in this part require that the stimuus and metadata files for the *Nounpp* NA-task are in the *Data/Stimuli/* folder: *nounpp.text* and *nounpp.info*, correspondly, and that the LSTM activations for this task are in *Data/LSTM/nounpp.pkl* (see Part 1).
 
 Launch the following commands from the root folder of the project and make sure that the paths specified in the arguments are indeed according to your local data organization.
 
@@ -89,7 +110,7 @@ python3 Code/LSTM/model-analysis/plot_units_activations.py -sentences Data/Stimu
 FIGURE 4: connectivity among the syntax (1150) and the LR-number units (776 and 988)
 -----------------------------------------------------------------------------------------------
 
-python3 Code/LSTM/model-analysis/extract_weights_from_rnn.py -model Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.cpu.pt -fu 775 987 1149 -tu 775 987 -o Figures/interactions.png --no-mds -activations Data/LSTM/activations/english/nounpp.pkl
+python3 Code_clean/extract_weights_from_rnn.py -model Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.pt -fu 775 987 1149 -tu 775 987 -o Figures/interactions.png --no-mds -activations Data/LSTM/activations/english/nounpp.pkl
 
 ![alt_text](https://github.com/FAIRNS/sentence-processing-MEG-LSTM/blob/master/Figures_paper/gate_Forget_afferent_interactions.png)
 
