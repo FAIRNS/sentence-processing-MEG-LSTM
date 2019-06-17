@@ -18,7 +18,7 @@ class Dictionary(object):
         return len(self.idx2word)
 
     def load(self, path):
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, 'r') as f:
             for line in f:
                 self.add_word(line.rstrip('\n'))
 
@@ -37,6 +37,7 @@ class Corpus(object):
             self.train = self.tokenize(os.path.join(path, 'train.txt'))
             self.valid = self.tokenize(os.path.join(path, 'valid.txt'))
             self.test = self.tokenize(os.path.join(path, 'test.txt'))
+            print('Corpus added')
             with open(os.path.join(path, 'corpus.pth'), 'wb') as f:
                 torch.save((self.train, self.valid, self.test), f)
 
@@ -46,14 +47,14 @@ class Corpus(object):
         tokens = 0
         with open(path, 'r') as f:
             for line in f:
-                words = line.split() + ['</s>']
+                words = line.split() + ['<eos>']
                 tokens += len(words)
         # Tokenize file content
         with open(path, 'r') as f:
             ids = torch.LongTensor(tokens)
             token = 0
             for line in f:
-                words = line.split() + ['</s>']
+                words = line.split() + ['<eos>']
                 for word in words:
                     ids[token] = self.dictionary.word2idx[word]
                     token += 1
