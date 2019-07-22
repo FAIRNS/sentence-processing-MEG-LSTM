@@ -78,7 +78,7 @@ matrix_verbs['plural'] =   ['remember' , 'say', 'declare']
 # LOCATION PREPOSITIONS
 # -----
 # Tokens (second word will be used to choose the right article from determinats{} - 'a'/'definit'/)
-loc_preps = ['near', 'behind', 'before', 'next to']
+loc_preps = ['near', 'behind', 'before', 'beside']
 
 
 ##########################
