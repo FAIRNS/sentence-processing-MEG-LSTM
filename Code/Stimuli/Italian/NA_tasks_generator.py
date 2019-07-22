@@ -11,6 +11,7 @@ parser.add_argument('-n', default=250 , type=int, help = 'number of samples from
 parser.add_argument('-seed', default=1 , type=int, help = 'Random seed for replicability')
 args = parser.parse_args()
 
+stimuli = []
 np.random.seed(args.seed)
 
 def construct_DP(subject, subject_gender, subject_number):
@@ -248,65 +249,135 @@ if args.natask == 'nounpp_objrel':
 # The N1 that the N2 P the N3 V2 V1 (N1 N2 P N3 V2 V1)
 #num_nouns=4
 if args.natask == 'embedding_mental':
-    features = {}
-    features['N1_gender'] = ['masculine', 'feminine']
-    features['N1_number'] = ['singular', 'plural']
-    features['N2_gender'] = ['masculine', 'feminine']
-    features['N2_number'] = ['singular', 'plural']
-    features['N3_gender'] = ['masculine', 'feminine']
-    features['N3_number'] = ['singular', 'plural']
-    counter = init_counter(features)
 
     genders = ['masculine', 'feminine']
     numbers = ['singular', 'plural']
+    
+    features = {}
+    features['N1_gender'] = genders
+    features['N1_number'] = numbers
+    features['N2_gender'] = genders
+    features['N2_number'] = numbers
+    features['N3_gender'] = genders
+    features['N3_number'] = numbers
+    counter = init_counter(features)
 
-    for N1_gender in ['masculine', 'feminine']:
-        for N1_number in ['singular', 'plural']:
-            N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
-            for IX_N1, N1 in enumerate(N1s):
-                IX_det_N1 = construct_DP(N1, N1_gender, N1_number)
-                det = Words['determinants']['definit'][N1_gender][N1_number][IX_det_N1]
-                V1s = Words['matrix_verbs'][N1_number]#[0:num_nouns]
-                for IX_V1, V1 in enumerate(V1s):
-                    NP_start = det + ' ' + N1 + ' ' + V1
+    while not counter_fullfilled(counter, args.n):
+        # N1
+        N1_gender = genders[np.random.randint(2)]
+        N1_number = numbers[np.random.randint(2)]
+        N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
+        IX_N1 = np.random.randint(len(N1s))
+        N1 = N1s[IX_N1]
+        IX_det_N1 = construct_DP(N1, N1_gender, N1_number)
+        det_N1 = Words['determinants']['definit'][N1_gender][N1_number][IX_det_N1]
+        # V1
+        V1s = Words['matrix_verbs'][N1_number]#[0:num_nouns]
+        IX_V1 = np.random.randint(len(V1s))
+        V1 = V1s[IX_V1]
+        # N2
+        N2_gender = genders[np.random.randint(2)]
+        N2_number = numbers[np.random.randint(2)]
+        N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
+        IX_N2 = np.random.randint(len(N2s))
+        N2 = N2s[IX_N2]
+        IX_det_N2 = construct_DP(N2, N2_gender, N2_number)
+        det_N2 = Words['determinants']['definit'][N2_gender][N2_number][IX_det_N2]
+        # V2
+        V2s = Words['verbs'][N2_number]
+        IX_V2 = np.random.randint(len(V2s))
+        V2 = V2s[IX_V2]
+        # N3
+        N3_gender = genders[np.random.randint(2)]
+        N3_number = numbers[np.random.randint(2)]
+        N3s = Words['nouns'][N3_gender][N3_number]#[0:num_nouns]
+        IX_N3 = np.random.randint(len(N3s))
+        N3 = N3s[IX_N3]
+        IX_det_N3 = construct_DP(N3, N3_gender, N3_number)
+        # prep
+        preps = Words['loc_preps']
+        IX_prep = np.random.randint(len(preps))
+        prep = preps[IX_prep]
+        prep_word, prep_article = prep.split(' ')
+        det_N3 = Words['determinants'][prep_article][N3_gender][N3_number][IX_det_N3]
+        # sentence
+        opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+        opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
+        last_article = get_random_article(Words['determinants'])
+        sentence = ' '.join([det_N1, N1, V1, 'che', det_N2, N2, prep_word, det_N3, N3, V2, last_article]) 
 
-                    for N2_gender in ['masculine', 'feminine']:
-                        for N2_number in ['singular', 'plural']:
-                            N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
-                            for IX_N2, N2 in enumerate(N2s):
-                                IX_det_N2 = construct_DP(N2, N2_gender, N2_number)
-                                if IX_N1 != IX_N2: # check noun repetition at the lemma level
-                                    det_N2 = Words['determinants']['definit'][N2_gender][N2_number][IX_det_N2]
-                                    for IX_V2, V2 in enumerate(Words['verbs'][N2_number]):  # innter agreement
-                                        for N3_gender in ['masculine', 'feminine']:
-                                            for N3_number in ['singular', 'plural']:
-                                                N3s = Words['location_nouns'][N3_gender][N3_number]#[0:num_nouns]
-                                                for IX_N3, N3 in enumerate(N3s):
-                                                    IX_det_N3 = construct_DP(N3, N3_gender, N3_number)
-                                                    if IX_N1 != IX_N3 and IX_N2 != IX_N3:
-                                                        for prep in Words['loc_preps']:
-                                                            prep_word, prep_article = prep.split(' ')
-                                                            det_N3 = Words['determinants'][prep_article][N3_gender][N3_number][IX_det_N3]
-                                                            clause = ' '.join(['che', det_N2, N2, prep_word, det_N3, N3, V2])
-                                                            V2s = Words['verbs'][N2_number]#[0:num_nouns]
-                                                            for IX_V2, V2 in enumerate(V2s):
-                                                                opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
-                                                                opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
-                                                                last_article = get_random_article(Words['determinants'])
-                                                                sentence = NP_start + ' ' + clause + ' ' + last_article
-                                                                p = args.n/(4*len(N1s)*4*len(N2s)*4*len(N3s)*len(V1s)*len(V2s)*len(Words['loc_preps']))
-                                                                if np.random.uniform() < p:
-                                                                    print('%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (
-                                                                           args.natask, sentence,
-                                                                           N1_gender, N1_number,
-                                                                           N2_gender, N2_number,
-                                                                           N3_gender, N3_number,
-                                                                           Words['matrix_verbs'][opposite_number_V1][IX_V1], Words['verbs'][opposite_number_V2][IX_V2]))
-                                                                    counter['_'.join([N1_gender, N1_number, N2_gender, N2_number, N3_gender, N3_number])]+=1 
-                                                                    
-                                                                    if counter_fullfilled(counter, args.n):
-                                                                        sys.exit()
+        if IX_N1 != IX_N2 and IX_N1 != IX_N3 and IX_N2 != IX_N3: # check noun repetition at the lemma level
+            if counter['_'.join([N1_gender, N1_number, N2_gender, N2_number, N3_gender, N3_number])] < args.n:
+                stimuli.append([args.natask, sentence,
+                       N1_gender, N1_number,
+                       N2_gender, N2_number,
+                       N3_gender, N3_number,
+                       Words['matrix_verbs'][opposite_number_V1][IX_V1], Words['verbs'][opposite_number_V2][IX_V2]])
+                counter['_'.join([N1_gender, N1_number, N2_gender, N2_number, N3_gender, N3_number])]+=1 
 
+    stimuli.sort(key=lambda x: x[1]) # first word
+    stimuli.sort(key=lambda x: x[7], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[5], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
+    [print('\t'.join(l)) for l in stimuli]
+
+
+
+if args.natask == 'embedding_mental_SR':
+
+    genders = ['masculine', 'feminine']
+    numbers = ['singular', 'plural']
+    
+    features = {}
+    features['N1_gender'] = genders
+    features['N1_number'] = numbers
+    features['N2_gender'] = genders
+    features['N2_number'] = numbers
+    counter = init_counter(features)
+
+    while not counter_fullfilled(counter, args.n):
+        # N1
+        N1_gender = genders[np.random.randint(2)]
+        N1_number = numbers[np.random.randint(2)]
+        N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
+        IX_N1 = np.random.randint(len(N1s))
+        N1 = N1s[IX_N1]
+        IX_det_N1 = construct_DP(N1, N1_gender, N1_number)
+        det_N1 = Words['determinants']['definit'][N1_gender][N1_number][IX_det_N1]
+        # V1
+        V1s = Words['matrix_verbs'][N1_number]#[0:num_nouns]
+        IX_V1 = np.random.randint(len(V1s))
+        V1 = V1s[IX_V1]
+        # N2
+        N2_gender = genders[np.random.randint(2)]
+        N2_number = numbers[np.random.randint(2)]
+        N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
+        IX_N2 = np.random.randint(len(N2s))
+        N2 = N2s[IX_N2]
+        IX_det_N2 = construct_DP(N2, N2_gender, N2_number)
+        det_N2 = Words['determinants']['definit'][N2_gender][N2_number][IX_det_N2]
+        # V2
+        V2s = Words['verbs'][N2_number]
+        IX_V2 = np.random.randint(len(V2s))
+        V2 = V2s[IX_V2]
+        # sentence
+        opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+        opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
+        last_article = get_random_article(Words['determinants'])
+        sentence = ' '.join([det_N1, N1, V1, 'che', det_N2, N2, V2, last_article]) 
+
+        if IX_N1 != IX_N2: # check noun repetition at the lemma level
+            if counter['_'.join([N1_gender, N1_number, N2_gender, N2_number])] < args.n:
+                stimuli.append([args.natask, sentence,
+                       N1_gender, N1_number,
+                       N2_gender, N2_number,
+                       Words['matrix_verbs'][opposite_number_V1][IX_V1], Words['verbs'][opposite_number_V2][IX_V2]])
+                counter['_'.join([N1_gender, N1_number, N2_gender, N2_number])]+=1 
+
+    stimuli.sort(key=lambda x: x[1]) # first word
+    stimuli.sort(key=lambda x: x[5], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
+    [print('\t'.join(l)) for l in stimuli]
 
 
 
@@ -338,5 +409,5 @@ if args.natask == 'nounpp_copula':
 
 
 
-if not all(x==list(counter.values())[0] for x in counter.values()):
-    raise Exception("Number of conditions mismatch: ", counter)
+#if not all(x==list(counter.values())[0] for x in counter.values()):
+#    raise Exception("Number of conditions mismatch: ", counter)

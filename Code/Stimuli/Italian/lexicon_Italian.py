@@ -55,8 +55,8 @@ location_nouns['feminine']['plural'] = nouns['feminine']['plural']
 # Initialization
 verbs = {}
 # Tokens
-verbs['singular'] = ['accoglie', 'ama', 'attrae', 'blocca', 'conosce', 'critica', 'difende', 'evita', 'ferma', 'guarda', 'ignora', 'incontra', 'indica', 'interrompe', 'osserva', 'ricorda', 'saluta']
-verbs['plural'] = ['accolgono', 'amano', 'attraggono', 'bloccano', 'conoscono', 'criticano', 'difendono', 'evitano', 'fermano', 'guardano', 'ignorano', 'incontrano', 'indicano', 'interrompono', 'osservano', 'ricordano', 'salutano']
+verbs['singular'] = ['accoglie', 'ama', 'attrae', 'blocca', 'conosce', 'critica', 'difende', 'evita', 'ferma', 'guarda', 'ignora', 'incontra', 'indica', 'interrompe', 'osserva', 'saluta']
+verbs['plural'] = ['accolgono', 'amano', 'attraggono', 'bloccano', 'conoscono', 'criticano', 'difendono', 'evitano', 'fermano', 'guardano', 'ignorano', 'incontrano', 'indicano', 'interrompono', 'osservano', 'salutano']
 
 copula = {}
 copula['singular'] = 'è'
@@ -67,8 +67,8 @@ copula['plural'] = 'sono'
 # Initialization
 matrix_verbs = {}
 # Tokens
-matrix_verbs['singular'] = ['ricorda', 'dice', 'dichiara', 'sogna']
-matrix_verbs['plural'] = ['ricordano', 'dicono', 'dichiarano', 'sognano']
+matrix_verbs['singular'] = ['ricorda', 'dice', 'dichiara']
+matrix_verbs['plural'] = ['ricordano', 'dicono', 'dichiarano']
 
 
 ##########################
