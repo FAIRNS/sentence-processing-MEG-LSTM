@@ -16,7 +16,11 @@ p-difference: 0.00003 +- 0.00009
 singular plural plural
 [['number_1', 'singular'], ['number_2', 'plural'], ['number_3', 'plural']]
 0.21428571428571427
+<<<<<<< HEAD
+p-difference: -0.00002 +- 0.(00007
+=======
 p-difference: -0.00002 +- 0.00007
+>>>>>>> 8e2d138371eaba48b564cd366ce202446af143a0
 plural singular singular
 [['number_1', 'plural'], ['number_2', 'singular'], ['number_3', 'singular']]
 0.12103174603174603
