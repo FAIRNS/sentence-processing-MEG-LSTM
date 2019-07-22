@@ -26,7 +26,7 @@ parser.add_argument('--ylabels-size', type=int, default=24)
 parser.add_argument('--yticks-size', type=int, default=16)
 parser.add_argument('--no-legend', action='store_true', default=False, help='If specified, legend will be omitted')
 parser.add_argument('--use-tex', default=False, action='store_true')
-parser.add_argument('--facecolor', default=None)
+parser.add_argument('--facecolor', default='w')#None)
 args = parser.parse_args()
 
 def get_unit_gate_and_indices_for_current_graph(graph, info, condition):
