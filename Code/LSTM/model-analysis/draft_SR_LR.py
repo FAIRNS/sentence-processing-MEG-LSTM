@@ -43,12 +43,12 @@ for c, cond in enumerate(conditions):
         cond_std = np.std(e_results, axis=0)
         axs[c%2, int(np.floor(c/2))].errorbar(range(len(cond_ave)), cond_ave, yerr=cond_std, label=unit_type, lw=line_widths[ut], color=line_colors[ut], ls=line_styles[ut])
         axs[c % 2, int(np.floor(c / 2))].set_xticks(range(len(xlabels)))
-        axs[c % 2, int(np.floor(c / 2))].set_xticklabels(xlabels)
-        axs[c % 2, int(np.floor(c / 2))].set_title(cond.replace('_', '\_'))
+        axs[c % 2, int(np.floor(c / 2))].set_xticklabels(xlabels, fontsize=18)
+        axs[c % 2, int(np.floor(c / 2))].set_title(cond.replace('_', '\_'), fontsize=30)
         axs[c % 2, int(np.floor(c / 2))].set_ylim([-1, 1])
         axs[c % 2, int(np.floor(c / 2))].axhline(0, color='k', ls='--', lw=1)
         if c < 2:
-            axs[c % 2, int(np.floor(c / 2))].set_ylabel('$\\alpha_{correct/wrong}$', fontsize=20)
+            axs[c % 2, int(np.floor(c / 2))].set_ylabel('$\\alpha_{correct/wrong}$', fontsize=30)
 
-plt.legend()
+plt.legend(fontsize=30)
 plt.savefig(os.path.join('..', '..', '..', 'Figures', fname))
