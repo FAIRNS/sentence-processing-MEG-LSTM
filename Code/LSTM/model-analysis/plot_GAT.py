@@ -9,14 +9,18 @@ import data
 sentence = ['The', 'boy', 'near', 'the', 'cars', 'greets']
 path2savefig = '../../../Figures/GAT1d_cell_nounpp_SR_LR_single_unit.png'
 # Load GAT results
+<<<<<<< HEAD
+path2pkl = '../../../Output/GAT1d_cell_nounpp_SR_LR.pkl'
+=======
+>>>>>>> ceae8f6c2a5dd64612a9c4dcf21c19167743d23e
 path2pkl = '../../../Output/GAT1d_cell_Ou.pkl'
 #path2pkl = '../../../Figures/GAT1d_hidden_nounpp_SR_LR.pkl'
 results = pickle.load(open(path2pkl, 'rb'))
 
 # parser.add_argument('-model', type=str, help='Meta file stored once finished training the corpus')
 # parser.add_argument('-v', '--vocabulary', default='../../../Data/LSTM/english_vocab.txt')
-model = '../../../Data/LSTM/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
-vocabulary = '../../../Data/LSTM/english_vocab.txt'
+model = '../../../Data/LSTM/models/hidden650_batch128_dropout0.2_lr20.0.cpu.pt'
+vocabulary = '../../../Data/LSTM/models/english_vocab.txt'
 input = '../../../Data/Stimuli/singular_plural_verbs.txt'
 
 
@@ -101,8 +105,8 @@ SR_units_weights_based, LR_units_weights_based = get_SR_LR_weights_based(results
 SR_units_AUC_based, LR_units_AUC_based = get_SR_LR_AUC_based_units(results)
 
 # Plot results
-fig1, ax1 = plt.subplots(figsize=(10, 10))
-colors = ['b', 'r']
+fig1, ax1 = plt.subplots(figsize=(20, 10))
+colors = ['#08d9d6', '#B22044']
 line_styles = [':', '--']
 # colors += colors; line_styles += line_styles
 LR_units = []
@@ -111,7 +115,11 @@ for u, LR_unit in enumerate(LR_units_weights_based):
     LR_units.append(unit)
     curr_data = curr_data[:-2]
     label = 'Unit ' + str(unit+1) + ' (LR)'
-    ax1.errorbar(x=range(curr_data.size), y=curr_data, linewidth=6, label=label, color=colors[u], ls=line_styles[u])
+    if u == 0:
+        jitter = -0.01
+    else:
+        jitter = 0
+    ax1.errorbar(x=range(curr_data.size), y=curr_data+jitter, linewidth=6, label=label, color=colors[u], ls=line_styles[u])
 
 #for u, LR_unit in enumerate(LR_units_AUC_based):
 #    unit, curr_data = LR_unit
@@ -139,7 +147,7 @@ for u, LR_unit in enumerate(LR_units_weights_based):
 
 
 # Plot full model
-ax1.plot(range(results['scores_full_model'].shape[0]), results['scores_full_model'], linewidth=2, label='Full-model minus LR-units', color='k')
+ax1.plot(range(results['scores_full_model'].shape[0]), results['scores_full_model'], linewidth=4, label='Full-model minus LR-units', color='k')
 
 # Plot number units and average across number units
 all_SR_units = [tuple[0] for sublist in SR_units_AUC_based for tuple in sublist]
@@ -155,9 +163,9 @@ curr_data = results['scores_all_single_units'][non_number_units, :-2]
 ax1.set_xlim((0, len(sentence)-1))
 ax1.axhline(0.5, color='k', ls = '--')
 # ax1.axvline(4, color='r', ls = '-.')
-ax1.set_xticklabels(sentence, fontsize=30)
+ax1.set_xticklabels(sentence, fontsize=45)
 ax1.tick_params(axis='x', which='major', pad=15)
-ax1.set_ylabel('AUC', fontsize = 30)
+ax1.set_ylabel('Singular vs. Plural (AUC)', fontsize = 45)
 ax1.set_yticks([0, 0.5, 1])
 ax1.set_yticklabels([0, 0.5, 1], fontsize=30)
 # ax1.set_title('Training time: subject ("athletes")', fontsize=16)
@@ -168,6 +176,13 @@ a, b = labels.index('Full-model minus LR-units'), labels.index('Unit 988 (LR)')
 labels[b], labels[a] = labels[a], labels[b]
 handles[b], handles[a] = handles[a], handles[b]
 # ax1.legend(handles, labels, loc='upper center', ncol=1, fontsize=25, bbox_to_anchor=(0., 1.02, 1., .102))
+<<<<<<< HEAD
+ax1.legend(handles, labels, loc=3, fontsize=35)#, bbox_to_anchor=(1.05, 1))
+#plt.show()
+fig1.savefig(path2savefig, dpi=100)
+print('Figure saved to: %s', path2savefig)
+=======
 ax1.legend(handles, labels, loc=3, fontsize=20)#, bbox_to_anchor=(1.05, 1))
 plt.show()
 fig1.savefig(path2savefig, dpi=100)
+>>>>>>> ceae8f6c2a5dd64612a9c4dcf21c19167743d23e

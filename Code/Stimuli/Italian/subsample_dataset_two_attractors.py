@@ -11,7 +11,6 @@ parser.add_argument('-seed', default=1 , type=int, help = 'Random seed for repli
 parser.add_argument('--IX-last', default=-2 , type=int, help = 'what is the last index for the features in the tab-delimited input file. default means that feature columns are in [2:-1]')
 args = parser.parse_args()
 
-
 def counter_fullfilled(counter, n):
     fullfilled = True
     for attractor2_gender in ['masculine', 'feminine']:
@@ -44,7 +43,8 @@ stimuli_filtered = []
 with open(args.data_filename, 'r') as f:
     all_stimuli = f.readlines()
 num_lines = len(all_stimuli)
-features = all_stimuli[0].strip().split('\t')[2:args.IX_last] # N1_gender, N1_number, N2_gender, N2_number
+features = all_stimuli[0].strip().split('\t')[2:args.IX_last] # N1_gender, N1_number, N2_gender, N2_number,..
+del all_stimuli
 num_features = len(features)
 p = args.n*(2^num_features)/num_lines # sampling probability (=desired_num_stimuli/file_size)
 for iter in range(args.max_iter):
@@ -54,7 +54,7 @@ for iter in range(args.max_iter):
             line = f.readline()
             if not line:
                 break
-            features = line.strip().split('\t')[2:args.IX_last] # N1_gender, N1_number, N2_gender, N2_number
+            features = line.strip().split('\t')[2:args.IX_last] # N1_gender, N1_number, N2_gender, N2_number,..
             if counter["_".join(features)] < args.n:
                 if np.random.rand() < p:
                     curr_sentence = line.strip().split('\t')[1]

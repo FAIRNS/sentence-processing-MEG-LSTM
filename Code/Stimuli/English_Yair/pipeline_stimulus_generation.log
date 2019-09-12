@@ -1,0 +1,348 @@
+
+Feature #1
+feminine 2048
+masculine 2048
+
+Feature #2
+plural 2048
+singular 2048
+
+Feature #3
+feminine 2048
+masculine 2048
+
+Feature #4
+plural 2048
+singular 2048
+
+Feature #5
+feminine 2116
+masculine 1980
+
+Feature #6
+plural 2029
+singular 2067
+
+Feature #7
+attract 146
+attracts 147
+avoid 156
+avoids 166
+block 148
+blocks 153
+defend 148
+defends 142
+greet 152
+greets 178
+ignore 214
+ignores 179
+interrupt 161
+interrupts 156
+know 168
+knows 166
+meet 150
+meets 160
+observe 163
+observes 169
+stop 157
+stops 147
+watch 132
+watches 153
+welcome 153
+welcomes 132
+
+Feature #8
+attract 171
+attracts 167
+avoid 149
+avoids 160
+block 170
+blocks 146
+defend 173
+defends 184
+greet 161
+greets 159
+ignore 145
+ignores 152
+interrupt 141
+interrupts 158
+know 149
+knows 142
+meet 145
+meets 181
+observe 185
+observes 136
+stop 154
+stops 157
+watch 138
+watches 158
+welcome 167
+welcomes 148
+
+Feature #1
+feminine 2048
+masculine 2048
+
+Feature #2
+plural 2048
+singular 2048
+
+Feature #3
+feminine 2048
+masculine 2048
+
+Feature #4
+plural 2048
+singular 2048
+
+Feature #5
+feminine 2048
+masculine 2048
+
+Feature #6
+plural 2048
+singular 2048
+
+Feature #7
+attract 152
+attracts 157
+avoid 151
+avoids 138
+block 160
+blocks 157
+defend 183
+defends 139
+greet 158
+greets 170
+ignore 172
+ignores 151
+interrupt 172
+interrupts 192
+know 141
+knows 166
+meet 150
+meets 150
+observe 146
+observes 158
+stop 138
+stops 150
+watch 179
+watches 154
+welcome 146
+welcomes 166
+
+Feature #8
+attract 173
+attracts 149
+avoid 151
+avoids 171
+block 153
+blocks 160
+defend 159
+defends 169
+greet 159
+greets 175
+ignore 153
+ignores 178
+interrupt 155
+interrupts 142
+know 141
+knows 144
+meet 168
+meets 151
+observe 160
+observes 164
+stop 157
+stops 174
+watch 163
+watches 129
+welcome 156
+welcomes 142
+
+Feature #1
+feminine 2048
+masculine 2048
+
+Feature #2
+plural 2048
+singular 2048
+
+Feature #3
+feminine 2048
+masculine 2048
+
+Feature #4
+plural 2048
+singular 2048
+
+Feature #5
+feminine 2023
+masculine 2073
+
+Feature #6
+plural 2086
+singular 2010
+
+Feature #7
+declare 704
+declares 680
+remember 685
+remembers 738
+say 659
+says 630
+
+Feature #8
+attract 119
+attracts 111
+avoid 161
+avoids 158
+block 169
+blocks 186
+defend 187
+defends 187
+greet 170
+greets 175
+ignore 156
+ignores 181
+interrupt 177
+interrupts 185
+know 177
+knows 161
+meet 166
+meets 160
+observe 187
+observes 167
+stop 163
+stops 164
+watch 116
+watches 110
+welcome 100
+welcomes 103
+
+Feature #1
+feminine 2048
+masculine 2048
+
+Feature #2
+plural 2048
+singular 2048
+
+Feature #3
+feminine 2048
+masculine 2048
+
+Feature #4
+plural 2048
+singular 2048
+
+Feature #5
+feminine 2048
+masculine 2048
+
+Feature #6
+plural 2048
+singular 2048
+
+Feature #7
+declare 650
+declares 670
+remember 706
+remembers 692
+say 692
+says 686
+
+Feature #8
+attract 115
+attracts 116
+avoid 184
+avoids 195
+block 171
+blocks 158
+defend 169
+defends 172
+greet 172
+greets 159
+ignore 141
+ignores 173
+interrupt 183
+interrupts 161
+know 156
+knows 159
+meet 190
+meets 171
+observe 148
+observes 188
+stop 172
+stops 152
+watch 125
+watches 134
+welcome 122
+welcomes 110
+
+Feature #1
+feminine 2048
+masculine 2048
+
+Feature #2
+plural 2048
+singular 2048
+
+Feature #3
+feminine 2048
+masculine 2048
+
+Feature #4
+plural 2048
+singular 2048
+
+Feature #5
+feminine 2048
+masculine 2048
+
+Feature #6
+plural 2048
+singular 2048
+
+Feature #7
+feminine 2048
+masculine 2048
+
+Feature #8
+plural 2048
+singular 2048
+
+Feature #9
+declare 706
+declares 705
+remember 660
+remembers 679
+say 682
+says 664
+
+Feature #10
+attract 133
+attracts 133
+avoid 168
+avoids 157
+block 165
+blocks 172
+defend 171
+defends 156
+greet 158
+greets 190
+ignore 168
+ignores 160
+interrupt 164
+interrupts 166
+know 174
+knows 182
+meet 177
+meets 184
+observe 155
+observes 165
+stop 174
+stops 163
+watch 121
+watches 128
+welcome 120
+welcomes 92

@@ -16,6 +16,6 @@ for i in range(len(features[0])):
     print('\nFeature #%i' % (i+1))
     curr_feature_values = [fs[i] for fs in features]
     value_strs = list(set(curr_feature_values))
-    for v, val in enumerate(value_strs):
+    for v, val in enumerate(sorted(value_strs)):
         num_curr_val = sum([1 if curr_val == val else 0 for curr_val in curr_feature_values])
         print(val.strip(), num_curr_val)
