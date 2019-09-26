@@ -128,7 +128,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
                      
          end
      end
-     fprintf([panel_response '\n'])
+     
     curr_RT_panel = key_press_time - panel_onset;
         
     log_str = createLogString('PanelResp', block, trial, '-', '-', panel_response, curr_RT_panel, curr_sentence_type, curr_condition, curr_viol_on_slide);
