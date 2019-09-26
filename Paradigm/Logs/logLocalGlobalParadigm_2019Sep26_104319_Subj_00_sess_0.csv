@@ -1,0 +1,8 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1569487413.0465	
+BlockStart	1	0	0	0	 	1569487416.2345	
+FIX_ON	1	1	0	-	+	1569487416.2659	Sentence_Type	condition	slide	
+WORD_ON	1	1	0	1	Sentence	1569487416.8993	Sentence_Type	condition	slide	
+WORD_OFF	1	1	0	1	 	1569487417.1493	Sentence_Type	condition	slide	
+FIX2PANEL_ON	1	1	-	-	+	1569487417.3993	Sentence_Type	condition	slide	
+FIX2PANEL_OFF	1	1	-	-	 	1569487417.8826	Sentence_Type	condition	slide	

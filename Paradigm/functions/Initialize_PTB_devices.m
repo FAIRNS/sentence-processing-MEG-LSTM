@@ -5,8 +5,8 @@ PsychDebugWindowConfiguration([0],[0.5])
 
 %% KEYBOARD
 handles.escapeKey = KbName('ESCAPE');
-handles.LKey = KbName('a');
-handles.RKey = KbName('l');
+handles.LKey = KbName('x');
+handles.RKey = KbName('m');
 handles.Key = KbName('space');
 keysOfInterest=zeros(1,256);
 keysOfInterest(KbName({'a','l','ESCAPE'}))=1;
@@ -29,8 +29,8 @@ if debug_mode
     handles.win = Screen('OpenWindow',handles.screenNumber, handles.black, handles.rect);
 else
     handles.rect = [0 0 rect(3:4)];
-    handles.win = Screen('OpenWindow',handles.screenNumber, handles.black);
-end
+    handles.win = Screen('OpenWindow',handles.screenNumber, handles.black, handles.rect);
+end 
 
 
 

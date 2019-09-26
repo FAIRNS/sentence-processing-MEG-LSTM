@@ -1,0 +1,240 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1568639434.861	
+BlockStart	1	0	0	0	 	1568639439.724	
+FIX_ON	1	1	0	-	+	1568639439.7397	objrel_that	SP	0	
+WORD_ON	1	1	0	1	il bambino	1568639440.3564	objrel_that	SP	0	
+WORD_OFF	1	1	0	1	 	1568639440.6064	objrel_that	SP	0	
+WORD_ON	1	1	0	2	che	1568639440.8731	objrel_that	SP	0	
+WORD_OFF	1	1	0	2	 	1568639441.1231	objrel_that	SP	0	
+WORD_ON	1	1	0	3	il contadino	1568639441.3731	objrel_that	SP	0	
+WORD_OFF	1	1	0	3	 	1568639441.6231	objrel_that	SP	0	
+WORD_ON	1	1	0	4	osserva	1568639441.8731	objrel_that	SP	0	
+WORD_OFF	1	1	0	4	 	1568639442.1231	objrel_that	SP	0	
+WORD_ON	1	1	0	5	evita	1568639442.3731	objrel_that	SP	0	
+WORD_OFF	1	1	0	5	 	1568639442.6231	objrel_that	SP	0	
+WORD_ON	1	1	0	6	le amiche	1568639442.8731	objrel_that	SP	0	
+WORD_OFF	1	1	0	6	 	1568639443.1231	objrel_that	SP	0	
+FIX2PANEL_ON	1	1	-	-	+	1568639443.3731	objrel_that	SP	0	
+FIX2PANEL_OFF	1	1	-	-	 	1568639443.8565	objrel_that	SP	0	
+PANEL_ON	1	1	-	-	 	1568639443.8731	objrel_that	SP	0	
+PANEL_OFF	1	1	-	-	 	1568639443.8898	objrel_that	SP	0	
+END_TRIAL	1	1	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	2	0	-	+	1568639444.9231	objrel_that	SP	0	
+WORD_ON	1	2	0	1	il bambino	1568639445.5398	objrel_that	SP	0	
+WORD_OFF	1	2	0	1	 	1568639445.7898	objrel_that	SP	0	
+WORD_ON	1	2	0	2	che	1568639446.0398	objrel_that	SP	0	
+WORD_OFF	1	2	0	2	 	1568639446.2898	objrel_that	SP	0	
+WORD_ON	1	2	0	3	il figlio	1568639446.5398	objrel_that	SP	0	
+WORD_OFF	1	2	0	3	 	1568639446.7898	objrel_that	SP	0	
+WORD_ON	1	2	0	4	critica	1568639447.0398	objrel_that	SP	0	
+WORD_OFF	1	2	0	4	 	1568639447.2898	objrel_that	SP	0	
+WORD_ON	1	2	0	5	interrompe	1568639447.5398	objrel_that	SP	0	
+WORD_OFF	1	2	0	5	 	1568639447.7898	objrel_that	SP	0	
+WORD_ON	1	2	0	6	il fratello	1568639448.0398	objrel_that	SP	0	
+WORD_OFF	1	2	0	6	 	1568639448.2899	objrel_that	SP	0	
+FIX2PANEL_ON	1	2	-	-	+	1568639448.5399	objrel_that	SP	0	
+FIX2PANEL_OFF	1	2	-	-	 	1568639449.0232	objrel_that	SP	0	
+PANEL_ON	1	2	-	-	 	1568639449.0399	objrel_that	SP	0	
+PANEL_OFF	1	2	-	-	 	1568639449.0565	objrel_that	SP	0	
+END_TRIAL	1	2	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	3	0	-	+	1568639450.0899	objrel_that	SP	0	
+WORD_ON	1	3	0	1	il bambino	1568639450.7066	objrel_that	SP	0	
+WORD_OFF	1	3	0	1	 	1568639450.9566	objrel_that	SP	0	
+WORD_ON	1	3	0	2	che	1568639451.2065	objrel_that	SP	0	
+WORD_OFF	1	3	0	2	 	1568639451.4566	objrel_that	SP	0	
+WORD_ON	1	3	0	3	il figlio	1568639451.7066	objrel_that	SP	0	
+WORD_OFF	1	3	0	3	 	1568639451.9566	objrel_that	SP	0	
+WORD_ON	1	3	0	4	ferma	1568639452.2066	objrel_that	SP	0	
+WORD_OFF	1	3	0	4	 	1568639452.4566	objrel_that	SP	0	
+WORD_ON	1	3	0	5	attrae	1568639452.7066	objrel_that	SP	0	
+WORD_OFF	1	3	0	5	 	1568639452.9566	objrel_that	SP	0	
+WORD_ON	1	3	0	6	la studentessa	1568639453.2232	objrel_that	SP	0	
+WORD_OFF	1	3	0	6	 	1568639453.4733	objrel_that	SP	0	
+FIX2PANEL_ON	1	3	-	-	+	1568639453.7233	objrel_that	SP	0	
+FIX2PANEL_OFF	1	3	-	-	 	1568639454.2066	objrel_that	SP	0	
+PANEL_ON	1	3	-	-	 	1568639454.2233	objrel_that	SP	0	
+PANEL_OFF	1	3	-	-	 	1568639454.2399	objrel_that	SP	0	
+END_TRIAL	1	3	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	4	0	-	+	1568639455.2733	objrel_that	SP	0	
+WORD_ON	1	4	0	1	il bambino	1568639455.89	objrel_that	SP	0	
+WORD_OFF	1	4	0	1	 	1568639456.14	objrel_that	SP	0	
+WORD_ON	1	4	0	2	che	1568639456.39	objrel_that	SP	0	
+WORD_OFF	1	4	0	2	 	1568639456.64	objrel_that	SP	0	
+WORD_ON	1	4	0	3	il figlio	1568639456.89	objrel_that	SP	0	
+WORD_OFF	1	4	0	3	 	1568639457.14	objrel_that	SP	0	
+WORD_ON	1	4	0	4	guarda	1568639457.39	objrel_that	SP	0	
+WORD_OFF	1	4	0	4	 	1568639457.64	objrel_that	SP	0	
+WORD_ON	1	4	0	5	ignora	1568639457.89	objrel_that	SP	0	
+WORD_OFF	1	4	0	5	 	1568639458.14	objrel_that	SP	0	
+WORD_ON	1	4	0	6	le attrici	1568639458.39	objrel_that	SP	0	
+WORD_OFF	1	4	0	6	 	1568639458.64	objrel_that	SP	0	
+FIX2PANEL_ON	1	4	-	-	+	1568639458.9067	objrel_that	SP	0	
+FIX2PANEL_OFF	1	4	-	-	 	1568639459.39	objrel_that	SP	0	
+PANEL_ON	1	4	-	-	 	1568639459.4067	objrel_that	SP	0	
+PANEL_OFF	1	4	-	-	 	1568639459.4233	objrel_that	SP	0	
+END_TRIAL	1	4	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	5	0	-	+	1568639460.4567	objrel_that	SP	0	
+WORD_ON	1	5	0	1	il bambino	1568639461.0734	objrel_that	SP	0	
+WORD_OFF	1	5	0	1	 	1568639461.3234	objrel_that	SP	0	
+WORD_ON	1	5	0	2	che	1568639461.5734	objrel_that	SP	0	
+WORD_OFF	1	5	0	2	 	1568639461.8234	objrel_that	SP	0	
+WORD_ON	1	5	0	3	il fratello	1568639462.0734	objrel_that	SP	0	
+WORD_OFF	1	5	0	3	 	1568639462.3234	objrel_that	SP	0	
+WORD_ON	1	5	0	4	ama	1568639462.5734	objrel_that	SP	0	
+WORD_OFF	1	5	0	4	 	1568639462.8234	objrel_that	SP	0	
+WORD_ON	1	5	0	5	interrompe	1568639463.0734	objrel_that	SP	0	
+WORD_OFF	1	5	0	5	 	1568639463.3234	objrel_that	SP	0	
+WORD_ON	1	5	0	6	il ragazzo	1568639463.5734	objrel_that	SP	0	
+WORD_OFF	1	5	0	6	 	1568639463.8234	objrel_that	SP	0	
+FIX2PANEL_ON	1	5	-	-	+	1568639464.0734	objrel_that	SP	0	
+FIX2PANEL_OFF	1	5	-	-	 	1568639464.5567	objrel_that	SP	0	
+PANEL_ON	1	5	-	-	 	1568639464.5734	objrel_that	SP	0	
+PANEL_OFF	1	5	-	-	 	1568639464.5901	objrel_that	SP	0	
+END_TRIAL	1	5	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	6	0	-	+	1568639465.6401	objrel_that	SP	0	
+WORD_ON	1	6	0	1	il bambino	1568639466.2568	objrel_that	SP	0	
+WORD_OFF	1	6	0	1	 	1568639466.5068	objrel_that	SP	0	
+WORD_ON	1	6	0	2	che	1568639466.7568	objrel_that	SP	0	
+WORD_OFF	1	6	0	2	 	1568639467.0068	objrel_that	SP	0	
+WORD_ON	1	6	0	3	il fratello	1568639467.2568	objrel_that	SP	0	
+WORD_OFF	1	6	0	3	 	1568639467.5068	objrel_that	SP	0	
+WORD_ON	1	6	0	4	attrae	1568639467.7568	objrel_that	SP	0	
+WORD_OFF	1	6	0	4	 	1568639468.0068	objrel_that	SP	0	
+WORD_ON	1	6	0	5	difende	1568639468.2568	objrel_that	SP	0	
+WORD_OFF	1	6	0	5	 	1568639468.5068	objrel_that	SP	0	
+WORD_ON	1	6	0	6	gli studenti	1568639468.7568	objrel_that	SP	0	
+WORD_OFF	1	6	0	6	 	1568639469.0068	objrel_that	SP	0	
+FIX2PANEL_ON	1	6	-	-	+	1568639469.2568	objrel_that	SP	0	
+FIX2PANEL_OFF	1	6	-	-	 	1568639469.7401	objrel_that	SP	0	
+PANEL_ON	1	6	-	-	 	1568639469.7568	objrel_that	SP	0	
+PANEL_OFF	1	6	-	-	 	1568639469.7735	objrel_that	SP	0	
+END_TRIAL	1	6	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	7	0	-	+	1568639470.8068	objrel_that	SP	0	
+WORD_ON	1	7	0	1	il bambino	1568639471.4235	objrel_that	SP	0	
+WORD_OFF	1	7	0	1	 	1568639471.6735	objrel_that	SP	0	
+WORD_ON	1	7	0	2	che	1568639471.9235	objrel_that	SP	0	
+WORD_OFF	1	7	0	2	 	1568639472.1735	objrel_that	SP	0	
+WORD_ON	1	7	0	3	il fratello	1568639472.4235	objrel_that	SP	0	
+WORD_OFF	1	7	0	3	 	1568639472.6735	objrel_that	SP	0	
+WORD_ON	1	7	0	4	blocca	1568639472.9235	objrel_that	SP	0	
+WORD_OFF	1	7	0	4	 	1568639473.1735	objrel_that	SP	0	
+WORD_ON	1	7	0	5	saluta	1568639473.4402	objrel_that	SP	0	
+WORD_OFF	1	7	0	5	 	1568639473.6902	objrel_that	SP	0	
+WORD_ON	1	7	0	6	l' amico	1568639473.9402	objrel_that	SP	0	
+WORD_OFF	1	7	0	6	 	1568639474.1902	objrel_that	SP	0	
+FIX2PANEL_ON	1	7	-	-	+	1568639474.4402	objrel_that	SP	0	
+FIX2PANEL_OFF	1	7	-	-	 	1568639474.9235	objrel_that	SP	0	
+PANEL_ON	1	7	-	-	 	1568639474.9402	objrel_that	SP	0	
+PANEL_OFF	1	7	-	-	 	1568639474.9569	objrel_that	SP	0	
+END_TRIAL	1	7	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	8	0	-	+	1568639476.0069	objrel_that	SP	0	
+WORD_ON	1	8	0	1	il bambino	1568639476.6236	objrel_that	SP	0	
+WORD_OFF	1	8	0	1	 	1568639476.8736	objrel_that	SP	0	
+WORD_ON	1	8	0	2	che	1568639477.1236	objrel_that	SP	0	
+WORD_OFF	1	8	0	2	 	1568639477.3736	objrel_that	SP	0	
+WORD_ON	1	8	0	3	il fratello	1568639477.6236	objrel_that	SP	0	
+WORD_OFF	1	8	0	3	 	1568639477.8736	objrel_that	SP	0	
+WORD_ON	1	8	0	4	ferma	1568639478.1236	objrel_that	SP	0	
+WORD_OFF	1	8	0	4	 	1568639478.3736	objrel_that	SP	0	
+WORD_ON	1	8	0	5	ama	1568639478.6236	objrel_that	SP	0	
+WORD_OFF	1	8	0	5	 	1568639478.8736	objrel_that	SP	0	
+WORD_ON	1	8	0	6	le contadine	1568639479.1403	objrel_that	SP	0	
+WORD_OFF	1	8	0	6	 	1568639479.3903	objrel_that	SP	0	
+FIX2PANEL_ON	1	8	-	-	+	1568639479.6403	objrel_that	SP	0	
+FIX2PANEL_OFF	1	8	-	-	 	1568639480.1236	objrel_that	SP	0	
+PANEL_ON	1	8	-	-	 	1568639480.1403	objrel_that	SP	0	
+PANEL_OFF	1	8	-	-	 	1568639480.1569	objrel_that	SP	0	
+END_TRIAL	1	8	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	9	0	-	+	1568639481.1903	objrel_that	SP	0	
+WORD_ON	1	9	0	1	il bambino	1568639481.807	objrel_that	SP	0	
+WORD_OFF	1	9	0	1	 	1568639482.057	objrel_that	SP	0	
+WORD_ON	1	9	0	2	che	1568639482.3236	objrel_that	SP	0	
+WORD_OFF	1	9	0	2	 	1568639482.5736	objrel_that	SP	0	
+WORD_ON	1	9	0	3	il padre	1568639482.8237	objrel_that	SP	0	
+WORD_OFF	1	9	0	3	 	1568639483.0737	objrel_that	SP	0	
+WORD_ON	1	9	0	4	conosce	1568639483.3237	objrel_that	SP	0	
+WORD_OFF	1	9	0	4	 	1568639483.5737	objrel_that	SP	0	
+WORD_ON	1	9	0	5	interrompe	1568639483.8237	objrel_that	SP	0	
+WORD_OFF	1	9	0	5	 	1568639484.0737	objrel_that	SP	0	
+WORD_ON	1	9	0	6	gli amici	1568639484.3237	objrel_that	SP	0	
+WORD_OFF	1	9	0	6	 	1568639484.5737	objrel_that	SP	0	
+FIX2PANEL_ON	1	9	-	-	+	1568639484.8237	objrel_that	SP	0	
+FIX2PANEL_OFF	1	9	-	-	 	1568639485.307	objrel_that	SP	0	
+PANEL_ON	1	9	-	-	 	1568639485.3237	objrel_that	SP	0	
+PANEL_OFF	1	9	-	-	 	1568639485.3404	objrel_that	SP	0	
+END_TRIAL	1	9	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	10	0	-	+	1568639486.3737	objrel_that	SP	0	
+WORD_ON	1	10	0	1	il bambino	1568639486.9904	objrel_that	SP	0	
+WORD_OFF	1	10	0	1	 	1568639487.2404	objrel_that	SP	0	
+WORD_ON	1	10	0	2	che	1568639487.4904	objrel_that	SP	0	
+WORD_OFF	1	10	0	2	 	1568639487.7404	objrel_that	SP	0	
+WORD_ON	1	10	0	3	il padre	1568639487.9904	objrel_that	SP	0	
+WORD_OFF	1	10	0	3	 	1568639488.2404	objrel_that	SP	0	
+WORD_ON	1	10	0	4	critica	1568639488.4904	objrel_that	SP	0	
+WORD_OFF	1	10	0	4	 	1568639488.7404	objrel_that	SP	0	
+WORD_ON	1	10	0	5	saluta	1568639488.9904	objrel_that	SP	0	
+WORD_OFF	1	10	0	5	 	1568639489.2404	objrel_that	SP	0	
+WORD_ON	1	10	0	6	le sorelle	1568639489.4904	objrel_that	SP	0	
+WORD_OFF	1	10	0	6	 	1568639489.7404	objrel_that	SP	0	
+FIX2PANEL_ON	1	10	-	-	+	1568639489.9904	objrel_that	SP	0	
+FIX2PANEL_OFF	1	10	-	-	 	1568639490.4738	objrel_that	SP	0	
+PANEL_ON	1	10	-	-	 	1568639490.4904	objrel_that	SP	0	
+PANEL_OFF	1	10	-	-	 	1568639490.5071	objrel_that	SP	0	
+END_TRIAL	1	10	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	11	0	-	+	1568639491.5404	objrel_that	SP	0	
+WORD_ON	1	11	0	1	il bambino	1568639492.1571	objrel_that	SP	0	
+WORD_OFF	1	11	0	1	 	1568639492.4071	objrel_that	SP	0	
+WORD_ON	1	11	0	2	che	1568639492.6571	objrel_that	SP	0	
+WORD_OFF	1	11	0	2	 	1568639492.9071	objrel_that	SP	0	
+WORD_ON	1	11	0	3	il padre	1568639493.1571	objrel_that	SP	0	
+WORD_OFF	1	11	0	3	 	1568639493.4071	objrel_that	SP	0	
+WORD_ON	1	11	0	4	ignora	1568639493.6571	objrel_that	SP	0	
+WORD_OFF	1	11	0	4	 	1568639493.9071	objrel_that	SP	0	
+WORD_ON	1	11	0	5	interrompe	1568639494.1571	objrel_that	SP	0	
+WORD_OFF	1	11	0	5	 	1568639494.4071	objrel_that	SP	0	
+WORD_ON	1	11	0	6	l' uomo	1568639494.6571	objrel_that	SP	0	
+WORD_OFF	1	11	0	6	 	1568639494.9072	objrel_that	SP	0	
+FIX2PANEL_ON	1	11	-	-	+	1568639495.1572	objrel_that	SP	0	
+FIX2PANEL_OFF	1	11	-	-	 	1568639495.6405	objrel_that	SP	0	
+PANEL_ON	1	11	-	-	 	1568639495.6572	objrel_that	SP	0	
+PANEL_OFF	1	11	-	-	 	1568639495.6738	objrel_that	SP	0	
+END_TRIAL	1	11	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	12	0	-	+	1568639496.7072	objrel_that	SP	0	
+WORD_ON	1	12	0	1	il bambino	1568639497.3238	objrel_that	SP	0	
+WORD_OFF	1	12	0	1	 	1568639497.5739	objrel_that	SP	0	
+WORD_ON	1	12	0	2	che	1568639497.8238	objrel_that	SP	0	
+WORD_OFF	1	12	0	2	 	1568639498.0739	objrel_that	SP	0	
+WORD_ON	1	12	0	3	il ragazzo	1568639498.3239	objrel_that	SP	0	
+WORD_OFF	1	12	0	3	 	1568639498.5739	objrel_that	SP	0	
+WORD_ON	1	12	0	4	conosce	1568639498.8239	objrel_that	SP	0	
+WORD_OFF	1	12	0	4	 	1568639499.0739	objrel_that	SP	0	
+WORD_ON	1	12	0	5	indica	1568639499.3239	objrel_that	SP	0	
+WORD_OFF	1	12	0	5	 	1568639499.5739	objrel_that	SP	0	
+WORD_ON	1	12	0	6	l' attore	1568639499.8239	objrel_that	SP	0	
+WORD_OFF	1	12	0	6	 	1568639500.0739	objrel_that	SP	0	
+FIX2PANEL_ON	1	12	-	-	+	1568639500.3239	objrel_that	SP	0	
+FIX2PANEL_OFF	1	12	-	-	 	1568639500.8072	objrel_that	SP	0	
+PANEL_ON	1	12	-	-	 	1568639500.8239	objrel_that	SP	0	
+PANEL_OFF	1	12	-	-	 	1568639500.8406	objrel_that	SP	0	
+END_TRIAL	1	12	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	13	0	-	+	1568639501.8739	objrel_that	SP	0	
+WORD_ON	1	13	0	1	il bambino	1568639502.4906	objrel_that	SP	0	
+WORD_OFF	1	13	0	1	 	1568639502.7406	objrel_that	SP	0	
+WORD_ON	1	13	0	2	che	1568639502.9906	objrel_that	SP	0	
+WORD_OFF	1	13	0	2	 	1568639503.2406	objrel_that	SP	0	
+WORD_ON	1	13	0	3	il ragazzo	1568639503.4906	objrel_that	SP	0	
+WORD_OFF	1	13	0	3	 	1568639503.7406	objrel_that	SP	0	
+WORD_ON	1	13	0	4	difende	1568639503.9906	objrel_that	SP	0	
+WORD_OFF	1	13	0	4	 	1568639504.2406	objrel_that	SP	0	
+WORD_ON	1	13	0	5	interrompe	1568639504.4906	objrel_that	SP	0	
+WORD_OFF	1	13	0	5	 	1568639504.7406	objrel_that	SP	0	
+WORD_ON	1	13	0	6	le donne	1568639504.9906	objrel_that	SP	0	
+WORD_OFF	1	13	0	6	 	1568639505.2406	objrel_that	SP	0	
+FIX2PANEL_ON	1	13	-	-	+	1568639505.4906	objrel_that	SP	0	
+FIX2PANEL_OFF	1	13	-	-	 	1568639505.974	objrel_that	SP	0	
+PANEL_ON	1	13	-	-	 	1568639505.9906	objrel_that	SP	0	
+PANEL_OFF	1	13	-	-	 	1568639506.0073	objrel_that	SP	0	
+END_TRIAL	1	13	-	-	CORRECT	0	objrel_that	SP	0	
+FIX_ON	1	14	0	-	+	1568639507.0406	objrel_that	SP	0	
+WORD_ON	1	14	0	1	il bambino	1568639507.6573	objrel_that	SP	0	
+KEY_PRESS	1	14	0	1	SPACE	1568639507.7505	objrel_that	SP	0	

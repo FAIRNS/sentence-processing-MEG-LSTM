@@ -2,7 +2,7 @@
 % Doubly nested long-range dependencies
 % -------------------------------------
 clear; close all; clc    
-debug_mode = 1  ;
+debug_mode = 1    ;
  
 if debug_mode
     dbstop if error  
@@ -23,7 +23,7 @@ handles = Initialize_PTB_devices(params, debug_mode); % Open screens
 sentences_per_block = load_stimuli(params);     
 
 %% START EXPERIMENT
- try
+ try  
     %%%%%%% INSTRUCTIONS (WAIT FOR STROKE KEY PRESS)
     present_intro_slide(params, handles);
     KbStrokeWait;
@@ -33,7 +33,7 @@ sentences_per_block = load_stimuli(params);
     log_str = createLogString('GrandStart', 0, 0, 0, 0, ' ', GetSecs);
     fprintf(fid_log,log_str); % WRITE-TO-LOG 
      
-    %%%%%% TRAINING 
+    %%%%%% TRAINING   alj
     if training 
          %%%%%%% LOOP OVER TRAINING STIMULI
          run_training_block(handles, training_words, params); 

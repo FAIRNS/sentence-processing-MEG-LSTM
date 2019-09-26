@@ -1,0 +1,8 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1569493701.7886	
+BlockStart	1	0	0	0	 	1569493704.1829	
+FIX_ON	1	1	0	-	+	1569493704.1938	objrel_that	SS	4	
+WORD_ON	1	1	0	1	la	1569493704.8105	objrel_that	SS	4	
+WORD_OFF	1	1	0	1	 	1569493705.0605	objrel_that	SS	4	
+WORD_ON	1	1	0	2	contadina	1569493705.3105	objrel_that	SS	4	
+KEY_PRESS	1	1	0	2	54	1569493776.5724	objrel_that	SS	4	

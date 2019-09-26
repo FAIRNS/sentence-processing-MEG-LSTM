@@ -1,3 +1,4 @@
+Sentence,Sentence_Type,condition,slide
 la contadina che la madre bloccano ferma le sorelle,objrel_that,SS,4
 l' amica che le contadine incontra ignora lo studente,objrel_that,SP,4
 i contadini che le donne ignora indicano i figli,objrel_that,PP,4

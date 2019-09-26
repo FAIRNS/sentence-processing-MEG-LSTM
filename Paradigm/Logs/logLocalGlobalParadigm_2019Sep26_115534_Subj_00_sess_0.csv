@@ -1,0 +1,45 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1569491746.7514	
+BlockStart	1	0	0	0	 	1569491749.0992	
+FIX_ON	1	1	0	-	+	1569491749.1029	objrel_that	SS	4	
+WORD_ON	1	1	0	1	la	1569491749.7196	objrel_that	SS	4	
+WORD_OFF	1	1	0	1	 	1569491749.9696	objrel_that	SS	4	
+WORD_ON	1	1	0	2	contadina	1569491750.2196	objrel_that	SS	4	
+WORD_OFF	1	1	0	2	 	1569491750.4696	objrel_that	SS	4	
+WORD_ON	1	1	0	3	che	1569491750.7196	objrel_that	SS	4	
+WORD_OFF	1	1	0	3	 	1569491750.9696	objrel_that	SS	4	
+KEY_PRESS	1	1	0	3	54	1569491751.008	objrel_that	SS	4	
+WORD_ON	1	1	0	4	la	1569491751.2196	objrel_that	SS	4	
+WORD_OFF	1	1	0	4	 	1569491751.4696	objrel_that	SS	4	
+WORD_ON	1	1	0	5	madre	1569491751.7196	objrel_that	SS	4	
+KEY_PRESS	1	1	0	5	54	1569491751.8598	objrel_that	SS	4	
+WORD_OFF	1	1	0	5	 	1569491751.9696	objrel_that	SS	4	
+KEY_PRESS	1	1	0	5	54	1569491751.9731	objrel_that	SS	4	
+WORD_ON	1	1	0	6	bloccano	1569491752.2197	objrel_that	SS	4	
+WORD_OFF	1	1	0	6	 	1569491752.4696	objrel_that	SS	4	
+KEY_PRESS	1	1	0	6	54	1569491752.5782	objrel_that	SS	4	
+WORD_ON	1	1	0	7	ferma	1569491752.7197	objrel_that	SS	4	
+WORD_OFF	1	1	0	7	 	1569491752.9697	objrel_that	SS	4	
+KEY_PRESS	1	1	0	7	54	1569491753.1037	objrel_that	SS	4	
+WORD_ON	1	1	0	8	le	1569491753.2197	objrel_that	SS	4	
+KEY_PRESS	1	1	0	8	54	1569491753.2216	objrel_that	SS	4	
+WORD_OFF	1	1	0	8	 	1569491753.4697	objrel_that	SS	4	
+WORD_ON	1	1	0	9	sorelle	1569491753.7197	objrel_that	SS	4	
+WORD_OFF	1	1	0	9	 	1569491753.9697	objrel_that	SS	4	
+FIX2PANEL_ON	1	1	-	-	+	1569491754.2197	objrel_that	SS	4	
+FIX2PANEL_OFF	1	1	-	-	 	1569491754.703	objrel_that	SS	4	
+PanelOn	1	1	-	-	 	1569491754.7197	objrel_that	SS	4	
+PanelOff	1	1	-	-	ACCEPTABLE	1569491755.5364	objrel_that	SS	4	
+PanelResp	1	1	-	-	ACCEPTABLE	0.80704	objrel_that	SS	4	
+FeedbackOn	1	1	-	-	 	1569491755.553	objrel_that	SS	4	
+FeedbackOff	1	1	-	-	 	1569491755.5697	objrel_that	SS	4	
+END_TRIAL	1	1	-	-	WRONG	0.0019138	objrel_that	SS	4	
+FIX_ON	1	2	0	-	+	1569491756.603	objrel_that	SP	4	
+WORD_ON	1	2	0	1	l'	1569491757.2197	objrel_that	SP	4	
+WORD_OFF	1	2	0	1	 	1569491757.4697	objrel_that	SP	4	
+WORD_ON	1	2	0	2	amica	1569491757.7197	objrel_that	SP	4	
+WORD_OFF	1	2	0	2	 	1569491757.9697	objrel_that	SP	4	
+WORD_ON	1	2	0	3	che	1569491758.2197	objrel_that	SP	4	
+WORD_OFF	1	2	0	3	 	1569491758.4697	objrel_that	SP	4	
+WORD_ON	1	2	0	4	le	1569491758.7197	objrel_that	SP	4	
+KEY_PRESS	1	2	0	4	54	1569491758.8273	objrel_that	SP	4	

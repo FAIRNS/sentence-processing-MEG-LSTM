@@ -1,0 +1,26 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1569491536.4278	
+BlockStart	1	0	0	0	 	1569491538.6333	
+FIX_ON	1	1	0	-	+	1569491538.6503	objrel_that	SS	4	
+WORD_ON	1	1	0	1	la	1569491539.267	objrel_that	SS	4	
+WORD_OFF	1	1	0	1	 	1569491539.517	objrel_that	SS	4	
+WORD_ON	1	1	0	2	contadina	1569491539.767	objrel_that	SS	4	
+WORD_OFF	1	1	0	2	 	1569491540.017	objrel_that	SS	4	
+WORD_ON	1	1	0	3	che	1569491540.267	objrel_that	SS	4	
+WORD_OFF	1	1	0	3	 	1569491540.517	objrel_that	SS	4	
+WORD_ON	1	1	0	4	la	1569491540.767	objrel_that	SS	4	
+WORD_OFF	1	1	0	4	 	1569491541.017	objrel_that	SS	4	
+WORD_ON	1	1	0	5	madre	1569491541.267	objrel_that	SS	4	
+WORD_OFF	1	1	0	5	 	1569491541.517	objrel_that	SS	4	
+WORD_ON	1	1	0	6	bloccano	1569491541.767	objrel_that	SS	4	
+WORD_OFF	1	1	0	6	 	1569491542.017	objrel_that	SS	4	
+KEY_PRESS	1	1	0	6	54	1569491542.0468	objrel_that	SS	4	
+WORD_ON	1	1	0	7	ferma	1569491542.2671	objrel_that	SS	4	
+WORD_OFF	1	1	0	7	 	1569491542.517	objrel_that	SS	4	
+WORD_ON	1	1	0	8	le	1569491542.7671	objrel_that	SS	4	
+WORD_OFF	1	1	0	8	 	1569491543.0171	objrel_that	SS	4	
+WORD_ON	1	1	0	9	sorelle	1569491543.2671	objrel_that	SS	4	
+WORD_OFF	1	1	0	9	 	1569491543.5171	objrel_that	SS	4	
+FIX2PANEL_ON	1	1	-	-	+	1569491543.7671	objrel_that	SS	4	
+FIX2PANEL_OFF	1	1	-	-	 	1569491544.2504	objrel_that	SS	4	
+PanelOn	1	1	-	-	 	1569491544.2671	objrel_that	SS	4	

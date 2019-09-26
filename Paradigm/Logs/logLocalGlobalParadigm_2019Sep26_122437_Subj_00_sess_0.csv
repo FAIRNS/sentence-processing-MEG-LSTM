@@ -1,0 +1,62 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1569493503.6663	
+BlockStart	1	0	0	0	 	1569493506.3265	
+FIX_ON	1	1	0	-	+	1569493506.3414	objrel_that	SS	4	
+WORD_ON	1	1	0	1	la	1569493506.958	objrel_that	SS	4	
+WORD_OFF	1	1	0	1	 	1569493507.208	objrel_that	SS	4	
+WORD_ON	1	1	0	2	contadina	1569493507.458	objrel_that	SS	4	
+WORD_OFF	1	1	0	2	 	1569493507.7081	objrel_that	SS	4	
+WORD_ON	1	1	0	3	che	1569493507.9581	objrel_that	SS	4	
+WORD_OFF	1	1	0	3	 	1569493508.2081	objrel_that	SS	4	
+WORD_ON	1	1	0	4	la	1569493508.4581	objrel_that	SS	4	
+WORD_OFF	1	1	0	4	 	1569493508.7081	objrel_that	SS	4	
+WORD_ON	1	1	0	5	madre	1569493508.9581	objrel_that	SS	4	
+WORD_OFF	1	1	0	5	 	1569493509.2081	objrel_that	SS	4	
+WORD_ON	1	1	0	6	bloccano	1569493509.4581	objrel_that	SS	4	
+WORD_OFF	1	1	0	6	 	1569493509.7081	objrel_that	SS	4	
+WORD_ON	1	1	0	7	ferma	1569493509.9581	objrel_that	SS	4	
+KEY_PRESS	1	1	0	7	54	1569493509.9585	objrel_that	SS	4	
+WORD_OFF	1	1	0	7	 	1569493510.2081	objrel_that	SS	4	
+WORD_ON	1	1	0	8	le	1569493510.4581	objrel_that	SS	4	
+WORD_OFF	1	1	0	8	 	1569493510.7081	objrel_that	SS	4	
+WORD_ON	1	1	0	9	sorelle	1569493510.9581	objrel_that	SS	4	
+WORD_OFF	1	1	0	9	 	1569493511.2081	objrel_that	SS	4	
+FIX2PANEL_ON	1	1	-	-	+	1569493511.4581	objrel_that	SS	4	
+FIX2PANEL_OFF	1	1	-	-	 	1569493511.9414	objrel_that	SS	4	
+PanelOn	1	1	-	-	 	1569493511.9581	objrel_that	SS	4	
+PanelOff	1	1	-	-	ACCEPTABLE	1569493512.9081	objrel_that	SS	4	
+PanelResp	1	1	-	-	ACCEPTABLE	0.93546	objrel_that	SS	4	
+FeedbackOn	1	1	-	-	 	1569493512.9248	objrel_that	SS	4	
+FeedbackOff	1	1	-	-	 	1569493513.9415	objrel_that	SS	4	
+END_TRIAL	1	1	-	-	WRONG	0.000458	objrel_that	SS	4	
+FIX_ON	1	2	0	-	+	1569493513.9581	objrel_that	SP	0	
+WORD_ON	1	2	0	1	l'	1569493514.5748	objrel_that	SP	0	
+WORD_OFF	1	2	0	1	 	1569493514.8248	objrel_that	SP	0	
+WORD_ON	1	2	0	2	amica	1569493515.0748	objrel_that	SP	0	
+KEY_PRESS	1	2	0	2	54	1569493515.0772	objrel_that	SP	0	
+WORD_OFF	1	2	0	2	 	1569493515.3248	objrel_that	SP	0	
+WORD_ON	1	2	0	3	che	1569493515.5748	objrel_that	SP	0	
+KEY_PRESS	1	2	0	3	54	1569493515.5774	objrel_that	SP	0	
+WORD_OFF	1	2	0	3	 	1569493515.8248	objrel_that	SP	0	
+WORD_ON	1	2	0	4	le	1569493516.0748	objrel_that	SP	0	
+WORD_OFF	1	2	0	4	 	1569493516.3248	objrel_that	SP	0	
+WORD_ON	1	2	0	5	contadine	1569493516.5748	objrel_that	SP	0	
+WORD_OFF	1	2	0	5	 	1569493516.8248	objrel_that	SP	0	
+WORD_ON	1	2	0	6	incontra	1569493517.0748	objrel_that	SP	0	
+WORD_OFF	1	2	0	6	 	1569493517.3248	objrel_that	SP	0	
+WORD_ON	1	2	0	7	ignora	1569493517.5748	objrel_that	SP	0	
+WORD_OFF	1	2	0	7	 	1569493517.8249	objrel_that	SP	0	
+KEY_PRESS	1	2	0	7	59	1569493517.8272	objrel_that	SP	0	
+WORD_ON	1	2	0	8	lo	1569493518.0748	objrel_that	SP	0	
+WORD_OFF	1	2	0	8	 	1569493518.3249	objrel_that	SP	0	
+WORD_ON	1	2	0	9	studente	1569493518.5749	objrel_that	SP	0	
+WORD_OFF	1	2	0	9	 	1569493518.8249	objrel_that	SP	0	
+FIX2PANEL_ON	1	2	-	-	+	1569493519.0749	objrel_that	SP	0	
+FIX2PANEL_OFF	1	2	-	-	 	1569493519.5582	objrel_that	SP	0	
+PanelOn	1	2	-	-	 	1569493519.5749	objrel_that	SP	0	
+PanelOff	1	2	-	-	ACCEPTABLE	1569493519.6749	objrel_that	SP	0	
+PanelResp	1	2	-	-	ACCEPTABLE	0.087343	objrel_that	SP	0	
+FeedbackOn	1	2	-	-	 	1569493519.6915	objrel_that	SP	0	
+FeedbackOff	1	2	-	-	 	1569493520.7082	objrel_that	SP	0	
+END_TRIAL	1	2	-	-	CORRECT	0.25234	objrel_that	SP	0	
+FIX_ON	1	3	0	-	+	1569493520.7249	objrel_that	PP	4	

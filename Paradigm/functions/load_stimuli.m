@@ -16,7 +16,7 @@ for b_id = 1:params.n_blocks % block ID
     fclose(fid);
     stimuli_sentences = cell(1, length(stimuli{1}));
     for i =1:length(stimuli{1})
-       stimuli_sentences{i} = strsplit(stimuli{1}{i}, '\t'); 
+       stimuli_sentences{i} = strsplit(stimuli{1}{i}, ','); 
        words_in_cells = strsplit(stimuli_sentences{i}{1});
        for w=1:length(words_in_cells)
            if strfind(words_in_cells{w}, '_')

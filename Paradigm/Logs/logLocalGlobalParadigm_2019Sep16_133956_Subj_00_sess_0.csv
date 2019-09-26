@@ -1,0 +1,4 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1568634012.5572	
+BlockStart	1	0	0	0	 	1568634014.9038	
+FIX_ON	1	1	0	-	+	1568634014.9067	objrel_that	SP	0	
