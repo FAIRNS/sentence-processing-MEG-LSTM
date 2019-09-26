@@ -9,7 +9,7 @@ fprintf(fid_log,log_str); % WRITE-TO-LOG
 %% LOOP OVER TRIALS
 for trial=1:length(stimuli_sentences) % loop through trials
     %% RSVP parameters
-    slide_cnt       = 0;
+    slide       = 0;
     curr_sentence  = stimuli_sentences{trial}{1};
     curr_sentence_type  = stimuli_sentences{trial}{2};
     curr_condition  = stimuli_sentences{trial}{3};
@@ -19,7 +19,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
     
     %% Response
     if str2double(stimuli_sentences{trial}{4}) ~= 0
-        slide_num_of_viol = abs(stimuli_sentences{trial}{4});
+        slide_num_of_viol = abs(str2double(stimuli_sentences{trial}{4}));
         correct_response = 'VIOLATION';
     else
         correct_response = 'ACCEPTABLE';
@@ -38,23 +38,19 @@ for trial=1:length(stimuli_sentences) % loop through trials
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%% START RSVP for current sentence %%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    first_press_time = 0;
     for slide = 1:numel(curr_sentence)
-        first_press_time = 0;
-        key_press_name = '';
-        slide_cnt = slide_cnt + 1;
         %%%%%%%%%%%%% TEXT ON %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         DrawFormattedText(handles.win, curr_sentence{slide}, 'center', 'center', handles.white);
         slide_onset = Screen('Flip', handles.win); % Word ON
-        if slide == slide_num_of_viol
+        if slide == slide_num_of_viol % Can be True only for violation trials (otherwise, slide_num_of_viol =0)
             violation_slide_onset = slide_onset;
-        else
-            violation_slide_onset = 0;
         end
-        log_str = createLogString('WORD_ON', block, trial, 0, slide_cnt, curr_sentence{slide}, slide_onset, curr_sentence_type, curr_condition, curr_viol_on_slide);
+        log_str = createLogString('WORD_ON', block, trial, 0, slide, curr_sentence{slide}, slide_onset, curr_sentence_type, curr_condition, curr_viol_on_slide);
         fprintf(fid_log,log_str); % WRITE-TO-LOG
         [key_press_name, key_press_time] = getSubjectResponse(handles.LKey, handles.escapeKey, slide_onset, params.stimulus_ontime); % CHECK KEY PRESS
         if ~isempty(key_press_name) % WRITE TO LOG IF KEY PRESS
-            log_str = createLogString('KEY_PRESS', block, trial, 0, slide_cnt, key_press_name, key_press_time, curr_sentence_type, curr_condition, curr_viol_on_slide);
+            log_str = createLogString('KEY_PRESS', block, trial, 0, slide, key_press_name, key_press_time, curr_sentence_type, curr_condition, curr_viol_on_slide);
             fprintf(fid_log,log_str); % WRITE-TO-LOG
         end
         if ~subject_detected_viol && strcmp(key_press_name, 'VIOLATION') % FIRST KEY PRESS IN CURRENT TRIAL
@@ -64,11 +60,11 @@ for trial=1:length(stimuli_sentences) % loop through trials
         WaitSecs('UntilTime', slide_onset + params.stimulus_ontime);
         %%%%%%%%%%%%% TEXT OFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         slide_offset = Screen('Flip', handles.win); % Word OFF
-        log_str = createLogString('WORD_OFF', block, trial, 0, slide_cnt, ' ', slide_offset, curr_sentence_type, curr_condition, curr_viol_on_slide);
+        log_str = createLogString('WORD_OFF', block, trial, 0, slide, ' ', slide_offset, curr_sentence_type, curr_condition, curr_viol_on_slide);
         fprintf(fid_log,log_str); % WRITE-TO-LOG 
         [key_press_name, key_press_time] = getSubjectResponse(handles.LKey, handles.escapeKey, slide_offset, params.stimulus_offtime); % CHECK KEY PRESS
         if ~isempty(key_press_name) % WRITE TO LOG IF KEY PRESS
-            log_str = createLogString('KEY_PRESS', block, trial, 0, slide_cnt, key_press_name, key_press_time, curr_sentence_type, curr_condition, curr_viol_on_slide);
+            log_str = createLogString('KEY_PRESS', block, trial, 0, slide, key_press_name, key_press_time, curr_sentence_type, curr_condition, curr_viol_on_slide);
             fprintf(fid_log,log_str); % WRITE-TO-LOG
         end
         if ~subject_detected_viol && strcmp(key_press_name, 'VIOLATION') % FIRST KEY PRESS IN CURRENT TRIAL
@@ -79,7 +75,15 @@ for trial=1:length(stimuli_sentences) % loop through trials
         WaitSecs('UntilTime', slide_offset + params.stimulus_offtime);
         
     end
-    curr_RT_trial = first_press_time - violation_slide_onset;
+    
+    %%%%%%%%%%%%%%%%%%%%%
+    %%%% CALC RT %%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%
+    if first_press_time > 0 && slide_num_of_viol > 0 % key was pressed and it's a violation trial
+        curr_RT_trial = first_press_time - violation_slide_onset;
+    else
+        curr_RT_trial = 0;
+    end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%% END RSVP for current sentence %%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
