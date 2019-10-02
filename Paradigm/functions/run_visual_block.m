@@ -97,7 +97,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
     
     
     %%%%%%%%%%%%%% DECISION SCREEN ONLINE %%%%%%%%%%%%%%%%%%%%%%%%%%
-    decision_screen   = ['Sbagliato                         Corretto'];
+    decision_screen   = [params.str_correct, '                         ', params.str_wrong];
     DrawFormattedText(handles.win, decision_screen, 'center', 'center', handles.white);
     panel_onset= Screen('Flip', handles.win); % Pannel ON
     log_str = createLogString('PanelOn', block, trial, '-', '-', ' ', panel_onset, curr_sentence_type, curr_condition, curr_viol_on_slide);
@@ -112,11 +112,11 @@ for trial=1:length(stimuli_sentences) % loop through trials
          [pressed,~,key_code] = KbCheck;
          if pressed~=0
              if key_code(handles.RKey)
-                 panel_response = 'ACCEPTABLE';
+                 panel_response = 'VIOLATION';
                  key_press_time = GetSecs;
                  break
              elseif key_code(handles.LKey)
-                 panel_response = 'VIOLATION';
+                 panel_response = 'ACCEPTABLE';
                  key_press_time = GetSecs;
                  break
             elseif key_code(handles.escapeKey)
@@ -138,7 +138,8 @@ for trial=1:length(stimuli_sentences) % loop through trials
     
     %%%%%%%%%%%%% FEEDBACK SCREEN (ONSET) %%%%%%%%%%%%%%%%%%%
     [feedback_answer,correct_wrong] = checkResponse(correct_response, panel_response, subject_detected_viol);
-    DrawFormattedText(handles.win, feedback_answer, 'center', 'center', handles.white);
+    feedback2screen = feedback_answer(1:(strfind(feedback_answer, '_')-1));
+    DrawFormattedText(handles.win, feedback2screen, 'center', 'center', handles.white);
     feedback_onset= Screen('Flip', handles.win); % Pannel ON
     log_str = createLogString('FeedbackOn', block, trial, '-', '-', ' ', feedback_onset, curr_sentence_type, curr_condition, curr_viol_on_slide);
     fprintf(fid_log,log_str); % WRITE-TO-LOG 

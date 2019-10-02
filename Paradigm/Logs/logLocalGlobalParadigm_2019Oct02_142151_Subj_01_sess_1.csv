@@ -1,0 +1,22 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1570018927.0526	
+BlockStart	1	0	0	0	 	1570018928.6272	
+FIX_ON	1	1	0	-	+	1570018928.6324	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	1	il bambino	1570018929.2437	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	1	 	1570018929.4856	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	2	ricorda	1570018929.7281	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	2	 	1570018929.9698	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	3	che	1570018930.2115	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	3	 	1570018930.4527	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	4	l' amica	1570018930.6946	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	4	 	1570018930.936	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	5	vicino	1570018931.1778	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	5	 	1570018931.4189	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	6	alla ragazza	1570018931.6609	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	6	 	1570018931.902	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	7	attrarre	1570018932.1437	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	7	 	1570018932.385	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	8	le figlie	1570018932.6276	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	8	 	1570018932.8689	embedding_mental	SSS	-7	
+FIX2PANEL_ON	1	1	-	-	+	1570018933.1117	embedding_mental	SSS	-7	
+PanelOn	1	1	-	-	 	1570018933.5999	embedding_mental	SSS	-7	

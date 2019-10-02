@@ -1,0 +1,232 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1569852162.5492	
+BlockStart	1	0	0	0	 	1569852164.9674	
+FIX_ON	1	1	0	-	+	1569852164.9722	objrel_that	SS	4	
+WORD_ON	1	1	0	1	il	1569852165.58	objrel_that	SS	4	
+WORD_OFF	1	1	0	1	 	1569852165.8214	objrel_that	SS	4	
+WORD_ON	1	1	0	2	ragazzo	1569852166.0638	objrel_that	SS	4	
+WORD_OFF	1	1	0	2	 	1569852166.3049	objrel_that	SS	4	
+WORD_ON	1	1	0	3	che	1569852166.5463	objrel_that	SS	4	
+WORD_OFF	1	1	0	3	 	1569852166.7869	objrel_that	SS	4	
+WORD_ON	1	1	0	4	la	1569852167.0283	objrel_that	SS	4	
+WORD_OFF	1	1	0	4	 	1569852167.2691	objrel_that	SS	4	
+WORD_ON	1	1	0	5	sorella	1569852167.5108	objrel_that	SS	4	
+WORD_OFF	1	1	0	5	 	1569852167.7514	objrel_that	SS	4	
+WORD_ON	1	1	0	6	fermano	1569852167.9931	objrel_that	SS	4	
+WORD_OFF	1	1	0	6	 	1569852168.2336	objrel_that	SS	4	
+WORD_ON	1	1	0	7	evita	1569852168.4751	objrel_that	SS	4	
+WORD_OFF	1	1	0	7	 	1569852168.7157	objrel_that	SS	4	
+WORD_ON	1	1	0	8	le	1569852168.957	objrel_that	SS	4	
+WORD_OFF	1	1	0	8	 	1569852169.1978	objrel_that	SS	4	
+WORD_ON	1	1	0	9	contadine	1569852169.4393	objrel_that	SS	4	
+WORD_OFF	1	1	0	9	 	1569852169.68	objrel_that	SS	4	
+FIX2PANEL_ON	1	1	-	-	+	1569852169.922	objrel_that	SS	4	
+PanelOn	1	1	-	-	 	1569852170.4093	objrel_that	SS	4	
+PanelResp	1	1	-	-		0	objrel_that	SS	4	
+FeedbackOn	1	1	-	-	 	1569852173.4119	objrel_that	SS	4	
+FeedbackOff	1	1	-	-	 	1569852174.4346	objrel_that	SS	4	
+END_TRIAL	1	1	-	-	WRONG_DDC	0	objrel_that	SS	4	
+FIX_ON	1	2	0	-	+	1569852174.4498	objrel_that	SP	4	
+WORD_ON	1	2	0	1	il	1569852175.0526	objrel_that	SP	4	
+WORD_OFF	1	2	0	1	 	1569852175.2934	objrel_that	SP	4	
+WORD_ON	1	2	0	2	ragazzo	1569852175.535	objrel_that	SP	4	
+WORD_OFF	1	2	0	2	 	1569852175.7756	objrel_that	SP	4	
+WORD_ON	1	2	0	3	che	1569852176.017	objrel_that	SP	4	
+WORD_OFF	1	2	0	3	 	1569852176.2578	objrel_that	SP	4	
+WORD_ON	1	2	0	4	le	1569852176.4993	objrel_that	SP	4	
+WORD_OFF	1	2	0	4	 	1569852176.7399	objrel_that	SP	4	
+WORD_ON	1	2	0	5	sorelle	1569852176.9813	objrel_that	SP	4	
+WORD_OFF	1	2	0	5	 	1569852177.2219	objrel_that	SP	4	
+WORD_ON	1	2	0	6	incontra	1569852177.4633	objrel_that	SP	4	
+WORD_OFF	1	2	0	6	 	1569852177.704	objrel_that	SP	4	
+WORD_ON	1	2	0	7	ferma	1569852177.9454	objrel_that	SP	4	
+WORD_OFF	1	2	0	7	 	1569852178.1861	objrel_that	SP	4	
+WORD_ON	1	2	0	8	le	1569852178.4274	objrel_that	SP	4	
+WORD_OFF	1	2	0	8	 	1569852178.668	objrel_that	SP	4	
+WORD_ON	1	2	0	9	attrici	1569852178.9094	objrel_that	SP	4	
+WORD_OFF	1	2	0	9	 	1569852179.15	objrel_that	SP	4	
+FIX2PANEL_ON	1	2	-	-	+	1569852179.3918	objrel_that	SP	4	
+PanelOn	1	2	-	-	 	1569852179.8778	objrel_that	SP	4	
+PanelResp	1	2	-	-		0	objrel_that	SP	4	
+FeedbackOn	1	2	-	-	 	1569852182.8798	objrel_that	SP	4	
+FeedbackOff	1	2	-	-	 	1569852183.9019	objrel_that	SP	4	
+END_TRIAL	1	2	-	-	WRONG_DDC	0	objrel_that	SP	4	
+FIX_ON	1	3	0	-	+	1569852183.9115	objrel_that	PP	4	
+WORD_ON	1	3	0	1	le	1569852184.516	objrel_that	PP	4	
+WORD_OFF	1	3	0	1	 	1569852184.7566	objrel_that	PP	4	
+WORD_ON	1	3	0	2	sorelle	1569852184.998	objrel_that	PP	4	
+WORD_OFF	1	3	0	2	 	1569852185.2386	objrel_that	PP	4	
+WORD_ON	1	3	0	3	che	1569852185.4799	objrel_that	PP	4	
+WORD_OFF	1	3	0	3	 	1569852185.7205	objrel_that	PP	4	
+WORD_ON	1	3	0	4	i	1569852185.9623	objrel_that	PP	4	
+WORD_OFF	1	3	0	4	 	1569852186.2029	objrel_that	PP	4	
+WORD_ON	1	3	0	5	figli	1569852186.4443	objrel_that	PP	4	
+WORD_OFF	1	3	0	5	 	1569852186.685	objrel_that	PP	4	
+WORD_ON	1	3	0	6	ignora	1569852186.9263	objrel_that	PP	4	
+WORD_OFF	1	3	0	6	 	1569852187.167	objrel_that	PP	4	
+WORD_ON	1	3	0	7	incontrano	1569852187.4084	objrel_that	PP	4	
+WORD_OFF	1	3	0	7	 	1569852187.649	objrel_that	PP	4	
+WORD_ON	1	3	0	8	l'	1569852187.8904	objrel_that	PP	4	
+WORD_OFF	1	3	0	8	 	1569852188.131	objrel_that	PP	4	
+WORD_ON	1	3	0	9	amica	1569852188.3724	objrel_that	PP	4	
+WORD_OFF	1	3	0	9	 	1569852188.613	objrel_that	PP	4	
+FIX2PANEL_ON	1	3	-	-	+	1569852188.8543	objrel_that	PP	4	
+PanelOn	1	3	-	-	 	1569852189.3392	objrel_that	PP	4	
+PanelResp	1	3	-	-		0	objrel_that	PP	4	
+FeedbackOn	1	3	-	-	 	1569852192.3407	objrel_that	PP	4	
+FeedbackOff	1	3	-	-	 	1569852193.362	objrel_that	PP	4	
+END_TRIAL	1	3	-	-	WRONG_DDC	0	objrel_that	PP	4	
+FIX_ON	1	4	0	-	+	1569852193.379	objrel_that	PS	4	
+WORD_ON	1	4	0	1	le	1569852193.9833	objrel_that	PS	4	
+WORD_OFF	1	4	0	1	 	1569852194.2239	objrel_that	PS	4	
+WORD_ON	1	4	0	2	donne	1569852194.4653	objrel_that	PS	4	
+WORD_OFF	1	4	0	2	 	1569852194.706	objrel_that	PS	4	
+WORD_ON	1	4	0	3	che	1569852194.9473	objrel_that	PS	4	
+WORD_OFF	1	4	0	3	 	1569852195.188	objrel_that	PS	4	
+WORD_ON	1	4	0	4	la	1569852195.4293	objrel_that	PS	4	
+WORD_OFF	1	4	0	4	 	1569852195.6699	objrel_that	PS	4	
+WORD_ON	1	4	0	5	ragazza	1569852195.9114	objrel_that	PS	4	
+WORD_OFF	1	4	0	5	 	1569852196.1521	objrel_that	PS	4	
+WORD_ON	1	4	0	6	bloccano	1569852196.3935	objrel_that	PS	4	
+WORD_OFF	1	4	0	6	 	1569852196.6341	objrel_that	PS	4	
+WORD_ON	1	4	0	7	salutano	1569852196.8756	objrel_that	PS	4	
+WORD_OFF	1	4	0	7	 	1569852197.1163	objrel_that	PS	4	
+WORD_ON	1	4	0	8	i	1569852197.3577	objrel_that	PS	4	
+WORD_OFF	1	4	0	8	 	1569852197.5983	objrel_that	PS	4	
+WORD_ON	1	4	0	9	figli	1569852197.8398	objrel_that	PS	4	
+WORD_OFF	1	4	0	9	 	1569852198.0804	objrel_that	PS	4	
+FIX2PANEL_ON	1	4	-	-	+	1569852198.3218	objrel_that	PS	4	
+PanelOn	1	4	-	-	 	1569852198.8063	objrel_that	PS	4	
+PanelResp	1	4	-	-		0	objrel_that	PS	4	
+FeedbackOn	1	4	-	-	 	1569852201.8079	objrel_that	PS	4	
+FeedbackOff	1	4	-	-	 	1569852202.829	objrel_that	PS	4	
+END_TRIAL	1	4	-	-	WRONG_DDC	0	objrel_that	PS	4	
+FIX_ON	1	5	0	-	+	1569852202.8458	objrel_that	SS	5	
+WORD_ON	1	5	0	1	la	1569852203.4506	objrel_that	SS	5	
+WORD_OFF	1	5	0	1	 	1569852203.6912	objrel_that	SS	5	
+WORD_ON	1	5	0	2	donna	1569852203.9326	objrel_that	SS	5	
+WORD_OFF	1	5	0	2	 	1569852204.1732	objrel_that	SS	5	
+WORD_ON	1	5	0	3	che	1569852204.4146	objrel_that	SS	5	
+WORD_OFF	1	5	0	3	 	1569852204.6551	objrel_that	SS	5	
+WORD_ON	1	5	0	4	il	1569852204.8965	objrel_that	SS	5	
+WORD_OFF	1	5	0	4	 	1569852205.1373	objrel_that	SS	5	
+WORD_ON	1	5	0	5	contadino	1569852205.3788	objrel_that	SS	5	
+WORD_OFF	1	5	0	5	 	1569852205.6194	objrel_that	SS	5	
+WORD_ON	1	5	0	6	saluta	1569852205.8608	objrel_that	SS	5	
+WORD_OFF	1	5	0	6	 	1569852206.1014	objrel_that	SS	5	
+WORD_ON	1	5	0	7	fermano	1569852206.3428	objrel_that	SS	5	
+WORD_OFF	1	5	0	7	 	1569852206.5835	objrel_that	SS	5	
+WORD_ON	1	5	0	8	l'	1569852206.8248	objrel_that	SS	5	
+WORD_OFF	1	5	0	8	 	1569852207.0654	objrel_that	SS	5	
+WORD_ON	1	5	0	9	amico	1569852207.3067	objrel_that	SS	5	
+WORD_OFF	1	5	0	9	 	1569852207.5474	objrel_that	SS	5	
+FIX2PANEL_ON	1	5	-	-	+	1569852207.7887	objrel_that	SS	5	
+PanelOn	1	5	-	-	 	1569852208.2722	objrel_that	SS	5	
+PanelResp	1	5	-	-		0	objrel_that	SS	5	
+FeedbackOn	1	5	-	-	 	1569852211.2738	objrel_that	SS	5	
+FeedbackOff	1	5	-	-	 	1569852212.2955	objrel_that	SS	5	
+END_TRIAL	1	5	-	-	WRONG_DDC	0	objrel_that	SS	5	
+FIX_ON	1	6	0	-	+	1569852212.3009	objrel_that	SP	5	
+WORD_ON	1	6	0	1	l'	1569852212.9047	objrel_that	SP	5	
+WORD_OFF	1	6	0	1	 	1569852213.1453	objrel_that	SP	5	
+WORD_ON	1	6	0	2	amico	1569852213.3866	objrel_that	SP	5	
+WORD_OFF	1	6	0	2	 	1569852213.6272	objrel_that	SP	5	
+WORD_ON	1	6	0	3	che	1569852213.8686	objrel_that	SP	5	
+WORD_OFF	1	6	0	3	 	1569852214.1092	objrel_that	SP	5	
+WORD_ON	1	6	0	4	le	1569852214.3505	objrel_that	SP	5	
+WORD_OFF	1	6	0	4	 	1569852214.5911	objrel_that	SP	5	
+WORD_ON	1	6	0	5	sorelle	1569852214.8325	objrel_that	SP	5	
+WORD_OFF	1	6	0	5	 	1569852215.0732	objrel_that	SP	5	
+WORD_ON	1	6	0	6	incontrano	1569852215.3148	objrel_that	SP	5	
+WORD_OFF	1	6	0	6	 	1569852215.5555	objrel_that	SP	5	
+WORD_ON	1	6	0	7	conoscono	1569852215.797	objrel_that	SP	5	
+WORD_OFF	1	6	0	7	 	1569852216.0376	objrel_that	SP	5	
+WORD_ON	1	6	0	8	i	1569852216.2789	objrel_that	SP	5	
+WORD_OFF	1	6	0	8	 	1569852216.5195	objrel_that	SP	5	
+WORD_ON	1	6	0	9	bambini	1569852216.7609	objrel_that	SP	5	
+WORD_OFF	1	6	0	9	 	1569852217.0015	objrel_that	SP	5	
+FIX2PANEL_ON	1	6	-	-	+	1569852217.2429	objrel_that	SP	5	
+PanelOn	1	6	-	-	 	1569852217.7275	objrel_that	SP	5	
+PanelResp	1	6	-	-		0	objrel_that	SP	5	
+FeedbackOn	1	6	-	-	 	1569852220.7292	objrel_that	SP	5	
+FeedbackOff	1	6	-	-	 	1569852221.7507	objrel_that	SP	5	
+END_TRIAL	1	6	-	-	WRONG_DDC	0	objrel_that	SP	5	
+FIX_ON	1	7	0	-	+	1569852221.7626	objrel_that	PP	5	
+WORD_ON	1	7	0	1	le	1569852222.3662	objrel_that	PP	5	
+WORD_OFF	1	7	0	1	 	1569852222.6068	objrel_that	PP	5	
+WORD_ON	1	7	0	2	ragazze	1569852222.8482	objrel_that	PP	5	
+WORD_OFF	1	7	0	2	 	1569852223.0888	objrel_that	PP	5	
+WORD_ON	1	7	0	3	che	1569852223.3301	objrel_that	PP	5	
+WORD_OFF	1	7	0	3	 	1569852223.5707	objrel_that	PP	5	
+WORD_ON	1	7	0	4	i	1569852223.8121	objrel_that	PP	5	
+WORD_OFF	1	7	0	4	 	1569852224.0527	objrel_that	PP	5	
+WORD_ON	1	7	0	5	fratelli	1569852224.295	objrel_that	PP	5	
+WORD_OFF	1	7	0	5	 	1569852224.5357	objrel_that	PP	5	
+WORD_ON	1	7	0	6	amano	1569852224.7771	objrel_that	PP	5	
+WORD_OFF	1	7	0	6	 	1569852225.0178	objrel_that	PP	5	
+WORD_ON	1	7	0	7	incontra	1569852225.2593	objrel_that	PP	5	
+WORD_OFF	1	7	0	7	 	1569852225.4999	objrel_that	PP	5	
+WORD_ON	1	7	0	8	il	1569852225.7413	objrel_that	PP	5	
+WORD_OFF	1	7	0	8	 	1569852225.9818	objrel_that	PP	5	
+WORD_ON	1	7	0	9	contadino	1569852226.2232	objrel_that	PP	5	
+WORD_OFF	1	7	0	9	 	1569852226.4637	objrel_that	PP	5	
+FIX2PANEL_ON	1	7	-	-	+	1569852226.7051	objrel_that	PP	5	
+PanelOn	1	7	-	-	 	1569852227.1894	objrel_that	PP	5	
+PanelResp	1	7	-	-		0	objrel_that	PP	5	
+FeedbackOn	1	7	-	-	 	1569852230.191	objrel_that	PP	5	
+FeedbackOff	1	7	-	-	 	1569852231.2128	objrel_that	PP	5	
+END_TRIAL	1	7	-	-	WRONG_DDC	0	objrel_that	PP	5	
+FIX_ON	1	8	0	-	+	1569852231.2296	objrel_that	PS	5	
+WORD_ON	1	8	0	1	le	1569852231.8339	objrel_that	PS	5	
+WORD_OFF	1	8	0	1	 	1569852232.0744	objrel_that	PS	5	
+WORD_ON	1	8	0	2	madri	1569852232.3158	objrel_that	PS	5	
+WORD_OFF	1	8	0	2	 	1569852232.5564	objrel_that	PS	5	
+WORD_ON	1	8	0	3	che	1569852232.7978	objrel_that	PS	5	
+WORD_OFF	1	8	0	3	 	1569852233.0383	objrel_that	PS	5	
+WORD_ON	1	8	0	4	il	1569852233.2796	objrel_that	PS	5	
+WORD_OFF	1	8	0	4	 	1569852233.5203	objrel_that	PS	5	
+WORD_ON	1	8	0	5	ragazzo	1569852233.7617	objrel_that	PS	5	
+WORD_OFF	1	8	0	5	 	1569852234.0023	objrel_that	PS	5	
+WORD_ON	1	8	0	6	ricorda	1569852234.2437	objrel_that	PS	5	
+WORD_OFF	1	8	0	6	 	1569852234.4843	objrel_that	PS	5	
+WORD_ON	1	8	0	7	accoglie	1569852234.7257	objrel_that	PS	5	
+WORD_OFF	1	8	0	7	 	1569852234.9663	objrel_that	PS	5	
+WORD_ON	1	8	0	8	i	1569852235.2075	objrel_that	PS	5	
+WORD_OFF	1	8	0	8	 	1569852235.4482	objrel_that	PS	5	
+WORD_ON	1	8	0	9	figli	1569852235.6895	objrel_that	PS	5	
+WORD_OFF	1	8	0	9	 	1569852235.9302	objrel_that	PS	5	
+FIX2PANEL_ON	1	8	-	-	+	1569852236.1715	objrel_that	PS	5	
+PanelOn	1	8	-	-	 	1569852236.6571	objrel_that	PS	5	
+PanelResp	1	8	-	-		0	objrel_that	PS	5	
+FeedbackOn	1	8	-	-	 	1569852239.6588	objrel_that	PS	5	
+FeedbackOff	1	8	-	-	 	1569852240.68	objrel_that	PS	5	
+END_TRIAL	1	8	-	-	WRONG_DDC	0	objrel_that	PS	5	
+FIX_ON	1	9	0	-	+	1569852240.6959	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	1	il	1569852241.2994	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	1	 	1569852241.5403	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	2	padre	1569852241.7819	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	2	 	1569852242.0226	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	3	che	1569852242.264	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	3	 	1569852242.5046	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	4	il	1569852242.746	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	4	 	1569852242.9866	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	5	fratello	1569852243.2283	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	5	 	1569852243.4689	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	6	dietro	1569852243.7103	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	6	 	1569852243.9509	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	7	all'	1569852244.1925	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	7	 	1569852244.4332	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	8	amico	1569852244.6745	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	8	 	1569852244.9151	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	9	criticano	1569852245.1567	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	9	 	1569852245.3973	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	10	osserva	1569852245.6386	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	10	 	1569852245.8792	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	11	le	1569852246.1206	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	11	 	1569852246.3611	objrel_nounpp	SSS	7	
+WORD_ON	1	9	0	12	bambine	1569852246.6025	objrel_nounpp	SSS	7	
+WORD_OFF	1	9	0	12	 	1569852246.8432	objrel_nounpp	SSS	7	
+FIX2PANEL_ON	1	9	-	-	+	1569852247.0845	objrel_nounpp	SSS	7	
+PanelOn	1	9	-	-	 	1569852247.5687	objrel_nounpp	SSS	7	
+PanelResp	1	9	-	-		0	objrel_nounpp	SSS	7	
+FeedbackOn	1	9	-	-	 	1569852250.5704	objrel_nounpp	SSS	7	

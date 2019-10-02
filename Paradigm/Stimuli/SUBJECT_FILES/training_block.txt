@@ -1,0 +1,3 @@
+Sentence,Sentence_Type,condition,slide,Element_changed,Violation_Type
+il_bambino ricorda che l'_amica vicino alla_ragazza attrarre le_figlie,embedding_mental,SSS,-7,V2,infinitive
+la_ragazza che le_sorelle davanti alle_bambine contadina ricorda i_figli,objrel_nounpp,SPP,-7,V1,verb_noun

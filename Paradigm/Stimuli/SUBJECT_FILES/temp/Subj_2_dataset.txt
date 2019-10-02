@@ -1,0 +1,541 @@
+Sentence	Sentence_Type	condition	slide	violation
+il ragazzo che la sorella fermano evita le contadine	objrel_that	SS	4	num_violation
+il ragazzo che le sorelle incontra ferma le attrici	objrel_that	SP	4	num_violation
+le sorelle che i figli ignora incontrano l' amica	objrel_that	PP	4	num_violation
+le donne che la ragazza bloccano salutano i figli	objrel_that	PS	4	num_violation
+la donna che il contadino saluta fermano l' amico	objrel_that	SS	5	num_violation
+l' amico che le sorelle incontrano conoscono i bambini	objrel_that	SP	5	num_violation
+le ragazze che i fratelli amano incontra il contadino	objrel_that	PP	5	num_violation
+le madri che il ragazzo ricorda accoglie i figli	objrel_that	PS	5	num_violation
+il padre che il fratello dietro all' amico criticano osserva le bambine	objrel_nounpp	SSS	7	num_violation
+il bambino che il fratello davanti alle madri difendono critica le contadine	objrel_nounpp	SSP	7	num_violation
+la sorella che le studentesse vicino all' amica sogna difende il fratello	objrel_nounpp	SPS	7	num_violation
+il padre che le ragazze dietro alle bambine ferma saluta il fratello	objrel_nounpp	SPP	7	num_violation
+le madri che le amiche davanti agli uomini guarda ricordano gli studenti	objrel_nounpp	PPP	7	num_violation
+le contadine che i bambini vicino alla donna attrae incontrano i ragazzi	objrel_nounpp	PPS	7	num_violation
+le bambine che l' attrice dietro agli amici ricordano fermano le ragazze	objrel_nounpp	PSP	7	num_violation
+le ragazze che il contadino vicino alla sorella difendono bloccano i bambini	objrel_nounpp	PSS	7	num_violation
+l' amica che la contadina vicino alla figlia incontra guardano i ragazzi	objrel_nounpp	SSS	8	num_violation
+la ragazza che la donna dietro ai padri ama bloccano l' amica	objrel_nounpp	SSP	8	num_violation
+l' amica che i fratelli davanti all' uomo attraggono ricordano il figlio	objrel_nounpp	SPS	8	num_violation
+la donna che le sorelle vicino alle bambine criticano accolgono le madri	objrel_nounpp	SPP	8	num_violation
+i bambini che i figli dietro ai padri interrompono ferma l' uomo	objrel_nounpp	PPP	8	num_violation
+gli attori che le contadine accanto alla studentessa criticano evita le donne	objrel_nounpp	PPS	8	num_violation
+gli studenti che il ragazzo davanti ai contadini guarda accoglie il padre	objrel_nounpp	PSP	8	num_violation
+gli studenti che la contadina dietro all' amica osserva guarda i figli	objrel_nounpp	PSS	8	num_violation
+la sorella dice che la figlia evitano le amiche	embedding_mental_SR	SS	5	num_violation
+la donna ricorda che le bambine difende i contadini	embedding_mental_SR	SP	5	num_violation
+le bambine ricordano che gli studenti conosce la ragazza	embedding_mental_SR	PP	5	num_violation
+i fratelli dichiarano che la bambina conoscono l' amica	embedding_mental_SR	PS	5	num_violation
+la madre dice che il ragazzo dietro al fratello fermano l' attore	embedding_mental	SSS	7	num_violation
+la bambina dice che la madre davanti alle sorelle incontrano la figlia	embedding_mental	SSP	7	num_violation
+l' attrice dice che le figlie vicino all' uomo ignora i padri	embedding_mental	SPS	7	num_violation
+l' attrice ricorda che i figli davanti alle sorelle ferma le ragazze	embedding_mental	SPP	7	num_violation
+le madri dichiarano che gli amici vicino alle attrici ama gli uomini	embedding_mental	PPP	7	num_violation
+gli amici dicono che i ragazzi dietro alla bambina attrae il padre	embedding_mental	PPS	7	num_violation
+gli studenti ricordano che la madre davanti alle figlie criticano le donne	embedding_mental	PSP	7	num_violation
+gli uomini ricordano che il fratello davanti al bambino amano la figlia	embedding_mental	PSS	7	num_violation
+l' attrice che la contadina ignora osserva gli amici	objrel_that	SS	0	acceptable
+l' attrice che la bambina osserva attrae il padre	objrel_that	SS	0	acceptable
+l' amica che le donne conoscono ricorda il padre	objrel_that	SP	0	acceptable
+l' uomo che i fratelli conoscono interrompe le sorelle	objrel_that	SP	0	acceptable
+i bambini che le madri evitano guardano il padre	objrel_that	PP	0	acceptable
+le attrici che le bambine attraggono guardano la donna	objrel_that	PP	0	acceptable
+le amiche che la figlia interrompe salutano le sorelle	objrel_that	PS	0	acceptable
+le studentesse che la bambina ferma salutano l' attrice	objrel_that	PS	0	acceptable
+il contadino ricorda che il figlio ignora gli amici	embedding_mental_SR	SS	0	acceptable
+la contadina dice che i bambini guardano i ragazzi	embedding_mental_SR	SP	0	acceptable
+i contadini dichiarano che le donne ignorano gli studenti	embedding_mental_SR	PP	0	acceptable
+i figli ricordano che la contadina guarda la bambina	embedding_mental_SR	PS	0	acceptable
+il figlio che l' uomo vicino al ragazzo osserva attrae i padri	objrel_nounpp	SSS	0	acceptable
+l' amica che la contadina dietro al padre incontra accoglie i figli	objrel_nounpp	SSS	0	acceptable
+il bambino che l' attore accanto alle amiche interrompe saluta il ragazzo	objrel_nounpp	SSP	0	acceptable
+l' amica che il bambino accanto alle figlie ama interrompe le contadine	objrel_nounpp	SSP	0	acceptable
+l' attrice che i padri accanto all' uomo attraggono interrompe il bambino	objrel_nounpp	SPS	0	acceptable
+la ragazza che i fratelli vicino alla donna ignorano indica gli attori	objrel_nounpp	SPS	0	acceptable
+l' uomo che gli attori accanto ai contadini ignorano attrae i bambini	objrel_nounpp	SPP	0	acceptable
+l' amico che le attrici dietro alle madri conoscono ricorda i bambini	objrel_nounpp	SPP	0	acceptable
+i ragazzi che le attrici davanti alle studentesse criticano interrompono il padre	objrel_nounpp	PPP	0	acceptable
+le ragazze che i contadini davanti agli attori osservano evitano l' amico	objrel_nounpp	PPP	0	acceptable
+gli amici che i padri vicino all' attrice criticano salutano gli uomini	objrel_nounpp	PPS	0	acceptable
+i padri che gli attori accanto alla bambina interrompono conoscono le ragazze	objrel_nounpp	PPS	0	acceptable
+gli studenti che il padre davanti alle amiche osserva bloccano le madri	objrel_nounpp	PSP	0	acceptable
+le sorelle che la bambina vicino ai padri ama conoscono gli studenti	objrel_nounpp	PSP	0	acceptable
+le studentesse che la sorella vicino al ragazzo incontra fermano l' attrice	objrel_nounpp	PSS	0	acceptable
+gli uomini che lo studente vicino all' amica accoglie amano la bambina	objrel_nounpp	PSS	0	acceptable
+la madre dichiara che l' attore davanti al fratello attrae i bambini	embedding_mental	SSS	0	acceptable
+l' attore ricorda che il contadino davanti ai padri attrae i fratelli	embedding_mental	SSP	0	acceptable
+il fratello dice che le studentesse davanti al bambino interrompono le contadine	embedding_mental	SPS	0	acceptable
+il ragazzo dichiara che gli studenti accanto agli uomini interrompono gli amici	embedding_mental	SPP	0	acceptable
+gli amici dicono che le ragazze accanto alle sorelle evitano l' attrice	embedding_mental	PPP	0	acceptable
+i bambini dichiarano che gli uomini accanto alla ragazza evitano le figlie	embedding_mental	PPS	0	acceptable
+le bambine dicono che l' attore vicino ai padri ama le amiche	embedding_mental	PSP	0	acceptable
+le donne ricordano che la bambina accanto alla sorella blocca il contadino	embedding_mental	PSS	0	acceptable
+i fratelli che le figlie accogliere conoscono la sorella	objrel_that	PP	4	filler
+i contadini che le donne ignorano indicare i figli	objrel_that	PP	5	filler
+la studentessa che l' uomo davanti al contadino amare incontra i bambini	objrel_nounpp	SSS	7	filler
+le bambine che l' attrice vicino all' uomo bloccare osservano le studentesse	objrel_nounpp	PSS	7	filler
+la sorella che il ragazzo vicino alla bambina osserva ignorare le contadine	objrel_nounpp	SSS	8	filler
+i bambini che gli attori accanto agli uomini osservano incontrare la madre	objrel_nounpp	PPP	8	filler
+l' amico dice che le studentesse guardare i figli	embedding_mental_SR	SP	5	filler
+la madre dichiara che gli studenti accanto alle contadine osservare i figli	embedding_mental	SPP	7	filler
+gli amici dichiarano che la ragazza dietro al bambino incontrare il figlio	embedding_mental	PSS	7	filler
+la ragazza che gli amici ricordo saluta la donna	objrel_that	SP	-4	filler
+lo studente che le ragazze conoscono dichiaro le figlie	objrel_that	SP	-5	filler
+il padre che la contadina vicino agli uomini conosci incontra lo studente	objrel_nounpp	SSP	-7	filler
+la contadina che la madre vicino al ragazzo critichi osserva le figlie	objrel_nounpp	SSS	-7	filler
+la studentessa che i contadini vicino alla sorella ricordano incontri il figlio	objrel_nounpp	SPS	-8	filler
+i contadini che le ragazze dietro ai padri interrompono bloccate le bambine	objrel_nounpp	PPP	-8	filler
+i contadini dicono che le madri davanti all' uomo criticate l' amica	embedding_mental	PPS	-7	filler
+le madri dichiarano che la donna accanto al fratello evito il padre	embedding_mental	PSS	-7	filler
+le attrici dichiarano che le ragazze bloccate il figlio	embedding_mental_SR	PP	-5	filler
+il fratello che il bambino ragazzi saluta l' attore	objrel_that	SS	-4	filler
+la ragazza che il contadino incontra donna gli studenti	objrel_that	SS	-5	filler
+gli attori dicono che la donna studentesse l' amico	embedding_mental_SR	PS	-5	filler
+i fratelli che i bambini dietro all' attrice amici incontrano il figlio	objrel_nounpp	PPS	-7	filler
+il ragazzo che i bambini dietro alla contadina sorelle ama i fratelli	objrel_nounpp	SPS	-7	filler
+gli attori che gli uomini dietro ai padri criticano studenti i figli	objrel_nounpp	PPP	-8	filler
+le sorelle che le figlie dietro all' attrice incontrano bambina lo studente	objrel_nounpp	PPS	-8	filler
+la donna ricorda che la sorella davanti all' attore ragazzo l' amico	embedding_mental	SSS	-7	filler
+l' amica dice che l' uomo davanti alle sorelle attrice il padre	embedding_mental	SSP	-7	filler
+la ginnastica che il contadino conosce guarda lo studente	objrel_that	SS	-1	filler
+l' antipatia che il bambino davanti ai contadini attrae ferma il fratello	objrel_nounpp	SSP	-1	filler
+le ragazze che le ginnastiche davanti agli uomini fermano amano il fratello	objrel_nounpp	PPP	-3	filler
+il ragazzo dice che il dolore dietro alla contadina incontra i figli	embedding_mental	SSS	-4	filler
+il dolore ricorda che i fratelli fermano i padri	embedding_mental_SR	SP	-1	filler
+le penne che il ragazzo evita bloccano la donna	objrel_that	PS	-1	filler
+il quaderno che il contadino dietro alle figlie ricorda indica i padri	objrel_nounpp	SSP	-1	filler
+le sorelle che le matite vicino alle contadine ama criticano i fratelli	objrel_nounpp	PSP	-3	filler
+gli uomini dicono che i quaderni accanto all' attrice attraggono il fratello	embedding_mental	PPS	-4	filler
+lo studente che il padre interrompono guarda l' amico	objrel_that	SS	4	num_violation
+il bambino che i padri sogna blocca il contadino	objrel_that	SP	4	num_violation
+i contadini che gli attori ricorda osservano la ragazza	objrel_that	PP	4	num_violation
+gli attori che il ragazzo interrompono amano la figlia	objrel_that	PS	4	num_violation
+la bambina che la contadina guarda amano il figlio	objrel_that	SS	5	num_violation
+lo studente che le amiche osservano amano le bambine	objrel_that	SP	5	num_violation
+le studentesse che gli uomini indicano ricorda la madre	objrel_that	PP	5	num_violation
+i fratelli che l' uomo interrompe blocca gli amici	objrel_that	PS	5	num_violation
+l' attore che la contadina vicino al fratello amano interrompe il bambino	objrel_nounpp	SSS	7	num_violation
+lo studente che la figlia davanti alle sorelle criticano ama le madri	objrel_nounpp	SSP	7	num_violation
+il bambino che i padri vicino al figlio ama indica le studentesse	objrel_nounpp	SPS	7	num_violation
+l' attrice che le contadine vicino alle sorelle critica ignora gli amici	objrel_nounpp	SPP	7	num_violation
+gli attori che le figlie dietro alle ragazze attrae difendono il bambino	objrel_nounpp	PPP	7	num_violation
+le attrici che gli amici dietro al fratello ignora amano le madri	objrel_nounpp	PPS	7	num_violation
+i bambini che l' amico dietro alle madri amano conoscono il padre	objrel_nounpp	PSP	7	num_violation
+le bambine che l' uomo vicino alla ragazza criticano bloccano la madre	objrel_nounpp	PSS	7	num_violation
+il ragazzo che il fratello davanti alla studentessa ama attraggono le donne	objrel_nounpp	SSS	8	num_violation
+il ragazzo che il padre dietro alle donne conosce incontrano gli amici	objrel_nounpp	SSP	8	num_violation
+l' attore che le studentesse accanto all' amica ricordano ignorano la ragazza	objrel_nounpp	SPS	8	num_violation
+l' attrice che gli amici dietro ai contadini incontrano guardano gli uomini	objrel_nounpp	SPP	8	num_violation
+i figli che le studentesse accanto ai fratelli amano evita i ragazzi	objrel_nounpp	PPP	8	num_violation
+le contadine che le amiche accanto all' attrice incontrano difende la donna	objrel_nounpp	PPS	8	num_violation
+le figlie che l' attrice accanto ai padri incontra critica gli amici	objrel_nounpp	PSP	8	num_violation
+le studentesse che l' attore davanti al fratello conosce incontra le donne	objrel_nounpp	PSS	8	num_violation
+la bambina dice che la contadina ignorano gli amici	embedding_mental_SR	SS	5	num_violation
+l' attore dichiara che le studentesse ferma i contadini	embedding_mental_SR	SP	5	num_violation
+le attrici dicono che i ragazzi ama le contadine	embedding_mental_SR	PP	5	num_violation
+le sorelle dichiarano che il ragazzo osservano le donne	embedding_mental_SR	PS	5	num_violation
+la bambina dichiara che la ragazza vicino all' uomo salutano gli attori	embedding_mental	SSS	7	num_violation
+la bambina dichiara che il fratello davanti agli attori attraggono la studentessa	embedding_mental	SSP	7	num_violation
+l' amica dichiara che le bambine vicino all' uomo incontra la figlia	embedding_mental	SPS	7	num_violation
+la ragazza ricorda che le donne dietro ai padri evita gli uomini	embedding_mental	SPP	7	num_violation
+i fratelli dicono che le amiche accanto agli studenti indica i bambini	embedding_mental	PPP	7	num_violation
+i contadini dicono che le madri davanti all' uomo critica l' amica	embedding_mental	PPS	7	num_violation
+le amiche ricordano che la contadina vicino alle bambine guardano i padri	embedding_mental	PSP	7	num_violation
+i contadini dichiarano che l' uomo davanti all' attore criticano il bambino	embedding_mental	PSS	7	num_violation
+il ragazzo che il bambino accoglie attrae la studentessa	objrel_that	SS	0	acceptable
+la madre che la donna indica osserva le figlie	objrel_that	SS	0	acceptable
+il padre che i ragazzi criticano blocca l' attrice	objrel_that	SP	0	acceptable
+l' attrice che i contadini amano conosce la bambina	objrel_that	SP	0	acceptable
+le ragazze che i figli attraggono osservano il bambino	objrel_that	PP	0	acceptable
+le donne che le ragazze ricordano conoscono i fratelli	objrel_that	PP	0	acceptable
+i contadini che l' attrice interrompe evitano il figlio	objrel_that	PS	0	acceptable
+le sorelle che il bambino incontra conoscono l' uomo	objrel_that	PS	0	acceptable
+la figlia ricorda che il contadino indica la donna	embedding_mental_SR	SS	0	acceptable
+la ragazza dichiara che le amiche difendono l' attrice	embedding_mental_SR	SP	0	acceptable
+le donne ricordano che gli studenti evitano l' attrice	embedding_mental_SR	PP	0	acceptable
+i figli dichiarano che il fratello osserva gli amici	embedding_mental_SR	PS	0	acceptable
+la sorella che l' attore accanto al bambino difende conosce l' amica	objrel_nounpp	SSS	0	acceptable
+l' attrice che la studentessa vicino all' amico conosce incontra i fratelli	objrel_nounpp	SSS	0	acceptable
+l' amica che il fratello dietro alle attrici indica accoglie i contadini	objrel_nounpp	SSP	0	acceptable
+l' amico che la contadina dietro agli attori ignora conosce le donne	objrel_nounpp	SSP	0	acceptable
+l' amica che gli attori davanti allo studente criticano ferma le figlie	objrel_nounpp	SPS	0	acceptable
+la figlia che le amiche dietro alla sorella incontrano saluta gli uomini	objrel_nounpp	SPS	0	acceptable
+l' uomo che le madri accanto agli amici guardano attrae i figli	objrel_nounpp	SPP	0	acceptable
+l' amico che le madri davanti alle bambine difendono ferma l' attrice	objrel_nounpp	SPP	0	acceptable
+le studentesse che i figli vicino agli attori guardano salutano la sorella	objrel_nounpp	PPP	0	acceptable
+i figli che le madri accanto alle attrici fermano difendono il contadino	objrel_nounpp	PPP	0	acceptable
+gli uomini che i padri davanti alla figlia ignorano difendono le bambine	objrel_nounpp	PPS	0	acceptable
+le ragazze che gli studenti dietro all' attrice conoscono incontrano le bambine	objrel_nounpp	PPS	0	acceptable
+le contadine che la madre davanti alle figlie incontra accolgono le attrici	objrel_nounpp	PSP	0	acceptable
+le sorelle che la figlia accanto alle donne accoglie osservano l' uomo	objrel_nounpp	PSP	0	acceptable
+le figlie che la studentessa accanto all' amico critica difendono l' attore	objrel_nounpp	PSS	0	acceptable
+gli studenti che l' amico accanto al ragazzo incontra bloccano le bambine	objrel_nounpp	PSS	0	acceptable
+il fratello dice che la donna vicino allo studente evita la ragazza	embedding_mental	SSS	0	acceptable
+l' amica dichiara che la bambina accanto alle madri accoglie la ragazza	embedding_mental	SSP	0	acceptable
+la bambina dichiara che i fratelli davanti all' amico conoscono i padri	embedding_mental	SPS	0	acceptable
+lo studente dice che le ragazze vicino alle amiche indicano il contadino	embedding_mental	SPP	0	acceptable
+le sorelle dichiarano che le bambine accanto agli attori incontrano i padri	embedding_mental	PPP	0	acceptable
+i bambini dicono che gli studenti dietro all' amico conoscono l' attrice	embedding_mental	PPS	0	acceptable
+le studentesse dichiarano che l' amico dietro ai bambini indica i fratelli	embedding_mental	PSP	0	acceptable
+le figlie dicono che il fratello davanti al padre ignora il ragazzo	embedding_mental	PSS	0	acceptable
+lo studente che le figlie guardare saluta i contadini	objrel_that	SP	-4	filler
+la ragazza che i figli amano salutare la donna	objrel_that	SP	-5	filler
+la ragazza che gli uomini davanti ai figli conoscere osserva le donne	objrel_nounpp	SPP	-7	filler
+il bambino che gli studenti davanti ai padri accogliere saluta la donna	objrel_nounpp	SPP	-7	filler
+i fratelli che gli studenti dietro ai padri amano guardare le bambine	objrel_nounpp	PPP	-8	filler
+le madri che la contadina davanti al bambino incontra salutare i padri	objrel_nounpp	PSS	-8	filler
+le figlie dichiarano che l' attrice bloccare le studentesse	embedding_mental_SR	PS	-5	filler
+le attrici ricordano che le sorelle vicino ai bambini conoscere la madre	embedding_mental	PPP	-7	filler
+la contadina dice che la ragazza dietro agli amici salutare il figlio	embedding_mental	SSP	-7	filler
+il figlio che gli amici guardiamo interrompe le donne	objrel_that	SP	-4	filler
+gli amici che le ragazze attraggono attraiamo il contadino	objrel_that	PP	-5	filler
+gli attori che il padre davanti agli studenti fermi amano la bambina	objrel_nounpp	PSP	-7	filler
+la ragazza che le attrici accanto agli amici incontrate ricorda le contadine	objrel_nounpp	SPP	-7	filler
+le attrici che i padri davanti ai figli osservano amate le ragazze	objrel_nounpp	PPP	-8	filler
+l' attore che la ragazza davanti ai figli incontra ignori le amiche	objrel_nounpp	SSP	-8	filler
+gli amici dicono che il fratello davanti alla bambina fermi il figlio	embedding_mental	PSS	-7	filler
+gli amici dichiarano che il figlio davanti ai fratelli indichi le studentesse	embedding_mental	PSP	-7	filler
+il bambino dice che le studentesse bloccate la contadina	embedding_mental_SR	SP	-5	filler
+i padri che i bambini contadina evitano l' attore	objrel_that	PP	-4	filler
+il figlio che le sorelle salutano studentesse le madri	objrel_that	SP	-5	filler
+i padri ricordano che la contadina studenti gli attori	embedding_mental_SR	PS	-5	filler
+le sorelle che la studentessa vicino alle madri donne osservano i fratelli	objrel_nounpp	PSP	-7	filler
+i bambini che l' attrice vicino alle donne contadino ricordano la sorella	objrel_nounpp	PSP	-7	filler
+la bambina che le contadine davanti al padre incontrano attrice le figlie	objrel_nounpp	SPS	-8	filler
+il ragazzo che la figlia dietro alle contadine osserva padre l' amica	objrel_nounpp	SSP	-8	filler
+gli studenti dicono che gli attori davanti al fratello padri le amiche	embedding_mental	PPS	-7	filler
+il fratello dice che il padre accanto alle figlie contadine la contadina	embedding_mental	SSP	-7	filler
+i piaceri che le madri osservano amano i figli	objrel_that	PP	-1	filler
+il sonno che i bambini dietro all' attore fermano ricorda la ragazza	objrel_nounpp	SPS	-1	filler
+il fratello che il dolore davanti ai padri salutano ricorda l' attrice	objrel_nounpp	SPP	-3	filler
+il bambino dice che il sonno dietro ai padri osserva gli studenti	embedding_mental	SSP	-4	filler
+i dispiaceri dicono che le amiche fermano il figlio	embedding_mental_SR	PP	-1	filler
+i sedili che la donna blocca attraggono le contadine	objrel_that	PS	-1	filler
+le lampade che la bambina accanto alle donne accoglie interrompono i figli	objrel_nounpp	PSP	-1	filler
+l' uomo che il compasso davanti al contadino fermano ricorda i figli	objrel_nounpp	SPS	-3	filler
+le ragazze dicono che le televisioni davanti ai padri ama le bambine	embedding_mental	PSP	-4	filler
+l' attrice che il figlio incontrano saluta l' uomo	objrel_that	SS	4	num_violation
+lo studente che le attrici ferma critica la sorella	objrel_that	SP	4	num_violation
+i figli che le contadine conosce evitano le amiche	objrel_that	PP	4	num_violation
+i fratelli che la donna difendono ignorano la contadina	objrel_that	PS	4	num_violation
+lo studente che il bambino incontra evitano le donne	objrel_that	SS	5	num_violation
+la sorella che gli amici salutano ricordano l' attore	objrel_that	SP	5	num_violation
+le figlie che le madri osservano critica gli studenti	objrel_that	PP	5	num_violation
+i contadini che l' amico ignora accoglie l' attore	objrel_that	PS	5	num_violation
+l' amica che il contadino davanti alla bambina bloccano evita le madri	objrel_nounpp	SSS	7	num_violation
+l' uomo che la figlia dietro alle studentesse bloccano osserva i fratelli	objrel_nounpp	SSP	7	num_violation
+la ragazza che gli uomini accanto alla studentessa blocca indica il bambino	objrel_nounpp	SPS	7	num_violation
+la contadina che le figlie vicino alle attrici difende ferma il fratello	objrel_nounpp	SPP	7	num_violation
+i ragazzi che i bambini accanto agli attori incontra evitano la madre	objrel_nounpp	PPP	7	num_violation
+i ragazzi che le figlie dietro alla contadina critica difendono il fratello	objrel_nounpp	PPS	7	num_violation
+le figlie che la contadina accanto alle amiche ignorano indicano le madri	objrel_nounpp	PSP	7	num_violation
+le contadine che l' attrice accanto alla ragazza accolgono ricordano gli uomini	objrel_nounpp	PSS	7	num_violation
+il bambino che la figlia accanto al ragazzo interrompe fermano le donne	objrel_nounpp	SSS	8	num_violation
+il contadino che l' attore dietro ai ragazzi saluta bloccano le figlie	objrel_nounpp	SSP	8	num_violation
+l' amica che le bambine davanti al figlio osservano indicano gli uomini	objrel_nounpp	SPS	8	num_violation
+l' amica che le ragazze dietro agli attori guardano salutano il contadino	objrel_nounpp	SPP	8	num_violation
+le donne che gli studenti dietro alle amiche fermano ama la sorella	objrel_nounpp	PPP	8	num_violation
+i contadini che gli amici accanto alla bambina attraggono incontra le donne	objrel_nounpp	PPS	8	num_violation
+gli studenti che la bambina davanti alle ragazze ferma accoglie l' attrice	objrel_nounpp	PSP	8	num_violation
+le amiche che il bambino davanti alla sorella ricorda sogna gli attori	objrel_nounpp	PSS	8	num_violation
+il fratello dichiara che l' uomo interrompono le amiche	embedding_mental_SR	SS	5	num_violation
+la sorella dice che le donne ferma l' amico	embedding_mental_SR	SP	5	num_violation
+i fratelli ricordano che i figli incontra i ragazzi	embedding_mental_SR	PP	5	num_violation
+i bambini ricordano che la figlia criticano lo studente	embedding_mental_SR	PS	5	num_violation
+la figlia dichiara che l' amico dietro al bambino criticano le ragazze	embedding_mental	SSS	7	num_violation
+il fratello ricorda che l' amico davanti ai figli fermano la sorella	embedding_mental	SSP	7	num_violation
+il contadino ricorda che le figlie davanti al padre conosce gli amici	embedding_mental	SPS	7	num_violation
+l' attore dichiara che le ragazze davanti alle studentesse critica il bambino	embedding_mental	SPP	7	num_violation
+le contadine ricordano che le bambine davanti ai ragazzi ama la donna	embedding_mental	PPP	7	num_violation
+le bambine ricordano che gli amici dietro al padre interrompe la studentessa	embedding_mental	PPS	7	num_violation
+gli uomini dichiarano che la contadina davanti alle figlie interrompono l' attrice	embedding_mental	PSP	7	num_violation
+le donne ricordano che il figlio dietro al fratello criticano il ragazzo	embedding_mental	PSS	7	num_violation
+il padre che la studentessa accoglie ricorda la bambina	objrel_that	SS	0	acceptable
+la madre che il ragazzo difende interrompe le bambine	objrel_that	SS	0	acceptable
+il figlio che le contadine incontrano critica l' amico	objrel_that	SP	0	acceptable
+l' uomo che i figli evitano ferma la contadina	objrel_that	SP	0	acceptable
+gli amici che le attrici osservano fermano i bambini	objrel_that	PP	0	acceptable
+gli uomini che le attrici amano conoscono la sorella	objrel_that	PP	0	acceptable
+le attrici che il contadino incontra amano le ragazze	objrel_that	PS	0	acceptable
+le ragazze che la figlia difende ignorano la studentessa	objrel_that	PS	0	acceptable
+il fratello dice che l' amica interrompe il figlio	embedding_mental_SR	SS	0	acceptable
+il contadino ricorda che le donne criticano il padre	embedding_mental_SR	SP	0	acceptable
+le madri dichiarano che le donne salutano il bambino	embedding_mental_SR	PP	0	acceptable
+i bambini dichiarano che la donna saluta l' attore	embedding_mental_SR	PS	0	acceptable
+la studentessa che la ragazza davanti al contadino ignora incontra il bambino	objrel_nounpp	SSS	0	acceptable
+la bambina che la madre dietro al contadino interrompe conosce le donne	objrel_nounpp	SSS	0	acceptable
+il fratello che la madre accanto ai bambini osserva ferma le figlie	objrel_nounpp	SSP	0	acceptable
+la ragazza che la sorella davanti ai padri blocca saluta la figlia	objrel_nounpp	SSP	0	acceptable
+la madre che gli amici accanto alla donna interrompono evita i ragazzi	objrel_nounpp	SPS	0	acceptable
+la donna che i ragazzi dietro all' attore difendono saluta lo studente	objrel_nounpp	SPS	0	acceptable
+il bambino che le studentesse davanti ai fratelli ignorano evita gli amici	objrel_nounpp	SPP	0	acceptable
+l' attore che i ragazzi dietro alle donne indicano attrae l' uomo	objrel_nounpp	SPP	0	acceptable
+le attrici che le bambine dietro alle amiche bloccano amano il figlio	objrel_nounpp	PPP	0	acceptable
+le amiche che i fratelli dietro ai padri ricordano conoscono i bambini	objrel_nounpp	PPP	0	acceptable
+le attrici che le contadine dietro alla madre ignorano indicano l' amico	objrel_nounpp	PPS	0	acceptable
+le studentesse che le madri dietro all' attore indicano ignorano gli amici	objrel_nounpp	PPS	0	acceptable
+le attrici che la studentessa accanto ai bambini indica conoscono il figlio	objrel_nounpp	PSP	0	acceptable
+le sorelle che l' attrice vicino ai ragazzi saluta accolgono le donne	objrel_nounpp	PSP	0	acceptable
+le contadine che l' amica davanti al fratello ama bloccano l' attore	objrel_nounpp	PSS	0	acceptable
+gli studenti che l' amico dietro all' attrice critica amano la donna	objrel_nounpp	PSS	0	acceptable
+il padre dice che il contadino dietro al ragazzo saluta i figli	embedding_mental	SSS	0	acceptable
+l' attore ricorda che la figlia davanti ai contadini difende la studentessa	embedding_mental	SSP	0	acceptable
+l' amica ricorda che gli studenti dietro alla figlia criticano gli attori	embedding_mental	SPS	0	acceptable
+la contadina dichiara che i bambini davanti ai ragazzi salutano le amiche	embedding_mental	SPP	0	acceptable
+i padri dicono che i figli accanto alle studentesse conoscono l' amico	embedding_mental	PPP	0	acceptable
+gli amici ricordano che le madri davanti all' attrice fermano la bambina	embedding_mental	PPS	0	acceptable
+i contadini dicono che la donna davanti alle sorelle osserva la bambina	embedding_mental	PSP	0	acceptable
+gli attori ricordano che la madre dietro alla sorella incontra il contadino	embedding_mental	PSS	0	acceptable
+la sorella che gli attori indicare osserva le studentesse	objrel_that	SP	-4	filler
+l' amica che l' uomo ricorda bloccare il fratello	objrel_that	SS	-5	filler
+i contadini che l' amico accanto ai ragazzi interrompere indicano le sorelle	objrel_nounpp	PSP	-7	filler
+le bambine che i contadini dietro alla sorella attrarre ignorano il ragazzo	objrel_nounpp	PPS	-7	filler
+le sorelle che gli attori davanti ai ragazzi difendono incontrare le contadine	objrel_nounpp	PPP	-8	filler
+le donne che i contadini dietro alle amiche criticano accogliere le bambine	objrel_nounpp	PPP	-8	filler
+le donne dichiarano che le attrici fermare l' uomo	embedding_mental_SR	PP	-5	filler
+il fratello ricorda che la madre davanti all' amica criticare i figli	embedding_mental	SSS	-7	filler
+la madre dichiara che i contadini dietro alle amiche amare le attrici	embedding_mental	SPP	-7	filler
+il bambino che i figli conosciamo interrompe i fratelli	objrel_that	SP	-4	filler
+i ragazzi che le contadine conoscono difendete i figli	objrel_that	PP	-5	filler
+gli uomini che la bambina dietro alle ragazze ricordo criticano le donne	objrel_nounpp	PSP	-7	filler
+le attrici che il bambino accanto al contadino attrai ricordano le amiche	objrel_nounpp	PSS	-7	filler
+il ragazzo che le figlie accanto al bambino interrompono critico i contadini	objrel_nounpp	SPS	-8	filler
+le amiche che le bambine davanti alle donne amano bloccate gli attori	objrel_nounpp	PPP	-8	filler
+la sorella ricorda che il contadino vicino ai ragazzi interrompi le donne	embedding_mental	SSP	-7	filler
+il fratello dichiara che la ragazza dietro alle bambine conosci gli amici	embedding_mental	SSP	-7	filler
+l' amico dichiara che gli studenti difendiamo il figlio	embedding_mental_SR	SP	-5	filler
+i contadini che la figlia uomini guardano i bambini	objrel_that	PS	-4	filler
+la ragazza che le contadine ricordano fratelli la sorella	objrel_that	SP	-5	filler
+gli amici dicono che i ragazzi padri la figlia	embedding_mental_SR	PP	-5	filler
+il figlio che l' amico accanto alla madre bambine ferma il padre	objrel_nounpp	SSS	-7	filler
+le ragazze che l' attrice vicino ai padri uomo difendono il fratello	objrel_nounpp	PSP	-7	filler
+lo studente che i contadini vicino agli attori fermano madre le amiche	objrel_nounpp	SPP	-8	filler
+l' uomo che le bambine davanti ai contadini evitano padre gli studenti	objrel_nounpp	SPP	-8	filler
+la donna dice che la contadina dietro alla madre attori il padre	embedding_mental	SSS	-7	filler
+l' attore dichiara che gli uomini davanti al figlio amico gli studenti	embedding_mental	SPS	-7	filler
+la ginnastica che lo studente indica ama le amiche	objrel_that	SS	-1	filler
+il salto che i fratelli accanto all' amica attraggono blocca la donna	objrel_nounpp	SPS	-1	filler
+gli studenti che i dolori dietro al contadino incontrano criticano le amiche	objrel_nounpp	PPS	-3	filler
+le ragazze dichiarano che le diatribe davanti al figlio saluta gli studenti	embedding_mental	PSS	-4	filler
+le antipatie dicono che la contadina attrae il ragazzo	embedding_mental_SR	PS	-1	filler
+i quaderni che le bambine amano salutano le ragazze	objrel_that	PP	-1	filler
+la penna che le amiche davanti alla madre difendono indica l' uomo	objrel_nounpp	SPS	-1	filler
+i padri che i sedili dietro alla ragazza evita indicano la bambina	objrel_nounpp	PSS	-3	filler
+l' attore dice che il compasso dietro alle sorelle conoscono le figlie	embedding_mental	SPP	-4	filler
+l' attore che il contadino difendono ama le ragazze	objrel_that	SS	4	num_violation
+la donna che i contadini blocca osserva le ragazze	objrel_that	SP	4	num_violation
+i padri che i bambini difende evitano l' attore	objrel_that	PP	4	num_violation
+le studentesse che la madre ignorano amano i bambini	objrel_that	PS	4	num_violation
+la studentessa che l' uomo indica osservano il contadino	objrel_that	SS	5	num_violation
+l' amico che le madri guardano evitano le bambine	objrel_that	SP	5	num_violation
+le studentesse che i bambini osservano incontra la donna	objrel_that	PP	5	num_violation
+le ragazze che lo studente osserva conosce la bambina	objrel_that	PS	5	num_violation
+l' attore che la sorella dietro alla bambina indicano saluta la figlia	objrel_nounpp	SSS	7	num_violation
+la sorella che la ragazza accanto agli uomini ignorano critica le contadine	objrel_nounpp	SSP	7	num_violation
+la ragazza che i fratelli vicino alla donna ignora indica gli attori	objrel_nounpp	SPS	7	num_violation
+il contadino che le donne vicino ai bambini guarda incontra la figlia	objrel_nounpp	SPP	7	num_violation
+le bambine che le figlie davanti ai fratelli interrompe osservano l' uomo	objrel_nounpp	PPP	7	num_violation
+i ragazzi che le contadine davanti all' amica incontra criticano gli attori	objrel_nounpp	PPS	7	num_violation
+le figlie che il ragazzo dietro alle madri ignorano interrompono le contadine	objrel_nounpp	PSP	7	num_violation
+le madri che lo studente vicino al contadino amano guardano le amiche	objrel_nounpp	PSS	7	num_violation
+il bambino che il padre vicino all' amica difende osservano i figli	objrel_nounpp	SSS	8	num_violation
+la bambina che l' amica dietro alle madri attrae conoscono i figli	objrel_nounpp	SSP	8	num_violation
+la madre che le amiche accanto al contadino attraggono conoscono il bambino	objrel_nounpp	SPS	8	num_violation
+la studentessa che le amiche vicino ai padri difendono guardano i ragazzi	objrel_nounpp	SPP	8	num_violation
+le contadine che i bambini dietro alle figlie criticano attrae l' amico	objrel_nounpp	PPP	8	num_violation
+le ragazze che le studentesse accanto all' uomo difendono interrompe le donne	objrel_nounpp	PPS	8	num_violation
+le ragazze che il figlio vicino alle bambine difende interrompe i fratelli	objrel_nounpp	PSP	8	num_violation
+i ragazzi che la bambina davanti al figlio attrae guarda la sorella	objrel_nounpp	PSS	8	num_violation
+la ragazza ricorda che lo studente osservano le madri	embedding_mental_SR	SS	5	num_violation
+la donna dichiara che i contadini accoglie le attrici	embedding_mental_SR	SP	5	num_violation
+le madri dicono che le contadine interrompe lo studente	embedding_mental_SR	PP	5	num_violation
+i fratelli dichiarano che il bambino conoscono le madri	embedding_mental_SR	PS	5	num_violation
+l' attore dice che la contadina dietro alla sorella salutano la studentessa	embedding_mental	SSS	7	num_violation
+il bambino dichiara che la madre vicino alle ragazze guardano le donne	embedding_mental	SSP	7	num_violation
+la madre dice che i fratelli accanto alla contadina osserva la donna	embedding_mental	SPS	7	num_violation
+il padre ricorda che i contadini vicino alle studentesse difende le bambine	embedding_mental	SPP	7	num_violation
+i contadini ricordano che le ragazze dietro agli amici evita i bambini	embedding_mental	PPP	7	num_violation
+i contadini ricordano che le amiche accanto alla figlia guarda le donne	embedding_mental	PPS	7	num_violation
+le bambine ricordano che il contadino vicino alle donne osservano l' attore	embedding_mental	PSP	7	num_violation
+i contadini dicono che l' attore accanto alla madre osservano i ragazzi	embedding_mental	PSS	7	num_violation
+la ragazza che la bambina critica incontra la contadina	objrel_that	SS	0	acceptable
+la donna che il ragazzo blocca osserva la sorella	objrel_that	SS	0	acceptable
+lo studente che i fratelli accolgono ferma gli uomini	objrel_that	SP	0	acceptable
+la sorella che i bambini attraggono guarda i ragazzi	objrel_that	SP	0	acceptable
+le sorelle che gli studenti ricordano evitano l' attore	objrel_that	PP	0	acceptable
+gli studenti che gli amici conoscono interrompono i padri	objrel_that	PP	0	acceptable
+i contadini che il padre ricorda attraggono il fratello	objrel_that	PS	0	acceptable
+gli attori che la sorella difende attraggono l' uomo	objrel_that	PS	0	acceptable
+la figlia ricorda che l' attrice critica il contadino	embedding_mental_SR	SS	0	acceptable
+la madre dichiara che i ragazzi amano le studentesse	embedding_mental_SR	SP	0	acceptable
+i fratelli dicono che gli studenti incontrano la contadina	embedding_mental_SR	PP	0	acceptable
+le studentesse dicono che il fratello blocca la donna	embedding_mental_SR	PS	0	acceptable
+la ragazza che il padre dietro alla figlia ferma indica gli amici	objrel_nounpp	SSS	0	acceptable
+il ragazzo che la studentessa vicino al padre conosce ferma l' uomo	objrel_nounpp	SSS	0	acceptable
+la sorella che il ragazzo dietro alle amiche blocca ama le studentesse	objrel_nounpp	SSP	0	acceptable
+il fratello che la contadina accanto agli uomini ricorda indica l' amica	objrel_nounpp	SSP	0	acceptable
+la donna che le bambine vicino al ragazzo attraggono ricorda il padre	objrel_nounpp	SPS	0	acceptable
+l' amico che le attrici dietro alla ragazza evitano ricorda le donne	objrel_nounpp	SPS	0	acceptable
+l' attore che i contadini davanti alle madri amano conosce le donne	objrel_nounpp	SPP	0	acceptable
+il bambino che le attrici accanto ai padri incontrano ricorda la ragazza	objrel_nounpp	SPP	0	acceptable
+i contadini che le attrici accanto alle donne ignorano amano gli uomini	objrel_nounpp	PPP	0	acceptable
+le ragazze che gli uomini davanti ai figli attraggono guardano lo studente	objrel_nounpp	PPP	0	acceptable
+gli studenti che i fratelli accanto al ragazzo conoscono difendono le madri	objrel_nounpp	PPS	0	acceptable
+i bambini che i fratelli dietro al ragazzo attraggono salutano l' amico	objrel_nounpp	PPS	0	acceptable
+i figli che la madre davanti alle amiche incontra evitano le ragazze	objrel_nounpp	PSP	0	acceptable
+le contadine che il fratello accanto alle attrici critica attraggono la sorella	objrel_nounpp	PSP	0	acceptable
+gli attori che il ragazzo dietro al fratello evita ignorano i bambini	objrel_nounpp	PSS	0	acceptable
+le studentesse che la figlia davanti al bambino difende interrompono le sorelle	objrel_nounpp	PSS	0	acceptable
+l' amico dice che l' attore davanti all' uomo attrae il contadino	embedding_mental	SSS	0	acceptable
+l' uomo dichiara che la ragazza davanti alle madri accoglie la donna	embedding_mental	SSP	0	acceptable
+la ragazza dichiara che i contadini davanti al fratello salutano la bambina	embedding_mental	SPS	0	acceptable
+l' amico dice che le bambine vicino alle studentesse fermano i padri	embedding_mental	SPP	0	acceptable
+i padri dichiarano che le attrici dietro ai bambini bloccano la contadina	embedding_mental	PPP	0	acceptable
+le figlie dichiarano che le studentesse vicino alla sorella bloccano la contadina	embedding_mental	PPS	0	acceptable
+i ragazzi dicono che la studentessa accanto alle bambine ama il fratello	embedding_mental	PSP	0	acceptable
+i padri ricordano che la bambina vicino alla ragazza conosce l' uomo	embedding_mental	PSS	0	acceptable
+la figlia che i padri incontrare conosce la donna	objrel_that	SP	-4	filler
+la contadina che gli attori bloccano fermare gli studenti	objrel_that	SP	-5	filler
+le ragazze che le madri accanto agli attori difendere salutano i bambini	objrel_nounpp	PPP	-7	filler
+lo studente che le figlie dietro ai ragazzi salutare critica le attrici	objrel_nounpp	SPP	-7	filler
+la madre che gli amici davanti alle contadine salutano conoscere il ragazzo	objrel_nounpp	SPP	-8	filler
+le attrici che le madri vicino alla donna indicano accogliere il ragazzo	objrel_nounpp	PPS	-8	filler
+gli uomini dichiarano che il ragazzo osservare le studentesse	embedding_mental_SR	PS	-5	filler
+le studentesse dichiarano che gli uomini accanto alla bambina difendere i contadini	embedding_mental	PPS	-7	filler
+i figli dicono che gli uomini davanti alle amiche indicare il fratello	embedding_mental	PPP	-7	filler
+il figlio che le contadine saluti critica le bambine	objrel_that	SP	-4	filler
+le donne che il fratello evita guardate i padri	objrel_that	PS	-5	filler
+le studentesse che i contadini accanto alla sorella ricordate osservano l' attrice	objrel_nounpp	PPS	-7	filler
+i bambini che l' amica dietro al figlio amo osservano la sorella	objrel_nounpp	PSS	-7	filler
+la madre che le amiche vicino ai bambini indicano ricordo le sorelle	objrel_nounpp	SPP	-8	filler
+i bambini che i ragazzi dietro alle donne incontrano difendete le madri	objrel_nounpp	PPP	-8	filler
+la donna dichiara che le figlie davanti ai contadini difendiamo gli amici	embedding_mental	SPP	-7	filler
+le studentesse ricordano che le donne vicino agli attori evitate le ragazze	embedding_mental	PPP	-7	filler
+le sorelle dichiarano che i padri fermate l' amico	embedding_mental_SR	PP	-5	filler
+le studentesse che le attrici donne ignorano l' amico	objrel_that	PP	-4	filler
+l' amica che il bambino indica studente la donna	objrel_that	SS	-5	filler
+le donne ricordano che l' attrice contadine il bambino	embedding_mental_SR	PS	-5	filler
+le donne che la ragazza vicino al bambino padre amano gli attori	objrel_nounpp	PSS	-7	filler
+la sorella che le bambine vicino agli attori uomo ignora le contadine	objrel_nounpp	SPP	-7	filler
+l' amica che le studentesse vicino al fratello incontrano contadini le attrici	objrel_nounpp	SPS	-8	filler
+i fratelli che l' uomo accanto alle madri interrompe bambina il ragazzo	objrel_nounpp	PSP	-8	filler
+le madri dichiarano che la donna accanto al ragazzo figlie le sorelle	embedding_mental	PSS	-7	filler
+la contadina dichiara che le studentesse accanto alle figlie madre le sorelle	embedding_mental	SPP	-7	filler
+il dispiacere che le studentesse difendono blocca la sorella	objrel_that	SP	-1	filler
+l' antipatia che i figli dietro alla contadina guardano ignora le bambine	objrel_nounpp	SPS	-1	filler
+i fratelli che i sonni dietro alle bambine ignora accolgono le sorelle	objrel_nounpp	PSP	-3	filler
+il bambino dichiara che il dolore vicino ai padri conoscono la donna	embedding_mental	SPP	-4	filler
+le diatribe ricordano che l' attrice evita le contadine	embedding_mental_SR	PS	-1	filler
+la penna che gli amici salutano conosce i figli	objrel_that	SP	-1	filler
+la matita che le studentesse davanti al padre osservano saluta le figlie	objrel_nounpp	SPS	-1	filler
+il contadino che il sedile dietro alle studentesse indica saluta le bambine	objrel_nounpp	SSP	-3	filler
+le sorelle dicono che le sedie vicino ai contadini incontra le donne	embedding_mental	PSP	-4	filler
+la studentessa che il figlio bloccano critica gli uomini	objrel_that	SS	4	num_violation
+la bambina che le contadine attrae interrompe le ragazze	objrel_that	SP	4	num_violation
+le sorelle che gli amici sogna incontrano i fratelli	objrel_that	PP	4	num_violation
+le ragazze che l' uomo incontrano ricordano gli attori	objrel_that	PS	4	num_violation
+l' attore che l' amica accoglie indicano lo studente	objrel_that	SS	5	num_violation
+lo studente che i bambini amano evitano le sorelle	objrel_that	SP	5	num_violation
+le ragazze che gli amici ricordano indica il padre	objrel_that	PP	5	num_violation
+le studentesse che il ragazzo conosce ama le attrici	objrel_that	PS	5	num_violation
+l' attrice che la ragazza vicino alla madre interrompono guarda le amiche	objrel_nounpp	SSS	7	num_violation
+lo studente che il padre vicino alle donne interrompono critica le sorelle	objrel_nounpp	SSP	7	num_violation
+la madre che gli uomini davanti all' attore guarda incontra l' amico	objrel_nounpp	SPS	7	num_violation
+l' attrice che i padri accanto ai ragazzi conosce attrae la studentessa	objrel_nounpp	SPP	7	num_violation
+gli amici che le donne vicino ai contadini guarda fermano gli studenti	objrel_nounpp	PPP	7	num_violation
+gli amici che le attrici dietro alla madre sogna bloccano le bambine	objrel_nounpp	PPS	7	num_violation
+le madri che la figlia dietro alle donne indicano difendono la bambina	objrel_nounpp	PSP	7	num_violation
+gli uomini che la madre vicino all' attrice criticano indicano gli studenti	objrel_nounpp	PSS	7	num_violation
+la ragazza che l' attrice accanto alla madre ignora interrompono le donne	objrel_nounpp	SSS	8	num_violation
+il ragazzo che il bambino vicino alle figlie difende attraggono i contadini	objrel_nounpp	SSP	8	num_violation
+il ragazzo che le studentesse davanti all' amica interrompono criticano l' attore	objrel_nounpp	SPS	8	num_violation
+il fratello che le amiche dietro alle bambine indicano osservano le donne	objrel_nounpp	SPP	8	num_violation
+le bambine che gli amici davanti alle donne conoscono attrae la studentessa	objrel_nounpp	PPP	8	num_violation
+i figli che le studentesse accanto alla donna incontrano blocca la bambina	objrel_nounpp	PPS	8	num_violation
+gli studenti che la ragazza accanto alle bambine indica conosce la figlia	objrel_nounpp	PSP	8	num_violation
+le amiche che il figlio vicino alla sorella ignora indica lo studente	objrel_nounpp	PSS	8	num_violation
+la studentessa ricorda che l' attore osservano i figli	embedding_mental_SR	SS	5	num_violation
+il figlio ricorda che i bambini ama l' amico	embedding_mental_SR	SP	5	num_violation
+le madri dicono che le figlie attrae gli uomini	embedding_mental_SR	PP	5	num_violation
+le figlie ricordano che il ragazzo guardano la contadina	embedding_mental_SR	PS	5	num_violation
+la bambina dice che il contadino vicino al padre amano la studentessa	embedding_mental	SSS	7	num_violation
+il padre dice che la studentessa accanto ai contadini osservano le amiche	embedding_mental	SSP	7	num_violation
+l' uomo dice che le studentesse vicino al fratello interrompe le madri	embedding_mental	SPS	7	num_violation
+il ragazzo ricorda che le madri vicino alle figlie ignora il fratello	embedding_mental	SPP	7	num_violation
+gli attori dichiarano che le donne vicino alle madri difende la sorella	embedding_mental	PPP	7	num_violation
+gli studenti ricordano che le attrici accanto alla sorella evita le contadine	embedding_mental	PPS	7	num_violation
+i contadini ricordano che la studentessa accanto agli amici bloccano la ragazza	embedding_mental	PSP	7	num_violation
+le sorelle ricordano che il bambino davanti alla ragazza evitano la figlia	embedding_mental	PSS	7	num_violation
+la donna che la bambina conosce saluta l' attore	objrel_that	SS	0	acceptable
+l' uomo che il bambino osserva attrae il contadino	objrel_that	SS	0	acceptable
+la donna che gli amici indicano ferma il padre	objrel_that	SP	0	acceptable
+la figlia che i padri indicano ignora l' uomo	objrel_that	SP	0	acceptable
+i padri che i contadini indicano interrompono le donne	objrel_that	PP	0	acceptable
+i contadini che gli attori ignorano accolgono la sorella	objrel_that	PP	0	acceptable
+gli studenti che l' amico osserva conoscono i ragazzi	objrel_that	PS	0	acceptable
+i contadini che la bambina incontra amano le ragazze	objrel_that	PS	0	acceptable
+la figlia dichiara che la donna attrae la studentessa	embedding_mental_SR	SS	0	acceptable
+l' attore ricorda che i fratelli fermano il padre	embedding_mental_SR	SP	0	acceptable
+le amiche dicono che i figli interrompono la donna	embedding_mental_SR	PP	0	acceptable
+i bambini dichiarano che la madre accoglie la figlia	embedding_mental_SR	PS	0	acceptable
+la ragazza che l' attrice vicino al padre blocca ferma la madre	objrel_nounpp	SSS	0	acceptable
+il bambino che la contadina davanti alla ragazza guarda difende le figlie	objrel_nounpp	SSS	0	acceptable
+il contadino che la madre accanto ai figli evita ignora il ragazzo	objrel_nounpp	SSP	0	acceptable
+il fratello che la bambina davanti agli amici ricorda guarda l' uomo	objrel_nounpp	SSP	0	acceptable
+la bambina che gli studenti accanto al ragazzo ricordano interrompe l' amica	objrel_nounpp	SPS	0	acceptable
+la donna che le sorelle accanto alla bambina indicano conosce le attrici	objrel_nounpp	SPS	0	acceptable
+lo studente che gli amici accanto alle attrici incontrano blocca il contadino	objrel_nounpp	SPP	0	acceptable
+l' attrice che i fratelli vicino ai padri ricordano blocca l' uomo	objrel_nounpp	SPP	0	acceptable
+le attrici che gli uomini dietro ai ragazzi osservano bloccano il contadino	objrel_nounpp	PPP	0	acceptable
+le donne che gli amici dietro alle figlie attraggono evitano le bambine	objrel_nounpp	PPP	0	acceptable
+i padri che gli attori davanti alla donna accolgono criticano le studentesse	objrel_nounpp	PPS	0	acceptable
+le sorelle che i figli davanti allo studente incontrano conoscono la bambina	objrel_nounpp	PPS	0	acceptable
+i fratelli che l' uomo vicino ai contadini osserva guardano l' attrice	objrel_nounpp	PSP	0	acceptable
+le figlie che il ragazzo dietro agli studenti difende fermano la bambina	objrel_nounpp	PSP	0	acceptable
+le bambine che la madre accanto all' attore indica interrompono il fratello	objrel_nounpp	PSS	0	acceptable
+le attrici che la contadina dietro all' uomo interrompe attraggono la madre	objrel_nounpp	PSS	0	acceptable
+il padre dichiara che il ragazzo vicino all' amica saluta le figlie	embedding_mental	SSS	0	acceptable
+la studentessa dice che il padre accanto alle sorelle blocca l' amico	embedding_mental	SSP	0	acceptable
+l' attore dice che i figli accanto alla sorella guardano le madri	embedding_mental	SPS	0	acceptable
+lo studente dice che le amiche dietro alle sorelle attraggono il fratello	embedding_mental	SPP	0	acceptable
+i fratelli dichiarano che le ragazze accanto alle donne conoscono il padre	embedding_mental	PPP	0	acceptable
+gli attori dichiarano che gli studenti davanti al bambino osservano il fratello	embedding_mental	PPS	0	acceptable
+i padri dicono che la studentessa accanto ai figli accoglie le contadine	embedding_mental	PSP	0	acceptable
+le attrici dichiarano che la sorella vicino alla figlia difende i contadini	embedding_mental	PSS	0	acceptable
+le figlie che lo studente ricordare bloccano i contadini	objrel_that	PS	-4	filler
+le ragazze che i fratelli incontrano attrarre il bambino	objrel_that	PP	-5	filler
+la sorella che gli uomini vicino allo studente difendere ferma il figlio	objrel_nounpp	SPS	-7	filler
+le donne che l' amica accanto alla figlia amare indicano la contadina	objrel_nounpp	PSS	-7	filler
+la ragazza che le contadine davanti agli studenti incontrano amare la bambina	objrel_nounpp	SPP	-8	filler
+il ragazzo che gli studenti davanti ai figli accolgono fermare il fratello	objrel_nounpp	SPP	-8	filler
+gli attori ricordano che il bambino incontrare le contadine	embedding_mental_SR	PS	-5	filler
+i contadini dicono che gli amici accanto al padre interrompere gli uomini	embedding_mental	PPS	-7	filler
+la studentessa dice che il bambino dietro alla sorella incontrare l' attore	embedding_mental	SSS	-7	filler
+le attrici che la contadina dico indicano le donne	objrel_that	PS	-4	filler
+gli attori che la madre accoglie dite le ragazze	objrel_that	PS	-5	filler
+i ragazzi che i bambini dietro agli studenti criticate osservano gli uomini	objrel_nounpp	PPP	-7	filler
+le studentesse che la madre accanto ai contadini osservo ignorano i ragazzi	objrel_nounpp	PSP	-7	filler
+il bambino che l' attore davanti alle madri attrae interrompo le contadine	objrel_nounpp	SSP	-8	filler
+la figlia che le contadine accanto all' uomo criticano difendo le bambine	objrel_nounpp	SPS	-8	filler
+il fratello ricorda che la donna dietro al bambino osservi le ragazze	embedding_mental	SSS	-7	filler
+l' uomo ricorda che i figli accanto al ragazzo sognate l' amico	embedding_mental	SPS	-7	filler
+la studentessa dichiara che la madre osservi l' attrice	embedding_mental_SR	SS	-5	filler
+gli amici che l' attore contadino guardano il ragazzo	objrel_that	PS	-4	filler
+l' amica che lo studente ama attori il figlio	objrel_that	SS	-5	filler
+la donna dice che i figli ragazzi l' attrice	embedding_mental_SR	SP	-5	filler
+la donna che l' amico dietro al ragazzo figli incontra l' attore	objrel_nounpp	SSS	-7	filler
+le amiche che gli studenti vicino alle attrici madre osservano le contadine	objrel_nounpp	PPP	-7	filler
+i contadini che la figlia vicino allo studente incontra amica il ragazzo	objrel_nounpp	PSS	-8	filler
+il bambino che l' attore davanti alle madri attrae figlia le contadine	objrel_nounpp	SSP	-8	filler
+gli attori dicono che le ragazze vicino alla contadina studente l' amica	embedding_mental	PPS	-7	filler
+la figlia ricorda che la studentessa vicino al contadino fratelli la bambina	embedding_mental	SSS	-7	filler
+il sonno che le studentesse attraggono conosce l' uomo	objrel_that	SP	-1	filler
+i piaceri che l' amica dietro allo studente conosce incontrano i fratelli	objrel_nounpp	PSS	-1	filler
+i ragazzi che i dolori dietro alla contadina accoglie difendono i padri	objrel_nounpp	PSS	-3	filler
+lo studente dice che il salto accanto all' attrice evita le donne	embedding_mental	SSS	-4	filler
+i sonni dichiarano che gli amici guardano le figlie	embedding_mental_SR	PP	-1	filler
+le matite che le attrici accolgono evitano il fratello	objrel_that	PP	-1	filler
+il compasso che i ragazzi accanto al figlio incontrano evita l' attore	objrel_nounpp	SPS	-1	filler
+le madri che le televisioni dietro al ragazzo amano criticano il fratello	objrel_nounpp	PPS	-3	filler
+la donna dice che la lampada dietro al contadino fermano il fratello	embedding_mental	SPS	-4	filler

@@ -1,0 +1,11 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1570033813.2868	
+BlockStart	1	0	0	0	 	1570033836.0592	
+FIX_ON	1	1	0	-	+	1570033836.0786	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	1	il bambino	1570033836.6953	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	1	 	1570033836.9453	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	2	ricorda	1570033837.1953	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	2	 	1570033837.4453	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	3	che	1570033837.6953	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	3	 	1570033837.9453	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	4	l' amica	1570033838.1953	embedding_mental	SSS	-7	

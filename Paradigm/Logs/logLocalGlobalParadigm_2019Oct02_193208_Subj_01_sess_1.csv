@@ -1,0 +1,102 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+GrandStart	0	0	0	0	 	1570037542.2574	
+BlockStart	1	0	0	0	 	1570037559.6452	
+FIX_ON	1	1	0	-	+	1570037559.6615	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	1	il bambino	1570037560.2782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	1	 	1570037560.5282	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	2	ricorda	1570037560.7782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	2	 	1570037561.0282	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	3	che	1570037561.2782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	3	 	1570037561.5282	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	4	l' amica	1570037561.7782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	4	 	1570037562.0282	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	5	vicino	1570037562.2782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	5	 	1570037562.5282	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	6	alla ragazza	1570037562.7782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	6	 	1570037563.0282	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	7	attrarre	1570037563.2782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	7	 	1570037563.5282	embedding_mental	SSS	-7	
+WORD_ON	1	1	0	8	le figlie	1570037563.7782	embedding_mental	SSS	-7	
+WORD_OFF	1	1	0	8	 	1570037564.0282	embedding_mental	SSS	-7	
+FIX2PANEL_ON	1	1	-	-	+	1570037564.2782	embedding_mental	SSS	-7	
+PanelOn	1	1	-	-	 	1570037564.7782	embedding_mental	SSS	-7	
+PanelResp	1	1	-	-	VIOLATION	0.0052731	embedding_mental	SSS	-7	
+FeedbackOn	1	1	-	-	 	1570037564.7949	embedding_mental	SSS	-7	
+FeedbackOff	1	1	-	-	 	1570037565.8283	embedding_mental	SSS	-7	
+END_TRIAL	1	1	-	-	CORRECT_INC	0	embedding_mental	SSS	-7	
+FIX_ON	1	2	0	-	+	1570037565.8616	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	1	la ragazza	1570037566.4783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	1	 	1570037566.7283	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	2	che	1570037566.9783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	2	 	1570037567.2283	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	3	le sorelle	1570037567.4783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	3	 	1570037567.7283	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	4	davanti	1570037567.9783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	4	 	1570037568.2283	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	5	alle bambine	1570037568.4783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	5	 	1570037568.7283	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	6	contadina	1570037568.9783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	6	 	1570037569.2283	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	7	ricorda	1570037569.4783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	7	 	1570037569.7283	objrel_nounpp	SPP	-7	
+WORD_ON	1	2	0	8	i figli	1570037569.9783	objrel_nounpp	SPP	-7	
+WORD_OFF	1	2	0	8	 	1570037570.2283	objrel_nounpp	SPP	-7	
+FIX2PANEL_ON	1	2	-	-	+	1570037570.4783	objrel_nounpp	SPP	-7	
+PanelOn	1	2	-	-	 	1570037570.9783	objrel_nounpp	SPP	-7	
+PanelResp	1	2	-	-	VIOLATION	0.38725	objrel_nounpp	SPP	-7	
+FeedbackOn	1	2	-	-	 	1570037571.3783	objrel_nounpp	SPP	-7	
+FeedbackOff	1	2	-	-	 	1570037572.4117	objrel_nounpp	SPP	-7	
+END_TRIAL	1	2	-	-	CORRECT_INC	0	objrel_nounpp	SPP	-7	
+FIX_ON	1	3	0	-	+	1570037572.4283	embedding_mental	PPP	0	
+WORD_ON	1	3	0	1	i padri	1570037573.045	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	1	 	1570037573.295	embedding_mental	PPP	0	
+WORD_ON	1	3	0	2	ricordano	1570037573.545	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	2	 	1570037573.795	embedding_mental	PPP	0	
+WORD_ON	1	3	0	3	che	1570037574.045	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	3	 	1570037574.295	embedding_mental	PPP	0	
+WORD_ON	1	3	0	4	i bambini	1570037574.545	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	4	 	1570037574.795	embedding_mental	PPP	0	
+WORD_ON	1	3	0	5	davanti	1570037575.045	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	5	 	1570037575.295	embedding_mental	PPP	0	
+WORD_ON	1	3	0	6	alle sorelle	1570037575.545	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	6	 	1570037575.7951	embedding_mental	PPP	0	
+WORD_ON	1	3	0	7	bloccano	1570037576.0451	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	7	 	1570037576.2951	embedding_mental	PPP	0	
+WORD_ON	1	3	0	8	il ragazzo	1570037576.5451	embedding_mental	PPP	0	
+WORD_OFF	1	3	0	8	 	1570037576.7951	embedding_mental	PPP	0	
+FIX2PANEL_ON	1	3	-	-	+	1570037577.0451	embedding_mental	PPP	0	
+PanelOn	1	3	-	-	 	1570037577.5451	embedding_mental	PPP	0	
+PanelResp	1	3	-	-	VIOLATION	0.30275	embedding_mental	PPP	0	
+FeedbackOn	1	3	-	-	 	1570037577.8617	embedding_mental	PPP	0	
+FeedbackOff	1	3	-	-	 	1570037578.8951	embedding_mental	PPP	0	
+END_TRIAL	1	3	-	-	WRONG_INC	0	embedding_mental	PPP	0	
+FIX_ON	1	4	0	-	+	1570037578.9118	objrel_that	PP	-1	
+WORD_ON	1	4	0	1	le lampade	1570037579.5284	objrel_that	PP	-1	
+WORD_OFF	1	4	0	1	 	1570037579.7784	objrel_that	PP	-1	
+WORD_ON	1	4	0	2	che	1570037580.0284	objrel_that	PP	-1	
+WORD_OFF	1	4	0	2	 	1570037580.2784	objrel_that	PP	-1	
+WORD_ON	1	4	0	3	le bambine	1570037580.5284	objrel_that	PP	-1	
+WORD_OFF	1	4	0	3	 	1570037580.7785	objrel_that	PP	-1	
+WORD_ON	1	4	0	4	attraggono	1570037581.0285	objrel_that	PP	-1	
+WORD_OFF	1	4	0	4	 	1570037581.2785	objrel_that	PP	-1	
+WORD_ON	1	4	0	5	guardano	1570037581.5285	objrel_that	PP	-1	
+WORD_OFF	1	4	0	5	 	1570037581.7785	objrel_that	PP	-1	
+WORD_ON	1	4	0	6	la donna	1570037582.0285	objrel_that	PP	-1	
+WORD_OFF	1	4	0	6	 	1570037582.2785	objrel_that	PP	-1	
+FIX2PANEL_ON	1	4	-	-	+	1570037582.5285	objrel_that	PP	-1	
+PanelOn	1	4	-	-	 	1570037583.0285	objrel_that	PP	-1	
+PanelResp	1	4	-	-	VIOLATION	0.38214	objrel_that	PP	-1	
+FeedbackOn	1	4	-	-	 	1570037583.4285	objrel_that	PP	-1	
+FeedbackOff	1	4	-	-	 	1570037584.4618	objrel_that	PP	-1	
+END_TRIAL	1	4	-	-	CORRECT_INC	0	objrel_that	PP	-1	
+FIX_ON	1	5	0	-	+	1570037584.4785	embedding_mental	PSP	0	
+WORD_ON	1	5	0	1	gli studenti	1570037585.0952	embedding_mental	PSP	0	
+WORD_OFF	1	5	0	1	 	1570037585.3452	embedding_mental	PSP	0	
+WORD_ON	1	5	0	2	dichiarano	1570037585.5952	embedding_mental	PSP	0	
+WORD_OFF	1	5	0	2	 	1570037585.8452	embedding_mental	PSP	0	
+WORD_ON	1	5	0	3	che	1570037586.0952	embedding_mental	PSP	0	
+WORD_OFF	1	5	0	3	 	1570037586.3452	embedding_mental	PSP	0	
+WORD_ON	1	5	0	4	il bambino	1570037586.5952	embedding_mental	PSP	0	
+WORD_OFF	1	5	0	4	 	1570037586.8452	embedding_mental	PSP	0	
+WORD_ON	1	5	0	5	vicino	1570037587.0952	embedding_mental	PSP	0	
+WORD_OFF	1	5	0	5	 	1570037587.3452	embedding_mental	PSP	0	

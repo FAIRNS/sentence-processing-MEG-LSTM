@@ -1,0 +1,271 @@
+Sentence,Sentence_Type,condition,slide,Element_changed,Violation_Type
+gli_attori che lo_studente guardano osservano la_madre,objrel_that,PS,4,V1,num_violation
+i_ragazzi dicono che la_bambina accanto all'_attrice guardi i_figli,embedding_mental,PSS,-7,V2,wrong_person
+i_figli che i_bambini vicino all'_amico accolgono criticano la_contadina,objrel_nounpp,PPS,0,NaN,acceptable
+l'_amico che i_figli interrompono ricordare la_studentessa,objrel_that,SP,-5,V2,infinitive
+il_contadino che i_padri vicino alle_ragazze ignorano conoscono lo_studente,objrel_nounpp,SPP,8,V2,num_violation
+i_fratelli che i_bambini incontrano critica gli_studenti,objrel_that,PP,5,V2,num_violation
+le_donne che gli_amici guarda ignorano l'_uomo,objrel_that,PP,4,V1,num_violation
+i_padri ricordano che i_frigoriferi accanto ai_fratelli difende il_ragazzo,embedding_mental,PSP,-4,N2,inanimate
+il_fratello che i_bambini vicino alla_figlia salutano guardano l'_amica,objrel_nounpp,SPS,8,V2,num_violation
+le_attrici ricordano che gli_uomini vicino ai_bambini evita l'_amica,embedding_mental,PPP,7,V2,num_violation
+gli_amici che la_studentessa accanto alla_sorella interrompe salutano le_attrici,objrel_nounpp,PSS,0,NaN,acceptable
+il_fratello che il_figlio accanto al_contadino difende attrai la_studentessa,objrel_nounpp,SSS,-8,V2,wrong_person
+gli_uomini ricordano che l'_attore saluta gli_amici,embedding_mental_SR,PS,0,NaN,acceptable
+la_studentessa dichiara che l'_attore difendono gli_amici,embedding_mental_SR,SS,5,V2,num_violation
+le_madri che gli_attori vicino allo_studente salutano guarda le_figlie,objrel_nounpp,PPS,8,V2,num_violation
+il_dolore che l'_attrice davanti al_bambino guarda indica il_padre,objrel_nounpp,SSS,-1,N1,abstract
+le_sorelle dicono che le_lampade vicino alle_contadine ama l'_amica,embedding_mental,PSP,-4,N2,inanimate
+l'_attrice che la_contadina osservano attrae la_figlia,objrel_that,SS,4,V1,num_violation
+la_sorella che la_contadina dietro agli_studenti ricorda amano il_ragazzo,objrel_nounpp,SSP,8,V2,num_violation
+il_figlio che le_contadine incontra critica l'_amico,objrel_that,SP,4,V1,num_violation
+la_figlia che gli_amici dietro ai_ragazzi evitano indicano la_sorella,objrel_nounpp,SPP,8,V2,num_violation
+gli_studenti che l'_attrice conoscono interrompono i_ragazzi,objrel_that,PS,4,V1,num_violation
+il_figlio dice che gli_amici amiamo i_padri,embedding_mental_SR,SP,-5,V2,wrong_person
+la_bambina che gli_attori bloccare saluta la_donna,objrel_that,SP,-4,V1,infinitive
+le_figlie ricordano che il_contadino ignorano lo_studente,embedding_mental_SR,PS,5,V2,num_violation
+l'_attrice dichiara che la_bambina dietro alla_donna incontrano il_fratello,embedding_mental,SSS,7,V2,num_violation
+la_ragazza che la_sorella davanti all'_amica accolgono incontra le_madri,objrel_nounpp,SSS,7,V1,num_violation
+l'_uomo dice che le_amiche criticano le_bambine,embedding_mental_SR,SP,0,NaN,acceptable
+le_figlie che la_studentessa critica conosce le_bambine,objrel_that,PS,5,V2,num_violation
+i_contadini dichiarano che i_figli bloccano le_studentesse,embedding_mental_SR,PP,0,NaN,acceptable
+l'_uomo ricorda che i_ragazzi davanti all'_attrice osservano la_bambina,embedding_mental,SPS,0,NaN,acceptable
+la_donna che le_studentesse vicino al_ragazzo accolgono difende la_madre,objrel_nounpp,SPS,0,NaN,acceptable
+la_studentessa che i_fratelli dietro al_padre indica attrae il_bambino,objrel_nounpp,SPS,7,V1,num_violation
+le_madri che la_bambina dietro alle_donne ama ragazza gli_amici,objrel_nounpp,PSP,-8,V2,verb_noun
+il_padre dice che il_fratello davanti alle_amiche attore le_bambine,embedding_mental,SSP,-7,V2,verb_noun
+le_studentesse ricordano che i_contadini davanti alle_ragazze conoscere le_bambine,embedding_mental,PPP,-7,V2,infinitive
+i_ragazzi che l'_amico vicino ai_fratelli accolgono attraggono le_sorelle,objrel_nounpp,PSP,7,V1,num_violation
+le_bambine che gli_amici bloccano saluti gli_studenti,objrel_that,PP,-5,V2,wrong_person
+il_ragazzo che gli_attori vicino all'_uomo bloccare difende le_madri,objrel_nounpp,SPS,-7,V1,infinitive
+gli_attori che le_amiche difendono incontrano i_contadini,objrel_that,PP,0,NaN,acceptable
+gli_studenti che la_ragazza dietro alle_amiche ricorda criticare il_padre,objrel_nounpp,PSP,-8,V2,infinitive
+le_attrici che la_bambina davanti alle_amiche attrae accolgono le_studentesse,objrel_nounpp,PSP,0,NaN,acceptable
+i_fratelli che il_figlio accanto ai_ragazzi ricorda difende i_bambini,objrel_nounpp,PSP,8,V2,num_violation
+gli_attori ricordano che le_madri ignora le_donne,embedding_mental_SR,PP,5,V2,num_violation
+le_ragazze che gli_attori vicino alla_studentessa accolgono ignorano il_figlio,objrel_nounpp,PPS,0,NaN,acceptable
+l'_attrice che le_figlie vicino ai_bambini indicano conosce l'_uomo,objrel_nounpp,SPP,0,NaN,acceptable
+le_bambine che le_attrici indicano guardare gli_uomini,objrel_that,PP,-5,V2,infinitive
+le_donne che le_contadine vicino alla_ragazza ignora evitano la_bambina,objrel_nounpp,PPS,7,V1,num_violation
+l'_uomo che le_amiche vicino alla_bambina studentessa blocca i_fratelli,objrel_nounpp,SPS,-7,V1,verb_noun
+la_contadina ricorda che gli_uomini davanti ai_figli evitano i_padri,embedding_mental,SPP,0,NaN,acceptable
+i_fratelli dicono che l'_amica vicino alla_madre interrompono lo_studente,embedding_mental,PSS,7,V2,num_violation
+gli_orologi che le_sorelle attraggono osservano la_donna,objrel_that,PP,-1,N1,inanimate
+gli_attori ricordano che le_madri guardano la_sorella,embedding_mental_SR,PP,0,NaN,acceptable
+gli_studenti dichiarano che il_contadino attrarre i_figli,embedding_mental_SR,PS,-5,V2,infinitive
+i_bambini dicono che i_figli davanti alla_studentessa accoglie i_padri,embedding_mental,PPS,7,V2,num_violation
+le_donne dicono che i_ragazzi incontrare i_fratelli,embedding_mental_SR,PP,-5,V2,infinitive
+le_attrici ricordano che le_sorelle davanti allo_studente attraiamo il_bambino,embedding_mental,PPS,-7,V2,wrong_person
+le_bambine dicono che le_donne guarda i_fratelli,embedding_mental_SR,PP,5,V2,num_violation
+le_studentesse che il_fratello vicino al_contadino saluta interrompe i_figli,objrel_nounpp,PSS,8,V2,num_violation
+la_ginnastica che i_fratelli incontrano osserva gli_uomini,objrel_that,SP,-1,N1,abstract
+l'_uomo che il_frigorifero dietro agli_amici amano osserva i_figli,objrel_nounpp,SPP,-3,N2,inanimate
+le_donne ricordano che l'_attrice vicino alle_amiche attraggo la_studentessa,embedding_mental,PSP,-7,V2,wrong_person
+l'_attrice che la_figlia blocca ricorda i_ragazzi,objrel_that,SS,0,NaN,acceptable
+i_ragazzi che le_contadine davanti all'_amica incontra criticano gli_attori,objrel_nounpp,PPS,7,V1,num_violation
+la_sorella che il_figlio davanti alle_contadine ama interrompe il_bambino,objrel_nounpp,SSP,0,NaN,acceptable
+l'_amico ricorda che la_figlia accanto ai_bambini saluta lo_studente,embedding_mental,SSP,0,NaN,acceptable
+le_sorelle che la_ragazza vicino alle_contadine ama criticano i_fratelli,objrel_nounpp,PSP,0,NaN,acceptable
+lo_studente che i_fratelli dietro alla_ragazza guardano indicano il_bambino,objrel_nounpp,SPS,8,V2,num_violation
+le_attrici che la_bambina interrompe ignorano il_ragazzo,objrel_that,PS,0,NaN,acceptable
+le_contadine che il_figlio dietro all'_amico attrae osservano la_studentessa,objrel_nounpp,PSS,0,NaN,acceptable
+il_contadino dichiara che il_ragazzo vicino agli_studenti incontra l'_uomo,embedding_mental,SSP,0,NaN,acceptable
+i_fratelli che la_figlia vicino agli_studenti osservano salutano l'_amico,objrel_nounpp,PSP,7,V1,num_violation
+gli_attori dicono che il_figlio davanti al_padre blocca le_studentesse,embedding_mental,PSS,0,NaN,acceptable
+le_studentesse dichiarano che il_ragazzo vicino alle_sorelle_contadine gli_uomini,embedding_mental,PSP,-7,V2,verb_noun
+le_filosofie dicono che i_ragazzi fermano gli_amici,embedding_mental_SR,PP,-1,N1,abstract
+l'_attore che le_studentesse accanto all'_amica ricordano ignora la_ragazza,objrel_nounpp,SPS,0,NaN,acceptable
+la_televisione che la_madre incontra indica i_bambini,objrel_that,SS,-1,N1,inanimate
+le_ragazze che le_contadine vicino ai_padri criticano ricordano il_bambino,objrel_nounpp,PPP,0,NaN,acceptable
+l'_amica dice che il_contadino accanto alle_ragazze studentessa il_figlio,embedding_mental,SSP,-7,V2,verb_noun
+le_ragazze che il_contadino davanti agli_uomini conosce evitare l'_amica,objrel_nounpp,PSP,-8,V2,infinitive
+le_donne che gli_amici dietro alle_sorelle ferma interrompono le_studentesse,objrel_nounpp,PPP,7,V1,num_violation
+le_attrici dicono che le_sorelle blocca il_padre,embedding_mental_SR,PP,5,V2,num_violation
+il_contadino che le_attrici accanto al_ragazzo osserva attrae gli_studenti,objrel_nounpp,SPS,7,V1,num_violation
+il_contadino che gli_uomini criticano attrae i_fratelli,objrel_that,SP,0,NaN,acceptable
+la_bambina ricorda che i_contadini accanto al_padre indicano la_sorella,embedding_mental,SPS,0,NaN,acceptable
+il_ragazzo dice che il_padre accanto alle_figlie sogni la_bambina,embedding_mental,SSP,-7,V2,wrong_person
+lo_studente che le_donne difendono ricorda le_attrici,objrel_that,SP,0,NaN,acceptable
+la_sorella dice che l'_amico davanti al_padre guarda le_contadine,embedding_mental,SSS,0,NaN,acceptable
+le_bambine che l'_attrice davanti ai_fratelli blocca accolgono l'_uomo,objrel_nounpp,PSP,0,NaN,acceptable
+gli_attori che il_fratello vicino ai_bambini guarda difendiamo le_contadine,objrel_nounpp,PSP,-8,V2,wrong_person
+i_contadini che gli_amici accanto al_ragazzo conoscono sogna i_padri,objrel_nounpp,PPS,8,V2,num_violation
+le_contadine che i_figli dietro al_bambino accolgono attrarre la_ragazza,objrel_nounpp,PPS,-8,V2,infinitive
+la_ragazza che le_studentesse davanti alle_madri guardare ignora il_contadino,objrel_nounpp,SPP,-7,V1,infinitive
+l'_attrice dice che il_fratello difendo l'_amico,embedding_mental_SR,SS,-5,V2,wrong_person
+l'_amico ricorda che la_donna vicino alla_sorella attrae le_madri,embedding_mental,SSS,0,NaN,acceptable
+le_amiche ricordano che le_studentesse ignorano il_contadino,embedding_mental_SR,PP,0,NaN,acceptable
+le_contadine che l'_uomo davanti ai_ragazzi saluta fermano il_figlio,objrel_nounpp,PSP,0,NaN,acceptable
+i_sedili che gli_studenti accolgono conoscono il_padre,objrel_that,PP,-1,N1,inanimate
+la_donna che l'_amico vicino ai_contadini interrompe ignora il_bambino,objrel_nounpp,SSP,0,NaN,acceptable
+i_bambini che la_donna davanti alla_madre interrompere ricordano gli_uomini,objrel_nounpp,PSS,-7,V1,infinitive
+le_donne dichiarano che la_madre dietro all'_amica accoglie l'_attore,embedding_mental,PSS,0,NaN,acceptable
+le_studentesse ricordano che le_sedie accanto al_fratello evitano i_padri,embedding_mental,PPS,-4,N2,inanimate
+la_madre che le_amiche vicino al_bambino criticare saluta le_contadine,objrel_nounpp,SPS,-7,V1,infinitive
+l'_uomo che il_ragazzo vicino agli_amici guarda saluta il_contadino,objrel_nounpp,SSP,0,NaN,acceptable
+gli_amici che le_bambine accanto ai_figli salutano amano il_padre,objrel_nounpp,PPP,0,NaN,acceptable
+gli_studenti dichiarano che i_contadini salutano i_figli,embedding_mental_SR,PP,0,NaN,acceptable
+i_contadini che l'_amico davanti al_bambino critica attrae le_figlie,objrel_nounpp,PSS,8,V2,num_violation
+la_donna che la_ragazza conosce interrompe gli_attori,objrel_that,SS,0,NaN,acceptable
+la_contadina che la_madre indica conoscono le_sorelle,objrel_that,SS,5,V2,num_violation
+la_contadina che i_bambini davanti ai_figli guarda ignora le_ragazze,objrel_nounpp,SPP,7,V1,num_violation
+le_amiche che i_bambini davanti alla_ragazza figli accolgono la_studentessa,objrel_nounpp,PPS,-7,V1,verb_noun
+il_fratello dichiara che il_contadino ragazzo l'_amico,embedding_mental_SR,SS,-5,V2,verb_noun
+la_sorella che il_bambino dietro al_padre ignora critica le_ragazze,objrel_nounpp,SSS,0,NaN,acceptable
+i_contadini che lo_studente dietro al_bambino incontra interrompono i_ragazzi,objrel_nounpp,PSS,0,NaN,acceptable
+i_figli che il_fratello evita attraggono gli_studenti,objrel_that,PS,0,NaN,acceptable
+gli_uomini dicono che i_bambini vicino ai_contadini indicano le_amiche,embedding_mental,PPP,0,NaN,acceptable
+il_contadino che i_figli blocca ignora le_madri,objrel_that,SP,4,V1,num_violation
+l'_amico dice che i_padri criticate l'_uomo,embedding_mental_SR,SP,-5,V2,wrong_person
+la_madre che lo_studente davanti alla_donna incontrano interrompe i_figli,objrel_nounpp,SSS,7,V1,num_violation
+il_bambino che l'_amico dietro allo_studente salutano attrae le_madri,objrel_nounpp,SSS,7,V1,num_violation
+i_padri dichiarano che l'_amico evitano il_contadino,embedding_mental_SR,PS,5,V2,num_violation
+le_studentesse che l'_uomo ricorda guardano il_fratello,objrel_that,PS,0,NaN,acceptable
+il_padre che il_figlio vicino ai_ragazzi guardare blocca l'_uomo,objrel_nounpp,SSP,-7,V1,infinitive
+le_ragazze dichiarano che le_filosofie davanti alle_attrici indicano le_donne,embedding_mental,PPP,-4,N2,abstract
+i_contadini che le_figlie indica ignorano la_sorella,objrel_that,PP,4,V1,num_violation
+l'_amica ricorda che i_ragazzi evita lo_studente,embedding_mental_SR,SP,5,V2,num_violation
+i_padri che i_fratelli davanti alle_studentesse amano difende la_figlia,objrel_nounpp,PPP,8,V2,num_violation
+il_padre che le_ragazze dietro alle_bambine fermano saluta il_fratello,objrel_nounpp,SPP,0,NaN,acceptable
+la_ragazza che la_donna accanto agli_attori accoglie interrompe le_figlie,objrel_nounpp,SSP,0,NaN,acceptable
+l'_amico che le_madri davanti alle_bambine difendono ferma l'_attrice,objrel_nounpp,SPP,0,NaN,acceptable
+le_donne che il_figlio dietro al_ragazzo guarda accoglie lo_studente,objrel_nounpp,PSS,8,V2,num_violation
+le_filosofie dicono che i_fratelli guardano l'_uomo,embedding_mental_SR,PP,-1,N1,abstract
+il_salto che la_sorella davanti all'_amico difende blocca la_studentessa,objrel_nounpp,SSS,-1,N1,abstract
+il_padre che le_figlie vicino agli_amici incontrano ama il_ragazzo,objrel_nounpp,SPP,0,NaN,acceptable
+le_ragazze che i_padri osserva indicano l'_amico,objrel_that,PP,4,V1,num_violation
+le_donne che l'_attore accanto al_figlio interrompe criticano la_studentessa,objrel_nounpp,PSS,0,NaN,acceptable
+la_ragazza dice che gli_studenti vicino agli_amici incontra i_figli,embedding_mental,SPP,7,V2,num_violation
+la_donna che la_simpatia dietro alla_figlia interrompono difende le_ragazze,objrel_nounpp,SPS,-3,N2,abstract
+le_figlie ricordano che gli_amici dietro all'_attore interrompe le_bambine,embedding_mental,PPS,7,V2,num_violation
+il_figlio che lo_studente davanti alla_sorella accoglie guarda le_donne,objrel_nounpp,SSS,0,NaN,acceptable
+i_compassi che gli_uomini vicino al_figlio accolgono evitano le_donne,objrel_nounpp,PPS,-1,N1,inanimate
+il_salto dichiara che i_contadini conoscono la_ragazza,embedding_mental_SR,SP,-1,N1,abstract
+le_bambine che il_fratello accanto alle_attrici critica fermate la_studentessa,objrel_nounpp,PSP,-8,V2,wrong_person
+le_bambine dichiarano che i_fratelli vicino ai_padri contadine le_donne,embedding_mental,PPP,-7,V2,verb_noun
+i_ragazzi che le_figlie accanto al_padre fermano ignora le_sorelle,objrel_nounpp,PPS,8,V2,num_violation
+il_fratello dice che le_bambine accanto al_ragazzo indicano i_contadini,embedding_mental,SPS,0,NaN,acceptable
+la_donna che la_bambina attrae ricorda le_ragazze,objrel_that,SS,0,NaN,acceptable
+gli_amici che il_figlio dietro ai_ragazzi blocca attrae il_contadino,objrel_nounpp,PSP,8,V2,num_violation
+i_bambini dicono che i_contadini vicino ai_ragazzi indicano gli_attori,embedding_mental,PPP,0,NaN,acceptable
+le_bambine ricordano che gli_uomini vicino all'_amica sogniamo le_sorelle,embedding_mental,PPS,-7,V2,wrong_person
+la_contadina che la_studentessa davanti agli_attori fratello indica le_amiche,objrel_nounpp,SSP,-7,V1,verb_noun
+le_attrici che lo_studente criticano osservano il_contadino,objrel_that,PS,4,V1,num_violation
+la_figlia ricorda che i_bambini davanti ai_contadini evitare gli_studenti,embedding_mental,SPP,-7,V2,infinitive
+la_ragazza che l'_uomo davanti alle_contadine padri accoglie le_sorelle,objrel_nounpp,SSP,-7,V1,verb_noun
+i_padri che il_contadino dietro alla_ragazza evita indicano la_bambina,objrel_nounpp,PSS,0,NaN,acceptable
+il_fratello che l'_attore vicino al_figlio blocca guardo le_studentesse,objrel_nounpp,SSS,-8,V2,wrong_person
+le_figlie dichiarano che l'_uomo dietro alla_madre fermano le_studentesse,embedding_mental,PSS,7,V2,num_violation
+l'_attore ricorda che il_compasso accanto alle_sorelle accoglie le_madri,embedding_mental,SSP,-4,N2,inanimate
+le_ragazze che gli_studenti ricordi guardano gli_uomini,objrel_that,PP,-4,V1,wrong_person
+i_figli ricordano che le_donne accanto alla_madre interrompe l'_amica,embedding_mental,PPS,7,V2,num_violation
+le_figlie ricordano che il_contadino accolgo la_donna,embedding_mental_SR,PS,-5,V2,wrong_person
+le_amiche dichiarano che le_ragazze davanti al_figlio contadino lo_studente,embedding_mental,PPS,-7,V2,verb_noun
+la_contadina ricorda che i_padri dietro agli_uomini osservano i_figli,embedding_mental,SPP,0,NaN,acceptable
+la_ragazza che le_sorelle dietro all'_uomo ricordano indica i_figli,objrel_nounpp,SPS,0,NaN,acceptable
+gli_uomini che il_fratello davanti al_padre interrompe incontra la_ragazza,objrel_nounpp,PSS,8,V2,num_violation
+le_amiche dicono che la_contadina ignorano l'_attrice,embedding_mental_SR,PS,5,V2,num_violation
+la_donna che le_ragazze difendono osserva il_fratello,objrel_that,SP,0,NaN,acceptable
+il_ragazzo che gli_amici fermano accoglie la_madre,objrel_that,SP,0,NaN,acceptable
+gli_studenti che il_padre vicino alla_donna indicano evitano i_ragazzi,objrel_nounpp,PSS,7,V1,num_violation
+l'_amico dichiara che gli_studenti davanti alla_figlia difende il_ragazzo,embedding_mental,SPS,7,V2,num_violation
+le_antipatie che le_madri ricordano amano la_figlia,objrel_that,PP,-1,N1,abstract
+la_sorella dice che i_figli ama le_amiche,embedding_mental_SR,SP,5,V2,num_violation
+l'_amico che i_bambini davanti agli_attori difendono padre la_studentessa,objrel_nounpp,SPP,-8,V2,verb_noun
+la_contadina che la_bambina accolgono difende l'_amico,objrel_that,SS,4,V1,num_violation
+la_contadina dichiara che la_studentessa accanto all'_attrice amano i_fratelli,embedding_mental,SSS,7,V2,num_violation
+i_fratelli che la_studentessa ferma guardano il_ragazzo,objrel_that,PS,0,NaN,acceptable
+il_piacere che l'_attore ferma osserva gli_amici,objrel_that,SS,-1,N1,abstract
+le_studentesse che la_figlia vicino ai_contadini incontra difendono l'_attrice,objrel_nounpp,PSP,0,NaN,acceptable
+il_fratello che la_bambina dietro alle_attrici critica ignora lo_studente,objrel_nounpp,SSP,0,NaN,acceptable
+la_sorella che il_bambino accanto all'_attore accoglie guarda l'_amica,objrel_nounpp,SSS,0,NaN,acceptable
+il_figlio che l'_amico accanto ai_padri difendono ignora le_donne,objrel_nounpp,SSP,7,V1,num_violation
+le_amiche che l'_attrice vicino alle_sorelle critica ricordano le_madri,objrel_nounpp,PSP,0,NaN,acceptable
+i_contadini dicono che le_amiche vicino ai_bambini ignorano gli_studenti,embedding_mental,PPP,0,NaN,acceptable
+le_ragazze dicono che l'_attrice accanto agli_amici incontra la_figlia,embedding_mental,PSP,0,NaN,acceptable
+il_fratello che l'_amica blocca osserva il_padre,objrel_that,SS,0,NaN,acceptable
+gli_uomini ricordano che il_bambino vicino alle_attrici fermano le_donne,embedding_mental,PSP,7,V2,num_violation
+le_bambine che le_figlie davanti alle_studentesse amano conoscono le_donne,objrel_nounpp,PPP,0,NaN,acceptable
+la_sorella che i_figli davanti ai_padri criticano difendo gli_uomini,objrel_nounpp,SPP,-8,V2,wrong_person
+la_contadina dice che le_ragazze vicino alla_madre guarda lo_studente,embedding_mental,SPS,7,V2,num_violation
+la_studentessa ricorda che l'_attrice bambine i_bambini,embedding_mental_SR,SS,-5,V2,verb_noun
+il_padre che il_figlio davanti all'_attrice ama saluta l'_uomo,objrel_nounpp,SSS,0,NaN,acceptable
+gli_uomini ricordano che il_fratello davanti al_bambino ama la_figlia,embedding_mental,PSS,0,NaN,acceptable
+i_bambini che i_frigoriferi dietro al_padre amano osservano l'_amica,objrel_nounpp,PPS,-3,N2,inanimate
+il_ragazzo che gli_attori dietro ai_fratelli conoscono ignora gli_amici,objrel_nounpp,SPP,0,NaN,acceptable
+le_contadine che i_fratelli difendono accolgono le_amiche,objrel_that,PP,0,NaN,acceptable
+l'_attrice dice che l'_amico evita le_contadine,embedding_mental_SR,SS,0,NaN,acceptable
+il_figlio dichiara che il_padre indica le_madri,embedding_mental_SR,SS,0,NaN,acceptable
+l'_attrice dice che il_contadino blocca le_bambine,embedding_mental_SR,SS,0,NaN,acceptable
+gli_amici ricordano che i_frigoriferi vicino al_ragazzo evitano il_fratello,embedding_mental,PPS,-4,N2,inanimate
+il_ragazzo che la_madre davanti all'_uomo indica amano le_studentesse,objrel_nounpp,SSS,8,V2,num_violation
+la_contadina che l'_amico osserva ferma la_sorella,objrel_that,SS,0,NaN,acceptable
+l'_attrice che le_figlie uomini evita la_studentessa,objrel_that,SP,-4,V1,verb_noun
+l'_amica che l'_uomo vicino alla_contadina evita guarda il_ragazzo,objrel_nounpp,SSS,0,NaN,acceptable
+l'_attrice dice che le_ragazze salutano l'_amica,embedding_mental_SR,SP,0,NaN,acceptable
+il_ragazzo che le_studentesse fermano indica le_figlie,objrel_that,SP,0,NaN,acceptable
+la_lampada che la_madre davanti alla_studentessa critica osserva il_fratello,objrel_nounpp,SSS,-1,N1,inanimate
+i_fratelli che i_padri osservano fermano gli_attori,objrel_that,PP,0,NaN,acceptable
+il_padre che l'_attore dietro alla_contadina ferma ignori l'_uomo,objrel_nounpp,SSS,-8,V2,wrong_person
+i_ragazzi che gli_amici accanto al_contadino ignorano studenti gli_attori,objrel_nounpp,PPS,-8,V2,verb_noun
+i_padri ricordano che le_figlie accanto agli_amici ragazzo le_bambine,embedding_mental,PPP,-7,V2,verb_noun
+le_ragazze dicono che la_sorella conoscono la_figlia,embedding_mental_SR,PS,5,V2,num_violation
+le_sorelle che gli_attori dietro alle_studentesse padri fermano le_figlie,objrel_nounpp,PPP,-7,V1,verb_noun
+l'_attore che lo_studente accanto alle_bambine ignora indica i_padri,objrel_nounpp,SSP,0,NaN,acceptable
+la_ragazza che gli_uomini vicino all'_attore indicare incontra i_padri,objrel_nounpp,SPS,-7,V1,infinitive
+l'_attore che le_bambine accanto alla_studentessa figlia blocca il_fratello,objrel_nounpp,SPS,-7,V1,verb_noun
+gli_studenti che la_sorella vicino all'_attore attrae contadina la_donna,objrel_nounpp,PSS,-8,V2,verb_noun
+l'_amica ricorda che la_bambina davanti agli_attori attrae il_contadino,embedding_mental,SSP,0,NaN,acceptable
+il_bambino che la_sorella dietro alla_contadina attrai conosce i_fratelli,objrel_nounpp,SSS,-7,V1,wrong_person
+le_amiche dichiarano che il_figlio accogliere la_sorella,embedding_mental_SR,PS,-5,V2,infinitive
+i_padri che gli_studenti vicino ai_contadini difendono conoscono le_donne,objrel_nounpp,PPP,0,NaN,acceptable
+le_amiche che gli_studenti criticare conoscono la_bambina,objrel_that,PP,-4,V1,infinitive
+l'_attrice che la_studentessa vicino all'_amico conosce incontrare i_fratelli,objrel_nounpp,SSS,-8,V2,infinitive
+i_fratelli ricordano che la_bambina davanti alle_figlie ignorano le_sorelle,embedding_mental,PSP,7,V2,num_violation
+la_studentessa che gli_uomini bloccano conoscono la_figlia,objrel_that,SP,5,V2,num_violation
+il_padre che i_contadini accanto alla_donna amano interrompe la_sorella,objrel_nounpp,SPS,0,NaN,acceptable
+la_donna che i_bambini davanti alla_ragazza incontrano studentessa gli_amici,objrel_nounpp,SPS,-8,V2,verb_noun
+l'_attrice che le_madri ricordano indico i_padri,objrel_that,SP,-5,V2,wrong_person
+il_fratello che la_figlia accanto all'_uomo blocca difendono la_sorella,objrel_nounpp,SSS,8,V2,num_violation
+il_padre che il_fratello critica ferma gli_attori,objrel_that,SS,0,NaN,acceptable
+il_fratello che i_padri dietro alle_attrici bloccano ricorda l'_uomo,objrel_nounpp,SPP,0,NaN,acceptable
+gli_attori che la_madre dietro all'_amica interrompono salutano il_contadino,objrel_nounpp,PSS,7,V1,num_violation
+la_studentessa che l'_amico dietro ai_contadini blocchi ignora le_bambine,objrel_nounpp,SSP,-7,V1,wrong_person
+la_ragazza che le_contadine attraggono accoglie il_bambino,objrel_that,SP,0,NaN,acceptable
+la_ragazza ricorda che la_figlia vicino al_bambino interrompe il_padre,embedding_mental,SSS,0,NaN,acceptable
+gli_uomini che la_bambina dietro alle_ragazze ricordano criticano le_donne,objrel_nounpp,PSP,7,V1,num_violation
+le_figlie che la_madre sorella fermano i_fratelli,objrel_that,PS,-4,V1,verb_noun
+i_contadini che la_figlia vicino alle_bambine osserva accolgono l'_amico,objrel_nounpp,PSP,0,NaN,acceptable
+gli_attori ricordano che l'_amica davanti al_figlio incontra il_padre,embedding_mental,PSS,0,NaN,acceptable
+la_bambina che la_televisione davanti alla_studentessa fermano incontra il_fratello,objrel_nounpp,SPS,-3,N2,inanimate
+le_bambine dichiarano che il_padre evita la_donna,embedding_mental_SR,PS,0,NaN,acceptable
+la_madre che la_ginnastica davanti alla_donna osserva ama lo_studente,objrel_nounpp,SSS,-3,N2,abstract
+il_padre dichiara che il_salto vicino ai_figli osservano la_bambina,embedding_mental,SPP,-4,N2,abstract
+le_donne che i_figli vicino agli_attori indicano ricorda la_studentessa,objrel_nounpp,PPP,8,V2,num_violation
+il_fratello che le_amiche vicino al_contadino osservano saluta il_padre,objrel_nounpp,SPS,0,NaN,acceptable
+la_ragazza che gli_amici vicino alle_contadine ricorda blocca le_bambine,objrel_nounpp,SPP,7,V1,num_violation
+gli_studenti che le_contadine accanto agli_uomini blocca interrompono i_padri,objrel_nounpp,PPP,7,V1,num_violation
+l'_uomo che gli_attori accanto ai_contadini ignorano attraggono i_bambini,objrel_nounpp,SPP,8,V2,num_violation
+le_studentesse che la_figlia davanti all'_amica attrae sorella le_ragazze,objrel_nounpp,PSS,-8,V2,verb_noun
+lo_studente che i_figli incontrano guarda i_ragazzi,objrel_that,SP,0,NaN,acceptable
+la_sorella dichiara che lo_studente conoscono le_attrici,embedding_mental_SR,SS,5,V2,num_violation
+i_contadini che i_padri vicino ai_ragazzi incontrano amare il_fratello,objrel_nounpp,PPP,-8,V2,infinitive
+le_bambine che le_madri ricordano interrompe le_contadine,objrel_that,PP,5,V2,num_violation
+il_bambino che la_madre critica salutano lo_studente,objrel_that,SS,5,V2,num_violation
+le_studentesse dichiarano che la_ragazza vicino all'_attrice ignora i_bambini,embedding_mental,PSS,0,NaN,acceptable
+le_donne ricordano che il_padre davanti alle_contadine ama gli_uomini,embedding_mental,PSP,0,NaN,acceptable
+i_padri che gli_attori davanti alla_ragazza sorelle fermano il_figlio,objrel_nounpp,PPS,-7,V1,verb_noun
+le_diatribe dichiarano che il_contadino indica la_studentessa,embedding_mental_SR,PS,-1,N1,abstract
+i_sedili che i_figli difendono interrompono gli_attori,objrel_that,PP,-1,N1,inanimate
+le_contadine che le_sedie accanto alle_figlie evita interrompono lo_studente,objrel_nounpp,PSP,-3,N2,inanimate
+i_bambini che lo_studente vicino all'_attrice accolgono conoscono gli_uomini,objrel_nounpp,PSS,7,V1,num_violation
+l'_amica ricorda che le_figlie vicino alla_donna blocchiamo la_sorella,embedding_mental,SPS,-7,V2,wrong_person
+gli_attori dichiarano che le_studentesse vicino all'_uomo accolgono il_fratello,embedding_mental,PPS,0,NaN,acceptable
+il_figlio che l'_amico accanto alla_madre bambine ferma il_padre,objrel_nounpp,SSS,-7,V1,verb_noun
+le_donne dichiarano che i_padri davanti agli_amici indica le_bambine,embedding_mental,PPP,7,V2,num_violation
+le_attrici che le_studentesse guardano evitare il_fratello,objrel_that,PP,-5,V2,infinitive
+l'_amico che i_figli vicino alle_studentesse criticano padre le_bambine,objrel_nounpp,SPP,-8,V2,verb_noun
+le_donne dichiarano che gli_studenti_padri le_figlie,embedding_mental_SR,PP,-5,V2,verb_noun
+i_fratelli dichiarano che le_amiche davanti alle_donne salutare il_ragazzo,embedding_mental,PPP,-7,V2,infinitive
+il_contadino che la_ragazza davanti alla_donna evito attrae il_fratello,objrel_nounpp,SSS,-7,V1,wrong_person
+le_attrici che le_bambine dietro alle_amiche blocca amano il_figlio,objrel_nounpp,PPP,7,V1,num_violation

@@ -1,8 +1,14 @@
-function fid=createLogFile(params)
+function fid=createLogFile(params, is_training)
 timestamp = gettimestamp();
 subses=['Subj_' num2str(params.subject) '_sess_' num2str(params.session)];
 
-fid=fopen(fullfile('Logs', ['logLocalGlobalParadigm_' timestamp '_' subses '.csv']) ,'w');
+fn = ['logLocalGlobalParadigm_' timestamp '_' subses '.csv'];
+if is_training
+   fn = ['train_', fn]; 
+end
+fn = fullfile('Logs', fn);
+
+fid=fopen(fn ,'w');
 fprintf(fid,['Event\t'...
             'Block\t'...
             'Trial\t'...

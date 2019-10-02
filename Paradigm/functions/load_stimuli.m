@@ -1,4 +1,4 @@
-function sentences_per_block = load_stimuli(params)
+function [sentences_per_block, training_sentences] = load_stimuli(params)
 % Returns: 
 % --------
 % sentences_per_block: cell array of cell arrays (1 x num_blocks). Each cell contains a
@@ -10,9 +10,9 @@ function sentences_per_block = load_stimuli(params)
 sentences_per_block = cell(1, params.n_blocks);
 for b_id = 1:params.n_blocks % block ID
 %     warning off;
-    curr_filename = fullfile(params.path2stim, ['subj_', params.subject, '_block_', num2str(b_id), '.txt']);
+    curr_filename = fullfile(params.path2stim, ['Subj_', params.subject, '_block_', num2str(b_id), '.txt']);
     fid = fopen(curr_filename, 'r');
-    stimuli = textscan(fid, '%s', 'delimiter','\n');
+    stimuli = textscan(fid, '%s', 'delimiter','\n', 'headerLines', 1);
     fclose(fid);
     stimuli_sentences = cell(1, length(stimuli{1}));
     for i =1:length(stimuli{1})
@@ -28,17 +28,31 @@ for b_id = 1:params.n_blocks % block ID
     sentences_per_block{1, b_id} = stimuli_sentences;
 end
 
-% Load the training
-% stimuli.
-% -----------------
-% tr_stimuli       = fullfile(params.path2stim,'training_trials.csv');
-% training_dataset = readtable(tr_stimuli);
-% training_words   = cellfun(@(x) regexp(x, ' ', 'split'),...
-%     training_dataset.sentence, 'UniformOutput',false);
-% for tt = 1:numel(training_words) % training trial
-%     training_words{tt} = ...
-%         training_words{tt}(~cellfun('isempty',training_words{tt}));
-% end
+
+% -------------------------
+% -------- TRAINING --------
+% --------------------------
+
+
+curr_filename = fullfile(params.path2stim, 'training_block.txt');
+fid = fopen(curr_filename, 'r');
+stimuli = textscan(fid, '%s', 'delimiter','\n', 'headerLines', 1);
+fclose(fid);
+training_sentences = cell(1, length(stimuli{1}));
+for i =1:length(stimuli{1})
+   training_sentences{i} = strsplit(stimuli{1}{i}, ','); 
+   words_in_cells = strsplit(training_sentences{i}{1});
+   for w=1:length(words_in_cells)
+       if strfind(words_in_cells{w}, '_')
+          words_in_cells{w} = strrep(words_in_cells{w}, '_', ' ');
+       end
+   end
+   training_sentences{i}{1} = words_in_cells;
+end
+
 
 end
+
+
+
 

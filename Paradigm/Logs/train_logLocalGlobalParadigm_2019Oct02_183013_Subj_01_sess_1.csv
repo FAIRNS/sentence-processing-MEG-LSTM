@@ -1,0 +1,48 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+BlockStart	0	0	0	0	 	1570033813.9987	
+FIX_ON	0	1	0	-	+	1570033814.0117	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	1	il bambino	1570033814.6283	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	1	 	1570033814.8783	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	2	ricorda	1570033815.1283	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	2	 	1570033815.3783	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	3	che	1570033815.6283	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	3	 	1570033815.8783	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	4	l' amica	1570033816.1284	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	4	 	1570033816.3783	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	5	vicino	1570033816.6284	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	5	 	1570033816.8784	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	6	alla ragazza	1570033817.1284	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	6	 	1570033817.3784	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	7	attrarre	1570033817.6284	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	7	 	1570033817.8784	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	8	le figlie	1570033818.1284	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	8	 	1570033818.3784	embedding_mental	SSS	-7	
+FIX2PANEL_ON	0	1	-	-	+	1570033818.6284	embedding_mental	SSS	-7	
+PanelOn	0	1	-	-	 	1570033819.1284	embedding_mental	SSS	-7	
+PanelResp	0	1	-	-		0	embedding_mental	SSS	-7	
+FeedbackOn	0	1	-	-	 	1570033822.1451	embedding_mental	SSS	-7	
+FeedbackOff	0	1	-	-	 	1570033823.1784	embedding_mental	SSS	-7	
+END_TRIAL	0	1	-	-	WRONG_DDC	0	embedding_mental	SSS	-7	
+FIX_ON	0	2	0	-	+	1570033823.1951	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	1	la ragazza	1570033823.8118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	1	 	1570033824.0618	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	2	che	1570033824.3118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	2	 	1570033824.5618	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	3	le sorelle	1570033824.8118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	3	 	1570033825.0618	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	4	davanti	1570033825.3118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	4	 	1570033825.5618	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	5	alle bambine	1570033825.8118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	5	 	1570033826.0618	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	6	contadina	1570033826.3118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	6	 	1570033826.5618	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	7	ricorda	1570033826.8118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	7	 	1570033827.0618	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	8	i figli	1570033827.3118	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	8	 	1570033827.5618	objrel_nounpp	SPP	-7	
+FIX2PANEL_ON	0	2	-	-	+	1570033827.8118	objrel_nounpp	SPP	-7	
+PanelOn	0	2	-	-	 	1570033828.3119	objrel_nounpp	SPP	-7	
+PanelResp	0	2	-	-		0	objrel_nounpp	SPP	-7	
+FeedbackOn	0	2	-	-	 	1570033831.3285	objrel_nounpp	SPP	-7	
+FeedbackOff	0	2	-	-	 	1570033832.3619	objrel_nounpp	SPP	-7	
+END_TRIAL	0	2	-	-	WRONG_DDC	0	objrel_nounpp	SPP	-7	
