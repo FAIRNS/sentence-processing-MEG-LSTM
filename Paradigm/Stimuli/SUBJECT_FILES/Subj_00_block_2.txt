@@ -1,0 +1,7 @@
+Sentence,Sentence_Type,condition,slide,Element_changed,Violation_Type
+la_donna che lo_studente indica ama le_amiche,objrel_that,SS,0,NaN,acceptable
+la_donna dichiara che le_bambine accanto allo_studente conosce gli_amici,embedding_mental,SPS,7,V2,num_violation
+le_figlie che il_bambino vicino all'_uomo blocca ferma la_contadina,objrel_nounpp,PSS,8,V2,num_violation
+la_sorella ricorda che gli_amici accanto all'_attrice attrae la_studentessa,embedding_mental,SPS,7,V2,num_violation
+le_bambine che i_ragazzi fermano incontra il_contadino,objrel_that,PP,5,V2,num_violation
+gli_amici dicono che gli_uomini vicino alle_contadine accoglie la_madre,embedding_mental,PPP,7,V2,num_violation

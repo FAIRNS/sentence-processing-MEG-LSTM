@@ -57,8 +57,10 @@ for trial=1:length(stimuli_sentences) % loop through trials
             first_press_time = key_press_time;
             subject_detected_viol = true;
         end
-        WaitSecs('UntilTime', slide_onset + params.stimulus_ontime);
-        %%%%%%%%%%%%% TEXT OFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        if ~isempty(key_press_name) % complete onset duration if key was pressed
+          WaitSecs('UntilTime', slide_onset + params.stimulus_ontime);
+        end
+        %%%%%%%%%%%% TEXT OFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         slide_offset = Screen('Flip', handles.win); % Word OFF
         log_str = createLogString('WORD_OFF', block, trial, 0, slide, ' ', slide_offset, curr_sentence_type, curr_condition, curr_viol_on_slide);
         fprintf(fid_log,log_str); % WRITE-TO-LOG 
@@ -71,8 +73,9 @@ for trial=1:length(stimuli_sentences) % loop through trials
             first_press_time = key_press_time;
             subject_detected_viol = true;            
         end
-        % For debug:
-        WaitSecs('UntilTime', slide_offset + params.stimulus_offtime);
+        if ~isempty(key_press_name) % complete onset duration if key was pressed
+            WaitSecs('UntilTime', slide_offset + params.stimulus_offtime);
+        end
         
     end
     

@@ -2,11 +2,11 @@
 % Doubly nested long-range dependencies
 % -------------------------------------
 clear; close all; clc    
-debug_mode = 0    ;
+debug_mode = 1    ;
  
 if debug_mode
     dbstop if error  
-    training = 0;
+    training = 1;
 else
     training = questdlg('Do yo u want to include a training block?','Training block','Yes','No','Yes');
     if training(1) == 'Y', training = 1; else training = 0; end
@@ -22,7 +22,7 @@ text_after_block{2} = 'L''esperimento è finito, ti ringraziamo per la partecipa
 
 %% INITIALIZATION
 addpath('functions')
-KbName('UnifyKeyNames') 
+KbName('UnifyKeyNames')
 params = getParamsLocalGlobalParadigm(debug_mode);
 fid_log = createLogFile(params, false); % OPEN LOG 
 handles = Initialize_PTB_devices(params, debug_mode); % Open screens 
@@ -54,18 +54,20 @@ handles = Initialize_PTB_devices(params, debug_mode); % Open screens
     end
     cumTrial=0;
     
-    %%%%%%% PRESENT LONG FIXATION ONLY AT THE BEGINING
-    DrawFormattedText(handles.win, '+', 'center', 'center', handles.white);
-    Screen('Flip', handles.win);
-    WaitSecs(1.5); %Wait before experiment start
-    
     
     %%%%%%%% START EXPERIMENT
     for block = 1 :params.n_blocks
+        %%%%%% TEXT BEFORE BLOCK STARTS
         DrawFormattedText(handles.win, text_before_block{block}, 'center', 'center', handles.white);
         Screen('Flip',handles.win);
         wait_for_key_press()
+        %%%%%%% PRESENT A LONG FIXATION ONLY AT THE BEGINING
+        DrawFormattedText(handles.win, '+', 'center', 'center', handles.white);
+        Screen('Flip', handles.win);
+        WaitSecs(1.5); %Wait before experiment start
+        %%%%%%% START EXPERIMENT
         run_visual_block(handles, block, sentences_per_block{block}, fid_log, cumTrial, params);   
+        %%%%%%% TEXT AFTER BLOCK ENDS
         DrawFormattedText(handles.win, text_after_block{block}, 'center', 'center', handles.white);
         Screen('Flip',handles.win);
         wait_for_key_press()

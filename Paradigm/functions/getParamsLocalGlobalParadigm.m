@@ -7,7 +7,7 @@ params.n_blocks = 2;
 params.r_rate =  60;
 
 if debug_mode
-    params.subject = '01';
+    params.subject = '00';
     params.session = str2double('00');
 else
     subject = inputdlg({'Enter subject number'},...
@@ -38,11 +38,11 @@ params.str_wrong = 'scorretta';
 
 %% %%%%%%% TIMING params
 params.fixation_duration_visual_block   = 0.6; %
-params.stimulus_ontime                  = 0.25; % Duration of each word
-params.stimulus_offtime                 = 0.25; % Duration of black between stimuli
+params.stimulus_ontime                  = 0.250; % Duration of each word
+params.stimulus_offtime                 = 0.250; % Duration of black between stimuli
 params.SOA_visual                       = params.stimulus_ontime + params.stimulus_offtime;
 params.ISI_to_response_panel            = 0.5;
-params.panel_ontime                     = 3;  % Duration of panel on the screen
+params.panel_ontime                     = 2;  % Duration of panel on the screen
 params.max_RT                           = 1.5;    % Maximum allowance for RT.
 params.feedback_time                    = 0.5;
 params.ISI_visual                      = 1; % from end of last trial to beginning of first trial

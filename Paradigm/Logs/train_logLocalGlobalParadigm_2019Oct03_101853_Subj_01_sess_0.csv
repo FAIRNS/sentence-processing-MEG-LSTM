@@ -1,0 +1,22 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+BlockStart	0	0	0	0	 	1570090733.1332	
+FIX_ON	0	1	0	-	+	1570090733.1354	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	1	il bambino	1570090733.742	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	2	ricorda	1570090734.2292	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	3	che	1570090734.7141	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	4	l' amica	1570090735.199	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	5	vicino	1570090735.6873	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	6	alla ragazza	1570090736.1744	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	7	attrarre	1570090736.6614	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	8	le figlie	1570090737.1476	embedding_mental	SSS	-7	
+FIX2PANEL_ON	0	1	-	-	+	1570090737.6339	embedding_mental	SSS	-7	
+PanelOn	0	1	-	-	 	1570090738.4198	embedding_mental	SSS	-7	
+PanelResp	0	1	-	-		0	embedding_mental	SSS	-7	
+FeedbackOn	0	1	-	-	 	1570090741.422	embedding_mental	SSS	-7	
+FeedbackOff	0	1	-	-	 	1570090742.4434	embedding_mental	SSS	-7	
+END_TRIAL	0	1	-	-	WRONG_DDC	0	embedding_mental	SSS	-7	
+FIX_ON	0	2	0	-	+	1570090742.4571	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	1	la ragazza	1570090743.0607	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	2	che	1570090743.5448	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	3	le sorelle	1570090744.0301	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	4	davanti	1570090744.515	objrel_nounpp	SPP	-7	

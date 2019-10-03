@@ -1,0 +1,40 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+BlockStart	0	0	0	0	 	1570089422.6105	
+FIX_ON	0	1	0	-	+	1570089422.6124	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	1	il bambino	1570089423.2185	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	1	 	1570089423.459	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	2	ricorda	1570089423.7006	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	2	 	1570089423.9412	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	3	che	1570089424.1828	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	3	 	1570089424.4235	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	4	l' amica	1570089424.6651	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	4	 	1570089424.9057	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	5	vicino	1570089425.1493	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	5	 	1570089425.3903	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	6	alla ragazza	1570089425.6325	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	6	 	1570089425.8731	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	7	attrarre	1570089426.1146	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	7	 	1570089426.3551	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	8	le figlie	1570089426.597	embedding_mental	SSS	-7	
+WORD_OFF	0	1	0	8	 	1570089426.8377	embedding_mental	SSS	-7	
+FIX2PANEL_ON	0	1	-	-	+	1570089427.0794	embedding_mental	SSS	-7	
+PanelOn	0	1	-	-	 	1570089427.5641	embedding_mental	SSS	-7	
+PanelResp	0	1	-	-		0	embedding_mental	SSS	-7	
+FeedbackOn	0	1	-	-	 	1570089430.5662	embedding_mental	SSS	-7	
+FeedbackOff	0	1	-	-	 	1570089431.5873	embedding_mental	SSS	-7	
+END_TRIAL	0	1	-	-	WRONG_DDC	0	embedding_mental	SSS	-7	
+FIX_ON	0	2	0	-	+	1570089431.5937	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	1	la ragazza	1570089432.1973	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	1	 	1570089432.2064	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	2	che	1570089432.4508	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	2	 	1570089432.4563	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	3	le sorelle	1570089432.7003	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	3	 	1570089432.9411	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	4	davanti	1570089433.1829	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	4	 	1570089433.4236	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	5	alle bambine	1570089433.6653	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	5	 	1570089433.6729	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	6	contadina	1570089433.917	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	6	 	1570089433.9229	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	7	ricorda	1570089434.1687	objrel_nounpp	SPP	-7	
+WORD_OFF	0	2	0	7	 	1570089434.2848	objrel_nounpp	SPP	-7	

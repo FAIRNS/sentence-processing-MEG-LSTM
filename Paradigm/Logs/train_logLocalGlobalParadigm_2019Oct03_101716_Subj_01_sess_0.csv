@@ -1,0 +1,4 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+BlockStart	0	0	0	0	 	1570090636.6126	
+FIX_ON	0	1	0	-	+	1570090636.6163	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	1	il bambino	1570090637.2236	embedding_mental	SSS	-7	

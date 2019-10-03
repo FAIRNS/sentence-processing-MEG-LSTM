@@ -1,0 +1,19 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide
+BlockStart	0	0	0	0	 	1570090281.1212	
+FIX_ON	0	1	0	-	+	1570090281.1236	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	1	il bambino	1570090281.7293	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	2	ricorda	1570090282.2745	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	3	che	1570090282.8194	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	4	l' amica	1570090283.3657	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	5	vicino	1570090283.9094	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	6	alla ragazza	1570090284.4522	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	7	attrarre	1570090285.0006	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	8	le figlie	1570090285.5455	embedding_mental	SSS	-7	
+FIX2PANEL_ON	0	1	-	-	+	1570090286.0899	embedding_mental	SSS	-7	
+PanelOn	0	1	-	-	 	1570090286.8755	embedding_mental	SSS	-7	
+PanelResp	0	1	-	-		0	embedding_mental	SSS	-7	
+FeedbackOn	0	1	-	-	 	1570090289.8776	embedding_mental	SSS	-7	
+FeedbackOff	0	1	-	-	 	1570090290.8997	embedding_mental	SSS	-7	
+END_TRIAL	0	1	-	-	WRONG_DDC	0	embedding_mental	SSS	-7	
+FIX_ON	0	2	0	-	+	1570090290.9082	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	1	la ragazza	1570090291.5125	objrel_nounpp	SPP	-7	
