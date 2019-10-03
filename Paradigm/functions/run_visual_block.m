@@ -14,6 +14,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
     curr_sentence_type  = stimuli_sentences{trial}{2};
     curr_condition  = stimuli_sentences{trial}{3};
     curr_viol_on_slide  = stimuli_sentences{trial}{4};
+    violation_type  = stimuli_sentences{trial}{5};
     cumTrial = cumTrial+1;  
     curr_RT_trial = 0;
     
@@ -46,7 +47,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
         if slide == slide_num_of_viol % Can be True only for violation trials (otherwise, slide_num_of_viol =0)
             violation_slide_onset = slide_onset;
         end
-        log_str = createLogString('WORD_ON', block, trial, 0, slide, curr_sentence{slide}, slide_onset, curr_sentence_type, curr_condition, curr_viol_on_slide);
+        log_str = createLogString('WORD_ON', block, trial, 0, slide, curr_sentence{slide}, slide_onset, curr_sentence_type, curr_condition, curr_viol_on_slide, violation_type);
         fprintf(fid_log,log_str); % WRITE-TO-LOG
         [key_press_name, key_press_time] = getSubjectResponse(handles.LKey, handles.escapeKey, slide_onset, params.stimulus_ontime); % CHECK KEY PRESS
         if ~isempty(key_press_name) % WRITE TO LOG IF KEY PRESS
@@ -57,9 +58,9 @@ for trial=1:length(stimuli_sentences) % loop through trials
             first_press_time = key_press_time;
             subject_detected_viol = true;
         end
-        if ~isempty(key_press_name) % complete onset duration if key was pressed
+%         if ~isempty(key_press_name) % complete onset duration if key was pressed
           WaitSecs('UntilTime', slide_onset + params.stimulus_ontime);
-        end
+%         end
         %%%%%%%%%%%% TEXT OFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         slide_offset = Screen('Flip', handles.win); % Word OFF
         log_str = createLogString('WORD_OFF', block, trial, 0, slide, ' ', slide_offset, curr_sentence_type, curr_condition, curr_viol_on_slide);
@@ -73,9 +74,9 @@ for trial=1:length(stimuli_sentences) % loop through trials
             first_press_time = key_press_time;
             subject_detected_viol = true;            
         end
-        if ~isempty(key_press_name) % complete onset duration if key was pressed
+%         if ~isempty(key_press_name) % complete onset duration if key was pressed
             WaitSecs('UntilTime', slide_offset + params.stimulus_offtime);
-        end
+%         end
         
     end
     
@@ -94,7 +95,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
     %%%%%%%%%%%%% FIXATION-TO-RESPONSE-PANEL (ONSET) %%%%%%%%%%%%%%%%%%%%
     DrawFormattedText(handles.win, '+', 'center', 'center', [255,255,255]);
     fix2panel_onset  = Screen('Flip', handles.win);
-    log_str = createLogString('FIX2PANEL_ON', block, trial, '-', '-', '+', fix2panel_onset, curr_sentence_type, curr_condition, curr_viol_on_slide);
+    log_str = createLogString('FIX2PANEL_ON', block, trial, '-', '-', '+', fix2panel_onset, curr_sentence_type, curr_condition, curr_viol_on_slide, violation_type);
     fprintf(fid_log,log_str); % WRITE-TO-LOG 
     WaitSecs('UntilTime', fix2panel_onset + params.SOA_visual);
     
@@ -103,7 +104,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
     decision_screen   = [params.str_correct, '                         ', params.str_wrong];
     DrawFormattedText(handles.win, decision_screen, 'center', 'center', handles.white);
     panel_onset= Screen('Flip', handles.win); % Pannel ON
-    log_str = createLogString('PanelOn', block, trial, '-', '-', ' ', panel_onset, curr_sentence_type, curr_condition, curr_viol_on_slide);
+    log_str = createLogString('PanelOn', block, trial, '-', '-', ' ', panel_onset, curr_sentence_type, curr_condition, curr_viol_on_slide, violation_type);
     fprintf(fid_log,log_str); % WRITE-TO-LOG 
     
     %%%%%%%%%%%%%%% USER INPUT %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,7 +135,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
      
     curr_RT_panel = key_press_time - panel_onset;
         
-    log_str = createLogString('PanelResp', block, trial, '-', '-', panel_response, curr_RT_panel, curr_sentence_type, curr_condition, curr_viol_on_slide);
+    log_str = createLogString('PanelResp', block, trial, '-', '-', panel_response, curr_RT_panel, curr_sentence_type, curr_condition, curr_viol_on_slide, violation_type);
     fprintf(fid_log,log_str); % WRITE-TO-LOG
     %%%%%%%%%%%%%% END OF DECISION SCREEN %%%%%%%%%%%%%
     
@@ -152,7 +153,7 @@ for trial=1:length(stimuli_sentences) % loop through trials
     fprintf(fid_log,log_str); % WRITE-TO-LOG 
     
     %%%%%%%%%%%%% ISI TO NEXT TRIAL %%%%%%%%%%%%%%%%%%%
-    log_str = createLogString('END_TRIAL', block, trial, '-', '-', correct_wrong, curr_RT_trial, curr_sentence_type, curr_condition, curr_viol_on_slide);
+    log_str = createLogString('END_TRIAL', block, trial, '-', '-', correct_wrong, curr_RT_trial, curr_sentence_type, curr_condition, curr_viol_on_slide, violation_type);
     fprintf(fid_log,log_str); % WRITE-TO-LOG 
     clear feedback_answer correct_wrong
     
