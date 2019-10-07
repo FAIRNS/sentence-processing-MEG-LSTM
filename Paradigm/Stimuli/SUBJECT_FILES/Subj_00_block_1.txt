@@ -39,4 +39,3 @@ le_sorelle che i_contadini davanti alle_madri osservano ricordano i_fratelli,obj
 l'_attore che le_studentesse vicino al_fratello interrompono ignorano le_contadine,objrel_nounpp,SPS,8,V2,num_violation
 l'_amica che il_ragazzo accanto alle_contadine fermo indica le_madri,objrel_nounpp,SSP,-7,V1,wrong_person
 il_fratello dice che gli_uomini davanti alla_studentessa conosce le_bambine,embedding_mental,SPS,7,V2,num_violation
-

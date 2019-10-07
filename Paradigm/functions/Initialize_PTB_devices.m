@@ -1,7 +1,7 @@
 function handles = Initialize_PTB_devices(params, debug_mode)
 
 %% DEBUG (comment out if not debug-mode)
-PsychDebugWindowConfiguration([0],[0.5])
+%PsychDebugWindowConfiguration([0],[0.5])
 
 %% KEYBOARD
 handles.escapeKey = KbName('ESCAPE');
@@ -30,7 +30,7 @@ if debug_mode
     handles.rect = [0 0 rect(3:4)./2];
     handles.win = Screen('OpenWindow',handles.screenNumber, handles.black, handles.rect);
 else
-    handles.rect = [0 0 rect(3:4)./1.1];
+    handles.rect = [0 0 rect(3:4)./1.01];
     handles.win = Screen('OpenWindow',handles.screenNumber, handles.black, handles.rect);
 end 
 

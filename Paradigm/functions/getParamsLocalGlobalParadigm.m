@@ -30,7 +30,7 @@ elseif ispc % strcmp(comp,'l')
 end
 
 %% %%%%%%% TEXT params
-params.font_size    = 20; % Fontsize for words presented at the screen center
+params.font_size    = 30; % Fontsize for words presented at the screen center
 params.font_name    = 'Courier New';
 params.font_color   = 'ffffff';
 params.str_correct = 'corretta';

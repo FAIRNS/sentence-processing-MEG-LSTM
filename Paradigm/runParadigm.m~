@@ -2,7 +2,10 @@
 % Doubly nested long-range dependencies
 % -------------------------------------
 clear; close all; clc    
-debug_mode = 1    ;
+debug_mode = 0    ;
+
+ mmxmmxxxxmmxmmmxmxxxmmmmxmmmmmmmmmxmmmmxxmmxxmmmmxxmmmmmmmxmmxmmxmmxxmxxmmxmmmmxmmxmmxmmmxmxmmmmmmxxmmmxmmxmxmmmmmmmmmxmmxxmmmmxmmmmmmxmmxxxmmmmmmmxmxxmxxxxmxxxxmxxmxxmmxxmmxxmmmxmxxxxxmxxmmxxmxmmmmmmmmmmmmxmmmmmmmxmmmmmmmmmmmmmxmmmmmmmmmmmmmxxxxxmxxxmmxmmxxxmmmmxxmxxmmmmmmmmxmmxxmmmmxxmmxm mxmxxxmmmmmxmmxmmmmxmmmxxmmxmmmmmmmmmmmmmmmmmxmxxmmmmxmxxmmxxmmmmxmxmx
+ mmxxmmmmmxmmxxxxxxmxxmxxxxxmmmmmxxmmmxxxxmmmmmmmmmmmxmmxxxxxxmxxmxxmmmxxmmmmxxmmmmxmmmxxmmmmmmmxxmmxmxmmmmmmmmxmmmmmmmxxxmmmmmxxmmxmmmmmxmmmmmmmmmmxxmmxmmxxmmxxxmmxxxxmmmmmmmmxmmxmmxmxmmxxmmmmxmmmmmxxxmmmmmmmmmxmxmmmmmxmmmxxxxmmmmmxmxxmmmmmmmmmxxxmmxmmxmmmxmmmxmmmmmmmmmmxmmxmmmmmmmmmxmxmmxmmmmmmmxmmmmmxxmmmxmmmmmmmmmmmmxmmmmmmxmmmxmmmmmmmmxmmxmmmmmxmmmmmmmmmmmmmmmmmmmmmxmmmmmxx
  
 if debug_mode
     dbstop if error  
@@ -55,14 +58,13 @@ handles = Initialize_PTB_devices(params, debug_mode); % Open screens
     cumTrial=0;
     
     
-    
-    
     %%%%%%%% START EXPERIMENT
     for block = 1 :params.n_blocks
+        %%%%%% TEXT BEFORE BLOCK STARTS
         DrawFormattedText(handles.win, text_before_block{block}, 'center', 'center', handles.white);
         Screen('Flip',handles.win);
         wait_for_key_press()
-        %%%%%%% PRESENTLONG FIXATION ONLY AT THE BEGINING
+        %%%%%%% PRESENT A LONG FIXATION ONLY AT THE BEGINING
         DrawFormattedText(handles.win, '+', 'center', 'center', handles.white);
         Screen('Flip', handles.win);
         WaitSecs(1.5); %Wait before experiment start
