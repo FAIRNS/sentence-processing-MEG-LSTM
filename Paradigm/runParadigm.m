@@ -2,7 +2,7 @@
 % Doubly nested long-range dependencies
 % -------------------------------------
 clear; close all; clc    
-debug_mode = 0;
+debug_mode = 1;
  
 if debug_mode
     dbstop if error  

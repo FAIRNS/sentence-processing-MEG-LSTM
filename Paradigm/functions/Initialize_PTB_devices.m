@@ -1,7 +1,7 @@
 function handles = Initialize_PTB_devices(params, debug_mode)
 
 %% DEBUG (comment out if not debug-mode)
-%PsychDebugWindowConfiguration([0],[0.5])
+PsychDebugWindowConfiguration([0],[0.5])
 
 %% KEYBOARD
 handles.escapeKey = KbName('ESCAPE');
@@ -38,7 +38,7 @@ end
 
 %% TEXT ON SCREEN
 Screen('TextFont',handles.win, 'Arial');
-Screen('TextSize',handles.win, 20);   % 160 --> ~25mm text height (from top of `d' to bottom of `g').
+Screen('TextSize',handles.win, 50);   % 160 --> ~25mm text height (from top of `d' to bottom of `g').
 Screen('TextStyle', handles.win, 1);   % 0=normal text style. 1=bold. 2=italic.
 
 
