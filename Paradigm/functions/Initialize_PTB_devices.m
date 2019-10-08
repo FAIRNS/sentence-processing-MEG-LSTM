@@ -1,7 +1,7 @@
 function handles = Initialize_PTB_devices(params, debug_mode)
 
 %% DEBUG (comment out if not debug-mode)
-PsychDebugWindowConfiguration([0],[0.5])
+% PsychDebugWindowConfiguration([0],[0.5])
 
 %% KEYBOARD
 handles.escapeKey = KbName('ESCAPE');
