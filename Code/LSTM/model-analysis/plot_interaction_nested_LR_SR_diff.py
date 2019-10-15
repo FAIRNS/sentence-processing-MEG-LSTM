@@ -4,13 +4,15 @@ from get_behav_results import get_behav_LSTM_italian, get_behav_human_italian
 
 
 def get_mean_error(behav_results, sentence_type, control_conditions, test_conditions, normalize=True):
-    assert len(test_conditions) == len(control_conditions)
     relative_error = []
-    for test_cond, control_cond in zip(test_conditions, control_conditions):
-        if normalize:
+    if normalize:
+        assert len(test_conditions) == len(control_conditions)
+        for test_cond, control_cond in zip(test_conditions, control_conditions):
             relative_error.append(behav_results[sentence_type][test_cond] - behav_results[sentence_type][control_cond])
-        else:
+    else:
+        for test_cond in test_conditions:
             relative_error.append(behav_results[sentence_type][test_cond])
+
     return np.mean(relative_error), np.std(relative_error)
 
 # ------------------------
@@ -19,10 +21,10 @@ def get_mean_error(behav_results, sentence_type, control_conditions, test_condit
 behav_LSTM_italian = get_behav_LSTM_italian()
 
 # Absolute error rate
-error_objrel_incongruent, std_objrel_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'objrel', ['SS', 'PP'], ['SP', 'PS'], False)
-error_objrel_nounpp_incongruent, std_objrel_nounpp_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'objrel_nounpp', ['SSS', 'PPP'], ['SPS', 'PSP'], False)
-error_embedding_mental_SR_incongruent, std_embedding_mental_SR_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'embedding_mental_SR', ['SS', 'PP'], ['SP', 'PS'], False)
-error_embedding_mental_LR_incongruent, std_embedding_mental_LR_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'embedding_mental_LR', ['SSS', 'PPP'], ['SPS', 'PSP'], False)
+error_objrel_incongruent, std_objrel_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'objrel', [], ['SP', 'PS'], False)
+error_objrel_nounpp_incongruent, std_objrel_nounpp_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'objrel_nounpp', [], ['SPS', 'PSP'], False)
+error_embedding_mental_SR_incongruent, std_embedding_mental_SR_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'embedding_mental_SR', [], ['SP', 'PS'], False)
+error_embedding_mental_LR_incongruent, std_embedding_mental_LR_incongruent = get_mean_error(behav_LSTM_italian['error_rate'], 'embedding_mental_LR', [], ['SPS', 'PSP'], False)
 
 fig, ax = plt.subplots(figsize=(20, 10))
 x = (0,1)
@@ -81,10 +83,10 @@ plt.savefig('../../../Figures/interaction_error_LSTM_Italian_nested_norm.png')
 behav_human_italian = get_behav_human_italian()
 
 # Absolute error rate
-error_objrel_incongruent, std_objrel_incongruent = get_mean_error(behav_human_italian['error_rate'], 'objrel', ['SS', 'PP'], ['SP', 'PS'], False)
-error_objrel_nounpp_incongruent, std_objrel_nounpp_incongruent = get_mean_error(behav_human_italian['error_rate'], 'objrel_nounpp', ['SSS', 'PPP'], ['SPS', 'PSP'], False)
-error_embedding_mental_SR_incongruent, std_embedding_mental_SR_incongruent = get_mean_error(behav_human_italian['error_rate'], 'embedding_mental_SR', ['SS', 'PP'], ['SP', 'PS'], False)
-error_embedding_mental_LR_incongruent, std_embedding_mental_LR_incongruent = get_mean_error(behav_human_italian['error_rate'], 'embedding_mental_LR', ['SSS', 'PPP'], ['SPS', 'PSP'], False)
+error_objrel_incongruent, std_objrel_incongruent = get_mean_error(behav_human_italian['error_rate'], 'objrel', [], ['SP', 'PS'], False)
+error_objrel_nounpp_incongruent, std_objrel_nounpp_incongruent = get_mean_error(behav_human_italian['error_rate'], 'objrel_nounpp', [], ['SPS', 'PSP'], False)
+error_embedding_mental_SR_incongruent, std_embedding_mental_SR_incongruent = get_mean_error(behav_human_italian['error_rate'], 'embedding_mental_SR', [], ['SP', 'PS'], False)
+error_embedding_mental_LR_incongruent, std_embedding_mental_LR_incongruent = get_mean_error(behav_human_italian['error_rate'], 'embedding_mental_LR', [], ['SPS', 'PSP'], False)
 
 fig, ax = plt.subplots(figsize=(20, 10))
 x = (0,1)

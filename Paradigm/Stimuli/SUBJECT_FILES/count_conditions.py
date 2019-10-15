@@ -4,7 +4,7 @@ import pandas as pd
 from tabulate import tabulate
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-s', '--subject', type=int, default=10)
+parser.add_argument('-s', '--subject', type=int, default=4)
 parser.add_argument('-d', '--delim', default=',')
 args = parser.parse_args()
 

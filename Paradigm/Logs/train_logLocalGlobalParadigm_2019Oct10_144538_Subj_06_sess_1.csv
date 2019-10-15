@@ -1,0 +1,896 @@
+Event	Block	Trial	StimNum	SlideNum	WordStr	Time	Sentence_type	Condition	Viol_on_slide	Violation_type
+BlockStart	0	0	0	0	 	2240.5528	
+FIX_ON	0	1	0	-	+	2240.5759	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	1	il bambino	2241.1856	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	1	 	2241.4318	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	2	ricorda	2241.6897	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	2	 	2241.936	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	3	che	2242.1821	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	3	 	2242.4284	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	4	l' amica	2242.6746	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	4	 	2242.9208	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	5	vicino	2243.167	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	5	 	2243.4132	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	6	alla ragazza	2243.6594	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	6	 	2243.9056	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	7	attrarre	2244.1518	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	7	 	2244.3981	embedding_mental	SSS	-7	
+WORD_ON	0	1	0	8	le figlie	2244.6443	embedding_mental	SSS	-7	V2	
+WORD_OFF	0	1	0	8	 	2244.8905	embedding_mental	SSS	-7	
+FIX2PANEL_ON	0	1	-	-	+	2245.1484	embedding_mental	SSS	-7	V2	
+PanelOn	0	1	-	-	 	2246.1801	embedding_mental	SSS	-7	V2	
+PanelResp	0	1	-	-	VIOLATION	0.0032564	embedding_mental	SSS	-7	V2	
+FeedbackOn	0	1	-	-	 	2246.1918	embedding_mental	SSS	-7	
+FeedbackOff	0	1	-	-	 	2247.2236	embedding_mental	SSS	-7	
+END_TRIAL	0	1	-	-	CORRECT_INC	0	embedding_mental	SSS	-7	V2	
+FIX_ON	0	2	0	-	+	2247.2471	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	1	la ragazza	2247.8567	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	1	 	2248.1029	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	2	che	2248.3491	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	2	 	2248.5953	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	3	le sorelle	2248.8415	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	3	 	2249.0878	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	4	davanti	2249.334	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	4	 	2249.5802	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	5	alle bambine	2249.8264	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	5	 	2250.0726	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	6	contadina	2250.3188	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	6	 	2250.565	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	7	ricorda	2250.8112	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	7	 	2251.0575	objrel_nounpp	SPP	-7	
+WORD_ON	0	2	0	8	i figli	2251.3036	objrel_nounpp	SPP	-7	V1	
+WORD_OFF	0	2	0	8	 	2251.5499	objrel_nounpp	SPP	-7	
+FIX2PANEL_ON	0	2	-	-	+	2251.7961	objrel_nounpp	SPP	-7	V1	
+PanelOn	0	2	-	-	 	2252.8278	objrel_nounpp	SPP	-7	V1	
+PanelResp	0	2	-	-		0	objrel_nounpp	SPP	-7	V1	
+FeedbackOn	0	2	-	-	 	2254.3403	objrel_nounpp	SPP	-7	
+FeedbackOff	0	2	-	-	 	2255.372	objrel_nounpp	SPP	-7	
+END_TRIAL	0	2	-	-	WRONG_DDC	0	objrel_nounpp	SPP	-7	V1	
+FIX_ON	0	3	0	-	+	2255.3837	embedding_mental	PPP	0	
+WORD_ON	0	3	0	1	i padri	2255.9934	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	1	 	2256.2396	embedding_mental	PPP	0	
+WORD_ON	0	3	0	2	ricordano	2256.4857	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	2	 	2256.732	embedding_mental	PPP	0	
+WORD_ON	0	3	0	3	che	2256.9782	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	3	 	2257.2244	embedding_mental	PPP	0	
+WORD_ON	0	3	0	4	i bambini	2257.4705	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	4	 	2257.7168	embedding_mental	PPP	0	
+WORD_ON	0	3	0	5	davanti	2257.963	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	5	 	2258.2093	embedding_mental	PPP	0	
+WORD_ON	0	3	0	6	alle sorelle	2258.4554	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	6	 	2258.7017	embedding_mental	PPP	0	
+WORD_ON	0	3	0	7	bloccano	2258.9478	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	7	 	2259.1941	embedding_mental	PPP	0	
+WORD_ON	0	3	0	8	il ragazzo	2259.4403	embedding_mental	PPP	0	NaN	
+WORD_OFF	0	3	0	8	 	2259.6865	embedding_mental	PPP	0	
+FIX2PANEL_ON	0	3	-	-	+	2259.9327	embedding_mental	PPP	0	NaN	
+PanelOn	0	3	-	-	 	2260.9645	embedding_mental	PPP	0	NaN	
+PanelResp	0	3	-	-		0	embedding_mental	PPP	0	NaN	
+FeedbackOn	0	3	-	-	 	2262.4769	embedding_mental	PPP	0	
+FeedbackOff	0	3	-	-	 	2263.5086	embedding_mental	PPP	0	
+END_TRIAL	0	3	-	-	CORRECT_DDC	0	embedding_mental	PPP	0	NaN	
+FIX_ON	0	4	0	-	+	2263.5204	objrel_that	PP	-1	
+WORD_ON	0	4	0	1	le lampade	2264.13	objrel_that	PP	-1	N1	
+WORD_OFF	0	4	0	1	 	2264.3762	objrel_that	PP	-1	
+WORD_ON	0	4	0	2	che	2264.6224	objrel_that	PP	-1	N1	
+WORD_OFF	0	4	0	2	 	2264.8687	objrel_that	PP	-1	
+WORD_ON	0	4	0	3	le bambine	2265.1149	objrel_that	PP	-1	N1	
+WORD_OFF	0	4	0	3	 	2265.3611	objrel_that	PP	-1	
+WORD_ON	0	4	0	4	attraggono	2265.6072	objrel_that	PP	-1	N1	
+WORD_OFF	0	4	0	4	 	2265.8535	objrel_that	PP	-1	
+WORD_ON	0	4	0	5	guardano	2266.0996	objrel_that	PP	-1	N1	
+WORD_OFF	0	4	0	5	 	2266.3459	objrel_that	PP	-1	
+WORD_ON	0	4	0	6	la donna	2266.5921	objrel_that	PP	-1	N1	
+WORD_OFF	0	4	0	6	 	2266.8383	objrel_that	PP	-1	
+FIX2PANEL_ON	0	4	-	-	+	2267.0845	objrel_that	PP	-1	N1	
+PanelOn	0	4	-	-	 	2268.1162	objrel_that	PP	-1	N1	
+PanelResp	0	4	-	-	VIOLATION	0.024079	objrel_that	PP	-1	N1	
+FeedbackOn	0	4	-	-	 	2268.1514	objrel_that	PP	-1	
+FeedbackOff	0	4	-	-	 	2269.1832	objrel_that	PP	-1	
+END_TRIAL	0	4	-	-	CORRECT_INC	0	objrel_that	PP	-1	N1	
+FIX_ON	0	5	0	-	+	2269.1949	embedding_mental	PSP	0	
+WORD_ON	0	5	0	1	gli studenti	2269.8045	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	1	 	2270.0508	embedding_mental	PSP	0	
+WORD_ON	0	5	0	2	dichiarano	2270.297	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	2	 	2270.5432	embedding_mental	PSP	0	
+WORD_ON	0	5	0	3	che	2270.7893	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	3	 	2271.0356	embedding_mental	PSP	0	
+WORD_ON	0	5	0	4	il bambino	2271.2818	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	4	 	2271.5281	embedding_mental	PSP	0	
+WORD_ON	0	5	0	5	vicino	2271.7742	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	5	 	2272.0205	embedding_mental	PSP	0	
+WORD_ON	0	5	0	6	alle amiche	2272.2667	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	6	 	2272.5129	embedding_mental	PSP	0	
+WORD_ON	0	5	0	7	ignora	2272.7591	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	7	 	2273.0053	embedding_mental	PSP	0	
+WORD_ON	0	5	0	8	la figlia	2273.2515	embedding_mental	PSP	0	NaN	
+WORD_OFF	0	5	0	8	 	2273.4977	embedding_mental	PSP	0	
+FIX2PANEL_ON	0	5	-	-	+	2273.7439	embedding_mental	PSP	0	NaN	
+KEY_PRESS	0	5	0	8	VIOLATION	2274.1424	embedding_mental	PSP	0	
+PanelOn	0	5	-	-	 	2274.7874	embedding_mental	PSP	0	NaN	
+PanelResp	0	5	-	-	VIOLATION	0.0038462	embedding_mental	PSP	0	NaN	
+FeedbackOn	0	5	-	-	 	2274.7991	embedding_mental	PSP	0	
+FeedbackOff	0	5	-	-	 	2275.8308	embedding_mental	PSP	0	
+END_TRIAL	0	5	-	-	WRONG	0	embedding_mental	PSP	0	NaN	
+FIX_ON	0	6	0	-	+	2275.8426	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	1	la contadina	2276.4522	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	1	 	2276.6985	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	2	ricorda	2276.9446	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	2	 	2277.1909	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	3	che	2277.4371	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	3	 	2277.6833	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	4	le sorelle	2277.9295	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	4	 	2278.1757	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	5	dietro	2278.4218	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	5	 	2278.6681	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	6	al bambino	2278.9143	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	6	 	2279.1606	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	7	accogliere	2279.4067	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	7	 	2279.653	embedding_mental	SPS	-7	
+WORD_ON	0	6	0	8	l' amica	2279.8992	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	6	0	8	 	2280.1454	embedding_mental	SPS	-7	
+FIX2PANEL_ON	0	6	-	-	+	2280.3916	embedding_mental	SPS	-7	V2	
+PanelOn	0	6	-	-	 	2281.4233	embedding_mental	SPS	-7	V2	
+PanelResp	0	6	-	-	VIOLATION	0.68288	embedding_mental	SPS	-7	V2	
+FeedbackOn	0	6	-	-	 	2282.115	embedding_mental	SPS	-7	
+FeedbackOff	0	6	-	-	 	2283.1468	embedding_mental	SPS	-7	
+END_TRIAL	0	6	-	-	CORRECT_INC	0	embedding_mental	SPS	-7	V2	
+FIX_ON	0	7	0	-	+	2283.1585	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	1	l' amica	2283.7682	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	1	 	2284.0144	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	2	che	2284.2606	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	2	 	2284.5068	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	3	la contadina	2284.753	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	3	 	2284.9992	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	4	vicino	2285.2454	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	4	 	2285.4917	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	5	alla figlia	2285.7378	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	5	 	2285.9841	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	6	incontri	2286.2419	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	6	 	2286.4882	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	7	guarda	2286.7344	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	7	 	2286.9806	objrel_nounpp	SSS	-7	
+WORD_ON	0	7	0	8	i ragazzi	2287.2268	objrel_nounpp	SSS	-7	V1	
+WORD_OFF	0	7	0	8	 	2287.4731	objrel_nounpp	SSS	-7	
+FIX2PANEL_ON	0	7	-	-	+	2287.7193	objrel_nounpp	SSS	-7	V1	
+PanelOn	0	7	-	-	 	2288.751	objrel_nounpp	SSS	-7	V1	
+PanelResp	0	7	-	-	VIOLATION	0.39712	objrel_nounpp	SSS	-7	V1	
+FeedbackOn	0	7	-	-	 	2289.1613	objrel_nounpp	SSS	-7	
+FeedbackOff	0	7	-	-	 	2290.1931	objrel_nounpp	SSS	-7	
+END_TRIAL	0	7	-	-	CORRECT_INC	0	objrel_nounpp	SSS	-7	V1	
+FIX_ON	0	8	0	-	+	2290.2048	embedding_mental_SR	PP	5	
+WORD_ON	0	8	0	1	gli amici	2290.8145	embedding_mental_SR	PP	5	V2	
+WORD_OFF	0	8	0	1	 	2291.0607	embedding_mental_SR	PP	5	
+WORD_ON	0	8	0	2	dicono	2291.3069	embedding_mental_SR	PP	5	V2	
+WORD_OFF	0	8	0	2	 	2291.5531	embedding_mental_SR	PP	5	
+WORD_ON	0	8	0	3	che	2291.7993	embedding_mental_SR	PP	5	V2	
+WORD_OFF	0	8	0	3	 	2292.0455	embedding_mental_SR	PP	5	
+WORD_ON	0	8	0	4	le madri	2292.2917	embedding_mental_SR	PP	5	V2	
+WORD_OFF	0	8	0	4	 	2292.538	embedding_mental_SR	PP	5	
+WORD_ON	0	8	0	5	attrae	2292.7841	embedding_mental_SR	PP	5	V2	
+WORD_OFF	0	8	0	5	 	2293.0304	embedding_mental_SR	PP	5	
+WORD_ON	0	8	0	6	i ragazzi	2293.2766	embedding_mental_SR	PP	5	V2	
+WORD_OFF	0	8	0	6	 	2293.5228	embedding_mental_SR	PP	5	
+FIX2PANEL_ON	0	8	-	-	+	2293.769	embedding_mental_SR	PP	5	V2	
+PanelOn	0	8	-	-	 	2294.8007	embedding_mental_SR	PP	5	V2	
+PanelResp	0	8	-	-	VIOLATION	0.47558	embedding_mental_SR	PP	5	V2	
+FeedbackOn	0	8	-	-	 	2295.2815	embedding_mental_SR	PP	5	
+FeedbackOff	0	8	-	-	 	2296.3132	embedding_mental_SR	PP	5	
+END_TRIAL	0	8	-	-	CORRECT_INC	0	embedding_mental_SR	PP	5	V2	
+FIX_ON	0	9	0	-	+	2296.3249	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	1	la figlia	2296.9346	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	1	 	2297.1808	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	2	che	2297.427	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	2	 	2297.6732	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	3	le sorelle	2297.9194	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	3	 	2298.1656	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	4	vicino	2298.4118	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	4	 	2298.658	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	5	alla madre	2298.9042	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	5	 	2299.1504	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	6	fermano	2299.3967	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	6	 	2299.6429	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	7	guardi	2299.889	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	7	 	2300.1353	objrel_nounpp	SPS	-8	
+WORD_ON	0	9	0	8	i fratelli	2300.3815	objrel_nounpp	SPS	-8	V2	
+WORD_OFF	0	9	0	8	 	2300.6277	objrel_nounpp	SPS	-8	
+FIX2PANEL_ON	0	9	-	-	+	2300.8739	objrel_nounpp	SPS	-8	V2	
+PanelOn	0	9	-	-	 	2301.9057	objrel_nounpp	SPS	-8	V2	
+PanelResp	0	9	-	-	VIOLATION	0.21713	objrel_nounpp	SPS	-8	V2	
+FeedbackOn	0	9	-	-	 	2302.1284	objrel_nounpp	SPS	-8	
+FeedbackOff	0	9	-	-	 	2303.1601	objrel_nounpp	SPS	-8	
+END_TRIAL	0	9	-	-	CORRECT_INC	0	objrel_nounpp	SPS	-8	V2	
+FIX_ON	0	10	0	-	+	2303.1719	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	1	il ragazzo	2303.7815	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	1	 	2304.0278	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	2	dichiara	2304.274	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	2	 	2304.5202	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	3	che	2304.7663	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	3	 	2305.0126	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	4	il sonno	2305.2588	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	4	 	2305.505	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	5	vicino	2305.7511	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	5	 	2305.9974	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	6	alla donna	2306.2436	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	6	 	2306.4899	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	7	incontrano	2306.7361	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	7	 	2306.9823	embedding_mental	SPS	-4	
+WORD_ON	0	10	0	8	gli uomini	2307.2285	embedding_mental	SPS	-4	N2	
+WORD_OFF	0	10	0	8	 	2307.4747	embedding_mental	SPS	-4	
+FIX2PANEL_ON	0	10	-	-	+	2307.7209	embedding_mental	SPS	-4	N2	
+PanelOn	0	10	-	-	 	2308.7526	embedding_mental	SPS	-4	N2	
+PanelResp	0	10	-	-	VIOLATION	0.0038318	embedding_mental	SPS	-4	N2	
+FeedbackOn	0	10	-	-	 	2308.7644	embedding_mental	SPS	-4	
+FeedbackOff	0	10	-	-	 	2309.7961	embedding_mental	SPS	-4	
+END_TRIAL	0	10	-	-	CORRECT_INC	0	embedding_mental	SPS	-4	N2	
+FIX_ON	0	11	0	-	+	2309.8078	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	1	i contadini	2310.4175	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	1	 	2310.6637	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	2	che	2310.9099	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	2	 	2311.1561	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	3	l' attrice	2311.4023	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	3	 	2311.6485	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	4	davanti	2311.8947	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	4	 	2312.141	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	5	agli amici	2312.3872	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	5	 	2312.6334	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	6	ignora	2312.8796	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	6	 	2313.1258	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	7	osservano	2313.372	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	7	 	2313.6182	objrel_nounpp	PSP	0	
+WORD_ON	0	11	0	8	le studentesse	2313.8644	objrel_nounpp	PSP	0	NaN	
+WORD_OFF	0	11	0	8	 	2314.1107	objrel_nounpp	PSP	0	
+FIX2PANEL_ON	0	11	-	-	+	2314.3568	objrel_nounpp	PSP	0	NaN	
+KEY_PRESS	0	11	0	8	VIOLATION	2314.8439	objrel_nounpp	PSP	0	
+PanelOn	0	11	-	-	 	2315.3886	objrel_nounpp	PSP	0	NaN	
+PanelResp	0	11	-	-	ACCEPTABLE	0.36491	objrel_nounpp	PSP	0	NaN	
+FeedbackOn	0	11	-	-	 	2315.7637	objrel_nounpp	PSP	0	
+FeedbackOff	0	11	-	-	 	2316.7955	objrel_nounpp	PSP	0	
+END_TRIAL	0	11	-	-	CORRECT_INC	0	objrel_nounpp	PSP	0	NaN	
+FIX_ON	0	12	0	-	+	2316.8072	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	1	le bambine	2317.4169	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	1	 	2317.6631	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	2	ricordano	2317.9092	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	2	 	2318.1555	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	3	che	2318.4017	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	3	 	2318.648	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	4	gli amici	2318.8941	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	4	 	2319.1404	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	5	dietro	2319.3866	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	5	 	2319.6328	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	6	al padre	2319.879	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	6	 	2320.1252	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	7	interrompere	2320.3714	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	7	 	2320.6176	embedding_mental	PPS	-7	
+WORD_ON	0	12	0	8	la studentessa	2320.8638	embedding_mental	PPS	-7	V2	
+WORD_OFF	0	12	0	8	 	2321.11	embedding_mental	PPS	-7	
+FIX2PANEL_ON	0	12	-	-	+	2321.3562	embedding_mental	PPS	-7	V2	
+PanelOn	0	12	-	-	 	2322.388	embedding_mental	PPS	-7	V2	
+PanelResp	0	12	-	-	VIOLATION	0.06219	embedding_mental	PPS	-7	V2	
+FeedbackOn	0	12	-	-	 	2322.4582	embedding_mental	PPS	-7	
+FeedbackOff	0	12	-	-	 	2323.4901	embedding_mental	PPS	-7	
+END_TRIAL	0	12	-	-	CORRECT_INC	0	embedding_mental	PPS	-7	V2	
+FIX_ON	0	13	0	-	+	2323.5018	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	1	l' attore	2324.1115	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	1	 	2324.3577	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	2	che	2324.6038	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	2	 	2324.8501	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	3	le bambine	2325.0963	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	3	 	2325.3425	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	4	dietro	2325.5887	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	4	 	2325.8349	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	5	ai fratelli	2326.0811	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	5	 	2326.3274	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	6	fermano	2326.5734	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	6	 	2326.8198	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	7	ignorano	2327.0659	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	7	 	2327.3122	objrel_nounpp	SPP	8	
+WORD_ON	0	13	0	8	le studentesse	2327.5584	objrel_nounpp	SPP	8	V2	
+WORD_OFF	0	13	0	8	 	2327.8046	objrel_nounpp	SPP	8	
+FIX2PANEL_ON	0	13	-	-	+	2328.0508	objrel_nounpp	SPP	8	V2	
+PanelOn	0	13	-	-	 	2329.0825	objrel_nounpp	SPP	8	V2	
+PanelResp	0	13	-	-	VIOLATION	0.29546	objrel_nounpp	SPP	8	V2	
+FeedbackOn	0	13	-	-	 	2329.3873	objrel_nounpp	SPP	8	
+FeedbackOff	0	13	-	-	 	2330.4191	objrel_nounpp	SPP	8	
+END_TRIAL	0	13	-	-	CORRECT_INC	0	objrel_nounpp	SPP	8	V2	
+FIX_ON	0	14	0	-	+	2330.4307	embedding_mental	SPP	0	
+WORD_ON	0	14	0	1	la contadina	2331.0405	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	1	 	2331.2867	embedding_mental	SPP	0	
+WORD_ON	0	14	0	2	dice	2331.5329	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	2	 	2331.7791	embedding_mental	SPP	0	
+WORD_ON	0	14	0	3	che	2332.0253	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	3	 	2332.2716	embedding_mental	SPP	0	
+WORD_ON	0	14	0	4	gli uomini	2332.5177	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	4	 	2332.764	embedding_mental	SPP	0	
+WORD_ON	0	14	0	5	accanto	2333.0101	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	5	 	2333.2564	embedding_mental	SPP	0	
+WORD_ON	0	14	0	6	alle figlie	2333.5026	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	6	 	2333.7488	embedding_mental	SPP	0	
+WORD_ON	0	14	0	7	incontrano	2333.995	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	7	 	2334.2412	embedding_mental	SPP	0	
+WORD_ON	0	14	0	8	l' amica	2334.4875	embedding_mental	SPP	0	NaN	
+WORD_OFF	0	14	0	8	 	2334.7337	embedding_mental	SPP	0	
+FIX2PANEL_ON	0	14	-	-	+	2334.9799	embedding_mental	SPP	0	NaN	
+PanelOn	0	14	-	-	 	2336.0116	embedding_mental	SPP	0	NaN	
+PanelResp	0	14	-	-	ACCEPTABLE	0.0042288	embedding_mental	SPP	0	NaN	
+FeedbackOn	0	14	-	-	 	2336.0233	embedding_mental	SPP	0	
+FeedbackOff	0	14	-	-	 	2337.0551	embedding_mental	SPP	0	
+END_TRIAL	0	14	-	-	CORRECT	0	embedding_mental	SPP	0	NaN	
+FIX_ON	0	15	0	-	+	2337.0667	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	1	le amiche	2337.6764	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	1	 	2337.9227	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	2	che	2338.1688	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	2	 	2338.4151	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	3	i padri	2338.6612	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	3	 	2338.9075	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	4	vicino	2339.1537	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	4	 	2339.3999	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	5	ai contadini	2339.6461	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	5	 	2339.8923	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	6	conoscono	2340.1385	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	6	 	2340.3848	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	7	attraete	2340.6309	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	7	 	2340.8772	objrel_nounpp	PPP	-8	
+WORD_ON	0	15	0	8	le studentesse	2341.1234	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	15	0	8	 	2341.3696	objrel_nounpp	PPP	-8	
+FIX2PANEL_ON	0	15	-	-	+	2341.6158	objrel_nounpp	PPP	-8	V2	
+PanelOn	0	15	-	-	 	2342.6475	objrel_nounpp	PPP	-8	V2	
+PanelResp	0	15	-	-	VIOLATION	0.32643	objrel_nounpp	PPP	-8	V2	
+FeedbackOn	0	15	-	-	 	2342.9874	objrel_nounpp	PPP	-8	
+FeedbackOff	0	15	-	-	 	2344.0193	objrel_nounpp	PPP	-8	
+END_TRIAL	0	15	-	-	CORRECT_INC	0	objrel_nounpp	PPP	-8	V2	
+FIX_ON	0	16	0	-	+	2344.031	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	1	i ragazzi	2344.6407	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	1	 	2344.8869	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	2	che	2345.133	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	2	 	2345.3793	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	3	l' attrice	2345.6255	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	3	 	2345.8717	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	4	accanto	2346.1179	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	4	 	2346.3641	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	5	all' uomo	2346.6103	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	5	 	2346.8566	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	6	osserva	2347.1027	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	6	 	2347.349	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	7	ricordano	2347.5951	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	7	 	2347.8414	objrel_nounpp	PSS	0	
+WORD_ON	0	16	0	8	i figli	2348.0876	objrel_nounpp	PSS	0	NaN	
+WORD_OFF	0	16	0	8	 	2348.3338	objrel_nounpp	PSS	0	
+FIX2PANEL_ON	0	16	-	-	+	2348.5799	objrel_nounpp	PSS	0	NaN	
+PanelOn	0	16	-	-	 	2349.6117	objrel_nounpp	PSS	0	NaN	
+PanelResp	0	16	-	-	ACCEPTABLE	0.10197	objrel_nounpp	PSS	0	NaN	
+FeedbackOn	0	16	-	-	 	2349.7172	objrel_nounpp	PSS	0	
+FeedbackOff	0	16	-	-	 	2350.749	objrel_nounpp	PSS	0	
+END_TRIAL	0	16	-	-	CORRECT	0	objrel_nounpp	PSS	0	NaN	
+FIX_ON	0	17	0	-	+	2350.7608	embedding_mental_SR	SP	0	
+WORD_ON	0	17	0	1	l' attore	2351.3704	embedding_mental_SR	SP	0	NaN	
+WORD_OFF	0	17	0	1	 	2351.6166	embedding_mental_SR	SP	0	
+WORD_ON	0	17	0	2	dichiara	2351.8628	embedding_mental_SR	SP	0	NaN	
+WORD_OFF	0	17	0	2	 	2352.109	embedding_mental_SR	SP	0	
+WORD_ON	0	17	0	3	che	2352.3552	embedding_mental_SR	SP	0	NaN	
+WORD_OFF	0	17	0	3	 	2352.6015	embedding_mental_SR	SP	0	
+WORD_ON	0	17	0	4	le studentesse	2352.8477	embedding_mental_SR	SP	0	NaN	
+WORD_OFF	0	17	0	4	 	2353.0939	embedding_mental_SR	SP	0	
+WORD_ON	0	17	0	5	ignorano	2353.3401	embedding_mental_SR	SP	0	NaN	
+WORD_OFF	0	17	0	5	 	2353.5863	embedding_mental_SR	SP	0	
+WORD_ON	0	17	0	6	il bambino	2353.8325	embedding_mental_SR	SP	0	NaN	
+WORD_OFF	0	17	0	6	 	2354.0787	embedding_mental_SR	SP	0	
+FIX2PANEL_ON	0	17	-	-	+	2354.3249	embedding_mental_SR	SP	0	NaN	
+PanelOn	0	17	-	-	 	2355.3567	embedding_mental_SR	SP	0	NaN	
+PanelResp	0	17	-	-	ACCEPTABLE	0.41141	embedding_mental_SR	SP	0	NaN	
+FeedbackOn	0	17	-	-	 	2355.7787	embedding_mental_SR	SP	0	
+FeedbackOff	0	17	-	-	 	2356.8105	embedding_mental_SR	SP	0	
+END_TRIAL	0	17	-	-	CORRECT	0	embedding_mental_SR	SP	0	NaN	
+FIX_ON	0	18	0	-	+	2356.8222	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	1	l' attore	2357.4319	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	1	 	2357.6781	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	2	che	2357.9242	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	2	 	2358.1705	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	3	la bambina	2358.4167	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	3	 	2358.6629	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	4	davanti	2358.9091	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	4	 	2359.1553	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	5	al contadino	2359.4016	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	5	 	2359.6478	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	6	ricorda	2359.894	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	6	 	2360.1402	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	7	ferma	2360.3863	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	7	 	2360.6326	objrel_nounpp	SSS	0	
+WORD_ON	0	18	0	8	l' amica	2360.8788	objrel_nounpp	SSS	0	NaN	
+WORD_OFF	0	18	0	8	 	2361.125	objrel_nounpp	SSS	0	
+FIX2PANEL_ON	0	18	-	-	+	2361.3712	objrel_nounpp	SSS	0	NaN	
+KEY_PRESS	0	18	0	8	VIOLATION	2362.1361	objrel_nounpp	SSS	0	
+PanelOn	0	18	-	-	 	2362.403	objrel_nounpp	SSS	0	NaN	
+PanelResp	0	18	-	-	ACCEPTABLE	0.28843	objrel_nounpp	SSS	0	NaN	
+FeedbackOn	0	18	-	-	 	2362.6961	objrel_nounpp	SSS	0	
+FeedbackOff	0	18	-	-	 	2363.7278	objrel_nounpp	SSS	0	
+END_TRIAL	0	18	-	-	CORRECT_INC	0	objrel_nounpp	SSS	0	NaN	
+FIX_ON	0	19	0	-	+	2363.7395	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	1	i bambini	2364.3492	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	1	 	2364.5954	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	2	che	2364.8416	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	2	 	2365.0878	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	3	le figlie	2365.334	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	3	 	2365.5803	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	4	vicino	2365.8264	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	4	 	2366.0727	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	5	alla contadina	2366.3188	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	5	 	2366.5651	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	6	osserviamo	2366.8112	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	6	 	2367.0575	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	7	attraggono	2367.3036	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	7	 	2367.5499	objrel_nounpp	PPS	-7	
+WORD_ON	0	19	0	8	i padri	2367.7961	objrel_nounpp	PPS	-7	V1	
+WORD_OFF	0	19	0	8	 	2368.0423	objrel_nounpp	PPS	-7	
+FIX2PANEL_ON	0	19	-	-	+	2368.2885	objrel_nounpp	PPS	-7	V1	
+PanelOn	0	19	-	-	 	2369.3203	objrel_nounpp	PPS	-7	V1	
+PanelResp	0	19	-	-	VIOLATION	0.003657	objrel_nounpp	PPS	-7	V1	
+FeedbackOn	0	19	-	-	 	2369.332	objrel_nounpp	PPS	-7	
+FeedbackOff	0	19	-	-	 	2370.3638	objrel_nounpp	PPS	-7	
+END_TRIAL	0	19	-	-	CORRECT_INC	0	objrel_nounpp	PPS	-7	V1	
+FIX_ON	0	20	0	-	+	2370.3755	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	1	l' attore	2370.9851	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	1	 	2371.2314	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	2	dichiara	2371.4776	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	2	 	2371.7238	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	3	che	2371.9699	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	3	 	2372.2162	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	4	le contadine	2372.4624	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	4	 	2372.7086	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	5	davanti	2372.9547	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	5	 	2373.201	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	6	al fratello	2373.4472	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	6	 	2373.6935	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	7	ragazze	2373.9397	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	7	 	2374.1859	embedding_mental	SPS	-7	
+WORD_ON	0	20	0	8	le studentesse	2374.432	embedding_mental	SPS	-7	V2	
+WORD_OFF	0	20	0	8	 	2374.6783	embedding_mental	SPS	-7	
+FIX2PANEL_ON	0	20	-	-	+	2374.9245	embedding_mental	SPS	-7	V2	
+PanelOn	0	20	-	-	 	2375.9561	embedding_mental	SPS	-7	V2	
+PanelResp	0	20	-	-	VIOLATION	0.23842	embedding_mental	SPS	-7	V2	
+FeedbackOn	0	20	-	-	 	2376.2024	embedding_mental	SPS	-7	
+FeedbackOff	0	20	-	-	 	2377.2342	embedding_mental	SPS	-7	
+END_TRIAL	0	20	-	-	CORRECT_INC	0	embedding_mental	SPS	-7	V2	
+FIX_ON	0	21	0	-	+	2377.2459	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	1	gli uomini	2377.8556	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	1	 	2378.1018	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	2	che	2378.3479	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	2	 	2378.5942	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	3	i figli	2378.8404	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	3	 	2379.0866	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	4	accanto	2379.3328	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	4	 	2379.579	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	5	agli attori	2379.8252	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	5	 	2380.0715	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	6	difendono	2380.3176	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	6	 	2380.5639	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	7	osservano	2380.81	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	7	 	2381.0563	objrel_nounpp	PPP	0	
+WORD_ON	0	21	0	8	il bambino	2381.3025	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	21	0	8	 	2381.5487	objrel_nounpp	PPP	0	
+FIX2PANEL_ON	0	21	-	-	+	2381.7949	objrel_nounpp	PPP	0	NaN	
+KEY_PRESS	0	21	0	8	VIOLATION	2382.3605	objrel_nounpp	PPP	0	
+PanelOn	0	21	-	-	 	2382.8267	objrel_nounpp	PPP	0	NaN	
+PanelResp	0	21	-	-	ACCEPTABLE	0.33206	objrel_nounpp	PPP	0	NaN	
+FeedbackOn	0	21	-	-	 	2383.1667	objrel_nounpp	PPP	0	
+FeedbackOff	0	21	-	-	 	2384.1984	objrel_nounpp	PPP	0	
+END_TRIAL	0	21	-	-	CORRECT_INC	0	objrel_nounpp	PPP	0	NaN	
+FIX_ON	0	22	0	-	+	2384.2101	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	1	la contadina	2384.8198	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	1	 	2385.066	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	2	ricorda	2385.3121	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	2	 	2385.5584	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	3	che	2385.8046	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	3	 	2386.0509	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	4	i bambini	2386.297	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	4	 	2386.5433	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	5	accanto	2386.7894	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	5	 	2387.0357	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	6	alle figlie	2387.2818	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	6	 	2387.5281	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	7	osservare	2387.7743	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	7	 	2388.0205	embedding_mental	SPP	-7	
+WORD_ON	0	22	0	8	le amiche	2388.2667	embedding_mental	SPP	-7	V2	
+WORD_OFF	0	22	0	8	 	2388.5129	embedding_mental	SPP	-7	
+FIX2PANEL_ON	0	22	-	-	+	2388.7592	embedding_mental	SPP	-7	V2	
+PanelOn	0	22	-	-	 	2389.7908	embedding_mental	SPP	-7	V2	
+PanelResp	0	22	-	-	VIOLATION	0.24153	embedding_mental	SPP	-7	V2	
+FeedbackOn	0	22	-	-	 	2390.037	embedding_mental	SPP	-7	
+FeedbackOff	0	22	-	-	 	2391.0688	embedding_mental	SPP	-7	
+END_TRIAL	0	22	-	-	CORRECT_INC	0	embedding_mental	SPP	-7	V2	
+FIX_ON	0	23	0	-	+	2391.0806	objrel_that	PP	-5	
+WORD_ON	0	23	0	1	le ragazze	2391.6902	objrel_that	PP	-5	V2	
+WORD_OFF	0	23	0	1	 	2391.9364	objrel_that	PP	-5	
+WORD_ON	0	23	0	2	che	2392.1826	objrel_that	PP	-5	V2	
+WORD_OFF	0	23	0	2	 	2392.4289	objrel_that	PP	-5	
+WORD_ON	0	23	0	3	i fratelli	2392.675	objrel_that	PP	-5	V2	
+WORD_OFF	0	23	0	3	 	2392.9213	objrel_that	PP	-5	
+WORD_ON	0	23	0	4	attraggono	2393.1674	objrel_that	PP	-5	V2	
+WORD_OFF	0	23	0	4	 	2393.4137	objrel_that	PP	-5	
+WORD_ON	0	23	0	5	incontriamo	2393.6599	objrel_that	PP	-5	V2	
+WORD_OFF	0	23	0	5	 	2393.9061	objrel_that	PP	-5	
+WORD_ON	0	23	0	6	le contadine	2394.1523	objrel_that	PP	-5	V2	
+WORD_OFF	0	23	0	6	 	2394.3985	objrel_that	PP	-5	
+FIX2PANEL_ON	0	23	-	-	+	2394.6447	objrel_that	PP	-5	V2	
+PanelOn	0	23	-	-	 	2395.6765	objrel_that	PP	-5	V2	
+PanelResp	0	23	-	-	VIOLATION	0.26318	objrel_that	PP	-5	V2	
+FeedbackOn	0	23	-	-	 	2395.9461	objrel_that	PP	-5	
+FeedbackOff	0	23	-	-	 	2396.9779	objrel_that	PP	-5	
+END_TRIAL	0	23	-	-	CORRECT_INC	0	objrel_that	PP	-5	V2	
+FIX_ON	0	24	0	-	+	2396.9895	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	1	il bambino	2397.5993	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	1	 	2397.8455	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	2	che	2398.0916	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	2	 	2398.3379	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	3	il salto	2398.5841	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	3	 	2398.8303	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	4	vicino	2399.0764	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	4	 	2399.3227	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	5	al figlio	2399.5689	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	5	 	2399.8152	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	6	interrompe	2400.0614	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	6	 	2400.3076	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	7	guarda	2400.5537	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	7	 	2400.8	objrel_nounpp	SSS	-3	
+WORD_ON	0	24	0	8	l' attrice	2401.0462	objrel_nounpp	SSS	-3	N2	
+WORD_OFF	0	24	0	8	 	2401.2924	objrel_nounpp	SSS	-3	
+FIX2PANEL_ON	0	24	-	-	+	2401.5386	objrel_nounpp	SSS	-3	N2	
+PanelOn	0	24	-	-	 	2402.5704	objrel_nounpp	SSS	-3	N2	
+PanelResp	0	24	-	-	VIOLATION	0.27109	objrel_nounpp	SSS	-3	N2	
+FeedbackOn	0	24	-	-	 	2402.8518	objrel_nounpp	SSS	-3	
+FeedbackOff	0	24	-	-	 	2403.8835	objrel_nounpp	SSS	-3	
+END_TRIAL	0	24	-	-	CORRECT_INC	0	objrel_nounpp	SSS	-3	N2	
+FIX_ON	0	25	0	-	+	2403.8952	embedding_mental_SR	PP	-5	
+WORD_ON	0	25	0	1	le madri	2404.5049	embedding_mental_SR	PP	-5	V2	
+WORD_OFF	0	25	0	1	 	2404.7511	embedding_mental_SR	PP	-5	
+WORD_ON	0	25	0	2	ricordano	2404.9973	embedding_mental_SR	PP	-5	V2	
+WORD_OFF	0	25	0	2	 	2405.2435	embedding_mental_SR	PP	-5	
+WORD_ON	0	25	0	3	che	2405.4897	embedding_mental_SR	PP	-5	V2	
+WORD_OFF	0	25	0	3	 	2405.7359	embedding_mental_SR	PP	-5	
+WORD_ON	0	25	0	4	le amiche	2405.9821	embedding_mental_SR	PP	-5	V2	
+WORD_OFF	0	25	0	4	 	2406.2283	embedding_mental_SR	PP	-5	
+WORD_ON	0	25	0	5	indichiamo	2406.4745	embedding_mental_SR	PP	-5	V2	
+WORD_OFF	0	25	0	5	 	2406.7208	embedding_mental_SR	PP	-5	
+WORD_ON	0	25	0	6	la figlia	2406.9669	embedding_mental_SR	PP	-5	V2	
+WORD_OFF	0	25	0	6	 	2407.2132	embedding_mental_SR	PP	-5	
+FIX2PANEL_ON	0	25	-	-	+	2407.4594	embedding_mental_SR	PP	-5	V2	
+PanelOn	0	25	-	-	 	2408.4911	embedding_mental_SR	PP	-5	V2	
+PanelResp	0	25	-	-	VIOLATION	0.35842	embedding_mental_SR	PP	-5	V2	
+FeedbackOn	0	25	-	-	 	2408.8546	embedding_mental_SR	PP	-5	
+FeedbackOff	0	25	-	-	 	2409.8863	embedding_mental_SR	PP	-5	
+END_TRIAL	0	25	-	-	CORRECT_INC	0	embedding_mental_SR	PP	-5	V2	
+FIX_ON	0	26	0	-	+	2409.898	embedding_mental	SPS	0	
+WORD_ON	0	26	0	1	lo studente	2410.5077	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	1	 	2410.7539	embedding_mental	SPS	0	
+WORD_ON	0	26	0	2	dice	2411.0001	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	2	 	2411.2463	embedding_mental	SPS	0	
+WORD_ON	0	26	0	3	che	2411.4925	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	3	 	2411.7388	embedding_mental	SPS	0	
+WORD_ON	0	26	0	4	gli uomini	2411.985	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	4	 	2412.2312	embedding_mental	SPS	0	
+WORD_ON	0	26	0	5	dietro	2412.4773	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	5	 	2412.7236	embedding_mental	SPS	0	
+WORD_ON	0	26	0	6	all' amica	2412.9698	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	6	 	2413.216	embedding_mental	SPS	0	
+WORD_ON	0	26	0	7	bloccano	2413.4622	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	7	 	2413.7084	embedding_mental	SPS	0	
+WORD_ON	0	26	0	8	i ragazzi	2413.9546	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	26	0	8	 	2414.2009	embedding_mental	SPS	0	
+FIX2PANEL_ON	0	26	-	-	+	2414.447	embedding_mental	SPS	0	NaN	
+PanelOn	0	26	-	-	 	2415.4788	embedding_mental	SPS	0	NaN	
+PanelResp	0	26	-	-	ACCEPTABLE	0.41563	embedding_mental	SPS	0	NaN	
+FeedbackOn	0	26	-	-	 	2415.9009	embedding_mental	SPS	0	
+FeedbackOff	0	26	-	-	 	2416.9326	embedding_mental	SPS	0	
+END_TRIAL	0	26	-	-	CORRECT	0	embedding_mental	SPS	0	NaN	
+FIX_ON	0	27	0	-	+	2416.9443	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	1	le diatribe	2417.554	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	1	 	2417.8002	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	2	che	2418.0464	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	2	 	2418.2926	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	3	i figli	2418.5387	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	3	 	2418.785	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	4	accanto	2419.0313	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	4	 	2419.2775	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	5	alle attrici	2419.5237	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	5	 	2419.7699	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	6	osservano	2420.0161	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	6	 	2420.2623	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	7	ignorano	2420.5085	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	7	 	2420.7547	objrel_nounpp	PPP	-1	
+WORD_ON	0	27	0	8	il padre	2421.0009	objrel_nounpp	PPP	-1	N1	
+WORD_OFF	0	27	0	8	 	2421.2472	objrel_nounpp	PPP	-1	
+FIX2PANEL_ON	0	27	-	-	+	2421.4934	objrel_nounpp	PPP	-1	N1	
+PanelOn	0	27	-	-	 	2422.525	objrel_nounpp	PPP	-1	N1	
+PanelResp	0	27	-	-	VIOLATION	1.0723	objrel_nounpp	PPP	-1	N1	
+FeedbackOn	0	27	-	-	 	2423.6036	objrel_nounpp	PPP	-1	
+FeedbackOff	0	27	-	-	 	2424.6355	objrel_nounpp	PPP	-1	
+END_TRIAL	0	27	-	-	CORRECT_INC	0	objrel_nounpp	PPP	-1	N1	
+FIX_ON	0	28	0	-	+	2424.6472	embedding_mental_SR	PS	-5	
+WORD_ON	0	28	0	1	gli amici	2425.2568	embedding_mental_SR	PS	-5	V2	
+WORD_OFF	0	28	0	1	 	2425.5031	embedding_mental_SR	PS	-5	
+WORD_ON	0	28	0	2	dicono	2425.7493	embedding_mental_SR	PS	-5	V2	
+WORD_OFF	0	28	0	2	 	2425.9955	embedding_mental_SR	PS	-5	
+WORD_ON	0	28	0	3	che	2426.2416	embedding_mental_SR	PS	-5	V2	
+WORD_OFF	0	28	0	3	 	2426.4879	embedding_mental_SR	PS	-5	
+WORD_ON	0	28	0	4	il padre	2426.734	embedding_mental_SR	PS	-5	V2	
+WORD_OFF	0	28	0	4	 	2426.9803	embedding_mental_SR	PS	-5	
+WORD_ON	0	28	0	5	incontrare	2427.2265	embedding_mental_SR	PS	-5	V2	
+WORD_OFF	0	28	0	5	 	2427.4727	embedding_mental_SR	PS	-5	
+WORD_ON	0	28	0	6	l' attrice	2427.7189	embedding_mental_SR	PS	-5	V2	
+WORD_OFF	0	28	0	6	 	2427.9651	embedding_mental_SR	PS	-5	
+FIX2PANEL_ON	0	28	-	-	+	2428.2114	embedding_mental_SR	PS	-5	V2	
+PanelOn	0	28	-	-	 	2429.2431	embedding_mental_SR	PS	-5	V2	
+PanelResp	0	28	-	-	VIOLATION	0.26127	embedding_mental_SR	PS	-5	V2	
+FeedbackOn	0	28	-	-	 	2429.5127	embedding_mental_SR	PS	-5	
+FeedbackOff	0	28	-	-	 	2430.5445	embedding_mental_SR	PS	-5	
+END_TRIAL	0	28	-	-	CORRECT_INC	0	embedding_mental_SR	PS	-5	V2	
+FIX_ON	0	29	0	-	+	2430.5562	embedding_mental	SSS	7	
+WORD_ON	0	29	0	1	il fratello	2431.1659	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	1	 	2431.4121	embedding_mental	SSS	7	
+WORD_ON	0	29	0	2	ricorda	2431.6583	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	2	 	2431.9045	embedding_mental	SSS	7	
+WORD_ON	0	29	0	3	che	2432.1507	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	3	 	2432.3969	embedding_mental	SSS	7	
+WORD_ON	0	29	0	4	la donna	2432.6431	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	4	 	2432.8894	embedding_mental	SSS	7	
+WORD_ON	0	29	0	5	vicino	2433.1356	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	5	 	2433.3818	embedding_mental	SSS	7	
+WORD_ON	0	29	0	6	allo studente	2433.6279	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	6	 	2433.8742	embedding_mental	SSS	7	
+WORD_ON	0	29	0	7	fermano	2434.1204	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	7	 	2434.3666	embedding_mental	SSS	7	
+WORD_ON	0	29	0	8	il figlio	2434.6128	embedding_mental	SSS	7	V2	
+WORD_OFF	0	29	0	8	 	2434.859	embedding_mental	SSS	7	
+FIX2PANEL_ON	0	29	-	-	+	2435.1052	embedding_mental	SSS	7	V2	
+PanelOn	0	29	-	-	 	2436.137	embedding_mental	SSS	7	V2	
+PanelResp	0	29	-	-	VIOLATION	0.28963	embedding_mental	SSS	7	V2	
+FeedbackOn	0	29	-	-	 	2436.43	embedding_mental	SSS	7	
+FeedbackOff	0	29	-	-	 	2437.4618	embedding_mental	SSS	7	
+END_TRIAL	0	29	-	-	CORRECT_INC	0	embedding_mental	SSS	7	V2	
+FIX_ON	0	30	0	-	+	2437.4735	embedding_mental	SSP	0	
+WORD_ON	0	30	0	1	la donna	2438.0832	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	1	 	2438.3294	embedding_mental	SSP	0	
+WORD_ON	0	30	0	2	dice	2438.5756	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	2	 	2438.8218	embedding_mental	SSP	0	
+WORD_ON	0	30	0	3	che	2439.0681	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	3	 	2439.3143	embedding_mental	SSP	0	
+WORD_ON	0	30	0	4	la figlia	2439.5604	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	4	 	2439.8067	embedding_mental	SSP	0	
+WORD_ON	0	30	0	5	dietro	2440.0528	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	5	 	2440.2991	embedding_mental	SSP	0	
+WORD_ON	0	30	0	6	alle ragazze	2440.5453	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	6	 	2440.7915	embedding_mental	SSP	0	
+WORD_ON	0	30	0	7	ferma	2441.0377	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	7	 	2441.2839	embedding_mental	SSP	0	
+WORD_ON	0	30	0	8	le studentesse	2441.5302	embedding_mental	SSP	0	NaN	
+WORD_OFF	0	30	0	8	 	2441.7764	embedding_mental	SSP	0	
+FIX2PANEL_ON	0	30	-	-	+	2442.0226	embedding_mental	SSP	0	NaN	
+PanelOn	0	30	-	-	 	2443.0543	embedding_mental	SSP	0	NaN	
+PanelResp	0	30	-	-	ACCEPTABLE	1.4356	embedding_mental	SSP	0	NaN	
+FeedbackOn	0	30	-	-	 	2444.4963	embedding_mental	SSP	0	
+FeedbackOff	0	30	-	-	 	2445.5281	embedding_mental	SSP	0	
+END_TRIAL	0	30	-	-	CORRECT	0	embedding_mental	SSP	0	NaN	
+FIX_ON	0	31	0	-	+	2445.5399	objrel_that	SS	0	
+WORD_ON	0	31	0	1	il padre	2446.1495	objrel_that	SS	0	NaN	
+WORD_OFF	0	31	0	1	 	2446.3957	objrel_that	SS	0	
+WORD_ON	0	31	0	2	che	2446.6419	objrel_that	SS	0	NaN	
+WORD_OFF	0	31	0	2	 	2446.8882	objrel_that	SS	0	
+WORD_ON	0	31	0	3	il figlio	2447.1344	objrel_that	SS	0	NaN	
+WORD_OFF	0	31	0	3	 	2447.3806	objrel_that	SS	0	
+WORD_ON	0	31	0	4	ignora	2447.6267	objrel_that	SS	0	NaN	
+WORD_OFF	0	31	0	4	 	2447.873	objrel_that	SS	0	
+WORD_ON	0	31	0	5	guarda	2448.1192	objrel_that	SS	0	NaN	
+WORD_OFF	0	31	0	5	 	2448.3654	objrel_that	SS	0	
+WORD_ON	0	31	0	6	gli uomini	2448.6116	objrel_that	SS	0	NaN	
+WORD_OFF	0	31	0	6	 	2448.8578	objrel_that	SS	0	
+FIX2PANEL_ON	0	31	-	-	+	2449.1041	objrel_that	SS	0	NaN	
+KEY_PRESS	0	31	0	6	VIOLATION	2449.8378	objrel_that	SS	0	
+PanelOn	0	31	-	-	 	2450.1358	objrel_that	SS	0	NaN	
+PanelResp	0	31	-	-	ACCEPTABLE	0.40699	objrel_that	SS	0	NaN	
+FeedbackOn	0	31	-	-	 	2450.5461	objrel_that	SS	0	
+FeedbackOff	0	31	-	-	 	2451.5779	objrel_that	SS	0	
+END_TRIAL	0	31	-	-	CORRECT_INC	0	objrel_that	SS	0	NaN	
+FIX_ON	0	32	0	-	+	2451.5896	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	1	i padri	2452.1993	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	1	 	2452.4455	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	2	che	2452.6916	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	2	 	2452.9379	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	3	gli attori	2453.184	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	3	 	2453.4303	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	4	accanto	2453.6765	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	4	 	2453.9227	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	5	alla bambina	2454.1689	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	5	 	2454.4151	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	6	interrompe	2454.6614	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	6	 	2454.9076	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	7	conoscono	2455.1538	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	7	 	2455.4	objrel_nounpp	PPS	7	
+WORD_ON	0	32	0	8	le ragazze	2455.6461	objrel_nounpp	PPS	7	V1	
+WORD_OFF	0	32	0	8	 	2455.8924	objrel_nounpp	PPS	7	
+FIX2PANEL_ON	0	32	-	-	+	2456.1386	objrel_nounpp	PPS	7	V1	
+PanelOn	0	32	-	-	 	2457.1703	objrel_nounpp	PPS	7	V1	
+PanelResp	0	32	-	-	VIOLATION	0.27901	objrel_nounpp	PPS	7	V1	
+FeedbackOn	0	32	-	-	 	2457.4516	objrel_nounpp	PPS	7	
+FeedbackOff	0	32	-	-	 	2458.4835	objrel_nounpp	PPS	7	
+END_TRIAL	0	32	-	-	CORRECT_INC	0	objrel_nounpp	PPS	7	V1	
+FIX_ON	0	33	0	-	+	2458.4952	embedding_mental	SPS	0	
+WORD_ON	0	33	0	1	lo studente	2459.1048	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	1	 	2459.3511	embedding_mental	SPS	0	
+WORD_ON	0	33	0	2	dice	2459.5972	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	2	 	2459.8435	embedding_mental	SPS	0	
+WORD_ON	0	33	0	3	che	2460.0897	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	3	 	2460.3359	embedding_mental	SPS	0	
+WORD_ON	0	33	0	4	le figlie	2460.5821	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	4	 	2460.8283	embedding_mental	SPS	0	
+WORD_ON	0	33	0	5	davanti	2461.0745	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	5	 	2461.3208	embedding_mental	SPS	0	
+WORD_ON	0	33	0	6	alla sorella	2461.567	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	6	 	2461.8131	embedding_mental	SPS	0	
+WORD_ON	0	33	0	7	criticano	2462.0594	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	7	 	2462.3056	embedding_mental	SPS	0	
+WORD_ON	0	33	0	8	i ragazzi	2462.5518	embedding_mental	SPS	0	NaN	
+WORD_OFF	0	33	0	8	 	2462.798	embedding_mental	SPS	0	
+FIX2PANEL_ON	0	33	-	-	+	2463.0442	embedding_mental	SPS	0	NaN	
+KEY_PRESS	0	33	0	8	VIOLATION	2463.5312	embedding_mental	SPS	0	
+PanelOn	0	33	-	-	 	2464.0759	embedding_mental	SPS	0	NaN	
+PanelResp	0	33	-	-	ACCEPTABLE	0.34899	embedding_mental	SPS	0	NaN	
+FeedbackOn	0	33	-	-	 	2464.4277	embedding_mental	SPS	0	
+FeedbackOff	0	33	-	-	 	2465.4594	embedding_mental	SPS	0	
+END_TRIAL	0	33	-	-	CORRECT_INC	0	embedding_mental	SPS	0	NaN	
+FIX_ON	0	34	0	-	+	2465.4711	embedding_mental	PPS	0	
+WORD_ON	0	34	0	1	gli amici	2466.0808	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	1	 	2466.327	embedding_mental	PPS	0	
+WORD_ON	0	34	0	2	dichiarano	2466.5732	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	2	 	2466.8194	embedding_mental	PPS	0	
+WORD_ON	0	34	0	3	che	2467.0656	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	3	 	2467.3119	embedding_mental	PPS	0	
+WORD_ON	0	34	0	4	i ragazzi	2467.5581	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	4	 	2467.8043	embedding_mental	PPS	0	
+WORD_ON	0	34	0	5	accanto	2468.0505	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	5	 	2468.2967	embedding_mental	PPS	0	
+WORD_ON	0	34	0	6	alla bambina	2468.5429	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	6	 	2468.7891	embedding_mental	PPS	0	
+WORD_ON	0	34	0	7	incontrano	2469.0352	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	7	 	2469.2815	embedding_mental	PPS	0	
+WORD_ON	0	34	0	8	l' attrice	2469.5278	embedding_mental	PPS	0	NaN	
+WORD_OFF	0	34	0	8	 	2469.774	embedding_mental	PPS	0	
+FIX2PANEL_ON	0	34	-	-	+	2470.0201	embedding_mental	PPS	0	NaN	
+PanelOn	0	34	-	-	 	2471.0518	embedding_mental	PPS	0	NaN	
+PanelResp	0	34	-	-	ACCEPTABLE	0.52739	embedding_mental	PPS	0	NaN	
+FeedbackOn	0	34	-	-	 	2471.5912	embedding_mental	PPS	0	
+FeedbackOff	0	34	-	-	 	2472.6229	embedding_mental	PPS	0	
+END_TRIAL	0	34	-	-	CORRECT	0	embedding_mental	PPS	0	NaN	
+FIX_ON	0	35	0	-	+	2472.6346	objrel_that	SP	0	
+WORD_ON	0	35	0	1	il ragazzo	2473.2443	objrel_that	SP	0	NaN	
+WORD_OFF	0	35	0	1	 	2473.4906	objrel_that	SP	0	
+WORD_ON	0	35	0	2	che	2473.7367	objrel_that	SP	0	NaN	
+WORD_OFF	0	35	0	2	 	2473.983	objrel_that	SP	0	
+WORD_ON	0	35	0	3	le donne	2474.2292	objrel_that	SP	0	NaN	
+WORD_OFF	0	35	0	3	 	2474.4754	objrel_that	SP	0	
+WORD_ON	0	35	0	4	attraggono	2474.7216	objrel_that	SP	0	NaN	
+WORD_OFF	0	35	0	4	 	2474.9678	objrel_that	SP	0	
+WORD_ON	0	35	0	5	ferma	2475.214	objrel_that	SP	0	NaN	
+WORD_OFF	0	35	0	5	 	2475.4602	objrel_that	SP	0	
+WORD_ON	0	35	0	6	le madri	2475.7064	objrel_that	SP	0	NaN	
+WORD_OFF	0	35	0	6	 	2475.9527	objrel_that	SP	0	
+FIX2PANEL_ON	0	35	-	-	+	2476.1988	objrel_that	SP	0	NaN	
+PanelOn	0	35	-	-	 	2477.2306	objrel_that	SP	0	NaN	
+PanelResp	0	35	-	-	ACCEPTABLE	0.39475	objrel_that	SP	0	NaN	
+FeedbackOn	0	35	-	-	 	2477.6292	objrel_that	SP	0	
+FeedbackOff	0	35	-	-	 	2478.6609	objrel_that	SP	0	
+END_TRIAL	0	35	-	-	CORRECT	0	objrel_that	SP	0	NaN	
+FIX_ON	0	36	0	-	+	2478.6727	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	1	le sorelle	2479.2823	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	1	 	2479.5286	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	2	che	2479.7747	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	2	 	2480.021	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	3	i contadini	2480.2672	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	3	 	2480.5134	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	4	davanti	2480.7596	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	4	 	2481.0058	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	5	alle madri	2481.252	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	5	 	2481.4982	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	6	osservano	2481.7444	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	6	 	2481.9907	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	7	ricordiamo	2482.2368	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	7	 	2482.4831	objrel_nounpp	PPP	-8	
+WORD_ON	0	36	0	8	i fratelli	2482.7293	objrel_nounpp	PPP	-8	V2	
+WORD_OFF	0	36	0	8	 	2482.9755	objrel_nounpp	PPP	-8	
+FIX2PANEL_ON	0	36	-	-	+	2483.2217	objrel_nounpp	PPP	-8	V2	
+PanelOn	0	36	-	-	 	2484.2535	objrel_nounpp	PPP	-8	V2	
+PanelResp	0	36	-	-	VIOLATION	0.42323	objrel_nounpp	PPP	-8	V2	
+FeedbackOn	0	36	-	-	 	2484.6872	objrel_nounpp	PPP	-8	
+FeedbackOff	0	36	-	-	 	2485.719	objrel_nounpp	PPP	-8	
+END_TRIAL	0	36	-	-	CORRECT_INC	0	objrel_nounpp	PPP	-8	V2	
+FIX_ON	0	37	0	-	+	2485.7307	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	1	le sorelle	2486.3404	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	1	 	2486.5866	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	2	che	2486.8327	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	2	 	2487.079	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	3	i contadini	2487.3252	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	3	 	2487.5714	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	4	davanti	2487.8176	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	4	 	2488.0638	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	5	alle madri	2488.31	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	5	 	2488.5563	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	6	osservano	2488.8024	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	6	 	2489.0487	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	7	ricordano	2489.2948	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	7	 	2489.5411	objrel_nounpp	PPP	0	
+WORD_ON	0	37	0	8	i fratelli	2489.7872	objrel_nounpp	PPP	0	NaN	
+WORD_OFF	0	37	0	8	 	2490.0335	objrel_nounpp	PPP	0	
+FIX2PANEL_ON	0	37	-	-	+	2490.2797	objrel_nounpp	PPP	0	NaN	
+PanelOn	0	37	-	-	 	2491.3115	objrel_nounpp	PPP	0	NaN	
+PanelResp	0	37	-	-	ACCEPTABLE	0.80611	objrel_nounpp	PPP	0	NaN	
+FeedbackOn	0	37	-	-	 	2492.1204	objrel_nounpp	PPP	0	
+FeedbackOff	0	37	-	-	 	2493.1522	objrel_nounpp	PPP	0	
+END_TRIAL	0	37	-	-	CORRECT	0	objrel_nounpp	PPP	0	NaN	
+FIX_ON	0	38	0	-	+	2493.1639	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	1	l' attore	2493.7736	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	1	 	2494.0198	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	2	che	2494.2659	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	2	 	2494.5122	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	3	le studentesse	2494.7584	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	3	 	2495.0046	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	4	vicino	2495.2507	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	4	 	2495.497	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	5	al fratello	2495.7432	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	5	 	2495.9895	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	6	interrompono	2496.2356	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	6	 	2496.4819	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	7	ignorano	2496.728	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	7	 	2496.9743	objrel_nounpp	SPS	8	
+WORD_ON	0	38	0	8	le contadine	2497.2204	objrel_nounpp	SPS	8	V2	
+WORD_OFF	0	38	0	8	 	2497.4667	objrel_nounpp	SPS	8	
+FIX2PANEL_ON	0	38	-	-	+	2497.7129	objrel_nounpp	SPS	8	V2	
+PanelOn	0	38	-	-	 	2498.7446	objrel_nounpp	SPS	8	V2	
+PanelResp	0	38	-	-	VIOLATION	0.26034	objrel_nounpp	SPS	8	V2	
+FeedbackOn	0	38	-	-	 	2499.0143	objrel_nounpp	SPS	8	
+FeedbackOff	0	38	-	-	 	2500.046	objrel_nounpp	SPS	8	
+END_TRIAL	0	38	-	-	CORRECT_INC	0	objrel_nounpp	SPS	8	V2	
+FIX_ON	0	39	0	-	+	2500.0577	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	1	l' amica	2500.6674	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	1	 	2500.9137	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	2	che	2501.1598	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	2	 	2501.4061	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	3	il ragazzo	2501.6522	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	3	 	2501.8985	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	4	accanto	2502.1447	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	4	 	2502.3909	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	5	alle contadine	2502.6371	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	5	 	2502.8833	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	6	fermo	2503.1295	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	6	 	2503.3758	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	7	indica	2503.622	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	7	 	2503.8682	objrel_nounpp	SSP	-7	
+WORD_ON	0	39	0	8	le madri	2504.1144	objrel_nounpp	SSP	-7	V1	
+WORD_OFF	0	39	0	8	 	2504.3606	objrel_nounpp	SSP	-7	
+FIX2PANEL_ON	0	39	-	-	+	2504.6068	objrel_nounpp	SSP	-7	V1	
+PanelOn	0	39	-	-	 	2505.6385	objrel_nounpp	SSP	-7	V1	
+PanelResp	0	39	-	-	VIOLATION	0.28551	objrel_nounpp	SSP	-7	V1	
+FeedbackOn	0	39	-	-	 	2505.9316	objrel_nounpp	SSP	-7	
+FeedbackOff	0	39	-	-	 	2506.9634	objrel_nounpp	SSP	-7	
+END_TRIAL	0	39	-	-	CORRECT_INC	0	objrel_nounpp	SSP	-7	V1	
+FIX_ON	0	40	0	-	+	2506.9751	embedding_mental	SPS	7	
+WORD_ON	0	40	0	1	il fratello	2507.5848	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	1	 	2507.831	embedding_mental	SPS	7	
+WORD_ON	0	40	0	2	dice	2508.0771	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	2	 	2508.3234	embedding_mental	SPS	7	
+WORD_ON	0	40	0	3	che	2508.5696	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	3	 	2508.8158	embedding_mental	SPS	7	
+WORD_ON	0	40	0	4	gli uomini	2509.062	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	4	 	2509.3082	embedding_mental	SPS	7	
+WORD_ON	0	40	0	5	davanti	2509.5544	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	5	 	2509.8007	embedding_mental	SPS	7	
+WORD_ON	0	40	0	6	alla studentessa	2510.0468	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	6	 	2510.2931	embedding_mental	SPS	7	
+WORD_ON	0	40	0	7	conosce	2510.5393	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	7	 	2510.7855	embedding_mental	SPS	7	
+WORD_ON	0	40	0	8	le bambine	2511.0317	embedding_mental	SPS	7	V2	
+WORD_OFF	0	40	0	8	 	2511.2779	embedding_mental	SPS	7	
+FIX2PANEL_ON	0	40	-	-	+	2511.5241	embedding_mental	SPS	7	V2	
+PanelOn	0	40	-	-	 	2512.5559	embedding_mental	SPS	7	V2	
+PanelResp	0	40	-	-	VIOLATION	0.32856	embedding_mental	SPS	7	V2	
+FeedbackOn	0	40	-	-	 	2512.8959	embedding_mental	SPS	7	
+FeedbackOff	0	40	-	-	 	2513.9276	embedding_mental	SPS	7	
+END_TRIAL	0	40	-	-	CORRECT_INC	0	embedding_mental	SPS	7	V2	
