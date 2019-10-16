@@ -38,7 +38,7 @@ end
 
 %% TEXT ON SCREEN
 Screen('TextFont',handles.win, 'Arial');
-Screen('TextSize',handles.win, 20);   % 160 --> ~25mm text height (from top of `d' to bottom of `g').
+Screen('TextSize',handles.win, 30);   % 160 --> ~25mm text height (from top of `d' to bottom of `g').
 Screen('TextStyle', handles.win, 1);   % 0=normal text style. 1=bold. 2=italic.
 
 

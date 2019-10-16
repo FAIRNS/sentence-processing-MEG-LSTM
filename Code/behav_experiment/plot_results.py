@@ -2,8 +2,9 @@ import os
 import pandas as pd
 from tabulate import tabulate
 import seaborn as sns
+from statsmodels.formula.api import ols
+from statsmodels.graphics.factorplots import interaction_plot
 import matplotlib.pyplot as plt
-
 
 path2figures = os.path.join('..', '..', 'Figures')
 path2results = os.path.join('..', '..', 'Paradigm', 'Results')
@@ -87,8 +88,9 @@ plt.savefig(os.path.join(path2figures, fn))
 ### INTERACTION PLOT FOR INNER VERB
 ######################################################
 fig, axes = plt.subplots(1, 1, figsize=(10, 10))
-curr_dict{}
+df_interaction = []
 for i, s_type in enumerate(['objrel', 'objrel_nounpp', 'embedding_mental_SR', 'embedding_mental_LR']):
+    curr_dict = {}
     if s_type in ['objrel_nounpp', 'embedding_mental_LR']:
         test_conditions = ['SPS', 'PSP']
         control_conditions = ['SSS', 'PPP']
@@ -104,18 +106,21 @@ for i, s_type in enumerate(['objrel', 'objrel_nounpp', 'embedding_mental_SR', 'e
 
 
     df = df_error_rates.loc[(df_error_rates['sentence_type'] == s_type) & (df_error_rates['trial_type'] == 'Violation') & (df_error_rates['violation_position'].isin(['inner']))]
-    df.loc[(df['condition'].isin(test_conditions))]['error_rate'].mean() - df.loc[(df['condition'].isin(control_conditions))]['error_rate'].mean()
-    curr_dict['error_rate_norm'] = df.loc[(df['condition'].isin(test_conditions))]['error_rate'].mean() - df.loc[(df['condition'].isin(control_conditions))]['error_rate'].mean()
-    curr_dict['error_rate'] = df.loc[(df['condition'].isin(test_conditions))]['error_rate'].mean()
+    curr_dict['mean_error_rate'] = df.loc[(df['condition'].isin(test_conditions))]['error_rate'].mean()
+    curr_dict['std_error_rate'] = df.loc[(df['condition'].isin(test_conditions))]['error_rate'].std()
+    curr_dict['mean_error_rate_norm'] = df.loc[(df['condition'].isin(test_conditions))]['error_rate'].mean() - df.loc[(df['condition'].isin(control_conditions))]['error_rate'].mean()
+    curr_dict['std_error_rate_norm'] = df.loc[(df['condition'].isin(test_conditions))]['error_rate'].mean() - df.loc[(df['condition'].isin(control_conditions))]['error_rate'].std()
+
     curr_dict['sentence_type'] = s_type
     curr_dict['SR_LR'] = SR_LR
     curr_dict['succ_nested'] = succ_nested
+    df_interaction.append(curr_dict)
 
-#     sns.barplot(x='violation_position', y='error_rate', hue='condition' , data=df, ax=ax, hue_order=hue_order, palette=palette)
-#     ax.set_title(s_type)
-#     ax.set_ylim([0, 1])
-#     ax.set_ylabel('Error rate')
-# plt.tight_layout()
-#
-# fn = 'error_rate_per_position_per_condition_across_subjects.png'
-# plt.savefig(os.path.join(path2figures, fn))
+df_interaction = pd.DataFrame(df_interaction)
+interaction_plot(df_interaction.SR_LR, df_interaction.succ_nested, df_interaction.error_rate, colors=['red','blue'], markers=['D','^'], ms=10)
+
+fn = 'interaction_inner_error_rate_humans.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+result = ols(formula='error_rate ~ SR_LR + succ_nested + SR_LR * succ_nested', data=df_interaction).fit()
+print(result.summary())

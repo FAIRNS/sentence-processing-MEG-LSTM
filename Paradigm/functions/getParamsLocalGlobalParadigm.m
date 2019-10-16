@@ -2,7 +2,7 @@ function params = getParamsLocalGlobalParadigm(debug_mode)
 %This function makes the struct that holds the parameters for the presentation of the stimuli and such.
 %% SUBJECT AND SESSION NUMBERS
 
-params.n_blocks = 2;
+params.n_blocks = 1;
 % refresh rate
 params.r_rate =  60;
 
@@ -41,7 +41,7 @@ params.fixation_duration_visual_block   = 0.6; %
 params.stimulus_ontime                  = 0.250; % Duration of each word
 params.stimulus_offtime                 = 0.250; % Duration of black between stimuli
 params.SOA_visual                       = params.stimulus_ontime + params.stimulus_offtime;
-params.ISI_to_response_panel            = 1;
+params.ISI_to_response_panel            = 1.5;
 params.panel_ontime                     = 1.5;  % Duration of panel on the screen
 params.max_RT                           = 1.5;    % Maximum allowance for RT.
 params.feedback_time                    = 0.5;

@@ -10,7 +10,7 @@ function [sentences_per_block, training_sentences] = load_stimuli(params)
 sentences_per_block = cell(1, params.n_blocks);
 for b_id = 1:params.n_blocks % block ID
 %     warning off;
-    curr_filename = fullfile(params.path2stim, ['Subj_', params.subject, '_block_', num2str(b_id), '.txt']);
+    curr_filename = fullfile(params.path2stim, ['Subj_', params.subject, '_block_', num2str(params.session), '.txt']);
     fid = fopen(curr_filename, 'r');
     stimuli = textscan(fid, '%s', 'delimiter','\n', 'headerLines', 1);
     fclose(fid);
