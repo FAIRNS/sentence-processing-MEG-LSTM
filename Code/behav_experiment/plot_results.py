@@ -34,10 +34,13 @@ for i, s_type in enumerate(['objrel', 'objrel_nounpp', 'embedding_mental_SR', 'e
     ax = axes[i//2, i%2]
     df = df_all_trials[df_all_trials['sentence_type'] == s_type]
     props = df.groupby('subject')['valid_answer'].value_counts(normalize=True).unstack()
-    props.plot(kind='bar', stacked='True', ax=ax)
+    props.plot(kind='bar', stacked='True', ax=ax, rot=0, legend=False)
     ax.set_title(s_type)
     ax.set_ylim([0, 1])
     ax.set_ylabel('Performance rate')
+
+axes[0,1].legend(loc='center left', bbox_to_anchor=(1.0, 0.8))
+plt.subplots_adjust(right=0.8)
 
 fn = 'performance_rate_per_subject_per_answer_across_conditions.png'
 plt.savefig(os.path.join(path2figures, fn))
@@ -75,9 +78,12 @@ for i, s_type in enumerate(['objrel', 'objrel_nounpp', 'embedding_mental_SR', 'e
     ax = axes[i // 2, i % 2]
     df = df_error_rates.loc[(df_error_rates['sentence_type'] == s_type) & (df_error_rates['trial_type'] == 'Violation') & (df_error_rates['violation_position'].isin(['inner', 'outer']))]
     sns.barplot(x='violation_position', y='error_rate', hue='condition' , data=df, ax=ax, hue_order=hue_order, palette=palette)
+    # sns.set(font_scale=2)
+    ax.tick_params(labelsize=20)
     ax.set_title(s_type)
     ax.set_ylim([0, 1])
-    ax.set_ylabel('Error rate')
+    ax.set_ylabel('Error rate', fontsize=20)
+
 plt.tight_layout()
 
 fn = 'error_rate_per_position_per_condition_across_subjects.png'
