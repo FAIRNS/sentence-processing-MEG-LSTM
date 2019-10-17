@@ -6,7 +6,7 @@ from functions import data_manip
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-s', '--subjects', action='append', type=int, default= [3, 4, 5, 6, 7, 8, 9, 10, 11])
+parser.add_argument('-s', '--subjects', action='append', type=int, default= [6, 7, 8, 9, 10, 11])
 parser.add_argument('--sessions', action='append', type=int, default=[])
 parser.add_argument('--path2logs', default='../../Paradigm/Logs')
 parser.add_argument('-v', '--verbose', default=False, action='store_true')
