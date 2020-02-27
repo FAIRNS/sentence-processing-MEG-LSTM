@@ -1,9 +1,9 @@
 #!/bin/bash -x
 #for NATASK in 'nounpp' 'subjrel_that' 'objrel_that';
 NUM_STIMULI=4000
-for NATASK in 'nounpp' 'subjrel_that' 'objrel_that';
+for NATASK in 'objrel_that_V1' 'objrel_that_V2' 'subjrel_that_V1' 'subjrel_that_V2';
 do
-    for UNIT in '18';
+    for UNIT in '814' '1064';
 #    for UNIT in '1220' '758' '1126' '719' '1184' '1225';
 #    for UNIT in '836' '1064'; #'650' '0' '610' '623' '680' '1091';
 #    for UNIT in '1220' '1126' '650' '0' '610' '623' '680' '1091' '814' '1118' '859' '1225';

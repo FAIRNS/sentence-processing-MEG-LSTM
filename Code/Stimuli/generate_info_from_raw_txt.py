@@ -4,6 +4,7 @@
 import argparse
 
 parser = argparse.ArgumentParser(description='Switching from Marco files to Tal format')
+parser.add_argument('-s', '--sentence-type', required=False, default=[], help='Sentence type (e.g., objrel_that_V1, objrel_that_V2, subjrel_that_V1) that will be saved in info["RC_type"]. If empty it will be taken from the first column of the txt file from NA_task_geneartor.')
 parser.add_argument('-i', '--input', required=True, help='Input sentences in Marco\'s format')
 parser.add_argument('-o', '--output', required=True, help='Filename (without extension) for Tal\'s format - only path and basename should be specified. The script will then generate three files with the following extensions: text (sentences), gold (labels)  and info (pickle in Theo\'s format), which can be then used for further analyses and ablation experiments.')
 parser.add_argument('-c', '--correct-word-position', type=str, help='The position of the (correct) test word (verb or adj) in the sentence, counting from ZERO. For example, <the boy near the cars greets the> it should be set to 5 if prediction test is on the verb') 
@@ -22,7 +23,10 @@ info = []
 for line in raw_sentences:
     curr_info = {}
     curr_line = line.split('\t')
-    curr_info['RC_type'] = curr_line[0]
+    if args.sentence_type:
+        curr_info['RC_type'] = args.sentence_type
+    else:
+        curr_info['RC_type'] = curr_line[0]
     for key, value in args.pattern:
         #print(key, value)
         curr_info[key] = curr_line[int(value)]

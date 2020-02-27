@@ -69,6 +69,70 @@ def counter_fullfilled(counter, n):
 
 
 # det N1 that the N2 V2 V1 det N3
+if args.natask == 'subjrel':
+
+    genders = ['masculine', 'feminine']
+    numbers = ['singular', 'plural']
+    
+    features = {}
+    features['N1_gender'] = genders
+    features['N1_number'] = numbers
+    features['N2_gender'] = genders
+    features['N2_number'] = numbers
+    counter = init_counter(features)
+
+    while not counter_fullfilled(counter, args.n):
+        # N1
+        N1_gender = genders[np.random.randint(2)]
+        N1_number = numbers[np.random.randint(2)]
+        N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
+        IX_N1 = np.random.randint(len(N1s))
+        N1 = N1s[IX_N1]
+        # N2
+        N2_gender = genders[np.random.randint(2)]
+        N2_number = numbers[np.random.randint(2)]
+        N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
+        IX_N2 = np.random.randint(len(N2s))
+        N2 = N2s[IX_N2]
+        # N3
+        N3_gender = genders[np.random.randint(2)]
+        N3_number = numbers[np.random.randint(2)]
+        N3s = Words['nouns'][N3_gender][N3_number]#[0:num_nouns]
+        IX_N3 = np.random.randint(len(N3s))
+        N3 = N3s[IX_N3]
+        # V1
+        V1s = Words['verbs'][N1_number]#[0:num_nouns]
+        IX_V1 = np.random.randint(len(V1s))
+        V1 = V1s[IX_V1]
+        # V2
+        V2s = Words['verbs'][N1_number]
+        IX_V2 = np.random.randint(len(V2s))
+        V2 = V2s[IX_V2]
+        # sentence
+        opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+        opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
+        sentence = ' '.join(['The', N1, 'that', V2, 'the', N2, V1, 'the', N3]) 
+
+        noun_IXs = [IX_N1, IX_N2, IX_N3]
+        if len(set(noun_IXs)) == len(noun_IXs): # check noun repetition at the lemma level (i.e., all indexes are different)
+            if IX_V1 != IX_V2:                  # check verb repetition at the lemma level
+                if counter['_'.join([N1_gender, N1_number, N2_gender, N2_number])] < args.n:
+                    stimuli.append([args.natask, sentence,
+                           N1_gender, N1_number,
+                           N2_gender, N2_number,
+                           N3_gender, N3_number,
+                           Words['verbs'][opposite_number_V1][IX_V1], Words['verbs'][opposite_number_V2][IX_V2]])
+                    counter['_'.join([N1_gender, N1_number, N2_gender, N2_number])]+=1 
+
+    stimuli.sort(key=lambda x: x[1]) # first word
+    stimuli.sort(key=lambda x: x[7], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[5], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
+    [print('\t'.join(l)) for l in stimuli]
+
+
+
+# det N1 that the N2 V2 V1 det N3
 if args.natask == 'objrel':
 
     genders = ['masculine', 'feminine']
@@ -130,6 +194,68 @@ if args.natask == 'objrel':
     stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
     [print('\t'.join(l)) for l in stimuli]
 
+
+# det N1 that the pronuon V2 V1 det N3
+if args.natask == 'objrel_pronoun':
+
+    genders = ['masculine', 'feminine']
+    numbers = ['singular', 'plural']
+    
+    features = {}
+    features['N1_gender'] = genders
+    features['N1_number'] = numbers
+    features['N2_gender'] = genders
+    features['N2_number'] = numbers
+    counter = init_counter(features)
+
+    while not counter_fullfilled(counter, args.n):
+        # N1
+        N1_gender = genders[np.random.randint(2)]
+        N1_number = numbers[np.random.randint(2)]
+        N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
+        IX_N1 = np.random.randint(len(N1s))
+        N1 = N1s[IX_N1]
+        # N2
+        N2_gender = genders[np.random.randint(2)]
+        N2_number = numbers[np.random.randint(2)]
+        N2s = Words['pronouns'][N2_gender][N2_number]#[0:num_nouns]
+        IX_N2 = np.random.randint(len(N2s))
+        N2 = N2s[IX_N2]
+        # N3
+        N3_gender = genders[np.random.randint(2)]
+        N3_number = numbers[np.random.randint(2)]
+        N3s = Words['nouns'][N3_gender][N3_number]#[0:num_nouns]
+        IX_N3 = np.random.randint(len(N3s))
+        N3 = N3s[IX_N3]
+        # V1
+        V1s = Words['verbs'][N1_number]#[0:num_nouns]
+        IX_V1 = np.random.randint(len(V1s))
+        V1 = V1s[IX_V1]
+        # V2
+        V2s = Words['verbs'][N2_number]
+        IX_V2 = np.random.randint(len(V2s))
+        V2 = V2s[IX_V2]
+        # sentence
+        opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+        opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
+        sentence = ' '.join(['The', N1, 'that', N2, V2, V1, 'the', N3]) 
+
+        noun_IXs = [IX_N1, IX_N2, IX_N3]
+        if len(set(noun_IXs)) == len(noun_IXs): # check noun repetition at the lemma level (i.e., all indexes are different)
+            if IX_V1 != IX_V2:                  # check verb repetition at the lemma level
+                if counter['_'.join([N1_gender, N1_number, N2_gender, N2_number])] < args.n:
+                    stimuli.append([args.natask, sentence,
+                           N1_gender, N1_number,
+                           N2_gender, N2_number,
+                           N3_gender, N3_number,
+                           Words['verbs'][opposite_number_V1][IX_V1], Words['verbs'][opposite_number_V2][IX_V2]])
+                    counter['_'.join([N1_gender, N1_number, N2_gender, N2_number])]+=1 
+
+    stimuli.sort(key=lambda x: x[1]) # first word
+    stimuli.sort(key=lambda x: x[7], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[5], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
+    [print('\t'.join(l)) for l in stimuli]
 
 if args.natask == 'objrel_nounpp':
 

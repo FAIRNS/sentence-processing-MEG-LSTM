@@ -1,8 +1,8 @@
 #!/bin/bash -x
 #for NATASK in 'nounpp' 'subjrel_that' 'objrel_that';
 NUM_STIMULI=4032
-#for NATASK in 'objrel_nounpp';
-for NATASK in 'embedding_mental';
+for NATASK in 'objrel_that';
+#for NATASK in 'embedding_mental';
 do
     #for UNIT in '1220' '1126' '650' '0' '610' '623' '680' '1091' '814' '1118' '859' '1225';
     for UNIT in '814' '1099' '650' '1012' '1064';

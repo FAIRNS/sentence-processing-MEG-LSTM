@@ -3,7 +3,7 @@ CUDA='' # ' --cuda' or '' (empty)
 #CUDA=' --cuda'
 
 #for NATASK in 'nounpp' 'subjrel_that' 'objrel_that' 'objrel_nounpp_V1' 'objrel_that_V1' 'subjrel_that_V1' 'objrel_nounpp' 'nounpp_copula_number' 'nounpp_copula_gender';'nounpp_objrel_capitalized' 'nounpp_objrel_V1_capitalized'
-for NATASK in 'embedding_mental_SR';
+for NATASK in 'objrel_that_V1' 'objrel_that_V2' 'subjrel_that_V1' 'subjrel_that_V2';
 do
     NUM_STIMULI=4000
     echo

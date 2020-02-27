@@ -2,7 +2,7 @@
 #NATASK=objrel_nounpp_V1
 
 #for NATASK in 'objrel_nounpp' 'objrel_nounpp_V1' 'objrel_nounpp_capitalized' 'objrel_nounpp_V1_capitalized';  
-#for NATASK in 'nounpp_objrel' 'nounpp_objrel_V1' 'nounpp_objrel_capitalized' 'nounpp_objrel_V1_capitalized';  
+#for NATASK in 'objrel_nounpp_capitalized' 'objrel_nounpp_V1_capitalized';  
 for NATASK in 'embedding_mental';
 do
     echo '---------------------------------------------------------'

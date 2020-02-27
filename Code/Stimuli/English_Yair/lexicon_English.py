@@ -25,6 +25,19 @@ a['feminine']['plural'] = ['']
 determinants = {'definit':definit, 'a':a}
 
 ###################
+###### PRONOUNS ######
+###################
+# Initialization
+pronouns = {}
+for gender in ['masculine', 'feminine']:
+    pronouns[gender] = {}
+# Tokens
+pronouns['masculine']['singular'] = ['he']
+pronouns['masculine']['plural'] = ['they']
+pronouns['feminine']['singular'] = ['she']
+pronouns['feminine']['plural'] = ['they']
+
+###################
 ###### NOUNS ######
 ###################
 # Initialization
@@ -93,4 +106,4 @@ adjectives = {}
 #adjectives['feminine']['plural'] = ['belle', 'famose', 'brutte', 'ricche', 'povere', 'basse', 'alte', 'grasse', 'cattive', 'buone', 'lente', 'nuove']
 
 
-Words = {'determinants':determinants.copy(), 'nouns':nouns.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'copula':copula.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps.copy(), 'adjectives':adjectives.copy()}
+Words = {'determinants':determinants.copy(), 'pronouns':pronouns.copy(), 'nouns':nouns.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'copula':copula.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps.copy(), 'adjectives':adjectives.copy()}

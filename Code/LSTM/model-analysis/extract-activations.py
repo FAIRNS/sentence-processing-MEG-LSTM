@@ -33,7 +33,7 @@ parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--lang', default='en')
 parser.add_argument('--unk-token', default='<unk>')
 parser.add_argument('-k', '--kbow-value', default=2, type=int)
-
+parser.add_argument('--uppercase-first-word', action='store_true', default=False)
 
 args = parser.parse_args()
 if args.perplexity and 'lstm' not in args.get_representations:
@@ -174,6 +174,9 @@ if 'lstm' in args.get_representations:
         #out, hidden = model(inp, hidden)
         #out = torch.nn.functional.log_softmax(out[0]).unsqueeze(0)
         for j, w in enumerate(s):
+            if j==0 and args.uppercase_first_word:
+                            w = w.capitalize()
+
             if w not in vocab.word2idx and args.use_unk:
                 print('unk word: ' + w)
                 w = args.unk_token
