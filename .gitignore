@@ -17,7 +17,7 @@ Output/
 .idea/
 
 *.pyc
-*.sh
+
 
 *.out
 *.log
