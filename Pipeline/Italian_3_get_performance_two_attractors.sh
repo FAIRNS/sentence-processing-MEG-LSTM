@@ -1,9 +1,10 @@
 #!/bin/bash
 #NATASK=objrel_nounpp_V1
 
-#for NATASK in 'objrel_nounpp' 'objrel_nounpp_V1' 'objrel_nounpp_capitalized' 'objrel_nounpp_V1_capitalized';  
+for NATASK in 'objrel_nounpp_V1' 'objrel_nounpp_V2' 'sc_long_V1'
+    # 'objrel_nounpp_capitalized' 'objrel_nounpp_V1_capitalized';  
 #for NATASK in 'objrel_nounpp_capitalized' 'objrel_nounpp_V1_capitalized';  
-for NATASK in 'embedding_mental';
+#for NATASK in 'embedding_mental';
 do
     echo '---------------------------------------------------------'
     echo $NATASK

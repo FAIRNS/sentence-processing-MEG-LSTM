@@ -1,9 +1,6 @@
 #!/bin/bash
 
-#for NATASK in 'nounpp' 'subjrel_that' 'objrel_that';
-#for NATASK in 'embedding_mental_SR' 'objrel_that';
-#for NATASK in 'nounpp' 'subjrel_that' 'subjrel_that_V1' 'objrel_that' 'objrel_that_V1' 'nounpp_copula_number';  
-for NATASK in  'objrel_that_V2' 'objrel_that_V1' 'subjrel_that_V1' 'subjrel_that_V2';  
+for NATASK in  'objrel_that_V2' 'objrel_that_V1' 'sc_short_V1'
 do
     echo '-------------------------------'
     echo 'Number-agreement task: '$NATASK

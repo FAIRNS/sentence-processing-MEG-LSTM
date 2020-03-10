@@ -17,7 +17,7 @@
 
 #for NATASK in 'objrel' 'objrel_nounpp' 'embedding_mental' 'embedding_mental_SR' 'embedding_mental_2LRs'
 #for NATASK in 'objrel_pronoun'
-for NATASK in 'subjrel'
+for NATASK in 'objrel_nounpp'
 do
     if [ "$NATASK" == "subjrel" ] ;then
         V1_NUM_FIELD=3

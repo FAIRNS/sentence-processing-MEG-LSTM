@@ -10,6 +10,8 @@ Code/LSTM/model-analysis/Logs/
 Code/LSTM/model-analysis/main_ablation_experiment.py
 
 Data/
+!Data/Stimuli
+Data/Stimuli/old
 Figures/
 Output/
 .idea/

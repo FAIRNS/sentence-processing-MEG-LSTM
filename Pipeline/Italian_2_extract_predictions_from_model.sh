@@ -2,13 +2,16 @@
 CUDA='' # ' --cuda' or '' (empty)
 #CUDA=' --cuda'
 
-#for NATASK in 'nounpp' 'subjrel_that' 'objrel_that' 'objrel_nounpp_V1' 'objrel_that_V1' 'subjrel_that_V1' 'objrel_nounpp' 'nounpp_copula_number' 'nounpp_copula_gender';'nounpp_objrel_capitalized' 'nounpp_objrel_V1_capitalized'
-for NATASK in 'objrel_that_V1' 'objrel_that_V2' 'subjrel_that_V1' 'subjrel_that_V2';
+for NATASK in 'objrel_that_V1' 'objrel_that_V2' 'objrel_nounpp_V1' 'objrel_nounpp_V2' 'sc_short_V1' 'sc_long_V1'
 do
     NUM_STIMULI=4000
     echo
     echo 'Number-agreement task: '$NATASK
-    if [[ $NATASK == nounpp_objrel* ]]
+    if [[ $NATASK == objrel_nounpp* ]]
+    then
+        NUM_STIMULI=4032
+    fi
+    if [[ $NATASK == sc_long* ]]
     then
         NUM_STIMULI=4032
     fi
