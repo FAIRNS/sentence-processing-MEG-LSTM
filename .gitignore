@@ -9,8 +9,10 @@ Code/LSTM/model-analysis/RunScripts/
 Code/LSTM/model-analysis/Logs/
 Code/LSTM/model-analysis/main_ablation_experiment.py
 
-Data/
-!Data/Stimuli
+Data/Regression_open_nodes
+Data/lm-training
+Data/LSTM
+Data/agreement-data
 Data/Stimuli/old
 Figures/
 Output/
