@@ -1,0 +1,52 @@
+
+\documentclass[a4paper,man,natbib]{apa6}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+% Added by me
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{lscape}
+\usepackage{multicol}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{color, colortbl}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}m{#1}}
+
+\title{Number Agreement in Nested Dependencies}
+\shorttitle{Number Agreement in Nested Dependencies}
+\author{}
+\affiliation{}
+
+\abstract{Abstract}
+
+\begin{document}
+% \maketitle
+
+% TEST
+\input{sections/intro}
+\input{sections/model}
+\input{sections/results}
+\input{sections/methods}
+\input{sections/discussion}
+\subsection{Sections}
+
+\todo[inline, color=green!40]{This is an inline comment.}
+
+
+\bibliography{yair}
+
+\end{document}
+
+%
+% Please see the package documentation for more information
+% on the APA6 document class:
+%
+% http://www.ctan.org/pkg/apa6
+%
