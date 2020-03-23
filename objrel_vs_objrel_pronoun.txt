@@ -1,0 +1,76 @@
+-------------------------------
+Number-agreement task: objrel_V1
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.65625
+p-difference: 0.00001 +- 0.00002
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.5712890625
+p-difference: 0.00000 +- 0.00004
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.7353515625
+p-difference: 0.00001 +- 0.00006
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.76171875
+p-difference: 0.00001 +- 0.00005
+-------------------------------
+Number-agreement task: objrel_V2
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.978515625
+p-difference: 0.00023 +- 0.00058
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.990234375
+p-difference: 0.00038 +- 0.00105
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.7919921875
+p-difference: 0.00008 +- 0.00034
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.9970703125
+p-difference: 0.00027 +- 0.00082
+-------------------------------
+Number-agreement task: objrel_pronoun_V1
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.6669921875
+p-difference: 0.00001 +- 0.00003
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.572265625
+p-difference: 0.00000 +- 0.00004
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.890625
+p-difference: 0.00002 +- 0.00007
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.884765625
+p-difference: 0.00002 +- 0.00005
+-------------------------------
+Number-agreement task: objrel_pronoun_V2
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+1.0
+p-difference: 0.00024 +- 0.00068
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.978515625
+p-difference: 0.00049 +- 0.00145
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.8115234375
+p-difference: 0.00007 +- 0.00023
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+1.0
+p-difference: 0.00050 +- 0.00144

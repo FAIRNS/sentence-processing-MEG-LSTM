@@ -1,0 +1,24 @@
+-------------------------------
+Number-agreement task: objrel_that_V2
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.996
+p-difference: 0.00076 +- 0.00213
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.753
+p-difference: 0.00011 +- 0.00049
+
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+1.0
+p-difference: 0.00046 +- 0.00095
+-------------------------------
+Number-agreement task: objrel_that_V1
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.999
+p-difference: 0.00005 +- 0.00013
+

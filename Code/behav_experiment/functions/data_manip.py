@@ -40,7 +40,24 @@ def read_logs(args, valid_correct, valid_wrong):
                     s_type = fields[7]
                 curr_dict['sentence_type'] = s_type
                 curr_dict['condition'] = fields[8]
+                if curr_dict['condition'][0] == curr_dict['condition'][1]:
+                    curr_dict['congruent_subjects'] = True
+                else:
+                    curr_dict['congruent_subjects'] = False
+                if len(curr_dict['condition']) > 2:
+                    if curr_dict['condition'][1] == curr_dict['condition'][2]:
+                        curr_dict['congruent_attractor'] = True
+                    else:
+                        curr_dict['congruent_attractor'] = False
+                    curr_dict['congruent_subjects_attractor'] = '_'.join(map(str, [curr_dict['congruent_subjects'], curr_dict['congruent_attractor']]))
+                else:
+                    curr_dict['congruent_attractor'] = np.nan
+                    curr_dict['congruent_subjects_attractor'] = np.nan
+
+
                 curr_dict['violation_type'] = fields[10]
+                if curr_dict['violation_type'] == 'NaN':
+                    curr_dict['violation_type'] = 'None'
                 curr_dict['slide_num_of_viol'] = int(fields[9])
                 curr_dict['correct_wrong'] = fields[5]
                 curr_dict['RT'] = fields[6]
@@ -143,6 +160,19 @@ def get_error_rates(df_all_trials):
                         curr_dict['trial_type'] = trial_type
                         curr_dict['violation_type'] = violation_type
                         curr_dict['condition'] = condition
+                        if curr_dict['condition'][0] == curr_dict['condition'][1]:
+                            curr_dict['congruent_subjects'] = True
+                        else:
+                            curr_dict['congruent_subjects'] = False
+                        if len(curr_dict['condition']) > 2:
+                            if curr_dict['condition'][1] == curr_dict['condition'][2]:
+                                curr_dict['congruent_attractor'] = True
+                            else:
+                                curr_dict['congruent_attractor'] = False
+                            curr_dict['congruent_subjects_attractor'] = '_'.join(map(str, [curr_dict['congruent_subjects'], curr_dict['congruent_attractor']]))
+                        else:
+                            curr_dict['congruent_attractor'] = np.nan
+                            curr_dict['congruent_subjects_attractor'] = np.nan
                         # Add violation position
                         if (curr_dict['sentence_type'] in ['objrel', 'objrel_nounpp']) and (curr_dict['violation_type'] == 'V1'):
                             curr_dict['violation_position'] = 'inner'

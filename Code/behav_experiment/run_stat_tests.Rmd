@@ -3,9 +3,9 @@ title: "Nested Subject-Verb Dependencies"
 author: ""
 date: "12/18/2019"
 output:
-  html_document:
-    toc: yes
   pdf_document:
+    toc: yes
+  html_document:
     toc: yes
 ---
 
@@ -108,6 +108,19 @@ bysuj$error <- 1 - bysuj$x
 bysuj_nested <- subset(bysuj, nested=="1")
 with(bysuj_nested, interaction.plot(violation_position, long, error, ylim=c(0, 0.5)))
 anov = aov(error ~ long * congruent_subjects*violation_position + Error(subject/(long*congruent_subjects*violation_position)), data=bysuj_nested)#, subset=nested=="1")
+summary(anov)
+```
+
+
+# ANOVA: violation-position * long * subjects-congruency (objrel only & incongruent_attractor_only)
+```{r,fig.height=5, fig.width=5}
+Data_incongruent_attractor = subset(Data, nested=="1"&congruent_attractor!="0")
+bysuj = with(Data_incongruent_attractor, aggregate(valid_answer, list(subject=subject, nested=nested, long=long, violation_position=violation_position, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+#bysuj_nested <- subset(bysuj, nested=="1"&congruent_attractor!="1")
+#bysuj_nested_incong_attract = with(bysuj_nested, aggregate(error, list(subject=subject, nested=nested, long=long, violation_position=violation_position, congruent_subjects=congruent_subjects), mean))
+with(bysuj, interaction.plot(violation_position, long, error, ylim=c(0, 0.5)))
+anov = aov(error ~ long * congruent_subjects*violation_position + Error(subject/(long*congruent_subjects*violation_position)), data=bysuj)
 summary(anov)
 ```
 

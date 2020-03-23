@@ -1,4 +1,4 @@
-\documentclass[a4paper,man,natbib]{apa6}
+\documentclass[a4paper,man,natbib]{apa7}
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -17,9 +17,12 @@
 \usepackage{array}
 \usepackage{color, colortbl}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}m{#1}}
-
 \newcommand{\YL}[1]{\textcolor{blue}{#1}}
-
+\newcommand{\YLDEL}[1]{\sout{\textcolor{black}{#1}}}
+%
+\renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
+\renewrobustcmd{\boldmath}{}
+\newrobustcmd{\B}{\bfseries}
 \title{Neural language models predict human acceptability errors in nested number agreement dependencies}
 \shorttitle{NLMs predict acceptability errors}
 \author{}
@@ -33,10 +36,10 @@
 % TEST
 \input{sections/intro}
 \input{sections/model}
+\input{sections/design}
 \input{sections/results}
-\input{sections/discussion}
 \input{sections/methods}
-%\subsection{Sections}
+\input{sections/discussion}
 
 \todo[inline, color=green!40]{This is an inline comment.}
 
