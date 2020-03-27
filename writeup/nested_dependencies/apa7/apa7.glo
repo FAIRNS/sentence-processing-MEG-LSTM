@@ -1,0 +1,7 @@
+\glossaryentry{v1.00> =General:>Initial release}{1}
+\glossaryentry{v1.01> =General:>Corrected figure caption styles for doc format.}{1}
+\glossaryentry{v1.01> =General:>Clarified that apacite and natbib are in 6th edition style.}{1}
+\glossaryentry{v1.02> =General:>Fixed filename issue with language localization files.}{1}
+\glossaryentry{v1.03> =General:>Updated class to detect babel package in document and localize accordingly.}{1}
+\glossaryentry{v1.04> =General:>Added table of contents.}{1}
+\glossaryentry{v1.04> =General:>Updated documentation and added correct license statement to cls for apa6 package.}{1}

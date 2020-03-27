@@ -1,23 +1,36 @@
 \section{Number Agreement in Neural Language Models}
+Since the classic work by \citet{Bock:Miller:1991}, number agreement is considered one of the best indexes of syntactic online processing. In a Number Agreement task (NA-task), subjects are presented with a beginning of a sentence (aka, `preamble') that contains a long-range subject-verb agreement, such as: "The keys to the cabinet..", and are asked to complete the rest of the sentence (e.g., "are on the table"). Human subjects were found to make more agreement errors (e.g., completing the above with "is" instead of "are") when the intervening noun "cabinet" (aka, `attractor') has a different grammatical number than the main subject "keys". Behavioral measures collected during agreement tasks, such as error-rates, were found to vary as a function of the syntactic environment of the long-range dependency. This has provided rich data to test or reject hypotheses regarding online syntactic processing in humans \citep[e.g., ][]{franck2002subject, franck2006agreement, franck2007syntactic}.
 
-Neural language models have 
+In a seminal work, \citet{Linzen:etal:2016} showed that modern NLMs can solve the number-agreement task, and that the model seems to have error patterns that roughly resemble that of humans. This has since led to a proliferation of studies using agreement-tasks as a probe into syntactic processing in NLMs \citep[e.g.,][]{Gulordava:etal:2018, Kuncoro:etal:2018a} and evaluation of processing similarities between humans and NLMs \citep[e.g.,][]{Linzen:Leonard:2018}. While most studies typically rely on evidence coming from behavioral performance of the network, more recently, we investigated the underlying neural mechanism of an English NLM during the processing of a long-range dependency \citep{lakretz2019emergence}. In this study, we identified a neural circuit in the network that encodes and carries grammatical number across long-range dependencies, showing also that processing in NLMs is sensitive to the structure of the subject-verb dependency. In the next section we describe the main findings in this study.
 
+\subsection{Processing of a Single Dependency in NLMs}
+\subsubsection{The Noun-PP Number-Agreement Task}
+The central number-agreement task used in \citet{lakretz2019emergence} contained sentences with a subject-verb dependency separated by a prepositional phrase (e.g., "The \textbf{boy} near the car \textbf{smiles})", referred to as the `noun-PP' NA-task. This task comprises four conditions, which correspond to the four possible assignments of grammatical number to the main subject and attractor (SS, SP, PS and PP; S-singular, P-plural). The NLM was presented with preambles of sentences from this task, and predictions of the model of the next word were then extracted, from which error-rates were finally evaluated. 
+
+\subsubsection{Long-Range Number Units}
+It was first tested whether there were units in the network that can carry grammatical number across long-range dependencies. To identify such units, we conducted an ablation study - each time a different unit of the NLM was removed and the performance of the model was re-evaluated on the noun-PP NA-task. The ablation study revealed that two (out of 1300) units in the network have each caused a reduction in agreement performance towards chance level when ablated. It was further found that one unit had this effect only when the main subject of the sentence was singular, and was therefore called the `singular unit'. The other unit had this effect only when the subject was plural, hence, the `plural unit'. All other units did not have a comparable effect on network performance when ablated. A visualization of state dynamics of the singular and plural units confirmed their role in encoding and carrying of grammatical across long-range dependency, robustly also in the presence of an attractor \citep[figure 1 in][]{lakretz2019emergence}.
+
+\subsubsection{Syntax Units}
+Since the activity of the long-range number units follow the structure of the syntactic long-range dependency, we hypothesized that there should be other units in the network that encode transient syntactic information and inform the long-range number units about when to store and erase number information in their encoding. Using decoding methods, we found that there exist a set of other units in the network, whose activity was predictive of transient syntactic properties of the sentence. In particular, we found that the activity of one of these units followed the structure of the main subject-verb dependency, consistently across various sentence constructions \citep[figure 3 in][]{lakretz2019emergence}. We refer to this unit as the `syntax unit'.
+
+\subsubsection{The Long-Range Number-Agreement Circuit}
+Finally, a network connectivity analysis revealed that the syntax unit indeed had exceptionally strong efferent connections to both long-range units, compared to all other units in the network, which was shown to be crucial for the writing and erasing of grammatical number information in both long-range units. Taken together, the three units (singular, plural and syntax unit) were found to form the core of a neural circuit dedicated to the processing of long-range number-agreement dependencies: whenever a long-range dependency occurs, the syntax unit traces it by its activity and conveys this information to the long-range number units, which in turn store and carry the grammatical number of the subject up to the main verb. 
+
+\subsubsection{Short-Range Number Units}
+We further found that grammatical number information was also encoded by other, non long-range, units in the network. We observed that number information can still be decoded from network activity even when the long-range number units are removed from the network. However, number information encoded in these other number units was found to be short-lived - whenever a new grammatical number information was presented to the network (via, e.g., a noun or a verb), activity in these units abruptly switched to represent this last encountered number. We therefore refer to them as `Short-Range Number Units', since they can only support number-agreement dependencies that do not contain possible attractors (e.g., "The \textbf{boy} gracefully \textbf{smiles}"). 
+
+\vspace{10pt}
+
+We summarize by highlighting that the core mechanism for long-range dependencies was found to be composed of a very small number of NLM units - two long-range number units and a syntax unit. We will next show that this \textit{sparsity} of the mechanism brings about important predictions about processing of sentences having more than a single long-range dependency.
+
+\subsection{Processing of Two Dependencies in NLMs}
+So far we have analyzed the dynamics of an NLM during the processing of sentences with a single long-range dependency. We next ask: given that the long-range agreement mechanism is sparse, and thus allows the encoding and carrying of a single grammatical number, can the NLM process two long-range dependencies that are active at once?
+
+Two simultaneously active long-range dependencies occur in various constructions, such as nested dependencies, as in the case of center embedding. In nested dependencies, once the long-range agreement mechanism is engaged in the processing of the main dependency, there may be no more available suitable units in the NLM to process the embedded agreement. For example, in the sentence "The \textbf{boy} that the \textit{farmer} near the fathers \textit{watches} \textbf{knows} the daughters", there are two grammatical numbers that needed to be carried across a long-range dependency: (1) the main subject `boy', and (2) the embedded subject `farmer'. Once the NLM is presented with the main subject, its grammatical number can be encoded and carried by the long-range agreement mechanism up to the main verb 'knows'. However, during this period, since the mechanism is already taken up, once the embedded subject `farmer' is presented to the network, there is no robust way to encode and carry its number up to the embedded verb `watches'. The NLM is thus predicted to fail to process the embedded dependency in nested structures.
+
+We emphasize that the failure of the model is predicted under two conditions:
 \begin{itemize}
-    \item Describe previous results - a sparse mechanism for long-range number agreement
-    \item Prediction to nested dependencies.
+	\item The two dependencies are active \textit{simultaneously} at some point: if this is not the case, i.e., the dependencies are successive (e.g., "The \textbf{boy} near the cars \textbf{says} that the \textit{farmer} near the fathers \textit{watches} the daughters"), the long-range mechanism can first complete the processing of the first dependency and then clear out the encoded grammatical number before encoding the next one. 
+
+    \item Both dependencies are \textit{long-range}: if not both dependencies are long-range, as in the case of a short-range dependency nested in a long-range one (e.g., "The \textbf{boy} that the \textit{farmer} \textit{watches} \textbf{knows} the daughters"), the embedded short-range dependency can still be processed by a short-range mechanism, although possibly in a less robust way. 
 \end{itemize}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figures/model_activations_nounpp.png}
-    \caption{\textbf{Cell activity of the number unit (panel A) and gender unit (panel B) during the processing of a single long-range dependency across a prepositional phrase:} four conditions are presented, corresponding to whether the main subject of the sentence is singular (red curves) or plural (blue), and to whether the main subject ('bambino') and the intervening noun ('contadino') have the same (congruent) or opposite number (incongruent)}
-    \label{fig:nounpp}
-\end{figure} 
-
-
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{figures/design.png}
-    \caption{\textbf{A full-factorial design for two subject-verb dependencies}. Human subjects and Neural Language Models (NLMs) were presented with sentences from four different syntactic structures, which all have two subject-verb dependencies: a main dependency (continuous lines) and an embedded dependency (dashed). The first factor of the design determines whether the two dependencies are \textit{successive} (top structures) or \textit{nested} (bottom), depending on whether the structure has a sentential complement (SC) or an object-extracted relative clause (objRC), respectively. The second factor determines whether the embedded dependency is \textit{short} (left side) or \textit{long} (right). We refer to the four resulting structures as: SC-short, SC-long, objRC-short and objRC-long.}
-    \label{fig:design}
-\end{figure*}

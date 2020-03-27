@@ -1,0 +1,10 @@
+table	eat
+chair	sings
+house	sit
+bed	disappears
+train	arrive
+cat	remains
+man	give
+mountain	slip
+Berlin	feel
+France	sleep
