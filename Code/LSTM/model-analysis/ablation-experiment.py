@@ -39,6 +39,7 @@ parser.add_argument('--use-unk', action='store_true', default=False)
 parser.add_argument('--lang', default='en')
 parser.add_argument('--cuda', action='store_true', default=False)
 parser.add_argument('--do-ablation', action='store_true', default=False)
+parser.add_argument('--uppercase-first-word', action='store_true', default=False)
 args = parser.parse_args()
 
 stime = time.time()
@@ -50,6 +51,15 @@ vocab = data.Dictionary(args.vocabulary)
 
 # Sentences
 sentences = [l.rstrip('\n').split(' ') for l in open(args.input + '.text', encoding='utf-8')]
+
+# Upper- or lowercase sentences, depending on flag
+if args.uppercase_first_word:
+    for sentence in sentences:
+        sentence[0] = sentence[0][0].upper() + sentence[0][1:]
+else:
+    for sentence in sentences:
+        sentence[0] = sentence[0][0].lower() + sentence[0][1:]
+
 gold = pandas.read_csv(args.input + '.gold', sep='\t', header=None, names=['verb_pos', 'correct', 'wrong', 'nattr'])
 
 # Load model
