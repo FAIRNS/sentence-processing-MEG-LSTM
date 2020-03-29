@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+% \usepackage{cleveref}
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+
+\begin{document}
+\beginsupplement
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=10cm]{figures/error_rates_successive_all_conditions.png}
+    \caption{\textbf{Error rates on Short- and Long-Successive:} collected from NLMs (panel A) and human subjects (B). Blue and red colors correspond to congruent and incongruent subjects, respectively. Secondary colors (cyan and magenta) indicate an attractor with an opposite number. Slant lines in bars indicate that the main subject is plural.}
+    \label{fig:successive_all_conditions}
+\end{figure*}
+    
+    
+\begin{figure*}
+    \centering
+    \includegraphics[width=10cm]{figures/error_rates_nested_all_conditions.png}
+    \caption{\textbf{Error rates on Short- and Long-Nested:} collected from NLMs (panel A) and human subjects (B). Blue and red colors correspond to congruent and incongruent subjects, respectively. Secondary colors (cyan and magenta) indicate an attractor with an opposite number. Slant lines in bars indicate that the main subject is plural.}
+    \label{fig:nested_all_conditions}
+\end{figure*}
+    
+\end{document}

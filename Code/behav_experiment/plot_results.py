@@ -27,9 +27,9 @@ df_error_rates_LSTM = pd.read_csv(fn)
 df_error_rates_LSTM = df_error_rates_LSTM.sort_values(['sentence_type', 'violation_position', 'congruent_subjects', 'congruent_attractor', 'congruent_subjects_attractor', 'condition'], ascending=[True, True, True, True, True, True])
 df_error_rates_LSTM = df_error_rates_LSTM[df_error_rates_LSTM['subject']==1111]
 
-##################
-### BAR PLOT #####
-##################
+###################
+### BAR PLOTS #####
+###################
 
 ##############
 # SUCCESSIVE #
@@ -73,9 +73,11 @@ df_error_rates_LSTM_S = df_error_rates_LSTM[df_error_rates_LSTM['condition'].str
 df_error_rates_S = df_error_rates[df_error_rates['condition'].str.startswith('S')]
 df_error_rates_LSTM_P = df_error_rates_LSTM[df_error_rates_LSTM['condition'].str.startswith('P')]
 df_error_rates_P = df_error_rates[df_error_rates['condition'].str.startswith('P')]
+
 ################
-# SUCCESSIVE P #
+# SUCCESSIVE S #
 ################
+
 fig_humans, fig_model, _ = plotting.generate_fig_humans_vs_RNNs(df_error_rates_S, [['', '', ''], ['', '', '']], df_error_rates_LSTM_S, [['', '', ''], ['', '', '']], 'successive')
 
 fn = 'error_rate_per_position_per_congruency_LSTM_succesive_humans_S.png'
@@ -85,6 +87,10 @@ plt.savefig(os.path.join(path2figures, fn))
 fn = 'error_rate_per_position_per_congruency_LSTM_succesive_model_S.png'
 plt.figure(fig_model.number)
 plt.savefig(os.path.join(path2figures, fn))
+
+################
+# SUCCESSIVE P #
+################
 
 fig_humans, fig_model, _ = plotting.generate_fig_humans_vs_RNNs(df_error_rates_P, [['', '', ''], ['', '', '']], df_error_rates_LSTM_P, [['', '', ''], ['', '', '']], 'successive')
 
@@ -96,9 +102,9 @@ fn = 'error_rate_per_position_per_congruency_LSTM_succesive_model_P.png'
 plt.figure(fig_model.number)
 plt.savefig(os.path.join(path2figures, fn))
 
-##########
-# NESTED #
-##########
+############
+# NESTED S #
+############
 fig_humans, fig_model,fig_legend = \
     plotting.generate_fig_humans_vs_RNNs(df_error_rates_S, [['', '', ''], ['', '', '']],
                                          df_error_rates_LSTM_S, [['', '', ''], ['', '', '']], 'nested')
@@ -110,6 +116,9 @@ plt.figure(fig_model.number)
 fn = 'error_rate_per_position_per_congruency_LSTM_nested_model_S.png'
 plt.savefig(os.path.join(path2figures, fn))
 
+############
+# NESTED P #
+############
 
 fig_humans, fig_model,fig_legend = \
     plotting.generate_fig_humans_vs_RNNs(df_error_rates_P, [['', '', ''], ['', '', '']],
@@ -125,7 +134,9 @@ plt.savefig(os.path.join(path2figures, fn))
 
 plt.close('all')
 
-#######################################
+#################
+# SCATTER PLOTS #
+#################
 
 fig_objrel, ax_objrel = plotting.generate_scatter_incongruent_subjects_V1_vs_V2(df_error_rates_LSTM, 'objrel')
 plt.figure(fig_objrel.number)
@@ -141,7 +152,229 @@ fig_objrel_nounpp, ax_objrel_nounpp = plotting.generate_scatter_incongruent_subj
 plt.figure(fig_objrel_nounpp.number)
 plt.savefig(os.path.join(path2figures,'scatter_objrel_nounpp_humans.png'))
 
+
+##############################
+### BAR PLOTS ALL CONDITIONS #
+##############################
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+for i, s_type in enumerate(['objrel', 'objrel_nounpp']):
+    if s_type in ['objrel_nounpp', 'embedding_mental_LR']:
+        hue_order = ['SSS', 'SSP', 'SPP', 'SPS', 'PPP', 'PPS', 'PSS', 'PSP']
+        palette = ['b', 'c', 'r', 'm', 'b', 'c', 'r', 'm']
+        if s_type == 'objrel_nounpp':
+            hatches = ['', '', '', '', '', '', '', '', '\\', '\\', '\\', '\\', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_LR':
+                hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+    elif s_type in ['objrel', 'embedding_mental_SR']:
+        hue_order = ['SS', 'SP', 'PP', 'PS']
+        palette = ['b', 'r', 'b', 'r']
+        if s_type == 'objrel':
+            hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_SR':
+                hatches = ['', '', '\\', '\\']
+
+    ax = axes[i]
+    df = df_error_rates.loc[(df_error_rates['sentence_type'] == s_type) & (df_error_rates['trial_type'] == 'Violation') & (df_error_rates['violation_position'].isin(['inner', 'outer']))]
+    bar = sns.barplot(x='violation_position', y='error_rate', hue='condition' , data=df, ax=ax, hue_order=hue_order, palette=palette)
+    # Loop over the bars
+    for i, thisbar in enumerate(bar.patches):
+        # Set a different hatch for each bar
+        thisbar.set_hatch(hatches[i])
+    # sns.set(font_scale=2)
+    ax.tick_params(labelsize=20)
+    ax.set_title('')
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_xticklabels(['Embedded', 'Main'])
+    ax.set_ylim([0, 1])
+    ax.get_legend().set_visible(False)
+    # ax.set_ylabel('Error rate', fontsize=20)
+
+plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
+
+
+fn = 'humans_nested_error_rates_all_condtions.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+for i, s_type in enumerate(['embedding_mental_SR', 'embedding_mental_LR']):
+    if s_type in ['objrel_nounpp', 'embedding_mental_LR']:
+        hue_order = ['SSS', 'SSP', 'SPP', 'SPS', 'PPP', 'PPS', 'PSS', 'PSP']
+        palette = ['b', 'c', 'r', 'm', 'b', 'c', 'r', 'm']
+        if s_type == 'objrel_nounpp':
+            hatches = ['', '', '', '', '', '', '', '', '\\', '\\', '\\', '\\', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_LR':
+                hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+    elif s_type in ['objrel', 'embedding_mental_SR']:
+        hue_order = ['SS', 'SP', 'PP', 'PS']
+        palette = ['b', 'r', 'b', 'r']
+        if s_type == 'objrel':
+            hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_SR':
+                hatches = ['', '', '\\', '\\']
+
+    ax = axes[i]
+    df = df_error_rates.loc[(df_error_rates['sentence_type'] == s_type) & (df_error_rates['trial_type'] == 'Violation') & (df_error_rates['violation_position'].isin(['inner', 'outer']))]
+    bar = sns.barplot(x='violation_position', y='error_rate', hue='condition' , data=df, ax=ax, hue_order=hue_order, palette=palette)
+    # Loop over the bars
+    for i, thisbar in enumerate(bar.patches):
+        # Set a different hatch for each bar
+        thisbar.set_hatch(hatches[i])
+    # sns.set(font_scale=2)
+    ax.tick_params(labelsize=20)
+    ax.set_title('')
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_xticklabels(['Embedded', 'Main'])
+    ax.set_ylim([0, 1])
+    ax.get_legend().set_visible(False)
+    # ax.set_ylabel('Error rate', fontsize=20)
+
+plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
+
+
+fn = 'humans_successive_error_rates_all_condtions.png'
+plt.savefig(os.path.join(path2figures, fn))
+##############################
+### BAR PLOTS ALL CONDITIONS #
+##############################
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+for i, s_type in enumerate(['objrel', 'objrel_nounpp']):
+    if s_type in ['objrel_nounpp', 'embedding_mental_LR']:
+        hue_order = ['SSS', 'SSP', 'SPP', 'SPS', 'PPP', 'PPS', 'PSS', 'PSP']
+        palette = ['b', 'c', 'r', 'm', 'b', 'c', 'r', 'm']
+        if s_type == 'objrel_nounpp':
+            hatches = ['', '', '', '', '', '', '', '', '\\', '\\', '\\', '\\', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_LR':
+                hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+    elif s_type in ['objrel', 'embedding_mental_SR']:
+        hue_order = ['SS', 'SP', 'PP', 'PS']
+        palette = ['b', 'r', 'b', 'r']
+        if s_type == 'objrel':
+            hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_SR':
+                hatches = ['', '', '\\', '\\']
+
+    ax = axes[i]
+    df = df_error_rates_LSTM.loc[(df_error_rates_LSTM['sentence_type'] == s_type) & (df_error_rates_LSTM['trial_type'] == 'Violation') & (df_error_rates_LSTM['violation_position'].isin(['inner', 'outer']))]
+    bar = sns.barplot(x='violation_position', y='error_rate', hue='condition' , data=df, ax=ax, hue_order=hue_order, palette=palette)
+    # Define some hatches
+
+    # Loop over the bars
+    for i, thisbar in enumerate(bar.patches):
+        # Set a different hatch for each bar
+        thisbar.set_hatch(hatches[i])
+    # sns.set(font_scale=2)
+    ax.tick_params(labelsize=20)
+    ax.set_title('')
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_xticklabels(['Embedded', 'Main'])
+    ax.set_ylim([0, 1])
+    ax.get_legend().set_visible(False)
+    # ax.set_ylabel('Error rate', fontsize=20)
+
+plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+fig.text(x=0.03, y=0.6, s='RNNs', fontsize=26, rotation=90)
+
+# plt.tight_layout()
+
+fn = 'LSTM_nested_error_rates_all_condtions.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+for i, s_type in enumerate(['embedding_mental_SR', 'embedding_mental_LR']):
+    if s_type in ['objrel_nounpp', 'embedding_mental_LR']:
+        hue_order = ['SSS', 'SSP', 'SPP', 'SPS', 'PPP', 'PPS', 'PSS', 'PSP']
+        palette = ['b', 'c', 'r', 'm', 'b', 'c', 'r', 'm']
+        if s_type == 'objrel_nounpp':
+            hatches = ['', '', '', '', '', '', '', '', '\\', '\\', '\\', '\\', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_LR':
+                hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+    elif s_type in ['objrel', 'embedding_mental_SR']:
+        hue_order = ['SS', 'SP', 'PP', 'PS']
+        palette = ['b', 'r', 'b', 'r']
+        if s_type == 'objrel':
+            hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_SR':
+                hatches = ['', '', '\\', '\\']
+
+    ax = axes[i]
+    df = df_error_rates_LSTM.loc[(df_error_rates_LSTM['sentence_type'] == s_type) & (df_error_rates_LSTM['trial_type'] == 'Violation') & (df_error_rates_LSTM['violation_position'].isin(['inner', 'outer']))]
+    bar = sns.barplot(x='violation_position', y='error_rate', hue='condition' , data=df, ax=ax, hue_order=hue_order, palette=palette)
+    # Define some hatches
+
+    # Loop over the bars
+    for i, thisbar in enumerate(bar.patches):
+        # Set a different hatch for each bar
+        thisbar.set_hatch(hatches[i])
+    # sns.set(font_scale=2)
+    ax.tick_params(labelsize=20)
+    ax.set_title('')
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_xticklabels(['Embedded', 'Main'])
+    ax.set_ylim([0, 1])
+    ax.get_legend().set_visible(False)
+    # ax.set_ylabel('Error rate', fontsize=20)
+
+plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+fig.text(x=0.03, y=0.6, s='RNNs', fontsize=26, rotation=90)
+
+
+fn = 'LSTM_successive_error_rates_all_condtions.png'
+plt.savefig(os.path.join(path2figures, fn))
+##############
+# LEGEND SSS #
+##############
+fig_legend, ax = plt.subplots(figsize=(18, 3))
+lines = []
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='', color="b", label="SSS"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='\\', color="b", label="PPP"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='', color="c", label="SSP"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='\\', color="c", label="PPS"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='', color="r", label="SPP"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='\\', color="r", label="PSS"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='', color="m", label="SPS"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='\\', color="m", label="PSP"))
+plt.legend(loc='center', prop={'size': 45}, ncol=4)
+ax.axis('off')
+fn = 'legend_SSS.png'
+plt.savefig(os.path.join(path2figures, fn))
+# LEGEND SS
+fig_legend, ax = plt.subplots(figsize=(9, 3))
+lines = []
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='', color="b", label="SS"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='\\', color="b", label="PP"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='', color="r", label="SP"))
+lines.append(ax.barh([1], range(1),  1,left=0, hatch='\\', color="r", label="PS"))
+plt.legend(loc='center', prop={'size': 45}, ncol=2)
+ax.axis('off')
+fn = 'legend_SS.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+
 raise SystemExit(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #######################################################

@@ -32,6 +32,7 @@ For example, the last three variables defines: 'SSS' = (1, 'singular', 1), 'SSP'
 Note that when long=0 (i.e., no attractor noun), then there are only four conditions (SS, SP, PS, PP), and therefore congruent_attractor='NA': 'SS'=(1, 'singular', 'NA'), etc.
 
 ```{r}
+#Data <- read.csv(file="../../Paradigm/Results/dataframe_results_all_trials_LSTM_fixed.csv", header=TRUE, sep=",") # Load data
 Data <- read.csv(file="../../Paradigm/Results/dataframe_results_all_trials.csv", header=TRUE, sep=",") # Load data
 Data <- subset(Data, trial_type == "Violation") # Take only trials in which there was a violation
 Data <- subset(Data, violation_position != "other") # Take only trials in which the violation was on the first or second verb (but not on nouns (fillers)).
@@ -82,7 +83,7 @@ for (l in 0:1)  {
 ```
 
 
-# STATS - objrel-SR: violation_position * subjects-congruency
+# STATS - Short-Nested: violation_position * subjects-congruency
 ```{r}
 print('ANOVA-embedded')
 curr_Data = subset(Data, long == 0 & nested == 1 & violation_position=='inner')
@@ -114,7 +115,7 @@ summary(glmm_with_random)
 ```
 
 
-# STATS - objrel-LR: violation_position * subjects-congruency
+# STATS - Long-Nested: violation_position * subjects-congruency
 ```{r,fig.height=5, fig.width=5}
 print('ANOVA-embedded')
 curr_Data = subset(Data, long == 1 & nested == 1 & violation_position=='inner')
@@ -156,7 +157,7 @@ glmm_with_random <- glmer(valid_answer ~ long * congruent_subjects + (1 | subjec
 summary(glmm_with_random)
 ```
 
-# STATS: objrel (SR vs. LR) - long * violation-position * subjects-congruency (inner verb only)
+# STATS: objrel (SR vs. LR) - long * violation-position * subjects-congruency
 ```{r}
 print('ANOVA')
 curr_Data = subset(Data, nested == 1)
