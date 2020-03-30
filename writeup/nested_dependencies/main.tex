@@ -4,7 +4,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorinlistoftodos, textsize=scriptsize]{todonotes}
 
 % Added by me
 \usepackage{lipsum}
@@ -21,7 +21,8 @@
 \newcolumntype{P}[1]{>{\centering\arraybackslash}m{#1}}
 \newcommand{\YL}[1]{\textcolor{blue}{#1}}
 \newcommand{\YLDEL}[1]{\sout{\textcolor{black}{#1}}}
-\newcommand{\dieuwke}[1]{\textcolor{green!60!black}{#1}}
+\newcommand{\dieuwke}[1]{\textcolor{green!60!black}{DH: #1}}
+\newcommand{\dnote}[1]{\todo[color=green!40, inline]{DH: #1}}
 %
 \renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
 \renewrobustcmd{\boldmath}{}
@@ -46,6 +47,6 @@
 
 \todo[inline, color=green!40]{This is an inline comment.}
 
-\bibliography{yair,marco}
+\bibliography{yair,marco,dieuwke}
 
 \end{document}
