@@ -14,7 +14,6 @@ recursive complexity. In contrast, it is empirically established that
 human linguistic \textit{performance} is tightly limited in terms of
 processing complex nested constructions, due to various resource
 limitation, such as memory capacity or attention span \citep{}.
-%This distinction between the bounded performance of humans and their unbounded competence renders the notion of recursion an appealing solution to this contrast. Recursion suggests a computational mechanism that can process an unbounded number of expressions using only finite means.
 
 In recent years, artificial neural-network models, rebranded as ``deep learning'' \citep{LeCun:etal:2015}, made tremendous advances in natural language processing \citep{Goldberg:2017}. Typically, neural networks are not provided with any explicit information regarding grammar or any type of linguistic knowledge. For example, Neural Language Models (NLMs) are commonly initialized as `tabula rasa' and are solely trained to predict the next word in the sentence given its context \citep{Elman:1990}. Yet, these models achieve an impressive performance not far below that of humans in tasks such as question answering or text summarization \citep{Radford:etal:2019,}. This has naturally attracted recent interest into \textit{how} exactly these models perform the task, and the degree to which they infer genuine linguistic knowledge from raw data  \citep{}, with the ultimate hope that this will also provide insights into human language processing. 
 
@@ -40,16 +39,9 @@ dependency, such as in the case of multiple nested dependencies:
 intuitively, once the mechanism is recruited by the outermost
 dependency, it should not be able to track the ones nested inside it.
 
-% However, this question should be refined and further specified. The notion of recursion challenges NLMs, since recursion construed as a computational mechanism would be essentially symbolic, as was classically argued \citep{Fodor:Pylyshyn:1988}. Moreover, in NLMs there is no clear distinction between an `ideal' grammar and its realization in processing. NLMs extract linguistic generalizations from the data during training. These generalizations are then encoded in the network in a way that is inevitably directly linked to the way the network applies them during sentence processing \citep{van_gelder}. In the study of NLMs, thus, we cannot postulate a clean divide between an unbound 
-
-% the competence-performance distinction does not hold, and consequently we cannot expect 
-
-% nor the idea of recursion as an elegant solution to the contrast between the unbounded competence and bounded human performance. The above question should therefore be revised, e.g. - do NLMs show recursive performance?
-
 In the present study, we start by investigating the recursive
 performance of NLMs, using number-agreement as a
-probe. % Number agreement is considered as one of the best indices of online syntactic processing in humans \citep{Bock:Miller:1991, franck2002subject}, and was recently introduced also into the study of NLMs \citep{Linzen:etal:2016}. Treating NLMs as psycholinguistic subjects, most current research in the field focuses on understanding the behaviour of NLMs with respect to various grammatical phenomena, with some work also showing correlations between internal states of the model and said phenomena. Number agreement is an area where some steps have been taken towards mechanistic understanding. Specifically, in a recent study, we showed that NLMs trained on a large corpus of English developed a number-propagation mechanism for long-range dependencies \citep{lakretz2019emergence}. The core circuit of this mechanism was found to compose of an exceptionally small number of units in the network, namely, three, out of 1300 units in the network. Despite its sparsity, this mechanism was shown to carry grammatical number information across various and challenging long-range dependencies, also in the presence of intervening nouns carrying opposite number. However, given the sparsity of the mechanism, it remains unclear how the network would process recursive structures having more than a single long-range dependency, such as in the case of nested dependencies.
-We first confirm that the emergence of a sparse agreement mechanism is
+probe. We first confirm that the emergence of a sparse agreement mechanism is
 a stable and robust phenomenon in NLMs by replicating it with a new
 language (Italian) and grammatical feature (gender). Next, we study
 how the sparsity of the agreement mechanism affects recursive
@@ -62,10 +54,3 @@ error patterns between NLMs and humans.
 
 \textbf{Add boastful wrap-up sentence.}
 
-% The goal of this present study is three-fold. First, we test whether our results about a sparse agreement mechanism in NLMs can be extended to another language (Italian) and to a another grammatical feature (gender). Second, we test whether NLMs can process recursive nested dependencies despite the sparsity of the agreement mechanism. Finally, based on the results and our understanding of how agreement is performed by NLMs, we make predictions about recursive processing in human performance. 
-
-% Our results replicate in an Italian NLM our previous findings in English. We further find that the sparsity of the agreement mechanism strongly constrains the NLM in the processing of nested structures, causing a significant reduction in performance on the embedded dependency. Finally, results from a behavioral experiment with humans confirmed our predictions regarding the processing of nested long-range dependencies, showing similar error patterns between NLMs and humans. 
-
-% We conclude that the emergence of a sparse long-range agreement mechanism in NLMs is a robust phenomenon, consistently observed across models, languages and grammatical features. We further conclude that NLMs do not exhibit recursive performance in the processing of nested long-range dependencies. Finally, the similarity between NLM and human error patterns suggests that the low recursive performance of humans could be explained by similar mechanisms to those identified in NLMs. 
-
-% \YL{I kept this paragraph from the skeleton you sketched, but we could also end the discussion/conclusion section with it instead of here.} However, in other ways, human and NLM patterns differ, confirming that studying NLMs is productive, but the right perspective is not to treat them as full-fledged cognitive models, but rather as powerful computational systems that, when faced with challenges similar to those encountered by humans, might adopt partially analogous solutions.

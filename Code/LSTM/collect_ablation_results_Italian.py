@@ -49,6 +49,10 @@ for fn in sorted(fns):
     dict_results[train_seed][unit]['SP'] = sum(acc_SP)/num_trials_per_condition
     dict_results[train_seed][unit]['PS'] = sum(acc_PS) / num_trials_per_condition
 
+import pickle
+
+pickle.dump(dict_results, 'dict_ablation_results.pkl')
+
 for seed in dict_results.keys():
     units = dict_results[seed].keys()
     if len(units) == num_units:
