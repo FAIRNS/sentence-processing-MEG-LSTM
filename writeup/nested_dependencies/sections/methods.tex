@@ -24,10 +24,27 @@ A participant did not perform the second session and his trials were not added t
 
 \subsection{Language Model}
 
-\subsubsection{Model Description} Architecture etc.
-\subsubsection{Model Training} HPs from Gulordava et. al, 20 models. 
+\subsubsection{Model Description}
+
+The model architecture we use is an LSTM identical to the architecture presented by consists \citet{Gulordava:etal:2018}.
+It consists of two LSTM layers with 650 units, an embedding layer of 650 units and a vocabulary with 50000 tokens.
+The input and output embeddings of the model are not shared.
+
+\subsubsection{Model Training} 
+We train 20 language models on a corpus drawn from wikipedia data.
+Contrary to common in language modelling, we train the models on separate sentences, rather than longer pieces of discourse.
+We train 20 models, that differ in the order in which those sentences are presentedas well as the initialisation of their weights.
+For all runs, we use a learning rate of 20, a batch size of 64 and a dropout rate of 0.2, the hyperparameters that \citet{Gulordava:etal:2018} reported to work best for this particular corpus.
+As common practice for training language models, we do not use an optimiser, but instead use a \emph{plateau-based} learning scheme, in which we half the learning rate whenever the validation perplexity of the model reaches a plateau.
+
 \subsubsection{Model Evaluation} Perplexity, Linzen behavioral tests.
+We evaluate the resulting 20 models by considering their perplexity on a shared test set\footnote{\url{https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/Italian/test.txt}}, as well as their performance on the agreement tests provided by \citet{}.
+
 \subsubsection{Ablation Experiments}
+To identify units that play an important role in the encoding of number and gender, we run a series of ablation test.
+In these ablation tests, we assess the impact of a \emph{single unit} on the models NA performance (\dieuwke{mention which test}) by setting its activation to zero and then recomputing the model's accuracy on the NA task. 
+We conduct such ablation studies for all recurrent units in the network, resulting in 1300 ablation studies per model.
+
 \subsubsection{Unit Activations}
 
 
