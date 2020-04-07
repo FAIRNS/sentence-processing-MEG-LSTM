@@ -1,0 +1,42 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+    \centering
+    \includegraphics[width=\textwidth]{figures/model_activations_nounpp.png}
+    \caption{\textbf{Cell activity of the number unit (panel A) and gender unit (panel B) during the processing of a single long-range dependency across a prepositional phrase:} four conditions are presented, corresponding to whether the main subject of the sentence is singular (red curves) or plural (blue), and to whether the main subject (`bambino') and the intervening noun (`contadino') have the same (congruent) or opposite number (incongruent)}
+    \label{fig:nounpp}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/design.png}
+    \caption{\textbf{A full-factorial design for two subject-verb dependencies}. Human subjects and Neural Language Models (NLMs) were presented with sentences from four different syntactic structures, which all have two subject-verb dependencies: a main dependency (continuous lines) and an embedded dependency (dashed). The first factor of the design determines whether the two dependencies are \textit{successive} (top structures) or \textit{nested} (bottom), depending on whether the structure has a sentential complement or an object-extracted relative clause, respectively. The second factor determines whether the embedded dependency is \textit{short} (left side) or \textit{long} (right). We refer to the four resulting structures as: Short-Successive, Long-Successive, Short-Nested, Short-Long.}
+    \label{fig:design}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{figures/model_activations.png}
+    \caption{\textbf{Dynamics of the hidden activation of the number unit during the processing of two subject-verb dependencies.} Number-unit activity is presented for the four structures in the design: Short-Successive (panel A), Long-Successive (B), Short-Nested (C) and Long-Nested (D). For each structure, results are presented for the four conditions, corresponding to whether the main subject of the sentence is singular (red curves) or plural (blue), and to whether the main and embedded subjects have the same grammatical number (congruent; continuous lines) or not (incongruent; dashed lines).}
+    \label{fig:2by2_dynamics}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=10cm]{figures/error_rates_successive.png}
+    \caption{\textbf{Error rates on the Short- and Long-Successive:} collected from NLMs (panel A) and human subjects (B). Blue and red bars correspond to whether the main and embedded subjects agree on number (congruent subjects) or not (incongruent), respectively). Error bars represent standard error of the mean across all trials. ns - non significant.}
+    \label{fig:SC_results}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=10cm]{figures/error_rates_nested.png}
+    \caption{\textbf{Error rates on the Short- and Long-Nested:} collected from NLMs (panel A) and humans subjects (panel B). Blue and red bars correspond to whether the main and embedded subjects agree on number (congruent subjects) or not (incongruent), respectively. Error bars represent standard error of the mean across all trials. ns - non significant.}
+    \label{fig:objRC_results}
+\end{figure*}
+\efloatseparator
+ 
