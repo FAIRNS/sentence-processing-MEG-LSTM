@@ -1,0 +1,49 @@
+\section{Introduction}
+The prevailing view in linguistics suggests that the rich
+expressiveness and open-ended nature of human language require a
+computational ability to process nested tree structures, possibly
+unique to humans, which is based on
+\textit{recursion}. \citep{Chomsky:1957, Hauser:etal:2002,
+  Dehaene:etal:2015}. This view was developed in the context of the
+study of human linguistic \textit{competence}, which is described by a
+set of rules from which acceptable strings of a language can be
+generated. If a certain recursive construction can be generated from
+the grammar by the application of a rule, then a repeated application
+of the same rule could generate acceptable strings of an arbitrarily
+recursive complexity. In contrast, it is empirically established that
+human linguistic \textit{performance} is tightly limited in terms of
+processing complex nested constructions, due to various resource
+limitation, such as memory capacity or attention span \citep{}.
+
+In recent years, artificial neural-network models, rebranded as ``deep learning'' \citep{LeCun:etal:2015}, made tremendous advances in natural language processing \citep{Goldberg:2017}. Typically, neural networks are not provided with any explicit information regarding grammar or any type of linguistic knowledge. For example, Neural Language Models (NLMs) are commonly initialized as `tabula rasa' and are solely trained to predict the next word in the sentence given its context \citep{Elman:1990}. Yet, these models achieve an impressive performance not far below that of humans in tasks such as question answering or text summarization \citep{Radford:etal:2019}. This has naturally attracted recent interest into \textit{how} exactly these models perform the task, and the degree to which they infer genuine linguistic knowledge from raw data  \citep{}, with the ultimate hope that this will also provide insights into human language processing. 
+
+Grammatical agreement has traditionally been studied as one of the
+best indices of online syntactic processing in humans, as it is ruled
+by hierarchical structures rather than linear by the order of words in
+a sentence \citep{Bock:Miller:1991, franck2002subject}. Number
+agreement has also become a standard way to probe grammatical
+generalization in NLMs
+\citep{Linzen:etal:2016,Bernardy:Lappin:2017,Giulianelli:etal:2018,Gulordava:etal:2018}. Very
+recently, some steps were taken towards a mechanistic understanding of
+how NLMs perform agreement. Specifically, \citet{lakretz2019emergence} showed that NLMs trained
+on a large corpus of English developed a number-propagation mechanism for long-range dependencies. The core circuit of this mechanism is comprised of an exceptionally small number of units (three out of 1300). Despite its sparsity, this mechanism carries grammatical number information across various and challenging long-range dependencies, also in the presence of intervening nouns carrying opposite number. However, given the sparsity of the mechanism, it remains unclear how the network would
+process recursive structures having more than a single long-range
+dependency, such as in the case of multiple nested dependencies:
+Intuitively, once the mechanism is recruited by the outermost
+dependency, it is not able anymore to track the ones nested inside it.
+
+\dnote{I think this transition is difficult and doesn't do completely justice to what we do. Could we maybe add a few more sentences about recursion in networks? Or link it back to competence/performance again? It is important that the reader gets here the importance of what we try to do, I think it should sound less incremental than it sounds here.}
+In the present study, we start by investigating the recursive
+performance of NLMs, using number-agreement as a
+probe. We first confirm that the emergence of a sparse agreement mechanism is
+a stable and robust phenomenon in NLMs by replicating it with a new
+language (Italian) and grammatical feature (gender). Next, we study
+how the sparsity of the agreement mechanism affects recursive
+agreement processing, confirming our predictions that the mechanism
+strongly binds the depth of recursion. Finally, we test whether the
+ system we saw emerge in NLMs could serve as a
+model of recursion processing limitations in humans. The results of a
+behavioural study partly confirm our predictions, showing largely similar error patterns between NLMs and humans. 
+\YL{Add a sentence about differences}
+
+\textbf{Add boastful wrap-up sentence.}
