@@ -32,7 +32,6 @@ For example, the last three variables defines: 'SSS' = (1, 'singular', 1), 'SSP'
 Note that when long=0 (i.e., no attractor noun), then there are only four conditions (SS, SP, PS, PP), and therefore congruent_attractor='NA': 'SS'=(1, 'singular', 'NA'), etc.
 
 ```{r}
-#Data <- read.csv(file="../../Paradigm/Results/dataframe_results_all_trials_LSTM_fixed.csv", header=TRUE, sep=",") # Load data
 Data <- read.csv(file="../../Paradigm/Results/dataframe_results_all_trials.csv", header=TRUE, sep=",") # Load data
 Data <- subset(Data, trial_type == "Violation") # Take only trials in which there was a violation
 Data <- subset(Data, violation_position != "other") # Take only trials in which the violation was on the first or second verb (but not on nouns (fillers)).
@@ -55,7 +54,7 @@ Data$correct_wrong <- NULL
 #######################################
 # FILTER BASED ON NUMBER OF ATTRACTOR #
 #######################################
-Data <- subset(Data, (violation_position=='outer' & (condition == 'SP' | condition == 'SS' | condition == 'SPS' | condition == 'SSS')) | (violation_position=='inner' & (condition == 'PS' | condition == 'SS' | condition == 'PSS' | condition == 'SSS')) )
+Data <- subset(Data, (violation_position=='outer' & (condition == 'SP' | condition == 'SS' | condition == 'SPS' | condition == 'SPP' | condition == 'SSS' | condition == 'SSP')) | (violation_position=='inner' & (condition == 'PS' | condition == 'SS' | condition == 'PSS' | condition == 'PSP' | condition == 'SSS' | condition == 'SSP')) )
 Data$condition <- NULL
 
 # Define the main fixed variables (nested and long), based on the type of syntactic structure. 

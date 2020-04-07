@@ -31,104 +31,49 @@ df_error_rates_LSTM = df_error_rates_LSTM[df_error_rates_LSTM['subject']==1111]
 ### BAR PLOTS #####
 ###################
 
-##############
-# SUCCESSIVE #
-##############
-fig_humans, fig_model, _ = plotting.generate_fig_humans_vs_RNNs(df_error_rates, [['!!!', 'ns', '!!!'], ['!!!', 'ns/*', '!!!']], df_error_rates_LSTM, [['!!!', 'ns', '!!!'], ['!!!', 'ns', '!!!']], 'successive')
-
-fn = 'error_rate_per_position_per_congruency_LSTM_succesive_humans.png'
-plt.figure(fig_humans.number)
-plt.savefig(os.path.join(path2figures, fn))
-
-fn = 'error_rate_per_position_per_congruency_LSTM_succesive_model.png'
-plt.figure(fig_model.number)
-plt.savefig(os.path.join(path2figures, fn))
-
-##########
-# NESTED #
-##########
-fig_humans, fig_model,fig_legend = \
-    plotting.generate_fig_humans_vs_RNNs(df_error_rates, [['***', 'ns', '**'], ['***', 'ns', '***']],
-                                         df_error_rates_LSTM, [['*', '***', '***'], ['***', '***', '***']], 'nested')
-plt.figure(fig_humans.number)
-fn = 'error_rate_per_position_per_congruency_LSTM_nested_humans.png'
-plt.savefig(os.path.join(path2figures, fn))
-
-plt.figure(fig_model.number)
-fn = 'error_rate_per_position_per_congruency_LSTM_nested_model.png'
-plt.savefig(os.path.join(path2figures, fn))
-
-fn = 'error_rate_per_position_per_congruency_LSTM_legend.png'
-plt.figure(fig_legend.number)
-plt.savefig(os.path.join(path2figures, fn))
-
-plt.close('all')
-
-
 ##########################################
-# FILTER BY NUMBER OF FIRST SUBJECT
+# FILTER BY NUMBER OF ATTRACTOR
 ##########################################
 
-df_error_rates_LSTM_S = df_error_rates_LSTM[df_error_rates_LSTM['condition'].str.startswith('S')]
-df_error_rates_S = df_error_rates[df_error_rates['condition'].str.startswith('S')]
-df_error_rates_LSTM_P = df_error_rates_LSTM[df_error_rates_LSTM['condition'].str.startswith('P')]
-df_error_rates_P = df_error_rates[df_error_rates['condition'].str.startswith('P')]
+# For the main of short, keep only SP and SS
+query_humans = (df_error_rates['violation_position']=='outer') & (df_error_rates['condition'].isin(['SP', 'SS', 'SPS', 'SSS'])) |\
+        ((df_error_rates['violation_position']=='inner') & (df_error_rates['condition'].isin(['PS', 'SS', 'PSS', 'SSS'])))
 
-################
-# SUCCESSIVE S #
-################
+query_LSTM = (df_error_rates_LSTM['violation_position']=='outer') & (df_error_rates_LSTM['condition'].isin(['SP', 'SS', 'SPS', 'SSS'])) |\
+        ((df_error_rates_LSTM['violation_position']=='inner') & (df_error_rates_LSTM['condition'].isin(['PS', 'SS', 'PSS', 'SSS'])))
 
-fig_humans, fig_model, _ = plotting.generate_fig_humans_vs_RNNs(df_error_rates_S, [['', '', ''], ['', '', '']], df_error_rates_LSTM_S, [['', '', ''], ['', '', '']], 'successive')
-
-fn = 'error_rate_per_position_per_congruency_LSTM_succesive_humans_S.png'
-plt.figure(fig_humans.number)
-plt.savefig(os.path.join(path2figures, fn))
-
-fn = 'error_rate_per_position_per_congruency_LSTM_succesive_model_S.png'
-plt.figure(fig_model.number)
-plt.savefig(os.path.join(path2figures, fn))
+df_error_rates_P = df_error_rates.loc[query_humans]
+df_error_rates_LSTM_P = df_error_rates_LSTM.loc[query_LSTM]
 
 ################
 # SUCCESSIVE P #
 ################
 
-fig_humans, fig_model, _ = plotting.generate_fig_humans_vs_RNNs(df_error_rates_P, [['', '', ''], ['', '', '']], df_error_rates_LSTM_P, [['', '', ''], ['', '', '']], 'successive')
+fig_humans, fig_model, _ = plotting.generate_fig_humans_vs_RNNs(df_error_rates_P, [['ns', 'ns', 'ns'], ['ns', 'ns', 'ns']],
+                                                                df_error_rates_LSTM_P, [['ns', '**', 'ns'], ['ns', '*', 'ns']], 'successive')
 
-fn = 'error_rate_per_position_per_congruency_LSTM_succesive_humans_P.png'
+fn = 'error_rate_per_position_per_congruency_succesive_humans_P.png'
 plt.figure(fig_humans.number)
 plt.savefig(os.path.join(path2figures, fn))
 
-fn = 'error_rate_per_position_per_congruency_LSTM_succesive_model_P.png'
+fn = 'error_rate_per_position_per_congruency_succesive_NLMs_P.png'
 plt.figure(fig_model.number)
 plt.savefig(os.path.join(path2figures, fn))
 
-############
-# NESTED S #
-############
-fig_humans, fig_model,fig_legend = \
-    plotting.generate_fig_humans_vs_RNNs(df_error_rates_S, [['', '', ''], ['', '', '']],
-                                         df_error_rates_LSTM_S, [['', '', ''], ['', '', '']], 'nested')
-plt.figure(fig_humans.number)
-fn = 'error_rate_per_position_per_congruency_LSTM_nested_humans_S.png'
-plt.savefig(os.path.join(path2figures, fn))
-
-plt.figure(fig_model.number)
-fn = 'error_rate_per_position_per_congruency_LSTM_nested_model_S.png'
-plt.savefig(os.path.join(path2figures, fn))
-
+plt.close('all')
 ############
 # NESTED P #
 ############
 
 fig_humans, fig_model,fig_legend = \
-    plotting.generate_fig_humans_vs_RNNs(df_error_rates_P, [['', '', ''], ['', '', '']],
-                                         df_error_rates_LSTM_P, [['', '', ''], ['', '', '']], 'nested')
+    plotting.generate_fig_humans_vs_RNNs(df_error_rates_P, [['*', '***', '**'], ['**', '***', '***']],
+                                         df_error_rates_LSTM_P, [['***', '***', '***'], ['***', '***', '***']], 'nested')
 plt.figure(fig_humans.number)
-fn = 'error_rate_per_position_per_congruency_LSTM_nested_humans_P.png'
+fn = 'error_rate_per_position_per_congruency_nested_humans_P.png'
 plt.savefig(os.path.join(path2figures, fn))
 
 plt.figure(fig_model.number)
-fn = 'error_rate_per_position_per_congruency_LSTM_nested_model_P.png'
+fn = 'error_rate_per_position_per_congruency_nested_NLMs_P.png'
 plt.savefig(os.path.join(path2figures, fn))
 
 
@@ -151,6 +96,45 @@ plt.savefig(os.path.join(path2figures,'scatter_objrel_humans.png'))
 fig_objrel_nounpp, ax_objrel_nounpp = plotting.generate_scatter_incongruent_subjects_V1_vs_V2(df_error_rates, 'objrel_nounpp')
 plt.figure(fig_objrel_nounpp.number)
 plt.savefig(os.path.join(path2figures,'scatter_objrel_nounpp_humans.png'))
+
+#######################################################
+### BAR PLOTS ALL CONDITIONS WITHOUT FILTER BY NUMBER #
+#######################################################
+
+##############
+# SUCCESSIVE #
+##############
+fig_humans, fig_model, _ = plotting.generate_fig_humans_vs_RNNs(df_error_rates, [['!!!', 'ns', '!!!'], ['!!!', 'ns/*', '!!!']], df_error_rates_LSTM, [['!!!', 'ns', '!!!'], ['!!!', 'ns', '!!!']], 'successive')
+
+fn = 'error_rate_per_position_per_congruency_succesive_humans.png'
+plt.figure(fig_humans.number)
+plt.savefig(os.path.join(path2figures, fn))
+
+fn = 'error_rate_per_position_per_congruency_succesive_NLMs.png'
+plt.figure(fig_model.number)
+plt.savefig(os.path.join(path2figures, fn))
+
+plt.close('all')
+
+##########
+# NESTED #
+##########
+fig_humans, fig_model,fig_legend = \
+    plotting.generate_fig_humans_vs_RNNs(df_error_rates, [['***', 'ns', '**'], ['***', 'ns', '***']],
+                                         df_error_rates_LSTM, [['*', '***', '***'], ['***', '***', '***']], 'nested')
+plt.figure(fig_humans.number)
+fn = 'error_rate_per_position_per_congruency_nested_humans.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+plt.figure(fig_model.number)
+fn = 'error_rate_per_position_per_congruency_nested_NLMs.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+fn = 'error_rate_per_position_per_congruency_legend.png'
+plt.figure(fig_legend.number)
+plt.savefig(os.path.join(path2figures, fn))
+
+plt.close('all')
 
 
 ##############################

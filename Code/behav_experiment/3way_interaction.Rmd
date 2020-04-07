@@ -52,6 +52,14 @@ Data$number_v1 <- ifelse(Data$condition == 'SSS' | Data$condition == 'SSP' | Dat
 Data$number_v2 <- ifelse(Data$condition == 'SSS' | Data$condition == 'SSP' | Data$condition == 'PSS' | Data$condition == 'PSP' | Data$condition == 'PS' | Data$condition == 'SS',  "singular", "plural")
 Data$congruent_attractor <- ifelse(Data$condition == 'SSS' | Data$condition == 'PSS' | Data$condition == 'SPP' | Data$condition == 'PPP', 1, ifelse(Data$condition == 'SSP' | Data$condition == 'SPS' | Data$condition == 'PSP' | Data$condition == 'PPS', 0, "NA"))
 Data$correct_wrong <- NULL
+
+
+####################### !!!!
+#Data <- subset(Data, (violation_position=='outer' & (condition == 'SP' | condition == 'SS' | condition == 'SPP' | condition == 'SPS' | condition == 'SSP' | condition == 'SSS')) | (violation_position=='inner' & (condition == 'PS' | condition == 'SS' | condition == 'PSP' | condition == 'PSS' | condition == 'SSP' | condition == 'SSS')) )
+Data <- subset(Data, (violation_position=='outer' & (condition == 'SP' | condition == 'SS' | condition == 'SPS' | condition == 'SSS')) | (violation_position=='inner' & (condition == 'PS' | condition == 'SS' | condition == 'PSS' | condition == 'SSS')) )
+#Data <- subset(Data, (violation_position=='outer' & (condition == 'SP' | condition == 'SS' | condition == 'SPS' | condition == 'SSS')) | (violation_position=='inner' & (condition == 'PS' | condition == 'PP' | condition == 'PSS' | condition == 'PPP')) )
+################## !!!!
+
 Data$condition <- NULL
 
 
@@ -65,13 +73,14 @@ Data[] <- lapply(Data, function(x) if(is.factor(x)) factor(x) else x) # Remove a
 Data[] <- lapply(Data, factor) # change all variables to 'factor' type.
 Data$valid_answer <- as.numeric(Data$valid_answer)-1
 
+
+
 str(Data)
 summary(Data)
 ```
 
 # PLOT - error rates
 ```{r,fig.height=5, fig.width=5}
-
 par(mfrow=c(1,2))
 for (l in 0:1)  {
     struct = ifelse(l=="0", "Objrel_SR", "Objrel_LR")
@@ -81,6 +90,112 @@ for (l in 0:1)  {
     barplot(curr_bysuj, col=c("red", "darkblue"), main = struct, ylim=c(0,0.6), names.arg = c("Inner", "Outer"), xpd = FALSE, beside=TRUE)
     legend("topright", c("Incongruent", "Congruent"), fill=c("red", "darkblue"))
 }
+```
+
+# STATS - Short-Nested: violation_position * subjects-congruency
+```{r}
+print('ANOVA-embedded')
+curr_Data = subset(Data, long == 0 & nested == 1 & violation_position=='inner')
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ congruent_subjects + Error(subject/congruent_subjects), data=bysuj)
+summary(anov)
+
+print('ANOVA-main')
+curr_Data = subset(Data, long == 0 & nested == 1 & violation_position=='outer')
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ congruent_subjects + Error(subject/congruent_subjects), data=bysuj)
+summary(anov)
+
+print('ANOVA-interaction')
+curr_Data = subset(Data, long == 0 & nested == 1)
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, violation_position=violation_position, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ violation_position * congruent_subjects + Error(subject/(violation_position*congruent_subjects)), data=bysuj)
+summary(anov)
+
+print('GLMM')
+glmm_with_random <- glmer(valid_answer ~ violation_position * congruent_subjects + (1 | subject), data=curr_Data, family="binomial")
+summary(glmm_with_random)
+#glmm_wo_random <- glm(valid_answer ~ violation_position * congruent_subjects, data=curr_Data, family="binomial")
+#summary(glmm_wo_random)
+#anova(glmm_with_random, glmm_wo_random)
+```
+
+
+# STATS - Long-Nested: violation_position * subjects-congruency
+```{r,fig.height=5, fig.width=5}
+print('ANOVA-embedded')
+curr_Data = subset(Data, long == 1 & nested == 1 & violation_position=='inner')
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ congruent_subjects + Error(subject/congruent_subjects), data=bysuj)
+summary(anov)
+
+print('ANOVA-main')
+curr_Data = subset(Data, long == 1 & nested == 1 & violation_position=='outer')
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ congruent_subjects + Error(subject/congruent_subjects), data=bysuj)
+summary(anov)
+
+print('ANOVA-interaction')
+curr_Data = subset(Data, long == 1 & nested == 1)
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, violation_position=violation_position, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ violation_position * congruent_subjects + Error(subject/(violation_position*congruent_subjects)), data=bysuj)
+summary(anov)
+
+print('GLMM')
+glmm_with_random <- glmer(valid_answer ~ violation_position * congruent_subjects + (1 | subject), data=curr_Data, family="binomial")
+summary(glmm_with_random)
+```
+
+# STATS: objrel (SR vs. LR) - long * subjects-congruency (inner verb only)
+```{r}
+print('ANOVA')
+curr_Data = subset(Data, violation_position == 'inner' & nested == 1)
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, long=long, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ long * congruent_subjects + Error(subject/(long*congruent_subjects)), data=bysuj)
+summary(anov)
+
+print('GLMM')
+glmm_with_random <- glmer(valid_answer ~ long * congruent_subjects + (1 | subject), data=curr_Data, family="binomial")
+summary(glmm_with_random)
+```
+
+
+# STATS: P2: long
+```{r}
+print('ANOVA')
+curr_Data = subset(Data, violation_position == 'inner' & congruent_subjects==0)
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, long=long, nested=nested), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ long * nested + Error(subject/(long*nested)), data=bysuj)
+summary(anov)
+
+print('GLMM')
+glmm_with_random <- glmer(valid_answer ~ long * nested + (1 | subject), data=curr_Data, family="binomial")
+summary(glmm_with_random)
+
+```
+
+
+# STATS: P2: long * subjects-congruency
+```{r}
+print('ANOVA')
+curr_Data = subset(Data, violation_position == 'inner' & nested == 1)
+bysuj = with(curr_Data, aggregate(valid_answer, list(subject=subject, long=long, congruent_subjects=congruent_subjects), mean))
+bysuj$error <- 1 - bysuj$x
+anov = aov(error ~ long * congruent_subjects + Error(subject/(long*congruent_subjects)), data=bysuj)
+summary(anov)
+
+print('GLMM')
+glmm_with_random <- glmer(valid_answer ~ long * congruent_subjects + (1 | subject), data=curr_Data, family="binomial")
+summary(glmm_with_random)
+
 ```
 
 

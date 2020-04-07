@@ -32,8 +32,7 @@ For example, the last three variables defines: 'SSS' = (1, 'singular', 1), 'SSP'
 Note that when long=0 (i.e., no attractor noun), then there are only four conditions (SS, SP, PS, PP), and therefore congruent_attractor='NA': 'SS'=(1, 'singular', 'NA'), etc.
 
 ```{r}
-#Data <- read.csv(file="../../Paradigm/Results/dataframe_results_all_trials_LSTM_fixed.csv", header=TRUE, sep=",") # Load data
-Data <- read.csv(file="../../Paradigm/Results/dataframe_results_all_trials.csv", header=TRUE, sep=",") # Load data
+Data <- read.csv(file="../../Paradigm/Results/dataframe_results_all_trials_LSTM_fixed.csv", header=TRUE, sep=",") # Load data
 Data <- subset(Data, trial_type == "Violation") # Take only trials in which there was a violation
 Data <- subset(Data, violation_position != "other") # Take only trials in which the violation was on the first or second verb (but not on nouns (fillers)).
 Data <- subset(Data, valid_answer != "REJECTED") # remove from it rejected trials (in which subject didn't confirm - see py script)
@@ -52,10 +51,15 @@ Data$number_v2 <- ifelse(Data$condition == 'SSS' | Data$condition == 'SSP' | Dat
 Data$congruent_attractor <- ifelse(Data$condition == 'SSS' | Data$condition == 'PSS' | Data$condition == 'SPP' | Data$condition == 'PPP', 1, ifelse(Data$condition == 'SSP' | Data$condition == 'SPS' | Data$condition == 'PSP' | Data$condition == 'PPS', 0, "NA"))
 Data$correct_wrong <- NULL
 
+#########################
+# FILTER ONLY K'S MODEL #
+#########################
+#Data <- subset(Data, (subject==1111))
+
 #######################################
 # FILTER BASED ON NUMBER OF ATTRACTOR #
 #######################################
-Data <- subset(Data, (violation_position=='outer' & (condition == 'SP' | condition == 'SS' | condition == 'SPS' | condition == 'SSS')) | (violation_position=='inner' & (condition == 'PS' | condition == 'SS' | condition == 'PSS' | condition == 'SSS')) )
+#Data <- subset(Data, (violation_position=='outer' & (condition == 'SP' | condition == 'SS' | condition == 'SPS' | condition == 'SSS')) | (violation_position=='inner' & (condition == 'PS' | condition == 'SS' | condition == 'PSS' | condition == 'SSS')) )
 Data$condition <- NULL
 
 # Define the main fixed variables (nested and long), based on the type of syntactic structure. 

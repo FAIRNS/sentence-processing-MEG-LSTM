@@ -21,12 +21,6 @@ df_all_trials.violation_type = df_all_trials.violation_type.fillna('None')
 df_all_trials.trial_type = df_all_trials.trial_type.fillna('Violation')
 
 
-# def outer2inner(row):
-#     if (row['sentence_type'] in ['embedding_mental_SR', 'embedding_mental_LR']) and (row['violation_position'] == 'outer'):
-#         return 'inner'
-#     else:
-#         return row['violation_position']
-# df_all_trials['violation_position'] = df_all_trials.apply(lambda row: outer2inner(row), axis=1)
 
 def process_row(row):
     if (row['sentence_type'] in ['objrel', 'objrel_nounpp']) and (row['violation_position'] == 'inner'):
