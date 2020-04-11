@@ -28,16 +28,16 @@ Statistical analyses were carried out using R, an open-source programming langua
 \subsubsection{Model Description}
 The model architecture we use is identical to the architecture presented by \citet{Gulordava:etal:2018}. 
 It consists of two layers with 650 Long-Short Term Memory (LSTM) units \citep{Hochreiter:Schmidhuber:1997}, input and output embedding layers of 650 units and input and output layers of size 50000 (the size of the vocabulary). The weights of the input and output embedding layers are not shared.
-The last layer of the model is a softmax layer, whose activations sum up to 1. The activity of the output units correspond to all words in the vocabulary, each unit activity represents the prediction probability of a given word occurring next. 
+The last layer of the model is a softmax layer, whose activations sum up to 1 and as such corresponds to a probability distribution over all words in the NLM's vocabulary.
 
 \subsubsection{Model Training} 
-In addition to the NLM made available by \citet{Gulordava:etal:2018}, we train additional 19 models using the same procedure and corpus (drawn from Wikipedia), giving 20 models in total. 
+In addition to the NLM made available by \citet{Gulordava:etal:2018}, we train an additional 19 models using the same procedure and corpus (drawn from Wikipedia), giving 20 models in total. 
 The models differ in the order in which those sentences are presented as well as the initialisation of their weights.
 For all runs, we use a learning rate of 20, a batch size of 64 and a dropout rate of 0.2, the hyperparameters that \citet{Gulordava:etal:2018} reported to work best for this particular corpus and setup.
-Following Gulordava et. al, contrary to common in language modelling, we train the models on separate sentences, rather than longer pieces of discourse.
+Following Gulordava et. al, but contrary to common practice in language modelling, we train the models on separate sentences, rather than longer pieces of discourse.
 As common practice for training language models, we do not use an optimiser, but instead use a \emph{plateau-based} learning scheme, in which we half the learning rate whenever the validation perplexity of the model reaches a plateau.
 
-\subsubsection{Model Evaluation} During training, we evaluate the resulting 20 models by considering their perplexity on a shared test set\footnote{\url{https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/Italian/test.txt}}. For the NA-tasks, following \citet{Linzen:etal:2016}, we compute accuracy by presenting the preamble of each sentence to the NLM and then compare the output probabilities assigned to the plural and singular forms of the verb. On each sentence, the model is scored 1 if the probability of the correct verb is higher than the wrong, and else 0. Model accuracy is then defined as the average of these scores across all sentences in the NA-task.
+\subsubsection{Model Evaluation} After training, we evaluate the resulting 20 models by considering their perplexity on a shared test set\footnote{\url{https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/Italian/test.txt}}. For the NA-tasks, following \citet{Linzen:etal:2016}, we compute accuracy by presenting the preamble of each sentence to the NLM and then compare the output probabilities assigned to the plural and singular forms of the verb. On each sentence, the model is scored 1 if the probability of the correct verb is higher than the wrong, and else 0. Model accuracy is then defined as the average of these scores across all sentences in the NA-task.
 
 \subsubsection{Ablation Experiments}
 To identify units that play an important role in the encoding of number and gender, we run a series of ablation test.
