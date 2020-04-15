@@ -7,14 +7,13 @@ Starting with the influential work of \citet{Linzen:etal:2016}, a growing
 literature \citep[e.g.,][]{Gulordava:etal:2018, Bernardy:Lappin:2017,
   Giulianelli:etal:2018, Kuncoro:etal:2018a,Linzen:Leonard:2018,jumelet2019analysing} has
 tested NLMs on the NA-task at the behavioural level, showing that these models have performance and error patterns partially resembling those of humans.
-Recently, we investigated the underlying neural mechanism of an English NLM during the processing of a long-range dependency \citep{lakretz2019emergence}. 
-We identified a neural circuit in the network that encodes and carries grammatical number across long-range dependencies, showing also that processing in NLMs is sensitive to the structure of the subject-verb dependency. 
-In the next section we describe the main findings of our previous study, followed by a replication of those results in an NLM trained on Italian. 
+Recently, \citet{lakretz2019emergence} investigated the underlying neural mechanism of an English NLM during the processing of a long-range dependency. They identified a neural circuit in the network that encodes and carries grammatical number across long-range dependencies, showing also that processing in NLMs is sensitive to the structure of the subject-verb dependency. 
+In the next section we describe the main findings in this previous study, followed by a replication of the results in an NLM trained on Italian. 
 
 \subsection{Agreement in the English NLM}
 
 \subsubsection{The Noun-PP Number-Agreement Task}
-The main NA-task used by \citet{lakretz2019emergence}\dnote{bit strange that first we say ``We'' and now refer to it in the third person``} contains sentences with a subject-verb dependency separated by a prepositional phrase containing an attractor (e.g., ``The \textbf{boy} near the \emph{car} \textbf{smiles}''), referred to as the `Noun-PP' task. This task comprises four conditions, which correspond to the four possible assignments of grammatical number to the main subject and attractor (SS, SP, PS and PP; S-singular, P-plural). The NLM was presented with preambles of sentences from this task, and predictions of the model of the next word were then extracted, from which error rates were computed (Methods). 
+The main NA-task used by \citet{lakretz2019emergence} contains sentences with a subject-verb dependency separated by a prepositional phrase containing an attractor (e.g., ``The \textbf{boy} near the \emph{car} \textbf{smiles}''), referred to as the `Noun-PP' task. This task comprises four conditions, which correspond to the four possible assignments of grammatical number to the main subject and attractor (SS, SP, PS and PP; S-singular, P-plural). The NLM was presented with preambles of sentences from this task, and predictions of the model of the next word were then extracted, from which error rates were computed (Methods). 
 
 \subsubsection{Long-Range Number Units}
 Having verified that the network could predict the correct number with high accuracy, \citet{lakretz2019emergence} tested whether there are units in the network that are crucial to carry grammatical number across long-range dependencies.  
@@ -68,3 +67,4 @@ In sum, these results extend previous findings to another language and another g
     \caption{\textbf{Cell activity of the number unit (panel A) and gender unit (panel B) during the processing of a single long-range dependency across a prepositional phrase:} four conditions are presented, corresponding to whether the main subject of the sentence is singular (red curves) or plural (blue), and to whether the main subject (`bambino') and the intervening noun (`contadino') have the same (congruent) or opposite number (incongruent)}
     \label{fig:nounpp}
 \end{figure} 
+
