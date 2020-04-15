@@ -7,9 +7,9 @@ humans \citep{Chomsky:1957, Hauser:etal:2002, Dehaene:etal:2015}. We
 currently know very little about how such mechanism is implemented in
 the brain, and consequently about its scope and limits.
 
-In recent years, artificial neural-network models, rebranded as ``deep learning'' \citep{LeCun:etal:2015}, made tremendous advances in natural language processing \citep{Goldberg:2017}. Typically, neural networks are not provided with any explicit information regarding grammar or other types of linguistic knowledge. Neural Language Models (NLMs) are commonly initialized as `tabula rasa' and are solely trained to predict the next word in the sentence given its context \citep{Elman:1990}. Yet, these models achieve impressive performance, not far below that of humans, in tasks such as question answering or text summarization \citep{Radford:etal:2019}. Unlike their connectionist progenitors \cite{Rumelhart:etal:1986,Rumelhart:etal:1986b}, modern NLMs are not developed as cognitive models intended to mimic human behaviour, but to be deployed in applications, such as translation systems or online content organizers, that are already transforming our everyday life. Still, there is no doubt that NLMs, in order to be as successful as they are in the practical natural language processing arena, must infer some form of linguistic knowledge from the raw data they are exposed to. This has attracted the interest of linguists and cognitive scientists, curious to know  \textit{how} exactly NLMs handle grammatical structure \citep[see][for a survery]{Linzen:Baroni:2020}.
+In recent years, artificial neural-network models, rebranded as ``deep learning'' \citep{LeCun:etal:2015}, made tremendous advances in natural language processing \citep{Goldberg:2017}. Typically, neural networks are not provided with any explicit information regarding grammar or other types of linguistic knowledge. Neural Language Models (NLMs) are commonly initialized as `tabula rasa' and are solely trained to predict the next word in the sentence given its context \citep{Elman:1990}. Yet, these models achieve impressive performance, not far below that of humans, in tasks such as question answering or text summarization \citep{Radford:etal:2019}. Unlike their connectionist progenitors \cite{Rumelhart:etal:1986,Rumelhart:etal:1986b}, modern NLMs are not developed as cognitive models intended to mimic human behaviour, but to be deployed in applications, such as translation systems or online content organizers, that are already transforming our everyday life. Still, there is no doubt that NLMs, in order to be as successful as they are in the practical natural language processing arena, must infer some form of linguistic knowledge from the raw data they are exposed to. This has attracted the interest of linguists and cognitive scientists, curious to know  \textit{how} exactly NLMs handle grammatical structure \citep[see][for a survey]{Linzen:Baroni:2020}.
 
-Given that it is easier to inspect the inner workings of NLMs than humans, we perform here an in-depth analysis of nested processing in NLMs, we uncover the neural circuitry they develop to handle it, and use it to make predictions about human language processing. Importantly, we are not making claims about NLMs being models of the human brain. Rather, following \citet{McCloskey:1991}, we treat NLMs as a separate animal species, whose way to solve a linguistic challenge can provide insights into how the human brain might be tackling similar challenges. In the spirit of \citet{Cichy:Kaiser:2019}, we use NLMs as ``hypothesis generators'', rather than direct simulations of human neurocognitive processes.
+Given that it is easier to inspect the inner workings of NLMs than humans, we perform here an in-depth analysis of nested processing in NLMs, we uncover the neural circuitry they develop to handle it, and use it to make predictions about human language processing. Importantly, we are not making claims about NLMs being models of the human brain. Rather, following \citet{McCloskey:1991}, we treat NLMs as a separate animal species, whose way to solve a linguistic challenge can provide insights into how the human brain might be tackling similar challenges.
 
 Specifically, we study multiple structure nesting in the context of grammatical agreement. Long-distance grammatical agreement has traditionally been studied as one of the  best indices of online syntactic processing in humans, as it is ruled
 by hierarchical structures rather than linear by the order of words in
@@ -21,39 +21,43 @@ recently, some steps were taken towards a mechanistic understanding of
 how NLMs perform agreement. Specifically, \citet{lakretz2019emergence} showed that NLMs trained
 on a large corpus of English developed a number-propagation mechanism for long-range dependencies. The core circuit of this mechanism is comprised of an exceptionally small number of units (three out of 1300). Despite its sparsity, this mechanism carries grammatical number information across various and challenging long-range dependencies, also in the presence of intervening nouns carrying opposite number.
 
-We extend here the study of agreement in NSMs to multiple agrrement tracking in recursive structures, such as the one in sentence: ``The \textbf{boys} that the \textit{father} under the \underline{tree} \textit{watches} \textbf{know} the farmers''. The sparse mechanism we outline above should be able to handle the outermost long-distance agreement dependency (`boys/know'), but it is unclear how it could also process the embedded dependency (`father/watches'). Intuitively, once the mechanism is recruited by the outermost
-dependency, it should not able anymore to track the ones nested inside it.  Backup mechanisms
+Now, the recursive power of language allows the construction of sentences with multiple nested agreement dependencies, as in the sentence: ``The \textbf{boys} that the \textit{father} under the \underline{tree} \textit{watches} \textbf{know} the farmers''. The mechanism we outlined above should be robust to nested hierarchical structures, thus allowing correct percolation of number across the outermost long-distance agreement dependency (`boys/know'). However, the sparsity of the solution found by NLMs implies that only a number feature at a time can be carried across, thus predicting failure to handle \emph{embedded} dependencies within multiple nestings (`father/watches' in the example above). Intuitively, once the mechanism is recruited by the outermost
+dependency, it should not be able anymore to track the ones nested inside it.
 
-% \dnote{I think this transition is difficult and doesn't do completely justice to what we do. Could we maybe add a few more sentences about recursion in networks? Or link it back to competence/performance again? It is important that the reader gets here the importance of what we try to do, I think it should sound less incremental than it sounds here.}
-In the present study, we start by investigating the recursive
-performance of NLMs, using number-agreement as a
-probe. We first confirm that the emergence of a sparse agreement mechanism is
-a stable and robust phenomenon in NLMs by replicating it with a new
-language (Italian) and grammatical feature (gender). Next, we study
-how the sparsity of the agreement mechanism affects recursive
-agreement processing, confirming our predictions that the mechanism
-strongly binds the depth of recursion. Finally, we test whether the
- system we saw emerge in NLMs could serve as a
-model of recursion processing limitations in humans. The results of a
-behavioural study partly confirm our predictions, showing largely similar error patterns between NLMs and humans. 
-% \YL{Add a sentence about differences}
+In this study, we start by confirming that the emergence of a sparse
+agreement mechanism is a stable and robust phenomenon in NLMs by
+replicating it with a new language (Italian) and grammatical feature
+(gender). Next, we study how the sparsity of the agreement mechanism
+affects recursive agreement processing, confirming our predictions
+that the mechanism supports outermost agreement across nested
+structures, but not multiple embedded agreements.
 
+In the next part of the study, we use our mechanistic understanding of
+agreement in NLMs as an ``hypothesis generator''
+\citep{Cichy:Kaiser:2019} about nested agreement processing in
+humans. Suppose humans are also using a small set of specialized units
+to store and release agreement features across long-distance syntactic
+structures. Then, we might observe a similar asymmetry in handling
+outer- and inner-most dependencies in recursive structures. We run a
+behavioural experiment with Italian subjects to test this
+hypothesis. The results are intriguing. One the one hand, humans do
+not display the same dramatic failure to process embedded dependencies
+we observed in NLMs. On the other hand, they are more prone to errors
+in embedded dependencies, vs.~in the longer-range outer ones, in
+accordance with our predictions. We conclude by outlining future
+experiments that should allow us to distinguish between two
+interpretations of the current data. One according to which humans'
+nested feature processing is radically different from the one emerging
+in NLMs, and genuinely capable of unbound recursive processing, and
+another according to which humans' feature processing circuit is akin
+to the one of NLMs, but they also possess sophisticated backup
+mechanisms beyond the abilities developed by NLMs.
 
-\begin{itemize}
-\item Introduce grammatical agreement, in human processing and in the
-  NLM literature
-\item We do have a mechanistic understanding of how NLM do
-  long-distance agreement, and it leads to predict that they will only
-  be able to handle nesting of limited depth
-\item Here, we first confirm our prediciton about NLMs, and then we
-  use our understanding to test how humans perform nesting
-\item We find that one basic prediction stemming from NLMs is borne
-  out by human processing; however, humans are much more graceful in
-  their response to deeper nesting,
-\item On nesting in particular, evidence suggests humans are both
-  relying on a similar mechanism as NLMs, but they are also doing something more.
-\end{itemize}
-
+Overall, our study illustrates how some degree of hierarchical
+processing can be performed by a device, such as an NLM, that did not
+develop full recursive capabilities. It also shows how a detailed
+understanding of emergent mechanisms in modern NLMs can lead to new
+hypotheses about how humans process similar structures.
 
 \textbf{Earlier version of intro commented out below this line.}
 
