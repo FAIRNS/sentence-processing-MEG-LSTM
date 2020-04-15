@@ -1,4 +1,4 @@
-\documentclass[a4paper,man,natbib]{apa7}
+\documentclass[a4paper,man,natbib, floatsintext]{apa7}
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -6,7 +6,8 @@
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos, textsize=scriptsize]{todonotes}
 
-% Added by me
+% Added by us
+\usepackage{caption}
 \usepackage{lipsum}
 \usepackage{float}
 \usepackage{tikz}
@@ -34,11 +35,11 @@
 \affiliation{Y}
 
 
-\abstract{Abstract}
+\input{sections/abstract}
+\keywords{Neural Language Models, Number agreement...}
 
 \begin{document}
 \maketitle
-
 \input{sections/intro}
 \input{sections/single_dependency}
 \input{sections/two_dependencies}
@@ -46,7 +47,7 @@
 \input{sections/discussion}
 
 
-% \bibliography{yair,marco}
+% \bibliography{yair}
 % Commented our due to an error in compliation when all three bibs are in. 
 \bibliography{yair,marco,dieuwke}
 

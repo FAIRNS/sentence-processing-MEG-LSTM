@@ -1,12 +1,46 @@
 \section{General Discussion}
+% Re-iteration on the motivations and goals
+We investigated how nested long-range number agreements are processed in Neural Language Models and humans. Previous inquires into NLMs found that during training, NLMs develop a sparse neural mechanism that specializes in the processing of long-range number agreements. These findings predict processing difficulties for NLMs on embedded long-range dependencies of nested constructions, since the sparsity of the agreement mechanism might not allow the processing of two dependencies that are active at once.
 
+% Summary of the results on a single dependency in NLMs
+\subsection{A Sparse Agreement Mechanism Consistently Emerges in NLMs Across Languages and Grammatical Features}
+Using agreement tasks with a single subject-verb dependency, we first replicated previous findings from an English NLM and extended them to NLMs trained on Italian. We found that a similar sparse mechanism for number agreement emerged in Italian NLMs during training. Furthermore, we identified a similar mechanism for gender agreement, showing that a sparse agreement mechanism therefore consistently emerges in NLMs across languages and grammatical features. 
+
+(discuss possible explanations for why this sparsity occurs so often)
+
+% Summary of the results on two dependencies in NLMs
+\subsection{Processing of Nested Dependencies in Humans and NLMs}
+In the processing of two successive and nested constructions, we found considerable similarity between agreement-error patterns of NLMs and humans, however, with several important points of discrepancy:
+\subsubsection{Similarities}
 \begin{itemize}
-    \item briefly reiterate on the main findings 
-    \item Humans-NLM comparison 
+    \item \textbf{Relatively low error-rate on successive dependencies}: humans and the NLM made a relatively small number of agreement errors on the embedded verb of successive dependencies. This is in accordance with the sequential processing observed in the dynamics of the NLM and human relatively good performance on right-branching constructions. 
+    \item \textbf{Subject-congruence effect in nested constructions}: for all verbs, when the attractor was plural, both humans and NLMs made significantly more errors when the main and embedded subjects had opposite grammatical numbers. Moreover, in some cases, the size of subject-congruence effect was greater than that of an incongruent nested attractor. For example, for the embedded verb of Long-Nested, humans and the NLM made more errors due to incongruent subjects (effect-size=) compared to an intervening nested attractor (effect-size=; interaction). In the NLM, the effect of incongruent subjects in this case arises from interference dynamics. Throughout the processing of the main dependency, the long-range number unit output the value of the encoded grammatical number. In the case of incongruent subjects, this information interferes with information encoded in the short-range units that carry the number of the embedded subject. In contrast, in the case of congruent subjects, since the number of both subjects is identical, the activation of the long-range mechanism support the embedded dependency, also in the case of a nested incongruent attractor.
+    \item \textbf{Embedded compared to main verbs of nested dependencies are more error prone}:
+    
+\end{itemize}
+\subsubsection{Differences}
+\begin{itemize}
+    \item Subject-congruence effect was not significant 
+\end{itemize}
+
+
     \begin{itemize}
-        \item Points of similarity: good performance on successive dependencies but difficulties on nested constructions; Subject-congruence effects on the main and embedded verbs; higher error rate on the embedded dependency (prediction 1). 
         \item Point of differences: size of effects. huge difference on Long-Nested - NLMs are below chance level. Prediction 2 was not confirmed. different short-range/compensation mechanisms.
     \end{itemize}
+    
+% The agreement mechanism of the NLM was found to process successive dependencies sequentially, achieving high performance on Short- and Long-Successive. In nested constructions, the NLM showed subject-congruence effects on all verbs, making more agreement errors when the main and embedded subject differ by their grammatical number. The NLM successfully handled the main dependency, in both Short- and Long-Nested, achieving significantly below chance-level performance also in the case of incongruent subjects. However, the model showed increased difficulty in processing the embedded dependencies in both Short- and Long-Nested, reaching below chance-level performance on the embedded dependency of Long-Nested in the case of incongruent subjects. These findings are in accordance with the prediction based on the sparsity property of the agreement mechanism discussed above (see also, Prediction 1 and 2 in Section \ref{}). 
+
+% Summary of the results in humans
+% Humans 
+% Similarly to NLMs, humans showed high performance in both Short- and Long-Successive, with a higher baseline of errors across conditions, possibly due to attention lapses, which are not modelled in NLMs. These results are in accordance with the relatively high performance of humans in processing right-branching constructions. Similarly to NLMs, in nested constructions, humans showed subject-congruence effect across all verbs when the attractor was plural, making more errors in incongruent-subject cases. Furthermore, like NLMs, humans had relatively good performance on the main dependency, also when subjects were incongruent, and made significantly more errors on the embedded compared to the main dependency when subjects were incongruent (Prediction 1). However, although the error rate was higher, humans did not make significantly more errors on the embedded verb when the dependency was long- compared to short-range.
+
+% differences
+
+% similarities 
+
+\include{tables/table_comparison}
+
+\begin{itemize}
     
     \item comprehension vs. production.
     
