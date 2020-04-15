@@ -13,11 +13,12 @@ Using agreement tasks with a single subject-verb dependency, we first replicated
 In the processing of two successive and nested constructions, we found considerable similarity between agreement-error patterns of NLMs and humans, however, with several important points of discrepancy:
 \subsubsection{Similarities}
 \begin{itemize}
-    \item \textbf{Relatively low error-rate on successive dependencies}: humans and the NLM made a relatively small number of agreement errors on the embedded verb of successive dependencies. This is in accordance with the sequential processing observed in the dynamics of the NLM and human relatively good performance on right-branching constructions. (discuss further) 
+    \item \textbf{Relatively low error-rate on successive dependencies}: humans and the NLM made a relatively small number of agreement errors on the embedded verb of successive dependencies. This is in accordance with the sequential processing observed in the dynamics of the NLM and human relatively good performance on right-branching constructions. 
     \item \textbf{Subject-congruence effect in nested constructions}: for all verbs, when the attractor was plural, both humans and NLMs made significantly more errors when the main and embedded subjects had opposite grammatical numbers. Moreover, in some cases, the size of subject-congruence effect was greater than that of an incongruent nested attractor. For example, for the embedded verb of Long-Nested, humans and the NLM made more errors due to incongruent subjects (effect-size=) compared to an intervening nested attractor (effect-size=; interaction). In the NLM, the effect of incongruent subjects in this case arises from interference dynamics. Throughout the processing of the main dependency, the long-range number unit output the value of the encoded grammatical number. In the case of incongruent subjects, this information interferes with information encoded in the short-range units that carry the number of the embedded subject. In contrast, in the case of congruent subjects, since the number of both subjects is identical, the activation of the long-range mechanism support the embedded dependency, also in the case of a nested incongruent attractor.
     \item \textbf{Embedded compared to main verbs of nested dependencies are more error prone}:
     
 \end{itemize}
+
 \subsubsection{Differences}
     \begin{itemize}
         \item effect sizes. 
@@ -38,20 +39,35 @@ In the processing of two successive and nested constructions, we found considera
 
 \include{tables/table_comparison}
 
+\subsection{Psycholinguistic Theories for Agreement and Sentence Processing}
+Several theories have been suggested in the psycholinguistic literature for grammatical agreement processing in humans, based on agreement-error data. We now discuss how these theories may account for the data collected in this study, which may provide a complementary high-level explanations to that suggested by the neural model. 
+
+
+
+\subsubsection{Feature Percolation Theories}
+% Some background (possibly unnecessary if dicussion gets too long)
+Early psycholinguistic theories suggested that the proximity between an intervening noun and a verb determines the probability of making an agreement error \citep{quirk1972grammar}. This linear-distance hypothesis was later rejected by empirical findings showing that error rates across a prepositional phrase are higher compared to those across a relative clause, although in the former case, the subject was closer to the verb and the syntactic complexity of the preamble was smaller \citep{bock1992regulating}. Following these findings, Bock et. al suggested the clause-packaging hypothesis, stating that an attractor within the same clause would generate more interference than one in another structural unit. 
+
+More recent studies suggested that agreement errors depend on the syntactic distance between the attractor and the point of possible interference with subject-verb agreement on the syntactic tree  \citep{vigliocco1995constructing, vigliocco1999sex, franck2002subject}. According to this view, the grammatical feature of the attractor can `percolate’ up through the syntactic-tree during incremental processing. Such feature percolation can influence the grammatical agreement between the head noun and verb. Feature percolation is assumed to occur incrementally during sentence processing, therefore, the longer the distance to the subject-verb path, the lower the likelihood of interference is. The syntactic-distance hypothesis accounts for the reduced error rates in relative-clauses compared to prepositional phrases (PP), and for more recent evidence to which the clause-packaging hypothesis provided inadequate predictions \citep{franck2002subject}.
+
+However, percolation theories have difficulties to account for agreement errors on embedded dependencies, such as in Short- and Long-Nested \citep{wagers2009agreement, lago2015agreement}. In these constructions, the attractor with respect to the embedded dependency is the main subject, which resides higher on the syntactic tree. Percolation theories traditionally assume only upward movement through the tree and therefore predict null subject-congruence effect. Moreover, the syntactic distance between the main and embedded subjects is much greater than that between the subject and attractor in simple constructions as across a PP. This predicts low error-rates than those reported for PP constructions, in contrast to our findings. Finally, since the main subject does not linearly intervene within the embedded dependency, its grammatical feature should be less activated relative to the embedded subject. This is again in contrast to our findings (and note that it is opposite to the prediction from the NLM, in which the main subject is robustly encoded and carried by the agreement mechanism).
+
+
+\subsubsection{Sentence Processing in The Adaptive Control of Thought---Rational (ACT-R) framework}
+\begin{itemize}
+    \item ACT-R:
+    \begin{itemize}    
+         \item Can it account for the data? error-rates arise from interference. This is consistent for example with the observed subject-congruence effect. 
+         \item For the NLM, both P*P*S and S*S*P are easy, despite the nested attractor and that the LR mechanism is taken up. Since the LR units output the number they encode throughout the dependency, their activity overcomes that of the attractor, which explains the good performance on these conditions. In general, interference dynamics in the NLM are implemented via competition between activity of units encoding for different numbers - e.g., LR of the main and SR for the embedded. 
+         \item Consequently, can NLM seen as an implementation of higher-level, symbolic-based, mode such as the ACR-T?
+    \end{itemize}
+
 \begin{itemize}
     
     \item comprehension vs. production.
     
     \item grammatical vs ungrammatical: in comprehension, effects are observed on the ungrammatical sentences. 
       
-    \item In light of other models -
-    \begin{itemize}
-        \item ACT-R:
-        \begin{itemize}    
-             \item Can it account for the data? error-rates arise from interference. This is consistent for example with the observed subject-congruence effect. 
-             \item For the NLM, both P*P*S and S*S*P are easy, despite the nested attractor and that the LR mechanism is taken up. Since the LR units output the number they encode throughout the dependency, their activity overcomes that of the attractor, which explains the good performance on these conditions. In general, interference dynamics in the NLM are implemented via competition between activity of units encoding for different numbers - e.g., LR of the main and SR for the embedded. 
-             \item Consequently, can NLM seen as an implementation of higher-level, symbolic-based, mode such as the ACR-T?
-        \end{itemize}
         
         \item Feature percolation models: cannot account for the incongruent effect on the embedded verbs. The attractor is higher on the tree and thus need to percolate `downwards'.
     \end{itemize}   
@@ -63,3 +79,4 @@ In the processing of two successive and nested constructions, we found considera
     \item Future directions. 
     
 \end{itemize}
+
