@@ -39,6 +39,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.set_ylim([-0.1, 1.5])
     ax.set_xlabel('')
     ax.set_ylabel('')
+    ax.set_yticks([0, 1])
+    ax.set_yticklabels([0, 1])
     ax.set_xticklabels(['Embedded', 'Main'])
     ax.tick_params(labelsize=20)
 
@@ -54,6 +56,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.set_yticklabels([])
     ax.set_xlim(xlim)
     ax.set_ylim([-0.1, 1.5])
+    ax.set_yticks([0, 1])
+    ax.set_yticklabels([0, 1])
     ax.set_xlabel('')
     ax.set_ylabel('')
     ax.set_xticklabels(['Embedded', 'Main'])
@@ -63,7 +67,7 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
 
     # LAYOUT
     plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
-    fig_humans.text(x=0.03, y=0.7, s='Humans', fontsize=26, rotation=90)
+    # fig_humans.text(x=0.03, y=0.7, s='Humans', fontsize=26, rotation=90)
 
     ## MODEL
     fig_model, axes = plt.subplots(1, 2, figsize=(10, 5))
@@ -78,6 +82,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.get_legend().set_visible(False)
     ax.set_xlabel('')
     ax.set_xticklabels(['Embedded', 'Main'])
+    ax.set_yticks([0, 1])
+    ax.set_yticklabels([0, 1])
     ax.tick_params(labelsize=20)
     ax.set_xlim(xlim)
     ax.set_ylim([-0.1, 1.5])
@@ -94,7 +100,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.set_xlabel('')
     ax.tick_params(labelsize=20)
     ax.set_xticklabels(['Embedded', 'Main'])
-    ax.set_yticklabels([])
+    ax.set_yticks([0, 1])
+    ax.set_yticklabels([0, 1])
     ax.set_xlim(xlim)
     ax.set_ylim([-0.1, 1.5])
     ax.set_ylabel('')
@@ -103,7 +110,7 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     # LAYOUT
     plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
 
-    fig_model.text(x=0.03, y=0.6, s='NLM', fontsize=26, rotation=90)
+    # fig_model.text(x=0.03, y=0.6, s='NLM', fontsize=26, rotation=90)
 
     # LEGEND
     import numpy as np

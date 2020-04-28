@@ -36,10 +36,10 @@ df_error_rates_LSTM = df_error_rates_LSTM[df_error_rates_LSTM['subject']==1111]
 ##########################################
 
 # For the main of short, keep only SP and SS
-query_humans = (df_error_rates['violation_position']=='outer') & (df_error_rates['condition'].isin(['SP', 'SS', 'SPS', 'SSS'])) |\
+query_humans = ((df_error_rates['violation_position']=='outer') & (df_error_rates['condition'].isin(['SP', 'SS', 'SPS', 'SSS']))) |\
         ((df_error_rates['violation_position']=='inner') & (df_error_rates['condition'].isin(['PS', 'SS', 'PSS', 'SSS'])))
 
-query_LSTM = (df_error_rates_LSTM['violation_position']=='outer') & (df_error_rates_LSTM['condition'].isin(['SP', 'SS', 'SPS', 'SSS'])) |\
+query_LSTM = ((df_error_rates_LSTM['violation_position']=='outer') & (df_error_rates_LSTM['condition'].isin(['SP', 'SS', 'SPS', 'SSS']))) |\
         ((df_error_rates_LSTM['violation_position']=='inner') & (df_error_rates_LSTM['condition'].isin(['PS', 'SS', 'PSS', 'SSS'])))
 
 df_error_rates_P = df_error_rates.loc[query_humans]
@@ -169,13 +169,15 @@ for i, s_type in enumerate(['objrel', 'objrel_nounpp']):
     ax.set_title('')
     ax.set_xlabel('')
     ax.set_ylabel('')
+    ax.set_yticks([0, 0.5, 1])
+    ax.set_yticklabels([0, 0.5, 1])
     ax.set_xticklabels(['Embedded', 'Main'])
     ax.set_ylim([0, 1])
     ax.get_legend().set_visible(False)
     # ax.set_ylabel('Error rate', fontsize=20)
 
 plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
-fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
+# fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
 
 
 fn = 'humans_nested_error_rates_all_condtions.png'
@@ -210,13 +212,15 @@ for i, s_type in enumerate(['embedding_mental_SR', 'embedding_mental_LR']):
     ax.set_title('')
     ax.set_xlabel('')
     ax.set_ylabel('')
+    ax.set_yticks([0, 0.5, 1])
+    ax.set_yticklabels([0, 0.5, 1])
     ax.set_xticklabels(['Embedded', 'Main'])
     ax.set_ylim([0, 1])
     ax.get_legend().set_visible(False)
     # ax.set_ylabel('Error rate', fontsize=20)
 
 plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
-fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
+# fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
 
 
 fn = 'humans_successive_error_rates_all_condtions.png'
@@ -255,13 +259,15 @@ for i, s_type in enumerate(['objrel', 'objrel_nounpp']):
     ax.set_title('')
     ax.set_xlabel('')
     ax.set_ylabel('')
+    ax.set_yticks([0, 0.5, 1])
+    ax.set_yticklabels([0, 0.5, 1])
     ax.set_xticklabels(['Embedded', 'Main'])
     ax.set_ylim([0, 1])
     ax.get_legend().set_visible(False)
     # ax.set_ylabel('Error rate', fontsize=20)
 
 plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
-fig.text(x=0.03, y=0.6, s='RNNs', fontsize=26, rotation=90)
+# fig.text(x=0.03, y=0.6, s='RNNs', fontsize=26, rotation=90)
 
 # plt.tight_layout()
 
@@ -299,13 +305,15 @@ for i, s_type in enumerate(['embedding_mental_SR', 'embedding_mental_LR']):
     ax.set_title('')
     ax.set_xlabel('')
     ax.set_ylabel('')
+    ax.set_yticks([0, 0.5, 1])
+    ax.set_yticklabels([0, 0.5, 1])
     ax.set_xticklabels(['Embedded', 'Main'])
     ax.set_ylim([0, 1])
     ax.get_legend().set_visible(False)
     # ax.set_ylabel('Error rate', fontsize=20)
 
 plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
-fig.text(x=0.03, y=0.6, s='RNNs', fontsize=26, rotation=90)
+# fig.text(x=0.03, y=0.6, s='RNNs', fontsize=26, rotation=90)
 
 
 fn = 'LSTM_successive_error_rates_all_condtions.png'
@@ -340,25 +348,239 @@ fn = 'legend_SS.png'
 plt.savefig(os.path.join(path2figures, fn))
 
 
+#########################################
+### BAR PLOTS ALL CONDITIONS ACCEPTABLE #
+#########################################
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+for i, s_type in enumerate(['objrel', 'objrel_nounpp']):
+    if s_type in ['objrel_nounpp', 'embedding_mental_LR']:
+        hue_order = ['SSS', 'SSP', 'SPP', 'SPS', 'PPP', 'PPS', 'PSS', 'PSP']
+        palette = ['b', 'c', 'r', 'm', 'b', 'c', 'r', 'm']
+        if s_type == 'objrel_nounpp':
+            hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_LR':
+                hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+    elif s_type in ['objrel', 'embedding_mental_SR']:
+        hue_order = ['SS', 'SP', 'PP', 'PS']
+        palette = ['b', 'r', 'b', 'r']
+        if s_type == 'objrel':
+            hatches = ['', '', '\\', '\\']
+        elif s_type == 'embedding_mental_SR':
+                hatches = ['', '', '\\', '\\']
+
+    ax = axes[i]
+    df = df_error_rates.loc[(df_error_rates['sentence_type'] == s_type) & (df_error_rates['trial_type'] == 'Acceptable')&(~df_error_rates['violation_type'].str.contains('F|1|2'))]
+    bar = sns.barplot(x='condition', y='error_rate', data=df, ax=ax, order=hue_order, palette=palette)
+    # Loop over the bars
+    for i, thisbar in enumerate(bar.patches):
+        # Set a different hatch for each bar
+        thisbar.set_hatch(hatches[i])
+    # sns.set(font_scale=2)
+    ax.tick_params(labelsize=20)
+    ax.set_title('')
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_yticks([0, 0.5, 1])
+    ax.set_yticklabels([0, 0.5, 1])
+    # ax.set_xticklabels(['Embedded', 'Main'])
+    ax.set_ylim([0, 1])
+    bar.set(xticklabels=[])
+    # ax.get_legend().set_visible(False)
+    # ax.set_ylabel('Error rate', fontsize=20)
+
+plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+# fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
+
+plt.tight_layout()
+fn = 'humans_nested_error_rates_all_condtions_acceptable.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+for i, s_type in enumerate(['embedding_mental_SR', 'embedding_mental_LR']):
+    if s_type in ['objrel_nounpp', 'embedding_mental_LR']:
+        hue_order = ['SSS', 'SSP', 'SPP', 'SPS', 'PPP', 'PPS', 'PSS', 'PSP']
+        palette = ['b', 'c', 'r', 'm', 'b', 'c', 'r', 'm']
+        if s_type == 'objrel_nounpp':
+            hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+        elif s_type == 'embedding_mental_LR':
+                hatches = ['', '', '', '', '\\', '\\', '\\', '\\']
+    elif s_type in ['objrel', 'embedding_mental_SR']:
+        hue_order = ['SS', 'SP', 'PP', 'PS']
+        palette = ['b', 'r', 'b', 'r']
+        if s_type == 'objrel':
+            hatches = ['', '', '\\', '\\']
+        elif s_type == 'embedding_mental_SR':
+                hatches = ['', '', '\\', '\\']
+
+    ax = axes[i]
+    df = df_error_rates.loc[(df_error_rates['sentence_type'] == s_type) & (df_error_rates['trial_type'] == 'Acceptable')&(~df_error_rates['violation_type'].str.contains('F|1|2'))]
+    bar = sns.barplot(x='condition', y='error_rate', data=df, ax=ax, hue_order=hue_order, palette=palette)
+    bar.set(xticklabels=[])
+    # Loop over the bars
+    for i, thisbar in enumerate(bar.patches):
+        # Set a different hatch for each bar
+        thisbar.set_hatch(hatches[i])
+    # sns.set(font_scale=2)
+    ax.tick_params(labelsize=20)
+    ax.set_title('')
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_yticks([0, 0.5, 1])
+    ax.set_yticklabels([0, 0.5, 1])
+    # ax.set_xticklabels(['Embedded', 'Main'])
+    ax.set_ylim([0, 1])
+    bar.set(xticklabels=[])
+    # ax.get_legend().set_visible(False)
+    # ax.set_ylabel('Error rate', fontsize=20)
+
+
+plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+# fig.text(x=0.03, y=0.6, s='Humans', fontsize=26, rotation=90)
+
+plt.tight_layout()
+fn = 'humans_successive_error_rates_all_condtions_acceptable.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+
+
+
+##########################################
+# FILTER BY NUMBER OF ATTRACTOR
+##########################################
+
+# For the main of short, keep only SP and SS
+print(set(df_error_rates['violation_type']))
+query_humans = ((df_error_rates['trial_type'] == 'Acceptable')&(~df_error_rates['violation_type'].str.contains('F|1|2')))
+
+
+df_error_rates_P = df_error_rates.loc[query_humans]
+
+################
+# NESTED P #
+################
+from functions.plotting import add_significance
+#     structures = ['embedding_mental_SR', 'embedding_mental_LR']
+
+# Figure
+fig_humans, axes = plt.subplots(1, 2, figsize=(10, 5))
+hue_order = [True, False]
+palette = ['b', 'r']
+
+# HUMANS SR
+ax = axes[0]
+df = df_error_rates_P.loc[(df_error_rates_P['sentence_type'] == 'objrel')]
+bar = sns.pointplot(x='violation_position', y='error_rate', hue='congruent_subjects', data=df, ax=ax,
+              hue_order=hue_order, palette=palette, dodge=0.25, join=False)
+bar.set(xticklabels=[])
+# add_significance(ax, successive_nested, sig_list_humans[0][0], sig_list_humans[0][1], sig_list_humans[0][2])
+ax.get_legend().set_visible(False)
+ax.set_xlim([-0.3, 0.3])
+ax.set_ylim([-0.1, 1])
+ax.set_xlabel('')
+ax.set_ylabel('')
+ax.set_yticks([0, 0.5, 1])
+ax.set_yticklabels([0, 0.5, 1])
+# ax.set_xticklabels(['Embedded', 'Main'])
+ax.tick_params(labelsize=20)
+add_significance(ax, 'successive', '', '**', '', SR_LR='SR')
+
+# HUMANS LR
+ax = axes[1]
+df = df_error_rates_P.loc[(df_error_rates_P['sentence_type'] == 'objrel_nounpp')]
+bar = sns.pointplot(x='violation_position', y='error_rate', hue='congruent_subjects', data=df, ax=ax,
+              hue_order=hue_order, palette=palette, dodge=0.25, join=False)
+bar.set(xticklabels=[])
+ax.set_yticklabels([])
+ax.set_xlim([-0.3, 0.3])
+ax.set_ylim([-0.1, 1])
+ax.set_yticks([0, 0.5, 1])
+ax.set_yticklabels([0, 0.5, 1])
+ax.set_xlabel('')
+ax.set_ylabel('')
+# ax.set_xticklabels(['Embedded', 'Main'])
+ax.tick_params(labelsize=20)
+ax.get_legend().set_visible(False)
+# add_significance(ax, successive_nested, sig_list_humans[1][0], sig_list_humans[1][1], sig_list_humans[1][2], SR_LR='LR')
+
+add_significance(ax, 'successive', '', '***', '', SR_LR='LR')
+
+# LAYOUT
+# plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+# fig_humans.text(x=0.03, y=0.7, s='Humans', fontsize=26, rotation=90)
+plt.tight_layout()
+
+#
+plt.figure(fig_humans.number)
+fn = 'error_rate_per_position_per_congruency_nested_humans_acceptable.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+plt.close('all')
+
+
+################
+# SUCCESSIVE P #
+################
+
+#     structures = ['embedding_mental_SR', 'embedding_mental_LR']
+
+# Figure
+fig_humans, axes = plt.subplots(1, 2, figsize=(10, 5))
+hue_order = [True, False]
+palette = ['b', 'r']
+
+# HUMANS SR
+ax = axes[0]
+df = df_error_rates_P.loc[(df_error_rates_P['sentence_type'] == 'embedding_mental_SR')]
+bar = sns.pointplot(x='violation_position', y='error_rate', hue='congruent_subjects', data=df, ax=ax,
+              hue_order=hue_order, palette=palette, dodge=0.25, join=False)
+bar.set(xticklabels=[])
+# add_significance(ax, successive_nested, sig_list_humans[0][0], sig_list_humans[0][1], sig_list_humans[0][2])
+ax.get_legend().set_visible(False)
+ax.set_xlim([-0.3, 0.3])
+ax.set_ylim([-0.1, 1])
+ax.set_xlabel('')
+ax.set_ylabel('')
+ax.set_yticks([0, 0.5, 1])
+ax.set_yticklabels([0, 0.5, 1])
+# ax.set_xticklabels(['Embedded', 'Main'])
+ax.tick_params(labelsize=20)
+
+# HUMANS LR
+ax = axes[1]
+df = df_error_rates_P.loc[(df_error_rates_P['sentence_type'] == 'embedding_mental_LR')]
+bar = sns.pointplot(x='violation_position', y='error_rate', hue='congruent_subjects', data=df, ax=ax,
+              hue_order=hue_order, palette=palette, dodge=0.25, join=False)
+bar.set(xticklabels=[])
+ax.set_yticklabels([])
+ax.set_xlim([-0.3, 0.3])
+ax.set_ylim([-0.1, 1])
+ax.set_yticks([0, 0.5, 1])
+ax.set_yticklabels([0, 0.5, 1])
+ax.set_xlabel('')
+ax.set_ylabel('')
+# ax.set_xticklabels(['Embedded', 'Main'])
+ax.tick_params(labelsize=20)
+ax.get_legend().set_visible(False)
+# add_significance(ax, successive_nested, sig_list_humans[1][0], sig_list_humans[1][1], sig_list_humans[1][2], SR_LR='LR')
+
+# LAYOUT
+# plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.2)
+# fig_humans.text(x=0.03, y=0.7, s='Humans', fontsize=26, rotation=90)
+plt.tight_layout()
+
+#
+plt.figure(fig_humans.number)
+fn = 'error_rate_per_position_per_congruency_successive_humans_acceptable.png'
+plt.savefig(os.path.join(path2figures, fn))
+
+plt.close('all')
+
+
+
+
+
+
 raise SystemExit(0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #######################################################

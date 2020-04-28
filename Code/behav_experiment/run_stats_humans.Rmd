@@ -38,7 +38,7 @@ Data <- subset(Data, violation_position != "other") # Take only trials in which 
 Data <- subset(Data, valid_answer != "REJECTED") # remove from it rejected trials (in which subject didn't confirm - see py script)
 
 # Remove the following columns (which will not be analyzed):
-Data$violation_type <- NULL 
+#Data$violation_type <- NULL 
 Data$correct_wrong <- NULL
 Data$block <- NULL
 Data$trial_num <- NULL

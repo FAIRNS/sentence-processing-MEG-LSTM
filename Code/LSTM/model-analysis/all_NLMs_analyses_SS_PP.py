@@ -27,17 +27,17 @@ for l in lines:
 
 fig, ax = plt.subplots()
 for s in dict_results.keys():
-    sp = dict_results[s]['sp']
-    ps = dict_results[s]['ps']
-    ax.scatter(sp, ps, c='b')
+    ss = dict_results[s]['ss']
+    pp = dict_results[s]['pp']
+    ax.scatter(ss, pp, c='b')
 ax.plot([0, 1], [0, 1], 'k-', alpha=0.75, zorder=0)
 ax.set_aspect('equal')
 ax.set_xlim([0.89, 1])
 ax.set_ylim([0.89, 1])
-ax.set_xlabel('SP', fontsize=14)
-ax.set_ylabel('PS', fontsize=14)
+ax.set_xlabel('SS', fontsize=14)
+ax.set_ylabel('PP', fontsize=14)
 
-plt.savefig('../../../Figures/SP_vs_PS_all_models.png')
+plt.savefig('../../../Figures/SS_vs_PP_all_models.png')
 
 # dist of ablation results
 dict_ablation_results = pickle.load(open(path2_ablation_results, 'rb'))
@@ -54,13 +54,20 @@ for s in dict_ablation_results.keys():
     for u in dict_ablation_results[s].keys():
         df['seed'].append('Model ' + ss)
         df['unit'].append(u)
+        df['Condition'].append('SS')
+        df['performance'].append(dict_ablation_results[s][u]['SS'])
+        df['seed'].append('Model ' + ss)
+        df['unit'].append(u)
+        df['Condition'].append('PP')
+        df['performance'].append(dict_ablation_results[s][u]['PP'])
+        df['seed'].append('Model ' + ss)
+        df['unit'].append(u)
         df['Condition'].append('SP')
         df['performance'].append(dict_ablation_results[s][u]['SP'])
         df['seed'].append('Model ' + ss)
         df['unit'].append(u)
         df['Condition'].append('PS')
         df['performance'].append(dict_ablation_results[s][u]['PS'])
-
 df = pd.DataFrame(df)
 df['error'] = df.apply(lambda row: 1-row['performance'], axis=1)
 
@@ -73,7 +80,7 @@ sns.boxplot(x='seed', y="performance", hue="Condition", data=df, whis=1.5, order
 sns.stripplot(x='seed',y="performance", hue="Condition", data=df, dodge=True, jitter=0.05, order=list_order, ax=ax)
 
 ax.get_legend().set_visible(False)
-leg = Legend(ax, [ax.patches[0], ax.patches[1]], ['SP', 'PS'], loc='lower right', frameon=False, fontsize=20)
+leg = Legend(ax, [ax.patches[0], ax.patches[1], ax.patches[2], ax.patches[3]], ['SS', 'PP', 'SP', 'PS'], loc='lower right', frameon=False, fontsize=20)
 ax.add_artist(leg)
 
 ax.set_xlabel('')
@@ -81,30 +88,26 @@ ax.set_ylabel('Accuracy', fontsize=30)
 ax.tick_params(axis='both', which='major', labelsize=12)
 plt.tight_layout()
 
-plt.savefig('../../../Figures/Ablation_results_all_models.png')
+plt.savefig('../../../Figures/Ablation_results_all_models_all_conditions.png')
 
 
 # K's model
 df_K = df.loc[df['seed'] == 'Model K']
 fig, ax = plt.subplots(figsize=(10, 10))
-# sns.boxplot(x='seed', y="performance", hue="condition", data=df_K, whis=1.5, ax=ax)
 sns.stripplot(x='seed',y="performance", hue="Condition", data=df_K, dodge=True, jitter=0.05, ax=ax)
-# ax.get_legend().set_visible(False)
-# leg = Legend(ax, [ax.patches[0], ax.patches[1]], ['SP', 'PS'], loc='lower right', frameon=False, fontsize=20)
-# ax.add_artist(leg)
 ax.set_xlabel('')
 ax.set_xticklabels('')
 ax.set_ylabel('Accuracy', fontsize=30)
 ax.tick_params(axis='both', which='major', labelsize=12)
 plt.tight_layout()
 
-df_sp = df_K.loc[df_K['Condition']=='SP']
-min_sp = df_sp.loc[(df_sp['performance'] == df_sp.performance.min())]['performance']
-min_sp_u = df_sp.loc[(df_sp['performance'] == df_sp.performance.min())]['unit'].values[0]
-df_sp = df_K.loc[df_K['Condition']=='PS']
-min_ps = df_sp.loc[(df_sp['performance'] == df_sp.performance.min())]['performance']
-min_ps_u = df_sp.loc[(df_sp['performance'] == df_sp.performance.min())]['unit'].values[0]
-plt.text(-0.18, min_sp, str(min_sp_u), fontsize=16)
-plt.text(0.14, min_ps, str(min_ps_u), fontsize=16)
+df_ss = df_K.loc[df_K['Condition']=='SS']
+min_ss = df_ss.loc[(df_ss['performance'] == df_ss.performance.min())]['performance']
+min_ss_u = df_ss.loc[(df_ss['performance'] == df_ss.performance.min())]['unit'].values[0]
+df_pp = df_K.loc[df_K['Condition']=='PP']
+min_pp = df_pp.loc[(df_pp['performance'] == df_pp.performance.min())]['performance']
+min_pp_u = df_pp.loc[(df_pp['performance'] == df_pp.performance.min())]['unit'].values[0]
+# plt.text(-0.18, min_ss, str(min_ss_u), fontsize=16)
+# plt.text(0.14, min_pp, str(min_pp_u), fontsize=16)
 
-plt.savefig('../../../Figures/Ablation_results_K_model.png')
+plt.savefig('../../../Figures/Ablation_results_K_model_all_conditions.png')

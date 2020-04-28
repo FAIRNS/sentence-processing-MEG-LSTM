@@ -1,0 +1,16 @@
+accoglie	accolgono
+ama	amano
+attrae	attraggono
+blocca	bloccano
+conosce	conoscono
+critica	criticano
+difende	difendono
+evita	evitano
+ferma	fermano
+guarda	guardano
+ignora	ignorano
+incontra	incontrano
+indica	indicano
+interrompe	interrompono
+osserva	osservano
+saluta	salutano

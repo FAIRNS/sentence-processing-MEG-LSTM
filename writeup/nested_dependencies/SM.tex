@@ -1,7 +1,20 @@
-\documentclass{article}
+\documentclass[a4paper,man,floatsintext]{apa7}
 
+% Added by us
 \usepackage{graphicx}
 % \usepackage{cleveref}
+\usepackage{caption}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{color, colortbl}
+\usepackage{xr}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}m{#1}}
+\renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
+\renewrobustcmd{\boldmath}{}
+\newrobustcmd{\B}{\bfseries}
 
 \newcommand{\beginsupplement}{%
         \setcounter{table}{0}
@@ -13,37 +26,28 @@
 \begin{document}
 \beginsupplement
 
-\begin{figure*}
+\begin{figure}
     \centering
     \includegraphics[width=10cm]{figures/Ablation_results_K_model.png}
     \caption{\textbf{Ablation results for the model from Gulordave et. al, 2018}}
-    \label{fig:ablation_all_models}
-\end{figure*}
+    \label{fig:ablation_K_model}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
     \centering
     \includegraphics[width=15cm]{figures/Ablation_results_all_models.png}
     \caption{\textbf{Ablation results for all 20 models}}
     \label{fig:ablation_all_models}
-\end{figure*}
+\end{figure}
 
 
-\begin{figure*}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=10cm]{figures/error_rates_successive_all_conditions.png}
-    \caption{\textbf{Error rates on Short- and Long-Successive:} collected from NLMs (panel A) and human subjects (B). Blue and red colors correspond to congruent and incongruent subjects, respectively. Secondary colors (cyan and magenta) indicate an attractor with an opposite number. Slant lines in bars indicate that the main subject is plural.}
-    \label{fig:successive_all_conditions}
-\end{figure*}
-    
-    
-\begin{figure*}
-    \centering
-    \includegraphics[width=10cm]{figures/error_rates_nested_all_conditions.png}
-    \caption{\textbf{Error rates on Short- and Long-Nested:} collected from NLMs (panel A) and human subjects (B). Blue and red colors correspond to congruent and incongruent subjects, respectively. Secondary colors (cyan and magenta) indicate an attractor with an opposite number. Slant lines in bars indicate that the main subject is plural.}
-    \label{fig:nested_all_conditions}
-\end{figure*}
-    
-    
+    \includegraphics[width=16cm]{figures/error_rates_acceptable_by_congruence.png}
+    \caption{\textbf{Error rates on grammatical sentences:} for successive (panel A) and nested dependencies (B). Blue and red correspond to whether the main and embedded subjects agree on number (congruent subjects) or not (incongruent), respectively. Error bars represent standard error of the mean across all trials.}
+    \label{fig:error_rates_all_conditions}
+\end{figure}
 
+\input{tables/table_stats_number}
 
 \end{document}

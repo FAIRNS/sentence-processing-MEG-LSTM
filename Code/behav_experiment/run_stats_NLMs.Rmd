@@ -54,7 +54,7 @@ Data$correct_wrong <- NULL
 #########################
 # FILTER ONLY K'S MODEL #
 #########################
-#Data <- subset(Data, (subject==1111))
+Data <- subset(Data, (subject==1111))
 
 #######################################
 # FILTER BASED ON NUMBER OF ATTRACTOR #
@@ -210,6 +210,15 @@ for (l in 0:1)  {
 ```
 
 
+# STATS - Short vs Long Successive: embedded
+```{r}
+print('GLMM')
+curr_Data = subset(Data, nested == 0 & violation_position=='inner')
+glmm_with_random <- glmer(valid_answer ~ congruent_subjects * long + (1 | subject), data=curr_Data, family="binomial")
+summary(glmm_with_random)
+
+```
+
 # STATS - mental-SR
 ```{r}
 print('ANOVA-embedded')
@@ -245,3 +254,4 @@ summary(glmm_with_random)
 #summary(glmm_wo_random)
 #anova(glmm_with_random, glmm_wo_random)
 ```
+
