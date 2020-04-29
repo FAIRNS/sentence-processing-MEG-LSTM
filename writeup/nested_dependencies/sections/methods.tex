@@ -53,9 +53,9 @@ Statistical analyses were carried out using R, an open-source programming langua
 
 \subsection{Language Model}
 \subsubsection{Model Description}
-We use the Italian NLM made available by \citet{Gulordava:etal:2018} at \textbf{M: add URL, I can't do it myself right now due to the blackout!}
+We use the Italian NLM made available by \citet{Gulordava:etal:2018} at \url{https://github.com/facebookresearch/colorlessgreenRNNs}.
 It consists of two layers with 650 Long-Short Term Memory (LSTM) units \citep{Hochreiter:Schmidhuber:1997}, input and output embedding layers of 650 units and input and output layers of size 50000 (the size of the vocabulary). The weights of the input and output embedding layers are not shared.
-The last layer of the model is a softmax layer, whose activations sum up to 1 and as such corresponds to a probability distribution over all words in the NLM's vocabulary. The model was trained on a dump of the Italian Wikipedia \textbf{(how many tokens? Can't check now because of the blackout!)}. See  \citet{Gulordava:etal:2018} for further details.
+The last layer of the model is a softmax layer, whose activations sum up to 1 and as such corresponds to a probability distribution over all words in the NLM's vocabulary. The model was trained on a dump of the Italian Wikipedia (80M word token, 50K word types). See  \citet{Gulordava:etal:2018} for further details.
 
 \subsubsection{Control model Training} 
 \textbf{M: Given how little emphasis this has in the main text, how about moving it to supplementary?} In addition to the NLM made available by \citet{Gulordava:etal:2018}, we train an additional 19 models using the same procedure and corpus (drawn from Wikipedia), giving 20 models in total. 
