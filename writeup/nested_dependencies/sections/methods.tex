@@ -10,18 +10,29 @@
 \multicolumn{3}{c}{\centering \textit{Probing number/gender units}}\\
 \hline
 \hline
-\emph{Nounpp} & \texttt{\textbf{NP$_1$} prep NP$_2$ \emph{V}} & \specialcell{Il \textbf{ragazzo} accanto alla donna \emph{conosce}\vspace{-3mm}\\({\scriptsize The \textbf{boy} next to the woman \emph{knows}})} \\
-   \emph{Nounpp-gender} & \texttt{det1 \textbf{N1} prep det2 N2 V \emph{ADJ}} & \specialcell{Il \textbf{ragazzo} accanto alla donna \`{e} \emph{basso}\vspace{-3mm}\\({\scriptsize \textbf{boy} next to the woman is \emph{short}})}\\
+\emph{Nounpp} & \texttt{\textbf{NP$_a$} prep NP$_b$ \emph{V$_a$}} & \specialcell{Il \textbf{ragazzo} accanto alla donna \textbf{conosce}\vspace{-3mm}\\({\scriptsize The \textbf{boy} next to the woman \emph{knows}})} \\
+   \emph{Nounpp-gender} & \texttt{\textbf{NP$_a$} prep NP$_b$ BE$_a$ \emph{ADJ$_a$}} & \specialcell{Il \textbf{ragazzo} accanto alla donna \`{e} \textbf{basso}\vspace{-3mm}\\({\scriptsize The \textbf{boy} next to the woman is \textbf{short}})}\\
 ~\\
 \multicolumn{3}{c}{\centering \textit{Nesting experiments}}\\
 \hline
 \hline
-\emph{Short-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ V$_b$} & \specialcell{Il figlio dice che il \textbf{ragazzo} \emph{ama}\vspace{-3mm}\\{\scriptsize The son says that the \textbf{boy} \emph{loves}}} \\
-\emph{Long-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ P NP$_c$ V$_b$} & \specialcell{Il figlio dice che l'\textbf{amico} accanto al ragazzo \emph{conosce}\vspace{-3mm}\\{\scriptsize The son says that the \textbf{friend} next to the boy \emph{knows}}} \\
-\emph{Short-nested} & \texttt{NP$_a$ che NP$_b$ V$_b$ V$_a$ } & \specialcell{Il \textbf{figlio} che il ragazzo osserva \emph{evita}\vspace{-3mm}\\{\scriptsize The \textbf{son} that the boy observes \emph{avoids}}} \\
-\emph{Long-nested} & \texttt{NP$_a$ che NP$_b$ P NP$_c$ V$_b$ V$_a$} & \specialcell{Il \textbf{figlio} che la ragazza accanto ai padri ama \emph{evita}\vspace{-3mm}\\{\scriptsize The \textbf{son} that the girl next to the fathers loves \emph{avoids}}} \\
+\emph{Short-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ V$_b$} & \specialcell{Il \emph{figlio} \emph{dice} che il \textbf{ragazzo} \textbf{ama}\vspace{-3mm}\\{\scriptsize The \emph{son} \emph{says} that the \textbf{boy} \textbf{loves}}} \\
+\emph{Long-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ P NP$_c$ V$_b$} & \specialcell{Il \emph{figlio dice} che l'\textbf{amico} accanto al ragazzo \textbf{conosce}\vspace{-3mm}\\{\scriptsize The \emph{son says} that the \textbf{friend} next to the boy \textbf{knows}}} \\
+\emph{Short-nested} & \texttt{NP$_a$ che NP$_b$ V$_b$ V$_a$ } & \specialcell{Il \textbf{figlio} che il \emph{ragazzo} \emph{osserva} \textbf{evita}\vspace{-3mm}\\{\scriptsize The \textbf{son} that the \emph{boy} \emph{observes} \textbf{avoids}}} \\
+\emph{Long-nested} & \texttt{NP$_a$ che NP$_b$ P NP$_c$ V$_b$ V$_a$} & \specialcell{Il \textbf{figlio} che la \emph{ragazza} accanto ai padri \emph{ama} \textbf{evita}\vspace{-3mm}\\{\scriptsize The \textbf{son} that the \emph{girl} next to the fathers \emph{loves} \textbf{avoids}}} \\
 \end{tabular}
-\caption{NA-tasks, \dieuwke{Add explanation. To save space, I used \texttt{NP} as an abbreviation for \texttt{Det N}. While this is of course an NP, it is also a bit confusing.} \textbf{M: It looks like this is in progress, so I won't comment much. However, I agree that it might be a good idea to use NP, however this should also apply to the gender case. Also, indexing is nice, but it should be used thoroughly. Also, it should also be shown in the examples. On the other hand, I am not sure of why only one noun/verb is capitalized/italicized for short- and long-nested, given that we test both main and embedded (perhaps, worth duplicating these cases?). Finally, perhaps use BE instead of V for the main verb in the gender example?}}
+\caption{\textbf{The NA-tasks we use for our ablation and nesting experiments.}
+The first column denotes the name of the task.
+The second column indicates the format of the sentences, where \texttt{NP} is used as an abbreviation of \texttt{Det N}.
+The indices $a$, $b$ help identify the noun-verb relationships in the templates.
+I.e. in the \emph{long-nested} condition condition, there are three nouns and two verbs, the indices $a$ and $b$ indicate that the last verb \texttt{V$_a$} is syntactically dependent on the first noun phrase \texttt{NP$_a$}, whereas the penultimate verb \texttt{V$_b$} instead should match the features of the second noun phrase \texttt{NP$_b$}.
+Note that for the long- and short-nested conditions, we test both the \emph{inner} verb \texttt{V$_b$} and the \emph{outer} verb \texttt{V$_a$}.
+The third and last column contains an example of a sentence in the NA-task, along with its English translation.
+Bold and italic face show the relations indicated by the indices in the templates.
+For every NA-task, we systematically vary the \emph{number} (and in the gender-case also gender) of all nouns in the template, resulting in four different conditions (SS, SP, PS and PP) for the NA-tasks with two nouns (\emph{Nounpp}, \emph{Nounpp-gender}, \emph{Short-successive} and \emph{Short-nested}) and eight different conditions (SSS, SSP, SPS, SPP, PSS, PSP, PPS and PPP) for the NA-tasks with three nouns (\emph{Long-succesive} and \emph{Long-nested}).
+The examples shown are all SS and SSS conditions.
+\textbf{M: It looks like this is in progress, so I won't comment much. However, I agree that it might be a good idea to use NP, however this should also apply to the gender case. Also, indexing is nice, but it should be used thoroughly. Also, it should also be shown in the examples. On the other hand, I am not sure of why only one noun/verb is capitalized/italicized for short- and long-nested, given that we test both main and embedded (perhaps, worth duplicating these cases?).}
+}
 \end{table}
 
 \subsection{Behavioral Experiment}
