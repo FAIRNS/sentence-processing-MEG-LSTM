@@ -12,13 +12,14 @@
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{tikz-qtree}
+\usepackage{import}
 \usepackage{lscape}
 \usepackage{multicol}
 \usepackage{makecell}
 \usepackage{array}
 \usepackage{color, colortbl}
 \usepackage{xr}
-\externaldocument[sm-]{SM}
+\externaldocument[]{SM}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}m{#1}}
 \newcommand{\YL}[1]{\textcolor{blue}{YL: #1}}
 \newcommand{\YLDEL}[1]{\sout{\textcolor{black}{YL: #1}}}
@@ -43,15 +44,12 @@
 
 \begin{document}
 \maketitle
-\input{sections/intro}
-\input{sections/single_dependency}
-\input{sections/two_dependencies}
-\input{sections/methods}
-\input{sections/discussion}
+\import{sections/}{intro}
+\import{sections/}{single_dependency}
+\import{sections/}{two_dependencies}
+\import{sections/}{methods}
+\import{sections/}{discussion}
 
-
-% \bibliography{yair}
-% Commented our due to an error in compliation when all three bibs are in. 
 \bibliography{yair,marco,dieuwke}
 
 \end{document}
