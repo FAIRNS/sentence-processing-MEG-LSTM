@@ -5,7 +5,8 @@
 In all of our experiments, we use \emph{number-agreement (NA) tasks}.
 \dieuwke{I started to explain NA-tasks, but I got a bit stuck on the fact that the task is actually quite different for humans and NLMs. Also, many of these things are actually already explained before, in the explanation of our earlier results. Wht do you suggest I do with this?}
 
-For our two types of experiments, we use two different sets of NA-tasks.
+For our two types of experiments, we use two six different NA-tasks, which we explain below.
+An overview can be found in Table~\ref{tab:na-tasks-overview}, the full vocabulaire we used to generate our data in Appendix~\ref{appendix:lexicon}.
 
 \subsubsection{Ablation experiments}
 For our ablation studies, which we conduct to replicate and extend the findings of \citet{lakretz2019emergence} to italian, we use two different types of NA tasks.
@@ -13,13 +14,13 @@ For our ablation studies, which we conduct to replicate and extend the findings 
 \paragraph{NounPP}
 First, to establish the presence of long-range \emph{number} units, we create an atialian version of \citeauthor{lakretz2019emergence}'s \citeyear{lakretz2019emergence} NounPP task.
 This data set consists of 4000 sentences in which the subject is separated from the main verb by a prepositional phrase.
-I.e., an example of a sentence in this dataset, which we dub \emph{nounPP}, is ``\textbf{il ragazzo} accanto \underline{alla donna} \textbf{conosce} \ldots'' (\textbf{the boy} next to \underline{the woman} \textbf{knows}).
+I.e., an example of a sentence in this dataset, which we dub \emph{nounPP}, is ``il \textbf{ragazzo} accanto alla \underline{donna} \textbf{conosce} \ldots'' (the \textbf{boy} next to the \underline{woman} \textbf{knows}).
 We systematically vary the number of both the subject and the noun in the prepositional phrase (also referred to with the term \emph{attractor}), resulting in four different conditions: singular-singular (SS), singular-plural (SP), plural-singular (PS) and plural-plural (PP).
 
 \paragraph{NounPP-gender}
 To investigate if the model has long-range \emph{gender} units, we adapt the NounPP task to end with a predicative adjective.
-For example: ``\textbf{il ragazzo} accanto \underline{alla donna} \`{e} \textbf{basso} (\textbf{the boy} next to \underline{the woman} is \textbf{short}).
-In italian, the gender of the adjective should match both the number and the gender of the subject.
+For example: ``il \textbf{ragazzo} accanto alla \underline{donna} \`{e} \textbf{basso} (the \textbf{boy} next to the \underline{woman} is \textbf{short}).
+In Italian, the gender of the adjective should match both the number and the gender of the subject.
 We again consider four different conditions: feminine-feminine (FF), feminine-masculine (FM) masculine-feminine (MF) and masculine-masculine (MM), within which the number of the subject and attractor is ranomly varied.
 The 4000 sentences in the NounPP-gender task are equally divided over these conditions.
 
@@ -28,7 +29,7 @@ The 4000 sentences in the NounPP-gender task are equally divided over these cond
 \dieuwke{April 30 -- I'll continue with this tomorrow}
 
 
-\begin{table}
+\begin{table}[h!]
     \setlength\tabcolsep{2mm}
 \small
 \centering
@@ -42,8 +43,8 @@ The 4000 sentences in the NounPP-gender task are equally divided over these cond
 \multicolumn{3}{c}{\centering \textit{Nesting experiments}}\\
 \hline
 \hline
-\emph{Short-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ V$_b$} & \specialcell{Il \emph{figlio} \emph{dice} che il \textbf{ragazzo} \textbf{ama}\vspace{-3mm}\\{\scriptsize The \emph{son} \emph{says} that the \textbf{boy} \textbf{loves}}} \\
-\emph{Long-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ P NP$_c$ V$_b$} & \specialcell{Il \emph{figlio dice} che l'\textbf{amico} accanto al \underline{ragazzo} \textbf{conosce}\vspace{-3mm}\\{\scriptsize The \emph{son says} that the \textbf{friend} next to the \underline{boy} \textbf{knows}}} \\
+\emph{Short-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ V$_b$} & \specialcell{Il \textbf{figlio} \textbf{dice} che il \emph{ragazzo} \emph{ama}\vspace{-3mm}\\{\scriptsize The \textbf{son} \textbf{says} that the \emph{boy} \emph{loves}}} \\
+\emph{Long-Successive} & \texttt{NP$_a$ V$_a$ che NP$_b$ P NP$_c$ V$_b$} & \specialcell{Il \textbf{figlio dice} che l'\emph{amico} accanto al \underline{ragazzo} \emph{conosce}\vspace{-3mm}\\{\scriptsize The \textbf{son says} that the \emph{friend} next to the \underline{boy} \emph{knows}}} \\
 \emph{Short-nested} & \texttt{NP$_a$ che NP$_b$ V$_b$ V$_a$ } & \specialcell{Il \textbf{figlio} che il \emph{ragazzo} \emph{osserva} \textbf{evita}\vspace{-3mm}\\{\scriptsize The \textbf{son} that the \emph{boy} \emph{observes} \textbf{avoids}}} \\
 \emph{Long-nested} & \texttt{NP$_a$ che NP$_b$ P NP$_c$ V$_b$ V$_a$} & \specialcell{Il \textbf{figlio} che la \emph{ragazza} accanto ai \underline{padri} \emph{ama} \textbf{evita}\vspace{-3mm}\\{\scriptsize The \textbf{son} that the \emph{girl} next to the \underline{fathers} \emph{loves} \textbf{avoids}}} \\
 \end{tabular}
@@ -57,7 +58,7 @@ The third and last column contains an example of a sentence in the NA-task, alon
 Bold and italic face show the relations indicated by the indices in the templates.
 For every NA-task, we systematically vary the \emph{number} (and in the gender-case also gender) of all nouns in the template, resulting in four different conditions (SS, SP, PS and PP) for the NA-tasks with two nouns (\emph{Nounpp}, \emph{Nounpp-gender}, \emph{Short-successive} and \emph{Short-nested}) and eight different conditions (SSS, SSP, SPS, SPP, PSS, PSP, PPS and PPP) for the NA-tasks with three nouns (\emph{Long-succesive} and \emph{Long-nested}).
 The examples shown are all SS and SSS conditions.
-\textbf{M: It looks like this is in progress, so I won't comment much. However, I agree that it might be a good idea to use NP, however this should also apply to the gender case. Also, indexing is nice, but it should be used thoroughly. Also, it should also be shown in the examples. On the other hand, I am not sure of why only one noun/verb is capitalized/italicized for short- and long-nested, given that we test both main and embedded (perhaps, worth duplicating these cases?).}
+\textbf{M: I agree that it might be a good idea to use NP, however this should also apply to the gender case \dieuwke{D: done}. Also, indexing is nice, but it should be used thoroughly \dieuwke{better like this?}. Also, it should also be shown in the examples. On the other hand, I am not sure of why only one noun/verb is capitalized/italicized for short- and long-nested, given that we test both main and embedded (perhaps, worth duplicating these cases?). \dieuwke{better like this?}}
 }
 \end{table}
 
