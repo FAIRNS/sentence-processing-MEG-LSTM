@@ -9,6 +9,7 @@
 \usepackage{makecell}
 \usepackage{array}
 \usepackage{color, colortbl}
+\usepackage{arydshln}
 \usepackage{xr}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}m{#1}}
 % \renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
@@ -22,6 +23,8 @@
         \setcounter{figure}{0}
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
+
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
 
 \begin{document}
 \beginsupplement
@@ -50,8 +53,6 @@
 
 % \input{tables/table_stats_number}
 
-\section{Lexicon NA-tasks}\ref{appendix:lexicon}
-
-\dieuwke{Include here the lexicon of the NA-tasks}
+\input{tables/lexicon_table}
 
 \end{document}
