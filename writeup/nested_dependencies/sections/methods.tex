@@ -2,27 +2,27 @@
 
 \subsection{NA-tasks}
 
-In all of our experiments, we use \emph{number-agreement (NA) tasks}.
-\dieuwke{I started to explain NA-tasks, but I got a bit stuck on the fact that the task is actually quite different for humans and NLMs. Also, many of these things are actually already explained before, in the explanation of our earlier results. Wht do you suggest I do with this?}
-
-For our two types of experiments, we use two six different NA-tasks, which we explain below.
-An overview can be found in Table~\ref{tab:na-tasks-overview}, the lexicon we used to generate our data in Appendix~\ref{tab:lexiconn}.
+For both our ablation and nestedness experiments \dnote{do we have a name for this? I know it is not ``nestedness-experiments'', but I needed a way to refer to them in both the text and the tables.} we two and four different \emph{number-agreement (NA)} tasks, respectively.
+We give a short description of these tasks below, an overview can be found in Table~\ref{tab:na-tasks-overview}.
+The complete lexicon we used to generate all stimuli can be found in the supplementary materials, Table~\ref{}.
 
 \subsubsection{Ablation experiments}
-For our ablation studies, which we conduct to replicate and extend the findings of \citet{lakretz2019emergence} to italian, we use two different types of NA tasks.
+For our ablation studies, which we conduct to replicate and extend the findings of \citet{lakretz2019emergence} to Italian, we use two different types of NA tasks.
 
 \paragraph{NounPP}
-First, to establish the presence of long-range \emph{number} units, we create an atialian version of \citeauthor{lakretz2019emergence}'s \citeyear{lakretz2019emergence} NounPP task.
+First, to establish the presence of long-range \emph{number} units, we create an Italian version of \citeauthor{lakretz2019emergence}'s \citeyear{lakretz2019emergence} NounPP task.
 This data set consists of 4000 sentences in which the subject is separated from the main verb by a prepositional phrase.
 I.e., an example of a sentence in this dataset, which we dub \emph{nounPP}, is ``il \textbf{ragazzo} accanto alla \underline{donna} \textbf{conosce} \ldots'' (the \textbf{boy} next to the \underline{woman} \textbf{knows}).
 We systematically vary the number of both the subject and the noun in the prepositional phrase (also referred to with the term \emph{attractor}), resulting in four different conditions: singular-singular (SS), singular-plural (SP), plural-singular (PS) and plural-plural (PP).
+For all of these conditions, we generate 1000 sentences by randomly sampling (object and subject) nouns, verbs and prepositions from a list of options, reported in Table \ref{}.
+\dieuwke{Should we say something about ensuring that sentences are at least somewhat semantically acceptable, i.e. excluding sentences like ``Il figlio sotto il cane \ldots''}
 
 \paragraph{NounPP-gender}
 To investigate if the model has long-range \emph{gender} units, we adapt the NounPP task to end with a predicative adjective.
 For example: ``il \textbf{ragazzo} accanto alla \underline{donna} \`{e} \textbf{basso} (the \textbf{boy} next to the \underline{woman} is \textbf{short}).
-In Italian, the gender of the adjective should match both the number and the gender of the subject.
+In this NA-task, which we call \emph{NounPP-gender}, we focus on the adjective, which in Italian should match both the number and the gender of the subject.
 We again consider four different conditions: feminine-feminine (FF), feminine-masculine (FM) masculine-feminine (MF) and masculine-masculine (MM), within which the number of the subject and attractor is ranomly varied.
-The 4000 sentences in the NounPP-gender task are equally divided over these conditions.
+Similar to the NounPP task, we sample 1000 sentences per condition, using the word lists provided in Table~\ref{}.
 
 \subsubsection{Nested experiments}
 
