@@ -1,7 +1,17 @@
 \subsection{Neural Language Model}
 
-In our computational experiments, we use the Italian NLM made available by \citet{Gulordava:etal:2018} at \url{https://github.com/facebookresearch/colorlessgreenRNNs}.
+In our computational experiments, we use a neural language model.
+the Italian NLM made available by \citet{Gulordava:etal:2018} at \url{https://github.com/facebookresearch/colorlessgreenRNNs}.
 Below we provide some details about this model and explain how it is trained and evaluated.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth, clip, trim={10mm 50mm 10mm 20mm}]{figures/LM-image}
+    \caption{Graphical description of a two-layer LSTM language model. 
+        At ever timestep, the model processes an input word and outputs a probability distribution over potential next words in the sentence.
+    In our experiments, we do not consider the full probability distribution, but instead compare the probabilities of the relevant verbs and adjectives.
+    \dieuwke{I am not very happy about this caption: it made me wonder whether the current depiction where no mention of probabilities is made is perhaps a bit too simple?}}
+\end{figure}
 
 \subsubsection{Model Description}
 \dieuwke{@Yair: I could put some basic image if you want?}
