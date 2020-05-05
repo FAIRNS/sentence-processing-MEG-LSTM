@@ -1,15 +1,22 @@
 \section{Introduction}
 
-According to a popular view in linguistics, the rich expressiveness
-and open-ended nature of language rest on \emph{recursion}, the
-possibly uniquely human ability to process nested structures \citep{Chomsky:1957, Hauser:etal:2002, Dehaene:etal:2015}. We
-currently know very little about how such ability is implemented in
-the brain, and consequently about its scope and limits.
+According to a popular view in linguistics, the rich expressiveness and open-ended nature of language rest on \emph{recursion}, the possibly uniquely human ability to process nested structures \citep{Chomsky:1957, Hauser:etal:2002, Dehaene:etal:2015}. 
+We currently know very little about how such ability is implemented in the brain, and consequently about its scope and limits.
 
-In recent years, artificial neural-network models, rebranded as ``deep learning'' \citep{LeCun:etal:2015}, made tremendous advances in natural language processing \citep{Goldberg:2017}. Typically, neural networks are not provided with any explicit information regarding grammar or other types of linguistic knowledge. Neural Language Models (NLMs) are commonly initialized as ``tabula rasa'' and are solely trained to predict the next word in a sentence given its context \citep{Elman:1990}. Yet, these models achieve impressive performance, not far below that of humans, in tasks such as question answering or text summarization \citep{Radford:etal:2019}. Unlike their connectionist progenitors \citep{Rumelhart:etal:1986,Rumelhart:etal:1986b}, modern NLMs are not intended as cognitive models of human behaviour. They are instead developed to be deployed in applications such as translation systems or online content organizers. Still, NLMs' success in the practical natural language arena strongly suggests that they must infer non-trivial  linguistic knowledge from the raw data they are exposed to. % This has attracted the interest of linguists and cognitive scientists, curious to know  \textit{how} exactly NLMs handle grammatical structure \citep[see][for a survey]{Linzen:Baroni:2020}.
+In recent years, artificial neural-network models, rebranded as ``deep learning'' \citep{LeCun:etal:2015}, made tremendous advances in natural language processing \citep{Goldberg:2017}. Typically, neural networks are not provided with any explicit information regarding grammar or other types of linguistic knowledge. Neural Language Models (NLMs) are commonly initialized as ``tabula rasa'' and are solely trained to predict the next word in a sentence given its context \citep{Elman:1990}. Yet, these models achieve impressive performance, not far below that of humans, in tasks such as question answering or text summarization \citep{Radford:etal:2019}. 
 
-Given that it is easier to inspect the inner workings of NLMs than humans, we perform here an in-depth analysis of nested processing in NLMs. We uncover the neural circuitry they develop to handle it, and we use it to make predictions about human language processing. Importantly, we are not making claims about NLMs being models of the human brain. Rather, following \citet{McCloskey:1991}, we treat NLMs as a separate `animal species', whose way to address a linguistic task can provide insights into how the human brain might be tackling similar challenges.
+Unlike their connectionist progenitors \citep{Rumelhart:etal:1986,Rumelhart:etal:1986b}, modern NLMs are not intended as cognitive models of human behaviour. 
+They are instead developed to be deployed in applications such as translation systems or online content organizers. 
+Nevertheless, in particular \emph{recurrent} NLMs do share some relevant attributes with the human processing system, such as the property that they process input incrementally and without any pre-assumed notion of structure.
+Furthermore, NLMs' success in the practical natural language arena strongly suggests that they must infer non-trivial linguistic knowledge from the raw data they are exposed to. % This has attracted the interest of linguists and cognitive scientists, curious to know  \textit{how} exactly NLMs handle grammatical structure \citep[see][for a survey]{Linzen:Baroni:2020}.
 
+Combined, these two facts make NLMs akin to an interesting `animal species', whose way to address a linguistic task might provide insight into how the human processing system might be tackling similar challenges \citep[see also][]{McCloskey:1991}.
+
+Given that it is easier to inspect the inner workings of NLMs than humans, we perform here an in-depth analysis of nested processing in NLMs. 
+We uncover the neural circuitry they develop to handle it, and we use it to make predictions about human language processing. 
+%Importantly, we are not making claims about NLMs being models of the human brain. 
+%Rather, following \citet{McCloskey:1991}, we treat NLMs as a separate `animal species', whose way to address a linguistic task can provide insights into how the human brain might be tackling similar challenges.
+%
 Specifically, we explore multiple-structure nesting in the context of grammatical agreement. Long-distance agreement has traditionally been studied as one of the  best indices of online syntactic processing in humans, as it is ruled
 by hierarchical structures rather than by the linear order of words in
 a sentence \citep{Bock:Miller:1991, franck2002subject}. Consider for example the sentence: ``The \textbf{boys} under the \underline{tree} \textbf{know} the farmers'', where the number of the verb (`know') depends on its linearly distant subject (`boys'), and not on the immediately preceding noun `tree'.
