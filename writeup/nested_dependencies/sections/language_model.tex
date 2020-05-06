@@ -1,25 +1,24 @@
 \subsection{Neural Language Models}
 In the computational experiments, we use a Neural Language Model (NLM).
-In computational linguistics, a \emph{language model} refers to a model that defines a probability distribution over sequences of words.
-The language model that we consider here -- a recurrent Long-Short-Term-Memory (LSTM) language model \citep{Hochreiter:Schmidhuber:1997,Graves:2012} -- factorizes this probability into a multiplication of the conditional probabilities of all words in the sentence, given the words that precede them:
+In computational linguistics, a \emph{language model} defines a probability distribution over sequences of words. A NLM is simply a language model implemented by a neural network. The recurrent NLM we use here, schematically illustrated in Figure \ref{fig:lstm}, factorizes the probability of a sentence into a multiplication of the conditional probabilities of all words in the sentence, given the words that precede them:
 
 \begin{equation}
     P(w_1 w_2 \cdots w_n) = \prod_i p(w_i|w_1 \cdots w_{i-1})
 \end{equation}
 
-This type of neural language models can thus be used as \emph{next-word predictors}: given the preamble of a sentence, they output a probability distribution over potential next words.
+This type of language model can thus be used as \emph{next-word predictor}: given the preamble of a sentence, it outputs a probability distribution over potential next words.
 We exploit this fact in our experiments.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth, clip, trim={10mm 50mm 10mm 20mm}]{figures/LM-image}
-    \caption{Graphical description of a two-layer LSTM language model. At each timestep, the model processes an input word and outputs a probability distribution over potential next words in the sentence. The prediction of the output word depends on both the input word and on the previous state of the model, which serves as a context (horizontal arrows).} 
+    \caption{Graphical description of a two-layer recurrent neural language model with LSTM cells \citep[not discussed here; see, e.g.,][]{Goldberg:2017}. At each timestep, the model processes an input word and outputs a probability distribution over potential next words in the sentence. The prediction of the output word depends on both the input word and on the previous state of the model, which serves as longer-term context (the horizontal arrows in the figure represent the \emph{recurrent} connections carrying the previous state through).} \label{fig:lstm}
     %For each presented sentence in our experiments, we do not consider the full probability distribution, but instead compare the probabilities of the two forms of the relevant verb or adjective.}
 \end{figure}
 
-\subsubsection{Model Description}
+\subsubsection{Model description}
 The specific NLM we use in our experiments is the Italian NLM made available by \citet{Gulordava:etal:2018}\footnote{\url{https://github.com/facebookresearch/colorlessgreenRNNs}}.
-This model is a recurrent NLM, consisting of two layers, each with 650 Long-Short Term Memory (LSTM) units \citep{Hochreiter:Schmidhuber:1997}, input and output embedding layers of 650 units and input and output layers of size 50000 (the size of the vocabulary). 
+It is a recurrent LSTM language model \citep{Graves:2012}, consisting of two layers, each with 650 Long-Short Term Memory units  \citep{Hochreiter:Schmidhuber:1997}, input and output embedding layers of 650 units and input and output layers of size 50000 (the size of the vocabulary). 
 The weights of the input and output embedding layers are not shared \citep{press2016using}.
 The last layer of the model is a softmax layer, whose activations sum up to 1 and as such corresponds to a probability distribution over all words in the NLM's vocabulary. 
 
