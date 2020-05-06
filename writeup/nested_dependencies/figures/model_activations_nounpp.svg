@@ -40,7 +40,7 @@
        x2="1213.1869"
        y2="604.03554"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,1.1303765,-74.59588,-90.448094)" />
+       gradientTransform="matrix(1.0287785,0,0,1.1303765,-109.50961,-90.448094)" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath4283">
@@ -63,6 +63,26 @@
          clip-path="none"
          sodipodi:nodetypes="cccccc" />
     </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4155"
+       id="linearGradient4368"
+       x1="-119.2148"
+       y1="12.103436"
+       x2="-85.834656"
+       y2="12.103436"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.7377845,0,0,3.8930409,29.385883,319.27675)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4155"
+       id="linearGradient4368-3"
+       x1="-119.2148"
+       y1="12.103436"
+       x2="-85.834656"
+       y2="12.103436"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.7377845,0,0,3.8930409,22.712396,875.5114)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -71,9 +91,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.39741848"
-     inkscape:cx="694.71906"
-     inkscape:cy="364.73771"
+     inkscape:zoom="0.37903279"
+     inkscape:cx="885.63371"
+     inkscape:cy="125.98725"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -102,9 +122,9 @@
     <rect
        style="fill:url(#linearGradient4159);fill-opacity:1;stroke:none;stroke-width:2.62204719;stroke-miterlimit:4;stroke-dasharray:5.24409449, 2.62204724;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4153"
-       width="1466.8129"
+       width="1509.0255"
        height="1199.8817"
-       x="-328.22186"
+       x="-370.43457"
        y="-7.6013165" />
     <image
        y="52.39859"
@@ -182,7 +202,7 @@
            x="-686.93335"
            y="-308.92328" /></flowRegion><flowPara
          id="flowPara4359"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:family;-inkscape-font-specification:family">(The)         (boy)         (next)        (to-the)      (farmer)     (meets)        (the)</flowPara></flowRoot>    <flowRoot
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:27.5px;font-family:family;-inkscape-font-specification:family">  The                 boy                next                to-the             farmer            meets                the</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot4353-9"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -194,5 +214,87 @@
            x="-686.93335"
            y="-308.92328" /></flowRegion><flowPara
          id="flowPara4359-8"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:family;-inkscape-font-specification:family">(The)         (boy)         (next)        (to-the)      (farmer)         (is)           (new)</flowPara></flowRoot>  </g>
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:27.5px;font-family:family;-inkscape-font-specification:family">  The                 boy                next                to-the            farmer                 is                 new</flowPara></flowRoot>    <rect
+       style="fill:url(#linearGradient4368);fill-opacity:1;stroke:none;stroke-width:2.62204719;stroke-miterlimit:4;stroke-dasharray:5.24409449, 2.62204724;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4362"
+       width="91.387642"
+       height="281.84018"
+       x="-296.99854"
+       y="225.47592" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4408"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(-338.04968,237.47274)"><flowRegion
+         id="flowRegion4410"><rect
+           id="rect4412"
+           width="105.98767"
+           height="95.235298"
+           x="-2.7258933"
+           y="73.399834" /></flowRegion><flowPara
+         id="flowPara4414"
+         style="font-size:40px;baseline-shift:sub">C<flowSpan
+   style="font-size:65%;baseline-shift:sub"
+   id="flowSpan4243">t</flowSpan></flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4267"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(193.20805,14.582934)"><flowRegion
+         id="flowRegion4269"><rect
+           id="rect4271"
+           width="153.73154"
+           height="317.59924"
+           x="-560.8667"
+           y="226.26633" /></flowRegion><flowPara
+         id="flowPara4273"
+         style="font-size:35px;text-align:end;text-anchor:end">1.0</flowPara><flowPara
+         id="flowPara4275"
+         style="font-size:35px;text-align:end;text-anchor:end" /><flowPara
+         id="flowPara4277"
+         style="font-size:35px;text-align:end;text-anchor:end">0.0</flowPara><flowPara
+         id="flowPara4279"
+         style="font-size:35px;text-align:end;text-anchor:end" /><flowPara
+         id="flowPara4281"
+         style="font-size:35px;text-align:end;text-anchor:end">-1.0</flowPara></flowRoot>    <rect
+       style="fill:url(#linearGradient4368-3);fill-opacity:1;stroke:none;stroke-width:2.62204719;stroke-miterlimit:4;stroke-dasharray:5.24409449, 2.62204724;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4362-7"
+       width="91.387642"
+       height="281.84018"
+       x="-303.67203"
+       y="781.71057" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4408-5"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(-344.72316,793.70739)"><flowRegion
+         id="flowRegion4410-3"><rect
+           id="rect4412-5"
+           width="105.98767"
+           height="95.235298"
+           x="-2.7258933"
+           y="73.399834" /></flowRegion><flowPara
+         id="flowPara4414-6"
+         style="font-size:40px;baseline-shift:sub">C<flowSpan
+   style="font-size:65%;baseline-shift:sub"
+   id="flowSpan4245">t</flowSpan></flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4267-2"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(186.53457,586.81758)"><flowRegion
+         id="flowRegion4269-9"><rect
+           id="rect4271-1"
+           width="153.73154"
+           height="317.59924"
+           x="-560.8667"
+           y="226.26633" /></flowRegion><flowPara
+         id="flowPara4273-2"
+         style="font-size:35px;text-align:end;text-anchor:end">1.0</flowPara><flowPara
+         id="flowPara4275-7"
+         style="font-size:35px;text-align:end;text-anchor:end" /><flowPara
+         id="flowPara4277-0"
+         style="font-size:35px;text-align:end;text-anchor:end">0.0</flowPara><flowPara
+         id="flowPara4279-9"
+         style="font-size:35px;text-align:end;text-anchor:end" /><flowPara
+         id="flowPara4281-3"
+         style="font-size:35px;text-align:end;text-anchor:end">-1.0</flowPara></flowRoot>  </g>
 </svg>

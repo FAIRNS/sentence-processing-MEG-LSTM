@@ -13,7 +13,6 @@ We exploit this fact in our experiments.
     \centering
     \includegraphics[width=0.8\textwidth, clip, trim={10mm 50mm 10mm 20mm}]{figures/LM-image}
     \caption{Graphical description of a two-layer recurrent neural language model with LSTM cells \citep[not discussed here; see, e.g.,][]{Goldberg:2017}. At each timestep, the model processes an input word and outputs a probability distribution over potential next words in the sentence. The prediction of the output word depends on both the input word and on the previous state of the model, which serves as longer-term context (the horizontal arrows in the figure represent the \emph{recurrent} connections carrying the previous state through).} \label{fig:lstm}
-    %For each presented sentence in our experiments, we do not consider the full probability distribution, but instead compare the probabilities of the two forms of the relevant verb or adjective.}
 \end{figure}
 
 \subsubsection{Model description}
@@ -24,7 +23,6 @@ The last layer of the model is a softmax layer, whose activations sum up to 1 an
 
 \subsubsection{Model training}
 The weights of a NLM are typically tuned by presenting them with large amounts of data (a \emph{training corpus}) and providing them feedback on how well they can predict each next word in the running text. This allows them to adjust their parameters to maximize the probabilities of the sentences in the corpus. %
-%During model training, they are evaluated by how well they do so, as expressed in the \emph{perplexity} of the training corpus (roughly, the exponent of the average negative log-likelihood of the data).
 Our NLM was trained on a sample of the Italian Wikipedia text, containing 80M word tokens and 50K word types. Further details can be found in \citet{Gulordava:etal:2018}.
 
 

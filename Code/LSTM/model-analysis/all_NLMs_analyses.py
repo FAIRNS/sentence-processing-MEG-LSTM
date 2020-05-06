@@ -89,7 +89,10 @@ df_K = df.loc[df['seed'] == 'Model K']
 fig, ax = plt.subplots(figsize=(10, 10))
 # sns.boxplot(x='seed', y="performance", hue="condition", data=df_K, whis=1.5, ax=ax)
 sns.stripplot(x='seed',y="performance", hue="Condition", data=df_K, dodge=True, jitter=0.05, ax=ax)
-# ax.get_legend().set_visible(False)
+
+plt.setp(plt.gca().get_legend().get_title(),fontsize='26')
+plt.setp(plt.gca().get_legend().get_texts(), fontsize='20')
+
 # leg = Legend(ax, [ax.patches[0], ax.patches[1]], ['SP', 'PS'], loc='lower right', frameon=False, fontsize=20)
 # ax.add_artist(leg)
 ax.set_xlabel('')

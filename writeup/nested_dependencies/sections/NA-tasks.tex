@@ -1,5 +1,5 @@
-\subsection{Number-Agreement Tasks}
-We construct six \emph{number-agreement (NA)} tasks: two for the ablation studies, with a single long-range dependency, and four NA-tasks for the nesting experiments, having two dependencies (Figure \ref{fig:design}). We give a short description of these tasks below. Table~\ref{tab:na-tasks-overview} provides an overview of all tasks. 
+\subsection{Agreement Tasks}
+We construct six \emph{agreement tasks}: two for the ablation studies, with a single long-range dependency, and four number-agreement (NA) tasks for the nesting experiments, having two dependencies (Figure \ref{fig:design}). We give a short description of these tasks below. Table~\ref{tab:na-tasks-overview} provides an overview of all tasks. 
 
 \input{tables/table_NA_tasks}
 
@@ -11,24 +11,3 @@ In this example, the subject and verb are directly adjacent in both dependencies
 We thus call these dependencies \emph{short-range}, and the above sentence is an example of a sentence that could occur in the \emph{Short-Successive} NA-task. 
 To create sentences that have a successive but \emph{long-range} subject-verb relationship, we increase the distance between the second noun and its corresponding verb by inserting a prepositional phrase in between: ``Il \textbf{ragazzo} \textbf{dice} che la \textit{donna} accanto al \underline{figlio} \textit{conosce} il cane' '(``The \textbf{boy says} that the \emph{woman} next to the \underline{son} \emph{knows} the dog''). For nested dependencies, we consider sentences with object-relative clauses, such as ``Il \textbf{ragazzo} che la \emph{figlia} \emph{ama} \textbf{conosce} il contadino'' (``The \textbf{boy} who the \emph{daughter} \emph{loves} \textbf{knows} the farmer'').
 As the nested dependency in this sentence is short range, we call the corresponding number-agreement task \emph{Short-Nested} (note however that the main-clause dependency is long range). For \emph{Long-Nested}, we again use prepositional phrases to increase the distance between the subject and verb of the nested dependency: ``Il \textbf{ragazzo} che la \emph{figlia} vicino alla \underline{donna} \emph{ama} \textbf{conosce} il contadino'' (``The \textbf{boy} who the \emph{daughter} near the \underline{woman} \emph{loves} \textbf{knows} the farmer'').
-
-% \paragraph{NounPP} To establish the presence of long-range \emph{number} units, we create an Italian version of \citeauthor{lakretz2019emergence}'s \citeyear{lakretz2019emergence} NounPP task.
-% This data set consists of 4000 sentences in which the subject is separated from the main verb by a prepositional phrase.
-% I.e., an example of a sentence in this dataset, which we dub \emph{NounPP}, is ``il \textbf{ragazzo} accanto alla \underline{donna} \textbf{conosce} \ldots'' (the \textbf{boy} next to the \underline{woman} \textbf{knows}).
-% We systematically vary the number of both the subject and the noun in the prepositional phrase (also referred to with the term \emph{attractor}), resulting in four different conditions: singular-singular (SS), singular-plural (SP), plural-singular (PS) and plural-plural (PP).
-% For all of these conditions, we generate 1000 sentences by randomly sampling (object and subject) nouns, verbs and prepositions from a list of options, reported in Table \ref{}.\dnote{I just realise that this is only true for the NLM experiments, where would we like to report these numbers.}
-% \dieuwke{Should we say something about ensuring that sentences are at least somewhat semantically acceptable, i.e. excluding sentences like ``Il figlio sotto il cane \ldots''}
-
-% \paragraph{NounPP-gender}
-% To investigate if the model has long-range \emph{gender} units, we adapt the NounPP task to end with a predicative adjective.
-% For example: ``il \textbf{ragazzo} accanto alla \underline{donna} \`{e} \textbf{basso} (the \textbf{boy} next to the \underline{woman} is \textbf{short}).
-% In this NA-task, which we call \emph{NounPP-gender}, we focus on the adjective, which in Italian should match both the number and the gender of the subject.
-% We again consider four different conditions: feminine-feminine (FF), feminine-masculine (FM) masculine-feminine (MF) and masculine-masculine (MM), within which the number of the subject and attractor is ranomly varied.
-% Similar to the NounPP task, we sample 1000 sentences per condition, using the word lists provided in Table~\ref{}.
-
-
-
-% \dieuwke{May 2: I am a bit unclear here about how many sentences we generated accross which conditions (I think there are 4032?), I'll first ask Yair before finishing this.}
-% An overview can be found in Table~\ref{tab:na-tasks-overview}.
-
-
