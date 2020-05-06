@@ -7,7 +7,7 @@
 \hline
 \hline
 \emph{NounPP-number} & \texttt{\textbf{NP$_a$} prep NP$_b$ \emph{V$_a$}} & \specialcell{Il \textbf{ragazzo} accanto alla \underline{donna} \textbf{conosce}\vspace{-1mm}\\({\scriptsize The \textbf{boy} next to the \underline{woman} \emph{knows}})} \\
-\emph{NounPP-gender} & \texttt{\textbf{NP$_a$} prep NP$_b$ BE$_a$ \emph{ADJ$_a$}} & \specialcell{Il \textbf{ragazzo} accanto alla \underline{donna} \`{e} \textbf{basso}\vspace{-1mm}\\({\scriptsize The \textbf{boy} next to the \underline{woman} is \textbf{short}})}\\
+\emph{NounPP-gender} & \texttt{\textbf{NP$_a$} prep NP$_b$ BE$_a$ \emph{ADJ$_a$}} & \specialcell{Il \textbf{ragazzo} accanto alla \underline{donna} \`{e} \textbf{basso}\vspace{-1mm}\\({\scriptsize The \textbf{boy} next to the \underline{woman} is \textbf{short-m}})}\\
 \vspace{-2mm}\\
 \multicolumn{3}{c}{\centering \textit{NA-tasks for nesting experiments}}\\
 \hline
@@ -18,13 +18,13 @@
 \emph{Long-Nested} & \texttt{NP$_a$ che NP$_b$ P NP$_c$ V$_b$ V$_a$} & \specialcell{Il \textbf{figlio} che la \emph{ragazza} accanto ai \underline{padri} \emph{ama} \textbf{evita}\vspace{-1mm}\\{\scriptsize The \textbf{son} that the \emph{girl} next to the \underline{fathers} \emph{loves} \textbf{avoids}}} \\
 \end{tabular}
 \caption{\textbf{Number-Agreement (NA) tasks for the ablation and nesting experiments.}
-The first column denotes the name of the task, the second column the template of the sentences, where \texttt{NP} is used as an abbreviation of \texttt{Det N}.
+The first column denotes the name of the task, the second shows the sentence templates, where \texttt{NP} is used as an abbreviation of \texttt{Det N}.
 The indices $a$, $b$ mark the subject-verb dependencies in the templates. 
 %For example, in \emph{Long-Nested}, there are three nouns and two verbs, the indices $a$ and $b$ indicate that the last verb \texttt{V$_a$} is syntactically dependent on the first noun phrase \texttt{NP$_a$}, whereas the penultimate verb \texttt{V$_b$} instead should match the features of the second noun phrase \texttt{NP$_b$}.
-Note that for Long- and Short-Nested, we test performance on both the \emph{embedded} verb \texttt{V$_b$} and the \emph{main} verb \texttt{V$_a$}.
+Note that for \emph{Long-} and \emph{Short-Nested}, we test performance on both the \emph{embedded} verb \texttt{V$_b$} and the \emph{main} verb \texttt{V$_a$}.
 The last column contains an example of a sentence in the corresponding NA-task, along with its English translation.
-Bold and italic face highlight the dependencies indicated by the indices in the templates.
-For each NA-task, we systematically vary the \emph{number} (or gender, in NounPP-gender) of all nouns in the template, resulting in four different conditions (SS, SP, PS and PP) for the NA-tasks with two nouns (\emph{NounPP-number}, \emph{NounPP-gender}, \emph{Short-Successive} and \emph{Short-Nested}) and eight different conditions (SSS, SSP, SPS, SPP, PSS, PSP, PPS and PPP) for the NA-tasks with three nouns (\emph{Long-Successive} and \emph{Long-Nested}).
-The examples shown are all SS and SSS conditions.
+Bold and italic face highlight the dependencies marked by the indices in the templates.
+For each NA-task, we systematically vary the \emph{number} (or gender, in \emph{NounPP-gender}) of all nouns in the template, resulting in four different conditions (SS, SP, PS and PP) for the NA-tasks with two nouns (\emph{NounPP-number}, \emph{NounPP-gender}, \emph{Short-Successive} and \emph{Short-Nested}) and eight different conditions (SSS, SSP, SPS, SPP, PSS, PSP, PPS and PPP) for the NA-tasks with three nouns (\emph{Long-Successive} and \emph{Long-Nested}).
+The examples shown are all SS and SSS conditions. For  \emph{NounPP-gender}, singular (S) and plural (P) are replaced by feminine and masculine.
 \label{tab:na-tasks-overview}}
 \end{table}

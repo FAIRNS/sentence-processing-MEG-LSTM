@@ -1,7 +1,7 @@
 \subsection{Neural Language Models}
 In the computational experiments, we use a Neural Language Model (NLM).
 In computational linguistics, a \emph{language model} refers to a model that defines a probability distribution over sequences of words.
-The language model that we consider here -- a recurrent LSTM-based language model \citep{Hochreiter:Schmidhuber:1997} -- factorizes this probability into a multiplication of the conditional probabilities of all words in the sentence, given the words that precede them:
+The language model that we consider here -- a recurrent Long-Short-Term-Memory (LSTM) language model \citep{Hochreiter:Schmidhuber:1997,Graves:2012} -- factorizes this probability into a multiplication of the conditional probabilities of all words in the sentence, given the words that precede them:
 
 \begin{equation}
     P(w_1 w_2 \cdots w_n) = \prod_i p(w_i|w_1 \cdots w_{i-1})
