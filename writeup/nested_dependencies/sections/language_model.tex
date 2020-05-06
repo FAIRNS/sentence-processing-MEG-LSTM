@@ -24,8 +24,8 @@ The weights of the input and output embedding layers are not shared \citep{press
 The last layer of the model is a softmax layer, whose activations sum up to 1 and as such corresponds to a probability distribution over all words in the NLM's vocabulary. 
 
 \subsubsection{Model training}
-NLMs are typically trained by presenting them with large amounts of data, and providing them feedback, which allows them to adjust their parameters to maximize the probabilities of the sentences in their \emph{training corpus}.
-During model training, they are commonly evaluated by how well they do so, as expressed in the \emph{perplexity} of the training corpus (roughly, the exponent of the negative log-likelihood of the data).
+NLMs are typically trained by presenting them with large amounts of data (a \emph{training corpus}) and providing them feedback on how well they can predict it, which allows them to adjust their parameters to maximize the probabilities of the sentences in this corpus.
+During model training, they are evaluated by how well they do so, as expressed in the \emph{perplexity} of the training corpus (roughly, the exponent of the average negative log-likelihood of the data).
 Our NLM was trained on a sample of the Italian Wikipedia text, containing 80M word tokens and 50K word types. Further details can be found in \citet{Gulordava:etal:2018}.
 
 
