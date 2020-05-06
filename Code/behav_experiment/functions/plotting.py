@@ -39,8 +39,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.set_ylim([-0.1, 1.5])
     ax.set_xlabel('')
     ax.set_ylabel('')
-    ax.set_yticks([0, 1])
-    ax.set_yticklabels([0, 1])
+    ax.set_yticks([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+    ax.set_yticklabels([0, '', '', '', '', 0.5, '', '', '', '', 1])
     ax.set_xticklabels(['Embedded', 'Main'])
     ax.tick_params(labelsize=20)
 
@@ -56,8 +56,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.set_yticklabels([])
     ax.set_xlim(xlim)
     ax.set_ylim([-0.1, 1.5])
-    ax.set_yticks([0, 1])
-    ax.set_yticklabels([0, 1])
+    ax.set_yticks([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+    ax.set_yticklabels([0, '', '', '', '', 0.5, '', '', '', '', 1])
     ax.set_xlabel('')
     ax.set_ylabel('')
     ax.set_xticklabels(['Embedded', 'Main'])
@@ -82,8 +82,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.get_legend().set_visible(False)
     ax.set_xlabel('')
     ax.set_xticklabels(['Embedded', 'Main'])
-    ax.set_yticks([0, 1])
-    ax.set_yticklabels([0, 1])
+    ax.set_yticks([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+    ax.set_yticklabels([0, '', '', '', '', 0.5, '', '', '', '', 1])
     ax.tick_params(labelsize=20)
     ax.set_xlim(xlim)
     ax.set_ylim([-0.1, 1.5])
@@ -100,8 +100,8 @@ def generate_fig_humans_vs_RNNs(df_error_rates_humans, sig_list_humans, df_error
     ax.set_xlabel('')
     ax.tick_params(labelsize=20)
     ax.set_xticklabels(['Embedded', 'Main'])
-    ax.set_yticks([0, 1])
-    ax.set_yticklabels([0, 1])
+    ax.set_yticks([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+    ax.set_yticklabels([0, '', '', '', '', 0.5, '', '', '', '', 1])
     ax.set_xlim(xlim)
     ax.set_ylim([-0.1, 1.5])
     ax.set_ylabel('')
@@ -143,7 +143,7 @@ def add_significance(ax, successive_nested, text_interaction, text_embedded, tex
                 elif SR_LR == 'LR':
                     y = 0.79 + pad_y_interaction
             ax.plot([x1, x1, x2, x2], [y, y + delta_y, y + delta_y, y], lw=1.5, c=col)
-            ax.text((x1 + x2) * .5, y + delta_y, text_interaction, ha='center', va='bottom', color=col)
+            ax.text((x1 + x2) * .5, y + delta_y, text_interaction, ha='center', va='bottom', color=col, fontsize=20)
         # significance of embedded
         if not text_embedded.startswith('ns'):
             x1, x2 = ax.get_children()[2]._x[0], ax.get_children()[4]._x[0]
@@ -154,7 +154,7 @@ def add_significance(ax, successive_nested, text_interaction, text_embedded, tex
                 elif SR_LR == 'LR':
                     y = 0.79 + pad_y
             ax.plot([x1, x1, x2, x2], [y, y + delta_y, y + delta_y, y], lw=1.5, c=col)
-            ax.text((x1 + x2) * .5, y + delta_y, text_embedded, ha='center', va='bottom', color=col)
+            ax.text((x1 + x2) * .5, y + delta_y, text_embedded, ha='center', va='bottom', color=col, fontsize=20)
         # significance of main
         if not text_main.startswith('ns'):
             x1, x2 = ax.get_children()[3]._x[0], ax.get_children()[5]._x[0]
@@ -162,14 +162,14 @@ def add_significance(ax, successive_nested, text_interaction, text_embedded, tex
             if np.isnan(y):
                 y = 0.163 + pad_y
             ax.plot([x1, x1, x2, x2], [y, y + delta_y, y + delta_y, y], lw=1.5, c=col)
-            ax.text((x1 + x2) * .5, y + delta_y, text_main, ha='center', va='bottom', color=col)
+            ax.text((x1 + x2) * .5, y + delta_y, text_main, ha='center', va='bottom', color=col, fontsize=20)
     if successive_nested == 'successive':
         if not text_embedded.startswith('ns'):
             # significance of embedded
             x1, x2 = ax.dataLim.x0, ax.dataLim.x1
             y, col = max([ax.dataLim.y0, ax.dataLim.y1]) + pad_y, 'k'
             ax.plot([x1, x1, x2, x2], [y, y + delta_y, y + delta_y, y], lw=1.5, c=col)
-            ax.text((x1 + x2) * .5, y + delta_y, text_embedded, ha='center', va='bottom', color=col)
+            ax.text((x1 + x2) * .5, y + delta_y, text_embedded, ha='center', va='bottom', color=col, fontsize=20)
 
 
 def generate_scatter_incongruent_subjects_V1_vs_V2(df, sentence_type):
