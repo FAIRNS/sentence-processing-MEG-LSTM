@@ -59,18 +59,15 @@ To confirm that unit 815 is a long-range number unit, we visualize the dynamics 
 Finally, we extract the efferent weights of unit 815, which project onto the output layer. Figure S2A shows that unit 815 differentially affects unit activations in the output layer, depending on whether they represent singular or plural forms of the verb. This is consistent with its role as a number unit. In what follows, we refer to unit 815 as the long-range `Number Unit'.
 
 \subsubsection{Short-Range Number Units are also Found in the Network}
-As was shown for the English NLM, long-range number units are not the only number-carrying units in the network. `Short-Range' number units also encode grammatical number. However, their activation is not robust to intervening numbers of local attractors. We therefore tested for the presence of short-range number units in the Italian NLM. We found 10 more number units, which encode grammatical number in separate values, and whose efferent weights are clustered with respect to number. \textbf{M: Should this point to a supplementary section?}
+As was shown for the English NLM, long-range number units are not the only number-carrying units in the network. `Short-Range' number units also encode grammatical number. However, their activation is not robust to intervening numbers of local attractors. We therefore tested for the presence of short-range number units in the Italian NLM. We found 10 more number units, which encode grammatical number in separate values, and whose efferent weights are clustered with respect to number (Figure S2).
 
 \subsubsection{Long-Range Gender Units are Also Found in the Network }
 Agreement in Italian can also occur with respect to gender, for instance, in sentences containing predicative adjectives: ``il \textbf{bambino} accanto alla \underline{madre} \`{e} \textbf{bello}'' (``The (m.) \textbf{boy} near the (f.) \underline{mother} is pretty (m.)''), in which subject and predicate agree with respect to both number and gender. We therefore hypothesize that there should also exist long-range `gender' units in the network, with dynamics that are robust to possible attractors (e.g., to ``madre'' above, which is feminine). 
 To test this, we design a NA-task with adjective predicates and repeat the ablation study (Methods). 
-We find one unit dramatically reducing the performance of the NLM when ablated. Its inner-state dynamics show robust encoding across the subject-adjective dependency (Figure \ref{fig:nounpp}B), also in the presence of attractors (dashed lines). Connectivity analysis further confirms that the efferent weights of the long-range `gender' unit are clustered with respect to whether they project to masculine or feminine adjective words in the output layer (figure S2B).
-
-
+We find one unit dramatically reducing the performance of the NLM when ablated. Its inner-state dynamics show robust encoding across the subject-adjective dependency (Figure \ref{fig:nounpp}B), also in the presence of attractors (dashed lines). Connectivity analysis further confirms that the efferent weights of the long-range `gender' unit are clustered with respect to whether they project to masculine or feminine adjective words in the output layer (Figure S2B).
 
 \vspace{10pt}
 In sum, these results extend previous findings to another language and another grammatical feature. Similarly to English, only a few long-range number units emerged in the Italian NLMs during training. The NLM has developed a similar encoding scheme for both grammatical number and gender, independently. Taken together, this shows that sparse long-range feature units consistently emerge in NLMs.
-
 
 
 
