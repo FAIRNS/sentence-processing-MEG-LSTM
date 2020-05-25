@@ -19,19 +19,19 @@ We next explored agreement processing in recursive structures that comprise seve
 Human results were found to have both similarities with the agreement-error patterns of NLMs and several important points of discrepancy:
 
 \subsubsection{Main Similarities}
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Low error-rates on successive dependencies}: humans and the NLM made a relatively small number of agreement errors on the embedded verb of successive dependencies. For NLMs, this is in accordance with the sequential processing observed in its dynamics (Figure \ref{fig:2by2_dynamics}). The agreement mechanism resets after the first dependency and is thus available to process the second one. For humans, these findings are in accordance with the relatively good performance of humans on right-branching constructions \citep[e.g., ][]{blaubergs1974short, miller1964free}
     \item \textbf{Subject-congruence effect in nested constructions}: in the case of a plural subject attractor, for all verbs, both humans and NLMs made significantly more errors in incongruent cases, in which the main and embedded subjects had opposite grammatical numbers.
     \item \textbf{Higher error-rate on embedded compared to main verbs of nested dependencies}: a positive interaction between verb position and subject congruence was found for both short- and long-range embedded dependencies, suggesting that embedded verbs are more error prone, confirming \textit{Prediction 1}.
 
     
-\end{itemize}
+\end{APAitemize}
 
 \subsubsection{Main Differences}
-    \begin{itemize}
+    \begin{APAitemize}
         \item \textbf{NLM performance is worse than chance level on the embedded verb of Long-Nested}: the major difference between NLM and human performance (Figures \ref{fig:error_rates_plural_attractor} \& \ref{fig:error_rates_all_conditions}) lies in the behaviour of the NLM with respect to the embedded verb in Long-Nested. The NLM was worse than chance level, meaning that in most trials the network predicts the grammatical number of the embedded verb based on the number of the main subject, which is encoded and carried through by the agreement mechanism. In contrast, human performance is better than chance level (although only marginally so, $p = 0.028$).
         \item \textbf{Prediction 2 was not confirmed in humans}: a strictly related observation is that the NLM made significantly more errors on the embedded dependency when the dependency was long-range. This was not confirmed in humans, where the interaction between subject-congruence and length of embedded dependency was not significant. Humans as well, however, made more errors in the long-range case.
-    \end{itemize}
+    \end{APAitemize}
     
 
 Bearing in mind that the NLM is trained on raw text data, without being provided with any explicit grammatical knowledge, the points of similarity between the error patterns of humans and the NLM are intriguing. In successive constructions, the sequential processing by the agreement mechanism explains the low error rate of the NLM, similarly to that of humans. In nested constructions, the cooperation between short- and long-range mechanisms produces error patterns that are comparable to those observed in humans, with the exception of performance on the embedded verb in the Long-Nested condition. Note in particular that NLMs and humans agree in finding embedded agreement harder than the one in the main clause, despite the fact that the latter is always longer-range.

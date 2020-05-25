@@ -4,7 +4,7 @@ The core mechanism to carry agreement information across long-range dependencies
 Two simultaneously active long-range dependencies occur in various constructions, such as center-embedded nested dependencies, a prototypical example of recursion. In nested dependencies, once the long-range agreement mechanism is engaged in tracking the main dependency, there may be no more suitable units available to process the \textit{embedded} agreement. For example, in the sentence ``The \textbf{boy} that the \textit{farmer} near the \underline{fathers} \textit{watches} \textbf{knows} the daughters'', there are two grammatical numbers that need to be carried across a long-range dependency: (1) that of the main subject `boy', and (2) that of the embedded subject `farmer'. Once the NLM  encounters the main subject, its grammatical number can be stored through the long-range agreement mechanism up to the main verb `knows'. However, during this period, since the mechanism is already taken up, once the embedded subject `farmer' is presented to the network, there is no robust way to encode and carry its number up to the embedded verb `watches'. The NLM is thus predicted to fail to process the embedded dependency in nested structures.
 
 We emphasize two conditions for this predicted failure:
-\begin{itemize}
+\begin{APAitemize}
 	\item The two dependencies are \textit{simultaneously} active at some point: if this is not the case, i.e., the dependencies are successive (e.g., ``The \textbf{boy} near the \underline{cars} \textbf{says} that the \textit{farmer} near the \underline{fathers} \textit{watches} the daughters''), the long-range mechanism can first complete processing the first dependency, and then reset before encoding the next one. 
 
     \item Both dependencies are \textit{long-range}: in the case
@@ -13,7 +13,7 @@ We emphasize two conditions for this predicted failure:
           \textit{watches} \textbf{knows} the daughters''), the
           embedded short-range dependency can still be processed by
           the short-range units we described above, although possibly in a less robust way compared to the main dependency. 
-\end{itemize}
+\end{APAitemize}
 
 We next present the experimental design we used to confirm these predictions about the NLM, as well as to test whether they also extend to human subjects, which would suggest that the agreement processing system of the latter bears similarities to the one we uncovered in NLMs.
 
@@ -68,10 +68,10 @@ This allowed us to reduce experimental duration in the parallel study with human
 
 Figure \ref{fig:error_rates_plural_attractor}A presents the resulting NLM error rates (Figure \ref{fig:error_rates_all_conditions} further provides the full error-rate distribution across all conditions). Several effects are observed in the results: 
 
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Near perfect performance on all conditions}: Overall, for both Short- and Long-Successive, the performance of the NLM was found to be almost error free, with slightly more errors in the Long-Successive case ($z=26.3, p<0.001$)
     \item \textbf{Subject-congruence effect}: We next tested for a \textit{subject-congruence effect}, i.e., whether incongruent subjects elicited more errors compared to congruent ones. We found a significant subject-congruence effect in both Short- and Long-Successive (Short-Nested: $z=5.4, p<0.001$; Long-Nested: $z=6.4, p<0.001$). Note that the variance of the network is very low, which renders this effect significant, although the error rate is near zero in both congruent and incongruent cases.
-\end{itemize}
+\end{APAitemize}
  
  \begin{figure}[ht]
     \centering
@@ -84,11 +84,11 @@ Figure \ref{fig:error_rates_plural_attractor}A presents the resulting NLM error 
 \subsubsection{NLM Performance on Nested Dependencies}
 Figure \ref{fig:error_rates_plural_attractor}B presents the corresponding error rates in the case of nested dependencies (Figure \ref{fig:error_rates_all_conditions} further provides the full error-rate distribution across all conditions). Several effects are observed in the results:
 
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Incongruent conditions elicit more errors}: a significant subject-congruence effect was found on both the embedded and main verbs, in both Short- and Long-Nested (Short-Nested main: $z=93.1, p<0.001$; Short-Nested embedded: $z=50.9, p<0.001$; Long-Nested main: $z=67.0, p<0.001$; Long-Nested embedded: $z=120.5, p<0.001$). In all cases, incongruent subjects elicited more errors compared to congruent subjects.
     \item \textbf{Processing of embedded verbs is more error-prone}: for both Short- and Long-Nested, a significant interaction was found between subject-congruence and verb-position (embedded/main), with a larger increase of error rate due to incongruent subjects on the embedded compared to the main verb (Short-Nested: $z=32.3, p<0.001$; Long-Nested: $z=84.2, p<0.001$).
     \item \textbf{A longer embedded dependency is more error prone}: for errors made on the embedded verb, we found a significant interaction between subject-congruence and the length of the embedded dependency (Short/Long-Nested), with a larger increase of error rate due to incongruent subjects in Long-Nested ($z=7.4, p<0.001$).
-\end{itemize}
+\end{APAitemize}
  
 \vspace{10pt}
 
@@ -107,15 +107,15 @@ Stimuli comprised i) acceptable sentences; ii) violation trials, which contained
 Acceptable sentences were created using a pool of 10 nouns, 19 verbs, 4 prepositions (Table \ref{tbl:lexicon}), for all four main constructions (bottom, Table~\ref{tab:na-tasks-overview}). Starting from this pool of sentences, number-violation and filler trials were created by replacing either the main or embedded verb by the opposite form of the verb with respect to number. For example, ``il \textbf{fratello} che lo \emph{studente *accolgono} \textbf{ama} i contadini'' (``the \textbf{brother} that the \emph{student *welcome} \textbf{loves} the farmers'').
 
 Filler trials contained either a semantic or syntactic violation that does not concern number. 
-Syntactic violations were generated by either, \begin{itemize}\setlength\itemsep{0mm}
+Syntactic violations were generated by either, \begin{APAitemize}\setlength\itemsep{0mm}
 \item [i)] replacing a verb with a wrong person without changing number, for example: ``il \textbf{fratello} che lo \emph{studente *accolgo} \textbf{ama} i contadini'' (``the \textbf{brother} that the \emph{student} \emph{*welcome-1st-pers-sing} \textbf{loves} the farmers''); or
 \item[ii)] replacing a verb with a noun, for example, ``il \textbf{fratello} che lo \emph{studente} \emph{*amica} \textbf{ama} i contadini'' (``the \textbf{brother} that the \emph{student *friend} \textbf{loves} the farmers''; note that the chosen replacement nouns were not ambiguous with verb forms in Italian); or 
 \item[iii)] replacing a verb with its infinitive form, for example, ``il \textbf{fratello} che lo \emph{studente} \emph{*accogliere} \textbf{ama} i contadini'' (``the \textbf{brother} that the \emph{student *to-welcome} \textbf{loves} the farmers''). 
-\end{itemize}
-Semantic violations were generated by replacing one of the nouns with either\begin{itemize}\setlength\itemsep{0mm}
+\end{APAitemize}
+Semantic violations were generated by replacing one of the nouns with either\begin{APAitemize}\setlength\itemsep{0mm}
 \item[i)] an inappropriate abstract one, for example, ``la \textbf{*filosofia dice} che la \emph{figlia ama} la madre'' (``\textbf{*philosophy says} that the \emph{daughter loves} the mother''); or
 \item[ii)] or an inanimate noun, for example, ``la \textbf{*matita dice} che la \emph{figlia ama} la madre'' (``the \textbf{*pencil says} that the \emph{daughter loves} the mother''). 
-\end{itemize}
+\end{APAitemize}
 
 To avoid correlation between abstract or inanimate nouns and semantic violations, half of these filler trials were felicitous, for example, ``il \textbf{padre dice} che la \emph{figlia ama} la *filosofia'' (``the \textbf{father says} that the \emph{daughter loves} *philosophy''), or ``il \textbf{padre dice} che la \emph{*matita appartiene} alla figlia'' (``the \textbf{father says} that the \emph{*pencil belongs} to the daughter'').
 
@@ -139,10 +139,10 @@ Section \ref{results_NLMs} showed that the NLM cannot robustly encode two simult
 
 Suppose that a similarly sparse mechanism is also used by humans to carry number features through long-distance agreement structures. We derive the following predictions:
 
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Prediction 1}: humans will make more agreement errors on the embedded compared to the main dependency in the incongruent conditions of Long-Nested. 
     \item \textbf{Prediction 2}: humans will make more errors on the incongruent conditions of the embedded verb when the embedded dependency is long- compared to short-range.
-\end{itemize}
+\end{APAitemize}
 
 Prediction 1 derives from the robustness of the agreement mechanism in processing the main but not the embedded dependency, as was observed in the NLM performance. The prediction is particularly interesting because, structurally, the main dependency will always be longer-range than the embedded one. Note that we do not make precise predictions regarding Short-Nested, due to possible short-range compensation mechanisms in humans. Prediction 2 derives from the sparsity of the agreement mechanism and the dramatic failure of the model to process the embedded dependency in Long- but not Short-Nested. 
 
@@ -151,19 +151,19 @@ We tested these predictions by presenting Italian speakers with sentences from t
 \subsubsection{Human Performance on Successive Dependencies}
 Human error rates appear in Figure \ref{fig:error_rates_plural_attractor}  (Figure \ref{fig:error_rates_all_conditions} further provides the full error-rate distribution across all conditions). Several effects were observed: 
 
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Relatively low error rate}: humans made relatively few errors on successive constructions, although significantly above zero. Note that, in comparison to the Italian NLM, humans had a higher error baseline, probably due to unrelated factors such as occasional lapses of attention.
     \item \textbf{No subject-congruence effect}: we found no significant subject-congruence effect in Short-Successive, and a marginally significant subject-congruence effect in Long-Successive ($z=1.834, p=0.06$).
-\end{itemize}
+\end{APAitemize}
 
 \subsubsection{Human Performance on Nested Dependencies}
 Figure \ref{fig:error_rates_plural_attractor}D presents the resulting human error rates (Figure \ref{fig:error_rates_all_conditions} further provides the full error-rate distribution across all conditions). Several effects are observed in the results:
 
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Subject-congruence effect on embedded and main verbs}: for both main and embedded verbs in both Short- and Long-Nested, incongruent subjects elicited more errors--a significant subject-congruence effect was found in all cases (Short-Nested main: $z=2.970, p=0.003$; Short-Nested embedded: $z=6.411, p<0.001$; Long-Nested main $z=3.630, p<0.001$; Long-Nested embedded: $z=7.274, p<0.001$).
     \item \textbf{Processing of embedded verbs is more error-prone}: for both Short- and Long-Nested, the increase in error rate due to incongruent subjects was larger for embedded compared to main verbs. A significant interaction was found between subject congruence and verb position in both cases (Short-Nested: $z=2.277, p = 0.02$, Long-Nested: $z=2.634, p = 0.008$).
     \item \textbf{A longer embedded dependency is not significantly more error prone}: for embedded verbs, the increase in error rate due to incongruent subjects was comparable when the embedded long-range dependency was compared to the short one. No significant interaction was found between subject-congruence and length of the embedded dependency (Short- vs. Long-Nested).
-\end{itemize}
+\end{APAitemize}
 
 \subsubsection{Discussion of human results}
 Overall, as expected, successive dependencies were relatively easy for humans compared to nested ones. 
