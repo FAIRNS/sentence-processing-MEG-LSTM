@@ -1,4 +1,6 @@
 # This script transforms the output from the NA_task_generator into Linzen's format.
+echo "SIMPLE NON"
+python ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/Italian_simple_non_512.txt -o ../Data/Stimuli/Italian_simple_non_512 -p number_1 3 -p verb_1_wrong 4 --correct-word-position 3 --wrong-word-label verb_1_wrong -s simple_non
 
 echo "OBJREL-SHORT V1 (main)"
 python ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/Italian_objrel_that_4000.txt -o ../Data/Stimuli/Italian_objrel_that_V1_4000 -p number_1 3 -p number_2 5 -p verb_1_wrong 6 -p verb_2_wrong 7 --correct-word-position 6 --wrong-word-label verb_2_wrong -s objrel_short_V1
@@ -17,4 +19,7 @@ python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/Italian
 
 echo "SC-LONG V1 (main)"
 python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/Italian_embedding_mental_4032.txt -o ../Data/Stimuli/Italian_sc_long_V1_4032 -p number_1 3 -p number_2 5 -p number_3 7 -p verb_1_wrong 8 -p verb_2_wrong 9 --correct-word-position 9 --wrong-word-label verb_2_wrong -s sc_long_V1
+
+echo "DOUBLE SUBJREL"
+python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/Italian_double_subjrel.txt -o ../Data/Stimuli/Italian_double_subjrel_V1 -p number_1 3 -p number_2 5 -p number_3 7 -p verb_1_wrong 8 -p verb_2_wrong 9 -p verb_3_wrong 10 --correct-word-position 10 --wrong-word-label verb_3_wrong -s double_subjrel_V1
 

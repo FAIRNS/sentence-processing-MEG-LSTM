@@ -8,6 +8,7 @@ python NA_tasks_generator.py --natask embedding_mental_SR -seed 1 -n 256 > ../..
 python NA_tasks_generator.py --natask embedding_mental -seed 1 -n 64 > ../../../Data/Stimuli/English_embedding_mental.txt
 python NA_tasks_generator.py --natask embedding_mental_2LRs -seed 1 -n 16 > ../../../Data/Stimuli/English_embedding_mental_2LRs.txt
 python NA_tasks_generator.py --natask objrel_pronoun -seed 1 -n 256 > ../../../Data/Stimuli/English_objrel_pronoun.txt
+python NA_tasks_generator.py --natask SC_OR -seed 1 -n 256 > ../../../Data/Stimuli/English_SC_OR.txt
 
 
 # Verify that sub-sampled sets are counter-balanced with resepct to gender and other features

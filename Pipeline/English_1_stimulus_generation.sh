@@ -17,7 +17,8 @@
 
 #for NATASK in 'objrel' 'objrel_nounpp' 'embedding_mental' 'embedding_mental_SR' 'embedding_mental_2LRs'
 #for NATASK in 'objrel_pronoun'
-for NATASK in 'objrel_nounpp'
+#for NATASK in 'objrel_nounpp'
+for NATASK in 'SC_OR'
 do
     if [ "$NATASK" == "subjrel" ] ;then
         V1_NUM_FIELD=3
@@ -75,11 +76,23 @@ do
         NUMBER_3=' -p number_3 7'
         NUMBER_4=' -p number_4 9'
     fi
+    if [ "$NATASK" == "SC_OR" ] ;then
+        V1_NUM_FIELD=8
+        V2_NUM_FIELD=9
+        V3_NUM_FIELD=10
+        V1_POSITION=8
+        V2_POSITION=9
+        V3_POSITION=10
+        NUMBER_3=' -p number_3 7'
+        NUMBER_4=''
+    fi
 
     echo
     echo 'Transform to Linzen format'
     
-    eval 'python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/English_'$NATASK'.txt -o ../Data/Stimuli/English_'$NATASK'_V1 -p number_1 3 -p number_2 5'$NUMBER_3''$NUMBER_4' -p verb_1_wrong '$V1_NUM_FIELD' -p verb_2_wrong '$V2_NUM_FIELD' --correct-word-position '$V1_POSITION' --wrong-word-label verb_1_wrong'
+    echo 'python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/English_'$NATASK'.txt -o ../Data/Stimuli/English_'$NATASK'_V1 -p number_1 3 -p number_2 5'$NUMBER_3''$NUMBER_4' -p verb_1_wrong '$V1_NUM_FIELD' -p verb_2_wrong '$V2_NUM_FIELD' --correct-word-position '$V1_POSITION' --wrong-word-label verb_1_wrong'
     
-    eval 'python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/English_'$NATASK'.txt -o ../Data/Stimuli/English_'$NATASK'_V2 -p number_1 3 -p number_2 5'$NUMBER_3''$NUMBER_4' -p verb_1_wrong '$V1_NUM_FIELD' -p verb_2_wrong '$V2_NUM_FIELD' --correct-word-position '$V2_POSITION' --wrong-word-label verb_2_wrong'
+    echo 'python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/English_'$NATASK'.txt -o ../Data/Stimuli/English_'$NATASK'_V2 -p number_1 3 -p number_2 5'$NUMBER_3''$NUMBER_4' -p verb_1_wrong '$V1_NUM_FIELD' -p verb_2_wrong '$V2_NUM_FIELD' --correct-word-position '$V2_POSITION' --wrong-word-label verb_2_wrong'
+    
+    echo 'python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/English_'$NATASK'.txt -o ../Data/Stimuli/English_'$NATASK'_V2 -p number_1 3 -p number_2 5'$NUMBER_3''$NUMBER_4' -p verb_1_wrong '$V1_NUM_FIELD' -p verb_2_wrong '$V2_NUM_FIELD' -p verb_3_wrong '$V3_NUM_FIELD' --correct-word-position '$V3_POSITION' --wrong-word-label verb_3_wrong'
 done

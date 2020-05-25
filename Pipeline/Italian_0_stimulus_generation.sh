@@ -1,6 +1,6 @@
 #!/bin/bash 
 #for NATASK in 'nounpp' 'subjrel_that' 'objrel_that'
-for NATASK in 'nounpp' 'nounpp_objrel';
+for NATASK in 'nounpp';
 do
     TEST_WORD_POSITION=6
     WRONG_WORD_LABEL='verb_2_wrong'
@@ -32,6 +32,10 @@ do
     eval 'python3 ../Code/Stimuli/generate_info_from_raw_txt.py -i ../Data/Stimuli/Italian_'$NATASK'_4000.txt -o ../Data/Stimuli/Italian_'$NATASK'_4000 -p number_1 3 -p number_2 5 -p verb_1_wrong 6'$V2' --correct-word-position '$TEST_WORD_POSITION' --wrong-word-label '$WRONG_WORD_LABEL
 done
 
+#######################
+#### DOUBLE SUBJREL ###
+#######################
+# python3 ../Code/Stimuli/Italian/NA_tasks_generator.py --natask double_subjrel -n 10 > ../Data/Stimuli/Italian_double_subjrel.txt
 
 ####################
 ### FOR V1     #####

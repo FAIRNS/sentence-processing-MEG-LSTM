@@ -50,6 +50,15 @@ nouns['masculine']['plural'] = ['brothers', 'students', 'fathers', 'sons', 'boys
 nouns['feminine']['singular'] = ['sister', 'student', 'mother', 'daughter', 'girl', 'friend', 'woman', 'actress', 'farmer']
 nouns['feminine']['plural'] = ['sisters', 'students', 'mothers', 'daughters', 'girls', 'friends', 'women', 'actresses', 'farmers']
 
+###################
+####SC NOUNS ######
+###################
+# Initialization
+nouns_SC = {}
+# Tokens
+nouns_SC['singular'] = ['fact', 'idea', 'thought']
+nouns_SC['plural'] = ['facts', 'ideas', 'thoughts']
+
 # LOCATION NOUNS
 # --------------
 # Initialization
@@ -71,9 +80,14 @@ verbs = {}
 verbs['singular'] = ['welcomes', 'watches', 'attracts', 'blocks', 'knows', 'defends', 'avoids', 'stops', 'ignores', 'meets', 'interrupts', 'observes', 'greets']
 verbs['plural'] =  ['welcome',   'watch',  'attract',  'block',  'know',   'defend',  'avoid',   'stop', 'ignore', 'meet', 'interrupt', 'observe', 'greet']
 
+verbs_intran = {}
+# Tokens
+verbs_intran['singular'] = ['smiles', 'jumps', 'falls', 'disappears']
+verbs_intran['plural'] =  ['smile', 'jump', 'fall', 'disappear']
+
 copula = {}
-copula['singular'] = 'is'
-copula['plural'] = 'are'
+copula['singular'] = ['is']
+copula['plural'] = ['are']
 
 # MATRIX VERBS
 # -----
@@ -106,4 +120,4 @@ adjectives = {}
 #adjectives['feminine']['plural'] = ['belle', 'famose', 'brutte', 'ricche', 'povere', 'basse', 'alte', 'grasse', 'cattive', 'buone', 'lente', 'nuove']
 
 
-Words = {'determinants':determinants.copy(), 'pronouns':pronouns.copy(), 'nouns':nouns.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'copula':copula.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps.copy(), 'adjectives':adjectives.copy()}
+Words = {'determinants':determinants.copy(), 'pronouns':pronouns.copy(), 'nouns':nouns.copy(), 'nouns_SC':nouns_SC.copy(), 'location_nouns':location_nouns.copy(), 'verbs':verbs.copy(), 'verbs_intran':verbs_intran.copy(), 'copula':copula.copy(), 'matrix_verbs':matrix_verbs.copy(), 'loc_preps':loc_preps.copy(), 'adjectives':adjectives.copy()}

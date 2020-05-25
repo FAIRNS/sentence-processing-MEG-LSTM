@@ -1,0 +1,5 @@
+# Figure S1
+python ../Code/LSTM/model-analysis/extract_embeddings_from_rnn.py -model ../Data/LSTM/models/Italian_hidden650_batch64_dropout0.2_lr20.0.pt -v ../Data/LSTM/models/Italian_vocab.txt -o ../Figures/Italian_output_embedding_number_units.png -u 814 1027 1092 1030 968 1257 781 895 859 1118 799 650 651 652 653 654 -c b g g g g g g g g g g k k k k k -i ../Data/Stimuli/old/Italian_singular_plural_verbs.txt --legend-labels Singular Plural
+
+python ../Code/LSTM/model-analysis/extract_embeddings_from_rnn.py -model ../Data/LSTM/models/Italian_hidden650_batch64_dropout0.2_lr20.0.pt -v ../Data/LSTM/models/Italian_vocab.txt -o ../Figures/Italian_output_embedding_gender_units.png -u 1099 650 651 652 653 654 -c m k k k k k -i ../Data/Stimuli/old/Italian_masculine_feminine_adjectives.txt --legend-labels Masculine Feminine
+

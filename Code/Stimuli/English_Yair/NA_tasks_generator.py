@@ -553,3 +553,151 @@ if args.natask == 'embedding_mental_2LRs':
     stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
     [print('\t'.join(l)) for l in stimuli]
 
+
+if args.natask == 'OR_OR':
+
+    genders = ['masculine', 'feminine']
+    numbers = ['singular', 'plural']
+    
+    features = {}
+    features['N1_gender'] = genders
+    features['N1_number'] = numbers
+    features['N2_gender'] = genders
+    features['N2_number'] = numbers
+    features['N3_gender'] = genders
+    features['N3_number'] = numbers
+    features['N4_gender'] = genders
+    features['N4_number'] = numbers
+    counter = init_counter(features)
+
+    while not counter_fullfilled(counter, args.n):
+        # N1
+        N1_gender = genders[np.random.randint(2)]
+        N1_number = numbers[np.random.randint(2)]
+        N1s = Words['nouns'][N1_gender][N1_number]#[0:num_nouns]
+        IX_N1 = np.random.randint(len(N1s))
+        N1 = N1s[IX_N1]
+        # N2
+        N2_gender = genders[np.random.randint(2)]
+        N2_number = numbers[np.random.randint(2)]
+        N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
+        IX_N2 = np.random.randint(len(N2s))
+        N2 = N2s[IX_N2]
+        # N3
+        N3_gender = genders[np.random.randint(2)]
+        N3_number = numbers[np.random.randint(2)]
+        N3s = Words['nouns'][N3_gender][N3_number]#[0:num_nouns]
+        IX_N3 = np.random.randint(len(N3s))
+        N3 = N3s[IX_N3]
+        # N4
+        N4_gender = genders[np.random.randint(2)]
+        N4_number = numbers[np.random.randint(2)]
+        N4s = Words['nouns'][N4_gender][N4_number]#[0:num_nouns]
+        IX_N4 = np.random.randint(len(N4s))
+        N4 = N4s[IX_N4]
+        # V1
+        V1s = Words['verbs'][N1_number]#[0:num_nouns]
+        IX_V1 = np.random.randint(len(V1s))
+        V1 = V1s[IX_V1]
+        # V2
+        V2s = Words['verbs'][N2_number]
+        IX_V2 = np.random.randint(len(V2s))
+        V2 = V2s[IX_V2]
+        # V3
+        V3s = Words['verbs'][N3_number]
+        IX_V3 = np.random.randint(len(V3s))
+        V3 = V3s[IX_V3]
+        # sentence
+        opposite_number_V3 = 'singular' if N3_number == 'plural' else 'plural'
+        opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+        opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
+        last_article = get_random_article(Words['determinants'])
+        sentence = ' '.join(['The', N1, 'that', 'the', N2, 'that', 'the', N3, V3, V2, V1, 'the', N4]) 
+
+        noun_IXs = [IX_N1, IX_N2, IX_N3, IX_N4]
+        verb_IXs = [IX_V1, IX_V2, IX_V3]
+        if len(set(noun_IXs)) == len(noun_IXs): # check noun repetition at the lemma level (i.e., all indexes are different)
+            if len(set(verb_IXs)) == len(verb_IXs): # check verb repetition at the lemma level
+                if counter['_'.join([N1_gender, N1_number, N2_gender, N2_number, N3_gender, N3_number, N4_gender, N4_number])] < args.n:
+                    stimuli.append([args.natask, sentence,
+                           N1_gender, N1_number,
+                           N2_gender, N2_number,
+                           N3_gender, N3_number,
+                           N4_gender, N4_number,
+                           Words['verbs'][opposite_number_V1][IX_V1], Words['verbs'][opposite_number_V2][IX_V2], Words['verbs'][opposite_number_V3][IX_V3]])
+                    counter['_'.join([N1_gender, N1_number, N2_gender, N2_number, N3_gender, N3_number, N4_gender, N4_number])]+=1 
+
+    stimuli.sort(key=lambda x: x[1]) # first word
+    stimuli.sort(key=lambda x: x[7], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[5], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
+    [print('\t'.join(l)) for l in stimuli]
+
+
+if args.natask == 'SC_OR':
+
+    genders = ['masculine', 'feminine']
+    numbers = ['singular', 'plural']
+    
+    features = {}
+    features['N1_number'] = numbers
+    features['N2_gender'] = genders
+    features['N2_number'] = numbers
+    features['N3_gender'] = genders
+    features['N3_number'] = numbers
+    counter = init_counter(features)
+
+    while not counter_fullfilled(counter, args.n):
+        # N1
+        N1_gender = genders[np.random.randint(2)]
+        N1_number = numbers[np.random.randint(2)]
+        N1s = Words['nouns_SC'][N1_number]#[0:num_nouns]
+        IX_N1 = np.random.randint(len(N1s))
+        N1 = N1s[IX_N1]
+        # N2
+        N2_gender = genders[np.random.randint(2)]
+        N2_number = numbers[np.random.randint(2)]
+        N2s = Words['nouns'][N2_gender][N2_number]#[0:num_nouns]
+        IX_N2 = np.random.randint(len(N2s))
+        N2 = N2s[IX_N2]
+        # N3
+        N3_gender = genders[np.random.randint(2)]
+        N3_number = numbers[np.random.randint(2)]
+        N3s = Words['nouns'][N3_gender][N3_number]#[0:num_nouns]
+        IX_N3 = np.random.randint(len(N3s))
+        N3 = N3s[IX_N3]
+        # V1
+        V1s = Words['copula'][N1_number]#[0:num_nouns]
+        IX_V1 = np.random.randint(len(V1s))
+        V1 = V1s[IX_V1]
+        # V2
+        V2s = Words['verbs_intran'][N2_number]
+        IX_V2 = np.random.randint(len(V2s))
+        V2 = V2s[IX_V2]
+        # V3
+        V3s = Words['verbs'][N3_number]
+        IX_V3 = np.random.randint(len(V3s))
+        V3 = V3s[IX_V3]
+        # sentence
+        opposite_number_V3 = 'singular' if N3_number == 'plural' else 'plural'
+        opposite_number_V2 = 'singular' if N2_number == 'plural' else 'plural'
+        opposite_number_V1 = 'singular' if N1_number == 'plural' else 'plural'
+        last_article = get_random_article(Words['determinants'])
+        sentence = ' '.join(['The', N1, 'that', 'the', N2, 'that', 'the', N3, V3, V2, V1, 'ridiculous']) 
+
+        noun_IXs = [IX_N1, IX_N2, IX_N3]
+        if len(set(noun_IXs)) == len(noun_IXs): # check noun repetition at the lemma level (i.e., all indexes are different)
+            if IX_V2 != IX_V3:                  # check verb repetition at the lemma level
+                if counter['_'.join([N1_number, N2_gender, N2_number, N3_gender, N3_number])] < args.n:
+                    stimuli.append([args.natask, sentence,
+                           'NA', N1_number,
+                           N2_gender, N2_number,
+                           N3_gender, N3_number,
+                           Words['copula'][opposite_number_V1][IX_V1], Words['verbs_intran'][opposite_number_V2][IX_V2], Words['verbs'][opposite_number_V3][IX_V3]])
+                    counter['_'.join([N1_number, N2_gender, N2_number, N3_gender, N3_number])]+=1 
+
+    stimuli.sort(key=lambda x: x[1]) # first word
+    stimuli.sort(key=lambda x: x[7], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[5], reverse=True) # feature 1
+    stimuli.sort(key=lambda x: x[3], reverse=True) # feature 2
+    [print('\t'.join(l)) for l in stimuli]
