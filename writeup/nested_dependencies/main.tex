@@ -1,4 +1,4 @@
-\documentclass[a4paper,doc,natbib, floatsintext, hidelinks]{apa7}
+\documentclass[a4paper,man,natbib, floatsintext, hidelinks]{apa7}
 \setcounter{secnumdepth}{3} % Add numbering to sections. 
 
 \usepackage{authblk}
@@ -50,14 +50,14 @@
 \sixauthors{Yair Lakretz}{Dieuwke Hupkes}{Alessandra Vergallito}{Marco Marelli}{Marco Baroni$^*$}{Stanislas Dehaene$^*$} 
 \sixaffiliations{Cognitive Neuroimaging Unit, NeuroSpin center, 91191, Gif-sur-Yvette, France}{ILLC, University of Amsterdam, Amsterdam, Netherlands}{University of Milano-Bicocca, Milan, Italy}{University of Milano-Bicocca, Milan, Italy\\NeuroMI, Milan Center for Neuroscience, Milan, Italy}{Facebook AI Research, Paris, France\\Catalan Institute for Research and Advanced Studies, Barcelona, Spain, 08010\\Departament de Traduccio i Cencies del Llenguatge, Universitat Pompeu Fabra, Spain, 08018}{Cognitive Neuroimaging Unit, NeuroSpin center, 91191, Gif-sur-Yvette, France\\College de France, 11 Place Marcelin Berthelot, 75005 Paris, France} 
 
-
-\begin{document}
+\def\thefootnote{*}\footnotetext{Equal senior contribution.}
 \input{sections/abstract}
 \keywords{Grammatical agreement, Long-Range Dependencies, Recursion, Recurrent Neural Networks, Language Models, Syntactic processing, Relative Clauses.}
 
-\def\thefootnote{*}\footnotetext{Equal senior contribution.}
-
+\begin{document}
 \maketitle
+
+
 \import{sections/}{intro}
 \import{sections/}{number_agreement_in_RNNs}
 \import{sections/}{single_dependency_Italian}

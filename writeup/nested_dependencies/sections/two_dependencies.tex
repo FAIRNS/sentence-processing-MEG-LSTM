@@ -32,6 +32,8 @@ Table \ref{tbl:predictions} summarizes our predictions for each task and structu
 For Short- and Long-Successive, no significant processing difficulties are predicted, since the long-range mechanism can encode the main and nested grammatical numbers sequentially. 
 For Short- and Long-Nested, the long-range mechanism is predicted to successfully process the main dependency and therefore no significant difficulties are predicted on the main verb (beyond the relative difficulty to process center-embeddings reported for both humans \citep{traxler2002processing} and NLMs \citep{marvin2018targeted}). In contrast, the embedded dependency in Short-Nested cannot rely on the long-range agreement mechanism, as it is recruited by the main dependency. Consequently, the processing of the embedded dependency can only rely on short-range mechanisms, which might not be as robust as the long-range ones. We are thus agnostic about success in this case. Finally, in Long-Nested, the performance on the embedded verb is predicted to be significantly low, given that the long-range mechanism can process only a single agreement, as described above.
 
+\include{tables/table_predictions}
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{figures/design.png}
@@ -46,7 +48,7 @@ For Short- and Long-Nested, the long-range mechanism is predicted to successfull
     \label{fig:2by2_dynamics}
 \end{figure}
 
-\include{tables/table_predictions}
+
 
 \subsection{Methods and Materials for the Simulations with the NLM}
 We used four different Number-Agreement tasks (NA-tasks, bottom, Table~\ref{tab:na-tasks-overview}). All tasks contain two subject-verb dependencies, which differ in terms of whether they are \emph{successive} or \emph{nested} and whether the embedded dependency is \emph{short-} or \emph{long-range}. Two subject-verb dependencies are \emph{successive} when the second subject occurs only after the first has been resolved. 
