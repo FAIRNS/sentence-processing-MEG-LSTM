@@ -1,0 +1,1 @@
+cat logLocalGlobalParadigm_2019Oct24_163842_Subj_24_sess_1.csv logLocalGlobalParadigm_2019Oct24_173658_Subj_24_sess_2.csv > ../logLocalGlobalParadigm_2019Oct24_163842_Subj_24.csv

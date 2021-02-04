@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg3534"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="design.svg"
+   inkscape:export-filename="/home/yl254115/Projects/computational/FAIRNS/sentence-processing-MEG-LSTM/writeup/Nested_dependencies/Figures/design.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs3536" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.77777175"
+     inkscape:cx="670.48204"
+     inkscape:cy="733.17174"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3539">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3586"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(65.314472,-145.41676)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3588"><rect
+           id="rect3590"
+           width="723.19916"
+           height="96.757347"
+           x="54.581066"
+           y="432.1228"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'" /></flowRegion><flowPara
+         id="flowPara3592"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:25px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Il bambino dice che il contandino guarda le figlie</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3586-6"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(635.27068,-145.53952)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3588-2"><rect
+           id="rect3590-8"
+           width="723.19916"
+           height="96.757347"
+           x="54.581066"
+           y="432.1228"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'" /></flowRegion><flowPara
+         id="flowPara3592-4"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:25px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Il bambino dice che il contandino accanto ai padri guarda le figlie</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 184.40044,285.16088 -1.24048,-38.45485 66.98585,0 1.24048,38.45484"
+       id="path3618"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 755.27476,286.67264 -1.24048,-38.45485 66.98585,0 1.24048,38.45484"
+       id="path3618-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 407.64848,287.74744 -1.24048,-38.45485 66.98585,0 2.48096,42.17628"
+       id="path3618-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 961.599,288.47025 -1.2405,-38.45485 249.3362,-1.24048 1.2405,39.69532"
+       id="path3618-2-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3586-0"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(54.257368,-15.38848)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3588-6"><rect
+           id="rect3590-2"
+           width="723.19916"
+           height="96.757347"
+           x="54.581066"
+           y="432.1228"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'" /></flowRegion><flowPara
+         id="flowPara3592-9"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:25px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Il bambino che il contandino guarda conosce le figlie</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3586-6-9"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(622.49936,-13.939862)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3588-2-0"><rect
+           id="rect3590-8-8"
+           width="723.19916"
+           height="96.757347"
+           x="54.581066"
+           y="432.1228"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'" /></flowRegion><flowPara
+         id="flowPara3592-4-1"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:25px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Il bambino che il contandino accanto ai padri guarda conosce le figlie</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 173.34333,415.18916 -1.24048,-59.54299 332.44835,-1.24048 2.4809,58.3025"
+       id="path3618-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 742.50344,418.2723 -1.19524,-64.45966 492.4248,-1.28572 1.2405,66.98585"
+       id="path3618-7-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 354.4151,417.77572 -1.2405,-38.45485 66.9859,0 1.2404,38.45484"
+       id="path3618-2-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 906.82771,420.06991 -1.24048,-38.45485 249.33627,-1.24048 1.2405,39.69532"
+       id="path3618-2-4-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4589"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion
+         id="flowRegion4591"><rect
+           id="rect4593"
+           width="209.57306"
+           height="146.57257"
+           x="-92.572144"
+           y="225.64148" /></flowRegion><flowPara
+         id="flowPara4595" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4597"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(-90.286352,437.4319)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4599"><rect
+           id="rect4601"
+           width="392.1459"
+           height="228.85892"
+           x="-100.28649"
+           y="-172.93303" /></flowRegion><flowPara
+         id="flowPara4605"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:35px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium';text-align:center;text-anchor:middle">Successive</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4597-9"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(-85.730659,543.18593)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4599-1"><rect
+           id="rect4601-9"
+           width="392.1459"
+           height="228.85892"
+           x="-100.28649"
+           y="-172.93303" /></flowRegion><flowPara
+         id="flowPara4605-6"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:35px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium';text-align:center;text-anchor:middle">Nested</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4641"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(139.71532,50.714698)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4643"><rect
+           id="rect4645"
+           width="653.14795"
+           height="69.429108"
+           x="50.143246"
+           y="143.35513" /></flowRegion><flowPara
+         id="flowPara4647"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Short Embedded Dependency</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4641-9"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(776.14972,50.665678)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4643-3"><rect
+           id="rect4645-3"
+           width="653.14795"
+           height="69.429108"
+           x="50.143246"
+           y="143.35513" /></flowRegion><flowPara
+         id="flowPara4647-8"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Long Embedded Dependency</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 470.58477,126.0224 0.045,0.11688 66.9859,0 1.2405,-0.11689"
+       id="path3618-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 469.25117,160.14211 1.3309,0.11688 66.9859,0 -0.091,-0.25262"
+       id="path3618-2-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4641-9-6"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(523.68757,-0.90611791)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4643-3-6"><rect
+           id="rect4645-3-4"
+           width="653.14795"
+           height="69.429108"
+           x="50.143246"
+           y="143.35513" /></flowRegion><flowPara
+         id="flowPara4647-8-0"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Embedded Dependency</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4641-9-6-0"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(523.57887,-38.477778)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4643-3-6-4"><rect
+           id="rect4645-3-4-6"
+           width="653.14795"
+           height="69.429108"
+           x="50.143246"
+           y="143.35513" /></flowRegion><flowPara
+         id="flowPara4647-8-0-2"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:'David CLM';-inkscape-font-specification:'David CLM Medium'">Main Dependency</flowPara></flowRoot>  </g>
+</svg>

@@ -1,52 +1,71 @@
+\documentclass[a4paper,doc,natbib, floatsintext, hidelinks]{apa7}
+\setcounter{secnumdepth}{3} % Add numbering to sections. 
 
-\documentclass[a4paper,man,natbib]{apa6}
-
+\usepackage{authblk}
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorinlistoftodos, textsize=scriptsize]{todonotes}
 
-% Added by me
+% Added by us
+\usepackage{arydshln}
+\usepackage{pdflscape}
+\usepackage{cleveref}
+\usepackage{xr}
+\usepackage{caption}
 \usepackage{lipsum}
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{tikz-qtree}
+\usepackage{import}
 \usepackage{lscape}
 \usepackage{multicol}
 \usepackage{makecell}
 \usepackage{array}
 \usepackage{color, colortbl}
+\usepackage{xr}
+%\externaldocument[supp-]{SM}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}m{#1}}
+\newcommand{\YL}[1]{\textcolor{blue}{YL: #1}}
+\newcommand{\YLDEL}[1]{\sout{\textcolor{black}{YL: #1}}}
+\newcommand{\dieuwke}[1]{\textcolor{green!60!black}{DH: #1}}
+\newcommand{\dnote}[1]{\todo[color=green!40, inline]{DH: #1}}
+%
+\renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
+\renewrobustcmd{\boldmath}{}
+\newrobustcmd{\B}{\bfseries}
 
-\title{Number Agreement in Nested Dependencies}
-\shorttitle{Number Agreement in Nested Dependencies}
-\author{}
-\affiliation{}
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
 
-\abstract{Abstract}
+\title{A Mechanism for Handling Nested Agreement Dependencies in Recurrent Neural Networks and Humans}
+% \title{Exploring Processing of Nested Dependencies in Neural-Network Language Models and Humans}
+
+% Exploring an Emergent Mechanism for Handling Nested Dependencies in a Recurrent Neural Network
+
+% or A Mechanism for Handling Nested Agreement Dependencies in Recurrent Neural Networks and Humans
+
+\shorttitle{Nested dependencies in NLMs and humans}
+
+\sixauthors{Yair Lakretz}{Dieuwke Hupkes}{Alessandra Vergallito}{Marco Marelli}{Marco Baroni$^*$}{Stanislas Dehaene$^*$} 
+\sixaffiliations{Cognitive Neuroimaging Unit, NeuroSpin center, 91191, Gif-sur-Yvette, France}{ILLC, University of Amsterdam, Amsterdam, Netherlands}{University of Milano-Bicocca, Milan, Italy}{University of Milano-Bicocca, Milan, Italy\\NeuroMI, Milan Center for Neuroscience, Milan, Italy}{Facebook AI Research, Paris, France\\Catalan Institute for Research and Advanced Studies, Barcelona, Spain, 08010\\Departament de Traduccio i Cencies del Llenguatge, Universitat Pompeu Fabra, Spain, 08018}{Cognitive Neuroimaging Unit, NeuroSpin center, 91191, Gif-sur-Yvette, France\\College de France, 11 Place Marcelin Berthelot, 75005 Paris, France} 
+
 
 \begin{document}
-% \maketitle
+\input{sections/abstract}
+\keywords{Grammatical agreement, Long-Range Dependencies, Recursion, Recurrent Neural Networks, Language Models, Syntactic processing, Relative Clauses.}
 
-% TEST
-\input{sections/intro}
-\input{sections/model}
-\input{sections/results}
-\input{sections/methods}
-\input{sections/discussion}
-\subsection{Sections}
+\def\thefootnote{*}\footnotetext{Equal senior contribution.}
 
-\todo[inline, color=green!40]{This is an inline comment.}
+\maketitle
+\import{sections/}{intro}
+\import{sections/}{number_agreement_in_RNNs}
+\import{sections/}{single_dependency_Italian}
+\import{sections/}{two_dependencies}
+\import{sections/}{discussion}
 
+\bibliography{yair,marco,dieuwke}
 
-\bibliography{yair}
+\input{sections/SM}
 
 \end{document}
-
-%
-% Please see the package documentation for more information
-% on the APA6 document class:
-%
-% http://www.ctan.org/pkg/apa6
-%

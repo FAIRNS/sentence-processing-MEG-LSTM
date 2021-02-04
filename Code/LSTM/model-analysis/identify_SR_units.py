@@ -24,25 +24,26 @@ def parseNumList(string):
 
 
 parser = argparse.ArgumentParser(description='Find short-range (SR) units')
-parser.add_argument('--model', type=str, default='../../../Data/LSTM/models/english/hidden650_batch128_dropout0.2_lr20.0.pt', help='pytorch model')
-parser.add_argument('-v', '--verbs', default='../../../Data/Stimuli/singular_plural_verbs.txt',
+parser.add_argument('--model', type=str, default='../../../Data/LSTM/models/Italian_hidden650_batch64_dropout0.2_lr20.0.pt', help='pytorch model')
+parser.add_argument('-v', '--verbs', default='../../../Data/Stimuli/singular_plural_verbs_Italian.txt',
 					help='Text file with two tab delimited columns with the lists of output words to contrast with the PCA')
 parser.add_argument('-u', '--units', default='650-1300', nargs='+', type=parseNumList, help='Which units in 2ND LAYER to analyze (counting from ZERO! The second number in the default 650-1300 means upto but not including 1300 as in range().)')
-parser.add_argument('--vocabulary', default='../../../Data/LSTM/english_vocab.txt')
-parser.add_argument('-s', '--sentences', type=str, default='../../../Data/Stimuli/nounpp.text', help='Path to text file containing the list of sentences to analyze')
-parser.add_argument('-m', '--metadata', type=str, default='../../../Data/Stimuli/nounpp.info', help='The corresponding meta data of the sentences')
-parser.add_argument('-a', '--activations', type=str, default='../../../Data/LSTM/activations/english/nounpp.pkl', help='The corresponding sentence (LSTM) activations')
+parser.add_argument('--vocabulary', default='../../../Data/LSTM/models/Italian_vocab.txt')
+parser.add_argument('-s', '--sentences', type=str, default='../../../Data/Stimuli/Italian_simple_non_512.text', help='Path to text file containing the list of sentences to analyze')
+parser.add_argument('-m', '--metadata', type=str, default='../../../Data/Stimuli/Italian_simple_non_512.info', help='The corresponding meta data of the sentences')
+parser.add_argument('-a', '--activations', type=str, default='../../../Data/LSTM/activations/Italian/simple_non.pkl', help='The corresponding sentence (LSTM) activations')
 parser.add_argument('-g', '--gate', type=str, default='cell', help='One of: gates.in, gates.forget, gates.out, gates.c_tilde, hidden, cell')
-parser.add_argument('-t', '--timepoints', default=[1, 5], help='Two time points for subject (1st value) and attractor (2nd) on which classification is and GAT are tested (counting from ZERO!). Default points are for nounpp')
-parser.add_argument('--threshold', default=0.8, help='Threshold for decoding performance. Shared for all type of tests (0.92 is the minimal thresh to have the plural unit 775 detected)')
+parser.add_argument('-t', '--timepoints', default=[1, -1], help='Two time points for subject (1st value) and attractor (2nd) on which classification is and GAT are tested (counting from ZERO!). Default points are for nounpp')
+parser.add_argument('--threshold', default=0.9, help='Threshold for decoding performance. Shared for all type of tests (0.92 is the minimal thresh to have the plural unit 775 detected)')
 parser.add_argument('-d', '--d-layer', default=650, help='Assuming only 2 layers of equal size (!), the dimension of the second layer (#units)')
 parser.add_argument('-o', '--output-file-name', type=str, default='../../../Output/SR_LR_units.txt', help='Path to output folder for figures')
-parser.add_argument('--test-activations', action='store_false', default=False)
+parser.add_argument('--test-activations', action='store_false', default=True)
 parser.add_argument('--test-embeddings', action='store_false', default=True)
 args = parser.parse_args()
 print(args)
 
-LR_units = [769, 987, 775]
+# LR_units = [769, 987, 775]
+LR_units = [814]
 
 def get_labels(metadata, condition_list_class1, condition_list_class2):
     labels = np.zeros(len(metadata))
@@ -87,34 +88,51 @@ number_units_based_on_activations_decoding = args.units
 if args.test_activations:
     scores_from_activations_per_unit = {} # list of scores from all random CV seeds
     for u, unit in tqdm(enumerate(args.units)):
+        # print(u)
 
         t_subject   = args.timepoints[0]
         t_attractor = args.timepoints[1]
 
         # conditions SP and PS; class-'1': singular, class-'2': plural
         data_X_subject = np.squeeze(activations[:, unit, t_subject]).reshape(-1, 1)
-        data_X_attractor = np.squeeze(activations[:, unit, t_attractor]).reshape(-1, 1)
+        if args.timepoints[1] > -1:
+            data_X_attractor = np.squeeze(activations[:, unit, t_attractor]).reshape(-1, 1)
 
-        data_y_subject = get_labels(metadata, [('number_1', 'singular'), ('number_2', 'plural')], [('number_1', 'plural'), ('number_2', 'singular')])
+        if args.timepoints[1] > -1:
+            data_y_subject = get_labels(metadata, [('number_1', 'singular'), ('number_2', 'plural')], [('number_1', 'plural'), ('number_2', 'singular')])
+        else:
+            data_y_subject = get_labels(metadata, [('number_1', 'singular')], [('number_1', 'plural')])
         IX_classes = np.where(data_y_subject > 0)  # '0' in data_y if sentence is in neither class ('1' or '2' elsewhere)
         data_y_subject = data_y_subject[IX_classes]
-        data_y_attractor = 3 - data_y_subject
+        if args.timepoints[1] > -1:
+            data_y_attractor = 3 - data_y_subject
 
         data_X_subject = data_X_subject[IX_classes]
-        data_X_attractor = data_X_attractor[IX_classes]
+        if args.timepoints[1] > -1:
+            data_X_attractor = data_X_attractor[IX_classes]
 
         scores_on_subject = get_decoding_scores(data_X_subject, data_y_subject)
-        scores_on_attractor = get_decoding_scores(data_X_attractor, data_y_attractor)
-        scores_GAT_subject_to_attractor = get_decoding_GAT(data_X_subject, data_y_subject, data_X_attractor)
+        if args.timepoints[1] > -1:
+            scores_on_attractor = get_decoding_scores(data_X_attractor, data_y_attractor)
+            scores_GAT_subject_to_attractor = get_decoding_GAT(data_X_subject, data_y_subject, data_X_attractor)
 
-        scores_from_activations_per_unit[unit] = (np.mean(scores_on_subject), np.mean(scores_on_attractor), scores_GAT_subject_to_attractor)
+        if args.timepoints[1] > -1:
+            scores_from_activations_per_unit[unit] = (np.mean(scores_on_subject), np.mean(scores_on_attractor), scores_GAT_subject_to_attractor)
+        else:
+            scores_from_activations_per_unit[unit] = (np.mean(scores_on_subject))
 
-    SR_units_based_on_activations_decoding = [unit for (unit, scores) in scores_from_activations_per_unit.items() if
-                                              all([scores[0]>=args.threshold, scores[1]>=args.threshold,
-                                                   scores[2]<1-args.threshold])]
-    LR_units_based_on_activations_decoding = [unit for (unit, scores) in scores_from_activations_per_unit.items() if
-                                                  all([scores[0] >= args.threshold, scores[1] >= args.threshold,
-                                                       scores[2] > args.threshold])]
+    if args.timepoints[1] > -1:
+        SR_units_based_on_activations_decoding = [unit for (unit, scores) in scores_from_activations_per_unit.items() if
+                                                  all([scores[0]>=args.threshold, scores[1]>=args.threshold,
+                                                       scores[2]<1-args.threshold])]
+        LR_units_based_on_activations_decoding = [unit for (unit, scores) in scores_from_activations_per_unit.items() if
+                                                      all([scores[0] >= args.threshold, scores[1] >= args.threshold,
+                                                           scores[2] > args.threshold])]
+    else:
+        SR_units_based_on_activations_decoding = [unit for (unit, scores) in scores_from_activations_per_unit.items() if
+                                                  scores >= args.threshold]
+        LR_units_based_on_activations_decoding = [unit for (unit, scores) in scores_from_activations_per_unit.items() if
+                                                  scores >= args.threshold]
 
 # -------------------------------------------
 # --- Decode feature from decoder weights ---
@@ -173,7 +191,7 @@ with open(args.output_file_name, 'w') as f:
     f.writelines(', '.join([str(k) + ':' + str(v) for (k, v) in vars(args).items()]))
 
 
-verbose = False
+verbose = True
 if verbose:
     SR_units = list(set(number_units_based_on_embeddings_decoding) & set(SR_units_based_on_activations_decoding))
     LR_units = list(set(number_units_based_on_embeddings_decoding) & set(LR_units_based_on_activations_decoding))

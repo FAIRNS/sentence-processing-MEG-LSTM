@@ -1,0 +1,380 @@
+-------------------------------
+Number-agreement task: nounpp for seed 1111
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.999
+p-difference: 0.00014 +- 0.00027
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.977
+p-difference: 0.00012 +- 0.00025
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.943
+p-difference: 0.00010 +- 0.00023
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.978
+p-difference: 0.00012 +- 0.00021
+-------------------------------
+Number-agreement task: nounpp for seed 0
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.994
+p-difference: 0.00014 +- 0.00029
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.959
+p-difference: 0.00010 +- 0.00020
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.967
+p-difference: 0.00009 +- 0.00016
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.996
+p-difference: 0.00011 +- 0.00019
+-------------------------------
+Number-agreement task: nounpp for seed 1
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.994
+p-difference: 0.00014 +- 0.00031
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.963
+p-difference: 0.00009 +- 0.00025
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.981
+p-difference: 0.00011 +- 0.00022
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.996
+p-difference: 0.00009 +- 0.00019
+-------------------------------
+Number-agreement task: nounpp for seed 2
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.997
+p-difference: 0.00021 +- 0.00047
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.968
+p-difference: 0.00017 +- 0.00047
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.929
+p-difference: 0.00013 +- 0.00033
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.971
+p-difference: 0.00013 +- 0.00036
+-------------------------------
+Number-agreement task: nounpp for seed 3
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.995
+p-difference: 0.00011 +- 0.00025
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.942
+p-difference: 0.00007 +- 0.00020
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.972
+p-difference: 0.00009 +- 0.00020
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.997
+p-difference: 0.00011 +- 0.00018
+-------------------------------
+Number-agreement task: nounpp for seed 4
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.996
+p-difference: 0.00017 +- 0.00046
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.952
+p-difference: 0.00009 +- 0.00027
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.94
+p-difference: 0.00009 +- 0.00019
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.981
+p-difference: 0.00011 +- 0.00021
+-------------------------------
+Number-agreement task: nounpp for seed 5
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.998
+p-difference: 0.00016 +- 0.00041
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.984
+p-difference: 0.00010 +- 0.00029
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.972
+p-difference: 0.00011 +- 0.00018
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.974
+p-difference: 0.00009 +- 0.00015
+-------------------------------
+Number-agreement task: nounpp for seed 6
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.997
+p-difference: 0.00011 +- 0.00023
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.977
+p-difference: 0.00006 +- 0.00013
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.944
+p-difference: 0.00009 +- 0.00022
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.988
+p-difference: 0.00007 +- 0.00013
+-------------------------------
+Number-agreement task: nounpp for seed 7
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.996
+p-difference: 0.00018 +- 0.00051
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.985
+p-difference: 0.00011 +- 0.00027
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.899
+p-difference: 0.00009 +- 0.00025
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.993
+p-difference: 0.00011 +- 0.00021
+-------------------------------
+Number-agreement task: nounpp for seed 8
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.997
+p-difference: 0.00019 +- 0.00061
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.95
+p-difference: 0.00010 +- 0.00042
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.968
+p-difference: 0.00011 +- 0.00021
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.998
+p-difference: 0.00009 +- 0.00015
+-------------------------------
+Number-agreement task: nounpp for seed 9
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.997
+p-difference: 0.00017 +- 0.00042
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.945
+p-difference: 0.00011 +- 0.00028
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.963
+p-difference: 0.00013 +- 0.00024
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.995
+p-difference: 0.00010 +- 0.00018
+-------------------------------
+Number-agreement task: nounpp for seed 10
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.997
+p-difference: 0.00013 +- 0.00026
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.994
+p-difference: 0.00010 +- 0.00021
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.99
+p-difference: 0.00011 +- 0.00023
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.994
+p-difference: 0.00008 +- 0.00015
+-------------------------------
+Number-agreement task: nounpp for seed 11
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.998
+p-difference: 0.00011 +- 0.00029
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.945
+p-difference: 0.00010 +- 0.00032
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.953
+p-difference: 0.00008 +- 0.00016
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.995
+p-difference: 0.00009 +- 0.00019
+-------------------------------
+Number-agreement task: nounpp for seed 12
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.996
+p-difference: 0.00028 +- 0.00076
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.981
+p-difference: 0.00020 +- 0.00054
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.951
+p-difference: 0.00013 +- 0.00028
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.985
+p-difference: 0.00017 +- 0.00038
+-------------------------------
+Number-agreement task: nounpp for seed 13
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.992
+p-difference: 0.00022 +- 0.00062
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.968
+p-difference: 0.00011 +- 0.00035
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.979
+p-difference: 0.00016 +- 0.00039
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.988
+p-difference: 0.00010 +- 0.00019
+-------------------------------
+Number-agreement task: nounpp for seed 14
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.996
+p-difference: 0.00014 +- 0.00035
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.953
+p-difference: 0.00009 +- 0.00024
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.953
+p-difference: 0.00013 +- 0.00027
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.99
+p-difference: 0.00012 +- 0.00027
+-------------------------------
+Number-agreement task: nounpp for seed 15
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+1.0
+p-difference: 0.00020 +- 0.00049
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.958
+p-difference: 0.00012 +- 0.00031
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.961
+p-difference: 0.00015 +- 0.00031
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.979
+p-difference: 0.00015 +- 0.00034
+-------------------------------
+Number-agreement task: nounpp for seed 16
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.989
+p-difference: 0.00015 +- 0.00030
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.966
+p-difference: 0.00010 +- 0.00026
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.962
+p-difference: 0.00014 +- 0.00025
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.991
+p-difference: 0.00012 +- 0.00023
+-------------------------------
+Number-agreement task: nounpp for seed 17
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.989
+p-difference: 0.00018 +- 0.00040
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.986
+p-difference: 0.00012 +- 0.00030
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.934
+p-difference: 0.00009 +- 0.00019
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.978
+p-difference: 0.00011 +- 0.00023
+-------------------------------
+Number-agreement task: nounpp for seed 18
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.996
+p-difference: 0.00012 +- 0.00026
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.977
+p-difference: 0.00009 +- 0.00023
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.949
+p-difference: 0.00011 +- 0.00024
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.983
+p-difference: 0.00011 +- 0.00023

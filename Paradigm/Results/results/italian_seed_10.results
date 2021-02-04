@@ -1,0 +1,162 @@
+-------------------------------
+Number-agreement task: objrel_that_V2
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.999
+p-difference: 0.00068 +- 0.00202
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.788
+p-difference: 0.00007 +- 0.00035
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.473
+p-difference: 0.00018 +- 0.00119
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+1.0
+p-difference: 0.00045 +- 0.00074
+-------------------------------
+Number-agreement task: objrel_that_V1
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.999
+p-difference: 0.00004 +- 0.00011
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.651
+p-difference: 0.00001 +- 0.00003
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.658
+p-difference: 0.00000 +- 0.00008
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+0.739
+p-difference: 0.00001 +- 0.00006
+-------------------------------
+Number-agreement task: sc_short_V1
+-------------------------------
+
+[['number_1', 'singular'], ['number_2', 'singular']]
+0.997
+p-difference: 0.00025 +- 0.00102
+
+[['number_1', 'singular'], ['number_2', 'plural']]
+0.999
+p-difference: 0.00010 +- 0.00020
+
+[['number_1', 'plural'], ['number_2', 'singular']]
+0.994
+p-difference: 0.00018 +- 0.00064
+
+[['number_1', 'plural'], ['number_2', 'plural']]
+1.0
+p-difference: 0.00010 +- 0.00020
+---------------------------------------------------------
+objrel_nounpp_V1
+---------------------------------------------------------
+singular singular singular
+[['number_1', 'singular'], ['number_2', 'singular'], ['number_3', 'singular']]
+0.9900793650793651
+p-difference: 0.00001 +- 0.00003
+singular singular plural
+[['number_1', 'singular'], ['number_2', 'singular'], ['number_3', 'plural']]
+0.9821428571428571
+p-difference: 0.00002 +- 0.00006
+singular plural singular
+[['number_1', 'singular'], ['number_2', 'plural'], ['number_3', 'singular']]
+0.6865079365079365
+p-difference: 0.00000 +- 0.00001
+singular plural plural
+[['number_1', 'singular'], ['number_2', 'plural'], ['number_3', 'plural']]
+0.7162698412698413
+p-difference: 0.00000 +- 0.00000
+plural singular singular
+[['number_1', 'plural'], ['number_2', 'singular'], ['number_3', 'singular']]
+0.5238095238095238
+p-difference: -0.00000 +- 0.00002
+plural singular plural
+[['number_1', 'plural'], ['number_2', 'singular'], ['number_3', 'plural']]
+0.44841269841269843
+p-difference: -0.00000 +- 0.00001
+plural plural singular
+[['number_1', 'plural'], ['number_2', 'plural'], ['number_3', 'singular']]
+0.6329365079365079
+p-difference: 0.00000 +- 0.00000
+plural plural plural
+[['number_1', 'plural'], ['number_2', 'plural'], ['number_3', 'plural']]
+0.5972222222222222
+p-difference: 0.00000 +- 0.00001
+---------------------------------------------------------
+objrel_nounpp_V2
+---------------------------------------------------------
+singular singular singular
+[['number_1', 'singular'], ['number_2', 'singular'], ['number_3', 'singular']]
+1.0
+p-difference: 0.00020 +- 0.00037
+singular singular plural
+[['number_1', 'singular'], ['number_2', 'singular'], ['number_3', 'plural']]
+0.9940476190476191
+p-difference: 0.00019 +- 0.00041
+singular plural singular
+[['number_1', 'singular'], ['number_2', 'plural'], ['number_3', 'singular']]
+0.44246031746031744
+p-difference: -0.00002 +- 0.00012
+singular plural plural
+[['number_1', 'singular'], ['number_2', 'plural'], ['number_3', 'plural']]
+0.5793650793650794
+p-difference: -0.00000 +- 0.00014
+plural singular singular
+[['number_1', 'plural'], ['number_2', 'singular'], ['number_3', 'singular']]
+0.37896825396825395
+p-difference: -0.00001 +- 0.00017
+plural singular plural
+[['number_1', 'plural'], ['number_2', 'singular'], ['number_3', 'plural']]
+0.23015873015873015
+p-difference: -0.00003 +- 0.00015
+plural plural singular
+[['number_1', 'plural'], ['number_2', 'plural'], ['number_3', 'singular']]
+0.996031746031746
+p-difference: 0.00020 +- 0.00033
+plural plural plural
+[['number_1', 'plural'], ['number_2', 'plural'], ['number_3', 'plural']]
+0.9880952380952381
+p-difference: 0.00018 +- 0.00034
+---------------------------------------------------------
+sc_long_V1
+---------------------------------------------------------
+singular singular singular
+[['number_1', 'singular'], ['number_2', 'singular'], ['number_3', 'singular']]
+0.998015873015873
+p-difference: 0.00011 +- 0.00022
+singular singular plural
+[['number_1', 'singular'], ['number_2', 'singular'], ['number_3', 'plural']]
+0.996031746031746
+p-difference: 0.00010 +- 0.00020
+singular plural singular
+[['number_1', 'singular'], ['number_2', 'plural'], ['number_3', 'singular']]
+0.996031746031746
+p-difference: 0.00009 +- 0.00013
+singular plural plural
+[['number_1', 'singular'], ['number_2', 'plural'], ['number_3', 'plural']]
+0.9861111111111112
+p-difference: 0.00007 +- 0.00011
+plural singular singular
+[['number_1', 'plural'], ['number_2', 'singular'], ['number_3', 'singular']]
+0.998015873015873
+p-difference: 0.00008 +- 0.00017
+plural singular plural
+[['number_1', 'plural'], ['number_2', 'singular'], ['number_3', 'plural']]
+0.9761904761904762
+p-difference: 0.00007 +- 0.00013
+plural plural singular
+[['number_1', 'plural'], ['number_2', 'plural'], ['number_3', 'singular']]
+0.998015873015873
+p-difference: 0.00008 +- 0.00014
+plural plural plural
+[['number_1', 'plural'], ['number_2', 'plural'], ['number_3', 'plural']]
+0.9940476190476191
+p-difference: 0.00008 +- 0.00017

@@ -1,0 +1,39 @@
+\section{Number Agreement in Neural Language Models}
+In the classic number agreement task (NA-task), subjects are presented with the beginning of a sentence (aka, `preamble') that contains a long-range subject-verb relation, such as: ``The \textbf{keys} to the \underline{cabinet}\ldots'', and are asked to predict the verb to follow (e.g., ``are''). 
+Human subjects make more agreement errors (e.g., continuing the preamble  above with ``is'' instead of ``are'') when the intervening noun (aka, `attractor') has a different grammatical number than the main subject (as in the preamble above, with plural subject ``keys'' and singular attractor ``cabinet'') \citep{Bock:Miller:1991}.
+Behavioral measures collected during agreement tasks, such as error rates, vary as a function of the syntactic environment of the long-range dependency. This has provided rich data to test hypotheses regarding online syntactic processing in humans \citep[e.g., ][]{franck2002subject, franck2006agreement, franck2007syntactic}.
+
+Starting with the influential work of \citet{Linzen:etal:2016}, a growing
+literature \citep[e.g.,][]{Gulordava:etal:2018, Bernardy:Lappin:2017,
+  Giulianelli:etal:2018, Kuncoro:etal:2018a,Linzen:Leonard:2018,jumelet2019analysing} has
+tested NLMs on the NA-task at the behavioural level, showing that these models have performance and error patterns partially resembling those of humans.
+Recently, \citet{lakretz2019emergence} investigated the underlying neural mechanism of an English NLM during the processing of a long-range dependency. They identified a neural circuit in the network that encodes and carries grammatical number across long-range dependencies, showing also that processing in NLMs is sensitive to the structure of the subject-verb dependency. 
+We now describe the main findings in this previous study, followed by a replication of the results in an NLM trained on Italian (section \ref{single_dependency_Italian}). 
+
+% \subsection{Agreement in the English NLM}
+
+\subsection{The NounPP Number-Agreement Task}
+The main NA-task used by \citet{lakretz2019emergence} contains sentences with a subject-verb dependency separated by a prepositional phrase containing an attractor (e.g., ``The \textbf{boy} near the \underline{car} \textbf{smiles}''), referred to as the `NounPP' task. This task comprises four conditions, which correspond to the four possible assignments of grammatical number to the main subject and attractor (SS, SP, PS and PP; S-singular, P-plural). The NLM was presented with preambles of sentences from this task, and predictions of the model of the next word were then extracted, from which error rates were computed. 
+
+\subsection{Long-Range Number Units}
+Having verified that the network could predict the correct number with high accuracy, \citet{lakretz2019emergence} tested whether there are units in the network that are crucial to carry grammatical number across long-range dependencies.  
+To identify such units, they conducted an ablation study, ablating one unit of the NLM at a time, and re-evaluating its performance on the NounPP task. 
+These ablation studies showed that two (out of 1300) units in the NLM cause a reduction in long-distance agreement performance towards chance level when ablated (short-distance agreement in other NA-tasks was not affected). 
+One of these units only affects performance when the main subject of the sentence is singular, and was therefore called the `singular unit'. 
+The other unit has an effect with plural subjects only, hence, the `plural unit'. 
+No other unit has a comparable effect on network performance when ablated. 
+A visualization of state dynamics of the singular and plural units confirmed their role in encoding and carrying through grammatical number across long-range dependency, robustly also in the presence of an attractor \citep[Figure 1 in][]{lakretz2019emergence}.
+
+\subsection{Syntax Units}
+Since the activities of the long-range number units follow the structure of the syntactic long-range dependency, \citet{lakretz2019emergence} tested whether other units in the network encode syntactic structure, letting the long-range number units know when to store and release number information in their encoding. Several units were found to have activity that is predictive about transient syntactic properties of the sentence. In particular, the activation of one of these `syntax' units followed the structure of the main subject-verb dependency, consistently across various sentence constructions \citep[Figure 3 in][]{lakretz2019emergence}.
+
+\subsection{Short-Range Number Units}
+\citet{lakretz2019emergence} further found that grammatical number information is also encoded by other units in the network in a distributed way.
+Number information can still be decoded from network activity even when the long-range number units are removed. 
+However, the information encoded in these other units is short-lived. Whenever a new grammatical number  is
+introduced (e.g., upon encountering a noun or a verb), activity in
+these units abruptly switches to represent this last encountered
+number. These `Short-Range Number Units' can therefore only support number-agreement dependencies that do not
+enfold attractors (e.g., ``The \textbf{boy} gracefully
+\textbf{smiles}''). The presence of short-range number units explains why ablating the long-range circuit only affects agreement in long-distance dependencies.
+

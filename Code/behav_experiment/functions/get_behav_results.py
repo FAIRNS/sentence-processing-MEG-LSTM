@@ -40,9 +40,9 @@ def get_behav_LSTM_italian():
     # objrel outer V1
     accuracy_LSTM_italian['objrel']['V1'] = {}
     accuracy_LSTM_italian['objrel']['V1']['SS'] = 1.00
-    accuracy_LSTM_italian['objrel']['V1']['SP'] = 0.63
-    accuracy_LSTM_italian['objrel']['V1']['PS'] = 0.70
-    accuracy_LSTM_italian['objrel']['V1']['PP'] = 0.92
+    accuracy_LSTM_italian['objrel']['V1']['SP'] = 0.84
+    accuracy_LSTM_italian['objrel']['V1']['PS'] = 0.82
+    accuracy_LSTM_italian['objrel']['V1']['PP'] = 0.93
 
     # embedding_mental_LR second verb (V2)
     accuracy_LSTM_italian['embedding_mental_LR'] = {}
@@ -98,29 +98,3 @@ def get_behav_human_italian(path2results='../../../Paradigm/Results', sentence_t
         for cond in behav_humans_italian['error_rate'][sentence_type].keys():
             behav_humans_italian['accuracy'][sentence_type][cond] = 1 - behav_humans_italian['error_rate'][sentence_type][cond]
     return behav_humans_italian
-
-
-
-# diff_objrel_nounpp_SXS = perf_objrel_nounpp_SSS - perf_objrel_nounpp_SPS
-# diff_objrel_nounpp_PXP = perf_objrel_nounpp_PPP - perf_objrel_nounpp_PSP
-
-# diff_objrel_nounpp = np.mean([diff_objrel_nounpp_SXS, diff_objrel_nounpp_PXP])
-
-
-# diff_objrel_nounpp_SX = perf_objrel_SS - perf_objrel_SP
-# diff_objrel_nounpp_PX = perf_objrel_PP - perf_objrel_PS
-# diff_objrel = np.mean([diff_objrel_nounpp_SX, diff_objrel_nounpp_PX])
-
-# print(diff_objrel_nounpp, diff_objrel)
-
-# diff_embedding_mental_LR_SXS = perf_embedding_mental_LR_SSS - perf_embedding_mental_LR_SPS
-# diff_embedding_mental_LR_PXP = perf_embedding_mental_LR_PPP - perf_embedding_mental_LR_PSP
-#
-# diff_embedding_mental_LR = np.mean([diff_embedding_mental_LR_SXS, diff_embedding_mental_LR_PXP])
-
-
-# diff_embedding_mental_SR_SX = perf_embedding_mental_SR_SS - perf_embedding_mental_SR_SP
-# diff_embedding_mental_SR_PX = perf_embedding_mental_SR_PP - perf_embedding_mental_SR_PS
-# diff_embedding_mental_SR = np.mean([diff_embedding_mental_SR_SX, diff_embedding_mental_SR_PX])
-
-# print(diff_embedding_mental_LR, diff_embedding_mental_SR)

@@ -1,0 +1,36 @@
+\subsection{Neural Language Models}
+In the computational experiments, we use a Neural Language Model (NLM).
+In computational linguistics, a \emph{language model} defines a probability distribution over sequences of words. A NLM is simply a language model implemented by a neural network. The recurrent NLM we use here, schematically illustrated in Figure \ref{fig:lstm}, factorizes the probability of a sentence into a multiplication of the conditional probabilities of all words in the sentence, given the words that precede them:
+
+\begin{equation}
+    P(w_1 w_2 \cdots w_n) = \prod_i p(w_i|w_1 \cdots w_{i-1})
+\end{equation}
+
+This type of language model can thus be used as \emph{next-word predictor}: given the preamble of a sentence, it outputs a probability distribution over potential next words.
+We exploit this fact in our experiments.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth, clip, trim={10mm 50mm 10mm 20mm}]{figures/LM-image}
+    \caption{Graphical description of a two-layer recurrent neural language model with LSTM cells \citep[not discussed here; see, e.g.,][]{Goldberg:2017}. At each timestep, the model processes an input word and outputs a probability distribution over potential next words in the sentence. The prediction of the output word depends on both the input word and on the previous state of the model, which serves as longer-term context (the horizontal arrows in the figure represent the \emph{recurrent} connections carrying the previous state through).} \label{fig:lstm}
+\end{figure}
+
+\subsubsection{Model description}
+The specific NLM we use in our experiments is the Italian NLM made available by \citet{Gulordava:etal:2018}\footnote{\url{https://github.com/facebookresearch/colorlessgreenRNNs}}.
+It is a recurrent LSTM language model \citep{Graves:2012}, consisting of two layers, each with 650 Long-Short Term Memory units  \citep{Hochreiter:Schmidhuber:1997}, input and output embedding layers of 650 units and input and output layers of size 50000 (the size of the vocabulary). 
+The weights of the input and output embedding layers are not shared \citep{press2016using}.
+The last layer of the model is a softmax layer, whose activations sum up to 1 and as such corresponds to a probability distribution over all words in the NLM's vocabulary. 
+
+\subsubsection{Model training}
+The weights of a NLM are typically tuned by presenting them with large amounts of data (a \emph{training corpus}) and providing them feedback on how well they can predict each next word in the running text. This allows them to adjust their parameters to maximize the probabilities of the sentences in the corpus. %
+Our NLM was trained on a sample of the Italian Wikipedia text, containing 80M word tokens and 50K word types. Further details can be found in \citet{Gulordava:etal:2018}.
+
+
+\subsubsection{Model evaluation on the NA-tasks}
+Following \citet{Linzen:etal:2016}, we compute the model's accuracy for the different NA-tasks by considering whether the model prefers the correct verb or adjective form (for the NounPP-number and NounPP-gender tasks, respectively) given the context. We do so by presenting the preamble of each sentence to the NLM and then comparing the output probabilities assigned to the plural and singular forms of the verb for the NounPP task and the probabilities of the masculine and feminine forms of the adjective for the NounPP-gender task. On each sentence, the model is scored 1 if the probability of the correct verb (or adjective) is higher than that of the wrong one, and else 0. 
+The model's accuracy is then defined as the average of these scores across all sentences in the NA-task. 
+
+\subsubsection{Ablation experiments}
+To identify units that play an important role in encoding number or gender, we run a series of ablation tests.
+In these ablation tests, we assess the impact of a \emph{single unit} on model performance by setting the activation of the unit to zero and then recomputing the performance of the model on the NounPP-noun and NounPP-gender NA-tasks. 
+We conduct such ablation studies for all recurrent units in the network, resulting in 1300 ablation studies per task.

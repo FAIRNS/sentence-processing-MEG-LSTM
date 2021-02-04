@@ -1,36 +1,37 @@
-
-\begin{table}[h]
+\begin{table}[ht]
 \tiny
 \centering
-\parbox{.4\linewidth}{
+\parbox{.45\linewidth}{
 \centering
-\begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
+    \begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
     \hline
-    \rowcolor{cyan}
-    \multicolumn{3}{|c|}{\textbf{Successive Short-Range}} \\
+    % \rowcolor{cyan}
+    \multicolumn{3}{|c|}{\textbf{Short-Successive}} \\
     \hline
-    \rowcolor{cyan}
-    \textbf{Effect} & \textbf{Humans} & \textbf{RNNs} \\
+    % \rowcolor{cyan}
+    \textbf{Effect} & \textbf{Humans} & \textbf{NLMs} \\
     \Xhline{3\arrayrulewidth}
-    \rowcolor{green}
-    \textbf{Subject Congruity (Embedded verb)} & X & X \\
+    % \rowcolor[HTML]{8DB600}
+    % \rowcolor{magenta}
+    \textbf{Subject Congruence (Embedded verb)} & X & V \\
     \hline
     
     \end{tabular}
 }
 \hfill
-\parbox{.4\linewidth}{
+\parbox{.45\linewidth}{
 \centering
-\begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
+    \begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
     \hline
-    \rowcolor{cyan}
-    \multicolumn{3}{|c|}{\textbf{Successive Long-Range}} \\
+    % \rowcolor{cyan}
+    \multicolumn{3}{|c|}{\textbf{Long-Successive}} \\
     \hline
-    \rowcolor{cyan}
-    \textbf{Effect} & \textbf{Humans} & \textbf{RNNs} \\
+    % \rowcolor{cyan}
+    \textbf{Effect} & \textbf{Humans} & \textbf{NLMs} \\
     \Xhline{3\arrayrulewidth}
-    \rowcolor{green}
-    \textbf{Subject Congruity (Embedded verb)} & X & X \\
+    % \rowcolor[HTML]{8DB600}
+    % \rowcolor{magenta}
+    \textbf{Subject Congruence (Embedded verb)} & X & V \\
     \hline
     
     \end{tabular}
@@ -38,50 +39,71 @@
 
 \vspace{25pt}
 
-\parbox{.4\linewidth}{
+\parbox{.45\linewidth}{
 \centering
-\begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
+    \begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
     \hline
-    \rowcolor{cyan}
-    \multicolumn{3}{|c|}{\textbf{Nested Short-Range}} \\
+    % \rowcolor{cyan}
+    \multicolumn{3}{|c|}{\textbf{Short-Nested}} \\
     \hline
-    \rowcolor{cyan}
-    \textbf{Effect} & \textbf{Humans} & \textbf{RNNs} \\
+    % \rowcolor{cyan}
+    \textbf{Effect} & \textbf{Humans} & \textbf{NLMs} \\
     \Xhline{3\arrayrulewidth}
-    \rowcolor{magenta}
-    \textbf{Subject Congruity (Main verb)} & X &  V\\
+    % \rowcolor{green}
+    \textbf{Subject Congruence (Main verb)} & V &  V\\
     \Xhline{3\arrayrulewidth}
-    \rowcolor{green}
-    \textbf{Subject Congruity (Embedded verb)} & V &  V\\
+    % \rowcolor{green}
+    \textbf{Subject Congruence (Embedded verb)} & V &  V\\
     \hline
-    \rowcolor{green}
-    \textbf{Interaction w.r.t Verb Position} & V &  V\\
+    % \rowcolor{green}
+    \textbf{Interaction: Subject-Congruence Verb-Position} & V &  V\\
     \hline
-    
     \end{tabular}
 }
 \hfill
-\parbox{.4\linewidth}{
+\parbox{.45\linewidth}{
 \centering
-\begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
+    \begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
     \hline
-    \rowcolor{cyan}
-    \multicolumn{3}{|c|}{\textbf{Nested Long-Range}} \\
+    % \rowcolor{cyan}
+    \multicolumn{3}{|c|}{\textbf{Long-Nested}} \\
     \hline
-    \rowcolor{cyan}
-    \textbf{Effect} & \textbf{Humans} & \textbf{RNNs} \\
+    % \rowcolor{cyan}
+    \textbf{Effect} & \textbf{Humans} & \textbf{NLMs} \\
     \Xhline{3\arrayrulewidth}
-    \rowcolor{green}
-    \textbf{Subject Congruity (Main verb)} & X &  X\\
+    % \rowcolor{green}
+    \textbf{Subject Congruence (Main verb)} & V &  V\\
     \Xhline{3\arrayrulewidth}
-    \rowcolor{green}
-    \textbf{Subject Congruity (Embedded verb)} & V &  V\\
+    % \rowcolor{green}
+    \textbf{Subject Congruence (Embedded verb)} & V &  V\\
     \hline
-    \rowcolor{green}
-    \textbf{Interaction w.r.t Verb Position} & V &  V\\
+    % \rowcolor{green}
+    \textbf{Interaction: Subject-Congruence Verb-Position} & V &  V\\
     \hline
     
     \end{tabular}
 }
-\caption{A summary of all effects  humans and RNNs. }
+
+\vspace{25pt}
+\hfill
+\parbox{\linewidth}{
+\centering
+    \begin{tabular}{ |P{3cm}|P{1.3cm}|P{1.3cm}|  }
+    % \hline
+    % \rowcolor{cyan}
+    % \multicolumn{3}{|c|}{\textbf{}} \\
+    \hline
+    % \rowcolor{cyan}
+    \textbf{Effect} & \textbf{Humans} & \textbf{NLMs} \\
+    \Xhline{3\arrayrulewidth}
+    % \rowcolor{green}
+    \textbf{Interaction: Subject-Congruence Length-of-Embedded-Dependency} & V &  V\\
+    \Xhline{3\arrayrulewidth}
+    
+    
+    \end{tabular}
+}
+
+\caption{A summary of all effects in humans and NLMs.}
+\label{tbl:comparison}
 \end{table}

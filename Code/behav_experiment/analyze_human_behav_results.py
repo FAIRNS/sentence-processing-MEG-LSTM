@@ -7,7 +7,7 @@ from functions import data_manip
 
 parser = argparse.ArgumentParser()
 # parser.add_argument('--subjects', action='append', type=int, default= list(range(6, 12)) + [13, 14] + list(range(21, 31)))
-parser.add_argument('--subjects', action='append', type=int, default= list(range(21,47)) + list(range(48, 57)) + [58, 62, 64] + list(range(66, 70)))
+parser.add_argument('--subjects', action='append', type=int, default= list(range(21,47)) + list(range(48, 57)) + [58, 61, 62, 64] + list(range(66, 70)) + list(range(71, 83)))
 # parser.add_argument('--subjects', action='append', type=int, default= list(range(21,23)))
 parser.add_argument('--sessions', action='append', type=int, default=[])
 parser.add_argument('--path2logs', default='../../Paradigm/Logs')
@@ -37,27 +37,32 @@ for sentence_type in ['objrel', 'objrel_nounpp', 'embedding_mental_SR', 'embeddi
 # Load data and generate dataframes:
 print('Reading logs...')
 df_all_trial = data_manip.read_logs(args, valid_correct, valid_wrong)
-cols = ['subject', 'sentence_type', 'trial_type', 'violation_type', 'violation_position', 'condition', 'correct_wrong', 'valid_answer', 'block', 'trial_num', 'slide_num_of_viol', 'RT']
+cols = ['subject', 'sentence_type', 'trial_type', 'violation_type', 'violation_position', 'congruent_subjects', 'congruent_attractor', 'congruent_subjects_attractor', 'condition', 'correct_wrong', 'valid_answer', 'block', 'trial_num', 'slide_num_of_viol', 'RT']
 df_all_trial = df_all_trial[cols]
-df_all_trial = df_all_trial.sort_values(['subject', 'sentence_type', 'trial_type', 'violation_type', 'condition', 'correct_wrong', 'block', 'trial_num'], ascending=[True, True, True, True, True, True, True, True])
+df_all_trial = df_all_trial.sort_values(['subject', 'sentence_type', 'trial_type', 'violation_type', 'congruent_subjects', 'congruent_attractor', 'congruent_subjects_attractor', 'condition', 'correct_wrong', 'block', 'trial_num'], ascending=[True, True, True, True, True, True, True, True, True, True, True])
 
 
 outlier_subjects = data_manip.get_outlier_subjects(df_all_trial)
 print('Outlier subjects: ', outlier_subjects)
+def is_outlier(row):
+    return True if row['subject'] in outlier_subjects else False
+df_all_trial['is_outlier'] = df_all_trial.apply(lambda row: is_outlier(row), axis=1)
 
-df_all_trial_without_outliers = df_all_trial.loc[(~df_all_trial['subject'].isin(outlier_subjects))]
+# df_all_trial_without_outliers = df_all_trial.loc[(~df_all_trial['subject'].isin(outlier_subjects))]
 # print(df_all_trial_without_outliers.subject.unique())
-
-print('Calculating error rates...')
-df_error_rates = data_manip.get_error_rates(df_all_trial_without_outliers)
-cols = ['subject', 'sentence_type', 'trial_type', 'violation_type', 'violation_position', 'condition', 'error_rate']
-df_error_rates = df_error_rates[cols]
-df_error_rates = df_error_rates.sort_values(['subject', 'sentence_type', 'trial_type', 'violation_type', 'condition'], ascending=[True, True, True, True, True])
 
 # Save dataframes for down-stream analses
 fn = 'dataframe_results_all_trials.csv'
 fn = os.path.join('..', '..', 'Paradigm', 'Results', fn)
 df_all_trial.to_csv(fn, index=False)
+
+
+print('Calculating error rates...')
+df_error_rates = data_manip.get_error_rates(df_all_trial)
+cols = ['subject', 'sentence_type', 'trial_type', 'violation_type', 'violation_position', 'congruent_subjects', 'congruent_attractor', 'congruent_subjects_attractor', 'condition', 'error_rate']
+df_error_rates = df_error_rates[cols]
+df_error_rates = df_error_rates.sort_values(['subject', 'sentence_type', 'trial_type', 'violation_type', 'congruent_subjects', 'congruent_attractor', 'congruent_subjects_attractor', 'condition'], ascending=[True, True, True, True, True, True, True, True])
+
 
 fn = 'dataframe_results_errorrate.csv'
 fn = os.path.join('..', '..', 'Paradigm', 'Results', fn)
