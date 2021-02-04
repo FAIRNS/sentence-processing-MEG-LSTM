@@ -27,3 +27,6 @@ main.pdf
 *.aux
 *.blg
 *.swp
+*.tar
+*.err
+*.out

@@ -28,7 +28,7 @@ parser.add_argument('--perplexity', action='store_true', default=False)
 parser.add_argument('--eos-separator', default='</s>')
 parser.add_argument('--fixed-length-arrays', action='store_true', default=False,
         help='Save the result to a single fixed-length array')
-parser.add_argument('--format', default='npz', choices=['npz', 'hdf5', 'pkl'])
+parser.add_argument('--format', default='pkl', choices=['npz', 'hdf5', 'pkl'])
 parser.add_argument('-u', '--unit', type=int, action='append', help='Which test unit to ablate')
 parser.add_argument('-uf', '--unit-from', type=int, default=False, help='Starting range for test unit to ablate')
 parser.add_argument('-ut', '--unit-to', type=int, default=False, help='Ending range for test unit to ablate')
@@ -44,7 +44,7 @@ args = parser.parse_args()
 
 stime = time.time()
 
-os.makedirs(os.path.dirname(args.output), exist_ok=True)
+#os.makedirs(os.path.dirname(args.output), exist_ok=True)
 
 # Vocabulary
 vocab = data.Dictionary(args.vocabulary)
@@ -67,7 +67,7 @@ print('Loading models...')
 import lstm
 print('\nmodel: ' + args.model+'\n')
 model = torch.load(args.model, map_location=lambda storage, loc: storage)  # requires GPU model
-model.rnn.flatten_parameters()
+#model.rnn.flatten_parameters()
 # hack the forward function to send an extra argument containing the model parameters
 model.rnn.forward = lambda input, hidden: lstm.forward(model.rnn, input, hidden)
 model_orig_state = copy.deepcopy(model.state_dict())
@@ -122,7 +122,7 @@ for unit_group in tqdm(target_units):
 
     output_fn = args.output
     if args.do_ablation: # if ablation then add unit number etc to filename
-        output_fn = output_fn + "_".join(map(str, unit_group)) + '_groupsize_' + args.groupsize + '_seed_' + str(args.seed) # Update output file name
+        output_fn = output_fn + "_".join(map(str, unit_group)) + '_groupsize_' + str(args.groupsize) + '_seed_' + str(args.seed) # Update output file name
     output_fn = output_fn + '.abl'
 
     print("\n\n\n")
